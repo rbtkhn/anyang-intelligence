@@ -17,6 +17,8 @@ The default implementation shape is a four to six week sprint:
 - Week 5: First coordination win and risk review.
 - Week 6: Learning loop, handoff, and next operating cycle.
 
+The canonical cross-customer method lives in [install-method.md](install-method.md). This implementation model describes why the work starts as installation before software; the install method describes the repeatable operating pattern.
+
 ## What Gets Configured
 
 - Source map: where business truth currently lives.

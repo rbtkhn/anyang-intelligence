@@ -4,6 +4,8 @@ Customer installations are concrete operating contexts where Anyang Intelligence
 
 The goal is to prove the pattern across different kinds of complexity before turning repeated workflows into software.
 
+Each installation should follow the shared [Executive OS install method](../docs/install-method.md), then adapt the method to its domain.
+
 ## Current Installations
 
 | Installation | Domain | Executive OS proof |
@@ -22,3 +24,15 @@ The early portfolio should stay small and sharp.
 Grace Gems shows that an Executive OS can run commercial operating loops. Mountain Home shows that the same pattern can govern a real-world asset where risk, readiness, and continuity matter more than revenue. Book Club shows the lightest version of the pattern: keeping a small community enjoyable, coordinated, and continuous without making it feel over-managed. Media Production shows creative operations: moving ideas through editorial judgment, production, quality review, distribution, and audience learning. Non-Profit shows mission governance: aligning programs, donors, volunteers, compliance, and impact evidence. Elementary School shows high-trust educational operations where student support, privacy, safety, staff coordination, and family communication must remain human-led.
 
 Together they test the core Anyang claim: an Executive OS is not a chatbot or a dashboard. It is a living executive layer that keeps a complex operating context coherent.
+
+## Shared Pattern
+
+Every customer installation should define:
+
+- Context map.
+- Executive memory objects.
+- Decision system.
+- Operating review cadence.
+- Risk and governance boundary.
+- 30-day installation plan.
+- Success criteria.
