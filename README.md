@@ -45,7 +45,11 @@ anyang-intelligence/
     coordination-loop.md
     learning-loop.md
   customers/
+    README.md
     grace-gems/
+      README.md
+      executive-os-install.md
+    mountain-home/
       README.md
       executive-os-install.md
   playbooks/
@@ -63,4 +67,4 @@ anyang-intelligence/
 
 This repo is in concept and operating-design stage. The immediate goal is to define the Executive OS clearly enough to install it manually with early organizations before turning repeated patterns into software.
 
-The first internal installation target is [Grace Gems](customers/grace-gems/README.md), a dual-storefront Etsy jewelry business. In that installation, Anyang Intelligence acts as the executive operating layer for marketplace strategy, listing gates, customer-promise risk, weekly operating reviews, and learning loops.
+The first internal installations are tracked in [customers/](customers/README.md): Grace Gems proves marketplace execution governance, while Mountain Home proves property and asset-risk governance.
