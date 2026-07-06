@@ -9,7 +9,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | [Book Club](book-club/README.md) | Recreational community | Monthly | Keep selection, hosting, discussion, and memory easy to sustain | Low |
 | [Elementary School](elementary-school/README.md) | Personalized homeschool experience | Daily / weekly / school-year cycles | Coordinate learner profile, parent-reviewed plans, portfolio evidence, and safe personalization; possible $100/month family subscription | Very high |
 | [Grace Gems](grace-gems/README.md) | Marketplace business | Daily / weekly | Gate listings, protect margin, improve marketplace execution, and learn from customer signals | Medium |
-| [Media Production](media-production/README.md) | Digital media production | Weekly / campaign-based | Move ideas through editorial judgment, production, quality gates, distribution, and audience learning | Medium |
+| [Media Production](media-production/README.md) | Digital media production | Weekly / campaign-based | Produce diverse supplementary artistic content for Predictive History through editorial judgment, production, quality gates, distribution support, and audience learning | Medium |
 | [Mountain Home](mountain-home/README.md) | Property and asset governance | Weekly / monthly / seasonal | Rank risk, preserve continuity, coordinate maintenance, and prepare for seasonal hazards | High |
 | [Non-Profit](non-profit/README.md) | Mission-driven organization | Monthly / board / grant cycles | Align mission, programs, donors, real estate assets, volunteers, reporting, and impact evidence | High |
 
@@ -20,7 +20,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Book Club | Members, preferences, books read, nominations, hosts, dates, discussion prompts, insights, recommendations |
 | Elementary School | Learner profile, interests, parent goals, curriculum choices, daily plans, resources, portfolio artifacts, progress evidence, safeguards |
 | Grace Gems | Storefronts, product families, listing candidates, margin assumptions, policy checks, quality scores, customer promise risks |
-| Media Production | Editorial thesis, audience segments, content pillars, idea backlog, active productions, quality notes, publishing calendar, performance metrics |
+| Media Production | Editorial thesis, Predictive History client context, audience segments, content pillars, topic backlog, artistic direction options, active productions, quality notes, publishing calendar, performance metrics |
 | Mountain Home | Property profile, structures, critical systems, risks, wildfire zones, utilities, water, septic, access, maintenance backlog, mitigation proof |
 | Non-Profit | Mission, theory of change, programs, donors, grants, $200,000 real estate portfolio, volunteers, partners, reporting deadlines, impact metrics, stories, risks |
 
@@ -31,7 +31,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Book Club | Next book, host, date, discussion format, cadence adjustments |
 | Elementary School | Daily learning plan, weekly focus, resource/activity fit, concept review, portfolio evidence, outside-support escalation |
 | Grace Gems | Publish/revise/hold/promote listing, storefront routing, ad eligibility, product pipeline priority, listing correction |
-| Media Production | Idea selection, format choice, channel priority, production readiness, repurposing, editorial response to audience signals |
+| Media Production | Predictive History topic support, artistic idea selection, format choice, channel priority, production readiness, repurposing, editorial response to audience signals |
 | Mountain Home | Top 5 risk actions, contractor escalation, wildfire mitigation priority, continuity gaps, water/septic/access review |
 | Non-Profit | Program priority, donor/grant follow-up, real estate portfolio review, reporting risk, volunteer/partner coordination, board decision, impact evidence readiness |
 
