@@ -231,120 +231,151 @@ Use simple status labels:
 
 ## Pre-Training Tool Familiarity
 
-Before starting the position, you should become familiar with the main categories of tools used in modern creative production. You do not need to master every product listed below. The goal is to understand what each category is for, what good output looks like, and when to ask for approval before using a paid tool or publishing an asset.
+Google Search and ChatGPT are assumed baseline skills for this role.
 
-### 1. Research and Source Review
+Before starting, demonstrate basic fluency with the six free production tools below. Each task should take 20 minutes. The goal is not perfection. The goal is to show that you can produce, organize, and explain a useful draft under time pressure.
 
-Use these tools to understand the topic before creating assets:
+### 1. Canva Free: Thumbnail and Social Graphic Task
 
-- Predictive History repository and public chapter pages.
-- YouTube and YouTube transcripts.
-- Google Search.
-- Perplexity or similar answer engines.
-- Wikipedia as a starting map, not a final source.
-- Internet Archive.
-- Library of Congress.
-- Wikimedia Commons.
-- Zotero or another citation/reference manager.
+Time limit: 20 minutes.
 
-Training goal: know how to gather context, save links, distinguish primary and secondary sources, and flag anything uncertain.
+Task:
 
-### 2. Writing, Briefing, and Concept Development
+- Create one YouTube thumbnail draft for a Predictive History video.
+- Create one square social graphic using the same topic.
+- Use a clear title, strong contrast, readable text, and one visual idea.
+- Export both files as PNGs.
 
-Use these tools to turn source material into briefs, concepts, scripts, and review notes:
+Deliver:
 
-- ChatGPT.
-- Claude.
-- Gemini.
-- Google Docs.
-- Notion or Airtable.
-- Markdown files.
-- Grammarly or another editing assistant.
+- `thumbnail_draft.png`.
+- `social_graphic_draft.png`.
+- Three-sentence note explaining the visual direction.
 
-Training goal: know how to create a production brief, ask for multiple creative directions, summarize source material without inventing facts, and keep notes organized.
+Pass standard:
 
-### 3. Visual Concepting and Image Production
+- Text is readable at small size.
+- The design has one clear focal point.
+- The thumbnail and social graphic feel related.
+- The assets are not generic history wallpaper.
 
-Use these tools to create visual directions, thumbnails, references, and draft assets:
+### 2. CapCut Free: Short Video Task
 
-- Midjourney.
-- DALL-E or ChatGPT image generation.
-- Ideogram.
-- Adobe Firefly.
-- Canva.
-- Figma.
-- Pinterest or Are.na for moodboards and visual references.
+Time limit: 20 minutes.
 
-Training goal: know how to create strong visual concepts, write useful prompts, compare options, avoid generic imagery, and prepare drafts for review.
+Task:
 
-### 4. Video, Motion, and Editing
+- Create a 20-30 second vertical short.
+- Use at least three visual moments: title card, body visual, closing card.
+- Add captions or readable on-screen text.
+- Add simple music or sound only if it improves clarity.
+- Export as MP4.
 
-Use these tools to create short-form edits, visual sequences, storyboards, and review-ready video drafts:
+Deliver:
 
-- CapCut.
-- DaVinci Resolve.
-- Adobe Premiere Pro.
-- After Effects.
-- Runway.
-- Pika.
-- Luma.
-- Kling.
-- Descript.
+- `short_video_draft.mp4`.
+- Two-sentence note explaining the intended viewer hook.
 
-Training goal: know basic editing vocabulary, how to assemble a short draft, how to export review files, and how to keep video work editable.
+Pass standard:
 
-### 5. Audio, Voice, and Captions
+- The video is vertical and suitable for Shorts/Reels/TikTok.
+- The first three seconds communicate a clear hook.
+- Text is readable on mobile.
+- The edit is understandable without sound.
 
-Use these tools to support narration, captions, cleanup, and audio-first versions:
+### 3. Audacity: Audio Cleanup Task
 
-- Descript.
-- ElevenLabs.
-- Adobe Podcast Enhance or similar cleanup tools.
-- YouTube caption tools.
-- Whisper-based transcription tools.
-- Audacity.
+Time limit: 20 minutes.
 
-Training goal: know how captions, transcripts, voiceover drafts, and audio cleanup support publishing. Do not clone voices or publish synthetic voice work without approval.
+Task:
 
-### 6. Publishing and Distribution
+- Import a short voice recording or sample audio clip.
+- Trim dead air at the beginning and end.
+- Reduce obvious background noise if present.
+- Adjust volume so the voice is clear.
+- Export the cleaned clip as WAV or MP3.
 
-Use these tools to package assets for upload, promotion, and performance review:
+Deliver:
 
-- YouTube Studio.
-- YouTube Shorts.
-- Substack.
-- Instagram Reels.
-- TikTok.
-- X.
-- LinkedIn.
-- Google Drive.
-- Dropbox.
+- `audio_before_original`.
+- `audio_after_cleaned.wav` or `audio_after_cleaned.mp3`.
+- Two-sentence note describing what was changed.
 
-Training goal: know the asset requirements for each channel, how to name files clearly, how to prepare descriptions and captions, and how to record what was shipped.
+Pass standard:
 
-### 7. Rights, Attribution, and Safety
+- The cleaned audio starts and ends cleanly.
+- Voice volume is easier to hear.
+- No obvious distortion was introduced.
+- The original file is preserved.
 
-Use these tools and services to avoid preventable publishing risk:
+### 4. YouTube Studio: Publishing Preparation Task
 
-- Creative Commons Search.
-- Wikimedia Commons license pages.
-- Public domain collections.
-- Stock asset libraries such as Adobe Stock, Envato, Artlist, Motion Array, or Storyblocks.
-- Platform terms and usage policies.
+Time limit: 20 minutes.
 
-Training goal: know that "found online" does not mean "free to use." Always record the source of outside assets and flag unclear rights before publishing.
+Task:
 
-### 8. File Organization and Delivery
+- Prepare a draft upload package for a Predictive History video.
+- Do not publish.
+- Create one title, one description, three tags or keywords, one thumbnail placeholder, and one pinned comment draft.
+- Identify whether captions, attribution, or source notes are needed.
 
-Use these tools to keep work findable and reusable:
+Deliver:
 
-- Google Drive or Dropbox.
-- Clear folder naming.
-- Clear file naming.
-- Version labels such as `draft`, `review`, `approved`, and `shipped`.
-- Simple production trackers in Notion, Airtable, Sheets, or Markdown.
+- Screenshot or written checklist of the draft upload fields.
+- `youtube_upload_notes.md`.
 
-Training goal: know how to deliver work so another person can understand, review, revise, or reuse it later.
+Pass standard:
+
+- The title is clear and clickable without being misleading.
+- The description tells viewers what the video is about.
+- The pinned comment supports learning or discussion.
+- The package makes clear what is still missing before publication.
+
+### 5. Wikimedia Commons: Rights-Safe Asset Task
+
+Time limit: 20 minutes.
+
+Task:
+
+- Find one image or media asset that could support a Predictive History topic.
+- Confirm the license or public-domain status.
+- Record the creator, source URL, license, and attribution requirement.
+- Write one sentence explaining how the asset would be used.
+
+Deliver:
+
+- `rights_safe_asset_note.md`.
+- Downloaded asset or link to the asset.
+
+Pass standard:
+
+- The source URL is recorded.
+- License or public-domain status is identified.
+- Attribution requirement is clear.
+- Any uncertainty is flagged instead of ignored.
+
+### 6. Google Drive: File Organization and Delivery Task
+
+Time limit: 20 minutes.
+
+Task:
+
+- Create a project folder for one Predictive History production test.
+- Add folders for `brief`, `assets`, `exports`, `source-notes`, and `review`.
+- Upload or place the outputs from the other tasks into the correct folders.
+- Rename files clearly using topic, asset type, status, and date.
+
+Deliver:
+
+- Shared folder link or screenshot of the folder structure.
+- `delivery_note.md` explaining what is inside and what needs review.
+
+Pass standard:
+
+- A reviewer can understand the project without asking where files are.
+- File names are clear.
+- Drafts, sources, exports, and review notes are separated.
+- The folder is ready for someone else to review or reuse.
 
 ## First 30 Days
 
