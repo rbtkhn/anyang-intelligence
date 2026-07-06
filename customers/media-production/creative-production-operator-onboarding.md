@@ -237,6 +237,8 @@ Before starting, demonstrate basic fluency with the six free production tools be
 
 For these pre-training tasks, choose your own topic. Pick something you actually care about: a hobby, book, film, place, historical figure, recipe, product, sport, artist, local business, personal project, or learning goal. Use the same topic across all six tasks so the final folder feels like one small production package.
 
+After completing the tasks, upload the final work to GitHub. GitHub is the review destination for this pre-training package. Google Drive may be used for staging or large temporary files, but the submitted work should be represented in GitHub with clear file names and notes.
+
 ### 1. Canva Free: Thumbnail and Social Graphic Task
 
 Time limit: 20 minutes.
@@ -380,6 +382,32 @@ Pass standard:
 - File names are clear.
 - Drafts, sources, exports, and review notes are separated.
 - The folder is ready for someone else to review or reuse.
+
+### 7. GitHub: Final Submission Task
+
+Time limit: 20 minutes.
+
+Task:
+
+- Create a GitHub folder for the chosen topic production test.
+- Upload the final task notes and lightweight exported assets.
+- If a file is too large for GitHub, upload a small placeholder note with the Google Drive link and a short description.
+- Add a `README.md` that explains the topic, what was created, what should be reviewed, and any rights or source concerns.
+- Submit the GitHub folder link for review.
+
+Deliver:
+
+- GitHub folder link.
+- `README.md`.
+- Uploaded notes and review-ready assets, or links for large files.
+
+Pass standard:
+
+- A reviewer can understand the whole pre-training package from GitHub.
+- File names are clear.
+- Large-file links are documented instead of silently omitted.
+- Rights notes and source links are included where relevant.
+- The GitHub folder is organized enough to become part of a real production archive.
 
 ## First 30 Days
 
