@@ -8,7 +8,7 @@ The goal is not to collect everything. The goal is to get enough context for Any
 
 ## WeChat Message
 
-Hi, I am setting up the first Grace Gems operating review. To get started, please send the five most useful things below. Short answers are fine, and screenshots/exports are welcome.
+Hi, we are setting up the first Grace Gems operating review for Anyang Intelligence. To get started, please send the five most useful things below. Short answers are fine, and screenshots/exports are welcome.
 
 1. **Current goal:** What is the most important goal for Grace Gems over the next 30-90 days? For example: more sales, better profit, cleaner listings, fewer customer issues, moving inventory, improving one shop, or something else.
 
@@ -18,13 +18,13 @@ Hi, I am setting up the first Grace Gems operating review. To get started, pleas
 
 4. **Customer support chat transcripts:** Please send recent customer support / buyer message transcripts, especially conversations involving confusion, customization, shipping time, returns, complaints, refunds, or repeated questions. Screenshots or copied text are both fine. Please remove anything you do not want reviewed.
 
-5. **Owner decision rules:** What should Anyang never change or recommend without approval? For example: prices, publishing listings, sending customer replies, ad spend, refunds, shop policies, product claims, or anything else.
+5. **Owner decision rules:** What should Anyang Intelligence never change or recommend without approval? For example: prices, publishing listings, sending customer replies, ad spend, refunds, shop policies, product claims, or anything else.
 
-Once I have these five inputs, I will produce a first-pass Grace Gems operating review: priority listings, margin/data gaps, customer-promise risks, and the best first 30-day focus.
+Once we have these five inputs, we will produce a first-pass Grace Gems operating review: priority listings, margin/data gaps, customer-promise risks, and the best first 30-day focus.
 
 ## Phase 1 Output
 
-After the owner/operator responds, Anyang should produce:
+After the owner/operator responds, Anyang Intelligence should produce:
 
 - First company context map.
 - First 5-10 listing review queue.
