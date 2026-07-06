@@ -10,6 +10,8 @@ New customer folders should start from the reusable [customer install template](
 
 Use the [comparison matrix](comparison-matrix.md) to inspect what the customer portfolio is teaching the product.
 
+Use the [commercial hypotheses](commercial-hypotheses.md) to separate credible offers from internal demos and archetypes.
+
 ## Current Installations
 
 | Installation | Domain | Executive OS proof |
