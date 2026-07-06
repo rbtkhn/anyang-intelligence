@@ -7,7 +7,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Customer | Domain | Cadence | Primary OS job | Trust level |
 | --- | --- | --- | --- | --- |
 | [Book Club](book-club/README.md) | Recreational community | Monthly | Keep selection, hosting, discussion, and memory easy to sustain | Low |
-| [Elementary School](elementary-school/README.md) | Personalized homeschool experience | Daily / weekly / school-year cycles | Coordinate learner profile, parent-reviewed plans, portfolio evidence, and safe personalization | Very high |
+| [Elementary School](elementary-school/README.md) | Personalized homeschool experience | Daily / weekly / school-year cycles | Coordinate learner profile, parent-reviewed plans, portfolio evidence, and safe personalization; possible $100/month family subscription | Very high |
 | [Grace Gems](grace-gems/README.md) | Marketplace business | Daily / weekly | Gate listings, protect margin, improve marketplace execution, and learn from customer signals | Medium |
 | [Media Production](media-production/README.md) | Digital media production | Weekly / campaign-based | Move ideas through editorial judgment, production, quality gates, distribution, and audience learning | Medium |
 | [Mountain Home](mountain-home/README.md) | Property and asset governance | Weekly / monthly / seasonal | Rank risk, preserve continuity, coordinate maintenance, and prepare for seasonal hazards | High |

@@ -23,6 +23,7 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 | Field | Current starting point |
 | --- | --- |
 | Operating context | Personalized AI homeschool experience agent |
+| Commercial hypothesis | Parent-facing subscription at $100/month per family |
 | Grade band | Elementary / K-5 |
 | Core work | Parent-led personalized learning, daily plans, enrichment, progress evidence, reflection |
 | Primary cadence | Daily learning rhythm, weekly parent review, monthly portfolio review, school-year planning |
@@ -98,6 +99,21 @@ The Executive OS may not:
 - Hide learning concerns from the parent or guardian.
 - Store or expose sensitive child information beyond approved access rules.
 - Ignore applicable homeschool, district, state, or reporting requirements.
+
+## Subscription Hypothesis
+
+The first commercial version could be a parent subscription priced at **$100/month per family**.
+
+The subscription should only be considered viable if it can reliably provide:
+
+- Parent-reviewed daily and weekly learning plans.
+- Learner profile and progress memory.
+- Project, reading, enrichment, and practice suggestions.
+- Portfolio evidence organization.
+- Weekly parent review.
+- Clear child-safety and human-authority boundaries.
+
+This price point should be tested as a hypothesis, not treated as a validated offer.
 
 ## Weekly Parent Review
 

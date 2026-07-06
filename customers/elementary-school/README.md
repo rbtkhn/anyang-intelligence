@@ -40,6 +40,14 @@ learner interests and needs
   -> next learning decision
 ```
 
+## Commercial Hypothesis
+
+Elementary School could become a parent-facing subscription service.
+
+Early pricing hypothesis: **$100/month per family** for a personalized AI homeschool experience agent that helps parents plan, adapt, document, and reflect on elementary learning.
+
+This is a working assumption, not final pricing. It should be validated against parent willingness to pay, safety expectations, curriculum accountability needs, and the cost of responsible support.
+
 ## Installation
 
 See [executive-os-install.md](executive-os-install.md) for the first Elementary School Executive OS install design.
