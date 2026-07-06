@@ -11,6 +11,9 @@ Media Production is a creative operating context:
 - Operating challenge: turn ideas into finished media and supplementary artistic assets consistently without losing creative quality, strategic focus, or audience learning.
 - First client: Predictive History YouTube channel.
 - First client need: create diverse supplementary artistic content that supports Predictive History videos.
+- Monthly operating budget: $1,000.
+- First employee: Cici, salary $500 per month.
+- Starting discretionary production budget after Cici salary: $500 per month.
 
 ## Executive OS Role
 
@@ -26,6 +29,17 @@ In practical terms, the Executive OS helps:
 - Preserve what worked, what missed, and what should change next.
 
 The system does not replace creative judgment. It keeps the production company coherent enough for creative judgment to compound.
+
+## Starting Operating Economics
+
+Media Production begins as a small-budget creative operator:
+
+- Monthly budget: $1,000.
+- Payroll commitment: $500 per month for Cici.
+- Remaining monthly budget: $500 for tools, subscriptions, contractors, asset purchases, distribution tests, or reserves.
+- First capacity assumption: Cici is the primary employee responsible for turning briefs into finished or review-ready production work.
+
+The Executive OS should protect this constraint. It should recommend a production cadence that fits the available budget and should not assume a large team, paid ad budget, or unlimited creative bandwidth.
 
 ## Operating Thesis
 

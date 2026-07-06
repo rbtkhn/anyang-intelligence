@@ -28,8 +28,12 @@ Anyang Intelligence should behave like the executive layer of the production com
 | First client | Predictive History YouTube channel |
 | First client need | Diverse supplementary artistic content for Predictive History videos |
 | Core work | Produce and distribute digital media and supplementary artistic assets |
+| Monthly budget | $1,000 |
+| First employee | Cici |
+| Cici salary | $500 per month |
+| Remaining monthly production budget | $500 |
 | Primary cadence | Editorial planning, production, publishing, review |
-| Primary constraint | Creative capacity, quality control, publishing consistency, audience relevance |
+| Primary constraint | Cici's production capacity, $500 discretionary monthly budget, quality control, publishing consistency, audience relevance |
 | Primary operating risk | Producing scattered artistic assets without episode fit, review, rights clarity, or learning |
 | Executive OS job | Convert Predictive History topics, audience signals, and production capacity into a coherent artistic content pipeline |
 
@@ -38,6 +42,10 @@ Anyang Intelligence should behave like the executive layer of the production com
 - Editorial thesis.
 - Client profile.
 - Predictive History channel goals.
+- Monthly budget.
+- Payroll commitments.
+- Cici capacity assumptions.
+- Discretionary production budget.
 - Episode or topic backlog.
 - Audience segments.
 - Brand standards.
@@ -59,6 +67,9 @@ Anyang Intelligence should behave like the executive layer of the production com
 
 The Executive OS should prepare structured decisions for:
 
+- How to allocate the $1,000 monthly budget.
+- How to protect Cici's $500 monthly salary commitment.
+- How to use the remaining $500 monthly production budget.
 - Which Predictive History topics need supplementary artistic content.
 - Which artistic ideas enter production.
 - Which format fits an idea best: thumbnail, illustration, short visual, animation prompt, slide asset, social excerpt, or companion graphic.
@@ -111,6 +122,8 @@ The weekly review should answer:
 - What shipped?
 - What is in production?
 - What is blocked?
+- How much of Cici's capacity is committed?
+- How much of the $500 discretionary monthly budget remains?
 - Which ideas should be promoted, paused, or killed?
 - Which Predictive History episode or topic needs supplementary art next?
 - Which content performed better or worse than expected?
@@ -123,6 +136,8 @@ The weekly review should answer:
 
 - Define the editorial thesis.
 - Capture Predictive History channel context, audience, topics, and visual needs.
+- Confirm Cici's weekly availability, production strengths, and preferred workflow.
+- Create the first monthly budget view: $500 salary commitment and $500 discretionary production budget.
 - Map content pillars and audience segments.
 - Inventory active ideas and productions.
 - Create the first production board.
@@ -157,6 +172,8 @@ The Media Production installation is working when:
 - Quality gates catch weak or unclear work before publication.
 - Publishing cadence becomes more reliable.
 - Predictive History receives diverse supplementary artistic content on a reliable cadence.
+- Cici's capacity is visible before new work is accepted.
+- Monthly spend stays within the $1,000 budget unless a human explicitly approves an exception.
 - Audience signals update future editorial decisions.
 - Strong pieces are repurposed instead of forgotten.
 - The company remembers what it learned from each production cycle.
