@@ -80,6 +80,8 @@ The weekly review should answer:
 
 ## Initial 30-Day Plan
 
+Before Week 1, complete the [business intake survey](business-intake-survey.md).
+
 ### Week 1: Baseline Controls
 
 - Build the initial company context map.

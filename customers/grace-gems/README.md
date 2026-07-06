@@ -45,3 +45,5 @@ product idea
 ## Installation
 
 See [executive-os-install.md](executive-os-install.md) for the first Grace Gems Executive OS install design.
+
+Use [business-intake-survey.md](business-intake-survey.md) to collect the owner/operator context required before installation.
