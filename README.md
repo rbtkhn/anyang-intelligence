@@ -46,6 +46,9 @@ anyang-intelligence/
     learning-loop.md
   customers/
     README.md
+    book-club/
+      README.md
+      executive-os-install.md
     grace-gems/
       README.md
       executive-os-install.md
@@ -67,4 +70,4 @@ anyang-intelligence/
 
 This repo is in concept and operating-design stage. The immediate goal is to define the Executive OS clearly enough to install it manually with early organizations before turning repeated patterns into software.
 
-The first internal installations are tracked in [customers/](customers/README.md): Grace Gems proves marketplace execution governance, while Mountain Home proves property and asset-risk governance.
+The first internal installations are tracked in [customers/](customers/README.md): Grace Gems proves marketplace execution governance, Mountain Home proves property and asset-risk governance, and Book Club proves lightweight community cadence governance.
