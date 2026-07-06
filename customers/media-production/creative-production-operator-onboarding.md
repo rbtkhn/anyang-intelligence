@@ -235,13 +235,15 @@ Google Search and ChatGPT are assumed baseline skills for this role.
 
 Before starting, demonstrate basic fluency with the six free production tools below. Each task should take 20 minutes. The goal is not perfection. The goal is to show that you can produce, organize, and explain a useful draft under time pressure.
 
+For these pre-training tasks, choose your own topic. Pick something you actually care about: a hobby, book, film, place, historical figure, recipe, product, sport, artist, local business, personal project, or learning goal. Use the same topic across all six tasks so the final folder feels like one small production package.
+
 ### 1. Canva Free: Thumbnail and Social Graphic Task
 
 Time limit: 20 minutes.
 
 Task:
 
-- Create one YouTube thumbnail draft for a Predictive History video.
+- Create one YouTube thumbnail draft for your chosen topic.
 - Create one square social graphic using the same topic.
 - Use a clear title, strong contrast, readable text, and one visual idea.
 - Export both files as PNGs.
@@ -265,6 +267,7 @@ Time limit: 20 minutes.
 
 Task:
 
+- Use the same chosen topic from the Canva task.
 - Create a 20-30 second vertical short.
 - Use at least three visual moments: title card, body visual, closing card.
 - Add captions or readable on-screen text.
@@ -289,6 +292,7 @@ Time limit: 20 minutes.
 
 Task:
 
+- Use audio related to your chosen topic if available, or record a short voice note explaining the topic.
 - Import a short voice recording or sample audio clip.
 - Trim dead air at the beginning and end.
 - Reduce obvious background noise if present.
@@ -314,7 +318,7 @@ Time limit: 20 minutes.
 
 Task:
 
-- Prepare a draft upload package for a Predictive History video.
+- Prepare a draft upload package for a video about your chosen topic.
 - Do not publish.
 - Create one title, one description, three tags or keywords, one thumbnail placeholder, and one pinned comment draft.
 - Identify whether captions, attribution, or source notes are needed.
@@ -337,7 +341,7 @@ Time limit: 20 minutes.
 
 Task:
 
-- Find one image or media asset that could support a Predictive History topic.
+- Find one image or media asset that could support your chosen topic.
 - Confirm the license or public-domain status.
 - Record the creator, source URL, license, and attribution requirement.
 - Write one sentence explaining how the asset would be used.
@@ -360,7 +364,7 @@ Time limit: 20 minutes.
 
 Task:
 
-- Create a project folder for one Predictive History production test.
+- Create a project folder for your chosen topic production test.
 - Add folders for `brief`, `assets`, `exports`, `source-notes`, and `review`.
 - Upload or place the outputs from the other tasks into the correct folders.
 - Rename files clearly using topic, asset type, status, and date.
