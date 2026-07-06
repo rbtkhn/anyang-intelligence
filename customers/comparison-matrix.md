@@ -11,7 +11,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | [Grace Gems](grace-gems/README.md) | Marketplace business | Daily / weekly | Gate listings, protect margin, improve marketplace execution, and learn from customer signals | Medium |
 | [Media Production](media-production/README.md) | Digital media production | Weekly / campaign-based | Move ideas through editorial judgment, production, quality gates, distribution, and audience learning | Medium |
 | [Mountain Home](mountain-home/README.md) | Property and asset governance | Weekly / monthly / seasonal | Rank risk, preserve continuity, coordinate maintenance, and prepare for seasonal hazards | High |
-| [Non-Profit](non-profit/README.md) | Mission-driven organization | Monthly / board / grant cycles | Align mission, programs, donors, volunteers, reporting, and impact evidence | High |
+| [Non-Profit](non-profit/README.md) | Mission-driven organization | Monthly / board / grant cycles | Align mission, programs, donors, real estate assets, volunteers, reporting, and impact evidence | High |
 
 ## Memory Objects
 
@@ -22,7 +22,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Grace Gems | Storefronts, product families, listing candidates, margin assumptions, policy checks, quality scores, customer promise risks |
 | Media Production | Editorial thesis, audience segments, content pillars, idea backlog, active productions, quality notes, publishing calendar, performance metrics |
 | Mountain Home | Property profile, structures, critical systems, risks, wildfire zones, utilities, water, septic, access, maintenance backlog, mitigation proof |
-| Non-Profit | Mission, theory of change, programs, donors, grants, volunteers, partners, reporting deadlines, impact metrics, stories, risks |
+| Non-Profit | Mission, theory of change, programs, donors, grants, $200,000 real estate portfolio, volunteers, partners, reporting deadlines, impact metrics, stories, risks |
 
 ## Decision Surface
 
@@ -33,7 +33,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Grace Gems | Publish/revise/hold/promote listing, storefront routing, ad eligibility, product pipeline priority, listing correction |
 | Media Production | Idea selection, format choice, channel priority, production readiness, repurposing, editorial response to audience signals |
 | Mountain Home | Top 5 risk actions, contractor escalation, wildfire mitigation priority, continuity gaps, water/septic/access review |
-| Non-Profit | Program priority, donor/grant follow-up, reporting risk, volunteer/partner coordination, board decision, impact evidence readiness |
+| Non-Profit | Program priority, donor/grant follow-up, real estate portfolio review, reporting risk, volunteer/partner coordination, board decision, impact evidence readiness |
 
 ## Review Rhythm
 
@@ -44,7 +44,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Grace Gems | Weekly marketplace review | What listings are ready, blocked, underperforming, or risky |
 | Media Production | Weekly production review | What shipped, what is blocked, what should publish next, what audience signals matter |
 | Mountain Home | Weekly ops plus monthly/seasonal reviews | What risks rose, what continuity gaps exist, what seasonal gate is approaching |
-| Non-Profit | Monthly leadership/board review | What mission priority, program, funding, reporting, or impact issue needs action |
+| Non-Profit | Monthly leadership/board review | What mission priority, program, funding, real estate, reporting, or impact issue needs action |
 
 ## Governance Strictness
 
@@ -55,7 +55,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Grace Gems | Moderate: human approval for publishing, pricing, ad spend, customer messages, and policy-sensitive claims |
 | Media Production | Moderate: human approval for creative direction, publication, client commitments, rights, and external claims |
 | Mountain Home | High: human approval for spending, contractors, inspections, emergency response, insurance, tax, and legal positions |
-| Non-Profit | High: human approval for mission commitments, board actions, spending, grant submissions, donor communications, compliance, and impact claims |
+| Non-Profit | High: human approval for mission commitments, board actions, spending, real estate decisions, grant submissions, donor communications, compliance, valuation assumptions, and impact claims |
 
 ## Software Primitives Implied
 
