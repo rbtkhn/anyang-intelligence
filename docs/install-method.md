@@ -112,6 +112,8 @@ Every customer installation should include:
 - A `README.md` describing the domain, Executive OS role, operating thesis, and install link.
 - An `executive-os-install.md` describing the installation method for that domain.
 
+Use [templates/customer-install/](../templates/customer-install/README.md) as the starting point for new customer folders.
+
 ## Product Implication
 
 The install method is the bridge from service to software.

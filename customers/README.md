@@ -6,6 +6,8 @@ The goal is to prove the pattern across different kinds of complexity before tur
 
 Each installation should follow the shared [Executive OS install method](../docs/install-method.md), then adapt the method to its domain.
 
+New customer folders should start from the reusable [customer install template](../templates/customer-install/README.md).
+
 ## Current Installations
 
 | Installation | Domain | Executive OS proof |
