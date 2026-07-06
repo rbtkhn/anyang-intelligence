@@ -22,7 +22,7 @@ Anyang Intelligence should behave like the executive layer of the property:
 | Field | Current starting point |
 | --- | --- |
 | Operating context | Rural mountain property |
-| Location | Pine, Colorado |
+| Location | Jefferson County, Colorado |
 | Land | 5 acres |
 | Core asset | Land, structures, utilities, water, septic, access, and productive capacity |
 | Primary constraint | Wildfire-interface, seasonal weather, access, utility continuity, and hidden infrastructure risk |

@@ -6,7 +6,7 @@ Mountain Home is the second internal installation target for the Anyang Intellig
 
 Mountain Home is a rural mountain property operating context:
 
-- Location: Pine, Colorado.
+- Location: Jefferson County, Colorado.
 - Land: 5 acres.
 - Context: mountain foothills, wildfire-interface risk, seasonal access, snow, drainage, private water, septic, and utility continuity.
 
