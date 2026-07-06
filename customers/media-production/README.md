@@ -61,3 +61,7 @@ Predictive History episode or topic
 ## Installation
 
 See [executive-os-install.md](executive-os-install.md) for the first Media Production Executive OS install design.
+
+## Employee Onboarding
+
+See [creative-production-operator-onboarding.md](creative-production-operator-onboarding.md) for the first employee onboarding guide for Cici.
