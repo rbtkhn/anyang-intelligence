@@ -44,6 +44,10 @@ anyang-intelligence/
     decision-system.md
     coordination-loop.md
     learning-loop.md
+  customers/
+    grace-gems/
+      README.md
+      executive-os-install.md
   playbooks/
     installation-sprint.md
     weekly-executive-review.md
@@ -58,3 +62,5 @@ anyang-intelligence/
 ## Current Status
 
 This repo is in concept and operating-design stage. The immediate goal is to define the Executive OS clearly enough to install it manually with early organizations before turning repeated patterns into software.
+
+The first internal installation target is [Grace Gems](customers/grace-gems/README.md), a dual-storefront Etsy jewelry business. In that installation, Anyang Intelligence acts as the executive operating layer for marketplace strategy, listing gates, customer-promise risk, weekly operating reviews, and learning loops.
