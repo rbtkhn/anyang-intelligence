@@ -229,6 +229,123 @@ Use simple status labels:
 - `Approved`: ready to package or publish.
 - `Shipped`: published or delivered.
 
+## Pre-Training Tool Familiarity
+
+Before starting the position, you should become familiar with the main categories of tools used in modern creative production. You do not need to master every product listed below. The goal is to understand what each category is for, what good output looks like, and when to ask for approval before using a paid tool or publishing an asset.
+
+### 1. Research and Source Review
+
+Use these tools to understand the topic before creating assets:
+
+- Predictive History repository and public chapter pages.
+- YouTube and YouTube transcripts.
+- Google Search.
+- Perplexity or similar answer engines.
+- Wikipedia as a starting map, not a final source.
+- Internet Archive.
+- Library of Congress.
+- Wikimedia Commons.
+- Zotero or another citation/reference manager.
+
+Training goal: know how to gather context, save links, distinguish primary and secondary sources, and flag anything uncertain.
+
+### 2. Writing, Briefing, and Concept Development
+
+Use these tools to turn source material into briefs, concepts, scripts, and review notes:
+
+- ChatGPT.
+- Claude.
+- Gemini.
+- Google Docs.
+- Notion or Airtable.
+- Markdown files.
+- Grammarly or another editing assistant.
+
+Training goal: know how to create a production brief, ask for multiple creative directions, summarize source material without inventing facts, and keep notes organized.
+
+### 3. Visual Concepting and Image Production
+
+Use these tools to create visual directions, thumbnails, references, and draft assets:
+
+- Midjourney.
+- DALL-E or ChatGPT image generation.
+- Ideogram.
+- Adobe Firefly.
+- Canva.
+- Figma.
+- Pinterest or Are.na for moodboards and visual references.
+
+Training goal: know how to create strong visual concepts, write useful prompts, compare options, avoid generic imagery, and prepare drafts for review.
+
+### 4. Video, Motion, and Editing
+
+Use these tools to create short-form edits, visual sequences, storyboards, and review-ready video drafts:
+
+- CapCut.
+- DaVinci Resolve.
+- Adobe Premiere Pro.
+- After Effects.
+- Runway.
+- Pika.
+- Luma.
+- Kling.
+- Descript.
+
+Training goal: know basic editing vocabulary, how to assemble a short draft, how to export review files, and how to keep video work editable.
+
+### 5. Audio, Voice, and Captions
+
+Use these tools to support narration, captions, cleanup, and audio-first versions:
+
+- Descript.
+- ElevenLabs.
+- Adobe Podcast Enhance or similar cleanup tools.
+- YouTube caption tools.
+- Whisper-based transcription tools.
+- Audacity.
+
+Training goal: know how captions, transcripts, voiceover drafts, and audio cleanup support publishing. Do not clone voices or publish synthetic voice work without approval.
+
+### 6. Publishing and Distribution
+
+Use these tools to package assets for upload, promotion, and performance review:
+
+- YouTube Studio.
+- YouTube Shorts.
+- Substack.
+- Instagram Reels.
+- TikTok.
+- X.
+- LinkedIn.
+- Google Drive.
+- Dropbox.
+
+Training goal: know the asset requirements for each channel, how to name files clearly, how to prepare descriptions and captions, and how to record what was shipped.
+
+### 7. Rights, Attribution, and Safety
+
+Use these tools and services to avoid preventable publishing risk:
+
+- Creative Commons Search.
+- Wikimedia Commons license pages.
+- Public domain collections.
+- Stock asset libraries such as Adobe Stock, Envato, Artlist, Motion Array, or Storyblocks.
+- Platform terms and usage policies.
+
+Training goal: know that "found online" does not mean "free to use." Always record the source of outside assets and flag unclear rights before publishing.
+
+### 8. File Organization and Delivery
+
+Use these tools to keep work findable and reusable:
+
+- Google Drive or Dropbox.
+- Clear folder naming.
+- Clear file naming.
+- Version labels such as `draft`, `review`, `approved`, and `shipped`.
+- Simple production trackers in Notion, Airtable, Sheets, or Markdown.
+
+Training goal: know how to deliver work so another person can understand, review, revise, or reuse it later.
+
 ## First 30 Days
 
 ### Week 1: Learn the System
