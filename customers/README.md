@@ -8,6 +8,8 @@ Each installation should follow the shared [Executive OS install method](../docs
 
 New customer folders should start from the reusable [customer install template](../templates/customer-install/README.md).
 
+Use the [comparison matrix](comparison-matrix.md) to inspect what the customer portfolio is teaching the product.
+
 ## Current Installations
 
 | Installation | Domain | Executive OS proof |
