@@ -31,11 +31,11 @@ The role includes:
 
 This is an operator role, not only an artist role. The goal is repeatable creative production.
 
-## The System You Are Joining
+## The Production System You Are Joining
 
-Media Production works with Anyang Intelligence, which acts as the executive operating system for the company.
+Media Production runs a simple creative production system so ideas do not get lost, repeated, or shipped before they are ready.
 
-Anyang Intelligence helps decide:
+The system helps the team decide:
 
 - What should be made next.
 - Why it matters.
@@ -44,7 +44,7 @@ Anyang Intelligence helps decide:
 - What should be approved, revised, paused, or rejected.
 - What the team should learn from each production cycle.
 
-You should think of Anyang Intelligence as the operating memory and decision support system around the work. You bring attention, judgment, execution, and taste.
+You should think of this system as the shared memory around the work. You bring attention, judgment, execution, and taste.
 
 ## First Client: Predictive History
 
@@ -274,4 +274,3 @@ The brief should include:
 - Recommendation for what to make first.
 
 The goal is not perfection. The goal is to learn how the production loop works.
-
