@@ -7,7 +7,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Customer | Domain | Cadence | Primary OS job | Trust level |
 | --- | --- | --- | --- | --- |
 | [Book Club](book-club/README.md) | Recreational community | Monthly | Keep selection, hosting, discussion, and memory easy to sustain | Low |
-| [Elementary School](elementary-school/README.md) | K-5 educational operations | Daily / weekly / school-year cycles | Coordinate student support, staff workflows, family communication, and safety-aware follow-up | Very high |
+| [Elementary School](elementary-school/README.md) | Personalized homeschool experience | Daily / weekly / school-year cycles | Coordinate learner profile, parent-reviewed plans, portfolio evidence, and safe personalization | Very high |
 | [Grace Gems](grace-gems/README.md) | Marketplace business | Daily / weekly | Gate listings, protect margin, improve marketplace execution, and learn from customer signals | Medium |
 | [Media Production](media-production/README.md) | Digital media production | Weekly / campaign-based | Move ideas through editorial judgment, production, quality gates, distribution, and audience learning | Medium |
 | [Mountain Home](mountain-home/README.md) | Property and asset governance | Weekly / monthly / seasonal | Rank risk, preserve continuity, coordinate maintenance, and prepare for seasonal hazards | High |
@@ -18,7 +18,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Customer | Core memory objects |
 | --- | --- |
 | Book Club | Members, preferences, books read, nominations, hosts, dates, discussion prompts, insights, recommendations |
-| Elementary School | School priorities, staff roles, student support workflows, family follow-ups, safety actions, classroom needs, improvement goals |
+| Elementary School | Learner profile, interests, parent goals, curriculum choices, daily plans, resources, portfolio artifacts, progress evidence, safeguards |
 | Grace Gems | Storefronts, product families, listing candidates, margin assumptions, policy checks, quality scores, customer promise risks |
 | Media Production | Editorial thesis, audience segments, content pillars, idea backlog, active productions, quality notes, publishing calendar, performance metrics |
 | Mountain Home | Property profile, structures, critical systems, risks, wildfire zones, utilities, water, septic, access, maintenance backlog, mitigation proof |
@@ -29,7 +29,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Customer | Decisions the OS prepares |
 | --- | --- |
 | Book Club | Next book, host, date, discussion format, cadence adjustments |
-| Elementary School | Student support follow-up, family communication, classroom support, safety/facilities escalation, improvement priorities |
+| Elementary School | Daily learning plan, weekly focus, resource/activity fit, concept review, portfolio evidence, outside-support escalation |
 | Grace Gems | Publish/revise/hold/promote listing, storefront routing, ad eligibility, product pipeline priority, listing correction |
 | Media Production | Idea selection, format choice, channel priority, production readiness, repurposing, editorial response to audience signals |
 | Mountain Home | Top 5 risk actions, contractor escalation, wildfire mitigation priority, continuity gaps, water/septic/access review |
@@ -40,7 +40,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Customer | Review rhythm | Review asks |
 | --- | --- | --- |
 | Book Club | Monthly | What did we read, what mattered, what comes next, who hosts |
-| Elementary School | Weekly plus school-year cycles | What student/staff/family/safety follow-ups need human review |
+| Elementary School | Daily rhythm plus weekly parent review | What learning happened, what needs review, what evidence matters, what changes next |
 | Grace Gems | Weekly marketplace review | What listings are ready, blocked, underperforming, or risky |
 | Media Production | Weekly production review | What shipped, what is blocked, what should publish next, what audience signals matter |
 | Mountain Home | Weekly ops plus monthly/seasonal reviews | What risks rose, what continuity gaps exist, what seasonal gate is approaching |
@@ -51,7 +51,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Customer | Governance boundary |
 | --- | --- |
 | Book Club | Light: protect tone, consent, and organizer authority |
-| Elementary School | Very strict: child privacy, educator judgment, mandated procedures, safety decisions, family communication approval |
+| Elementary School | Very strict: child privacy, parent authority, legal/accountability requirements, outside-support escalation, child-facing decision approval |
 | Grace Gems | Moderate: human approval for publishing, pricing, ad spend, customer messages, and policy-sensitive claims |
 | Media Production | Moderate: human approval for creative direction, publication, client commitments, rights, and external claims |
 | Mountain Home | High: human approval for spending, contractors, inspections, emergency response, insurance, tax, and legal positions |
