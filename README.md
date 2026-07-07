@@ -41,6 +41,7 @@ anyang-intelligence/
     implementation-model.md
     install-method.md
     loops.md
+    membranes.md
     governance.md
   os/
     executive-memory.md
@@ -88,6 +89,6 @@ This repo is in concept and operating-design stage. The immediate goal is to def
 
 The current installations are tracked in [customers/](customers/README.md): Grace Gems proves marketplace execution governance, Mountain Home proves property and asset-risk governance, Book Club proves lightweight community cadence governance, Media Production proves creative pipeline governance, Non-Profit proves mission, program, donor, and impact governance, and Elementary School proves high-trust educational operations.
 
-The shared method is captured in [docs/install-method.md](docs/install-method.md). The loop grammar is captured in [docs/loops.md](docs/loops.md). Each customer installation should adapt that method to its own domain instead of inventing a new operating shape from scratch.
+The shared method is captured in [docs/install-method.md](docs/install-method.md). The loop grammar is captured in [docs/loops.md](docs/loops.md), and the cross-lane filter judgment is captured in [docs/membranes.md](docs/membranes.md). Each customer installation should adapt that method to its own domain instead of inventing a new operating shape from scratch.
 
 Reusable maintenance procedures are tracked in [skills/](skills/README.md).

@@ -38,3 +38,9 @@ Every material recommendation should identify:
 ## Early Customer Rule
 
 In early installations, trust is built through narrow authority, clear audit trails, and useful recurring outputs.
+
+## Cross-Lane Membranes
+
+Use [membranes.md](membranes.md) when a lesson, fact, template, claim, or operating pattern may move between customer lanes.
+
+The default rule is: transfer primitives, not private context. Customer-specific facts, sensitive information, and authority boundaries should not blur across lanes.

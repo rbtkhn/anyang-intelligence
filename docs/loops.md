@@ -176,3 +176,5 @@ governance boundary
 ```
 
 Customer-specific loops describe the domain. Shared loop infrastructure becomes the software spine.
+
+Loops move work forward. [Membranes](membranes.md) decide what may move across customer or domain boundaries.

@@ -4,6 +4,8 @@ This map records knowledge that should transfer across customer lanes.
 
 The purpose is to make Anyang Intelligence smarter with each install without collapsing distinct domains into one generic workflow.
 
+Use [../docs/membranes.md](../docs/membranes.md) before transferring any lesson that includes customer-specific facts, sensitive information, authority boundaries, financial/legal implications, child/family context, donor context, property context, or unapproved external claims.
+
 ## Core Principle
 
 Each customer teaches a reusable operating primitive.
