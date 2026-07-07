@@ -108,6 +108,19 @@ Possible uses include:
 
 Optional support should not create pressure, hierarchy, or transactional expectations inside the club.
 
+## Membrane Boundary
+
+Book Club can teach Anyang Intelligence about light cadence, community stewardship, free participation, donor-funded support, and non-transactional shared materials.
+
+Keep local unless explicitly approved:
+
+- Member identities, attendance, preferences, and private discussion details.
+- Donor identities, donor notes, and donor-specific restrictions.
+- Host locations, private logistics, and social dynamics.
+- Any internal tension that would make the club feel monitored or managed.
+
+Transferable lessons should become generic community-cadence, donor-stewardship, or light-coordination patterns. They should not expose member-level facts or make participation feel paid, ranked, or transactional.
+
 ## Initial 30-Day Plan
 
 ### Week 1: Club Memory Setup

@@ -83,6 +83,24 @@ The Executive OS may not:
 - Replace professional, legal, medical, educational, financial, or safety judgment.
 - Store or expose sensitive information beyond approved access rules.
 
+## Membrane Boundary
+
+Use [../../docs/membranes.md](../../docs/membranes.md) before transferring lessons, facts, templates, claims, or operating patterns from this customer lane into another lane.
+
+Shareable primitives:
+
+- [Operating loop, review question, checklist, quality gate, evidence standard, or other pattern].
+
+Keep local unless explicitly approved:
+
+- [Private facts, sensitive records, identities, financial details, customer messages, protected information, draft claims, or domain-specific risks].
+
+Required transfer filter:
+
+- Translate customer-specific facts into generic primitives before reuse.
+- Preserve authority boundaries and evidence requirements.
+- Use the strictest applicable membrane when child, legal, financial, nonprofit, property, employment, contractor, or external-claim issues appear.
+
 ## Operating Review
 
 The review should answer:

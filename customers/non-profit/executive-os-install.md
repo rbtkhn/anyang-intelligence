@@ -95,6 +95,19 @@ Material external claims, funding commitments, restricted-gift use, real estate 
 - Beneficiary or community risk.
 - Human approval required.
 
+## Membrane Boundary
+
+Non-Profit can teach Anyang Intelligence about mission governance, board review, donor stewardship, restricted funds, grant/report cadence, impact evidence, and real estate asset stewardship.
+
+Keep local unless explicitly approved by leadership or the board:
+
+- Donor identities, donor restrictions, pledges, private communications, and fundraising strategy.
+- Beneficiary or community-sensitive details, stories, and impact evidence that could identify people or expose private context.
+- Board deliberations, internal disagreements, draft grant claims, restricted-fund questions, and compliance-sensitive records.
+- Real estate portfolio details, valuation assumptions, legal issues, tax issues, and asset-risk records requiring professional review.
+
+Transferable lessons should become generic board-review, donor-stewardship, restricted-fund, impact-evidence, or asset-governance patterns. They should not expose donor, beneficiary, board, compliance, or valuation-sensitive facts.
+
 ## Monthly Operating Review
 
 The monthly review should answer:

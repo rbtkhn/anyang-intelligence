@@ -89,6 +89,18 @@ The Executive OS should keep the property oriented around a 72-hour disruption w
 
 The goal is to prevent cascading failure: outage to heat loss, heat loss to frozen pipes, access failure to delayed repair, and so on.
 
+## Membrane Boundary
+
+Mountain Home can teach Anyang Intelligence about risk ranking, seasonal readiness, continuity planning, mitigation proof, maintenance prioritization, and property stewardship.
+
+Keep local unless explicitly approved by the owner:
+
+- Exact property access details, security vulnerabilities, evacuation constraints, utility weaknesses, insurance details, and private owner facts.
+- Contractor quotes, inspection records, receipts, photos, maps, and maintenance history that reveal sensitive property information.
+- Legal, tax, insurance, valuation, or permitting details that require professional review.
+
+Transferable lessons should become generic property-risk, continuity, evidence, or seasonal-readiness patterns. They should not reveal property vulnerabilities, access details, owner private facts, or insurance-sensitive information.
+
 ## Weekly Operating Review
 
 The weekly review should answer:

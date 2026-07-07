@@ -67,6 +67,19 @@ No listing should be published or promoted until the Executive OS has reviewed:
 - Customer-service risk.
 - Storefront fit.
 
+## Membrane Boundary
+
+Grace Gems can teach Anyang Intelligence about marketplace execution, trust architecture, listing gates, customer-promise clarity, and owner-approved claim discipline.
+
+Keep local unless explicitly approved by the owner:
+
+- Customer support transcripts, buyer identities, order details, and private customer messages.
+- Product margins, costs, supplier details, pricing strategy, and ad-spend decisions.
+- Draft product claims, policy language, shipping promises, refund/repair commitments, certificate or appraisal claims, and authenticity statements.
+- Store-specific strategy that should not become generic advice without evidence and owner approval.
+
+Transferable lessons should become generic marketplace QA, claim-approval, customer-confusion, or trust-design patterns. They should not carry Grace Gems product facts, margins, customer messages, or unapproved claims into another lane.
+
 ## Weekly Operating Review
 
 The weekly review should answer:

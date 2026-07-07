@@ -109,6 +109,19 @@ The Executive OS may not:
 - Store or expose sensitive child information beyond approved access rules.
 - Ignore applicable homeschool, district, state, or reporting requirements.
 
+## Membrane Boundary
+
+Elementary School can teach Anyang Intelligence about parent review, child-safety guardrails, humane learning cadence, portfolio evidence, and personalized plan structure.
+
+Keep local unless explicitly approved by the parent or guardian:
+
+- Child identity, family details, learning concerns, behavior patterns, health or developmental information, and sensitive progress notes.
+- Parent goals, family constraints, curriculum choices, legal/accountability context, and outside-support notes.
+- Portfolio artifacts that identify the child or reveal private family context.
+- Any child-facing recommendation that has not passed parent or guardian review.
+
+Transferable lessons should be anonymized into safety principles, parent-review checklists, portfolio structures, or learning-loop templates. The Elementary School membrane is stricter than ordinary creative, business, or community lanes.
+
 ## Subscription Hypothesis
 
 The first commercial version could be a parent subscription priced at **$100/month per family**.

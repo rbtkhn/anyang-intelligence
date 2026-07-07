@@ -131,6 +131,19 @@ No major piece should publish until the Executive OS has reviewed:
 - Distribution plan.
 - Repurposing plan.
 
+## Membrane Boundary
+
+Media Production can teach Anyang Intelligence about creative cadence, production quality gates, capacity governance, reuse, abundance, contractor sourcing, and audience/customer learning.
+
+Keep local unless explicitly approved:
+
+- Client assets, private briefs, unpublished creative directions, private performance data, and client-specific strategy.
+- Grace Gems product claims, customer messages, policies, pricing, or trust claims that require owner approval.
+- Contractor personal information, contracts, payment details, tax documentation, tool access, and work-location details.
+- Rights-sensitive source material, licensed assets, unpublished scripts, and drafts not cleared for sharing.
+
+Transferable lessons should become generic production loops, quality gates, abundance checks, contractor governance patterns, or client-approval checklists. Creative assets and client-specific claims should not cross lanes by default.
+
 ## Weekly Operating Review
 
 The weekly review should answer:
