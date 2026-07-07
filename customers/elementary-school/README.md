@@ -63,6 +63,8 @@ Boundary:
 
 See [parent-startup-onboarding.md](parent-startup-onboarding.md) for the parent-facing startup guide and `$100/month` value target.
 
+See [reading-basket.md](reading-basket.md) for the first physical literacy tool in the startup bundle.
+
 ## Commercial Hypothesis
 
 Elementary School could become a parent-facing subscription service.

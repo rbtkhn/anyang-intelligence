@@ -51,6 +51,8 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 - Books and resources.
 - Startup resource bundle.
 - Parent startup onboarding guide.
+- Reading basket.
+- Reading basket weekly review.
 - Khan Academy Kids parent-observed engagement notes.
 - Projects and enrichment.
 - Practice activities.
@@ -72,6 +74,8 @@ The Executive OS should prepare structured decisions for:
 - Which subject, project, or skill needs attention this week.
 - Which resource, book, activity, or field trip fits the learner.
 - How Khan Academy Kids should be used in the daily rhythm without becoming the whole learning plan.
+- Which books belong in the first reading basket.
+- What the reading basket reveals about interest, confidence, difficulty, and next-book fit.
 - Whether the parent-facing onboarding experience is creating at least `$100/month` of practical value.
 - Which concept needs review, practice, or a different explanation.
 - Which progress evidence should be saved to the portfolio.
@@ -148,6 +152,8 @@ Use rule:
 
 The parent-facing startup guide is [parent-startup-onboarding.md](parent-startup-onboarding.md).
 
+The first physical literacy tool is [reading-basket.md](reading-basket.md).
+
 ## Subscription Hypothesis
 
 The first commercial version could be a parent subscription priced at **$100/month per family**.
@@ -174,6 +180,7 @@ Possible package directions include:
 
 - Learner profile and parent goals intake.
 - Parent startup onboarding package.
+- Reading basket setup and first weekly review.
 - First 30-day personalized homeschool plan.
 - Portfolio and progress evidence setup.
 - Parent review rhythm and weekly planning template.
@@ -203,6 +210,7 @@ The weekly review should answer:
 - Install Khan Academy Kids on the iPad as the starter app, with parent-supervised use.
 - Record first observations from Khan Academy Kids: engagement, frustration, preferred activities, and parent questions.
 - Give the parent the startup onboarding guide and confirm the first-week setup.
+- Build the first reading basket with confidence books, current-level books, one stretch book, one interest-led nonfiction book, and one parent read-aloud.
 - Identify applicable education accountability requirements.
 - Create the first learner context map.
 
@@ -211,6 +219,7 @@ The weekly review should answer:
 - Draft a parent-reviewed daily rhythm.
 - Define subject blocks, breaks, enrichment, reading, and project time.
 - Decide where the 15-20 minute Khan Academy Kids block belongs in the daily rhythm.
+- Add a 10-minute daily reading basket block.
 - Create the first weekly learning plan.
 
 ### Week 3: Portfolio and Progress Evidence
@@ -222,6 +231,7 @@ The weekly review should answer:
 ### Week 4: Parent Review and Next-Cycle Plan
 
 - Produce the first weekly/monthly parent review.
+- Refresh the reading basket based on what the child chose, avoided, reread, abandoned, or requested.
 - Identify what worked, what dragged, and what should change.
 - Set the next month's learning priorities.
 

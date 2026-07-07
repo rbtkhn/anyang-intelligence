@@ -63,6 +63,8 @@ Start with 5-10 books:
 
 The reading basket should make reading visible, inviting, and low-friction.
 
+Use [reading-basket.md](reading-basket.md) for the full reading basket setup, daily use, portfolio evidence, and weekly review.
+
 ### 4. Add Hands-On Math Tools
 
 Use simple physical materials:
@@ -133,6 +135,7 @@ A good month should produce:
 - 1 updated learner profile.
 - 1 next-month learning focus.
 - 1 list of books, activities, or projects that fit the child.
+- 1 refreshed reading basket based on real child interest and difficulty.
 - Clearer understanding of what helps the child learn.
 
 The service is worth `$100/month` only if it makes the parent more confident, less scattered, and better able to adapt learning to the actual child.
