@@ -24,6 +24,9 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 | --- | --- |
 | Operating context | Personalized AI homeschool experience agent |
 | Commercial hypothesis | Parent-facing subscription at $100/month per family |
+| Paid retainer received | $1,000 |
+| Retainer type | One-time services |
+| One-time service scope | Not yet planned |
 | Grade band | Elementary / K-5 |
 | Core work | Parent-led personalized learning, daily plans, enrichment, progress evidence, reflection |
 | Primary cadence | Daily learning rhythm, weekly parent review, monthly portfolio review, school-year planning |
@@ -37,6 +40,9 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 - Interests and motivations.
 - Strengths and challenges.
 - Parent goals.
+- Paid retainer.
+- One-time service scope.
+- Discovery obligations.
 - Curriculum choices.
 - Subject areas.
 - Daily learning plans.
@@ -56,6 +62,9 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 The Executive OS should prepare structured decisions for:
 
 - What the learner should work on today.
+- What the $1,000 one-time retainer should include.
+- What should be explicitly out of scope for the one-time service.
+- What must be discovered before delivery begins.
 - Which subject, project, or skill needs attention this week.
 - Which resource, book, activity, or field trip fits the learner.
 - Which concept needs review, practice, or a different explanation.
@@ -115,6 +124,22 @@ The subscription should only be considered viable if it can reliably provide:
 
 This price point should be tested as a hypothesis, not treated as a validated offer.
 
+## One-Time Retainer
+
+Elementary School has paid a **$1,000 one-time retainer** for services that are not yet planned.
+
+The Executive OS should treat this as a scope-design obligation before treating it as delivery work. The first decision is what the one-time package should produce.
+
+Possible package directions include:
+
+- Learner profile and parent goals intake.
+- First 30-day personalized homeschool plan.
+- Portfolio and progress evidence setup.
+- Parent review rhythm and weekly planning template.
+- Prototype personalized learning experience for one learner.
+
+The package should not begin until scope, deliverables, timeline, child-safety boundaries, and parent approval rules are explicit.
+
 ## Weekly Parent Review
 
 The weekly review should answer:
@@ -131,6 +156,7 @@ The weekly review should answer:
 
 ### Week 1: Learner Profile and Family Goals
 
+- Define the $1,000 one-time retainer scope before delivery begins.
 - Capture learner interests, strengths, challenges, rhythms, and current resources.
 - Capture parent goals and non-negotiable boundaries.
 - Identify applicable education accountability requirements.

@@ -9,6 +9,9 @@ Elementary School is a high-trust home education operating context:
 - Work: personalized elementary learning, parent-guided instruction, daily learning plans, enrichment, progress tracking, portfolio evidence, and family communication.
 - Cadence: daily learning rhythm, weekly parent review, monthly portfolio review, seasonal learning goals, and school-year planning.
 - Operating challenge: create a rich individualized learning experience without replacing parent authority, child safety, human care, or required education accountability.
+- Paid retainer received: $1,000.
+- Retainer type: one-time services.
+- Service scope: not yet planned.
 
 ## Executive OS Role
 
@@ -47,6 +50,14 @@ Elementary School could become a parent-facing subscription service.
 Early pricing hypothesis: **$100/month per family** for a personalized AI homeschool experience agent that helps parents plan, adapt, document, and reflect on elementary learning.
 
 This is a working assumption, not final pricing. It should be validated against parent willingness to pay, safety expectations, curriculum accountability needs, and the cost of responsible support.
+
+## Paid Retainer
+
+Elementary School has paid a **$1,000 one-time retainer** for services that are not yet planned.
+
+This should be treated as a paid discovery and service-design obligation. The next step is to define the one-time service package before delivery begins.
+
+The retainer should not automatically become the $100/month subscription hypothesis. It is a separate cash event and should be scoped intentionally.
 
 ## Installation
 
