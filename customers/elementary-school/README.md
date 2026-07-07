@@ -12,6 +12,7 @@ Elementary School is a high-trust home education operating context:
 - Paid retainer received: $1,000.
 - Retainer type: one-time services.
 - Service scope: not yet planned.
+- Starter iPad app: Khan Academy Kids, free, parent-supervised, age-appropriate for a 7-year-old, and part of the initial resource bundle.
 
 ## Executive OS Role
 
@@ -42,6 +43,23 @@ learner interests and needs
   -> progress review
   -> next learning decision
 ```
+
+## Starter Resource Bundle
+
+Khan Academy Kids should be included in the startup bundle as the first default iPad learning app.
+
+Role in the system:
+
+- Provide a free, low-friction, child-friendly daily practice and exploration app.
+- Support early reading, writing, language, math, books, videos, creative activities, and social-emotional learning.
+- Give the parent a safe starter tool while the broader one-time retainer scope is still being designed.
+- Generate parent-observed engagement signals for the first learner profile and daily rhythm.
+
+Boundary:
+
+- Khan Academy Kids is a starter resource, not the full curriculum.
+- App use remains parent-supervised.
+- Any learning conclusions should come from parent review, observed engagement, and portfolio evidence, not app activity alone.
 
 ## Commercial Hypothesis
 

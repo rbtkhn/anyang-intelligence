@@ -28,6 +28,7 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 | Retainer type | One-time services |
 | One-time service scope | Not yet planned |
 | Grade band | Elementary / K-5 |
+| Startup iPad app | Khan Academy Kids |
 | Core work | Parent-led personalized learning, daily plans, enrichment, progress evidence, reflection |
 | Primary cadence | Daily learning rhythm, weekly parent review, monthly portfolio review, school-year planning |
 | Primary constraint | High-trust child learning context with safety, privacy, parent authority, and education accountability requirements |
@@ -48,6 +49,8 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 - Daily learning plans.
 - Weekly reviews.
 - Books and resources.
+- Startup resource bundle.
+- Khan Academy Kids parent-observed engagement notes.
 - Projects and enrichment.
 - Practice activities.
 - Questions and misconceptions.
@@ -67,6 +70,7 @@ The Executive OS should prepare structured decisions for:
 - What must be discovered before delivery begins.
 - Which subject, project, or skill needs attention this week.
 - Which resource, book, activity, or field trip fits the learner.
+- How Khan Academy Kids should be used in the daily rhythm without becoming the whole learning plan.
 - Which concept needs review, practice, or a different explanation.
 - Which progress evidence should be saved to the portfolio.
 - Which concern needs parent, tutor, teacher, clinician, or specialist review.
@@ -122,6 +126,24 @@ Keep local unless explicitly approved by the parent or guardian:
 
 Transferable lessons should be anonymized into safety principles, parent-review checklists, portfolio structures, or learning-loop templates. The Elementary School membrane is stricter than ordinary creative, business, or community lanes.
 
+## Startup Resource Bundle
+
+Khan Academy Kids is the first default iPad app in the Elementary School startup bundle.
+
+Why it fits:
+
+- It is free and avoids creating a new subscription commitment while the one-time retainer scope is still unplanned.
+- It is designed for young children and fits a 7-year-old learner better than a drill-first or web-first platform as the first iPad app.
+- It can support reading, writing, language, math, books, videos, creative activities, and social-emotional learning.
+- It gives the parent a low-friction way to observe engagement, frustration, preferences, and early skill signals.
+
+Use rule:
+
+- Start with 15-20 minutes per day.
+- Parent or guardian reviews what the child used and how the child responded.
+- Save only meaningful observations as learner-profile or portfolio evidence.
+- Do not treat app progress as a diagnosis, grade, curriculum replacement, or proof of mastery without parent review.
+
 ## Subscription Hypothesis
 
 The first commercial version could be a parent subscription priced at **$100/month per family**.
@@ -172,6 +194,8 @@ The weekly review should answer:
 - Define the $1,000 one-time retainer scope before delivery begins.
 - Capture learner interests, strengths, challenges, rhythms, and current resources.
 - Capture parent goals and non-negotiable boundaries.
+- Install Khan Academy Kids on the iPad as the starter app, with parent-supervised use.
+- Record first observations from Khan Academy Kids: engagement, frustration, preferred activities, and parent questions.
 - Identify applicable education accountability requirements.
 - Create the first learner context map.
 
@@ -179,6 +203,7 @@ The weekly review should answer:
 
 - Draft a parent-reviewed daily rhythm.
 - Define subject blocks, breaks, enrichment, reading, and project time.
+- Decide where the 15-20 minute Khan Academy Kids block belongs in the daily rhythm.
 - Create the first weekly learning plan.
 
 ### Week 3: Portfolio and Progress Evidence
