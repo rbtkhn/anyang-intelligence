@@ -35,11 +35,11 @@ Anyang Intelligence should behave like the executive layer of the production com
 | Core work | Produce and distribute digital media and supplementary artistic assets |
 | Monthly budget | $1,000 |
 | Current contractor assignment | Unfilled |
-| Outsourced production role | Creative Production Operator |
+| Outsourced production role | Creative Production Operator, human-AI hybrid agent |
 | Creative Production Operator contractor allocation | $500 per month |
 | Remaining monthly production budget | $500 |
 | Primary cadence | Editorial planning, production, publishing, review |
-| Primary constraint | Creative Production Operator capacity, Grace Gems client commitments, $500 discretionary monthly budget, quality control, publishing consistency, audience relevance |
+| Primary constraint | Creative Production Operator human-AI hybrid capacity, Grace Gems client commitments, $500 discretionary monthly budget, quality control, publishing consistency, audience relevance |
 | Primary operating risk | Overcommitting a one-employee production operation or producing scattered assets without product/client fit, review, rights clarity, or learning |
 | Executive OS job | Convert Grace Gems sales needs, Predictive History creative needs, audience/customer signals, and production capacity into a coherent creative production pipeline |
 
@@ -56,7 +56,7 @@ Anyang Intelligence should behave like the executive layer of the production com
 - Monthly budget.
 - Monthly client revenue.
 - Contractor commitments.
-- Creative Production Operator capacity assumptions.
+- Creative Production Operator human-AI hybrid capacity assumptions.
 - Discretionary production budget.
 - Episode or topic backlog.
 - Audience segments.
@@ -157,7 +157,7 @@ The weekly review should answer:
 - Confirm the Grace Gems $1,000/month service package.
 - Create the first Grace Gems product and customer-support creative backlog.
 - Capture Predictive History channel context, audience, topics, and visual needs.
-- Source or assign the outsourced Creative Production Operator role, then confirm weekly availability, production strengths, and preferred workflow.
+- Source or assign the outsourced Creative Production Operator human-AI hybrid agent, then confirm weekly availability, AI tool access, production strengths, and preferred workflow.
 - Create the first monthly budget view: $500 contractor allocation and $500 discretionary production budget.
 - Map content pillars and audience segments.
 - Inventory active ideas and productions.

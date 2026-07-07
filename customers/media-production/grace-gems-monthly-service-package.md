@@ -6,7 +6,7 @@ Grace Gems is the first paying client for Media Production.
 
 Grace Gems pays Media Production $1,000 per month for recurring creative production support. This retainer funds the first Media Production operating model:
 
-- $500 per month for the outsourced Creative Production Operator contractor allocation.
+- $500 per month for the outsourced Creative Production Operator human-AI hybrid contractor allocation.
 - $500 per month for tools, light asset costs, production support, experiments, or retained margin.
 
 The service should improve Grace Gems' ability to present products clearly, support customers, run promotions, and learn which product messages create buyer trust.
@@ -53,7 +53,7 @@ Included service areas:
 
 ## Monthly Deliverables
 
-The first service package should stay small enough for one outsourced production operator to deliver reliably.
+The first service package should stay small enough for one outsourced human-AI hybrid production operator to deliver reliably.
 
 Each month, Media Production should deliver:
 
@@ -101,7 +101,7 @@ For Grace Gems, every review should ask:
 
 ## Creative Production Operator Role
 
-The Creative Production Operator is the primary production operator for this service package.
+The Creative Production Operator is the primary outsourced human-AI hybrid production operator for this service package.
 
 Her work includes:
 
@@ -112,11 +112,11 @@ Her work includes:
 - Keeping shipped work organized.
 - Recording what was produced and what changed.
 
-The Creative Production Operator should not make final claims about product authenticity, price changes, refunds, shipping promises, or customer commitments without owner approval.
+The Creative Production Operator should not make final claims about product authenticity, price changes, refunds, shipping promises, or customer commitments without owner approval. AI-generated claims, captions, visuals, or product language require the same owner-review discipline as human-drafted work.
 
 ## Budget Rule
 
-The $1,000 retainer must first protect the Creative Production Operator's $500 monthly contractor allocation.
+The $1,000 retainer must first protect the Creative Production Operator's $500 monthly human-AI hybrid contractor allocation.
 
 The remaining $500 may be used for:
 

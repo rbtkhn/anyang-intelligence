@@ -149,7 +149,7 @@ Design rule:
 
 - Badges should feel quiet and premium, not like loud coupon stickers.
 
-## First Production Sequence For The Creative Production Operator
+## First Production Sequence For The Creative Production Operator Human-AI Hybrid Agent
 
 ### Step 1: Build A Claim Approval Sheet
 
@@ -161,6 +161,7 @@ Create a table with:
 - Owner approval needed.
 - Approved wording.
 - Approved use cases.
+- AI assistance used, if any.
 
 Do not design final public assets before claims are approved.
 
