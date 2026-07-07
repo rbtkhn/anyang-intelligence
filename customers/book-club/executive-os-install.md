@@ -23,9 +23,8 @@ Anyang Intelligence should behave like a quiet club steward:
 | Field | Current starting point |
 | --- | --- |
 | Operating context | Recreational monthly book club |
-| Paid retainer received | $1,000 |
-| Retainer type | One-time services |
-| One-time service scope | Not yet planned |
+| Participation model | Free |
+| Optional support | Members may donate for shared supplemental materials and services |
 | Cadence | Monthly |
 | Core value | Shared reading, discussion, friendship, continuity |
 | Primary constraint | Keep coordination light and enjoyable |
@@ -35,8 +34,8 @@ Anyang Intelligence should behave like a quiet club steward:
 ## Executive Memory Objects
 
 - Members.
-- Paid retainer.
-- One-time service scope.
+- Optional donations.
+- Shared supplemental materials.
 - Reading preferences.
 - Books read.
 - Books nominated.
@@ -54,7 +53,7 @@ Anyang Intelligence should behave like a quiet club steward:
 The Executive OS should prepare structured decisions for:
 
 - Which book to read next.
-- What the $1,000 one-time retainer should include.
+- Whether any optional shared materials or services would genuinely improve the club experience.
 - What should stay deliberately light-touch and out of scope.
 - Whether the next selection should be fiction, nonfiction, classic, contemporary, short, long, light, or challenging.
 - Who is hosting.
@@ -86,28 +85,28 @@ The monthly review should answer:
 - What logistics need attention?
 - Is the cadence healthy?
 
-## One-Time Retainer
+## Optional Member Support
 
-Book Club has paid a **$1,000 one-time retainer** for services that are not yet planned.
+Book Club is free to participate in.
 
-The Executive OS should treat this as a scope-design obligation before delivery begins. The package should improve continuity and hospitality without making the club feel procedural.
+Some members may donate for shared supplemental materials and services. This should be treated as optional community support, not as a paid access requirement.
 
-Possible package directions include:
+Possible uses include:
 
-- Member preference and reading history setup.
-- Next 3-month book shortlist and selection rationale.
-- Discussion prompt kit for the next meeting.
-- Host logistics checklist.
+- Books or shared reading copies.
+- Discussion guides or printed prompts.
+- Food, drinks, or hosting supplies.
+- Venue or event costs.
+- Companion materials.
 - Lightweight club memory archive.
-- Monthly cadence template.
+- Light coordination support.
 
-The package should not begin until the deliverable, timeline, tone, and human organizer approval rules are explicit.
+Optional support should not create pressure, hierarchy, or transactional expectations inside the club.
 
 ## Initial 30-Day Plan
 
 ### Week 1: Club Memory Setup
 
-- Define the $1,000 one-time retainer scope before delivery begins.
 - Create the member list.
 - Record known reading preferences.
 - Record books already read.

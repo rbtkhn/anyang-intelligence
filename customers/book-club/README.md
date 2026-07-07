@@ -9,9 +9,8 @@ Book Club is a lightweight social and cultural operating context:
 - Cadence: monthly.
 - Purpose: shared reading, conversation, friendship, and continuity.
 - Operating challenge: keep the group lively and coordinated without making it feel procedural.
-- Paid retainer received: $1,000.
-- Retainer type: one-time services.
-- Service scope: not yet planned.
+- Participation model: free.
+- Optional support: members may donate for shared supplemental materials and services.
 
 ## Executive OS Role
 
@@ -45,11 +44,13 @@ member interests
   -> next selection
 ```
 
-## Paid Retainer
+## Optional Member Support
 
-Book Club has paid a **$1,000 one-time retainer** for services that are not yet planned.
+Book Club is free to participate in.
 
-This should be treated as a paid service-design obligation. The next step is to define a lightweight one-time package that improves the club's cadence, selection process, discussion quality, or memory without making the club feel over-managed.
+Some members may choose to donate money for shared supplemental materials or services, such as books, discussion guides, food, venue costs, printing, companion materials, or light coordination support.
+
+Optional support should preserve the club's social character. It should never make participation feel transactional, mandatory, or over-managed.
 
 ## Installation
 
