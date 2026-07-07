@@ -170,6 +170,14 @@ The student evidence, milestone, and report system is [student-portfolio.md](stu
 
 The first reporting layer is [monthly-portfolio-review.md](monthly-portfolio-review.md).
 
+## Student Operating System Skills
+
+Use `skills/student-operating-system/parent-interface/SKILL.md` for parent-mediated decisions, reviews, approval points, communication, and parent-facing artifacts.
+
+Use `skills/student-operating-system/student-experience/SKILL.md` for child-safe learning experience design, student surveys, reflection prompts, proud-work choices, portfolio selection, and learner-interest artifacts.
+
+Do not mention these internal skill names in parent-facing materials.
+
 ## Subscription Hypothesis
 
 The first commercial version could be a parent subscription priced at **$100/month per family**.
