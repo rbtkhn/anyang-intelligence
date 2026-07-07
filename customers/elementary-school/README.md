@@ -61,6 +61,8 @@ Boundary:
 - App use remains parent-supervised.
 - Any learning conclusions should come from parent review, observed engagement, and portfolio evidence, not app activity alone.
 
+See [parent-startup-onboarding.md](parent-startup-onboarding.md) for the parent-facing startup guide and `$100/month` value target.
+
 ## Commercial Hypothesis
 
 Elementary School could become a parent-facing subscription service.

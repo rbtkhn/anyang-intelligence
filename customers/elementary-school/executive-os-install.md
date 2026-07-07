@@ -50,6 +50,7 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 - Weekly reviews.
 - Books and resources.
 - Startup resource bundle.
+- Parent startup onboarding guide.
 - Khan Academy Kids parent-observed engagement notes.
 - Projects and enrichment.
 - Practice activities.
@@ -71,6 +72,7 @@ The Executive OS should prepare structured decisions for:
 - Which subject, project, or skill needs attention this week.
 - Which resource, book, activity, or field trip fits the learner.
 - How Khan Academy Kids should be used in the daily rhythm without becoming the whole learning plan.
+- Whether the parent-facing onboarding experience is creating at least `$100/month` of practical value.
 - Which concept needs review, practice, or a different explanation.
 - Which progress evidence should be saved to the portfolio.
 - Which concern needs parent, tutor, teacher, clinician, or specialist review.
@@ -144,6 +146,8 @@ Use rule:
 - Save only meaningful observations as learner-profile or portfolio evidence.
 - Do not treat app progress as a diagnosis, grade, curriculum replacement, or proof of mastery without parent review.
 
+The parent-facing startup guide is [parent-startup-onboarding.md](parent-startup-onboarding.md).
+
 ## Subscription Hypothesis
 
 The first commercial version could be a parent subscription priced at **$100/month per family**.
@@ -156,6 +160,7 @@ The subscription should only be considered viable if it can reliably provide:
 - Portfolio evidence organization.
 - Weekly parent review.
 - Clear child-safety and human-authority boundaries.
+- At least `$100/month` of visible parent value through saved planning time, better learning fit, clearer evidence, and reduced parent friction.
 
 This price point should be tested as a hypothesis, not treated as a validated offer.
 
@@ -168,6 +173,7 @@ The Executive OS should treat this as a scope-design obligation before treating 
 Possible package directions include:
 
 - Learner profile and parent goals intake.
+- Parent startup onboarding package.
 - First 30-day personalized homeschool plan.
 - Portfolio and progress evidence setup.
 - Parent review rhythm and weekly planning template.
@@ -196,6 +202,7 @@ The weekly review should answer:
 - Capture parent goals and non-negotiable boundaries.
 - Install Khan Academy Kids on the iPad as the starter app, with parent-supervised use.
 - Record first observations from Khan Academy Kids: engagement, frustration, preferred activities, and parent questions.
+- Give the parent the startup onboarding guide and confirm the first-week setup.
 - Identify applicable education accountability requirements.
 - Create the first learner context map.
 
