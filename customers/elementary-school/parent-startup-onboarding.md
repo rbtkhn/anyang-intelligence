@@ -78,9 +78,9 @@ Use simple physical materials:
 
 At age 7, concrete objects help math become real before it becomes abstract.
 
-### 5. Create A Portfolio Folder
+### 5. Create A Physical Portfolio
 
-Use a folder, binder, or digital album.
+Use a folder, binder, portfolio box, or accordion folder.
 
 Save dated samples:
 
@@ -91,8 +91,12 @@ Save dated samples:
 - Reading notes.
 - Questions the child asked.
 - Parent observations.
+- Work the child is proud of.
+- Milestones worth remembering.
 
-The portfolio proves learning happened and helps the parent see patterns over time.
+The portfolio makes learning visible and helps the child see a growing body of work.
+
+Use [physical-portfolio.md](physical-portfolio.md) for setup, child choice, weekly use, monthly review, and milestone tracking.
 
 ## Daily Rhythm
 
@@ -119,6 +123,8 @@ Once per week, answer:
 - What should we repeat?
 - What should we stop?
 - What evidence should go in the portfolio?
+- What did my child feel proud of?
+- What milestone should we save?
 - What question should we ask next week?
 
 This review is where the system becomes worth paying for. It turns scattered learning moments into a coherent next step.
@@ -131,7 +137,7 @@ A good month should produce:
 
 - 4 weekly parent reviews.
 - 12-20 useful parent observations.
-- 8-16 saved portfolio artifacts.
+- 8-16 saved portfolio artifacts, including proud work and milestones.
 - 1 updated learner profile.
 - 1 next-month learning focus.
 - 1 list of books, activities, or projects that fit the child.
@@ -162,6 +168,7 @@ The first month is successful when:
 - The child has a gentle daily learning routine.
 - Khan Academy Kids is used intentionally, not passively.
 - The portfolio has real artifacts.
+- The child can point to work they are proud of.
 - Weekly reviews produce better next steps.
 - The parent feels more oriented and less alone in planning.
 
@@ -174,5 +181,6 @@ The parent should commit to:
 - 3-5 quick observation notes per day.
 - One weekly review.
 - Saving a few artifacts each week.
+- Asking the child what they are proud of each week.
 
 Small, consistent observation is better than an ambitious plan that collapses.

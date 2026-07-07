@@ -58,6 +58,9 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 - Practice activities.
 - Questions and misconceptions.
 - Portfolio artifacts.
+- Physical portfolio.
+- Proud work.
+- Milestone log.
 - Progress evidence.
 - Parent decisions.
 - Tutor, teacher, or specialist notes when approved.
@@ -79,6 +82,8 @@ The Executive OS should prepare structured decisions for:
 - Whether the parent-facing onboarding experience is creating at least `$100/month` of practical value.
 - Which concept needs review, practice, or a different explanation.
 - Which progress evidence should be saved to the portfolio.
+- Which student output the child is proud of should enter the physical portfolio.
+- Which milestones should be recorded and celebrated.
 - Which concern needs parent, tutor, teacher, clinician, or specialist review.
 - Which learning goal should lead the next month.
 
@@ -154,6 +159,8 @@ The parent-facing startup guide is [parent-startup-onboarding.md](parent-startup
 
 The first physical literacy tool is [reading-basket.md](reading-basket.md).
 
+The physical evidence and milestone system is [physical-portfolio.md](physical-portfolio.md).
+
 ## Subscription Hypothesis
 
 The first commercial version could be a parent subscription priced at **$100/month per family**.
@@ -183,6 +190,7 @@ Possible package directions include:
 - Reading basket setup and first weekly review.
 - First 30-day personalized homeschool plan.
 - Portfolio and progress evidence setup.
+- Physical portfolio setup for proud work and milestones.
 - Parent review rhythm and weekly planning template.
 - Prototype personalized learning experience for one learner.
 
@@ -211,6 +219,7 @@ The weekly review should answer:
 - Record first observations from Khan Academy Kids: engagement, frustration, preferred activities, and parent questions.
 - Give the parent the startup onboarding guide and confirm the first-week setup.
 - Build the first reading basket with confidence books, current-level books, one stretch book, one interest-led nonfiction book, and one parent read-aloud.
+- Create the physical portfolio with sections for reading, writing, math, art/projects, questions/discoveries, milestones, and parent notes.
 - Identify applicable education accountability requirements.
 - Create the first learner context map.
 
@@ -226,12 +235,14 @@ The weekly review should answer:
 
 - Define what counts as evidence of learning.
 - Create a portfolio structure.
+- Start the milestone log.
 - Track questions, misconceptions, reflections, and completed artifacts.
 
 ### Week 4: Parent Review and Next-Cycle Plan
 
 - Produce the first weekly/monthly parent review.
 - Refresh the reading basket based on what the child chose, avoided, reread, abandoned, or requested.
+- Add 1-3 proud-work or milestone items to the physical portfolio.
 - Identify what worked, what dragged, and what should change.
 - Set the next month's learning priorities.
 
@@ -243,6 +254,7 @@ The Elementary School installation is working when:
 - Daily plans feel useful and humane, not mechanical.
 - The child has more personalized learning experiences.
 - Progress evidence is saved before it disappears.
+- The child can see and revisit work they are proud of.
 - Parent decisions, concerns, and adjustments are recorded.
 - Learning plans adapt from real engagement and evidence.
 - Privacy, child safety, parent authority, and accountability remain explicit.

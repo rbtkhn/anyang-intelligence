@@ -65,6 +65,8 @@ See [parent-startup-onboarding.md](parent-startup-onboarding.md) for the parent-
 
 See [reading-basket.md](reading-basket.md) for the first physical literacy tool in the startup bundle.
 
+See [physical-portfolio.md](physical-portfolio.md) for the place to store student output the learner is proud of and milestones worth remembering.
+
 ## Commercial Hypothesis
 
 Elementary School could become a parent-facing subscription service.

@@ -10,7 +10,7 @@ It is a working control panel, not a final strategy document.
 | --- | --- | --- | --- | --- | --- |
 | [Media Production](media-production/README.md) | Active operating company | $1,000/month Grace Gems retainer; $500/month outsourced Creative Production Operator contractor allocation; $500/month remaining budget | Deliver Grace Gems monthly creative support; source/onboard the outsourced Creative Production Operator contractor; maintain Predictive History creative development lane | Confirm first Grace Gems product backlog and first-week deliverables | High |
 | [Grace Gems](grace-gems/README.md) | Active business client and internal proof case | Pays Media Production $1,000/month for creative support; business economics still pending owner intake | Provide customer transcripts, top listings, cost/pricing context, and owner decision boundaries | Convert intake response into first marketplace operating review | Medium-high |
-| [Elementary School](elementary-school/README.md) | Paid discovery / service design | $1,000 one-time retainer received; $100/month subscription remains a hypothesis; Khan Academy Kids selected as free starter iPad app; reading basket adopted as first physical literacy tool | Define one-time retainer scope before delivery begins; parent startup onboarding drafted around $100/month value target | Choose the first one-time package deliverable and safety boundary | Medium |
+| [Elementary School](elementary-school/README.md) | Paid discovery / service design | $1,000 one-time retainer received; $100/month subscription remains a hypothesis; Khan Academy Kids selected as free starter iPad app; reading basket adopted as first physical literacy tool; physical portfolio adopted for proud work and milestones | Define one-time retainer scope before delivery begins; parent startup onboarding drafted around $100/month value target | Choose the first one-time package deliverable and safety boundary | Medium |
 | [Non-Profit](non-profit/README.md) | Early customer hypothesis | Holds real estate portfolio currently worth $200,000 | Define mission, portfolio stewardship needs, board/leadership cadence, and operating pain | Decide whether first offer is board packet, asset review, or donor/program operating review | Medium-low |
 | [Mountain Home](mountain-home/README.md) | Property governance prototype | 5 acres in Jefferson County, Colorado; no revenue attached | Build risk-first property operating memory and seasonal readiness loop | Identify top property risks, systems, and first seasonal review gate | Medium-low |
 | [Book Club](book-club/README.md) | Free local community context with donor support | Free participation; $1,000 donor-funded retainer for shared supplemental materials/services; optional member donations may also support shared needs | Steward donor-funded support while preserving monthly cadence, selection memory, host coordination, and member experience without making participation transactional | Decide which shared materials or services should use donor funds without over-managing the club | Medium |
@@ -25,6 +25,7 @@ Known cash events and allocations:
 - Elementary School has paid a $1,000 one-time retainer for services not yet planned.
 - Elementary School startup bundle includes Khan Academy Kids as the free starter iPad app.
 - Elementary School startup bundle includes a reading basket as the first physical literacy tool.
+- Elementary School startup bundle includes a physical portfolio for student output the learner is proud of and milestones.
 - Elementary School has a parent startup onboarding guide oriented around creating at least $100/month of practical value.
 - Book Club has received a $1,000 donor-funded retainer for shared supplemental materials and services; participation remains free.
 - Non-Profit holds a real estate portfolio currently worth $200,000.
@@ -35,6 +36,7 @@ Unknown or pending:
 - Elementary School retainer deliverable, timeline, safety rules, and parent approval process.
 - Elementary School parent observations from initial Khan Academy Kids use.
 - Elementary School parent observations from the first reading basket.
+- Elementary School first physical portfolio artifacts and milestone log.
 - Elementary School proof that onboarding saves parent time, improves learning fit, and creates visible weekly value.
 - Book Club donor-fund use, donation norms, optional shared-material needs, tone boundary, and organizer approval process.
 - Non-Profit cash flow, portfolio details, governance cadence, and mission priorities.
