@@ -85,7 +85,7 @@ The Executive OS should prepare structured decisions for:
 - How Khan Academy Kids should be used in the daily rhythm without becoming the whole learning plan.
 - Which books belong in the first reading basket.
 - What the reading basket reveals about interest, confidence, difficulty, and next-book fit.
-- Whether the parent-facing onboarding experience is creating at least `$100/month` of practical value.
+- Whether the parent-facing Startup Bundle is increasing parent confidence, reducing planning friction, and improving learning fit.
 - Which concept needs review, practice, or a different explanation.
 - Which progress evidence should be saved to the portfolio.
 - Which student output the child is proud of should enter the student portfolio.

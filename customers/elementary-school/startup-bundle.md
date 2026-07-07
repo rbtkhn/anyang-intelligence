@@ -2,7 +2,7 @@
 
 This guide helps a parent start the Elementary School experience for a 7-year-old learner.
 
-The goal is to create at least `$100/month` of practical value by making learning easier to plan, observe, personalize, and remember.
+The goal is to make learning easier to plan, observe, personalize, and remember.
 
 This guide does not replace the parent, teacher, tutor, clinician, legal requirements, or human judgment. The parent remains the authority over curriculum, pacing, child-facing communication, sensitive information, and outside support.
 
@@ -20,7 +20,7 @@ It helps you:
 - Save evidence before it disappears.
 - Review each week and make the next week better.
 
-The value is not just "an app." The value is the parent no longer having to reconstruct the whole learning picture from memory.
+This is not just "an app." It is a simple way for the parent to see the learning picture without reconstructing everything from memory.
 
 ## First Week Setup
 
@@ -156,11 +156,11 @@ Once per week, answer:
 - What milestone should we save?
 - What question should we ask next week?
 
-This review is where the system becomes worth paying for. It turns scattered learning moments into a coherent next step.
+This review turns scattered learning moments into a coherent next step.
 
-## The `$100/Month` Value Target
+## What A Good Month Produces
 
-The monthly value should be visible in saved parent time, reduced planning friction, better learning fit, and clearer evidence.
+A good month should make the child's learning easier to see, remember, and support.
 
 A good month should produce:
 
@@ -175,7 +175,7 @@ A good month should produce:
 - 1 monthly portfolio review that summarizes proud work, milestones, growth, interests, friction, and next steps.
 - Clearer understanding of what helps the child learn.
 
-The service is worth `$100/month` only if it makes the parent more confident, less scattered, and better able to adapt learning to the actual child.
+The bundle is working when the parent feels more confident, less scattered, and better able to adapt learning to the actual child.
 
 ## What This Is Not
 

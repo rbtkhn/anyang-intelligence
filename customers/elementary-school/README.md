@@ -61,7 +61,7 @@ Boundary:
 - App use remains parent-supervised.
 - Any learning conclusions should come from parent review, observed engagement, and portfolio evidence, not app activity alone.
 
-See [startup-bundle.md](startup-bundle.md) for the Startup Bundle and `$100/month` value target.
+See [startup-bundle.md](startup-bundle.md) for the parent-facing Startup Bundle.
 
 See [reading-basket.md](reading-basket.md) for the first physical literacy tool in the startup bundle.
 
