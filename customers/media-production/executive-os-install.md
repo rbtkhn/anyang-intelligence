@@ -4,7 +4,9 @@
 
 Install Anyang Intelligence as the executive operating system for a digital media production company.
 
-The first client use case is creating diverse supplementary artistic content for the Predictive History YouTube channel.
+The first paying client use case is providing monthly creative production support to Grace Gems for $1,000 per month.
+
+The first creative development lane is creating diverse supplementary artistic content for the Predictive History YouTube channel.
 
 The system should help the company choose the right artistic directions, coordinate production, protect quality, support publishing consistently, and learn from audience response.
 
@@ -25,24 +27,31 @@ Anyang Intelligence should behave like the executive layer of the production com
 | Field | Current starting point |
 | --- | --- |
 | Operating context | Digital media production company |
-| First client | Predictive History YouTube channel |
-| First client need | Diverse supplementary artistic content for Predictive History videos |
+| First paying client | Grace Gems |
+| First paying client need | Marketplace listing, product, social, and customer-support creative support |
+| Monthly client revenue | $1,000 from Grace Gems |
+| Creative development client | Predictive History YouTube channel |
+| Creative development need | Diverse supplementary artistic content for Predictive History videos |
 | Core work | Produce and distribute digital media and supplementary artistic assets |
 | Monthly budget | $1,000 |
 | First employee | Cici |
 | Cici salary | $500 per month |
 | Remaining monthly production budget | $500 |
 | Primary cadence | Editorial planning, production, publishing, review |
-| Primary constraint | Cici's production capacity, $500 discretionary monthly budget, quality control, publishing consistency, audience relevance |
-| Primary operating risk | Producing scattered artistic assets without episode fit, review, rights clarity, or learning |
-| Executive OS job | Convert Predictive History topics, audience signals, and production capacity into a coherent artistic content pipeline |
+| Primary constraint | Cici's production capacity, Grace Gems client commitments, $500 discretionary monthly budget, quality control, publishing consistency, audience relevance |
+| Primary operating risk | Overcommitting a one-employee production operation or producing scattered assets without product/client fit, review, rights clarity, or learning |
+| Executive OS job | Convert Grace Gems sales needs, Predictive History creative needs, audience/customer signals, and production capacity into a coherent creative production pipeline |
 
 ## Executive Memory Objects
 
 - Editorial thesis.
 - Client profile.
+- Grace Gems service package.
+- Grace Gems product and promotion backlog.
+- Grace Gems customer questions and objection patterns.
 - Predictive History channel goals.
 - Monthly budget.
+- Monthly client revenue.
 - Payroll commitments.
 - Cici capacity assumptions.
 - Discretionary production budget.
@@ -70,6 +79,9 @@ The Executive OS should prepare structured decisions for:
 - How to allocate the $1,000 monthly budget.
 - How to protect Cici's $500 monthly salary commitment.
 - How to use the remaining $500 monthly production budget.
+- Which Grace Gems products need creative support first.
+- Which Grace Gems customer questions should become FAQ or selling content.
+- Which Grace Gems promotional concepts should enter production.
 - Which Predictive History topics need supplementary artistic content.
 - Which artistic ideas enter production.
 - Which format fits an idea best: thumbnail, illustration, short visual, animation prompt, slide asset, social excerpt, or companion graphic.
@@ -85,7 +97,7 @@ The default pipeline is:
 
 ```text
 idea
-  -> client / episode review
+  -> client / product / episode review
   -> artistic content brief
   -> concept set
   -> script / asset plan
@@ -103,7 +115,7 @@ idea
 No major piece should publish until the Executive OS has reviewed:
 
 - Strategic fit.
-- Episode or topic fit.
+- Product, episode, or topic fit.
 - Audience clarity.
 - Source or factual confidence.
 - Format fit.
@@ -124,6 +136,8 @@ The weekly review should answer:
 - What is blocked?
 - How much of Cici's capacity is committed?
 - How much of the $500 discretionary monthly budget remains?
+- Which Grace Gems deliverables are due this week?
+- Which Grace Gems products, customer questions, or promotions need creative support next?
 - Which ideas should be promoted, paused, or killed?
 - Which Predictive History episode or topic needs supplementary art next?
 - Which content performed better or worse than expected?
@@ -135,6 +149,8 @@ The weekly review should answer:
 ### Week 1: Editorial and Pipeline Baseline
 
 - Define the editorial thesis.
+- Confirm the Grace Gems $1,000/month service package.
+- Create the first Grace Gems product and customer-support creative backlog.
 - Capture Predictive History channel context, audience, topics, and visual needs.
 - Confirm Cici's weekly availability, production strengths, and preferred workflow.
 - Create the first monthly budget view: $500 salary commitment and $500 discretionary production budget.
@@ -145,6 +161,7 @@ The weekly review should answer:
 ### Week 2: Quality Gate and Calendar
 
 - Define the publication quality gate.
+- Build the next 30-day Grace Gems deliverables calendar.
 - Build the next 30-day artistic asset calendar for Predictive History support.
 - Assign owners and deadlines.
 - Identify production bottlenecks.
@@ -154,6 +171,7 @@ The weekly review should answer:
 - Map channels and distribution motions.
 - Select one repurposing pattern.
 - Define the review metrics for each format.
+- Define how Grace Gems assets support listings, WeChat/social selling, customer support, and promotions.
 - Define how supplementary artistic assets support YouTube, shorts, thumbnails, posts, and companion materials.
 
 ### Week 4: Performance Review and Learning Loop
@@ -171,6 +189,7 @@ The Media Production installation is working when:
 - Production status is visible.
 - Quality gates catch weak or unclear work before publication.
 - Publishing cadence becomes more reliable.
+- Grace Gems receives reliable monthly creative support for the $1,000 retainer.
 - Predictive History receives diverse supplementary artistic content on a reliable cadence.
 - Cici's capacity is visible before new work is accepted.
 - Monthly spend stays within the $1,000 budget unless a human explicitly approves an exception.

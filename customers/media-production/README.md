@@ -9,8 +9,11 @@ Media Production is a creative operating context:
 - Work: digital media strategy, artistic content production, publishing support, and distribution.
 - Cadence: recurring editorial and production cycles.
 - Operating challenge: turn ideas into finished media and supplementary artistic assets consistently without losing creative quality, strategic focus, or audience learning.
-- First client: Predictive History YouTube channel.
-- First client need: create diverse supplementary artistic content that supports Predictive History videos.
+- First paying client: Grace Gems.
+- Grace Gems monthly retainer: $1,000.
+- Grace Gems need: marketplace listing, product, social, and customer-support creative support.
+- Creative development client: Predictive History YouTube channel.
+- Predictive History need: create diverse supplementary artistic content that supports Predictive History videos.
 - Monthly operating budget: $1,000.
 - First employee: Cici, salary $500 per month.
 - Starting discretionary production budget after Cici salary: $500 per month.
@@ -32,9 +35,9 @@ The system does not replace creative judgment. It keeps the production company c
 
 ## Starting Operating Economics
 
-Media Production begins as a small-budget creative operator:
+Media Production begins as a small-budget creative operator funded by a first paying client:
 
-- Monthly budget: $1,000.
+- Monthly revenue: $1,000 from Grace Gems.
 - Payroll commitment: $500 per month for Cici.
 - Remaining monthly budget: $500 for tools, subscriptions, contractors, asset purchases, distribution tests, or reserves.
 - First capacity assumption: Cici is the primary employee responsible for turning briefs into finished or review-ready production work.
@@ -45,7 +48,22 @@ The Executive OS should protect this constraint. It should recommend a productio
 
 Media production should not be managed as a pile of ideas and deadlines.
 
-It should operate as a creative pipeline with memory. For the Predictive History channel, the first use case is a supplementary artistic content pipeline:
+It should operate as a creative pipeline with memory. Grace Gems is the first cash-flow client, and Predictive History remains the first creative development lane.
+
+For Grace Gems, the first use case is a marketplace creative support pipeline:
+
+```text
+Grace Gems product or sales need
+  -> product / customer context review
+  -> listing or promotion brief
+  -> creative asset set
+  -> quality and accuracy gate
+  -> publish / send / support
+  -> sales or customer response review
+  -> next product message update
+```
+
+For Predictive History, the first use case is a supplementary artistic content pipeline:
 
 ```text
 Predictive History episode or topic
@@ -61,6 +79,10 @@ Predictive History episode or topic
 ## Installation
 
 See [executive-os-install.md](executive-os-install.md) for the first Media Production Executive OS install design.
+
+## Service Package
+
+See [grace-gems-monthly-service-package.md](grace-gems-monthly-service-package.md) for the first $1,000/month paid client package.
 
 ## Employee Onboarding
 
