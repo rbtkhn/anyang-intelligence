@@ -1,0 +1,38 @@
+name: Example Customer
+slug: example-customer
+domain_description: Founder-led services business with recurring delivery, scattered context, and owner approval needs.
+context_map:
+  Operating context: Founder-led services company
+  Core work: Deliver client services while preserving operating memory
+  Primary cadence: Weekly operating review
+  Primary constraint: Owner time and scattered context
+  Primary operating risk: Follow-ups and external claims drift without evidence
+  Executive OS job: Make decisions, risks, owners, and lessons easy to reconstruct
+memory_objects:
+  - client profiles
+  - active projects
+  - owner decisions
+  - commitments
+  - risks
+  - follow-ups
+  - lessons learned
+decisions:
+  - Which client commitment needs owner review
+  - Which project or follow-up should lead the next operating cycle
+  - Which external claim needs evidence before use
+cadence: Weekly operating review and event-driven review before external commitments.
+risks:
+  - Unreviewed client-facing claims
+  - Follow-ups lost in scattered context
+  - Owner approval bypassed under time pressure
+governance_boundary: Humans approve commitments, external communications, spending, client-facing claims, and professional-review decisions.
+success_criteria:
+  - Context is easier to reconstruct.
+  - Decisions are clearer and linked to evidence.
+  - Follow-ups have owners and review dates.
+  - External claims are reviewed before use.
+  - The operating context learns from outcomes.
+source_customers:
+  - grace-gems
+  - media-production
+
