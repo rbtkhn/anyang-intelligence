@@ -31,7 +31,7 @@ The early portfolio should stay small and sharp.
 
 Grace Gems shows that an Executive OS can run commercial operating loops. Mountain Home shows that the same pattern can govern a real-world asset where risk, readiness, and continuity matter more than revenue. Book Club shows the lightest version of the pattern: keeping a small community enjoyable, coordinated, and continuous without making it feel over-managed. Media Production shows creative operations: moving ideas through editorial judgment, production, quality review, distribution, and audience learning. Non-Profit shows mission governance: aligning programs, donors, volunteers, real estate assets, compliance, and impact evidence. Elementary School shows high-trust personalized education where learner experience, privacy, safety, parent authority, and accountability must remain human-led.
 
-Together they test the core Anyang claim: an Executive OS is not a chatbot or a dashboard. It is a living executive layer that keeps a complex operating context coherent.
+Together they test the core Anyang Intelligence claim: an Executive OS is not a chatbot or a dashboard. It is a living executive layer that keeps a complex operating context coherent.
 
 ## Shared Pattern
 

@@ -1,6 +1,6 @@
 # Grace Gems
 
-Grace Gems is the first internal installation target for the Anyang Intelligence Executive Operating System.
+Grace Gems is an active business installation for the Anyang Intelligence Executive Operating System and the first paying client of Media Production.
 
 ## Business
 

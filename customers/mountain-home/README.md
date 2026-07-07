@@ -1,6 +1,6 @@
 # Mountain Home
 
-Mountain Home is the second internal installation target for the Anyang Intelligence Executive Operating System.
+Mountain Home is a property and asset-governance installation for the Anyang Intelligence Executive Operating System.
 
 ## Asset
 
