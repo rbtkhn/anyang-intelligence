@@ -15,6 +15,8 @@ This service should express the Media Production abundance principle: turn produ
 
 Use the Grace Gems [public shop signal brief](../grace-gems/public-shop-signal-brief.md) as the starting public evidence surface for trust architecture, claim discipline, and first creative deliverables.
 
+Use the [Grace Gems Trust Architecture Kit](grace-gems-trust-architecture-kit.md) as the first concrete production lane for making public trust signals visible and reusable.
+
 ## Service Thesis
 
 Grace Gems does not need random content.
@@ -42,6 +44,7 @@ Included service areas:
 
 - Marketplace listing image support.
 - Product graphics.
+- Trust architecture graphics and claim-safe buyer explainers.
 - Short product or social videos.
 - WeChat or social selling posts.
 - Customer FAQ and objection-handling content.
@@ -54,7 +57,7 @@ The first service package should stay small enough for one employee to deliver r
 
 Each month, Media Production should deliver:
 
-- 6 listing image refreshes or product graphic sets.
+- 6 listing image refreshes or product graphic sets, with at least 1 focused on trust architecture or a claim-safe buyer explainer.
 - 4 WeChat or social selling posts.
 - 2 short product or social video drafts.
 - 1 monthly promotion concept.

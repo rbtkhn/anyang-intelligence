@@ -86,6 +86,8 @@ See [executive-os-install.md](executive-os-install.md) for the first Media Produ
 
 See [grace-gems-monthly-service-package.md](grace-gems-monthly-service-package.md) for the first $1,000/month paid client package.
 
+See [grace-gems-trust-architecture-kit.md](grace-gems-trust-architecture-kit.md) for the first Grace Gems visual trust production lane.
+
 ## Employee Onboarding
 
 See [creative-production-operator-onboarding.md](creative-production-operator-onboarding.md) for the first employee onboarding guide for Cici.
