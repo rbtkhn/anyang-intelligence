@@ -15,6 +15,7 @@ Use this skill when the work involves:
 - Donations or donor-funded support.
 - Optional member support.
 - Salaries, payroll, contractor payments, or stipends.
+- Outsourced contractor country, residency, work-location, withholding, or W-8/W-9 questions.
 - Reimbursements.
 - Subscriptions, tools, software, or operating expenses.
 - Inventory, cost of goods, discounts, refunds, repairs, or returns.
@@ -30,6 +31,7 @@ Also use this skill when the operator asks:
 - How should this be classified?
 - What records do we need?
 - Does this create a tax issue?
+- Does it matter which country a contractor is in?
 - Should this be treated as a donation, retainer, salary, expense, reimbursement, asset, or income?
 
 ## Purpose
@@ -133,6 +135,9 @@ Common evidence types:
 - Property record.
 - Appraisal, valuation note, or insurance record.
 - Parent or guardian approval for education-service payments.
+- Contractor country/residency statement.
+- Work-location statement for the services performed.
+- W-8BEN, W-8BEN-E, W-9, or other bookkeeper/CPA-requested tax documentation.
 
 ### 4. Assign Governance Risk
 
@@ -179,6 +184,7 @@ Preserve these distinctions unless the operator gives a new confirmed fact:
 - Non-Profit's `$200,000` real estate portfolio is an asset value, not operating revenue.
 - Mountain Home has property stewardship implications but no current revenue.
 - Media Production's `$500/month` Creative Production Operator allocation is a planned outsourced contractor/service-expense allocation while the role is unfilled; any actual payment requires appropriate contract, invoice, payment, and tax/accounting review.
+- Contractor country matters for governance. Before paying an outsourced contractor, preserve the contractor's country/residency, where the work is physically performed, contract, invoice, payment record, and W-8/W-9 status as applicable. Do not make a final withholding, reporting, treaty, payroll, labor-law, VAT/GST, sanctions/export-control, or permanent-establishment conclusion without professional review.
 
 ## Boundaries
 

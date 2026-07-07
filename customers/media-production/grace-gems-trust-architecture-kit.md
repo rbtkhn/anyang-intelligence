@@ -149,7 +149,7 @@ Design rule:
 
 - Badges should feel quiet and premium, not like loud coupon stickers.
 
-## First Production Sequence For The Creative Production Operator Human-AI Hybrid Agent
+## First Production Sequence For The Creative Production Operator
 
 ### Step 1: Build A Claim Approval Sheet
 

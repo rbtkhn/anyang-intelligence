@@ -159,6 +159,7 @@ The weekly review should answer:
 - Capture Predictive History channel context, audience, topics, and visual needs.
 - Source or assign the outsourced Creative Production Operator contractor, then confirm weekly availability, AI tool access, production strengths, and preferred workflow.
 - Create the first monthly budget view: $500 contractor allocation and $500 discretionary production budget.
+- Before any contractor payment, collect the contractor agreement, invoice, payment details, country/residency, work-location statement, and W-8/W-9 status as applicable; prepare a CPA/bookkeeper review question if the contractor is outside the United States or may perform work while traveling.
 - Map content pillars and audience segments.
 - Inventory active ideas and productions.
 - Create the first production board.
@@ -206,3 +207,19 @@ The Media Production installation is working when:
 ## Human Authority
 
 The Executive OS recommends and prepares decisions. Humans retain final authority over creative direction, publication, client commitments, brand voice, rights decisions, spending, hiring, and external claims.
+
+## Contractor Tax Governance Note
+
+For the Creative Production Operator role, the country of outsourcing is a governance variable, not just a sourcing preference.
+
+Before the first payment, Media Production should preserve:
+
+- Contractor legal name and business status.
+- Country of tax residency.
+- Country where the services are physically performed.
+- Signed contractor agreement and scope.
+- Invoice and payment record.
+- W-8BEN, W-8BEN-E, W-9, or bookkeeper/CPA-requested alternative documentation.
+- Confirmation that no final tax, payroll, withholding, labor-law, sanctions, VAT/GST, or permanent-establishment conclusion has been made by Anyang Intelligence.
+
+If the contractor is outside the United States, works while traveling, is paid through an intermediary platform, or performs any work physically inside the United States, the safe action is to hold final classification and prepare a CPA/bookkeeper question before treating the payment as routine.

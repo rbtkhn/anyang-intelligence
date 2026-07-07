@@ -71,6 +71,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Communication draft queue | Elementary School, Non-Profit, Grace Gems, Book Club, Media Production | AI may draft, but humans approve external messages |
 | Evidence / proof ledger | Grace Gems, Mountain Home, Non-Profit, Media Production, Elementary School, Book Club | Claims, decisions, reviews, donor-funded support, and reusable assets need receipts |
 | Learning loop | All | Each install should update future decisions from outcomes |
+| Knowledge transfer map | All | Shared lessons should become reusable primitives without blurring customer-specific facts or authority boundaries |
 
 ## Emerging Product Thesis
 
@@ -84,3 +85,5 @@ Anyang Intelligence is one product if it can keep the primitives stable while le
 - Evidence standards.
 
 The customer-specific layer should describe the domain. The shared product layer should provide the operating spine.
+
+See [portfolio knowledge synergies](portfolio-knowledge-synergies.md) for the current cross-lane learning map.
