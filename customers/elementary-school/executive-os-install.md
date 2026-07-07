@@ -51,6 +51,7 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 - Books and resources.
 - Startup resource bundle.
 - Parent startup onboarding guide.
+- Student startup survey.
 - Reading basket.
 - Reading basket weekly review.
 - Khan Academy Kids parent-observed engagement notes.
@@ -80,6 +81,7 @@ The Executive OS should prepare structured decisions for:
 - What must be discovered before delivery begins.
 - Which subject, project, or skill needs attention this week.
 - Which resource, book, activity, or field trip fits the learner.
+- What the student startup survey reveals about interests, pride, frustration, preferred learning modes, and project ideas.
 - How Khan Academy Kids should be used in the daily rhythm without becoming the whole learning plan.
 - Which books belong in the first reading basket.
 - What the reading basket reveals about interest, confidence, difficulty, and next-book fit.
@@ -193,6 +195,7 @@ The Executive OS should treat this as a scope-design obligation before treating 
 Possible package directions include:
 
 - Learner profile and parent goals intake.
+- Student startup survey and learner-interest artifact.
 - Parent startup onboarding package.
 - Reading basket setup and first weekly review.
 - First 30-day personalized homeschool plan.
@@ -223,6 +226,7 @@ The weekly review should answer:
 - Define the $1,000 one-time retainer scope before delivery begins.
 - Capture learner interests, strengths, challenges, rhythms, and current resources.
 - Capture parent goals and non-negotiable boundaries.
+- Complete the brief student survey and save it as the first learner-interest artifact in the student portfolio.
 - Install Khan Academy Kids on the iPad as the starter app, with parent-supervised use.
 - Record first observations from Khan Academy Kids: engagement, frustration, preferred activities, and parent questions.
 - Give the parent the startup onboarding guide and confirm the first-week setup.

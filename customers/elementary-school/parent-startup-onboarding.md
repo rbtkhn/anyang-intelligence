@@ -24,7 +24,31 @@ The value is not just "an app." The value is the parent no longer having to reco
 
 ## First Week Setup
 
-### 1. Install The Starter App
+### 1. Ask The Student Survey
+
+Before choosing activities, ask the learner a short, low-pressure survey.
+
+Use the survey as a conversation starter, not a test. The parent may read the questions aloud, skip any question that creates stress, and write down short answers in the parent observation notebook.
+
+Ask:
+
+- What do you like learning about right now?
+- What is something you are proud you can do?
+- What is something that feels hard or frustrating?
+- What books, shows, games, animals, places, or activities do you like?
+- If you could make a project about anything, what would you make?
+- Do you like learning best by reading, watching, building, drawing, talking, moving, or playing?
+- What is one thing you want grown-ups to know about how you learn?
+
+Save the answers as the first learner-interest artifact in the student portfolio.
+
+Boundary:
+
+- Do not treat the survey as a grade, diagnosis, personality label, or permanent profile.
+- Do not pressure the child to give complete answers.
+- Parent judgment controls what is saved, shared, or used for planning.
+
+### 2. Install The Starter App
 
 Install Khan Academy Kids on the iPad.
 
@@ -37,7 +61,7 @@ Parent rule:
 - Do not treat app progress as a grade, diagnosis, or proof of mastery.
 - Record what the child chose, avoided, enjoyed, or found frustrating.
 
-### 2. Create The Parent Observation Notebook
+### 3. Create The Parent Observation Notebook
 
 Use a paper notebook, notes app, or shared document.
 
@@ -51,7 +75,7 @@ Each day, write 3-5 quick notes:
 
 This notebook is the first memory layer.
 
-### 3. Build A Reading Basket
+### 4. Build A Reading Basket
 
 Start with 5-10 books:
 
@@ -65,7 +89,7 @@ The reading basket should make reading visible, inviting, and low-friction.
 
 Use [reading-basket.md](reading-basket.md) for the full reading basket setup, daily use, portfolio evidence, and weekly review.
 
-### 4. Add Hands-On Math Tools
+### 5. Add Hands-On Math Tools
 
 Use simple physical materials:
 
@@ -78,7 +102,7 @@ Use simple physical materials:
 
 At age 7, concrete objects help math become real before it becomes abstract.
 
-### 5. Create A Student Portfolio
+### 6. Create A Student Portfolio
 
 Use a folder, binder, portfolio box, accordion folder, and simple digital folder.
 
@@ -141,6 +165,7 @@ The monthly value should be visible in saved parent time, reduced planning frict
 A good month should produce:
 
 - 4 weekly parent reviews.
+- 1 brief student survey captured as a learner-interest artifact.
 - 12-20 useful parent observations.
 - 8-16 saved portfolio artifacts, including proud work and milestones.
 - 1 updated learner profile.
