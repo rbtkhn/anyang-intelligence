@@ -21,3 +21,13 @@ These are product-level skills for Student Operating System work. They are not g
 | [learner-profile](student-operating-system/learner-profile/SKILL.md) | Use for building or updating learner profiles from parent goals, student voice, observations, portfolio evidence, interests, strengths, friction, and next priorities. |
 | [weekly-parent-review](student-operating-system/weekly-parent-review/SKILL.md) | Use for turning weekly observations, activities, evidence, friction, and outcomes into parent-reviewed next-week decisions. |
 | [learning-plan](student-operating-system/learning-plan/SKILL.md) | Use for drafting parent-reviewed daily rhythms, weekly plans, activities, reading plans, projects, and next-cycle learning priorities. |
+
+## Grace Gems Skills
+
+These are product-level skills for Grace Gems marketplace work. They are not general customer-state skills.
+
+| Skill | Use |
+| --- | --- |
+| [marketplace-listing-gate](grace-gems/marketplace-listing-gate/SKILL.md) | Use before publishing, revising, or promoting Grace Gems Etsy listings or product pages. |
+| [customer-support-intelligence](grace-gems/customer-support-intelligence/SKILL.md) | Use when reviewing Grace Gems customer support transcripts, buyer messages, repeated questions, confusion, or support-derived listing improvements. |
+| [trust-claim-review](grace-gems/trust-claim-review/SKILL.md) | Use when drafting or reviewing Grace Gems product, policy, authenticity, certificate, shipping, repair, return, rush-order, or support claims. |

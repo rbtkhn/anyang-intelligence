@@ -67,6 +67,16 @@ No listing should be published or promoted until the Executive OS has reviewed:
 - Customer-service risk.
 - Storefront fit.
 
+## Grace Gems Skills
+
+Use `skills/grace-gems/marketplace-listing-gate/SKILL.md` before publishing, revising, or promoting Etsy listings or product pages.
+
+Use `skills/grace-gems/customer-support-intelligence/SKILL.md` when reviewing customer support transcripts, buyer messages, repeated questions, confusion, or support-derived listing improvements.
+
+Use `skills/grace-gems/trust-claim-review/SKILL.md` when drafting or reviewing product, policy, authenticity, certificate, shipping, repair, return, rush-order, or support claims.
+
+Do not add internal skill names to public or customer-facing sales copy unless the owner explicitly approves that language.
+
 ## Membrane Boundary
 
 Grace Gems can teach Anyang Intelligence about marketplace execution, trust architecture, listing gates, customer-promise clarity, and owner-approved claim discipline.
