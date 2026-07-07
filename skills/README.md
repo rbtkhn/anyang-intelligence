@@ -31,3 +31,11 @@ These are product-level skills for Grace Gems marketplace work. They are not gen
 | [marketplace-listing-gate](grace-gems/marketplace-listing-gate/SKILL.md) | Use before publishing, revising, or promoting Grace Gems Etsy listings or product pages. |
 | [customer-support-intelligence](grace-gems/customer-support-intelligence/SKILL.md) | Use when reviewing Grace Gems customer support transcripts, buyer messages, repeated questions, confusion, or support-derived listing improvements. |
 | [trust-claim-review](grace-gems/trust-claim-review/SKILL.md) | Use when drafting or reviewing Grace Gems product, policy, authenticity, certificate, shipping, repair, return, rush-order, or support claims. |
+
+## Media Production Skills
+
+These are product-level skills for Media Production creative pipeline work. They are not general customer-state skills.
+
+| Skill | Use |
+| --- | --- |
+| [media-production-brief](media-production/media-production-brief/SKILL.md) | Use when turning a Grace Gems product/customer signal or Predictive History topic into a review-ready creative production brief. |
