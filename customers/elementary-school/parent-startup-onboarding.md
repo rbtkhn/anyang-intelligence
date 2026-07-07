@@ -78,9 +78,9 @@ Use simple physical materials:
 
 At age 7, concrete objects help math become real before it becomes abstract.
 
-### 5. Create A Physical Portfolio
+### 5. Create A Student Portfolio
 
-Use a folder, binder, portfolio box, or accordion folder.
+Use a folder, binder, portfolio box, accordion folder, and simple digital folder.
 
 Save dated samples:
 
@@ -88,15 +88,20 @@ Save dated samples:
 - Drawings.
 - Math work.
 - Project photos.
+- Digital work.
+- App screenshots or exports approved by the parent.
 - Reading notes.
 - Questions the child asked.
 - Parent observations.
 - Work the child is proud of.
 - Milestones worth remembering.
+- Monthly reports.
 
 The portfolio makes learning visible and helps the child see a growing body of work.
 
-Use [physical-portfolio.md](physical-portfolio.md) for setup, child choice, weekly use, monthly review, and milestone tracking.
+Use [student-portfolio.md](student-portfolio.md) for setup, child choice, physical work, digital work, reports, weekly use, monthly review, and milestone tracking.
+
+Use [monthly-portfolio-review.md](monthly-portfolio-review.md) at the end of the month to turn portfolio artifacts into a parent-readable learning report.
 
 ## Daily Rhythm
 
@@ -142,6 +147,7 @@ A good month should produce:
 - 1 next-month learning focus.
 - 1 list of books, activities, or projects that fit the child.
 - 1 refreshed reading basket based on real child interest and difficulty.
+- 1 monthly portfolio review that summarizes proud work, milestones, growth, interests, friction, and next steps.
 - Clearer understanding of what helps the child learn.
 
 The service is worth `$100/month` only if it makes the parent more confident, less scattered, and better able to adapt learning to the actual child.

@@ -65,7 +65,9 @@ See [parent-startup-onboarding.md](parent-startup-onboarding.md) for the parent-
 
 See [reading-basket.md](reading-basket.md) for the first physical literacy tool in the startup bundle.
 
-See [physical-portfolio.md](physical-portfolio.md) for the place to store student output the learner is proud of and milestones worth remembering.
+See [student-portfolio.md](student-portfolio.md) for the place to store physical work, digital work, student output the learner is proud of, milestones, and reports.
+
+See [monthly-portfolio-review.md](monthly-portfolio-review.md) for the first reporting layer built from the student portfolio.
 
 ## Commercial Hypothesis
 

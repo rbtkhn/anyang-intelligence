@@ -1,22 +1,23 @@
-# Physical Portfolio
+# Student Portfolio
 
-The physical portfolio is the place where the learner keeps work they are proud of and milestones worth remembering.
+The student portfolio is the place where the learner keeps work they are proud of, milestones worth remembering, and parent-reviewed reports that make growth visible.
 
 Its job is to make growth visible to the child and useful to the parent.
 
 ## Purpose
 
-The physical portfolio helps:
+The student portfolio helps:
 
 - Honor the learner's pride and effort.
 - Save milestone work before it disappears.
 - Give the parent concrete evidence for weekly and monthly review.
 - Show progress across reading, writing, math, art, projects, questions, and habits.
 - Build the child's sense that learning creates a visible body of work.
+- Connect physical work, digital work, observations, and reports into one learning-memory system.
 
 ## Setup
 
-Use one simple container:
+Use one simple physical container:
 
 - Binder.
 - Folder.
@@ -24,7 +25,16 @@ Use one simple container:
 - Portfolio box.
 - Accordion folder.
 
-Add simple sections:
+Use one simple digital folder:
+
+- Photos of physical work.
+- Digital documents.
+- Screenshots or exports approved by the parent.
+- Project media.
+- Parent notes.
+- Monthly reports.
+
+Add simple sections in both places when practical:
 
 - Reading.
 - Writing.
@@ -33,6 +43,7 @@ Add simple sections:
 - Questions and discoveries.
 - Milestones.
 - Parent notes.
+- Reports.
 
 Do not over-design the system. It should be easy enough to use on an ordinary day.
 
@@ -57,6 +68,32 @@ Examples:
 - A question the child asked.
 - A before/after sample.
 - A parent note about a breakthrough.
+- A digital story, drawing, recording, slideshow, or project file.
+- A monthly portfolio review.
+
+## Physical And Digital Rule
+
+Physical and digital work both count.
+
+Use the physical container for touchable work the child can revisit easily.
+
+Use the digital folder for:
+
+- Photos of work that is too large, fragile, temporary, or messy to save physically.
+- Digital work created on an iPad or computer.
+- Audio, video, or project media.
+- Parent-approved app screenshots or exports.
+- Monthly reports and parent summaries.
+
+When saving digital work, include:
+
+```text
+Date:
+What it is:
+Why it matters:
+Parent note:
+Child reflection, if available:
+```
 
 ## Child Choice Rule
 
@@ -96,6 +133,10 @@ Once per month, review the portfolio and ask:
 
 The monthly review turns scattered student output into a learning arc.
 
+Use [monthly-portfolio-review.md](monthly-portfolio-review.md) to turn portfolio artifacts, proud work, and milestones into a parent-readable monthly report.
+
+Save the completed monthly portfolio review in the student portfolio as a report artifact.
+
 ## Milestone Log
 
 Keep a simple milestone page:
@@ -123,6 +164,6 @@ Examples:
 
 ## Boundary
 
-The physical portfolio is not a gradebook, diagnosis, legal compliance file, or complete transcript by itself.
+The student portfolio is not a gradebook, diagnosis, legal compliance file, or complete transcript by itself.
 
 It is a parent-reviewed evidence and celebration system. If portfolio evidence raises concerns about reading, writing, attention, speech/language, math, behavior, health, or development, the parent should consider teacher, tutor, clinician, or specialist support.
