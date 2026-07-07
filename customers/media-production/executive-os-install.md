@@ -34,9 +34,9 @@ Anyang Intelligence should behave like the executive layer of the production com
 | Creative development need | Diverse supplementary artistic content for Predictive History videos |
 | Core work | Produce and distribute digital media and supplementary artistic assets |
 | Monthly budget | $1,000 |
-| Current employee assignment | Unfilled |
-| Production role | Creative Production Operator |
-| Creative Production Operator salary allocation | $500 per month |
+| Current contractor assignment | Unfilled |
+| Outsourced production role | Creative Production Operator |
+| Creative Production Operator contractor allocation | $500 per month |
 | Remaining monthly production budget | $500 |
 | Primary cadence | Editorial planning, production, publishing, review |
 | Primary constraint | Creative Production Operator capacity, Grace Gems client commitments, $500 discretionary monthly budget, quality control, publishing consistency, audience relevance |
@@ -55,7 +55,7 @@ Anyang Intelligence should behave like the executive layer of the production com
 - Predictive History channel goals.
 - Monthly budget.
 - Monthly client revenue.
-- Payroll commitments.
+- Contractor commitments.
 - Creative Production Operator capacity assumptions.
 - Discretionary production budget.
 - Episode or topic backlog.
@@ -80,7 +80,7 @@ Anyang Intelligence should behave like the executive layer of the production com
 The Executive OS should prepare structured decisions for:
 
 - How to allocate the $1,000 monthly budget.
-- How to protect the Creative Production Operator's $500 monthly salary allocation.
+- How to protect the Creative Production Operator's $500 monthly contractor allocation.
 - How to use the remaining $500 monthly production budget.
 - Which Grace Gems products need creative support first.
 - Which Grace Gems customer questions should become FAQ or selling content.
@@ -157,8 +157,8 @@ The weekly review should answer:
 - Confirm the Grace Gems $1,000/month service package.
 - Create the first Grace Gems product and customer-support creative backlog.
 - Capture Predictive History channel context, audience, topics, and visual needs.
-- Fill or assign the Creative Production Operator role, then confirm weekly availability, production strengths, and preferred workflow.
-- Create the first monthly budget view: $500 salary allocation and $500 discretionary production budget.
+- Source or assign the outsourced Creative Production Operator role, then confirm weekly availability, production strengths, and preferred workflow.
+- Create the first monthly budget view: $500 contractor allocation and $500 discretionary production budget.
 - Map content pillars and audience segments.
 - Inventory active ideas and productions.
 - Create the first production board.

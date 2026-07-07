@@ -15,10 +15,10 @@ Media Production is a creative operating context:
 - Creative development client: Predictive History YouTube channel.
 - Predictive History need: create diverse supplementary artistic content that supports Predictive History videos.
 - Monthly operating budget: $1,000.
-- Production role: Creative Production Operator.
-- Current employee assignment: unfilled.
-- Planned salary allocation for the role: $500 per month.
-- Starting discretionary production budget after salary allocation: $500 per month.
+- Outsourced production role: Creative Production Operator.
+- Current contractor assignment: unfilled.
+- Planned contractor allocation for the role: $500 per month.
+- Starting discretionary production budget after contractor allocation: $500 per month.
 
 ## Executive OS Role
 
@@ -40,7 +40,7 @@ The system does not replace creative judgment. It keeps the production company c
 Media Production begins as a small-budget creative operator funded by a first paying client:
 
 - Monthly revenue: $1,000 from Grace Gems.
-- Planned salary allocation: $500 per month for the Creative Production Operator role.
+- Planned contractor allocation: $500 per month for the outsourced Creative Production Operator role.
 - Remaining monthly budget: $500 for tools, subscriptions, contractors, asset purchases, distribution tests, or reserves.
 - First capacity assumption: the Creative Production Operator is responsible for turning briefs into finished or review-ready production work, but the role is currently unfilled.
 
@@ -90,7 +90,7 @@ See [grace-gems-monthly-service-package.md](grace-gems-monthly-service-package.m
 
 See [grace-gems-trust-architecture-kit.md](grace-gems-trust-architecture-kit.md) for the first Grace Gems visual trust production lane.
 
-## Employee Onboarding
+## Contractor Onboarding
 
 See [creative-production-operator-onboarding.md](creative-production-operator-onboarding.md) for the Creative Production Operator onboarding guide.
 

@@ -6,7 +6,7 @@ Grace Gems is the first paying client for Media Production.
 
 Grace Gems pays Media Production $1,000 per month for recurring creative production support. This retainer funds the first Media Production operating model:
 
-- $500 per month for the Creative Production Operator salary allocation.
+- $500 per month for the outsourced Creative Production Operator contractor allocation.
 - $500 per month for tools, light asset costs, production support, experiments, or retained margin.
 
 The service should improve Grace Gems' ability to present products clearly, support customers, run promotions, and learn which product messages create buyer trust.
@@ -53,7 +53,7 @@ Included service areas:
 
 ## Monthly Deliverables
 
-The first service package should stay small enough for one employee to deliver reliably.
+The first service package should stay small enough for one outsourced production operator to deliver reliably.
 
 Each month, Media Production should deliver:
 
@@ -116,7 +116,7 @@ The Creative Production Operator should not make final claims about product auth
 
 ## Budget Rule
 
-The $1,000 retainer must first protect the Creative Production Operator's $500 monthly salary allocation.
+The $1,000 retainer must first protect the Creative Production Operator's $500 monthly contractor allocation.
 
 The remaining $500 may be used for:
 
@@ -136,6 +136,6 @@ This service package is working when:
 - Product listings and selling messages become clearer.
 - Customer questions turn into better FAQ and content assets.
 - The Creative Production Operator's workload is visible and sustainable.
-- The $1,000 retainer covers the salary allocation and operating needs.
+- The $1,000 retainer covers the contractor allocation and operating needs.
 - The monthly review produces better priorities for the next month.
 - The [creative abundance ledger](creative-abundance-ledger-template.md) shows product knowledge and customer questions turning into reusable assets.
