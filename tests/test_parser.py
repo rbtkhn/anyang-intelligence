@@ -1,0 +1,88 @@
+from pathlib import Path
+
+from anyang_loop.parser import parse_markdown, parse_yaml
+
+
+def test_parse_yaml_loop():
+    loop = parse_yaml(
+        """
+name: test-loop
+signal: weekly review
+memory_objects:
+  - decision log
+decision: prepare recommendation
+action: owner approves next action
+evidence: operating review record
+cadence: weekly
+learning_update: update memory with lesson
+governance_boundary: human owner approval required
+"""
+    )
+    assert loop.name == "test-loop"
+    assert loop.memory_objects == ["decision log"]
+
+
+def test_parse_markdown_front_matter():
+    loop = parse_markdown(
+        """---
+name: frontmatter-loop
+signal: event
+memory_objects: [risk register]
+decision: prepare options
+action: human approves
+evidence: approval record
+cadence: event-driven
+learning_update: preserve lesson in memory
+governance_boundary: human approval required
+---
+
+# Body
+"""
+    )
+    assert loop.name == "frontmatter-loop"
+    assert loop.cadence == "event-driven"
+
+
+def test_parse_markdown_headings():
+    loop = parse_markdown(
+        """# Heading Loop
+
+## Signal
+Weekly signal.
+
+## Memory Objects
+- decision log
+- risk register
+
+## Decision
+Prepare options.
+
+## Action
+Owner approves action.
+
+## Evidence
+Approval record.
+
+## Cadence
+Weekly.
+
+## Learning Update
+Update memory.
+
+## Governance Boundary
+Human approval required.
+""",
+        "heading-loop.md",
+    )
+    assert loop.name == "Heading Loop"
+    assert "decision log" in loop.memory_objects
+
+
+def test_customer_examples_parse():
+    root = Path(__file__).resolve().parents[1]
+    examples = list(root.glob("customers/*/loop-examples/*.yaml"))
+    assert examples
+    for path in examples:
+        loop = parse_yaml(path.read_text(encoding="utf-8"), str(path))
+        assert loop.name
+

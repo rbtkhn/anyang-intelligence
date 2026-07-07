@@ -46,3 +46,9 @@ Every customer installation should define:
 - Risk and governance boundary.
 - 30-day installation plan.
 - Success criteria.
+
+## Loop Grammar Engine
+
+Customer operating loops can be formalized with the optional [`anyang-loop`](../cli/README.md) CLI. Use it when a customer loop needs machine-checkable signal, memory, decision, action, evidence, cadence, learning update, and governance boundary fields.
+
+Examples live under customer `loop-examples/` folders. These examples should transfer operating primitives, not private customer context; use [membranes](../docs/membranes.md) before adapting one customer loop into another lane.

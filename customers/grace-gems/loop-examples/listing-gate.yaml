@@ -1,0 +1,23 @@
+name: grace-gems-listing-gate
+description: Review-gated marketplace listing loop for Grace Gems.
+loop_type: operating
+customer_lane: grace-gems
+authority: owner approval
+tags:
+  - marketplace
+  - listing-gate
+signal: A draft listing, underperforming listing, customer confusion pattern, or promotion candidate needs review.
+memory_objects:
+  - storefront profile
+  - listing candidate
+  - margin assumption
+  - Etsy policy check
+  - search and conversion notes
+  - customer promise risk
+decision: Prepare whether the listing should be published, revised, held, retired, or promoted.
+action: After owner approval, update listing copy, photos, storefront placement, promotion status, or hold status.
+evidence: Owner approval, listing quality notes, margin check, policy check, published listing URL, or hold/revise record.
+cadence: Weekly marketplace review and event-driven review before publish or promotion.
+learning_update: Record which listing signals predicted buyer clarity, conversion, policy safety, or customer-service risk.
+governance_boundary: The Executive OS recommends; the owner approves publication, pricing, ad spend, customer promises, policy-sensitive claims, and authenticity language.
+

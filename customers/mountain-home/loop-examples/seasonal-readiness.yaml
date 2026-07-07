@@ -1,0 +1,24 @@
+name: mountain-home-seasonal-readiness
+description: Seasonal property risk and readiness loop for Mountain Home.
+loop_type: governance
+customer_lane: mountain-home
+authority: owner approval
+tags:
+  - property
+  - risk
+  - seasonal
+signal: Seasonal transition, maintenance issue, safety concern, weather risk, access constraint, or owner review window.
+memory_objects:
+  - property risk register
+  - maintenance tasks
+  - seasonal readiness checklist
+  - access constraints
+  - insurance or safety questions
+  - owner decisions
+decision: Prepare a risk-ranked recommendation for mitigation, monitoring, professional review, or owner decision.
+action: After owner approval, schedule maintenance, update readiness tasks, collect proof, or prepare professional-review questions.
+evidence: Risk register update, proof photo, invoice, inspection note, owner approval, or completed maintenance record.
+cadence: Seasonal review, weekly review during active risk windows, and event-driven review for safety or access issues.
+learning_update: Update the readiness checklist and risk memory based on what prevented drift, damage, delay, or avoidable uncertainty.
+governance_boundary: The Executive OS does not approve property access, spending, insurance claims, legal positions, safety decisions, or contractor commitments without owner or professional review.
+
