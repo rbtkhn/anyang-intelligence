@@ -13,6 +13,8 @@ The service should improve Grace Gems' ability to present products clearly, supp
 
 This service should express the Media Production abundance principle: turn product knowledge and customer questions into reusable creative assets that build trust and reduce friction.
 
+Use the Grace Gems [public shop signal brief](../grace-gems/public-shop-signal-brief.md) as the starting public evidence surface for trust architecture, claim discipline, and first creative deliverables.
+
 ## Service Thesis
 
 Grace Gems does not need random content.

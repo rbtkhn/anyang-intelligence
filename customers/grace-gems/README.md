@@ -47,3 +47,5 @@ product idea
 See [executive-os-install.md](executive-os-install.md) for the first Grace Gems Executive OS install design.
 
 Use [business-intake-survey.md](business-intake-survey.md) to collect the owner/operator context required before installation.
+
+Use [public-shop-signal-brief.md](public-shop-signal-brief.md) to understand the public GraceGemsUS Etsy storefront signals before preparing the first operating review or creative-support backlog.
