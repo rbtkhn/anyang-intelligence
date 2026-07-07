@@ -8,6 +8,8 @@ Each customer has a different domain, but the Executive OS should always answer 
 
 What does this operating context need to remember, decide, coordinate, review, and learn?
 
+See [loops.md](loops.md) for the shared loop grammar behind this method.
+
 ## Seven-Part Install Pattern
 
 ### 1. Context Map
@@ -51,6 +53,8 @@ The Executive OS prepares decisions. Humans retain authority.
 Define how the operating context gets reviewed.
 
 The review may be weekly, monthly, seasonal, campaign-based, or event-driven. The point is to keep the system alive.
+
+Every installation should identify the loops that need to stay alive: operating loops, governance loops, learning loops, and recursive improvement loops.
 
 Every review should answer:
 

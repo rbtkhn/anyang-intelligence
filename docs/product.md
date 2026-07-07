@@ -30,7 +30,10 @@ They have enough complexity to need executive infrastructure, but not enough sta
 - Project and owner tracker.
 - Decision memo workflow.
 - Learning loop for assumptions and outcomes.
+- Loop grammar for repeatable memory, decision, coordination, review, learning, and governance cycles.
 
 ## Product Boundary
 
 The Executive OS supports leadership judgment. It does not make legally binding decisions, replace human accountability, control funds, hire or fire employees, or execute irreversible actions without human approval.
+
+See [loops.md](loops.md) for the shared loop model behind customer installations.
