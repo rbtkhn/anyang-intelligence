@@ -16,6 +16,7 @@ Media Production is a creative operating context:
 - Predictive History need: create diverse supplementary artistic content that supports Predictive History videos.
 - Monthly operating budget: $1,000.
 - First employee: Cici, salary $500 per month.
+- First employee role: Creative Production Operator.
 - Starting discretionary production budget after Cici salary: $500 per month.
 
 ## Executive OS Role
@@ -40,7 +41,7 @@ Media Production begins as a small-budget creative operator funded by a first pa
 - Monthly revenue: $1,000 from Grace Gems.
 - Payroll commitment: $500 per month for Cici.
 - Remaining monthly budget: $500 for tools, subscriptions, contractors, asset purchases, distribution tests, or reserves.
-- First capacity assumption: Cici is the primary employee responsible for turning briefs into finished or review-ready production work.
+- First capacity assumption: the Creative Production Operator is responsible for turning briefs into finished or review-ready production work. Cici currently fills this role.
 
 The Executive OS should protect this constraint. It should recommend a production cadence that fits the available budget and should not assume a large team, paid ad budget, or unlimited creative bandwidth.
 

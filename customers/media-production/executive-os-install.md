@@ -35,10 +35,11 @@ Anyang Intelligence should behave like the executive layer of the production com
 | Core work | Produce and distribute digital media and supplementary artistic assets |
 | Monthly budget | $1,000 |
 | First employee | Cici |
-| Cici salary | $500 per month |
+| First employee role | Creative Production Operator |
+| Creative Production Operator salary allocation | $500 per month |
 | Remaining monthly production budget | $500 |
 | Primary cadence | Editorial planning, production, publishing, review |
-| Primary constraint | Cici's production capacity, Grace Gems client commitments, $500 discretionary monthly budget, quality control, publishing consistency, audience relevance |
+| Primary constraint | Creative Production Operator capacity, Grace Gems client commitments, $500 discretionary monthly budget, quality control, publishing consistency, audience relevance |
 | Primary operating risk | Overcommitting a one-employee production operation or producing scattered assets without product/client fit, review, rights clarity, or learning |
 | Executive OS job | Convert Grace Gems sales needs, Predictive History creative needs, audience/customer signals, and production capacity into a coherent creative production pipeline |
 
@@ -55,7 +56,7 @@ Anyang Intelligence should behave like the executive layer of the production com
 - Monthly budget.
 - Monthly client revenue.
 - Payroll commitments.
-- Cici capacity assumptions.
+- Creative Production Operator capacity assumptions.
 - Discretionary production budget.
 - Episode or topic backlog.
 - Audience segments.
@@ -79,7 +80,7 @@ Anyang Intelligence should behave like the executive layer of the production com
 The Executive OS should prepare structured decisions for:
 
 - How to allocate the $1,000 monthly budget.
-- How to protect Cici's $500 monthly salary commitment.
+- How to protect the Creative Production Operator's $500 monthly salary allocation.
 - How to use the remaining $500 monthly production budget.
 - Which Grace Gems products need creative support first.
 - Which Grace Gems customer questions should become FAQ or selling content.
@@ -137,7 +138,7 @@ The weekly review should answer:
 - What shipped?
 - What is in production?
 - What is blocked?
-- How much of Cici's capacity is committed?
+- How much of the Creative Production Operator's capacity is committed?
 - How much of the $500 discretionary monthly budget remains?
 - Which Grace Gems deliverables are due this week?
 - Which Grace Gems products, customer questions, or promotions need creative support next?
@@ -156,7 +157,7 @@ The weekly review should answer:
 - Confirm the Grace Gems $1,000/month service package.
 - Create the first Grace Gems product and customer-support creative backlog.
 - Capture Predictive History channel context, audience, topics, and visual needs.
-- Confirm Cici's weekly availability, production strengths, and preferred workflow.
+- Confirm the Creative Production Operator's weekly availability, production strengths, and preferred workflow.
 - Create the first monthly budget view: $500 salary commitment and $500 discretionary production budget.
 - Map content pillars and audience segments.
 - Inventory active ideas and productions.
@@ -196,7 +197,7 @@ The Media Production installation is working when:
 - Publishing cadence becomes more reliable.
 - Grace Gems receives reliable monthly creative support for the $1,000 retainer.
 - Predictive History receives diverse supplementary artistic content on a reliable cadence.
-- Cici's capacity is visible before new work is accepted.
+- The Creative Production Operator's capacity is visible before new work is accepted.
 - Monthly spend stays within the $1,000 budget unless a human explicitly approves an exception.
 - Audience signals update future editorial decisions.
 - Strong pieces are repurposed instead of forgotten.
