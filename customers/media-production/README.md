@@ -50,6 +50,8 @@ Media production should not be managed as a pile of ideas and deadlines.
 
 It should operate as a creative pipeline with memory. Grace Gems is the first cash-flow client, and Predictive History remains the first creative development lane.
 
+The guiding purpose is **mastery of intelligence for abundance in life, work, and community**. For Media Production, this means turning client context into creative assets that compound: clearer products, better stories, stronger trust, reusable memory, and less friction in the work.
+
 For Grace Gems, the first use case is a marketplace creative support pipeline:
 
 ```text
@@ -87,3 +89,9 @@ See [grace-gems-monthly-service-package.md](grace-gems-monthly-service-package.m
 ## Employee Onboarding
 
 See [creative-production-operator-onboarding.md](creative-production-operator-onboarding.md) for the first employee onboarding guide for Cici.
+
+## Abundance System
+
+- [abundance-principle.md](abundance-principle.md): defines what abundance means for Media Production.
+- [creative-abundance-quality-gate.md](creative-abundance-quality-gate.md): review checklist for assets before delivery or publication.
+- [creative-abundance-ledger-template.md](creative-abundance-ledger-template.md): template for tracking assets that compound across clients, channels, and use cases.

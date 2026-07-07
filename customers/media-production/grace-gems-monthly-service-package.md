@@ -11,6 +11,8 @@ Grace Gems pays Media Production $1,000 per month for recurring creative product
 
 The service should improve Grace Gems' ability to present products clearly, support customers, run promotions, and learn which product messages create buyer trust.
 
+This service should express the Media Production abundance principle: turn product knowledge and customer questions into reusable creative assets that build trust and reduce friction.
+
 ## Service Thesis
 
 Grace Gems does not need random content.
@@ -83,6 +85,15 @@ No Grace Gems asset should be treated as ready until it passes these checks:
 - Customer support language is polite, specific, and useful.
 - Any uncertain product information is flagged before use.
 
+Use [creative-abundance-quality-gate.md](creative-abundance-quality-gate.md) for the full review checklist.
+
+For Grace Gems, every review should ask:
+
+- What does this make clearer for the buyer?
+- What repeated customer question does this reduce?
+- What trust does this build?
+- How can this asset be reused in listings, WeChat/social posts, customer support, or future promotions?
+
 ## Cici's Role
 
 Cici is the primary production operator for this service package.
@@ -122,4 +133,4 @@ This service package is working when:
 - Cici's workload is visible and sustainable.
 - The $1,000 retainer covers the salary commitment and operating needs.
 - The monthly review produces better priorities for the next month.
-
+- The [creative abundance ledger](creative-abundance-ledger-template.md) shows product knowledge and customer questions turning into reusable assets.
