@@ -112,6 +112,5 @@ Work is not abundant if it:
 - Requires constant explanation to use.
 - Cannot be found or reused later.
 - Invents facts, claims, or promises.
-- Pushes volume beyond Cici's sustainable capacity.
+- Pushes volume beyond the Creative Production Operator's sustainable capacity.
 - Makes the client more dependent instead of more capable.
-

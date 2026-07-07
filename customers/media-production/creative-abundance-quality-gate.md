@@ -66,7 +66,7 @@ Pass condition: the asset is useful to someone outside the production process.
 
 ## 6. Capacity And Budget
 
-- Does this fit Cici's current workload?
+- Does this fit the Creative Production Operator's current workload?
 - Does it require any paid tool, asset, contractor, or spend?
 - If spending is needed, has a human approved it?
 - Does this asset create enough value to justify the effort?
@@ -89,4 +89,3 @@ Next action:
 Reviewer:
 
 Date:
-

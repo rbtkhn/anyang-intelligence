@@ -6,7 +6,7 @@ Grace Gems is the first paying client for Media Production.
 
 Grace Gems pays Media Production $1,000 per month for recurring creative production support. This retainer funds the first Media Production operating model:
 
-- $500 per month for Cici's salary.
+- $500 per month for the Creative Production Operator salary allocation.
 - $500 per month for tools, light asset costs, production support, experiments, or retained margin.
 
 The service should improve Grace Gems' ability to present products clearly, support customers, run promotions, and learn which product messages create buyer trust.
@@ -72,7 +72,7 @@ Each week should answer:
 
 - Which Grace Gems products need creative support first?
 - Which listings or customer questions are blocking sales?
-- What should Cici produce this week?
+- What should the Creative Production Operator produce this week?
 - What is ready for owner review?
 - What has shipped or been sent to customers?
 - What customer response should change next week's work?
@@ -99,9 +99,9 @@ For Grace Gems, every review should ask:
 - What trust does this build?
 - How can this asset be reused in listings, WeChat/social posts, customer support, or future promotions?
 
-## Cici's Role
+## Creative Production Operator Role
 
-Cici is the primary production operator for this service package.
+The Creative Production Operator is the primary production operator for this service package.
 
 Her work includes:
 
@@ -112,11 +112,11 @@ Her work includes:
 - Keeping shipped work organized.
 - Recording what was produced and what changed.
 
-Cici should not make final claims about product authenticity, price changes, refunds, shipping promises, or customer commitments without owner approval.
+The Creative Production Operator should not make final claims about product authenticity, price changes, refunds, shipping promises, or customer commitments without owner approval.
 
 ## Budget Rule
 
-The $1,000 retainer must first protect Cici's $500 monthly salary.
+The $1,000 retainer must first protect the Creative Production Operator's $500 monthly salary allocation.
 
 The remaining $500 may be used for:
 
@@ -135,7 +135,7 @@ This service package is working when:
 - Grace Gems receives useful creative support every week.
 - Product listings and selling messages become clearer.
 - Customer questions turn into better FAQ and content assets.
-- Cici's workload is visible and sustainable.
+- The Creative Production Operator's workload is visible and sustainable.
 - The $1,000 retainer covers the salary commitment and operating needs.
 - The monthly review produces better priorities for the next month.
 - The [creative abundance ledger](creative-abundance-ledger-template.md) shows product knowledge and customer questions turning into reusable assets.

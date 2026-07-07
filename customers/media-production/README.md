@@ -90,7 +90,7 @@ See [grace-gems-trust-architecture-kit.md](grace-gems-trust-architecture-kit.md)
 
 ## Employee Onboarding
 
-See [creative-production-operator-onboarding.md](creative-production-operator-onboarding.md) for the first employee onboarding guide for Cici.
+See [creative-production-operator-onboarding.md](creative-production-operator-onboarding.md) for the Creative Production Operator onboarding guide.
 
 ## Abundance System
 

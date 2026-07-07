@@ -2,7 +2,7 @@
 
 Position: Creative Production Operator, Media Production
 
-Employee: Cici
+Audience: Creative Production Operator
 
 ## Welcome
 
@@ -201,7 +201,7 @@ Each week, expect a simple operating rhythm:
 
 Media Production currently has a monthly operating budget of $1,000.
 
-Your salary is $500 per month. That leaves $500 per month for tools, subscriptions, contractors, asset purchases, distribution tests, or reserves.
+The current salary allocation for this role is $500 per month. That leaves $500 per month for tools, subscriptions, contractors, asset purchases, distribution tests, or reserves.
 
 This means the work must be disciplined. We should not spend money casually, subscribe to tools without clear value, or accept more work than the available capacity can support.
 
