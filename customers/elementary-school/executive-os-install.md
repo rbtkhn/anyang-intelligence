@@ -1,14 +1,14 @@
-# Elementary School Executive OS Install
+# Student Operating System Install
 
 ## Purpose
 
-Install Anyang Intelligence as a personalized AI homeschool experience agent for elementary learning.
+Install Anyang Intelligence as the Student Operating System for elementary learning.
 
 The system should help a parent or guardian coordinate individualized learning, daily rhythm, enrichment, progress evidence, and reflection while preserving human authority, child safety, and education accountability.
 
 ## Executive Mandate
 
-Anyang Intelligence should behave like a careful homeschool experience layer:
+Anyang Intelligence should behave like a careful Student Operating System layer:
 
 - See the learner's whole educational context.
 - Maintain learner profile, goals, interests, curriculum choices, and progress memory.
@@ -22,7 +22,7 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 
 | Field | Current starting point |
 | --- | --- |
-| Operating context | Personalized AI homeschool experience agent |
+| Operating context | Student Operating System |
 | Commercial hypothesis | Parent-facing subscription at $100/month per family |
 | Paid retainer received | $1,000 |
 | Retainer type | One-time services |
@@ -33,7 +33,7 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 | Primary cadence | Daily learning rhythm, weekly parent review, monthly portfolio review, school-year planning |
 | Primary constraint | High-trust child learning context with safety, privacy, parent authority, and education accountability requirements |
 | Primary operating risk | Learning becomes fragmented, over-automated, unaccountable, or disconnected from the child's actual needs and interests |
-| Executive OS job | Convert learner signals into parent-reviewed learning plans, experiences, evidence, and next-step decisions |
+| Student Operating System job | Convert learner signals into parent-reviewed learning plans, experiences, evidence, and next-step decisions |
 
 ## Executive Memory Objects
 
@@ -133,7 +133,7 @@ The Executive OS may not:
 
 ## Membrane Boundary
 
-Elementary School can teach Anyang Intelligence about parent review, child-safety guardrails, humane learning cadence, portfolio evidence, and personalized plan structure.
+Student Operating System can teach Anyang Intelligence about parent review, child-safety guardrails, humane learning cadence, portfolio evidence, and personalized plan structure.
 
 Keep local unless explicitly approved by the parent or guardian:
 
@@ -142,11 +142,11 @@ Keep local unless explicitly approved by the parent or guardian:
 - Portfolio artifacts that identify the child or reveal private family context.
 - Any child-facing recommendation that has not passed parent or guardian review.
 
-Transferable lessons should be anonymized into safety principles, parent-review checklists, portfolio structures, or learning-loop templates. The Elementary School membrane is stricter than ordinary creative, business, or community lanes.
+Transferable lessons should be anonymized into safety principles, parent-review checklists, portfolio structures, or learning-loop templates. The Student Operating System membrane is stricter than ordinary creative, business, or community lanes.
 
 ## Startup Resource Bundle
 
-Khan Academy Kids is the first default iPad app in the Elementary School startup bundle.
+Khan Academy Kids is the first default iPad app in the Student Operating System Startup Bundle.
 
 Why it fits:
 
@@ -188,7 +188,7 @@ This price point should be tested as a hypothesis, not treated as a validated of
 
 ## One-Time Retainer
 
-Elementary School has paid a **$1,000 one-time retainer** for services that are not yet planned.
+Elementary School has paid a **$1,000 one-time retainer** for Student Operating System services that are not yet planned.
 
 The Executive OS should treat this as a scope-design obligation before treating it as delivery work. The first decision is what the one-time package should produce.
 
@@ -261,7 +261,7 @@ The weekly review should answer:
 
 ## Success Criteria
 
-The Elementary School installation is working when:
+The Student Operating System installation is working when:
 
 - The parent can see the child's learning arc without reconstructing it from scattered materials.
 - Daily plans feel useful and humane, not mechanical.

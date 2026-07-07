@@ -1,10 +1,10 @@
 # Elementary School
 
-Elementary School is a personalized AI homeschool experience agent installation for the Anyang Intelligence Executive Operating System.
+Elementary School is the first customer installation for the **Student Operating System**, a parent-led learning operating system built on the Anyang Intelligence Executive OS method.
 
 ## Organization
 
-Elementary School is a high-trust home education operating context:
+The Student Operating System is a high-trust home education operating context:
 
 - Work: personalized elementary learning, parent-guided instruction, daily learning plans, enrichment, progress tracking, portfolio evidence, and family communication.
 - Cadence: daily learning rhythm, weekly parent review, monthly portfolio review, seasonal learning goals, and school-year planning.
@@ -16,7 +16,7 @@ Elementary School is a high-trust home education operating context:
 
 ## Executive OS Role
 
-Anyang Intelligence acts as the homeschool experience layer for the parent and learner.
+Anyang Intelligence acts as the Student Operating System layer for the parent and learner.
 
 In practical terms, the Executive OS helps:
 
@@ -33,7 +33,7 @@ The system does not replace parents, teachers, tutors, clinicians, legal require
 
 A homeschool experience should not be a pile of worksheets, apps, and forgotten good intentions.
 
-The Executive OS should help the family create a coherent, humane, personalized learning rhythm:
+The Student Operating System should help the family create a coherent, humane, personalized learning rhythm:
 
 ```text
 learner interests and needs
@@ -71,9 +71,9 @@ See [monthly-portfolio-review.md](monthly-portfolio-review.md) for the first rep
 
 ## Commercial Hypothesis
 
-Elementary School could become a parent-facing subscription service.
+Student Operating System could become a parent-facing subscription service.
 
-Early pricing hypothesis: **$100/month per family** for a personalized AI homeschool experience agent that helps parents plan, adapt, document, and reflect on elementary learning.
+Early pricing hypothesis: **$100/month per family** for a Student Operating System that helps parents plan, adapt, document, and reflect on elementary learning.
 
 This is a working assumption, not final pricing. It should be validated against parent willingness to pay, safety expectations, curriculum accountability needs, and the cost of responsible support.
 
@@ -87,4 +87,4 @@ The retainer should not automatically become the $100/month subscription hypothe
 
 ## Installation
 
-See [executive-os-install.md](executive-os-install.md) for the first Elementary School Executive OS install design.
+See [executive-os-install.md](executive-os-install.md) for the first Student Operating System install design.

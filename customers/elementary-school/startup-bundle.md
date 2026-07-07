@@ -1,6 +1,6 @@
 # Startup Bundle
 
-This guide helps a parent start the Elementary School experience for a 7-year-old learner.
+This guide helps a parent start the Student Operating System experience for a 7-year-old learner.
 
 The goal is to make learning easier to plan, observe, personalize, and remember.
 
@@ -8,7 +8,7 @@ This guide does not replace the parent, teacher, tutor, clinician, legal require
 
 ## What You Are Getting
 
-Elementary School is a parent-led learning operating system.
+Student Operating System is a parent-led learning operating system.
 
 It helps you:
 

@@ -1,6 +1,6 @@
 # Reading Basket
 
-The reading basket is the first physical literacy tool in the Elementary School startup bundle.
+The reading basket is the first physical literacy tool in the Student Operating System Startup Bundle.
 
 Its job is to make reading visible, inviting, and easy to start.
 
