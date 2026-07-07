@@ -50,7 +50,7 @@ Anyang Intelligence should behave like a careful homeschool experience layer:
 - Weekly reviews.
 - Books and resources.
 - Startup resource bundle.
-- Parent startup onboarding guide.
+- Startup Bundle.
 - Student startup survey.
 - Reading basket.
 - Reading basket weekly review.
@@ -162,7 +162,7 @@ Use rule:
 - Save only meaningful observations as learner-profile or portfolio evidence.
 - Do not treat app progress as a diagnosis, grade, curriculum replacement, or proof of mastery without parent review.
 
-The parent-facing startup guide is [parent-startup-onboarding.md](parent-startup-onboarding.md).
+The parent-facing Startup Bundle is [startup-bundle.md](startup-bundle.md).
 
 The first physical literacy tool is [reading-basket.md](reading-basket.md).
 
@@ -196,7 +196,7 @@ Possible package directions include:
 
 - Learner profile and parent goals intake.
 - Student startup survey and learner-interest artifact.
-- Parent startup onboarding package.
+- Startup Bundle package.
 - Reading basket setup and first weekly review.
 - First 30-day personalized homeschool plan.
 - Portfolio and progress evidence setup.
@@ -229,7 +229,7 @@ The weekly review should answer:
 - Complete the brief student survey and save it as the first learner-interest artifact in the student portfolio.
 - Install Khan Academy Kids on the iPad as the starter app, with parent-supervised use.
 - Record first observations from Khan Academy Kids: engagement, frustration, preferred activities, and parent questions.
-- Give the parent the startup onboarding guide and confirm the first-week setup.
+- Give the parent the Startup Bundle and confirm the first-week setup.
 - Build the first reading basket with confidence books, current-level books, one stretch book, one interest-led nonfiction book, and one parent read-aloud.
 - Create the student portfolio with sections for reading, writing, math, art/projects, questions/discoveries, milestones, parent notes, and reports.
 - Identify applicable education accountability requirements.

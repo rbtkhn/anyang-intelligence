@@ -1,4 +1,4 @@
-# Parent Startup Onboarding
+# Startup Bundle
 
 This guide helps a parent start the Elementary School experience for a 7-year-old learner.
 
