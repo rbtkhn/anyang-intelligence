@@ -13,7 +13,7 @@ It is a working control panel, not a final strategy document.
 | [Elementary School](elementary-school/README.md) | Paid discovery / service design | $1,000 one-time retainer received; $100/month subscription remains a hypothesis | Define one-time retainer scope before delivery begins | Choose the first one-time package deliverable and safety boundary | Medium |
 | [Non-Profit](non-profit/README.md) | Early customer hypothesis | Holds real estate portfolio currently worth $200,000 | Define mission, portfolio stewardship needs, board/leadership cadence, and operating pain | Decide whether first offer is board packet, asset review, or donor/program operating review | Medium-low |
 | [Mountain Home](mountain-home/README.md) | Property governance prototype | 5 acres in Jefferson County, Colorado; no revenue attached | Build risk-first property operating memory and seasonal readiness loop | Identify top property risks, systems, and first seasonal review gate | Medium-low |
-| [Book Club](book-club/README.md) | Free local community context | Free participation; optional member donations may fund shared supplemental materials and services | Preserve monthly cadence, selection memory, host coordination, and member experience without making participation transactional | Decide which optional materials or services, if any, would improve the club without over-managing it | Medium-low |
+| [Book Club](book-club/README.md) | Free local community context with donor support | Free participation; $1,000 donor-funded retainer for shared supplemental materials/services; optional member donations may also support shared needs | Steward donor-funded support while preserving monthly cadence, selection memory, host coordination, and member experience without making participation transactional | Decide which shared materials or services should use donor funds without over-managing the club | Medium |
 
 ## Current Cash Picture
 
@@ -23,13 +23,14 @@ Known cash events:
 - Media Production pays Cici $500/month.
 - Media Production has $500/month remaining for tools, light asset costs, experiments, support, or margin.
 - Elementary School has paid a $1,000 one-time retainer for services not yet planned.
+- Book Club has received a $1,000 donor-funded retainer for shared supplemental materials and services; participation remains free.
 - Non-Profit holds a real estate portfolio currently worth $200,000.
 
 Unknown or pending:
 
 - Grace Gems business revenue, margins, product economics, and customer-support patterns.
 - Elementary School retainer deliverable, timeline, safety rules, and parent approval process.
-- Book Club donation norms, optional shared-material needs, tone boundary, and organizer approval process.
+- Book Club donor-fund use, donation norms, optional shared-material needs, tone boundary, and organizer approval process.
 - Non-Profit cash flow, portfolio details, governance cadence, and mission priorities.
 - Mountain Home risk inventory, structures, utilities, maintenance backlog, and seasonal hazards.
 
@@ -70,9 +71,10 @@ Unknown or pending:
 ### Book Club
 
 - Keep participation free.
+- Steward the $1,000 donor-funded retainer for shared supplemental materials and services.
 - Treat donations as optional support for shared supplemental materials and services.
 - Do not overbuild the service; protect the club's social, low-friction character.
-- Decide whether any optional support should fund books, discussion guides, food, venue costs, companion materials, a memory archive, or light coordination.
+- Decide whether donor-funded or optional support should fund books, discussion guides, food, venue costs, companion materials, a memory archive, or light coordination.
 
 ## Immediate Decision Queue
 
@@ -82,7 +84,7 @@ Unknown or pending:
 4. **Grace Gems:** What should happen when the owner/operator intake response arrives?
 5. **Non-Profit:** What is the first operating review surface for a $200,000 real estate portfolio?
 6. **Mountain Home:** What are the top five property risks to capture first?
-7. **Book Club:** What optional shared materials or services would improve the club without making it feel over-managed or transactional?
+7. **Book Club:** How should the $1,000 donor-funded retainer support shared materials or services without making the club feel over-managed or transactional?
 
 ## Current Interpretation
 
@@ -94,7 +96,7 @@ Elementary School is commercially interesting because it has paid, but the trust
 
 Non-Profit and Mountain Home are asset-governance contexts. They are useful because they force the Executive OS to handle risk, stewardship, continuity, and human authority.
 
-Book Club is a free local community case. Its value is testing whether the Executive OS can improve a social cadence without making the experience feel managed or transactional.
+Book Club is a free local community case with donor-funded support. Its value is testing whether the Executive OS can steward shared resources and improve a social cadence without making the experience feel managed or transactional.
 
 ## Portfolio Rule
 
@@ -106,5 +108,5 @@ Current priority order:
 2. Review Cici's pre-training package when submitted.
 3. Scope the Elementary School one-time retainer.
 4. Convert Grace Gems owner intake into the first business operating review.
-5. Keep Book Club light unless optional member support creates a concrete shared-material need.
+5. Keep Book Club light while deciding how to steward donor-funded shared-material support.
 6. Deepen Non-Profit and Mountain Home only after the paid obligations are stable.

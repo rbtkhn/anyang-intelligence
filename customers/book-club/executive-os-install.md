@@ -24,7 +24,8 @@ Anyang Intelligence should behave like a quiet club steward:
 | --- | --- |
 | Operating context | Recreational monthly book club |
 | Participation model | Free |
-| Optional support | Members may donate for shared supplemental materials and services |
+| Donor-funded retainer | $1,000 for shared supplemental materials and services |
+| Optional support | Members may also donate for shared supplemental materials and services |
 | Cadence | Monthly |
 | Core value | Shared reading, discussion, friendship, continuity |
 | Primary constraint | Keep coordination light and enjoyable |
@@ -34,6 +35,7 @@ Anyang Intelligence should behave like a quiet club steward:
 ## Executive Memory Objects
 
 - Members.
+- Donor-funded retainer.
 - Optional donations.
 - Shared supplemental materials.
 - Reading preferences.
@@ -53,6 +55,7 @@ Anyang Intelligence should behave like a quiet club steward:
 The Executive OS should prepare structured decisions for:
 
 - Which book to read next.
+- How to steward the $1,000 donor-funded retainer.
 - Whether any optional shared materials or services would genuinely improve the club experience.
 - What should stay deliberately light-touch and out of scope.
 - Whether the next selection should be fiction, nonfiction, classic, contemporary, short, long, light, or challenging.
@@ -89,7 +92,9 @@ The monthly review should answer:
 
 Book Club is free to participate in.
 
-Some members may donate for shared supplemental materials and services. This should be treated as optional community support, not as a paid access requirement.
+Book Club has received a **$1,000 donor-funded retainer** for shared supplemental materials and services. This funding should be treated as community support, not as a paid access requirement.
+
+Some members may also donate for shared supplemental materials and services.
 
 Possible uses include:
 

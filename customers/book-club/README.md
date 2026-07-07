@@ -10,7 +10,8 @@ Book Club is a lightweight social and cultural operating context:
 - Purpose: shared reading, conversation, friendship, and continuity.
 - Operating challenge: keep the group lively and coordinated without making it feel procedural.
 - Participation model: free.
-- Optional support: members may donate for shared supplemental materials and services.
+- Donor-funded retainer: $1,000 for shared supplemental materials and services.
+- Optional support: members may also donate for shared supplemental materials and services.
 
 ## Executive OS Role
 
@@ -48,7 +49,9 @@ member interests
 
 Book Club is free to participate in.
 
-Some members may choose to donate money for shared supplemental materials or services, such as books, discussion guides, food, venue costs, printing, companion materials, or light coordination support.
+Book Club has received a **$1,000 donor-funded retainer** for shared supplemental materials and services. This funding supports the club without making participation paid.
+
+Some members may also choose to donate money for shared supplemental materials or services, such as books, discussion guides, food, venue costs, printing, companion materials, or light coordination support.
 
 Optional support should preserve the club's social character. It should never make participation feel transactional, mandatory, or over-managed.
 
