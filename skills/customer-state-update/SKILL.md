@@ -10,6 +10,8 @@ Examples:
 - A relationship changes across customers, such as one customer buying services from another.
 - A customer-facing, employee-facing, or internal-only language boundary needs correction.
 
+If the fact involves money, tax-sensitive classification, accounting evidence, payroll, donations, retainers, reimbursements, asset values, inventory, real estate, or nonprofit funds, run the `tax-financial-governance` check before updating customer state.
+
 ## Purpose
 
 Keep customer state coherent across the Anyang Intelligence repo.
@@ -37,6 +39,8 @@ Before editing, classify the new fact:
 - Customer-facing instruction.
 
 Do not collapse these categories. For example, a donor-funded retainer is not the same as paid participation.
+
+For any money-related fact, also classify the financial-governance status using `skills/tax-financial-governance/SKILL.md`. If classification is uncertain, hold the classification and prepare a professional-review question instead of presenting a final tax, accounting, payroll, or legal conclusion.
 
 ### 2. Identify Affected Documents
 
@@ -111,6 +115,7 @@ Include:
 - What the funds may support.
 - What must be decided before delivery begins.
 - What authority boundary applies.
+- Whether tax, accounting, payroll, nonprofit, real estate, or professional review is required.
 
 ### 7. Verify
 
@@ -129,4 +134,3 @@ Every customer state update should leave the repo with:
 - No obvious contradictions across portfolio docs.
 - A clear next decision if the fact creates an obligation.
 - Explicit separation between confirmed facts and hypotheses.
-
