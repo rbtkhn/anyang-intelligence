@@ -176,6 +176,12 @@ Use `skills/student-operating-system/parent-interface/SKILL.md` for parent-media
 
 Use `skills/student-operating-system/student-experience/SKILL.md` for child-safe learning experience design, student surveys, reflection prompts, proud-work choices, portfolio selection, and learner-interest artifacts.
 
+Use `skills/student-operating-system/learner-profile/SKILL.md` for building or updating learner profiles from parent goals, student voice, observed interests, strengths, friction, and portfolio evidence.
+
+Use `skills/student-operating-system/weekly-parent-review/SKILL.md` for converting weekly observations, activities, evidence, friction, and outcomes into parent-reviewed next-week decisions.
+
+Use `skills/student-operating-system/learning-plan/SKILL.md` for drafting parent-reviewed daily rhythms, weekly plans, activities, reading plans, projects, and next-cycle learning priorities.
+
 Do not mention these internal skill names in parent-facing materials.
 
 ## Subscription Hypothesis
