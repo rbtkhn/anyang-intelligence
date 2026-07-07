@@ -23,6 +23,9 @@ Anyang Intelligence should behave like a quiet club steward:
 | Field | Current starting point |
 | --- | --- |
 | Operating context | Recreational monthly book club |
+| Paid retainer received | $1,000 |
+| Retainer type | One-time services |
+| One-time service scope | Not yet planned |
 | Cadence | Monthly |
 | Core value | Shared reading, discussion, friendship, continuity |
 | Primary constraint | Keep coordination light and enjoyable |
@@ -32,6 +35,8 @@ Anyang Intelligence should behave like a quiet club steward:
 ## Executive Memory Objects
 
 - Members.
+- Paid retainer.
+- One-time service scope.
 - Reading preferences.
 - Books read.
 - Books nominated.
@@ -49,6 +54,8 @@ Anyang Intelligence should behave like a quiet club steward:
 The Executive OS should prepare structured decisions for:
 
 - Which book to read next.
+- What the $1,000 one-time retainer should include.
+- What should stay deliberately light-touch and out of scope.
 - Whether the next selection should be fiction, nonfiction, classic, contemporary, short, long, light, or challenging.
 - Who is hosting.
 - What date works best.
@@ -79,10 +86,28 @@ The monthly review should answer:
 - What logistics need attention?
 - Is the cadence healthy?
 
+## One-Time Retainer
+
+Book Club has paid a **$1,000 one-time retainer** for services that are not yet planned.
+
+The Executive OS should treat this as a scope-design obligation before delivery begins. The package should improve continuity and hospitality without making the club feel procedural.
+
+Possible package directions include:
+
+- Member preference and reading history setup.
+- Next 3-month book shortlist and selection rationale.
+- Discussion prompt kit for the next meeting.
+- Host logistics checklist.
+- Lightweight club memory archive.
+- Monthly cadence template.
+
+The package should not begin until the deliverable, timeline, tone, and human organizer approval rules are explicit.
+
 ## Initial 30-Day Plan
 
 ### Week 1: Club Memory Setup
 
+- Define the $1,000 one-time retainer scope before delivery begins.
 - Create the member list.
 - Record known reading preferences.
 - Record books already read.
