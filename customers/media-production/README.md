@@ -15,7 +15,7 @@ Media Production is a creative operating context:
 - Creative development client: Predictive History YouTube channel.
 - Predictive History need: create diverse supplementary artistic content that supports Predictive History videos.
 - Monthly operating budget: $1,000.
-- Outsourced production role: Creative Production Operator, human-AI hybrid agent.
+- Outsourced production role: Creative Production Operator.
 - Current contractor assignment: unfilled.
 - Planned contractor allocation for the role: $500 per month.
 - Starting discretionary production budget after contractor allocation: $500 per month.
@@ -40,9 +40,9 @@ The system does not replace creative judgment. It keeps the production company c
 Media Production begins as a small-budget creative operator funded by a first paying client:
 
 - Monthly revenue: $1,000 from Grace Gems.
-- Planned contractor allocation: $500 per month for the outsourced Creative Production Operator human-AI hybrid agent.
+- Planned contractor allocation: $500 per month for the outsourced Creative Production Operator contractor.
 - Remaining monthly budget: $500 for tools, subscriptions, contractors, asset purchases, distribution tests, or reserves.
-- First capacity assumption: the Creative Production Operator human-AI hybrid agent is responsible for turning briefs into finished or review-ready production work, but the role is currently unfilled.
+- First capacity assumption: the Creative Production Operator contractor is responsible for turning briefs into finished or review-ready production work, but the role is currently unfilled.
 
 The Executive OS should protect this constraint. It should recommend a production cadence that fits the available budget and should not assume a filled role, large team, paid ad budget, or unlimited creative bandwidth.
 

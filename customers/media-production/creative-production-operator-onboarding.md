@@ -4,7 +4,7 @@ Position: Creative Production Operator, Media Production
 
 Audience: Creative Production Operator
 
-Engagement model: outsourced human-AI hybrid contract role for Media Production, not direct employment by Anyang Intelligence.
+Engagement model: outsourced contract role for Media Production, not direct employment by Anyang Intelligence.
 
 ## Welcome
 
@@ -18,7 +18,7 @@ Your work supports these clients by making products, ideas, and source material 
 
 ## Position Summary
 
-The Creative Production Operator is a human-AI hybrid agent who turns approved ideas into production-ready creative assets.
+The Creative Production Operator uses approved AI tools and human judgment to turn approved ideas into production-ready creative assets.
 
 The role includes:
 
