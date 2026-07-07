@@ -8,11 +8,11 @@ Employee: Cici
 
 Welcome to Media Production.
 
-Your job is to help turn Predictive History ideas, source material, and episode topics into clear, useful, high-quality media assets. You are not expected to understand the whole system on day one. This guide explains the purpose of the work, what good output looks like, and how to begin.
+Your job is to help turn client products, customer questions, source material, and media topics into clear, useful, high-quality creative assets. You are not expected to understand the whole system on day one. This guide explains the purpose of the work, what good output looks like, and how to begin.
 
-The first client is the Predictive History YouTube channel. Predictive History is an educational media project about learning from history, judgment, prediction, evidence, and civilizational patterns.
+The first paying client is Grace Gems, a marketplace business that needs product, listing, social, and customer-support creative assets. The first creative development lane is the Predictive History YouTube channel, an educational media project about learning from history, judgment, prediction, evidence, and civilizational patterns.
 
-Your work supports that mission by making the material easier to understand, remember, and share.
+Your work supports these clients by making products, ideas, and source material easier to understand, trust, remember, and share.
 
 ## Position Summary
 
@@ -46,7 +46,27 @@ The system helps the team decide:
 
 You should think of this system as the shared memory around the work. You bring attention, judgment, execution, and taste.
 
-## First Client: Predictive History
+## First Work Contexts
+
+### Grace Gems
+
+Grace Gems is the first paying client.
+
+Grace Gems work should help buyers understand products and help the owner/operator answer customer questions more clearly.
+
+Good Grace Gems assets should support one or more of these:
+
+- Product clarity.
+- Buyer trust.
+- Listing improvement.
+- Customer support.
+- WeChat or social selling.
+- Promotion.
+- Reusable FAQ or objection-handling content.
+
+Do not invent product details, prices, dimensions, materials, authenticity claims, shipping promises, or customer commitments.
+
+### Predictive History
 
 Predictive History should not be treated as generic history content.
 
@@ -75,7 +95,7 @@ Avoid decorative content that looks good but does not help the viewer learn.
 
 ### 1. Turn Source Material Into Production Briefs
 
-When given a Predictive History topic, lecture, chapter, transcript, or episode idea, create a short production brief.
+When given a client product, customer question, Predictive History topic, lecture, chapter, transcript, or episode idea, create a short production brief.
 
 The brief should answer:
 
@@ -132,9 +152,9 @@ Before submitting work for approval, check it carefully.
 
 Ask:
 
-- Does this match the Predictive History topic?
-- Does this help the viewer understand the lesson?
-- Is anything historically misleading?
+- Does this match the client product, customer question, or media topic?
+- Does this help the buyer, customer, viewer, or audience understand the point?
+- Is anything historically, commercially, or product-wise misleading?
 - Is the visual tone appropriate?
 - Is the asset too generic?
 - Is the asset too sensational?
@@ -167,7 +187,7 @@ Your job is to help the work travel across formats without losing coherence.
 Each week, expect a simple operating rhythm:
 
 1. Review priorities.
-2. Confirm which Predictive History topic or episode is active.
+2. Confirm which client product, customer question, topic, or episode is active.
 3. Create or update the production brief.
 4. Generate concept options.
 5. Produce selected drafts.
@@ -415,13 +435,15 @@ Pass standard:
 
 - Read this guide.
 - Review the Media Production customer folder.
+- Learn what Grace Gems needs from Media Production.
 - Learn what Predictive History is.
+- Review one sample Grace Gems product or customer question.
 - Review one sample Predictive History topic.
 - Create your first production brief.
 
 ### Week 2: Produce First Concepts
 
-- Create concept sets for one Predictive History topic.
+- Create concept sets for one Grace Gems product/customer-support need or one Predictive History topic.
 - Submit options for review.
 - Learn the quality gate.
 - Revise based on feedback.
@@ -441,7 +463,7 @@ Pass standard:
 
 ## Day-One Assignment
 
-Your first assignment is to create a one-page production brief for one Predictive History topic.
+Your first assignment is to create a one-page production brief for one Grace Gems product/customer-support need or one Predictive History topic.
 
 The brief should include:
 

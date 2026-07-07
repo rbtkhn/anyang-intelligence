@@ -6,10 +6,10 @@ This matrix compares current customer installations so Anyang Intelligence can s
 
 | Customer | Domain | Cadence | Primary OS job | Trust level |
 | --- | --- | --- | --- | --- |
-| [Book Club](book-club/README.md) | Recreational community | Monthly | Keep selection, hosting, discussion, and memory easy to sustain | Low |
+| [Book Club](book-club/README.md) | Recreational community | Monthly | Keep selection, hosting, discussion, memory, and donor-funded shared materials easy to sustain without making participation transactional | Low |
 | [Elementary School](elementary-school/README.md) | Personalized homeschool experience | Daily / weekly / school-year cycles | Coordinate learner profile, parent-reviewed plans, portfolio evidence, and safe personalization; possible $100/month family subscription | Very high |
 | [Grace Gems](grace-gems/README.md) | Marketplace business | Daily / weekly | Gate listings, protect margin, improve marketplace execution, and learn from customer signals | Medium |
-| [Media Production](media-production/README.md) | Digital media production | Weekly / campaign-based | Produce diverse supplementary artistic content for Predictive History through editorial judgment, production, quality gates, distribution support, and audience learning | Medium |
+| [Media Production](media-production/README.md) | Digital media production | Weekly / campaign-based | Serve Grace Gems as first paying client while maintaining Predictive History as creative development lane; coordinate production, quality gates, abundance ledger, and audience/customer learning | Medium |
 | [Mountain Home](mountain-home/README.md) | Property and asset governance | Weekly / monthly / seasonal | Rank risk, preserve continuity, coordinate maintenance, and prepare for seasonal hazards | High |
 | [Non-Profit](non-profit/README.md) | Mission-driven organization | Monthly / board / grant cycles | Align mission, programs, donors, real estate assets, volunteers, reporting, and impact evidence | High |
 
@@ -17,10 +17,10 @@ This matrix compares current customer installations so Anyang Intelligence can s
 
 | Customer | Core memory objects |
 | --- | --- |
-| Book Club | Members, preferences, books read, nominations, hosts, dates, discussion prompts, insights, recommendations |
+| Book Club | Members, preferences, books read, nominations, hosts, dates, discussion prompts, insights, recommendations, donor-funded retainer, optional donations, shared supplemental materials |
 | Elementary School | Learner profile, interests, parent goals, curriculum choices, daily plans, resources, portfolio artifacts, progress evidence, safeguards |
 | Grace Gems | Storefronts, product families, listing candidates, margin assumptions, policy checks, quality scores, customer promise risks |
-| Media Production | Editorial thesis, Predictive History client context, audience segments, content pillars, topic backlog, artistic direction options, active productions, quality notes, publishing calendar, performance metrics |
+| Media Production | Editorial thesis, Grace Gems service package, Grace Gems product/promotion backlog, Grace Gems customer questions, Predictive History client context, abundance principle, creative abundance ledger, active productions, quality notes, publishing calendar, performance metrics |
 | Mountain Home | Property profile, structures, critical systems, risks, wildfire zones, utilities, water, septic, access, maintenance backlog, mitigation proof |
 | Non-Profit | Mission, theory of change, programs, donors, grants, $200,000 real estate portfolio, volunteers, partners, reporting deadlines, impact metrics, stories, risks |
 
@@ -28,10 +28,10 @@ This matrix compares current customer installations so Anyang Intelligence can s
 
 | Customer | Decisions the OS prepares |
 | --- | --- |
-| Book Club | Next book, host, date, discussion format, cadence adjustments |
+| Book Club | Next book, host, date, discussion format, cadence adjustments, donor-fund stewardship, optional shared-material support |
 | Elementary School | Daily learning plan, weekly focus, resource/activity fit, concept review, portfolio evidence, outside-support escalation |
 | Grace Gems | Publish/revise/hold/promote listing, storefront routing, ad eligibility, product pipeline priority, listing correction |
-| Media Production | Predictive History topic support, artistic idea selection, format choice, channel priority, production readiness, repurposing, editorial response to audience signals |
+| Media Production | Grace Gems deliverable priority, product/customer-support asset selection, Predictive History topic support, artistic idea selection, format choice, production readiness, abundance gate, repurposing, editorial response to audience/customer signals |
 | Mountain Home | Top 5 risk actions, contractor escalation, wildfire mitigation priority, continuity gaps, water/septic/access review |
 | Non-Profit | Program priority, donor/grant follow-up, real estate portfolio review, reporting risk, volunteer/partner coordination, board decision, impact evidence readiness |
 
@@ -50,7 +50,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 
 | Customer | Governance boundary |
 | --- | --- |
-| Book Club | Light: protect tone, consent, and organizer authority |
+| Book Club | Light: protect tone, consent, organizer authority, free participation, and non-transactional donor support |
 | Elementary School | Very strict: child privacy, parent authority, legal/accountability requirements, outside-support escalation, child-facing decision approval |
 | Grace Gems | Moderate: human approval for publishing, pricing, ad spend, customer messages, and policy-sensitive claims |
 | Media Production | Moderate: human approval for creative direction, publication, client commitments, rights, and external claims |
@@ -69,7 +69,7 @@ This matrix compares current customer installations so Anyang Intelligence can s
 | Calendar / cadence engine | All | The OS needs recurring reviews, due dates, seasonal gates, and event triggers |
 | Quality gate | Grace Gems, Media Production, Elementary School, Non-Profit | Gates prevent premature external action |
 | Communication draft queue | Elementary School, Non-Profit, Grace Gems, Book Club, Media Production | AI may draft, but humans approve external messages |
-| Evidence / proof ledger | Grace Gems, Mountain Home, Non-Profit, Media Production, Elementary School | Claims, decisions, and reviews need receipts |
+| Evidence / proof ledger | Grace Gems, Mountain Home, Non-Profit, Media Production, Elementary School, Book Club | Claims, decisions, reviews, donor-funded support, and reusable assets need receipts |
 | Learning loop | All | Each install should update future decisions from outcomes |
 
 ## Emerging Product Thesis
