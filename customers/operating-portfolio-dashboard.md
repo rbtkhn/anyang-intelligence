@@ -8,7 +8,7 @@ It is a working control panel, not a final strategy document.
 
 | Customer | Current status | Revenue / asset status | Active obligation | Next decision | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| [Media Production](media-production/README.md) | Active operating company | $1,000/month Grace Gems retainer; $500/month Cici salary; $500/month remaining budget | Deliver Grace Gems monthly creative support; onboard Cici; maintain Predictive History creative development lane | Confirm first Grace Gems product backlog and first-week deliverables | High |
+| [Media Production](media-production/README.md) | Active operating company | $1,000/month Grace Gems retainer; $500/month Creative Production Operator salary allocation; $500/month remaining budget | Deliver Grace Gems monthly creative support; fill/onboard the Creative Production Operator role; maintain Predictive History creative development lane | Confirm first Grace Gems product backlog and first-week deliverables | High |
 | [Grace Gems](grace-gems/README.md) | Active business client and internal proof case | Pays Media Production $1,000/month for creative support; business economics still pending owner intake | Provide customer transcripts, top listings, cost/pricing context, and owner decision boundaries | Convert intake response into first marketplace operating review | Medium-high |
 | [Elementary School](elementary-school/README.md) | Paid discovery / service design | $1,000 one-time retainer received; $100/month subscription remains a hypothesis | Define one-time retainer scope before delivery begins | Choose the first one-time package deliverable and safety boundary | Medium |
 | [Non-Profit](non-profit/README.md) | Early customer hypothesis | Holds real estate portfolio currently worth $200,000 | Define mission, portfolio stewardship needs, board/leadership cadence, and operating pain | Decide whether first offer is board packet, asset review, or donor/program operating review | Medium-low |
@@ -17,10 +17,10 @@ It is a working control panel, not a final strategy document.
 
 ## Current Cash Picture
 
-Known cash events:
+Known cash events and allocations:
 
 - Media Production receives $1,000/month from Grace Gems.
-- Media Production pays Cici $500/month.
+- Media Production has a planned $500/month salary allocation for the Creative Production Operator role; no current employee is assigned.
 - Media Production has $500/month remaining for tools, light asset costs, experiments, support, or margin.
 - Elementary School has paid a $1,000 one-time retainer for services not yet planned.
 - Book Club has received a $1,000 donor-funded retainer for shared supplemental materials and services; participation remains free.
@@ -39,9 +39,9 @@ Unknown or pending:
 ### Media Production
 
 - Operate the Grace Gems $1,000/month service package.
-- Protect Cici's $500/month salary commitment.
-- Keep Cici's work within visible capacity.
-- Complete Cici pre-training review once her GitHub package is submitted.
+- Protect the $500/month Creative Production Operator salary allocation until the role is filled.
+- Keep Creative Production Operator capacity visible before accepting new work.
+- Fill/onboard the Creative Production Operator role before assuming employee output.
 - Maintain Predictive History as a creative development lane without letting it displace paid Grace Gems obligations.
 
 ### Grace Gems
@@ -79,7 +79,7 @@ Unknown or pending:
 ## Immediate Decision Queue
 
 1. **Media Production:** What are the first Grace Gems deliverables for week one?
-2. **Cici:** What standard will be used to review her GitHub pre-training package?
+2. **Creative Production Operator:** What hiring/onboarding standard will be used before assigning production work?
 3. **Elementary School:** What should the $1,000 one-time retainer produce?
 4. **Grace Gems:** What should happen when the owner/operator intake response arrives?
 5. **Non-Profit:** What is the first operating review surface for a $200,000 real estate portfolio?
@@ -88,7 +88,7 @@ Unknown or pending:
 
 ## Current Interpretation
 
-Media Production is the most concrete operating company because it has money, an employee, a paid client, a service package, a training workflow, and a quality gate.
+Media Production is the most concrete operating company because it has money, a defined production role, a paid client, a service package, a training workflow, and a quality gate.
 
 Grace Gems is both a customer of the Executive OS and the first paying client of Media Production. That makes it the strongest internal proof loop.
 
@@ -105,7 +105,7 @@ Do not let interesting unpaid complexity displace paid obligations.
 Current priority order:
 
 1. Serve Grace Gems through Media Production.
-2. Review Cici's pre-training package when submitted.
+2. Fill/onboard the Creative Production Operator role.
 3. Scope the Elementary School one-time retainer.
 4. Convert Grace Gems owner intake into the first business operating review.
 5. Keep Book Club light while deciding how to steward donor-funded shared-material support.

@@ -15,9 +15,10 @@ Media Production is a creative operating context:
 - Creative development client: Predictive History YouTube channel.
 - Predictive History need: create diverse supplementary artistic content that supports Predictive History videos.
 - Monthly operating budget: $1,000.
-- First employee: Cici, salary $500 per month.
-- First employee role: Creative Production Operator.
-- Starting discretionary production budget after Cici salary: $500 per month.
+- Production role: Creative Production Operator.
+- Current employee assignment: unfilled.
+- Planned salary allocation for the role: $500 per month.
+- Starting discretionary production budget after salary allocation: $500 per month.
 
 ## Executive OS Role
 
@@ -39,11 +40,11 @@ The system does not replace creative judgment. It keeps the production company c
 Media Production begins as a small-budget creative operator funded by a first paying client:
 
 - Monthly revenue: $1,000 from Grace Gems.
-- Payroll commitment: $500 per month for Cici.
+- Planned salary allocation: $500 per month for the Creative Production Operator role.
 - Remaining monthly budget: $500 for tools, subscriptions, contractors, asset purchases, distribution tests, or reserves.
-- First capacity assumption: the Creative Production Operator is responsible for turning briefs into finished or review-ready production work. Cici currently fills this role.
+- First capacity assumption: the Creative Production Operator is responsible for turning briefs into finished or review-ready production work, but the role is currently unfilled.
 
-The Executive OS should protect this constraint. It should recommend a production cadence that fits the available budget and should not assume a large team, paid ad budget, or unlimited creative bandwidth.
+The Executive OS should protect this constraint. It should recommend a production cadence that fits the available budget and should not assume a filled role, large team, paid ad budget, or unlimited creative bandwidth.
 
 ## Operating Thesis
 

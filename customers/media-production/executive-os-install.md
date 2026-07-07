@@ -34,8 +34,8 @@ Anyang Intelligence should behave like the executive layer of the production com
 | Creative development need | Diverse supplementary artistic content for Predictive History videos |
 | Core work | Produce and distribute digital media and supplementary artistic assets |
 | Monthly budget | $1,000 |
-| First employee | Cici |
-| First employee role | Creative Production Operator |
+| Current employee assignment | Unfilled |
+| Production role | Creative Production Operator |
 | Creative Production Operator salary allocation | $500 per month |
 | Remaining monthly production budget | $500 |
 | Primary cadence | Editorial planning, production, publishing, review |
@@ -157,8 +157,8 @@ The weekly review should answer:
 - Confirm the Grace Gems $1,000/month service package.
 - Create the first Grace Gems product and customer-support creative backlog.
 - Capture Predictive History channel context, audience, topics, and visual needs.
-- Confirm the Creative Production Operator's weekly availability, production strengths, and preferred workflow.
-- Create the first monthly budget view: $500 salary commitment and $500 discretionary production budget.
+- Fill or assign the Creative Production Operator role, then confirm weekly availability, production strengths, and preferred workflow.
+- Create the first monthly budget view: $500 salary allocation and $500 discretionary production budget.
 - Map content pillars and audience segments.
 - Inventory active ideas and productions.
 - Create the first production board.

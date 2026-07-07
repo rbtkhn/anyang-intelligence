@@ -136,6 +136,6 @@ This service package is working when:
 - Product listings and selling messages become clearer.
 - Customer questions turn into better FAQ and content assets.
 - The Creative Production Operator's workload is visible and sustainable.
-- The $1,000 retainer covers the salary commitment and operating needs.
+- The $1,000 retainer covers the salary allocation and operating needs.
 - The monthly review produces better priorities for the next month.
 - The [creative abundance ledger](creative-abundance-ledger-template.md) shows product knowledge and customer questions turning into reusable assets.

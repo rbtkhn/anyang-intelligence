@@ -178,7 +178,7 @@ Preserve these distinctions unless the operator gives a new confirmed fact:
 - Elementary School's `$1,000` retainer is separate from the `$100/month` subscription hypothesis.
 - Non-Profit's `$200,000` real estate portfolio is an asset value, not operating revenue.
 - Mountain Home has property stewardship implications but no current revenue.
-- Media Production's `$500/month` salary allocation is an operating cost/payroll-like obligation that requires appropriate human payroll/accounting treatment.
+- Media Production's `$500/month` Creative Production Operator salary allocation is a planned payroll-like operating allocation while the role is unfilled; any actual payment requires appropriate human payroll/accounting treatment.
 
 ## Boundaries
 

@@ -17,7 +17,7 @@ The goal is not to declare final products. The goal is to identify which install
 
 ## Current Ranking
 
-1. **Media Production** has the cleanest near-term B2B shape: clear buyer, active $1,000/month Grace Gems retainer, one named employee, lower safety burden than education, and measurable outputs.
+1. **Media Production** has the cleanest near-term B2B shape: clear buyer, active $1,000/month Grace Gems retainer, defined production role, lower safety burden than education, and measurable outputs.
 2. **Elementary School** has a strong subscription idea, but the trust, safety, accountability, and product quality bar is much higher.
 3. **Non-Profit** has a credible advisory/install path, especially because real estate stewardship adds concrete asset governance.
 4. **Grace Gems** is the best internal proof case, but should prove value internally before becoming an external marketplace-seller offer.
