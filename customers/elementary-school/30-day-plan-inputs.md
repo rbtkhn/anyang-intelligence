@@ -143,6 +143,7 @@ Collect:
 - Reading confidence level as observed by the parent.
 - Whether the child prefers fiction, nonfiction, graphic novels, joke books, magazines, field guides, poetry, recipes, or read-alouds.
 - Any reading frustration or avoidance patterns.
+- Whether the parent wants Elementary School to observe basket choices and make next-basket recommendations from those signals.
 
 Starter basket target:
 
@@ -152,6 +153,12 @@ Starter basket target:
 - 1 interest-led nonfiction book.
 - 1 parent read-aloud.
 - Optional fun format tied to the child's interests.
+
+Recommendation posture:
+
+- observe what the student chooses, avoids, rereads, and requests
+- gather insight from those patterns
+- use the insight to recommend the next basket more accurately
 
 ## Student Portfolio Setup
 

@@ -14,6 +14,50 @@ The reading basket helps the parent:
 - Turn reading into portfolio evidence without making it feel like a test.
 - Build a better next book list from real engagement.
 
+Elementary School uses the reading basket as an observation surface:
+
+- observe what the student chooses, avoids, rereads, abandons, or asks for
+- gather insight about interest, confidence, friction, and format preference
+- make better next-basket recommendations from those live signals
+
+The goal is not just to offer books. The goal is to learn from student choices and improve the next recommendation cycle.
+
+## Why A Basket Helps Cognitively
+
+A curated reading basket creates an intermediate layer between the full bookshelf and the physical place where the child likes to read.
+
+That matters because a full bookshelf often carries too much choice, too much visual noise, and too much decision work. Even when the home has many good books, the child still has to scan, compare, reject, and choose before reading even begins.
+
+The basket lowers that cognitive load.
+
+Instead of asking the child to search the whole room, the system offers a small, prepared field of likely-good options near the place where reading already feels most natural. This helps in several ways:
+
+- It reduces decision fatigue.
+- It lowers the activation energy needed to begin.
+- It makes success more likely because the set is pre-filtered for fit.
+- It preserves interest without overwhelming working memory.
+- It helps the child build a stronger association between a reading place and a manageable reading choice.
+
+In practical terms, the basket acts like a cognitive bridge:
+
+```text
+full bookshelf
+  -> curated basket
+  -> preferred reading spot
+  -> easier start
+  -> more usable observation for the parent
+```
+
+The full bookshelf still matters. It remains the larger reservoir of possibility. But the basket turns that larger reservoir into an actionable, child-sized environment.
+
+This is especially helpful when a child:
+
+- gets overwhelmed by too many options
+- avoids starting even when they like books
+- benefits from visual simplicity
+- needs confidence books to be easy to find
+- does better when reading begins with invitation rather than search
+
 ## First Basket
 
 Start with 5-10 books:
@@ -64,6 +108,41 @@ Parent observation prompts:
 - Was the difficulty too easy, right-sized, or too hard?
 - What should the next basket include?
 
+## Recommendation Loop
+
+Elementary School should treat reading-basket use as a small recommendation system grounded in real student behavior.
+
+The loop looks like:
+
+```text
+student chooses from basket
+  -> parent observes one or two signals
+  -> Elementary School gathers insight
+  -> next basket recommendation improves
+```
+
+Useful signals include:
+
+- which book is chosen first
+- which books are ignored repeatedly
+- which books are reread
+- which formats create confidence
+- which topics create curiosity
+- which books require help immediately
+- which books create visible frustration or drift
+
+From those signals, Elementary School can recommend:
+
+- more books like this
+- fewer books like this
+- easier confidence books
+- more read-aloud support
+- more nonfiction
+- more visual formats
+- one new stretch option
+
+The recommendation logic should stay light and observational. It is not a grading system.
+
 ## Portfolio Evidence
 
 Save light evidence only when useful:
@@ -95,6 +174,12 @@ Then choose one next reading action:
 - Add a read-aloud series.
 - Add books connected to a current interest.
 - Slow down and reread favorites.
+
+If useful, add one short insight sentence:
+
+- `Student chose animal nonfiction first three times this week. Recommend more image-rich nonfiction.`
+- `Student avoided the stretch book but reread the joke book twice. Keep confidence and humor high next round.`
+- `Student needed immediate help with dense pages. Reduce text load and increase supported reading.`
 
 ## Success Criteria
 
