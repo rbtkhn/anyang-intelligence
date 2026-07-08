@@ -180,7 +180,7 @@ Preserve these distinctions unless the operator gives a new confirmed fact:
 
 - Grace Gems paying Media Production is service revenue to Media Production, but Grace Gems business economics remain unknown.
 - Book Club participation is free; donor-funded support is not paid access.
-- Elementary School's `$1,000` retainer is separate from the `$100/month` subscription hypothesis.
+- Elementary School's `$1,000` retainer is payment from Elementary School to Anyang Intelligence for a scoped 30-Day Personalized Learning Plan for new students, including onboarding. Customer pricing has not been designed yet.
 - Non-Profit's `$200,000` real estate portfolio is an asset value, not operating revenue.
 - Mountain Home has property stewardship implications but no current revenue.
 - Media Production's `$500/month` Creative Production Operator allocation is a planned outsourced contractor/service-expense allocation while the role is unfilled; any actual payment requires appropriate contract, invoice, payment, and tax/accounting review.

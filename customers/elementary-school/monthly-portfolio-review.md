@@ -13,7 +13,7 @@ Use the monthly portfolio review to:
 - Identify milestones worth celebrating.
 - Spot recurring interests and patterns.
 - Choose better books, projects, practice, and support for next month.
-- Make the `$100/month` value visible through concrete evidence and clearer parent decisions.
+- Make the parent-visible value of the Student Operating System visible through concrete evidence and clearer parent decisions.
 
 ## Source Materials
 
@@ -198,7 +198,7 @@ It may include:
 
 Do not include sensitive learning concerns, private parent notes, diagnosis-like language, or family details without explicit parent approval.
 
-## `$100/Month` Value Report
+## Parent-Visible Value Report
 
 At the end of the review, name the parent-visible value created:
 

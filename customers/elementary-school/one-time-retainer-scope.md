@@ -1,22 +1,35 @@
 # One-Time Retainer Scope
 
-This document defines what the **$1,000 one-time retainer** produces before delivery begins.
+This document defines what the **$1,000 one-time retainer** from Elementary School to Anyang Intelligence produces before delivery begins.
 
 It is a hybrid scope document: internal enough to govern Anyang Intelligence execution, but clean enough to adapt into parent-facing language.
 
 ## Scope Decision
 
-The primary one-time package is a **30-Day Personalized Learning Plan** for a parent-led elementary learner.
+The primary one-time package is a **30-Day Personalized Learning Plan** for new students in a parent-led elementary learning context, including onboarding.
 
-The retainer is a one-time service package. It is not the `$100/month` subscription hypothesis, and it should not be treated as an ongoing support agreement unless a separate subscription or follow-on scope is explicitly approved.
+The retainer is a one-time service package. It is not customer pricing, a subscription hypothesis, or an ongoing support agreement. No customer-pricing model has been designed yet.
+
+## Payment Record
+
+- Payer: Elementary School.
+- Payee: Anyang Intelligence.
+- Amount: $1,000.
+- Payment type: one-time retainer.
+- Working classification: retainer/prepaid service obligation.
+- Deliverable: 30-Day Personalized Learning Plan for new students, including onboarding.
+- Pricing status: customer pricing not yet designed.
+- Evidence needed: invoice, receipt, payment record, or other approved accounting evidence.
+- Review needed: owner/bookkeeper/CPA review if final accounting or tax classification is needed.
 
 ## Purpose
 
-The package should help the parent move from scattered learning intentions to a usable first-month plan.
+The package should help a parent move from scattered new-student learning intentions to a usable first-month plan and onboarding path.
 
 It should define:
 
 - What the learner will try during the first 30 days.
+- What onboarding steps should happen before or during the first week.
 - How the parent will review and approve the plan.
 - How Khan Academy Kids, the reading basket, and the student portfolio support the plan.
 - What evidence will be saved.
@@ -31,6 +44,7 @@ The deliverable is a **30-Day Personalized Learning Plan**.
 It should include:
 
 - A learner context summary based on parent goals, learner interests, observed signals, and existing resources.
+- A new-student onboarding sequence.
 - A 30-day rhythm that balances reading, Khan Academy Kids, hands-on practice, projects, enrichment, breaks, and parent observation.
 - A weekly plan structure for four weeks.
 - A reading basket plan.
@@ -78,6 +92,7 @@ If these inputs are incomplete, the plan may still be drafted as a starter plan,
 The one-time retainer includes:
 
 - One 30-day parent-reviewed learning plan.
+- One new-student onboarding sequence.
 - One learner context summary.
 - One suggested daily/weekly rhythm.
 - Four weekly focus outlines.
@@ -107,7 +122,8 @@ This one-time retainer does not include:
 - Ongoing weekly planning after the first 30 days.
 - Parent messaging or family-facing reports beyond the agreed scope.
 - Outside specialist conclusions.
-- Conversion into the `$100/month` subscription hypothesis.
+- Customer pricing design.
+- Conversion into a recurring subscription or monthly service.
 
 If any out-of-scope need appears, the correct action is to flag it for parent review and, when appropriate, teacher, tutor, clinician, specialist, attorney, district, or other professional support.
 
@@ -169,7 +185,7 @@ The retainer is complete when the parent has:
 - Clear parent decisions for the next month.
 - Explicit safety, authority, and out-of-scope boundaries.
 
-Completion means the scoped package has been delivered for parent review. It does not mean the plan has produced mastery, solved every learning need, met all legal/accountability requirements, or created an ongoing subscription.
+Completion means the scoped package has been delivered for parent review. It does not mean the plan has produced mastery, solved every learning need, met all legal/accountability requirements, established customer pricing, or created an ongoing subscription.
 
 ## Next Step After Delivery
 
@@ -177,7 +193,7 @@ After the 30-day plan is delivered and reviewed, the parent may choose one of th
 
 - Use the plan independently.
 - Request a revised 30-day plan.
-- Scope a follow-on monthly subscription.
+- Scope separately approved follow-on work.
 - Focus on one component, such as reading basket, portfolio review, learner profile, or weekly parent review.
 - Pause and collect more evidence before deciding.
 

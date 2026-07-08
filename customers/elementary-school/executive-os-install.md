@@ -23,10 +23,12 @@ Anyang Intelligence should behave like a careful Student Operating System layer:
 | Field | Current starting point |
 | --- | --- |
 | Operating context | Student Operating System |
-| Commercial hypothesis | Parent-facing subscription at $100/month per family |
+| Customer pricing | Not yet designed |
 | Paid retainer received | $1,000 |
 | Retainer type | One-time services |
-| One-time service scope | Not yet planned |
+| Payer | Elementary School |
+| Payee | Anyang Intelligence |
+| One-time service scope | 30-Day Personalized Learning Plan for new students, including onboarding |
 | Grade band | Elementary / K-5 |
 | Startup iPad app | Khan Academy Kids |
 | Core work | Parent-led personalized learning, daily plans, enrichment, progress evidence, reflection |
@@ -76,7 +78,7 @@ Anyang Intelligence should behave like a careful Student Operating System layer:
 The Executive OS should prepare structured decisions for:
 
 - What the learner should work on today.
-- What the $1,000 one-time retainer should include.
+- What inputs are needed to deliver the $1,000 one-time retainer safely.
 - What should be explicitly out of scope for the one-time service.
 - What must be discovered before delivery begins.
 - Which subject, project, or skill needs attention this week.
@@ -150,7 +152,7 @@ Khan Academy Kids is the first default iPad app in the Student Operating System 
 
 Why it fits:
 
-- It is free and avoids creating a new subscription commitment while the one-time retainer scope is still unplanned.
+- It is free and avoids creating a new subscription commitment while Anyang Intelligence builds the first scoped 30-day new-student plan.
 - It is designed for young children and fits a 7-year-old learner better than a drill-first or web-first platform as the first iPad app.
 - It can support reading, writing, language, math, books, videos, creative activities, and social-emotional learning.
 - It gives the parent a low-friction way to observe engagement, frustration, preferences, and early skill signals.
@@ -184,11 +186,13 @@ Use `skills/student-operating-system/learning-plan/SKILL.md` for drafting parent
 
 Do not mention these internal skill names in parent-facing materials.
 
-## Subscription Hypothesis
+## Customer Pricing
 
-The first commercial version could be a parent subscription priced at **$100/month per family**.
+Customer pricing has not been designed yet.
 
-The subscription should only be considered viable if it can reliably provide:
+The current money fact is the **$1,000 one-time retainer** paid from Elementary School to Anyang Intelligence for a 30-Day Personalized Learning Plan for new students, including onboarding.
+
+Pricing work should only begin after the build can reliably provide:
 
 - Parent-reviewed daily and weekly learning plans.
 - Learner profile and progress memory.
@@ -196,15 +200,14 @@ The subscription should only be considered viable if it can reliably provide:
 - Portfolio evidence organization.
 - Weekly parent review.
 - Clear child-safety and human-authority boundaries.
-- At least `$100/month` of visible parent value through saved planning time, better learning fit, clearer evidence, and reduced parent friction.
 
-This price point should be tested as a hypothesis, not treated as a validated offer.
+No recurring price point should be treated as a validated offer until customer-pricing work is explicitly opened.
 
 ## One-Time Retainer
 
-Elementary School has paid a **$1,000 one-time retainer** for Student Operating System services that are not yet planned.
+Elementary School has paid Anyang Intelligence a **$1,000 one-time retainer** for a 30-Day Personalized Learning Plan for new students, including onboarding.
 
-The Executive OS should treat this as a scope-design obligation before treating it as delivery work. The first decision is what the one-time package should produce.
+The Executive OS should treat this as a scoped delivery obligation. The first delivery decision is what inputs are needed before the 30-day new-student plan can be finalized.
 
 Possible package directions include:
 
@@ -212,14 +215,14 @@ Possible package directions include:
 - Student startup survey and learner-interest artifact.
 - Startup Bundle package.
 - Reading basket setup and first weekly review.
-- First 30-day personalized homeschool plan.
+- First 30-day personalized homeschool plan for new students, including onboarding.
 - Portfolio and progress evidence setup.
 - Student portfolio setup for physical work, digital work, proud work, milestones, and reports.
 - Monthly portfolio review report.
 - Parent review rhythm and weekly planning template.
 - Prototype personalized learning experience for one learner.
 
-The package should not begin until scope, deliverables, timeline, child-safety boundaries, and parent approval rules are explicit.
+The package should not begin delivery until inputs, timeline, child-safety boundaries, and parent approval rules are explicit.
 
 ## Weekly Parent Review
 
@@ -237,7 +240,7 @@ The weekly review should answer:
 
 ### Week 1: Learner Profile and Family Goals
 
-- Define the $1,000 one-time retainer scope before delivery begins.
+- Confirm the $1,000 one-time retainer delivery inputs, timeline, safety boundary, and parent approval rules before delivery begins.
 - Capture learner interests, strengths, challenges, rhythms, and current resources.
 - Capture parent goals and non-negotiable boundaries.
 - Complete the brief student survey and save it as the first learner-interest artifact in the student portfolio.

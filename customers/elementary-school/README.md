@@ -1,6 +1,6 @@
 # Elementary School
 
-Elementary School is the first customer installation for the **Student Operating System**, a parent-led learning operating system built on the Anyang Intelligence Executive OS method.
+Elementary School is an Anyang Intelligence build for the **Student Operating System**, a parent-led learning operating system built on the Anyang Intelligence Executive OS method.
 
 ## Organization
 
@@ -10,8 +10,10 @@ The Student Operating System is a high-trust home education operating context:
 - Cadence: daily learning rhythm, weekly parent review, monthly portfolio review, seasonal learning goals, and school-year planning.
 - Operating challenge: create a rich individualized learning experience without replacing parent authority, child safety, human care, or required education accountability.
 - Paid retainer received: $1,000.
+- Payer: Elementary School.
+- Payee: Anyang Intelligence.
 - Retainer type: one-time services.
-- Service scope: 30-Day Personalized Learning Plan, defined in [one-time-retainer-scope.md](one-time-retainer-scope.md).
+- Service scope: 30-Day Personalized Learning Plan for new students, including onboarding, defined in [one-time-retainer-scope.md](one-time-retainer-scope.md).
 - Starter iPad app: Khan Academy Kids, free, parent-supervised, age-appropriate for a 7-year-old, and part of the initial resource bundle.
 
 ## Executive OS Role
@@ -69,21 +71,19 @@ See [student-portfolio.md](student-portfolio.md) for the place to store physical
 
 See [monthly-portfolio-review.md](monthly-portfolio-review.md) for the first reporting layer built from the student portfolio.
 
-## Commercial Hypothesis
+## Customer Pricing
 
-Student Operating System could become a parent-facing subscription service.
+Customer pricing has not been designed yet.
 
-Early pricing hypothesis: **$100/month per family** for a Student Operating System that helps parents plan, adapt, document, and reflect on elementary learning.
-
-This is a working assumption, not final pricing. It should be validated against parent willingness to pay, safety expectations, curriculum accountability needs, and the cost of responsible support.
+The current money fact is only the $1,000 one-time retainer from Elementary School to Anyang Intelligence for the scoped 30-Day Personalized Learning Plan for new students, including onboarding. Do not treat this as a subscription price, recurring customer price, or validated market offer.
 
 ## Paid Retainer
 
-Elementary School has paid a **$1,000 one-time retainer** for a scoped 30-Day Personalized Learning Plan.
+Elementary School has paid Anyang Intelligence a **$1,000 one-time retainer** for a scoped 30-Day Personalized Learning Plan for new students, including onboarding.
 
 This should be treated as a paid discovery and service-design obligation. The one-time service package is defined in [one-time-retainer-scope.md](one-time-retainer-scope.md) before delivery begins.
 
-The retainer should not automatically become the $100/month subscription hypothesis. It is a separate cash event and should be scoped intentionally.
+The retainer should not automatically become customer pricing. It is a separate cash event and should be scoped intentionally.
 
 ## Installation
 

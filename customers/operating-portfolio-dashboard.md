@@ -10,7 +10,7 @@ It is a working control panel, not a final strategy document.
 | --- | --- | --- | --- | --- | --- |
 | [Media Production](media-production/README.md) | Active operating company | $1,000/month Grace Gems retainer; $500/month outsourced Creative Production Operator contractor allocation; $500/month remaining budget | Deliver Grace Gems monthly creative support; source/onboard the outsourced Creative Production Operator contractor; maintain Predictive History creative development lane | Confirm first Grace Gems product backlog and first-week deliverables | High |
 | [Grace Gems](grace-gems/README.md) | Active business client and internal proof case | Pays Media Production $1,000/month for creative support; business economics still pending owner intake | Provide customer transcripts, top listings, cost/pricing context, and owner decision boundaries | Convert intake response into first marketplace operating review | Medium-high |
-| [Elementary School](elementary-school/README.md) | Paid discovery / service design | Student Operating System customer; $1,000 one-time retainer received; $100/month subscription remains a hypothesis; Khan Academy Kids selected as free starter iPad app; reading basket adopted as first physical literacy tool; student portfolio adopted for physical work, digital work, proud work, milestones, and reports; monthly portfolio review adopted as first reporting layer | Define one-time retainer scope before delivery begins; Startup Bundle drafted as parent-facing onboarding | Choose the first one-time package deliverable and safety boundary | Medium |
+| [Elementary School](elementary-school/README.md) | Anyang Intelligence build / paid scoped retainer | Elementary School paid Anyang Intelligence a $1,000 one-time retainer; customer pricing not yet designed; scoped deliverable is a 30-Day Personalized Learning Plan for new students, including onboarding; Khan Academy Kids selected as free starter iPad app; reading basket adopted as first physical literacy tool; student portfolio adopted for physical work, digital work, proud work, milestones, and reports; monthly portfolio review adopted as first reporting layer | Prepare the scoped 30-day new-student plan while preserving parent authority, child safety, and evidence boundaries | Confirm inputs needed before delivery begins | Medium |
 | [Non-Profit](non-profit/README.md) | Early customer hypothesis | Holds real estate portfolio currently worth $200,000 | Define mission, portfolio stewardship needs, board/leadership cadence, and operating pain | Decide whether first offer is board packet, asset review, or donor/program operating review | Medium-low |
 | [Mountain Home](mountain-home/README.md) | Property governance prototype | 5 acres in Jefferson County, Colorado; no revenue attached | Build risk-first property operating memory and seasonal readiness loop | Identify top property risks, systems, and first seasonal review gate | Medium-low |
 | [Book Club](book-club/README.md) | Free local community context with donor support | Free participation; $1,000 donor-funded retainer for shared supplemental materials/services; optional member donations may also support shared needs | Steward donor-funded support while preserving monthly cadence, selection memory, host coordination, and member experience without making participation transactional | Decide which shared materials or services should use donor funds without over-managing the club | Medium |
@@ -22,7 +22,8 @@ Known cash events and allocations:
 - Media Production receives $1,000/month from Grace Gems.
 - Media Production has a planned $500/month contractor allocation for the outsourced Creative Production Operator; no current contractor is assigned.
 - Media Production has $500/month remaining for tools, light asset costs, experiments, support, or margin.
-- Elementary School has paid a $1,000 one-time retainer for Student Operating System services not yet planned.
+- Elementary School has paid Anyang Intelligence a $1,000 one-time retainer for a scoped 30-Day Personalized Learning Plan for new students, including onboarding.
+- Elementary School customer pricing has not been designed yet.
 - Student Operating System Startup Bundle includes Khan Academy Kids as the free starter iPad app.
 - Student Operating System Startup Bundle includes a reading basket as the first physical literacy tool.
 - Student Operating System Startup Bundle includes a student portfolio for physical work, digital work, proud work, milestones, and reports.
@@ -34,7 +35,7 @@ Known cash events and allocations:
 Unknown or pending:
 
 - Grace Gems business revenue, margins, product economics, and customer-support patterns.
-- Elementary School retainer deliverable, timeline, safety rules, and parent approval process.
+- Elementary School delivery inputs, timeline, safety rules, and parent approval process.
 - Elementary School parent observations from initial Khan Academy Kids use.
 - Elementary School parent observations from the first reading basket.
 - Elementary School first student portfolio artifacts and milestone log.
@@ -64,9 +65,9 @@ Unknown or pending:
 
 ### Elementary School
 
-- Treat the $1,000 retainer as paid discovery/service design until scoped.
-- Do not start delivery until scope, timeline, safety boundaries, and parent approval rules are explicit.
-- Decide whether the first package is learner profile, 30-day plan, portfolio setup, parent review rhythm, or prototype learning experience.
+- Treat the $1,000 retainer as payment from Elementary School to Anyang Intelligence for the scoped 30-Day Personalized Learning Plan for new students, including onboarding.
+- Do not start delivery until inputs, timeline, safety boundaries, and parent approval rules are explicit.
+- Do not treat the retainer as customer pricing, a subscription, or a validated market offer.
 - Use Khan Academy Kids only as a parent-supervised starter resource, not as the full curriculum or proof of mastery.
 
 ### Non-Profit
@@ -91,7 +92,7 @@ Unknown or pending:
 
 1. **Media Production:** What are the first Grace Gems deliverables for week one?
 2. **Creative Production Operator:** What contractor sourcing/onboarding standard will be used before assigning production work?
-3. **Elementary School:** What should the $1,000 one-time retainer produce?
+3. **Elementary School:** What inputs are needed to deliver the 30-Day Personalized Learning Plan for new students?
 4. **Grace Gems:** What should happen when the owner/operator intake response arrives?
 5. **Non-Profit:** What is the first operating review surface for a $200,000 real estate portfolio?
 6. **Mountain Home:** What are the top five property risks to capture first?
@@ -103,7 +104,7 @@ Media Production is the most concrete operating company because it has money, a 
 
 Grace Gems is both a customer of the Executive OS and the first paying client of Media Production. That makes it the strongest internal proof loop.
 
-Elementary School is commercially interesting because it has paid, but the trust boundary is high. The right next move is scope discipline, not delivery speed.
+Elementary School is important because Anyang Intelligence is building it in a high-trust child/family context and has a paid scoped retainer. The right next move is delivery discipline, not pricing.
 
 Non-Profit and Mountain Home are asset-governance contexts. They are useful because they force the Executive OS to handle risk, stewardship, continuity, and human authority.
 
@@ -117,7 +118,7 @@ Current priority order:
 
 1. Serve Grace Gems through Media Production.
 2. Source/onboard the outsourced Creative Production Operator contractor.
-3. Scope the Elementary School one-time retainer.
+3. Prepare the Elementary School 30-day new-student plan inputs and delivery boundary.
 4. Convert Grace Gems owner intake into the first business operating review.
 5. Keep Book Club light while deciding how to steward donor-funded shared-material support.
 6. Deepen Non-Profit and Mountain Home only after the paid obligations are stable.
