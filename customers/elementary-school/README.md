@@ -75,6 +75,8 @@ See [mock-intake-simulations.md](mock-intake-simulations.md) for three fictional
 
 See [hold-response-template.md](hold-response-template.md) for the parent-facing pause message used when intake is classified as `Hold`.
 
+See [recursive-self-enhancement.md](recursive-self-enhancement.md) for the lane-specific note showing how Elementary School intake friction was converted into reusable onboarding infrastructure.
+
 See [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 
 See [loop-examples/parent-intake-readiness.yaml](loop-examples/parent-intake-readiness.yaml) for the formal loop definition behind parent intake, readiness classification, and recursive template improvement.
