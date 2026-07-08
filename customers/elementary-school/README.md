@@ -11,7 +11,7 @@ The Student Operating System is a high-trust home education operating context:
 - Operating challenge: create a rich individualized learning experience without replacing parent authority, child safety, human care, or required education accountability.
 - Paid retainer received: $1,000.
 - Retainer type: one-time services.
-- Service scope: not yet planned.
+- Service scope: 30-Day Personalized Learning Plan, defined in [one-time-retainer-scope.md](one-time-retainer-scope.md).
 - Starter iPad app: Khan Academy Kids, free, parent-supervised, age-appropriate for a 7-year-old, and part of the initial resource bundle.
 
 ## Executive OS Role
@@ -52,7 +52,7 @@ Role in the system:
 
 - Provide a free, low-friction, child-friendly daily practice and exploration app.
 - Support early reading, writing, language, math, books, videos, creative activities, and social-emotional learning.
-- Give the parent a safe starter tool while the broader one-time retainer scope is still being designed.
+- Give the parent a safe starter tool that supports the scoped 30-Day Personalized Learning Plan.
 - Generate parent-observed engagement signals for the first learner profile and daily rhythm.
 
 Boundary:
@@ -79,9 +79,9 @@ This is a working assumption, not final pricing. It should be validated against 
 
 ## Paid Retainer
 
-Elementary School has paid a **$1,000 one-time retainer** for services that are not yet planned.
+Elementary School has paid a **$1,000 one-time retainer** for a scoped 30-Day Personalized Learning Plan.
 
-This should be treated as a paid discovery and service-design obligation. The next step is to define the one-time service package before delivery begins.
+This should be treated as a paid discovery and service-design obligation. The one-time service package is defined in [one-time-retainer-scope.md](one-time-retainer-scope.md) before delivery begins.
 
 The retainer should not automatically become the $100/month subscription hypothesis. It is a separate cash event and should be scoped intentionally.
 
