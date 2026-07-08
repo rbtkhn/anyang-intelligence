@@ -49,6 +49,7 @@ These candidates appear early enough to justify watch or prototype status:
 | Tool evaluation rubric | Media Production, Grace Gems, Elementary School, and Mountain Home all face tool adoption pressure | watch |
 | High-risk domain escalation trigger set | Elementary School, Non-Profit, and Mountain Home need explicit holds when research touches safety, money, or compliance | candidate |
 | Embodied AI exposure scan | Multiple lanes may face cheap robotics first as trust, supervision, maintenance, and override problems rather than pure capability opportunities | candidate |
+| Ambient agency review gate | Multiple lanes are exposed to background agents and continuous interfaces that can move approval and authority out of view | candidate |
 
 ## What Stays Inside Singularity Science
 
