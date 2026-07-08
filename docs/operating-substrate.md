@@ -18,6 +18,8 @@ customer work
   -> stronger Executive OS
 ```
 
+That compounding pattern is the repo's practical meaning of [recursive self-enhancement](recursive-self-enhancement.md): governed, repo-visible improvement to the operating surface after real work reveals a durable lesson.
+
 The system should get smarter without taking authority away from humans. It prepares decisions, checks quality, preserves evidence, and improves memory; it does not publish, spend, commit customers, make legal/tax judgments, or cross privacy membranes by itself.
 
 ## System Layers
