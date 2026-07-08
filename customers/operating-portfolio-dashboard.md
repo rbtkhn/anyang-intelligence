@@ -10,7 +10,7 @@ It is a working control panel, not a final strategy document.
 | --- | --- | --- | --- | --- | --- |
 | [Media Production](media-production/README.md) | Active operating company | $1,000/month Grace Gems retainer; $500/month outsourced Creative Production Operator contractor allocation; $500/month remaining budget | Deliver Grace Gems monthly creative support; source/onboard the outsourced Creative Production Operator contractor; maintain Predictive History creative development lane | Confirm first Grace Gems product backlog and first-week deliverables | High |
 | [Grace Gems](grace-gems/README.md) | Active business client and internal proof case | Pays Media Production $1,000/month for creative support; business economics still pending owner intake | Provide customer transcripts, top listings, cost/pricing context, and owner decision boundaries | Convert intake response into first marketplace operating review | Medium-high |
-| [Elementary School](elementary-school/README.md) | Anyang Intelligence build / paid scoped retainer | Elementary School paid Anyang Intelligence a $1,000 one-time retainer; customer pricing not yet designed; scoped deliverable is a 30-Day Personalized Learning Plan for new students, including onboarding; Khan Academy Kids selected as free starter iPad app; reading basket adopted as first physical literacy tool; student portfolio adopted for physical work, digital work, proud work, milestones, and reports; monthly portfolio review adopted as first reporting layer | Prepare the scoped 30-day new-student plan while preserving parent authority, child safety, and evidence boundaries | Confirm inputs needed before delivery begins | Medium |
+| [Elementary School](elementary-school/README.md) | Anyang Intelligence build / paid scoped retainer | Elementary School paid Anyang Intelligence a $1,000 one-time retainer; customer pricing not yet designed; scoped deliverable is a 30-Day Personalized Learning Plan for new students, including onboarding; Khan Academy Kids selected as free starter iPad app; reading basket adopted as first physical literacy tool; student portfolio adopted for physical work, digital work, proud work, milestones, and reports; monthly portfolio review adopted as first reporting layer; parent intake and onboarding readiness scaffolds are now defined | Collect real parent intake responses, classify readiness as Ready / Provisional / Hold, then draft only from parent-approved inputs while preserving parent authority, child safety, and evidence boundaries | Send or adapt the parent intake message and run the onboarding readiness checklist before drafting | Medium |
 | [Non-Profit](non-profit/README.md) | Early customer hypothesis | Holds real estate portfolio currently worth $200,000 | Define mission, portfolio stewardship needs, board/leadership cadence, and operating pain | Decide whether first offer is board packet, asset review, or donor/program operating review | Medium-low |
 | [Mountain Home](mountain-home/README.md) | Property governance prototype | 5 acres in Jefferson County, Colorado; no revenue attached | Build risk-first property operating memory and seasonal readiness loop | Identify top property risks, systems, and first seasonal review gate | Medium-low |
 | [Book Club](book-club/README.md) | Free local community context with donor support | Free participation; $1,000 donor-funded retainer for shared supplemental materials/services; optional member donations may also support shared needs | Steward donor-funded support while preserving monthly cadence, selection memory, host coordination, and member experience without making participation transactional | Decide which shared materials or services should use donor funds without over-managing the club | Medium |
@@ -35,7 +35,7 @@ Known cash events and allocations:
 Unknown or pending:
 
 - Grace Gems business revenue, margins, product economics, and customer-support patterns.
-- Elementary School delivery inputs, timeline, safety rules, and parent approval process.
+- Elementary School parent intake responses, timeline, safety rules, and parent approval decisions.
 - Elementary School parent observations from initial Khan Academy Kids use.
 - Elementary School parent observations from the first reading basket.
 - Elementary School first student portfolio artifacts and milestone log.
@@ -66,7 +66,8 @@ Unknown or pending:
 ### Elementary School
 
 - Treat the $1,000 retainer as payment from Elementary School to Anyang Intelligence for the scoped 30-Day Personalized Learning Plan for new students, including onboarding.
-- Do not start delivery until inputs, timeline, safety boundaries, and parent approval rules are explicit.
+- Use the parent intake message and onboarding readiness checklist before drafting the plan.
+- Do not draft the plan until parent intake responses, timeline, safety boundaries, and parent approval rules are explicit enough to classify the case as Ready or Provisional.
 - Do not treat the retainer as customer pricing, a subscription, or a validated market offer.
 - Use Khan Academy Kids only as a parent-supervised starter resource, not as the full curriculum or proof of mastery.
 
@@ -92,7 +93,7 @@ Unknown or pending:
 
 1. **Media Production:** What are the first Grace Gems deliverables for week one?
 2. **Creative Production Operator:** What contractor sourcing/onboarding standard will be used before assigning production work?
-3. **Elementary School:** What inputs are needed to deliver the 30-Day Personalized Learning Plan for new students?
+3. **Elementary School:** What parent intake responses are needed to classify the 30-Day Personalized Learning Plan as Ready, Provisional, or Hold?
 4. **Grace Gems:** What should happen when the owner/operator intake response arrives?
 5. **Non-Profit:** What is the first operating review surface for a $200,000 real estate portfolio?
 6. **Mountain Home:** What are the top five property risks to capture first?
@@ -118,7 +119,7 @@ Current priority order:
 
 1. Serve Grace Gems through Media Production.
 2. Source/onboard the outsourced Creative Production Operator contractor.
-3. Prepare the Elementary School 30-day new-student plan inputs and delivery boundary.
+3. Collect Elementary School parent intake responses and classify plan readiness before drafting.
 4. Convert Grace Gems owner intake into the first business operating review.
 5. Keep Book Club light while deciding how to steward donor-funded shared-material support.
 6. Deepen Non-Profit and Mountain Home only after the paid obligations are stable.
