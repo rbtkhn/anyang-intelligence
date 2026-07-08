@@ -33,6 +33,8 @@ Reusable primitive candidates live under [primitives/](primitives/README.md).
 
 These artifacts translate research into internal checklists, validators, and routing aids that can be tested before anything becomes lane doctrine.
 
+See [ambient-agency-use-case-map.md](ambient-agency-use-case-map.md) for a lane-by-lane map of where ambient agency is most likely to appear, what value it may create, and which governance boundaries it is most likely to stress.
+
 ## Boundary
 
 Singularity Science may produce:
