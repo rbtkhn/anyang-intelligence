@@ -63,6 +63,7 @@ The Startup Bundle is supporting infrastructure, not the main paid deliverable.
 Use the existing components as inputs and supports:
 
 - [30-day-plan-inputs.md](30-day-plan-inputs.md) for parent goals, learner context, schedule, onboarding, resource, safety, and approval inputs before drafting.
+- [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 - [startup-bundle.md](startup-bundle.md) for first-week setup, survey, starter app, parent observation notebook, daily rhythm, and parent commitment.
 - [reading-basket.md](reading-basket.md) for the first physical literacy tool and weekly reading review.
 - [student-portfolio.md](student-portfolio.md) for saving physical work, digital work, proud work, milestones, parent notes, and reports.
