@@ -110,6 +110,8 @@ If the lesson remains only in chat, it is not complete.
 
 If the change crosses authority, privacy, customer-scope, or safety boundaries, it is not governed improvement.
 
+For an end-of-cycle operating gate, use [recursive-self-enhancement-checklist.md](recursive-self-enhancement-checklist.md).
+
 ## Elementary School Example
 
 The Elementary School lane provides a clean example:
