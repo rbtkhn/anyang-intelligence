@@ -77,6 +77,8 @@ See [hold-response-template.md](hold-response-template.md) for the parent-facing
 
 See [recursive-self-enhancement.md](recursive-self-enhancement.md) for the lane-specific note showing how Elementary School intake friction was converted into reusable onboarding infrastructure.
 
+See [plan-drafting-gate.md](plan-drafting-gate.md) for the internal/operator checklist that controls how `Ready` and `Provisional` intake is safely converted into a 30-day plan draft.
+
 See [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 
 See [loop-examples/parent-intake-readiness.yaml](loop-examples/parent-intake-readiness.yaml) for the formal loop definition behind parent intake, readiness classification, and recursive template improvement.
