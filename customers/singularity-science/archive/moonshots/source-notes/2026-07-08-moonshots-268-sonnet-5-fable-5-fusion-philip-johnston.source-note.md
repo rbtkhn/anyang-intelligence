@@ -9,6 +9,25 @@ Transcript location: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-jo
 Rights status: internal-commit-approved
 Capture method: user-provided transcript paste
 Why it matters: This episode concentrates several active Singularity Science seams in one place: frontier model gating after the Fable 5 pull, robotics cost compression through China's low-cost humanoids, orbital compute economics and launch bottlenecks, fusion/regulatory progress, and vertical integration in space infrastructure.
+Dominant seams:
+  - frontier governance
+  - robotics / embodied AI
+  - substrate / infrastructure
+  - worldview / rhetorical compression
+Rhetoric risk:
+  - high
+  - The episode packages many unstable claims and aggressive timelines into a persuasive acceleration worldview.
+Verification-priority claims:
+  - The exact state and expected return conditions of Fable 5
+  - Robotics pricing and capability comparisons
+  - Orbital-compute timing claims
+  - Fusion licensing and infrastructure commercialization claims
+Best candidate primitive: Acceleration-source verification gate
+Likely best receiving lane: Media Production
+What remains worldview-only:
+  - generalized abundance framing
+  - aggressive space and robotics timelines
+  - broad claims that experts systematically underprice every exponential curve
 Relevant lanes:
   - Media Production: strong relevance around robotics narratives, orbital compute, and synthetic-future storytelling frames.
   - Grace Gems: light relevance through automation cost curves and trust/affordability implications, but mostly indirect.
