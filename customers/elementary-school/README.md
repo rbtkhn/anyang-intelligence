@@ -67,6 +67,8 @@ See [startup-bundle.md](startup-bundle.md) for the parent-facing Startup Bundle.
 
 See [30-day-plan-inputs.md](30-day-plan-inputs.md) for the parent goals, learner context, onboarding, safety, and approval inputs needed before drafting the 30-Day Personalized Learning Plan.
 
+See [parent-intake-message.md](parent-intake-message.md) for the adaptable parent message used to collect those inputs before drafting.
+
 See [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 
 See [reading-basket.md](reading-basket.md) for the first physical literacy tool in the startup bundle.
