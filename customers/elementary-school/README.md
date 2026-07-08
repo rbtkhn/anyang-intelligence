@@ -65,6 +65,8 @@ Boundary:
 
 See [startup-bundle.md](startup-bundle.md) for the parent-facing Startup Bundle.
 
+See [30-day-plan-inputs.md](30-day-plan-inputs.md) for the parent goals, learner context, onboarding, safety, and approval inputs needed before drafting the 30-Day Personalized Learning Plan.
+
 See [reading-basket.md](reading-basket.md) for the first physical literacy tool in the startup bundle.
 
 See [student-portfolio.md](student-portfolio.md) for the place to store physical work, digital work, student output the learner is proud of, milestones, and reports.

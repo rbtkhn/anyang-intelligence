@@ -15,10 +15,11 @@ Read these first:
 
 1. `customers/elementary-school/one-time-retainer-scope.md`
 2. `customers/elementary-school/executive-os-install.md`
-3. `customers/elementary-school/startup-bundle.md`
-4. `customers/elementary-school/reading-basket.md`
-5. `customers/elementary-school/student-portfolio.md`
-6. `customers/elementary-school/monthly-portfolio-review.md`
+3. `customers/elementary-school/30-day-plan-inputs.md`
+4. `customers/elementary-school/startup-bundle.md`
+5. `customers/elementary-school/reading-basket.md`
+6. `customers/elementary-school/student-portfolio.md`
+7. `customers/elementary-school/monthly-portfolio-review.md`
 
 When available, also read:
 
