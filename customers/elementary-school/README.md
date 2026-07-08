@@ -87,6 +87,8 @@ See [mock-ready-plan-evidence-map.md](mock-ready-plan-evidence-map.md) for a fic
 
 See [ai-interface-training/](ai-interface-training/) for Elementary School-specific AI interface training exemplars, including the canonical fictional `Ready` plan exemplar for intake review, drafting-gate use, evidence mapping, safe draft structure, and parent approval handoff.
 
+See [parent-approval-record.md](parent-approval-record.md) for the internal/operator artifact that records what the parent approved, what changed, what remains provisional, and whether a draft is safe to use.
+
 See [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 
 See [loop-examples/parent-intake-readiness.yaml](loop-examples/parent-intake-readiness.yaml) for the formal loop definition behind parent intake, readiness classification, and recursive template improvement.
