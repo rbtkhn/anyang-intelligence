@@ -1,6 +1,8 @@
 from pathlib import Path
 
-from anyang_loop.parser import parse_markdown, parse_yaml
+import pytest
+
+from anyang_loop.parser import LoopParseError, parse_markdown, parse_yaml
 
 
 def test_parse_yaml_loop():
@@ -78,6 +80,58 @@ Human approval required.
     assert "decision log" in loop.memory_objects
 
 
+def test_parse_markdown_malformed_front_matter_falls_back_to_headings():
+    loop = parse_markdown(
+        """---
+title: Non-loop source note
+...
+lane: singularity-science
+---
+
+# Recovered Loop
+
+## Signal
+Weekly signal.
+
+## Memory Objects
+- decision log
+
+## Decision
+Prepare options.
+
+## Action
+Owner approves action.
+
+## Evidence
+Approval record.
+
+## Cadence
+Weekly.
+
+## Learning Update
+Update memory.
+
+## Governance Boundary
+Human approval required.
+"""
+    )
+    assert loop.name == "Recovered Loop"
+
+
+def test_parse_markdown_malformed_front_matter_without_loop_shape_is_parse_error():
+    with pytest.raises(LoopParseError):
+        parse_markdown(
+            """---
+title: Non-loop source note
+...
+lane: singularity-science
+---
+
+# Source Note
+"""
+        )
+
+
 def test_customer_examples_parse():
     root = Path(__file__).resolve().parents[1]
     examples = list(root.glob("customers/*/loop-examples/*.yaml"))
@@ -85,4 +139,3 @@ def test_customer_examples_parse():
     for path in examples:
         loop = parse_yaml(path.read_text(encoding="utf-8"), str(path))
         assert loop.name
-

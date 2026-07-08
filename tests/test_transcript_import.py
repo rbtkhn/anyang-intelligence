@@ -108,6 +108,8 @@ def test_transcript_import_writes_files_and_ledger():
     assert "rights_status: internal-commit-approved" in innermost_text
     assert "## Transcript" in innermost_text
     assert "Innermost transcript body." in innermost_text
+    front_matter = innermost_text.split("---", 2)[1]
+    assert "\n...\n" not in front_matter
 
     ledger_text = ledger.read_text(encoding="utf-8")
     assert "needs-source-note" in ledger_text

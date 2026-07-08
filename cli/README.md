@@ -235,6 +235,16 @@ Allowed `rights_status` values:
 - `uncertain-review-needed`
 - `do-not-commit`
 
+Optional manifest fields include:
+
+- `title_date`
+- `date_published`
+- `speaker`
+- `episode_id`
+- `notes`
+
+When `title_date` is present, transcript filenames use it ahead of `date_published` so issue-dated source streams like Innermost Loop preserve their visible source date.
+
 ## Verification
 
 ```bash

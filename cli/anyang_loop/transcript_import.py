@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import json
 from pathlib import Path
 from typing import Any
 
@@ -45,6 +46,7 @@ class TranscriptManifestRow:
     rights_status: str
     capture_method: str
     local_input_path: str
+    title_date: str = ""
     date_published: str = ""
     speaker: str = ""
     episode_id: str = ""
@@ -52,7 +54,7 @@ class TranscriptManifestRow:
 
     @property
     def effective_date(self) -> str:
-        return self.date_published or self.date_captured
+        return self.title_date or self.date_published or self.date_captured
 
     @property
     def source_label(self) -> str:
@@ -100,7 +102,7 @@ def load_manifest(path: str | Path) -> list[TranscriptManifestRow]:
         values: dict[str, str] = {}
         for field in REQUIRED_FIELDS:
             values[field] = coerce_text(raw.get(field))
-        for field in ("date_published", "speaker", "episode_id", "notes"):
+        for field in ("title_date", "date_published", "speaker", "episode_id", "notes"):
             values[field] = coerce_text(raw.get(field))
         parsed.append(
             TranscriptManifestRow(
@@ -113,6 +115,7 @@ def load_manifest(path: str | Path) -> list[TranscriptManifestRow]:
                 rights_status=values["rights_status"],
                 capture_method=values["capture_method"],
                 local_input_path=values["local_input_path"],
+                title_date=values["title_date"],
                 date_published=values["date_published"],
                 speaker=values["speaker"],
                 episode_id=values["episode_id"],
@@ -197,7 +200,11 @@ def validate_row(row: TranscriptManifestRow) -> str | None:
         return f"Invalid lane: {row.lane}."
     if row.rights_status not in ALLOWED_RIGHTS:
         return f"Invalid rights_status: {row.rights_status}."
-    for value, label in ((row.date_captured, "date_captured"), (row.date_published, "date_published")):
+    for value, label in (
+        (row.date_captured, "date_captured"),
+        (row.title_date, "title_date"),
+        (row.date_published, "date_published"),
+    ):
         if value and not is_iso_date(value):
             return f"{label} must use YYYY-MM-DD format."
     return None
@@ -224,16 +231,17 @@ def load_transcript_body(path: Path) -> str:
 def render_transcript(row: TranscriptManifestRow, body: str) -> str:
     lines = [
         "---",
-        f"title: {yaml.safe_dump(row.title, sort_keys=False).strip()}",
+        f"title: {yaml_scalar(row.title)}",
         f"lane: {row.lane}",
-        f"source_ref: {yaml.safe_dump(row.source_ref, sort_keys=False).strip()}",
+        f"source_ref: {yaml_scalar(row.source_ref)}",
+        f"title_date: {row.title_date or ''}",
         f"date_published: {row.date_published or ''}",
         f"date_captured: {row.date_captured}",
         f"rights_status: {row.rights_status}",
-        f"capture_method: {yaml.safe_dump(row.capture_method, sort_keys=False).strip()}",
-        f"speaker: {yaml.safe_dump(row.speaker, sort_keys=False).strip()}",
-        f"episode_id: {yaml.safe_dump(row.episode_id, sort_keys=False).strip()}",
-        f"notes: {yaml.safe_dump(row.notes, sort_keys=False).strip()}",
+        f"capture_method: {yaml_scalar(row.capture_method)}",
+        f"speaker: {yaml_scalar(row.speaker)}",
+        f"episode_id: {yaml_scalar(row.episode_id)}",
+        f"notes: {yaml_scalar(row.notes)}",
         "---",
         "",
         f"# {row.title}",
@@ -327,18 +335,20 @@ def render_completion_report(summary: ImportSummary) -> str:
         if lane is None:
             continue
         lane_totals[lane] += 1
-        if result.status == "imported":
+        already_landed = result.destination.exists()
+        if result.status == "imported" or already_landed:
             lane_imported[lane] += 1
-        if result.status == "blocked-rights":
+        if result.status == "blocked-rights" and not already_landed:
             lane_blocked[lane] += 1
-        if result.status == "missing-source":
+        if result.status == "missing-source" and not already_landed:
             lane_missing[lane] += 1
     staged = len(summary.results)
+    total_imported = sum(lane_imported.values())
     lines = [
         "Transcript import completeness report",
         f"- Manifest: {summary.manifest_path}",
         f"- Total staged transcripts: {staged}",
-        f"- Total imported transcripts: {summary.count('imported')}",
+        f"- Total imported transcripts: {total_imported}",
         f"- Blocked rights-review items: {summary.count('blocked-rights')}",
         f"- Missing source files: {summary.count('missing-source')}",
         "",
@@ -360,6 +370,12 @@ def coerce_text(value: Any) -> str:
     if isinstance(value, str):
         return value.strip()
     return str(value).strip()
+
+
+def yaml_scalar(value: str) -> str:
+    if not value:
+        return '""'
+    return json.dumps(value, ensure_ascii=False)
 
 
 def is_iso_date(value: str) -> bool:

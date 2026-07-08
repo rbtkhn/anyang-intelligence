@@ -54,7 +54,10 @@ def load_loops_from_path(path: str | Path) -> tuple[list[LoopDefinition], list[t
 
 
 def parse_yaml(text: str, source_path: str = "") -> LoopDefinition:
-    data = yaml.safe_load(text)
+    try:
+        data = yaml.safe_load(text)
+    except yaml.YAMLError as exc:
+        raise LoopParseError(f"YAML parse error: {exc}") from exc
     if not isinstance(data, dict):
         raise LoopParseError("YAML loop definition must be a mapping.")
     if isinstance(data.get("loop"), dict):
@@ -65,11 +68,15 @@ def parse_yaml(text: str, source_path: str = "") -> LoopDefinition:
 def parse_markdown(text: str, source_path: str = "") -> LoopDefinition:
     front_matter = FRONT_MATTER_RE.match(text)
     if front_matter:
-        data = yaml.safe_load(front_matter.group(1)) or {}
-        if isinstance(data.get("loop"), dict):
-            data = data["loop"]
-        if has_loop_shape(data):
-            return LoopDefinition.from_mapping(data, source_path)
+        try:
+            data = yaml.safe_load(front_matter.group(1)) or {}
+        except yaml.YAMLError:
+            data = {}
+        if isinstance(data, dict):
+            if isinstance(data.get("loop"), dict):
+                data = data["loop"]
+            if has_loop_shape(data):
+                return LoopDefinition.from_mapping(data, source_path)
 
     data = parse_markdown_sections(text)
     if not has_loop_shape(data):
