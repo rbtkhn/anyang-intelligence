@@ -80,6 +80,8 @@ The native `bravo` skill provides the repo's positive-signal capture pulse. It t
 
 The native `dream` skill provides the repo's closeout pulse. It checks git state, reviews the latest durable changes, runs Anyang-native validation when appropriate, separates known legacy warnings from fresh issues, and names what tomorrow inherits without creating autonomous merge authority.
 
+See [cadence-loop-example.md](cadence-loop-example.md) for a short fixture showing `coffee -> bravo -> dream -> coffee` using the native cadence skill work itself.
+
 ## What Is Valuable Now
 
 The valuable thing is not any single file. The value is that the repo has begun to behave like the product it describes.
