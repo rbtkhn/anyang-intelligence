@@ -80,6 +80,7 @@ Collect:
 - What time of day is usually best?
 - How much parent time is realistic on a light day?
 - How much parent time is realistic on a fuller day?
+- Whether the parent wants a screen-time budget for learning activities, and the daily or weekly limit if so.
 - Are there naps, work schedules, siblings, travel, appointments, or activities to plan around?
 - Does the parent prefer a fixed daily rhythm or flexible menu?
 
@@ -88,6 +89,8 @@ Because parent availability may vary, the plan should include:
 - A minimum viable day.
 - A standard day.
 - An optional fuller day.
+
+If the parent sets a screen-time budget, the plan should fit inside it rather than treating app time as a separate unlimited category.
 
 ## Current Resources
 
@@ -107,6 +110,7 @@ Confirm:
 - Is Khan Academy Kids installed?
 - Does the parent approve using it as a small daily support block?
 - What time limit should be used?
+- Whether Khan Academy Kids time must fit inside a broader screen-time budget.
 - What should the parent observe: choices, frustration, ease, favorite activities, avoided activities, questions?
 - What app evidence, if any, may be saved?
 
@@ -186,6 +190,7 @@ Watch gently for:
 Before the 30-day plan is used, the parent should approve:
 
 - Daily rhythm.
+- Screen-time budget, if any.
 - Khan Academy Kids rule.
 - Reading basket plan.
 - Portfolio evidence plan.
@@ -204,6 +209,7 @@ The plan is ready to draft when these are known:
 - Parent authority and privacy boundaries.
 - Basic learner context.
 - Schedule and parent-time range.
+- Screen-time budget or explicit no-budget decision.
 - Current resources.
 - Khan Academy Kids decision.
 - Reading basket status.

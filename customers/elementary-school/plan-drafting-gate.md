@@ -103,12 +103,14 @@ Do not:
 Allowed:
 
 - rhythm options supported by the parent schedule
+- screen-based activity levels that fit the parent-set screen-time budget, if there is one
 - minimum viable, standard, and fuller day structures when the case is `Provisional`
 - safe defaults like short sessions, parent observation, and light evidence collection
 
 Do not:
 
 - invent an exact daily schedule if the family did not provide one
+- exceed or ignore a parent-set screen-time budget
 - overload the month with unsupported specificity
 
 ### 6. Weekly Focus Blocks
@@ -140,11 +142,13 @@ Do not:
 Allowed:
 
 - only the parent-approved use rule
+- only the parent-approved screen-time fit
 - template default observation language if the app is approved
 
 Do not:
 
 - imply unsupervised use
+- treat app time as outside the parent budget unless the parent explicitly said that
 - imply app progress is mastery, grading, diagnosis, or curriculum completion
 
 ### 9. Portfolio Evidence Plan
@@ -205,6 +209,7 @@ Before sending the draft for parent review, confirm:
 - missing inputs are still visible
 - every learner-specific claim came from parent-approved inputs
 - every assumption is labeled
+- screen-based activities fit the parent-set budget, if one exists
 - no pricing, retainer, or internal skill language appears
 - no diagnosis, grading, proof-of-mastery, or legal/accountability claim appears
 - save/share language matches parent boundaries

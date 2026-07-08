@@ -66,6 +66,7 @@ Please skip any question that creates stress. This is a conversation starter, no
 - What time of day usually works best?
 - How much parent time is realistic on a light day?
 - How much parent time is realistic on a fuller day?
+- Do you want to set a screen-time budget for learning activities? If yes, what daily or weekly limit should the plan fit inside?
 - Are there naps, work schedules, siblings, travel, appointments, activities, or energy limits to plan around?
 - Do you prefer a fixed daily rhythm or a flexible menu?
 
@@ -84,6 +85,7 @@ If you are not sure, I will draft three options: minimum viable day, standard da
 - Is Khan Academy Kids installed?
 - Do you approve using it as a small daily support block?
 - What time limit feels right?
+- If you set a broader screen-time budget, should Khan Academy Kids stay inside that same budget?
 - What should I help you observe: choices, frustration, ease, favorite activities, avoided activities, questions, or something else?
 - May any app screenshots, notes, or evidence be saved?
 
@@ -123,6 +125,7 @@ I will name patterns carefully without alarm. Anything high-stakes or outside th
 Before the plan is used, I will ask you to approve:
 
 - Daily rhythm.
+- Screen-time budget, if any.
 - Khan Academy Kids rule.
 - Reading basket plan.
 - Portfolio evidence plan.

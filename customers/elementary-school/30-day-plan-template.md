@@ -24,6 +24,7 @@ The parent or guardian approves this plan before use.
 Parent approval is needed for:
 
 - Daily rhythm.
+- Screen-time budget for learning activities, if the parent sets one.
 - Learning resources and activities.
 - Child-facing prompts.
 - Khan Academy Kids use.
@@ -69,6 +70,9 @@ Use observations, not fixed labels.
 
 Use the lightest rhythm that works. The goal is consistency and observation, not a crowded schedule.
 
+- Screen-time budget: `[parent-set daily or weekly limit / none set]`
+- Screen-time fit rule: `[how app or screen-based activities stay inside the parent budget]`
+
 ### Minimum Viable Day
 
 - Read or look at books: `[5-10 minutes]`
@@ -79,7 +83,7 @@ Use the lightest rhythm that works. The goal is consistency and observation, not
 ### Standard Day
 
 - Reading: `[fill in]`
-- Khan Academy Kids: `[15-20 minutes, parent-supervised unless parent changes this]`
+- Khan Academy Kids: `[15-20 minutes, parent-supervised unless parent changes this, and inside the parent screen-time budget if one exists]`
 - Hands-on practice: `[math, writing, building, drawing, etc.]`
 - Project / enrichment: `[interest-led activity]`
 - Movement / play / outside time: `[fill in]`
@@ -158,6 +162,7 @@ Default:
 
 - Use for `[15-20 minutes]` on learning days.
 - Parent-supervised.
+- Fit inside the parent screen-time budget if one exists.
 - Treat it as an observation and practice tool.
 - Do not treat app progress as a grade, diagnosis, full curriculum, or proof of mastery.
 
@@ -247,6 +252,7 @@ If a concern persists or feels high-stakes, the next safe action is parent revie
 Before using the plan, decide:
 
 - Does this rhythm feel realistic?
+- Does the screen-time fit match the parent's budget?
 - Does the reading basket fit the child?
 - Is the Khan Academy Kids rule acceptable?
 - What portfolio evidence should be saved?
