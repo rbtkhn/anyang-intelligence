@@ -11,11 +11,11 @@ Use this template for Innermost Loop analysis.
 
 ## Core Signal
 
-What changed at the AI frontier?
+What changed in AI, agency, cognition, media, science, markets, governance, or human formation?
 
-## Frontier Capability
+## Research Signal
 
-What capability, adoption pattern, infrastructure shift, or market behavior is being signaled?
+What capability, adoption pattern, infrastructure shift, cultural shift, scientific claim, market behavior, or governance pressure is being signaled?
 
 ## Hype Versus Durable Signal
 

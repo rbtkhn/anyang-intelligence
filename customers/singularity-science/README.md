@@ -1,6 +1,6 @@
 # Singularity Science
 
-Singularity Science is an ongoing Anyang Intelligence research project for tracking AI frontier signals, interpreting their operating implications, and converting useful lessons into governed Executive OS primitives.
+Singularity Science is an ongoing Anyang Intelligence research project for tracking singularity-relevant source streams, interpreting their operating implications, and converting useful lessons into governed Executive OS primitives.
 
 It is not a customer installation in the same sense as Grace Gems, Elementary School, or Media Production. It lives beside them because it is an operating lane with its own source material, analyses, cadence, and membrane boundaries.
 
@@ -8,7 +8,7 @@ It is not a customer installation in the same sense as Grace Gems, Elementary Sc
 
 Singularity Science helps Anyang Intelligence understand:
 
-- what is changing at the AI frontier
+- what is changing in AI, agency, cognition, media, science, markets, governance, and human formation
 - what signals are durable versus hype
 - what customer lanes may be affected
 - what governance boundaries are stressed
@@ -31,7 +31,7 @@ Singularity Science may produce:
 
 - source notes
 - transcript analyses
-- frontier ledgers
+- research ledgers
 - product implication notes
 - governance warnings
 - reusable primitive candidates

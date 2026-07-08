@@ -11,7 +11,7 @@ innermost-loop/
   analyses/
   source-note-template.md
   analysis-template.md
-  frontier-ledger.md
+  research-ledger.md
 ```
 
 ## Workflow
@@ -21,7 +21,7 @@ For each source:
 1. Store the transcript or source capture in `transcripts/` only when rights and repo privacy allow it.
 2. Create a source note in `source-notes/` using [source-note-template.md](source-note-template.md).
 3. Create an analysis in `analyses/` using [analysis-template.md](analysis-template.md).
-4. Add one row to [frontier-ledger.md](frontier-ledger.md).
+4. Add one row to [research-ledger.md](research-ledger.md).
 5. Route only the synthesized implication, not transcript bulk, into docs, skills, or customer folders.
 
 ## Naming

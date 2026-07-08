@@ -11,7 +11,7 @@ Archive material may be used for:
 - internal analysis
 - source notes
 - synthesis
-- frontier signal tracking
+- research signal tracking
 - product implication review
 - governance warning review
 - customer relevance routing

@@ -1,6 +1,6 @@
-# Innermost Loop Frontier Ledger
+# Innermost Loop Research Ledger
 
-This ledger tracks cross-episode AI frontier signals from Innermost Loop.
+This ledger tracks cross-episode Singularity Science research signals from Innermost Loop.
 
 Statuses:
 
@@ -10,6 +10,6 @@ Statuses:
 - `preserved`: converted into a repo-visible primitive
 - `rejected`: reviewed and not useful for Anyang Intelligence
 
-| Date | Source | Capability signal | Customer lanes | Product implication | Governance risk | Primitive candidate | Status |
+| Date | Source | Research signal | Customer lanes | Product implication | Governance risk | Primitive candidate | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD | TBD | TBD | TBD | watch |
