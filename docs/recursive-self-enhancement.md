@@ -64,6 +64,37 @@ Use this default sequence:
 
 The improvement should be small enough to stay grounded and large enough to matter.
 
+## Relation To Loops
+
+[Loops](loops.md) are the operating grammar for recursive self-enhancement.
+
+Every durable improvement should be expressible as a loop update:
+
+- **Signal:** What friction, failure, ambiguity, or repeated move started the improvement?
+- **Memory objects:** What facts, artifacts, decisions, or patterns need to be preserved?
+- **Decision:** What improvement should be made, and why this one instead of another?
+- **Action:** Which doc, skill, template, checklist, loop, validator, or guardrail changes?
+- **Evidence:** What proves the improvement landed?
+- **Cadence:** When should this be revisited?
+- **Learning update:** What changes for the next similar cycle?
+- **Governance boundary:** Who approves the change, and what authority does the system not have?
+
+If the loop cannot name its learning update, the system noticed friction but did not yet enhance itself.
+
+## Relation To Coffee
+
+Native [coffee](../skills/coffee/SKILL.md) is the lightweight cadence that notices recursive self-enhancement opportunities.
+
+Coffee should not improve everything at once. It should name:
+
+- the current picture
+- the entropy or friction
+- one learning
+- one improvement candidate
+- a bounded next action
+
+That makes coffee the detection and selection ritual. The enhancement itself is complete only when the chosen improvement is preserved in a repo-visible surface and, when possible, validated.
+
 ## Durable Improvement Test
 
 A change qualifies as recursive self-enhancement when it is:
@@ -95,6 +126,8 @@ parent intake idea
 The important point is not that the system discussed a failure mode. The important point is that the failure mode was converted into a reusable operating surface.
 
 That is the difference between memory and enhancement.
+
+The formal loop version lives in [customers/elementary-school/loop-examples/parent-intake-readiness.yaml](../customers/elementary-school/loop-examples/parent-intake-readiness.yaml). Its learning update requires real or simulated intake outcomes to improve the intake message, readiness checklist, Hold response, or plan template when a recurring failure mode appears.
 
 ## Boundaries
 

@@ -139,7 +139,7 @@ The next valuable improvements are likely:
 - A Media Production weekly operating review that uses brief, gate, package, and ledger outputs.
 - A Grace Gems first-week deliverables plan tied to owner approval boundaries.
 - A Creative Production Operator onboarding/sourcing gate before contractor work begins.
-- A validated Elementary School one-time retainer scope with parent authority and safety rules.
+- Real Elementary School parent intake responses run through the readiness loop before any 30-day plan draft.
 - A cross-customer primitive map that turns lessons into templates without leaking private context.
 
 Each next step should follow the same rule: preserve one durable improvement only when it makes the next operating cycle smarter.
