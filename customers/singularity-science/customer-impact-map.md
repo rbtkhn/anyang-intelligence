@@ -76,9 +76,10 @@ Current state:
 
 ## Next Step
 
-The next high-value move is to run one real Singularity Science source through the archive pipeline, then compare the resulting memo against this map:
+The transcript archive pipeline has now landed enough source material to test primitive routing. The next high-value move is to apply one primitive to one receiving lane without moving transcript bulk across the membrane:
 
-1. Which lane exposures actually appeared?
-2. Which primitive candidates repeated?
-3. Which governance boundary felt most stressed?
-4. What should be upgraded from `watch` to `candidate` or from `candidate` to `tested`?
+1. Which lane exposure is concrete enough to review?
+2. Which primitive should be used: checklist, warning, gate, or draft queue?
+3. Which membrane classification applies: safe to transfer, translate first, approval required, professional review required, or keep local?
+4. What stays inside Singularity Science?
+5. What human authority is required before any lane action?
