@@ -35,6 +35,8 @@ These artifacts translate research into internal checklists, validators, and rou
 
 See [ambient-agency-use-case-map.md](ambient-agency-use-case-map.md) for a lane-by-lane map of where ambient agency is most likely to appear, what value it may create, and which governance boundaries it is most likely to stress.
 
+See [useful-turn-evaluation-note.md](useful-turn-evaluation-note.md) for the evaluation lens that treats the useful turn, not the model in isolation, as the more practical unit of product value and governed delegation.
+
 ## Boundary
 
 Singularity Science may produce:
