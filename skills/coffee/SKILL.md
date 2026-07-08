@@ -1,7 +1,7 @@
 ---
 name: coffee
 preferred_activation: coffee
-description: Lightweight Anyang Intelligence re-entry ritual for restoring operating context, naming live obligations, extracting one learning, and choosing the next best move.
+description: Native Anyang Intelligence re-entry ritual for repo_probe. Use for coffee, where are we, what next, pause and reflect, reentry, or current state to restore operating context, name live obligations, extract one learning, and choose the next A-D move using Anyang Intelligence docs, customers, skills, and CLIs.
 category: operator-coherence
 status: active
 scope_class: repo-governed
@@ -11,7 +11,9 @@ scope_class: repo-governed
 
 **Preferred activation:** say `coffee`.
 
-`coffee` is the Anyang Intelligence re-entry ritual and recursive self-improvement pulse. It should feel like a short sip of coherence: enough orientation to restore momentum, notice what the last cycle taught us, and improve the next move without becoming a heavy maintenance pass.
+`coffee` is the native Anyang Intelligence re-entry ritual and recursive self-improvement pulse. It should feel like a short sip of coherence: enough orientation to restore momentum, notice what the last cycle taught us, and improve the next move without becoming a heavy maintenance pass.
+
+When working inside `anyang-intelligence/repo_probe`, this skill is authoritative. Do not route `coffee` through strategy-codex scripts, cadence files, conductor menus, or external operator rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence coffee reads this repo, its customer folders, its loop/install tooling, and its skills.
 
 Use `coffee` when the operator asks:
 
@@ -46,28 +48,48 @@ Read these first, in order:
 1. `customers/operating-portfolio-dashboard.md`
 2. `customers/comparison-matrix.md`
 3. `customers/commercial-hypotheses.md`
-4. `git status --short --branch`
-5. Recent commits when useful: `git log --oneline -5`
+4. `skills/README.md`
+5. `docs/loops.md`
+6. `docs/membranes.md`
+7. `git status --short --branch`
+8. Recent commits when useful: `git log --oneline -5`
 
 Optional, only when directly relevant:
 
 - the specific customer `README.md`
 - the customer install or scope document
+- `cli/README.md` when loop or install tooling is implicated
 - `skills/customer-state-update/SKILL.md` if new customer facts appeared
-- recently changed skill, template, or customer-specific work-package docs
+- recently changed skill, template, CLI, test, or customer-specific work-package docs
+- `git diff --stat` when the worktree is dirty
+
+Do not require unavailable strategy-codex-only files such as `scripts/operator_coffee.py`, work-cadence logs, conductor compression specs, or handoff-check scripts.
 
 ## Procedure
 
 1. Read the portfolio dashboard first. Treat it as the freshest repo-level source of truth unless the operator has just corrected it.
 2. Check git state so the operator knows whether the repo is clean, dirty, ahead, or behind.
-3. Identify paid obligations first. Do not let unpaid complexity crowd out paid commitments.
-4. Separate confirmed facts from hypotheses, donor-funded support, optional donations, revenue, expenses, asset values, and unplanned scope.
-5. Scan for contradiction risk: customer status, money, paid/free access, employee-facing language, and outward-facing brand language.
-6. Detect entropy: identify what is becoming stale, contradictory, overbuilt, under-scoped, unsupported by evidence, or too dependent on chat memory.
-7. Extract one learning from the last work cycle. Keep it concrete, such as "Grace Gems needs trust made visible" or "money facts need tax classification before state updates."
-8. Choose one possible system improvement that would make the next cycle smarter: a skill, template, checklist, customer doc update, quality gate, or priority decision.
-9. Produce a concise re-entry brief with the sections below.
-10. Do not edit, stage, commit, or push by default. `coffee` is read-only unless the operator chooses an action and asks to proceed.
+3. Name the last concrete repo movement from recent commits or the current worktree.
+4. Identify paid obligations first. Do not let unpaid complexity crowd out paid commitments.
+5. Separate confirmed facts from hypotheses, donor-funded support, optional donations, revenue, expenses, asset values, and unplanned scope.
+6. Scan for contradiction risk: customer status, money, paid/free access, employee-facing language, outward-facing brand language, privacy membranes, and authority boundaries.
+7. Detect entropy: identify what is becoming stale, contradictory, overbuilt, under-scoped, unsupported by evidence, or too dependent on chat memory.
+8. Extract one learning from the last work cycle. Keep it concrete, such as "Media Production now has a brief -> quality gate -> package pipeline" or "Grace Gems needs trust made visible before public-facing claims."
+9. Choose one possible system improvement that would make the next cycle smarter: a skill, template, CLI check, customer doc update, quality gate, loop example, or priority decision.
+10. Produce a concise re-entry brief with the sections below.
+11. Do not edit, stage, commit, or push by default. `coffee` is read-only unless the operator chooses an action and asks to proceed.
+
+## Native Verification Hooks
+
+Use these only when they fit the menu option or the operator asks to verify:
+
+- `python -m anyang_loop.cli validate customers`
+- `python -m anyang_loop.install_cli validate customers`
+- `python -m pytest`
+- `git status --short --branch`
+- `git diff --stat`
+
+If Python is unavailable, say so and fall back to manual repo inspection. Do not treat unavailable local tooling as a failed customer state.
 
 ## Recursive Improvement Loop
 
@@ -119,10 +141,10 @@ Improvement candidate:
 - <one durable system improvement that could make the next cycle smarter>
 
 Coffee menu - reply A-D:
-A. Confirm - <specific repo-grounded verification or cleanup move>
-B. Scope - <specific paid/customer obligation to define>
-C. Deepen - <specific customer context to enrich>
-D. Ship - <specific implementation/documentation move ready to execute>
+A. Confirm - <specific repo-grounded validation, status, or consistency check>
+B. Scope - <specific paid/customer obligation, authority boundary, or next deliverable to define>
+C. Deepen - <specific customer, loop, membrane, or skill context to enrich>
+D. Ship - <specific implementation, documentation, or commit-ready move to execute>
 ```
 
 ## Menu Rules
@@ -133,6 +155,8 @@ D. Ship - <specific implementation/documentation move ready to execute>
 - At least one option should usually preserve or test the improvement candidate when the learning is durable.
 - If one option is clearly best, mark it with `(recommended)`.
 - Stop on the menu unless the operator already gave permission to proceed.
+- If the operator replies `a`, `b`, `c`, or `d`, execute the matching Anyang Intelligence menu item rather than reopening the coffee ritual.
+- If the operator says `make it so`, execute the recommended menu item unless a safer interpretation is obvious from the previous turn.
 
 ## Guardrails
 
@@ -145,6 +169,9 @@ D. Ship - <specific implementation/documentation move ready to execute>
 - Preserve the distinction between free participation and donor-funded support.
 - Preserve the distinction between a one-time retainer and a recurring subscription.
 - Preserve the distinction between Media Production's own operating system and the content it creates for Grace Gems or Predictive History.
+- Preserve human authority over customer commitments, publication, spending, external claims, school/child-safety decisions, legal/tax conclusions, and cross-customer pattern transfer.
+- Transfer primitives across customers only through `docs/membranes.md`; do not transfer private facts, customer messages, sensitive source material, or authority decisions.
+- Prefer Anyang Intelligence's native CLIs and repo docs over remembered chat context.
 
 ## Done When
 
