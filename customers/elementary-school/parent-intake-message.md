@@ -12,6 +12,18 @@ Before I draft the 30-day learning plan, I want to collect a clear starting pict
 
 This plan is meant to support you as the parent. You keep final authority over curriculum, pacing, child-facing communication, what information is saved, what is shared, and whether outside support is needed. The plan will not diagnose, grade, prove mastery, replace legal/accountability requirements, or treat an app score as the full learning picture.
 
+The Student Operating System uses a simple loop:
+
+```text
+observe
+  -> gather insight
+  -> recommend next move
+  -> parent reviews
+  -> system updates
+```
+
+Your answers help start that loop from real family context rather than guesses.
+
 Please reply with whatever you know now. Short bullet points are perfect. If something is unknown, you can write `not sure yet`.
 
 ## 1. First-Month Goal

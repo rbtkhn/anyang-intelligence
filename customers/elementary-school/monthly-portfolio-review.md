@@ -4,6 +4,18 @@ The monthly portfolio review turns student portfolio artifacts into a parent-rea
 
 Its job is not to grade the child. Its job is to help the parent see growth, pride, interests, friction, milestones, and next steps.
 
+This review closes and restarts the Elementary School operating loop:
+
+```text
+observe
+  -> gather insight
+  -> recommend next move
+  -> parent reviews
+  -> system updates
+```
+
+The portfolio review matters because it turns a month of scattered evidence into a clearer parent decision about what should change next.
+
 ## Purpose
 
 Use the monthly portfolio review to:

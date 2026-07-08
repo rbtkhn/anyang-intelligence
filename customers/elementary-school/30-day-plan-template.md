@@ -6,6 +6,18 @@ Use it after the inputs in [30-day-plan-inputs.md](30-day-plan-inputs.md) are co
 
 Do not include pricing, retainer, subscription, or internal skill language in the completed parent-facing plan.
 
+The planning logic is:
+
+```text
+observe
+  -> gather insight
+  -> recommend next move
+  -> parent reviews
+  -> system updates
+```
+
+The draft should preserve that loop rather than pretending the first plan is the final answer.
+
 ## Plan Status
 
 - Plan status: `[Ready / Provisional / Hold]`
