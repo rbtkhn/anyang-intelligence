@@ -87,6 +87,8 @@ See [plan-draft-evidence-map.md](plan-draft-evidence-map.md) for the internal/op
 
 See [embodied-ai-hold-policy.md](embodied-ai-hold-policy.md) for the child-safety and parent-authority review gate that keeps any child-facing robot, kiosk, or embodied tutoring device in `Hold` until a narrow supervised use case is explicitly approved.
 
+See [embodied-ai-parent-review-worksheet.md](embodied-ai-parent-review-worksheet.md) for the parent-review surface that captures why a child-facing embodied device is being considered, what it records, who remains in charge, and why the default answer is still `Hold` until a narrow supervised case is explicit.
+
 See [mock-ready-plan-evidence-map.md](mock-ready-plan-evidence-map.md) for a fictional `Ready` intake traceability test before any real parent-facing plan is drafted.
 
 See [ai-interface-training/](ai-interface-training/) for Elementary School-specific AI interface training exemplars, including the canonical fictional `Ready` plan exemplar for intake review, drafting-gate use, evidence mapping, safe draft structure, and parent approval handoff.
