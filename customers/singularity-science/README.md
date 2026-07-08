@@ -14,6 +14,8 @@ Singularity Science helps Anyang Intelligence understand:
 - what governance boundaries are stressed
 - what new skills, loops, templates, checklists, or product primitives may be needed
 
+See [research-operating-model.md](research-operating-model.md) for the research-team choices governing purpose, source scope, output format, structure, cadence, and authority boundaries.
+
 ## Archive
 
 Internal source material lives under [archive/](archive/).
