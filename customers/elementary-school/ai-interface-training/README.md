@@ -27,6 +27,8 @@ It may not authorize a system to:
 ## Current Exemplars
 
 - [ready-plan-exemplar.md](ready-plan-exemplar.md): canonical fictional `Ready` example showing intake review, drafting-gate use, evidence mapping, safe draft structure, and parent approval handoff.
+- [approved-with-changes-exemplar.md](approved-with-changes-exemplar.md): canonical fictional revision example showing parent changes, approval-record update, plan revision, and safe-to-use recheck.
+- [hold-after-review-exemplar.md](hold-after-review-exemplar.md): canonical fictional pause example showing how parent review can stop plan use, update the approval record, and force a clarification path before any use.
 
 ## Storage Rule
 
