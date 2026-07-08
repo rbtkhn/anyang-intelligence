@@ -92,6 +92,19 @@ Because parent availability may vary, the plan should include:
 
 If the parent sets a screen-time budget, the plan should fit inside it rather than treating app time as a separate unlimited category.
 
+Optional high-value household-fit signals:
+
+- Parent energy budget:
+  - what a low-energy day can still support
+- Prep budget:
+  - how much setup the parent is willing to do
+- Frustration threshold:
+  - what signs mean pause, pivot, or shorten
+- Evidence burden budget:
+  - how much documentation is realistic before it becomes paperwork
+
+If these are known, use them to make the plan more realistic. If they are unknown, do not block drafting when the core readiness layer is otherwise clear.
+
 ## Current Resources
 
 Collect:

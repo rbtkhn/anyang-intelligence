@@ -72,6 +72,17 @@ Please skip any question that creates stress. This is a conversation starter, no
 
 If you are not sure, I will draft three options: minimum viable day, standard day, and fuller day.
 
+## 5A. Optional Household-Fit Signals
+
+If it would help, you can also answer any of these:
+
+- On a low-energy day, what kind of learning day is still realistic for you as the parent?
+- How much setup are you realistically willing to do before a learning block?
+- What signs tell you it is better to pause, pivot, or shorten an activity?
+- How much documentation feels realistic before the portfolio starts feeling like paperwork?
+
+Short answers are enough. These help me fit the plan to your actual household rather than an ideal routine.
+
 ## 6. Current Resources
 
 - Books currently available:
