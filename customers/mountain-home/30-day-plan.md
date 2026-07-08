@@ -1,0 +1,28 @@
+# Mountain Home 30-Day Plan
+
+This plan creates the first recurring review surfaces for Mountain Home.
+
+## Week 1: Baseline Review Surfaces
+
+- Create the first risk register and decision log.
+- Confirm the top 5 current risk-reduction priorities.
+- Review the current 72-hour continuity assumptions.
+
+## Week 2: Seasonal and Mitigation Review
+
+- Run the seasonal readiness loop against the next relevant seasonal risk window.
+- Record which mitigation actions already have proof and which do not.
+- Identify the next professional-review questions.
+
+## Week 3: Continuity and Backlog Review
+
+- Review utility, water, septic, access, and maintenance backlog visibility.
+- Identify the issues most likely to create hidden failure chains.
+- Update the risk register accordingly.
+
+## Week 4: Operating Review and Next Cycle
+
+- Run the first full operating review.
+- Update the decision log from real risk and maintenance pressure.
+- Choose the next 30-day property focus: mitigation, continuity, maintenance, or inspection readiness.
+

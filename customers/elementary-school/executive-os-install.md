@@ -236,6 +236,18 @@ The weekly review should answer:
 - What needs outside help or specialist attention?
 - What parent decisions should be recorded?
 
+## Operating Review Cadence
+
+The operating review cadence is a weekly parent review plus event-driven review whenever safety, privacy, or support conditions change. Use [operating-review.md](operating-review.md) as the recurring review surface.
+
+## Risk and Governance Boundary
+
+Governance in this lane means parent authority stays explicit at every child-facing boundary. Track recurring risks in [risk-register.md](risk-register.md) and keep transfer and private boundary discipline in [membrane-notes.md](membrane-notes.md).
+
+## 30-Day Installation Plan
+
+The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and elaborated below as the initial 30-day execution sequence.
+
 ## Initial 30-Day Plan
 
 ### Week 1: Learner Profile and Family Goals

@@ -101,6 +101,18 @@ The weekly review should answer:
 - Which risks are increasing?
 - What should be done next?
 
+## Operating Review Cadence
+
+The operating review cadence is a weekly owner review plus event-driven review before publication, promotion, or customer-promise changes. Use [operating-review.md](operating-review.md) as the recurring review surface.
+
+## Risk and Governance Boundary
+
+Governance in this lane means owner approval stays explicit for listings, pricing, promises, and policy-sensitive actions. Track recurring risks in [risk-register.md](risk-register.md) and maintain transfer and private boundary discipline in [membrane-notes.md](membrane-notes.md).
+
+## 30-Day Installation Plan
+
+The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and expanded below as the initial 30-day sequence.
+
 ## Initial 30-Day Plan
 
 Before Week 1, complete the [business intake survey](business-intake-survey.md).

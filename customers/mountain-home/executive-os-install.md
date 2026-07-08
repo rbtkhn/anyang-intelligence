@@ -113,6 +113,18 @@ The weekly review should answer:
 - What proof or documentation is missing?
 - What should be done next?
 
+## Operating Review Cadence
+
+The operating review cadence is a weekly owner review plus event-driven review during weather, access, utility, or safety disruptions. Use [operating-review.md](operating-review.md) as the recurring review surface.
+
+## Risk and Governance Boundary
+
+Governance in this lane means owner and professional authority stay visible for safety, spending, contractor, and insurance decisions. Track recurring risks in [risk-register.md](risk-register.md) and preserve transfer and private boundary discipline in [membrane-notes.md](membrane-notes.md).
+
+## 30-Day Installation Plan
+
+The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and expanded below as the initial 30-day sequence.
+
 ## Initial 30-Day Plan
 
 ### Week 1: Asset and Risk Inventory

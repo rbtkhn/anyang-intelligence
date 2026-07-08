@@ -162,6 +162,18 @@ The weekly review should answer:
 - Which assets created reusable abundance?
 - What should ship next?
 
+## Operating Review Cadence
+
+The operating review cadence is a weekly operator review plus event-driven review before delivery, publication review, or contractor reassignment. Use [operating-review.md](operating-review.md) as the recurring review surface.
+
+## Risk and Governance Boundary
+
+Track recurring rights, claim, delivery, and contractor risks in [risk-register.md](risk-register.md). Preserve transfer and private boundary discipline in [membrane-notes.md](membrane-notes.md).
+
+## 30-Day Installation Plan
+
+The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and expanded below as the initial 30-day sequence.
+
 ## Initial 30-Day Plan
 
 ### Week 1: Editorial and Pipeline Baseline

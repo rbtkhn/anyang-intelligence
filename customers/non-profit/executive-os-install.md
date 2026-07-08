@@ -121,6 +121,18 @@ The monthly review should answer:
 - Which risks are rising?
 - What should leadership decide next?
 
+## Operating Review Cadence
+
+The operating review cadence is a monthly leadership review plus event-driven review before donor, grant, reporting, stewardship, or real-estate decisions. Use [operating-review.md](operating-review.md) as the recurring review surface.
+
+## Risk and Governance Boundary
+
+Track recurring mission, donor, restriction, stewardship, and reporting risks in [risk-register.md](risk-register.md). Preserve transfer and private boundary discipline in [membrane-notes.md](membrane-notes.md).
+
+## 30-Day Installation Plan
+
+The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and expanded below as the initial 30-day sequence.
+
 ## Initial 30-Day Plan
 
 ### Week 1: Mission and Program Map

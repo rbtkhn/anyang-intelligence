@@ -62,6 +62,8 @@ The review should ask:
 - What governance boundary is stressed?
 - What primitive candidate, if any, should be tested?
 
+Use [operating-review.md](operating-review.md) as the recurring review surface for these checkpoints.
+
 ## Risk and Governance Boundary
 
 Human authority remains required for:
@@ -83,6 +85,8 @@ Governance risks:
 
 The strictest applicable membrane wins.
 
+Track recurring research and routing risks in [risk-register.md](risk-register.md) and preserve transfer and private boundary discipline in [membrane-notes.md](membrane-notes.md).
+
 ## 30-Day Installation Plan
 
 First 30 days:
@@ -93,6 +97,8 @@ First 30 days:
 4. Test whether the analysis produces a useful product implication, governance warning, or primitive candidate.
 5. Route only synthesized implications into other repo surfaces.
 6. Do not publish or customer-route transcript text without human review.
+
+The day-by-day execution companion lives in [30-day-plan.md](30-day-plan.md).
 
 ## Success Criteria
 
