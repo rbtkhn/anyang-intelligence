@@ -91,4 +91,6 @@ The current installations are tracked in [customers/](customers/README.md): Grac
 
 The shared method is captured in [docs/install-method.md](docs/install-method.md). The loop grammar is captured in [docs/loops.md](docs/loops.md), and the cross-lane filter judgment is captured in [docs/membranes.md](docs/membranes.md). Each customer installation should adapt that method to its own domain instead of inventing a new operating shape from scratch.
 
+The current system-level buildout is summarized in [docs/operating-substrate.md](docs/operating-substrate.md).
+
 Reusable maintenance procedures are tracked in [skills/](skills/README.md).
