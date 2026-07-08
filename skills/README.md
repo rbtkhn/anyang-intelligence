@@ -21,6 +21,7 @@ These are product-level skills for Student Operating System work. They are not g
 | [learner-profile](student-operating-system/learner-profile/SKILL.md) | Use for building or updating learner profiles from parent goals, student voice, observations, portfolio evidence, interests, strengths, friction, and next priorities. |
 | [weekly-parent-review](student-operating-system/weekly-parent-review/SKILL.md) | Use for turning weekly observations, activities, evidence, friction, and outcomes into parent-reviewed next-week decisions. |
 | [learning-plan](student-operating-system/learning-plan/SKILL.md) | Use for drafting parent-reviewed daily rhythms, weekly plans, activities, reading plans, projects, and next-cycle learning priorities. |
+| [new-student-30-day-plan](student-operating-system/new-student-30-day-plan/SKILL.md) | Use for creating the scoped 30-Day Personalized Learning Plan for new students, including onboarding, from parent-approved inputs. |
 
 ## Grace Gems Skills
 
