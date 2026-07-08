@@ -71,6 +71,8 @@ See [parent-intake-message.md](parent-intake-message.md) for the adaptable paren
 
 See [parent-guide-signals.md](parent-guide-signals.md) for the parent-set budgets and household-fit signals the Student Operating System can use to adapt plans to real family constraints.
 
+See [parent-intake-to-draft-runbook.md](parent-intake-to-draft-runbook.md) for the operator front door used when a real parent response arrives and the case needs to be classified as `Ready`, `Provisional`, or `Hold`.
+
 See [onboarding-readiness-checklist.md](onboarding-readiness-checklist.md) for the internal/operator checklist that converts parent intake into a `Ready`, `Provisional`, or `Hold` decision before drafting.
 
 See [mock-intake-simulations.md](mock-intake-simulations.md) for three fictional intake tests that exercise the Ready, Provisional, and Hold gates.
