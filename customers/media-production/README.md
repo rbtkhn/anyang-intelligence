@@ -94,6 +94,10 @@ See [grace-gems-trust-architecture-kit.md](grace-gems-trust-architecture-kit.md)
 
 See [creative-production-operator-onboarding.md](creative-production-operator-onboarding.md) for the Creative Production Operator onboarding guide.
 
+See [creative-production-operator-assignment-gate.md](creative-production-operator-assignment-gate.md) before assigning any work to the Creative Production Operator.
+
+See [creative-production-operator-assignment-template.md](creative-production-operator-assignment-template.md) for the task brief format used after an assignment passes the gate.
+
 ## Abundance System
 
 - [abundance-principle.md](abundance-principle.md): defines what abundance means for Media Production.
