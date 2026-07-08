@@ -1,6 +1,6 @@
-# Archive
+# Singularity Science Archive
 
-This archive stores internal analysis source material and source notes for Anyang Intelligence.
+This archive stores internal analysis source material and source notes for the Singularity Science research project.
 
 The archive is not a public publishing surface. It exists so source material can inform product judgment, customer implications, governance warnings, and recursive self-enhancement without being confused with customer deliverables or public claims.
 
@@ -29,13 +29,12 @@ Archive material may not be used to:
 Use this structure:
 
 ```text
-archive/
-  ai-frontier/
-    innermost-loop/
-    moonshots/
+customers/singularity-science/archive/
+  innermost-loop/
+  moonshots/
 ```
 
-Raw transcripts and source material stay in `archive/`. Synthesis and product implications may move into `docs/`, `customers/`, or `skills/` only after membrane review and source discipline.
+Raw transcripts and source material stay in this archive. Synthesis and product implications may move into `docs/`, `customers/`, or `skills/` only after membrane review and source discipline.
 
 ## Public Use Rule
 

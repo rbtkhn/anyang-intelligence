@@ -82,11 +82,11 @@ The native `dream` skill provides the repo's closeout pulse. It checks git state
 
 See [cadence-loop-example.md](cadence-loop-example.md) for a short fixture showing `coffee -> bravo -> dream -> coffee` using the native cadence skill work itself.
 
-### 5. Internal Analysis Archive
+### 5. Internal Research Archive
 
-The `archive/` folder stores internal analysis source material and source notes.
+The `customers/singularity-science/` folder stores the Singularity Science research project.
 
-The first archive lane is [archive/ai-frontier/](../archive/ai-frontier/README.md), with folders for Innermost Loop and Moonshots. This keeps transcripts, source notes, analyses, and frontier ledgers separate from docs, skills, and customer deliverables.
+Its [archive](../customers/singularity-science/archive/README.md) holds internal analysis source material for Innermost Loop and Moonshots. This keeps transcripts, source notes, analyses, and frontier ledgers separate from docs, skills, and customer deliverables while still placing the ongoing research project beside other Anyang Intelligence operating lanes.
 
 Archive material can inform product judgment, governance warnings, and reusable primitive candidates. It should not be treated as public content, customer-facing copy, or reusable doctrine without source discipline, rights review, and membrane translation.
 
@@ -168,14 +168,11 @@ The system now has this shape:
 docs
   -> define philosophy, loops, membranes, governance
 
-archive
-  -> stores internal analysis sources, source notes, and frontier ledgers
-
 cli
   -> make loops and installs repeatable
 
 customers
-  -> preserve domain operating memory
+  -> preserve domain operating memory and research lanes
 
 skills
   -> encode recurring procedures
