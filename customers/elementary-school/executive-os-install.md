@@ -23,7 +23,7 @@ Anyang Intelligence should behave like a careful Student Operating System layer:
 | Field | Current starting point |
 | --- | --- |
 | Operating context | Student Operating System |
-| Customer pricing | Not yet designed |
+| Customer offer | Free 30-day plan, then optional monthly continuity subscription |
 | Paid retainer received | $1,000 |
 | Retainer type | One-time services |
 | Payer | Elementary School |
@@ -186,11 +186,18 @@ Use `skills/student-operating-system/learning-plan/SKILL.md` for drafting parent
 
 Do not mention these internal skill names in parent-facing materials.
 
-## Customer Pricing
+## Customer Offer
 
-Customer pricing has not been designed yet.
+The current customer-facing entry offer is a **free 30-Day Personalized Learning Plan** for new students.
 
-The current money fact is the **$1,000 one-time retainer** paid from Elementary School to Anyang Intelligence for a 30-Day Personalized Learning Plan for new students, including onboarding.
+After that first month, the continuity offer is an optional **monthly subscription** that includes:
+
+- Chat-group participation.
+- Premium newsletters.
+- Personalized ongoing consultation.
+- Early access to new upgrades and features.
+
+The current money fact on the builder side is the **$1,000 one-time retainer** paid from Elementary School to Anyang Intelligence for a 30-Day Personalized Learning Plan for new students, including onboarding.
 
 Pricing work should only begin after the build can reliably provide:
 
@@ -201,7 +208,7 @@ Pricing work should only begin after the build can reliably provide:
 - Weekly parent review.
 - Clear child-safety and human-authority boundaries.
 
-No recurring price point should be treated as a validated offer until customer-pricing work is explicitly opened.
+No recurring price point should be treated as fully validated until real parent adoption, retention, and support-load evidence exists.
 
 ## One-Time Retainer
 

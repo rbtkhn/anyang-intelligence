@@ -99,6 +99,8 @@ It also now includes a `hold after review` exemplar for showing how parent revie
 
 See [parent-approval-record.md](parent-approval-record.md) for the internal/operator artifact that records what the parent approved, what changed, what remains provisional, and whether a draft is safe to use.
 
+See [parent-approval-checklist.md](parent-approval-checklist.md) for the parent-facing review surface that makes it easy to approve, change, or pause draft elements before use.
+
 See [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 
 See [loop-examples/parent-intake-readiness.yaml](loop-examples/parent-intake-readiness.yaml) for the formal loop definition behind parent intake, readiness classification, and recursive template improvement.
@@ -109,11 +111,20 @@ See [student-portfolio.md](student-portfolio.md) for the place to store physical
 
 See [monthly-portfolio-review.md](monthly-portfolio-review.md) for the first reporting layer built from the student portfolio.
 
-## Customer Pricing
+See [subscription-boundary.md](subscription-boundary.md) for the commercial boundary between the free 30-day entry plan and the monthly continuity subscription.
 
-Customer pricing has not been designed yet.
+## Customer Offer
 
-The current money fact is only the $1,000 one-time retainer from Elementary School to Anyang Intelligence for the scoped 30-Day Personalized Learning Plan for new students, including onboarding. Do not treat this as a subscription price, recurring customer price, or validated market offer.
+The current customer-facing entry offer is a **free 30-Day Personalized Learning Plan** for new students in a parent-led elementary learning context.
+
+After the first 30-day plan, the continuity offer is a **monthly subscription** for families who want ongoing support through:
+
+- Chat-group participation.
+- Premium newsletters.
+- Personalized ongoing consultation.
+- Early access to new upgrades and features.
+
+This offer shape is now part of the Elementary School lane hypothesis. It should still be treated as an evolving product model rather than a fully validated market offer.
 
 ## Paid Retainer
 

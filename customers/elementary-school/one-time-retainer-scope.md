@@ -8,7 +8,7 @@ It is a hybrid scope document: internal enough to govern Anyang Intelligence exe
 
 The primary one-time package is a **30-Day Personalized Learning Plan** for new students in a parent-led elementary learning context, including onboarding.
 
-The retainer is a one-time service package. It is not customer pricing, a subscription hypothesis, or an ongoing support agreement. No customer-pricing model has been designed yet.
+The retainer is a one-time service package. It is separate from the customer-facing offer model, which now uses a free 30-day entry plan followed by an optional monthly continuity subscription.
 
 ## Payment Record
 
@@ -18,7 +18,7 @@ The retainer is a one-time service package. It is not customer pricing, a subscr
 - Payment type: one-time retainer.
 - Working classification: retainer/prepaid service obligation.
 - Deliverable: 30-Day Personalized Learning Plan for new students, including onboarding.
-- Pricing status: customer pricing not yet designed.
+- Pricing status: customer-facing offer hypothesis defined as free 30-day plan plus optional monthly continuity subscription.
 - Evidence needed: invoice, receipt, payment record, or other approved accounting evidence.
 - Review needed: owner/bookkeeper/CPA review if final accounting or tax classification is needed.
 
@@ -125,7 +125,7 @@ This one-time retainer does not include:
 - Parent messaging or family-facing reports beyond the agreed scope.
 - Outside specialist conclusions.
 - Customer pricing design.
-- Conversion into a recurring subscription or monthly service.
+- Automatic conversion into a recurring subscription or monthly service without separate parent choice and approval.
 
 If any out-of-scope need appears, the correct action is to flag it for parent review and, when appropriate, teacher, tutor, clinician, specialist, attorney, district, or other professional support.
 
@@ -187,7 +187,7 @@ The retainer is complete when the parent has:
 - Clear parent decisions for the next month.
 - Explicit safety, authority, and out-of-scope boundaries.
 
-Completion means the scoped package has been delivered for parent review. It does not mean the plan has produced mastery, solved every learning need, met all legal/accountability requirements, established customer pricing, or created an ongoing subscription.
+Completion means the scoped package has been delivered for parent review. It does not mean the plan has produced mastery, solved every learning need, met all legal/accountability requirements, validated the customer offer, or enrolled the family in any ongoing subscription.
 
 ## Next Step After Delivery
 
@@ -195,8 +195,11 @@ After the 30-day plan is delivered and reviewed, the parent may choose one of th
 
 - Use the plan independently.
 - Request a revised 30-day plan.
+- Join the monthly continuity subscription for chat-group access, premium newsletters, personalized ongoing consultation, and early access to new upgrades and features.
 - Scope separately approved follow-on work.
 - Focus on one component, such as reading basket, portfolio review, learner profile, or weekly parent review.
 - Pause and collect more evidence before deciding.
 
 Any follow-on work should be separately scoped and approved.
+
+See [subscription-boundary.md](subscription-boundary.md) for the explicit boundary between the free customer entry plan and the optional monthly continuity subscription.
