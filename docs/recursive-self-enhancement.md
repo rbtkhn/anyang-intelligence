@@ -109,6 +109,20 @@ Dream should not choose a new improvement by default. It should settle the work 
 
 That makes dream the consolidation ritual. If coffee asks what should improve next, dream asks what the repo can safely carry forward.
 
+## Relation To Bravo
+
+Native [bravo](../skills/bravo/SKILL.md) is the positive-signal cadence that captures what the operator found especially good.
+
+Recursive self-enhancement should learn from friction and from excellence. Bravo names:
+
+- what was praised
+- which property made it valuable
+- where the pattern might repeat
+- what boundary prevents overgeneralization
+- whether the signal is a note, candidate, or preservation request
+
+That makes bravo the reinforcement ritual. If coffee notices what needs improvement and dream confirms what landed, bravo notices what should be repeated.
+
 ## Durable Improvement Test
 
 A change qualifies as recursive self-enhancement when it is:

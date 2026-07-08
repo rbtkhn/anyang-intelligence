@@ -76,6 +76,8 @@ That chain now supports moving a Grace Gems or Predictive History signal from id
 
 The native `coffee` skill provides the repo's recursive improvement pulse. It reads the Anyang Intelligence portfolio, loops, membranes, skills, and git state, then names the current picture, entropy, one learning, one improvement candidate, and a bounded A-D next move.
 
+The native `bravo` skill provides the repo's positive-signal capture pulse. It turns operator satisfaction into reusable design intelligence by naming what worked, why it worked, where it may apply again, and what boundary prevents overgeneralization.
+
 The native `dream` skill provides the repo's closeout pulse. It checks git state, reviews the latest durable changes, runs Anyang-native validation when appropriate, separates known legacy warnings from fresh issues, and names what tomorrow inherits without creating autonomous merge authority.
 
 ## What Is Valuable Now
@@ -90,6 +92,7 @@ It can now:
 - Turn repeated customer work into skills.
 - Keep Media Production work moving through a human-approved pipeline.
 - Use `coffee` to notice friction and choose the next durable improvement.
+- Use `bravo` to notice excellence and reinforce repeatable patterns.
 - Use `dream` to settle what landed, verify the repo can rest, and name what tomorrow inherits.
 
 This is the first sign of compounding: the work improves the system that will perform the next work.
@@ -166,6 +169,9 @@ skills
 
 coffee
   -> detects entropy and selects the next improvement
+
+bravo
+  -> captures positive signals and repeatable taste
 
 dream
   -> confirms what landed and closes the cycle
