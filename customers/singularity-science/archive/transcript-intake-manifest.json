@@ -1,0 +1,32 @@
+{
+  "transcripts": [
+    {
+      "lane": "innermost-loop",
+      "title": "Example Innermost Loop Episode",
+      "slug": "example-innermost-loop-episode",
+      "date_captured": "2026-07-08",
+      "date_published": "",
+      "source_ref": "https://example.com/innermost-loop/example",
+      "rights_status": "uncertain-review-needed",
+      "capture_method": "manual transcript export",
+      "local_input_path": "C:/path/to/local/transcripts/example-innermost-loop.txt",
+      "speaker": "",
+      "episode_id": "",
+      "notes": ""
+    },
+    {
+      "lane": "moonshots",
+      "title": "Example Moonshots Episode",
+      "slug": "example-moonshots-episode",
+      "date_captured": "2026-07-08",
+      "date_published": "",
+      "source_ref": "https://example.com/moonshots/example",
+      "rights_status": "uncertain-review-needed",
+      "capture_method": "manual transcript export",
+      "local_input_path": "C:/path/to/local/transcripts/example-moonshots.txt",
+      "speaker": "",
+      "episode_id": "",
+      "notes": ""
+    }
+  ]
+}

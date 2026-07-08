@@ -4,6 +4,8 @@
 
 `anyang-install` scaffolds and validates customer Executive OS installation folders from deterministic templates.
 
+It also provides Singularity Science archive intake commands for transcript manifests.
+
 Loops follow the 8-element grammar from [`docs/loops.md`](../docs/loops.md):
 
 - signal
@@ -188,6 +190,50 @@ anyang-install extract-patterns customers --output customers/pattern-candidates.
 ```
 
 Pattern extraction is review-only. It never updates templates or customer folders automatically.
+
+## Transcript Intake
+
+Singularity Science transcript intake is archive-only infrastructure. It normalizes internal transcript files into:
+
+- `customers/singularity-science/archive/innermost-loop/transcripts/`
+- `customers/singularity-science/archive/moonshots/transcripts/`
+
+The manifest must live under `customers/singularity-science/archive/`.
+
+Dry run an import:
+
+```bash
+anyang-install import-transcripts --manifest customers/singularity-science/archive/transcript-intake-manifest.json --dry-run
+```
+
+Run the import:
+
+```bash
+anyang-install import-transcripts --manifest customers/singularity-science/archive/transcript-intake-manifest.json
+```
+
+Report completeness:
+
+```bash
+anyang-install report-transcript-import --manifest customers/singularity-science/archive/transcript-intake-manifest.json
+```
+
+Manifest rows require:
+
+- `lane`
+- `title`
+- `slug`
+- `date_captured`
+- `source_ref`
+- `rights_status`
+- `capture_method`
+- `local_input_path`
+
+Allowed `rights_status` values:
+
+- `internal-commit-approved`
+- `uncertain-review-needed`
+- `do-not-commit`
 
 ## Verification
 
