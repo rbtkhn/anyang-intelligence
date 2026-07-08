@@ -95,6 +95,20 @@ Coffee should not improve everything at once. It should name:
 
 That makes coffee the detection and selection ritual. The enhancement itself is complete only when the chosen improvement is preserved in a repo-visible surface and, when possible, validated.
 
+## Relation To Dream
+
+Native [dream](../skills/dream/SKILL.md) is the closeout cadence that confirms what actually landed.
+
+Dream should not choose a new improvement by default. It should settle the work cycle by naming:
+
+- what was preserved in durable repo surfaces
+- what validation passed, failed, or was skipped
+- what warnings are known legacy noise versus fresh issues
+- which authority or membrane boundaries still matter
+- what tomorrow inherits
+
+That makes dream the consolidation ritual. If coffee asks what should improve next, dream asks what the repo can safely carry forward.
+
 ## Durable Improvement Test
 
 A change qualifies as recursive self-enhancement when it is:

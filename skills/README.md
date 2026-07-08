@@ -7,6 +7,7 @@ Skills are reusable operating procedures for maintaining the Anyang Intelligence
 | Skill | Use |
 | --- | --- |
 | [coffee](coffee/SKILL.md) | Use for native Anyang Intelligence re-entry and recursive self-improvement: current picture, live obligations, entropy flags, one learning, and next A-D actions grounded in repo_probe. |
+| [dream](dream/SKILL.md) | Use for native Anyang Intelligence closeout: settle the work cycle, verify repo integrity, name what was preserved, and identify what tomorrow inherits without autonomous merge authority. |
 | [customer-state-update](customer-state-update/SKILL.md) | Use when customer facts, money, obligations, scope, or language boundaries change. |
 | [elicitation](elicitation/SKILL.md) | Use when missing human judgment, preferences, authority, constraints, or context should be gathered through concise direct questions, multiple choice, or structured intake before safe execution. |
 | [tax-financial-governance](tax-financial-governance/SKILL.md) | Use when money, tax-sensitive classification, accounting evidence, or financial governance risk appears. |
