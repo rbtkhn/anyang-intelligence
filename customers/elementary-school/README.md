@@ -71,6 +71,8 @@ See [parent-intake-message.md](parent-intake-message.md) for the adaptable paren
 
 See [onboarding-readiness-checklist.md](onboarding-readiness-checklist.md) for the internal/operator checklist that converts parent intake into a `Ready`, `Provisional`, or `Hold` decision before drafting.
 
+See [mock-intake-simulations.md](mock-intake-simulations.md) for three fictional intake tests that exercise the Ready, Provisional, and Hold gates.
+
 See [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 
 See [reading-basket.md](reading-basket.md) for the first physical literacy tool in the startup bundle.
