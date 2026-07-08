@@ -1,10 +1,10 @@
-# Worked Example Ready Draft Packet
+# Ready Draft Packet
 
 This is a fictional end-to-end example showing how the Elementary School lane should move from intake to a safe draft packet.
 
-It uses the `Ready` scenario from [mock-intake-simulations.md](mock-intake-simulations.md). It is not a real family, student record, or delivery artifact.
+It uses the `Ready` scenario from [mock-intake-simulations.md](../mock-intake-simulations.md). It is not a real family, student record, or delivery artifact.
 
-Treat this as the canonical training fixture for a first safe 30-day plan draft. A future operator or agent should be able to read this packet and understand the minimum standard for moving from parent intake to a review-ready draft without inventing learner facts, weakening parent authority, or turning portfolio evidence into proof of mastery.
+Treat this as the canonical Elementary School AI interface training fixture for a first safe 30-day plan draft. A future operator, agent, or customer-owned AI system should be able to read this packet and understand the minimum standard for moving from parent intake to a review-ready draft without inventing learner facts, weakening parent authority, or turning portfolio evidence into proof of mastery.
 
 Use this packet as an operator example for:
 
@@ -17,7 +17,7 @@ Use this packet as an operator example for:
 
 ## How To Use This Fixture
 
-Use this packet when training or checking a new Elementary School drafting pass.
+Use this packet when training or checking a new Elementary School drafting pass or customer-owned AI interface behavior.
 
 The operator should compare any future draft against this sequence:
 
@@ -28,7 +28,7 @@ The operator should compare any future draft against this sequence:
 5. Draft only the sections that can be supported without diagnosis, grading, app-mastery claims, legal/accountability claims, or hidden child-facing authority.
 6. Return the draft for parent approval before use.
 
-This fixture is not a shortcut around intake. It is a pattern for how to preserve authority, evidence, and warmth while drafting.
+This fixture is not a shortcut around intake. It is a pattern for how to preserve authority, evidence, and warmth while drafting inside the Elementary School context.
 
 ## Minimum Passing Standard
 
@@ -100,7 +100,7 @@ Guardrails still active:
 
 ## 4. Evidence Map Snapshot
 
-This is a shortened example of [plan-draft-evidence-map.md](plan-draft-evidence-map.md) filled against the scenario.
+This is a shortened example of [plan-draft-evidence-map.md](../plan-draft-evidence-map.md) filled against the scenario.
 
 | Plan section | Draft claim or structure | Source label | Evidence note | Open risk or approval needed |
 | --- | --- | --- | --- | --- |
@@ -296,9 +296,9 @@ This packet demonstrates that the lane can now:
 
 That is the current target state for a safe first-month plan draft in Elementary School.
 
-## 8. Agent Training Notes
+## 8. AI Interface Training Notes
 
-When using this fixture to train a future agent, the desired behavior is not merely to copy the example plan. The desired behavior is to preserve the chain of authority:
+When using this fixture to train a future agent or customer-owned AI interface, the desired behavior is not merely to copy the example plan. The desired behavior is to preserve the chain of authority:
 
 ```text
 parent intake
@@ -320,3 +320,5 @@ Strong future drafts should sound warm and useful, but the safety test is struct
 - no child-facing delivery before parent approval
 
 The reusable primitive here is the disciplined handoff from evidence to draft. The specific child details in this fixture are fictional and should not be reused as if they describe a real learner.
+
+This packet is scoped to Elementary School. It should not be used to train general Anyang Intelligence behavior, Media Production behavior, or another customer context without an explicit membrane review and rewritten examples.

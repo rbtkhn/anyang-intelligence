@@ -1,0 +1,35 @@
+# Elementary School AI Interface Training
+
+This folder stores Elementary School-specific training packets for future operators, agents, or customer-owned AI interfaces.
+
+The purpose is to show what safe AI-supported behavior looks like inside the Elementary School context. These packets are examples of interface behavior, not private family records, legal guidance, diagnosis, grading, or proof of mastery.
+
+## Boundary
+
+AI interface training in this folder may help a system:
+
+- organize parent-approved intake
+- classify drafting readiness
+- preserve parent authority
+- map evidence to plan language
+- draft bounded 30-day plan materials for parent review
+- ask for missing safety, privacy, or context inputs
+
+It may not authorize a system to:
+
+- replace the parent or guardian
+- communicate with a child without parent approval
+- diagnose, grade, or prove mastery
+- make legal or accountability claims
+- invent learner facts, resources, schedules, or curriculum decisions
+- reuse private family information outside the approved context
+
+## Current Packets
+
+- [ready-draft-packet.md](ready-draft-packet.md): canonical fictional `Ready` example showing intake review, drafting-gate use, evidence mapping, safe draft structure, and parent approval handoff.
+
+## Storage Rule
+
+Keep Elementary School AI interface training here when it is specific to this lane.
+
+If a pattern later becomes reusable across customers, extract the primitive only after membrane review. Shared extraction should preserve the method while removing lane-specific or private context.
