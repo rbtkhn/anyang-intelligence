@@ -19,6 +19,5 @@ decision: Prepare a parent-reviewed recommendation for the next lesson, project,
 action: After parent or guardian approval, update the learning plan and run the selected learning experience.
 evidence: Parent approval, portfolio artifact, progress note, learner reflection, monthly portfolio review, or saved work sample.
 cadence: Daily learning rhythm, weekly parent review, monthly portfolio review, and event-driven review for safety or support concerns.
-learning_update: Preserve observations in learner memory and adjust the next plan based on evidence, curiosity, resistance, and parent judgment.
+learning_update: Preserve observations in learner memory, adjust the next plan based on evidence, curiosity, resistance, and parent judgment, and update the relevant checklist, template, or review prompt when a recurring friction pattern appears.
 governance_boundary: The system may not replace parent authority, diagnose a child, make legal or medical determinations, hide concerns, or expose sensitive child information.
-

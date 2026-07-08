@@ -77,6 +77,8 @@ See [hold-response-template.md](hold-response-template.md) for the parent-facing
 
 See [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 
+See [loop-examples/parent-intake-readiness.yaml](loop-examples/parent-intake-readiness.yaml) for the formal loop definition behind parent intake, readiness classification, and recursive template improvement.
+
 See [reading-basket.md](reading-basket.md) for the first physical literacy tool in the startup bundle.
 
 See [student-portfolio.md](student-portfolio.md) for the place to store physical work, digital work, student output the learner is proud of, milestones, and reports.

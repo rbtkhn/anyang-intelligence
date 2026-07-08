@@ -1,0 +1,30 @@
+name: elementary-parent-intake-readiness
+description: Readiness loop that turns parent intake into a Ready, Provisional, or Hold decision before drafting a 30-day plan.
+loop_type: governance
+customer_lane: elementary-school
+authority: parent or guardian approval
+tags:
+  - intake
+  - onboarding
+  - child-safety
+  - governance
+signal: A parent intake response arrives, a new-student onboarding request is opened, or missing intake details are updated.
+memory_objects:
+  - parent intake response
+  - parent goals
+  - approval authority
+  - privacy and sharing boundaries
+  - learner starting context
+  - schedule and parent-time reality
+  - current resources
+  - Khan Academy Kids decision
+  - reading basket status
+  - portfolio evidence approach
+  - support concerns
+  - missing inputs
+decision: Classify the intake as Ready, Provisional, or Hold before any 30-day plan is drafted.
+action: Use the parent intake message, onboarding readiness checklist, mock simulation learnings, and Hold response template to either draft from approved inputs, draft a provisional plan with assumptions, or request missing authority and safety details.
+evidence: Parent intake response, readiness classification, missing-input list, parent approval gate, Hold response sent when needed, or parent-approved plan draft.
+cadence: Event-driven when a parent intake response arrives or changes; review before every new-student 30-day plan draft.
+learning_update: Compare real or simulated intake outcomes with the checklist and templates, then update the intake message, readiness checklist, Hold response, or plan template when a recurring failure mode appears.
+governance_boundary: Anyang Intelligence may organize intake and prepare recommendations, but the parent or guardian approves drafting, child-facing language, saved/shared information, support escalation, and plan use; the loop must not diagnose, grade, prove mastery, imply legal compliance, or treat app activity as authority.
