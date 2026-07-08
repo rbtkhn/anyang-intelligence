@@ -1,8 +1,8 @@
 # Elementary School AI Interface Training
 
-This folder stores Elementary School-specific training packets for future operators, agents, or customer-owned AI interfaces.
+This folder stores Elementary School-specific training exemplars for future operators, agents, or customer-owned AI interfaces.
 
-The purpose is to show what safe AI-supported behavior looks like inside the Elementary School context. These packets are examples of interface behavior, not private family records, legal guidance, diagnosis, grading, or proof of mastery.
+The purpose is to show what safe AI-supported behavior looks like inside the Elementary School context. These exemplars are examples of interface behavior, not private family records, legal guidance, diagnosis, grading, or proof of mastery.
 
 ## Boundary
 
@@ -24,9 +24,9 @@ It may not authorize a system to:
 - invent learner facts, resources, schedules, or curriculum decisions
 - reuse private family information outside the approved context
 
-## Current Packets
+## Current Exemplars
 
-- [ready-draft-packet.md](ready-draft-packet.md): canonical fictional `Ready` example showing intake review, drafting-gate use, evidence mapping, safe draft structure, and parent approval handoff.
+- [ready-plan-exemplar.md](ready-plan-exemplar.md): canonical fictional `Ready` example showing intake review, drafting-gate use, evidence mapping, safe draft structure, and parent approval handoff.
 
 ## Storage Rule
 

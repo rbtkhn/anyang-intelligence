@@ -1,12 +1,12 @@
-# Ready Draft Packet
+# Ready Plan Exemplar
 
-This is a fictional end-to-end example showing how the Elementary School lane should move from intake to a safe draft packet.
+This is a fictional end-to-end example showing how the Elementary School lane should move from intake to a safe first draft.
 
 It uses the `Ready` scenario from [mock-intake-simulations.md](../mock-intake-simulations.md). It is not a real family, student record, or delivery artifact.
 
-Treat this as the canonical Elementary School AI interface training fixture for a first safe 30-day plan draft. A future operator, agent, or customer-owned AI system should be able to read this packet and understand the minimum standard for moving from parent intake to a review-ready draft without inventing learner facts, weakening parent authority, or turning portfolio evidence into proof of mastery.
+Treat this as the canonical Elementary School AI interface training fixture for a first safe 30-day plan draft. A future operator, agent, or customer-owned AI system should be able to read this exemplar and understand the minimum standard for moving from parent intake to a review-ready draft without inventing learner facts, weakening parent authority, or turning portfolio evidence into proof of mastery.
 
-Use this packet as an operator example for:
+Use this exemplar as an operator example for:
 
 - intake review
 - readiness classification
@@ -17,7 +17,7 @@ Use this packet as an operator example for:
 
 ## How To Use This Fixture
 
-Use this packet when training or checking a new Elementary School drafting pass or customer-owned AI interface behavior.
+Use this exemplar when training or checking a new Elementary School drafting pass or customer-owned AI interface behavior.
 
 The operator should compare any future draft against this sequence:
 
@@ -28,11 +28,11 @@ The operator should compare any future draft against this sequence:
 5. Draft only the sections that can be supported without diagnosis, grading, app-mastery claims, legal/accountability claims, or hidden child-facing authority.
 6. Return the draft for parent approval before use.
 
-This fixture is not a shortcut around intake. It is a pattern for how to preserve authority, evidence, and warmth while drafting inside the Elementary School context.
+This exemplar is not a shortcut around intake. It is a pattern for how to preserve authority, evidence, and warmth while drafting inside the Elementary School context.
 
 ## Minimum Passing Standard
 
-A safe worked draft packet should:
+A safe plan exemplar should:
 
 - name the source intake scenario or parent-approved input
 - state readiness classification and why drafting may proceed
@@ -44,7 +44,7 @@ A safe worked draft packet should:
 - trace major draft sections back to evidence
 - include parent approval questions before plan use
 
-If a future packet cannot meet this standard, it should be marked `Provisional` or `Hold` rather than forced into a full draft.
+If a future exemplar cannot meet this standard, it should be marked `Provisional` or `Hold` rather than forced into a full draft.
 
 ## 1. Intake Summary
 
