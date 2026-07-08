@@ -85,7 +85,7 @@ See [plan-draft-evidence-map.md](plan-draft-evidence-map.md) for the internal/op
 
 See [mock-ready-plan-evidence-map.md](mock-ready-plan-evidence-map.md) for a fictional `Ready` intake traceability test before any real parent-facing plan is drafted.
 
-See [worked-example-ready-draft-packet.md](worked-example-ready-draft-packet.md) for a fictional end-to-end example showing intake review, drafting-gate use, evidence mapping, and a safe first draft packet.
+See [worked-example-ready-draft-packet.md](worked-example-ready-draft-packet.md) for the canonical fictional training fixture showing intake review, drafting-gate use, evidence mapping, a safe first draft packet, and parent approval handoff.
 
 See [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 

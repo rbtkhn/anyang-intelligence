@@ -4,6 +4,8 @@ This is a fictional end-to-end example showing how the Elementary School lane sh
 
 It uses the `Ready` scenario from [mock-intake-simulations.md](mock-intake-simulations.md). It is not a real family, student record, or delivery artifact.
 
+Treat this as the canonical training fixture for a first safe 30-day plan draft. A future operator or agent should be able to read this packet and understand the minimum standard for moving from parent intake to a review-ready draft without inventing learner facts, weakening parent authority, or turning portfolio evidence into proof of mastery.
+
 Use this packet as an operator example for:
 
 - intake review
@@ -12,6 +14,37 @@ Use this packet as an operator example for:
 - evidence-map discipline
 - first safe plan draft
 - parent approval handoff
+
+## How To Use This Fixture
+
+Use this packet when training or checking a new Elementary School drafting pass.
+
+The operator should compare any future draft against this sequence:
+
+1. Start from a parent intake signal.
+2. Classify the intake as `Ready`, `Provisional`, or `Hold`.
+3. Run the drafting gate before writing parent-facing plan language.
+4. Map major plan claims back to parent inputs, approved context, template defaults, or labeled assumptions.
+5. Draft only the sections that can be supported without diagnosis, grading, app-mastery claims, legal/accountability claims, or hidden child-facing authority.
+6. Return the draft for parent approval before use.
+
+This fixture is not a shortcut around intake. It is a pattern for how to preserve authority, evidence, and warmth while drafting.
+
+## Minimum Passing Standard
+
+A safe worked draft packet should:
+
+- name the source intake scenario or parent-approved input
+- state readiness classification and why drafting may proceed
+- identify missing inputs or state that none block drafting
+- keep the parent as the approval authority
+- preserve privacy and saved/shared-information boundaries
+- avoid diagnosis, grade-level claims, proof-of-mastery claims, and legal/accountability conclusions
+- treat Khan Academy Kids as supervised practice and observation, not curriculum replacement or proof
+- trace major draft sections back to evidence
+- include parent approval questions before plan use
+
+If a future packet cannot meet this standard, it should be marked `Provisional` or `Hold` rather than forced into a full draft.
 
 ## 1. Intake Summary
 
@@ -262,3 +295,28 @@ This packet demonstrates that the lane can now:
 - preserve parent authority before use
 
 That is the current target state for a safe first-month plan draft in Elementary School.
+
+## 8. Agent Training Notes
+
+When using this fixture to train a future agent, the desired behavior is not merely to copy the example plan. The desired behavior is to preserve the chain of authority:
+
+```text
+parent intake
+  -> readiness classification
+  -> drafting gate
+  -> evidence map
+  -> bounded draft
+  -> parent approval
+  -> learning update after review
+```
+
+Strong future drafts should sound warm and useful, but the safety test is structural:
+
+- no unsupported personalization
+- no invented resources
+- no hidden curriculum decisions
+- no claim that app activity proves mastery
+- no private information reuse without approval
+- no child-facing delivery before parent approval
+
+The reusable primitive here is the disciplined handoff from evidence to draft. The specific child details in this fixture are fictional and should not be reused as if they describe a real learner.
