@@ -69,6 +69,8 @@ See [30-day-plan-inputs.md](30-day-plan-inputs.md) for the parent goals, learner
 
 See [parent-intake-message.md](parent-intake-message.md) for the adaptable parent message used to collect those inputs before drafting.
 
+See [parent-guide-signals.md](parent-guide-signals.md) for the parent-set budgets and household-fit signals the Student Operating System can use to adapt plans to real family constraints.
+
 See [onboarding-readiness-checklist.md](onboarding-readiness-checklist.md) for the internal/operator checklist that converts parent intake into a `Ready`, `Provisional`, or `Hold` decision before drafting.
 
 See [mock-intake-simulations.md](mock-intake-simulations.md) for three fictional intake tests that exercise the Ready, Provisional, and Hold gates.
@@ -80,6 +82,8 @@ See [recursive-self-enhancement.md](recursive-self-enhancement.md) for the lane-
 See [plan-drafting-gate.md](plan-drafting-gate.md) for the internal/operator checklist that controls how `Ready` and `Provisional` intake is safely converted into a 30-day plan draft.
 
 See [plan-draft-evidence-map.md](plan-draft-evidence-map.md) for the internal/operator worksheet that traces each major draft section back to parent inputs, approved context, template defaults, or labeled assumptions.
+
+See [mock-ready-plan-evidence-map.md](mock-ready-plan-evidence-map.md) for a fictional `Ready` intake traceability test before any real parent-facing plan is drafted.
 
 See [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 
