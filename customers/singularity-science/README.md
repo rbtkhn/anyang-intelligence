@@ -27,6 +27,12 @@ Current source lanes:
 
 The archive is for internal analysis. Do not treat transcripts as public content, customer-facing copy, or reusable doctrine without source discipline, rights review, and membrane translation.
 
+## Primitives
+
+Reusable primitive candidates live under [primitives/](primitives/README.md).
+
+These artifacts translate research into internal checklists, validators, and routing aids that can be tested before anything becomes lane doctrine.
+
 ## Boundary
 
 Singularity Science may produce:
