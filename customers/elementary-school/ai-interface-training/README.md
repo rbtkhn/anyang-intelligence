@@ -29,6 +29,7 @@ It may not authorize a system to:
 - [ready-plan-exemplar.md](ready-plan-exemplar.md): canonical fictional `Ready` example showing intake review, drafting-gate use, evidence mapping, safe draft structure, and parent approval handoff.
 - [approved-with-changes-exemplar.md](approved-with-changes-exemplar.md): canonical fictional revision example showing parent changes, approval-record update, plan revision, and safe-to-use recheck.
 - [hold-after-review-exemplar.md](hold-after-review-exemplar.md): canonical fictional pause example showing how parent review can stop plan use, update the approval record, and force a clarification path before any use.
+- [embodied-ai-hold-exemplar.md](embodied-ai-hold-exemplar.md): canonical fictional `Hold` example showing how a child-facing robot or embodied tutor proposal should be paused, reviewed, and kept out of the plan by default until parent authority, supervision, privacy, and override are explicit.
 
 ## Storage Rule
 

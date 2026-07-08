@@ -83,6 +83,8 @@ See [plan-drafting-gate.md](plan-drafting-gate.md) for the internal/operator che
 
 See [plan-draft-evidence-map.md](plan-draft-evidence-map.md) for the internal/operator worksheet that traces each major draft section back to parent inputs, approved context, template defaults, or labeled assumptions.
 
+See [embodied-ai-hold-policy.md](embodied-ai-hold-policy.md) for the child-safety and parent-authority review gate that keeps any child-facing robot, kiosk, or embodied tutoring device in `Hold` until a narrow supervised use case is explicitly approved.
+
 See [mock-ready-plan-evidence-map.md](mock-ready-plan-evidence-map.md) for a fictional `Ready` intake traceability test before any real parent-facing plan is drafted.
 
 See [ai-interface-training/](ai-interface-training/) for Elementary School-specific AI interface training exemplars, including the canonical fictional `Ready` plan exemplar for intake review, drafting-gate use, evidence mapping, safe draft structure, and parent approval handoff.
