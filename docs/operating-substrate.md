@@ -82,6 +82,14 @@ The native `dream` skill provides the repo's closeout pulse. It checks git state
 
 See [cadence-loop-example.md](cadence-loop-example.md) for a short fixture showing `coffee -> bravo -> dream -> coffee` using the native cadence skill work itself.
 
+### 5. Internal Analysis Archive
+
+The `archive/` folder stores internal analysis source material and source notes.
+
+The first archive lane is [archive/ai-frontier/](../archive/ai-frontier/README.md), with folders for Innermost Loop and Moonshots. This keeps transcripts, source notes, analyses, and frontier ledgers separate from docs, skills, and customer deliverables.
+
+Archive material can inform product judgment, governance warnings, and reusable primitive candidates. It should not be treated as public content, customer-facing copy, or reusable doctrine without source discipline, rights review, and membrane translation.
+
 ## What Is Valuable Now
 
 The valuable thing is not any single file. The value is that the repo has begun to behave like the product it describes.
@@ -159,6 +167,9 @@ The system now has this shape:
 ```text
 docs
   -> define philosophy, loops, membranes, governance
+
+archive
+  -> stores internal analysis sources, source notes, and frontier ledgers
 
 cli
   -> make loops and installs repeatable
