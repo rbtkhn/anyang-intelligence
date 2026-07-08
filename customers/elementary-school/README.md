@@ -73,6 +73,8 @@ See [onboarding-readiness-checklist.md](onboarding-readiness-checklist.md) for t
 
 See [mock-intake-simulations.md](mock-intake-simulations.md) for three fictional intake tests that exercise the Ready, Provisional, and Hold gates.
 
+See [hold-response-template.md](hold-response-template.md) for the parent-facing pause message used when intake is classified as `Hold`.
+
 See [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 
 See [reading-basket.md](reading-basket.md) for the first physical literacy tool in the startup bundle.

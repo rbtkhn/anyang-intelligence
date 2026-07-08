@@ -246,11 +246,13 @@ The readiness gate should slow down when the parent asks for proof, app mastery,
 - The checklist catches the most important failure modes: invented learner facts, app-as-mastery, unclear approval, unclear privacy, and high-stakes support concerns.
 - The next reusable primitive is a short `Hold` response template that asks only for missing safety/authority/context decisions.
 
-## Suggested Follow-Up
+## Follow-Up Primitive
 
-Add a reusable `Hold` response template before drafting any real plan.
+The reusable `Hold` response template now lives in [hold-response-template.md](hold-response-template.md).
 
-The template should:
+Use it before drafting any real plan when intake is not safe or complete enough to proceed.
+
+The template should continue to:
 
 - thank the parent
 - name that the plan is paused for safety and accuracy
