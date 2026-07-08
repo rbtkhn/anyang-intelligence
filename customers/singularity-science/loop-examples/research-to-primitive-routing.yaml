@@ -1,0 +1,24 @@
+name: singularity-science-research-to-primitive-routing
+description: Governance loop that turns a source note or analysis memo into a preserved primitive, a lane-safe routing question, or a hold decision inside Singularity Science.
+loop_type: governance
+customer_lane: singularity-science
+authority: Anyang Intelligence operator approval
+tags:
+  - research
+  - primitive
+  - routing
+  - membrane
+signal: A new source note, analysis memo, repeated research pattern, or governance warning suggests a reusable primitive or a lane-safe implication.
+memory_objects:
+  - source metadata
+  - analysis memo
+  - primitive inventory
+  - customer impact map
+  - research risk register
+  - routing decisions
+decision: The Anyang Intelligence operator exercises routing authority to decide whether to preserve the insight as a primitive, hold it in research, or route it outward only as a lane-safe question or governance warning.
+action: The Anyang Intelligence operator updates the primitive surface, records the routing judgment, revises the customer-impact map when needed, or holds the item for more evidence under explicit operator authority.
+evidence: Source note, analysis memo, primitive artifact, routing note, preserved watch item, or explicit hold decision.
+cadence: Event-driven when a source note or analysis memo lands; weekly when multiple primitive candidates accumulate.
+learning_update: Preserve the routing judgment, primitive outcome, and recurring failure pattern in research memory, then tighten the research-to-lane translation surfaces when drift or false-positive routing appears.
+governance_boundary: Singularity Science may finish source classification, primitive preservation, and lane-safe routing preparation without interruption, but any receiving-lane adoption, customer obligation, transcript transfer, membrane bypass, or claim elevation must return for explicit human authority and approval.

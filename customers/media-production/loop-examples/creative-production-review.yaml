@@ -1,0 +1,24 @@
+name: media-production-creative-production-review
+description: Review loop that turns a draft asset, brief, or contractor review packet into a clear approve, revise, hold, or reject decision before delivery or publication review.
+loop_type: operating
+customer_lane: media-production
+authority: Anyang Intelligence operator approval
+tags:
+  - creative
+  - review
+  - contractor
+  - quality-gate
+signal: A draft asset, revised brief, or contractor review packet is ready for production review.
+memory_objects:
+  - production brief
+  - client or lane context
+  - quality gate notes
+  - rights or claim questions
+  - budget and capacity constraints
+  - contractor review packet
+decision: Prepare whether the work should move forward for delivery or publication review, be revised, be held for clarification, or be rejected.
+action: Revise the brief or asset, escalate rights or claim concerns, update the production board, or return a clear next-step review note.
+evidence: Review packet, quality notes, hold or revise decision, rights clarification note, or approved next-step handoff.
+cadence: Event-driven whenever a draft asset or contractor packet reaches review; weekly review for blocked or repeated revision patterns.
+learning_update: Preserve which briefs, revisions, and review packets produced approval-ready work in production memory, then tighten assignment, quality, and review guidance around the recurring gaps.
+governance_boundary: Media Production may finish packet review, revision guidance, and hold-or-advance preparation without interruption, but publication, client commitments, spend, rights decisions, and external claims must always return for explicit human authority.

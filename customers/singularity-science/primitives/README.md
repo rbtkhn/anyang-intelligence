@@ -12,6 +12,7 @@ They are not customer commitments, public claims, or automatic policy.
 | --- | --- | --- | --- |
 | [Embodied AI Exposure Scan](embodied-ai-exposure-scan.md) | A research signal suggests robotics, embodied agents, sensing devices, automated capture, physical automation, or cheap embodied AI may affect a lane | Translate into lane-safe exposure questions before moving to Media Production, Grace Gems, Elementary School, Non-Profit, Mountain Home, or Book Club | candidate |
 | [Ambient Agency Review Gate](ambient-agency-review-gate.md) | A research signal suggests background agents, continuous voice, monitoring, memory, coworker systems, or approval-minimizing automation may quietly shift where agency lives | Translate into lane-safe delegation, approval, override, and visibility questions before moving to any receiving lane | candidate |
+| [Turn Receipt Template](../turn-receipt-template.md) | A bounded turn produced a real workflow result and its absorbed work, approvals, or cleanup burden should be preserved | Use as the default receipt shape before adding lane-specific scoring or failure-mode notes | candidate |
 
 ## Routing Rules
 

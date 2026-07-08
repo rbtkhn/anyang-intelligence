@@ -8,6 +8,7 @@ Use with:
 
 - [useful-turn-evaluation-note.md](useful-turn-evaluation-note.md)
 - [primitives/ambient-agency-review-gate.md](primitives/ambient-agency-review-gate.md)
+- [turn-receipt-template.md](turn-receipt-template.md)
 - [../../docs/membranes.md](../../docs/membranes.md)
 
 ## Core Idea
@@ -181,6 +182,12 @@ What would improve the next turn:
 
 If a team wants recurring measurement, track:
 
+- accepted as-is
+- accepted with minor edits
+- major rework required
+- held
+- rejected
+- governance-capped despite useful content
 - accepted output rate
 - human interventions per task
 - rework ratio
@@ -190,6 +197,8 @@ If a team wants recurring measurement, track:
 - approval meaningfulness
 
 These are not replacements for judgment, but they help compare systems over time.
+
+When using the manual categories above, attach them to a saved turn receipt rather than relying on memory alone.
 
 ## Boundary
 

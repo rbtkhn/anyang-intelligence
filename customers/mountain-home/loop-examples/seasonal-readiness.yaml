@@ -20,5 +20,4 @@ action: After owner approval, schedule maintenance, update readiness tasks, coll
 evidence: Risk register update, proof photo, invoice, inspection note, owner approval, or completed maintenance record.
 cadence: Seasonal review, weekly review during active risk windows, and event-driven review for safety or access issues.
 learning_update: Update the readiness checklist and risk memory based on what prevented drift, damage, delay, or avoidable uncertainty.
-governance_boundary: The Executive OS does not approve property access, spending, insurance claims, legal positions, safety decisions, or contractor commitments without owner or professional review.
-
+governance_boundary: The Executive OS may finish risk ranking, proof planning, and mitigation-versus-escalation preparation without interruption, but property access, spending, insurance claims, legal positions, safety decisions, and contractor commitments must always return to owner or professional review.
