@@ -41,3 +41,4 @@ These are product-level skills for Media Production creative pipeline work. They
 | [media-production-brief](media-production/media-production-brief/SKILL.md) | Use when turning a Grace Gems product/customer signal or Predictive History topic into a review-ready creative production brief. |
 | [media-production-quality-gate](media-production/media-production-quality-gate/SKILL.md) | Use when reviewing a Media Production draft asset for Approve / Revise / Hold / Reject readiness before delivery or publication. |
 | [media-production-package](media-production/media-production-package/SKILL.md) | Use when packaging approved or review-ready Media Production assets with source notes, reuse paths, and human approval boundaries before delivery or publication. |
+| [media-production-ledger](media-production/media-production-ledger/SKILL.md) | Use when preparing or appending Creative Abundance Ledger entries for approved, shipped, reused, or reviewed Media Production work. |
