@@ -6,7 +6,9 @@ It is a hybrid scope document: internal enough to govern Anyang Intelligence exe
 
 ## Scope Decision
 
-The primary one-time package is a **30-Day Personalized Learning Plan** for new students in a parent-led elementary learning context, including onboarding.
+The primary one-time package is a **30-Day Personalized Learning Plan** for new students in a parent-guided elementary learning context, including onboarding.
+
+The plan may layer onto a student's public-school, homeschool, or hybrid learning reality. Its job is to add depth, continuity, and parent clarity around the student's actual education experience.
 
 The retainer is a one-time service package. It is separate from the customer-facing offer model, which now uses a free 30-day entry plan followed by an optional monthly continuity subscription.
 

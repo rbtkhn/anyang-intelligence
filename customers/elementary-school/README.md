@@ -1,12 +1,12 @@
 # Elementary School
 
-Elementary School is an Anyang Intelligence build for the **Student Operating System**, a parent-led learning operating system built on the Anyang Intelligence Executive OS method.
+Elementary School is an Anyang Intelligence build for the **Student Operating System**, a parent-guided learning operating system built on the Anyang Intelligence Executive OS method.
 
 ## Organization
 
-The Student Operating System is a high-trust home education operating context:
+The Student Operating System is a high-trust elementary learning operating context that can layer onto either public school or homeschool:
 
-- Work: personalized elementary learning, parent-guided instruction, daily learning plans, enrichment, progress tracking, portfolio evidence, and family communication.
+- Work: personalized elementary learning, parent-guided support, daily learning plans, enrichment, progress tracking, portfolio evidence, and family communication.
 - Cadence: daily learning rhythm, weekly parent review, monthly portfolio review, seasonal learning goals, and school-year planning.
 - Operating challenge: create a rich individualized learning experience without replacing parent authority, child safety, human care, or required education accountability.
 - Paid retainer received: $1,000.
@@ -33,9 +33,9 @@ The system does not replace parents, teachers, tutors, clinicians, legal require
 
 ## Operating Thesis
 
-A homeschool experience should not be a pile of worksheets, apps, and forgotten good intentions.
+A traditional education experience, whether public school or homeschool, should not become a pile of worksheets, apps, handoffs, and forgotten good intentions.
 
-The Student Operating System should help the family create a coherent, humane, personalized learning rhythm:
+The Student Operating System should help the family create a coherent, humane, personalized layer of depth and continuity around the learner's actual education experience:
 
 ```text
 learner interests and needs
@@ -113,9 +113,11 @@ See [monthly-portfolio-review.md](monthly-portfolio-review.md) for the first rep
 
 See [subscription-boundary.md](subscription-boundary.md) for the commercial boundary between the free 30-day entry plan and the monthly continuity subscription.
 
+See [subscription-experience.md](subscription-experience.md) for the recurring cadence, support boundaries, and monthly deliverables of the continuity subscription.
+
 ## Customer Offer
 
-The current customer-facing entry offer is a **free 30-Day Personalized Learning Plan** for new students in a parent-led elementary learning context.
+The current customer-facing entry offer is a **free 30-Day Personalized Learning Plan** for new students in a parent-guided elementary learning context, whether the student's main schooling context is public school or homeschool.
 
 After the first 30-day plan, the continuity offer is a **monthly subscription** for families who want ongoing support through:
 

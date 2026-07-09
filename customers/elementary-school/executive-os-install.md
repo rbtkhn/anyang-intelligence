@@ -4,7 +4,7 @@
 
 Install Anyang Intelligence as the Student Operating System for elementary learning.
 
-The system should help a parent or guardian coordinate individualized learning, daily rhythm, enrichment, progress evidence, and reflection while preserving human authority, child safety, and education accountability.
+The system should help a parent or guardian add individualized depth, continuity, reflection, and coordination around a student's existing education experience, whether that experience is primarily public school, homeschool, or a hybrid, while preserving human authority, child safety, and education accountability.
 
 ## Executive Mandate
 
@@ -18,7 +18,7 @@ Anyang Intelligence should behave like a careful Student Operating System layer:
 - Surface patterns that need parent, tutor, teacher, clinician, or specialist review.
 - Turn learning evidence into next-step recommendations.
 
-## Homeschool Context Map
+## Education Context Map
 
 | Field | Current starting point |
 | --- | --- |
@@ -31,7 +31,7 @@ Anyang Intelligence should behave like a careful Student Operating System layer:
 | One-time service scope | 30-Day Personalized Learning Plan for new students, including onboarding |
 | Grade band | Elementary / K-5 |
 | Startup iPad app | Khan Academy Kids |
-| Core work | Parent-led personalized learning, daily plans, enrichment, progress evidence, reflection |
+| Core work | Parent-guided depth and continuity around the student's education experience, including daily plans when appropriate, enrichment, progress evidence, and reflection |
 | Primary cadence | Daily learning rhythm, weekly parent review, monthly portfolio review, school-year planning |
 | Primary constraint | High-trust child learning context with safety, privacy, parent authority, and education accountability requirements |
 | Primary operating risk | Learning becomes fragmented, over-automated, unaccountable, or disconnected from the child's actual needs and interests |
@@ -112,7 +112,7 @@ learner signal
 
 ## Child Learning Guardrails
 
-The homeschool experience must be human-led.
+The student's education experience must remain human-led.
 
 The Executive OS may:
 
@@ -131,7 +131,7 @@ The Executive OS may not:
 - Present itself as the child's parent, teacher of record, clinician, or legal authority.
 - Hide learning concerns from the parent or guardian.
 - Store or expose sensitive child information beyond approved access rules.
-- Ignore applicable homeschool, district, state, or reporting requirements.
+- Ignore applicable school, homeschool, district, state, or reporting requirements.
 
 ## Membrane Boundary
 
@@ -222,7 +222,7 @@ Possible package directions include:
 - Student startup survey and learner-interest artifact.
 - Startup Bundle package.
 - Reading basket setup and first weekly review.
-- First 30-day personalized homeschool plan for new students, including onboarding.
+- First 30-day personalized learning plan for new students, including onboarding.
 - Portfolio and progress evidence setup.
 - Student portfolio setup for physical work, digital work, proud work, milestones, and reports.
 - Monthly portfolio review report.

@@ -10,6 +10,8 @@ The first 30-day plan is the trust-building entry experience.
 
 It should let a parent experience the Student Operating System in a bounded way before making any ongoing commitment.
 
+That experience may sit alongside public school, homeschool, or a hybrid arrangement. The lane's job is to add depth and continuity, not to pretend every family starts from the same schooling structure.
+
 The monthly continuity subscription begins only if the parent wants continuing guidance, interpretation, and higher-touch support after that first month.
 
 ## Free 30-Day Plan Includes
@@ -118,3 +120,5 @@ free 30-day plan used
 ```
 
 The offer should not rely on chat memory alone. It should be updated through repo-visible doctrine when real parent behavior reveals a better boundary.
+
+See [subscription-experience.md](subscription-experience.md) for the recurring service shape that sits on the paid side of this boundary.
