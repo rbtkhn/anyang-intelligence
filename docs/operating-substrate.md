@@ -4,6 +4,18 @@ This document summarizes the system Anyang Intelligence has built so far.
 
 The repo is no longer only a thesis about Executive Operating Systems. It now contains the first pieces of an operating substrate: docs that define the philosophy, command-line tools that make installations and loops repeatable, customer folders that preserve domain context, and skills that encode recurring procedures.
 
+## Naming And Physical Path
+
+The current implementation root is physically named `repo_probe`. That name is now historical: it began as a probe, but the folder has become the live operating substrate.
+
+The architectural identity is **operating substrate**. Until the worktree is clean and the rename can be done deliberately, use this convention:
+
+- `repo_probe` means the current physical workspace path.
+- `operating substrate` means the system layer being built here.
+- `operating-substrate` is the likely future folder name if the implementation root is renamed rather than promoted to the repo root.
+
+Do not treat `repo_probe` as disposable or experimental merely because of its name. It is the active implementation surface.
+
 ## Core Thesis
 
 Anyang Intelligence compounds when real customer work produces reusable operating primitives.

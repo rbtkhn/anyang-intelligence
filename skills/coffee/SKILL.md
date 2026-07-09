@@ -13,7 +13,17 @@ scope_class: repo-governed
 
 `coffee` is the native Anyang Intelligence re-entry ritual and recursive self-improvement pulse. It should feel like a short sip of coherence: enough orientation to restore momentum, notice what the last cycle taught us, and improve the next move without becoming a heavy maintenance pass.
 
+The operator may type only `coffee`. Do not require them to say `anyang-coffee`, `native coffee`, or a repo qualifier.
+
 When working inside `anyang-intelligence/repo_probe`, this skill is authoritative. Do not route `coffee` through strategy-codex scripts, cadence files, conductor menus, or external operator rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence coffee reads this repo, its customer folders, its loop/install tooling, and its skills.
+
+When tools are available, prefer the native command:
+
+```text
+anyang-coffee --repo .
+```
+
+If the command is unavailable, perform the same read-only procedure manually from the inputs below.
 
 Use `coffee` when the operator asks:
 
@@ -83,6 +93,7 @@ Do not require unavailable strategy-codex-only files such as `scripts/operator_c
 
 Use these only when they fit the menu option or the operator asks to verify:
 
+- `anyang-coffee --repo .`
 - `python -m anyang_loop.cli validate customers`
 - `python -m anyang_loop.install_cli validate customers`
 - `python -m pytest`

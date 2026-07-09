@@ -13,7 +13,17 @@ scope_class: repo-governed
 
 `dream` is the native Anyang Intelligence closeout ritual. It should feel like quiet integration: enough verification and compression to make tomorrow easier, without turning the end of a session into another build sprint.
 
+The operator may type only `dream`. Do not require them to say `anyang-dream`, `native dream`, or a repo qualifier.
+
 When working inside `anyang-intelligence/repo_probe`, this skill is authoritative. Do not route `dream` through strategy-codex `auto_dream.py`, cadence logs, conductor rollups, Grace-Mar memory files, or external night-close rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence dream reads this repo, its customer folders, its loop/install tooling, its skills, and git state.
+
+When tools are available, prefer the native command:
+
+```text
+anyang-dream --repo .
+```
+
+If the command is unavailable, perform the same read-only procedure manually from the inputs below.
 
 Use `dream` when the operator asks:
 
@@ -85,6 +95,7 @@ Do not require unavailable strategy-codex-only files such as `scripts/auto_dream
 
 Use these when available and relevant:
 
+- `anyang-dream --repo .`
 - `git status --short --branch`
 - `git log --oneline --decorate -8`
 - `python -m anyang_loop.install_cli validate customers`

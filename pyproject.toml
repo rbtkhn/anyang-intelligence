@@ -20,6 +20,8 @@ dev = [
 [project.scripts]
 anyang-loop = "anyang_loop.cli:main"
 anyang-install = "anyang_loop.install_cli:main"
+anyang-coffee = "anyang_loop.coffee_cli:main"
+anyang-dream = "anyang_loop.dream_cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "cli"}

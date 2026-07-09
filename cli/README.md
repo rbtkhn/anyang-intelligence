@@ -8,6 +8,10 @@ It also provides Singularity Science archive intake commands for transcript mani
 
 It also provides Elementary School catalog intake commands for governed course-directory assets.
 
+`anyang-coffee` renders the native Anyang Intelligence re-entry brief from repo state, portfolio docs, skills, and git status.
+
+`anyang-dream` renders the native Anyang Intelligence closeout brief from repo state, recent commits, changed paths, and governance surfaces.
+
 Loops follow the 8-element grammar from [`docs/loops.md`](../docs/loops.md):
 
 - signal
@@ -34,9 +38,47 @@ Then run:
 ```bash
 anyang-loop --help
 anyang-install --help
+anyang-coffee --help
+anyang-dream --help
 ```
 
 If your shell does not have Python on `PATH`, install or activate a Python 3.10+ environment first.
+
+## Coffee Re-Entry
+
+`anyang-coffee` operationalizes the native [coffee skill](../skills/coffee/SKILL.md). It is read-only: it does not edit, stage, commit, push, publish, or approve anything.
+
+Run it from the repo root:
+
+```bash
+anyang-coffee
+```
+
+Or point it at a repo path:
+
+```bash
+anyang-coffee --repo C:\dev\anyang-intelligence\repo_probe
+```
+
+The output follows the native Anyang Intelligence shape: current picture, live obligations, waiting on, entropy flags, one learning, one improvement candidate, and an A-D coffee menu. Use this command when the global Codex skill registry points at an external `coffee` ritual but the work is inside `anyang-intelligence/repo_probe`.
+
+## Dream Closeout
+
+`anyang-dream` operationalizes the native [dream skill](../skills/dream/SKILL.md). It is read-only by default: it does not edit, stage, commit, push, publish, or approve anything.
+
+Run it from the repo root:
+
+```bash
+anyang-dream
+```
+
+Or point it at a repo path:
+
+```bash
+anyang-dream --repo C:\dev\anyang-intelligence\repo_probe
+```
+
+The output follows the native Anyang Intelligence closeout shape: recent rhythm, run status, touched surfaces, integrity and governance checks, and what tomorrow inherits. Use this command when the plain `dream` ritual should stay grounded in `anyang-intelligence/repo_probe` rather than any external closeout system.
 
 ## Loop Schema
 
