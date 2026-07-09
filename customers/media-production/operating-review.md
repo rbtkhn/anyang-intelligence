@@ -44,3 +44,4 @@ Cadence: weekly, plus event-driven review before large assignments, unusual spen
 - Where did the system stop too early and leave avoidable coordination work for the operator?
 - Where did any turn get too close to implying publication, client commitment, or rights approval?
 - Which repeated failure mode should become a tighter template, gate, or contractor instruction?
+- Where did a workflow look complete but still stall on permissions, rights, spend, or approval authority?
