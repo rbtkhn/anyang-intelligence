@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from anyang_loop.parser import LoopParseError, parse_markdown, parse_yaml
+from anyang_loop.parser import LoopParseError, discover_loop_files, parse_markdown, parse_yaml
 
 
 def test_parse_yaml_loop():
@@ -130,6 +130,33 @@ lane: singularity-science
 # Source Note
 """
         )
+
+
+def test_discover_loop_files_skips_non_loop_catalog_yaml(tmp_path):
+    catalog = tmp_path / "customers" / "elementary-school" / "catalog"
+    loops = tmp_path / "customers" / "elementary-school" / "loop-examples"
+    catalog.mkdir(parents=True)
+    loops.mkdir(parents=True)
+    (catalog / "khan-catalog-manifest.sample.yaml").write_text("catalog_entries: []\n", encoding="utf-8")
+    loop_file = loops / "parent-intake-readiness.yaml"
+    loop_file.write_text(
+        """
+name: parent-intake-readiness
+signal: parent response
+memory_objects: [parent intake]
+decision: classify readiness
+action: draft, hold, or ask for missing input
+evidence: readiness record
+cadence: event-driven
+learning_update: update intake checklist
+governance_boundary: parent approval required
+""",
+        encoding="utf-8",
+    )
+
+    discovered = discover_loop_files(tmp_path / "customers")
+
+    assert discovered == [loop_file]
 
 
 def test_customer_examples_parse():

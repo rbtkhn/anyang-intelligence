@@ -1,0 +1,155 @@
+catalog_entries:
+  - stable_id: khan-kids-reading-literacy
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids reading and literacy
+    subject_domain: Reading and literacy
+    age_grade_band: ages 2-8
+    standards_tags:
+      - head-start-elof
+      - common-core
+    content_type: domain
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/360014856151-Learning-Topics-Using-Khan-Academy-Kids-in-Educational-Settings
+    source_note: Official Khan Academy Kids learning-topics article names reading and literacy as a core area.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Use for starter reading recommendations only, not for mastery claims.
+  - stable_id: khan-kids-language
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids language
+    subject_domain: Language
+    age_grade_band: ages 2-8
+    standards_tags:
+      - head-start-elof
+      - common-core
+    content_type: domain
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/360014856151-Learning-Topics-Using-Khan-Academy-Kids-in-Educational-Settings
+    source_note: Official Khan Academy Kids learning-topics article names language as a core area.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Includes vocabulary and early writing concepts in the public description.
+  - stable_id: khan-kids-math
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids math
+    subject_domain: Math
+    age_grade_band: ages 2-8
+    standards_tags:
+      - head-start-elof
+      - common-core
+    content_type: domain
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/360014856151-Learning-Topics-Using-Khan-Academy-Kids-in-Educational-Settings
+    source_note: Official Khan Academy Kids learning-topics article names math as a core area.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Useful as a small supervised practice block when parent-approved.
+  - stable_id: khan-kids-social-emotional
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids social-emotional development
+    subject_domain: Social-emotional development
+    age_grade_band: ages 2-8
+    standards_tags:
+      - head-start-elof
+    content_type: domain
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/360014856151-Learning-Topics-Using-Khan-Academy-Kids-in-Educational-Settings
+    source_note: Official Khan Academy Kids learning-topics article names social-emotional development as a core area.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Supports confidence and emotional-language recommendations more than academic classification.
+  - stable_id: khan-kids-executive-function-logic
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids executive function and logic
+    subject_domain: Executive function and logic
+    age_grade_band: ages 2-8
+    standards_tags:
+      - khan
+    content_type: domain
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/360014856151-Learning-Topics-Using-Khan-Academy-Kids-in-Educational-Settings
+    source_note: Official Khan Academy Kids learning-topics article names executive function and logic as a core area.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Treat as a signal-rich area for focus and support posture observations.
+  - stable_id: khan-kids-motor-physical
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids motor and physical development
+    subject_domain: Motor and physical development
+    age_grade_band: ages 2-8
+    standards_tags:
+      - head-start-elof
+    content_type: domain
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/360014856151-Learning-Topics-Using-Khan-Academy-Kids-in-Educational-Settings
+    source_note: Official Khan Academy Kids learning-topics article names motor and physical development as a core area.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Helps explain that the app is broader than reading and math alone.
+  - stable_id: khan-kids-creative-expression
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids creative expression
+    subject_domain: Creative expression
+    age_grade_band: ages 2-8
+    standards_tags:
+      - head-start-elof
+    content_type: domain
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/360014856151-Learning-Topics-Using-Khan-Academy-Kids-in-Educational-Settings
+    source_note: Official Khan Academy Kids learning-topics article names creative expression as a core area.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Good candidate for off-app transfer into drawing, storytelling, and portfolio artifacts.
+  - stable_id: khan-kids-books-nonfiction
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids nonfiction books
+    subject_domain: Books
+    age_grade_band: ages 2-8
+    standards_tags: []
+    content_type: book-subtype
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/4409036780955-Learn-more-about-the-books-in-the-Khan-Academy-Kids-app
+    source_note: Official Khan Academy Kids books article names nonfiction books as a category.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Use for reading-basket and interest-transfer recommendations when a child gravitates toward facts, animals, or science topics.
+  - stable_id: khan-kids-books-stories-with-lessons
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids stories with lessons
+    subject_domain: Books
+    age_grade_band: ages 2-8
+    standards_tags: []
+    content_type: book-subtype
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/4409036780955-Learn-more-about-the-books-in-the-Khan-Academy-Kids-app
+    source_note: Official Khan Academy Kids books article names stories with lessons as a category.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Relevant when the parent wants social-emotional reinforcement through story.
+  - stable_id: khan-kids-books-early-readers
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids early readers
+    subject_domain: Books
+    age_grade_band: preschool to 2nd grade
+    standards_tags: []
+    content_type: book-subtype
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/4409036780955-Learn-more-about-the-books-in-the-Khan-Academy-Kids-app
+    source_note: Official Khan Academy Kids books article names early readers as a category.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Useful when the learner needs confidence-building reading choices.
+  - stable_id: khan-kids-books-national-geographic-young-explorer
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids National Geographic Young Explorer books
+    subject_domain: Books
+    age_grade_band: ages 2-8
+    standards_tags: []
+    content_type: book-subtype
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/4409036780955-Learn-more-about-the-books-in-the-Khan-Academy-Kids-app
+    source_note: Official Khan Academy Kids books article names National Geographic Young Explorer as a category.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Strong bridge from app interest into nonfiction reading basket additions.
+  - stable_id: khan-kids-books-alphabet
+    source_product: khan_kids_curated_catalog
+    title: Khan Kids alphabet books
+    subject_domain: Books
+    age_grade_band: ages 2-8
+    standards_tags: []
+    content_type: book-subtype
+    source_url: https://khankids.zendesk.com/hc/en-us/articles/4409036780955-Learn-more-about-the-books-in-the-Khan-Academy-Kids-app
+    source_note: Official Khan Academy Kids books article names alphabet books as a category.
+    evidence_status: manual-curated
+    import_method: manual-curated
+    operator_notes: Useful for early-literacy support, but keep actual level judgments parent-reviewed.

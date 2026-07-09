@@ -15,6 +15,7 @@ class LoopParseError(ValueError):
 
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*$")
 FRONT_MATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*(?:\n|\Z)", re.DOTALL)
+NON_LOOP_DIRS = {"archive", "catalog", "imported"}
 
 
 def load_loop_file(path: str | Path) -> LoopDefinition:
@@ -34,8 +35,16 @@ def discover_loop_files(path: str | Path) -> list[Path]:
         return [root]
     files: list[Path] = []
     for pattern in ("*.yaml", "*.yml", "*.md"):
-        files.extend(root.rglob(pattern))
+        files.extend(candidate for candidate in root.rglob(pattern) if is_loop_candidate(candidate))
     return sorted(files)
+
+
+def is_loop_candidate(path: Path) -> bool:
+    if any(part in NON_LOOP_DIRS for part in path.parts):
+        return False
+    if path.suffix.lower() in {".yaml", ".yml"} and "loop-examples" not in path.parts:
+        return False
+    return True
 
 
 def load_loops_from_path(path: str | Path) -> tuple[list[LoopDefinition], list[tuple[Path, str]]]:

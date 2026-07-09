@@ -6,6 +6,8 @@
 
 It also provides Singularity Science archive intake commands for transcript manifests.
 
+It also provides Elementary School catalog intake commands for governed course-directory assets.
+
 Loops follow the 8-element grammar from [`docs/loops.md`](../docs/loops.md):
 
 - signal
@@ -244,6 +246,53 @@ Optional manifest fields include:
 - `notes`
 
 When `title_date` is present, transcript filenames use it ahead of `date_published` so issue-dated source streams like Innermost Loop preserve their visible source date.
+
+## Elementary School Catalog Intake
+
+Elementary School catalog intake is a governed content-directory import surface. It supports:
+
+- public-web-backed main Khan Academy catalog entries
+- curated Khan Academy Kids catalog entries
+
+The manifest must live under `customers/elementary-school/catalog/`.
+
+Dry run an import:
+
+```bash
+anyang-install import-catalog --manifest customers/elementary-school/catalog/khan-catalog-manifest.sample.yaml --dry-run
+```
+
+Run the import:
+
+```bash
+anyang-install import-catalog --manifest customers/elementary-school/catalog/khan-catalog-manifest.sample.yaml
+```
+
+Report completeness:
+
+```bash
+anyang-install report-catalog-import --manifest customers/elementary-school/catalog/khan-catalog-manifest.sample.yaml
+```
+
+Catalog manifest rows require:
+
+- `stable_id`
+- `source_product`
+- `title`
+- `subject_domain`
+- `age_grade_band`
+- `content_type`
+- `evidence_status`
+- `import_method`
+
+Optional catalog fields include:
+
+- `standards_tags`
+- `source_url`
+- `source_note`
+- `operator_notes`
+
+At least one provenance field is required: `source_url` or `source_note`.
 
 ## Verification
 

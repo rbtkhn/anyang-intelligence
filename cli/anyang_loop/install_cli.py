@@ -7,6 +7,12 @@ from .install_model import InstallInputError, load_install_input
 from .install_render import build_customer_files, render_html_dashboard, render_obsidian, write_files
 from .install_validate import validate_install_path
 from .membrane import extract_patterns, render_pattern_report
+from .catalog_import import (
+    CatalogImportError,
+    import_catalog,
+    render_catalog_completion_report,
+    render_catalog_import_summary,
+)
 from .transcript_import import (
     TranscriptImportError,
     import_transcripts,
@@ -27,6 +33,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERROR: {exc}")
         return 1
     except TranscriptImportError as exc:
+        print(f"ERROR: {exc}")
+        return 1
+    except CatalogImportError as exc:
         print(f"ERROR: {exc}")
         return 1
 
@@ -65,6 +74,19 @@ def build_parser() -> argparse.ArgumentParser:
     )
     report_cmd.add_argument("--manifest", required=True)
     report_cmd.set_defaults(func=cmd_report_transcript_import)
+
+    import_catalog_cmd = subparsers.add_parser(
+        "import-catalog", help="Import Elementary School catalog entries from a manifest into the catalog area"
+    )
+    import_catalog_cmd.add_argument("--manifest", required=True)
+    import_catalog_cmd.add_argument("--dry-run", action="store_true")
+    import_catalog_cmd.set_defaults(func=cmd_import_catalog)
+
+    report_catalog_cmd = subparsers.add_parser(
+        "report-catalog-import", help="Report Elementary School catalog import completeness from a manifest"
+    )
+    report_catalog_cmd.add_argument("--manifest", required=True)
+    report_catalog_cmd.set_defaults(func=cmd_report_catalog_import)
 
     validate = subparsers.add_parser("validate", help="Validate customer install folders")
     validate.add_argument("path")
@@ -114,6 +136,19 @@ def cmd_import_transcripts(args: argparse.Namespace) -> int:
 def cmd_report_transcript_import(args: argparse.Namespace) -> int:
     summary = import_transcripts(args.manifest, dry_run=True)
     print(render_completion_report(summary))
+    return 0
+
+
+def cmd_import_catalog(args: argparse.Namespace) -> int:
+    summary = import_catalog(args.manifest, dry_run=args.dry_run)
+    print(render_catalog_import_summary(summary))
+    error_statuses = {"invalid-manifest", "missing-source"}
+    return 1 if any(result.status in error_statuses for result in summary.results) else 0
+
+
+def cmd_report_catalog_import(args: argparse.Namespace) -> int:
+    summary = import_catalog(args.manifest, dry_run=True)
+    print(render_catalog_completion_report(summary))
     return 0
 
 

@@ -1,0 +1,50 @@
+catalog_entries:
+  - stable_id: khan-main-math
+    source_product: khan_academy_main_catalog
+    title: Khan Academy math
+    subject_domain: Math
+    age_grade_band: kindergarten through high school
+    standards_tags:
+      - common-core
+    content_type: domain
+    source_url: https://www.khanacademy.org/math
+    source_note: Official main Khan Academy math landing area.
+    evidence_status: official-public-web
+    import_method: public-web-manifest
+    operator_notes: Use for broader reinforcement options beyond the Khan Kids starter app.
+  - stable_id: khan-main-science
+    source_product: khan_academy_main_catalog
+    title: Khan Academy science
+    subject_domain: Science
+    age_grade_band: elementary through high school
+    standards_tags: []
+    content_type: domain
+    source_url: https://www.khanacademy.org/science
+    source_note: Official main Khan Academy science landing area.
+    evidence_status: official-public-web
+    import_method: public-web-manifest
+    operator_notes: Supports curiosity-driven extension paths for older or more advanced learners.
+  - stable_id: khan-main-humanities
+    source_product: khan_academy_main_catalog
+    title: Khan Academy humanities
+    subject_domain: Humanities
+    age_grade_band: elementary through high school
+    standards_tags: []
+    content_type: domain
+    source_url: https://www.khanacademy.org/humanities
+    source_note: Official main Khan Academy humanities landing area.
+    evidence_status: official-public-web
+    import_method: public-web-manifest
+    operator_notes: Use when a learner shows history or culture interest outside the core starter rhythm.
+  - stable_id: khan-main-computing
+    source_product: khan_academy_main_catalog
+    title: Khan Academy computing
+    subject_domain: Computing
+    age_grade_band: upper elementary through adult
+    standards_tags: []
+    content_type: domain
+    source_url: https://www.khanacademy.org/computing
+    source_note: Official main Khan Academy computing landing area.
+    evidence_status: official-public-web
+    import_method: public-web-manifest
+    operator_notes: Likely a later-stage recommendation, not part of the initial Khan Kids startup block.
