@@ -10,6 +10,8 @@ This folder is currently named `repo_probe`, but it now functions as the Anyang 
 
 Treat `repo_probe` as the current physical path and `operating-substrate` as the target architectural identity. Do not rename the folder while the worktree contains mixed active slices; first stabilize and commit the live work, then promote or rename the implementation root deliberately.
 
+See [docs/operating-substrate-migration-plan.md](docs/operating-substrate-migration-plan.md) for the controlled rename plan.
+
 ## What This Is
 
 An Executive Operating System is an organization-specific intelligence layer that helps leadership:

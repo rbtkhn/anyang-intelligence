@@ -16,6 +16,8 @@ The architectural identity is **operating substrate**. Until the worktree is cle
 
 Do not treat `repo_probe` as disposable or experimental merely because of its name. It is the active implementation surface.
 
+See [operating-substrate-migration-plan.md](operating-substrate-migration-plan.md) for the controlled path from `repo_probe` to a possible `operating-substrate` folder name.
+
 ## Core Thesis
 
 Anyang Intelligence compounds when real customer work produces reusable operating primitives.
