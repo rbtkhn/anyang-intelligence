@@ -42,3 +42,4 @@ Cadence: monthly, plus event-driven review before board packets, grant deadlines
 - Where did the system stop too early and leave avoidable review reconstruction for leadership?
 - Where did any turn get too close to implying donor commitments, external claims, or board action without approval?
 - Which repeated failure mode should become a tighter worksheet, packet template, or governance gate?
+- Where did a workflow look submission-ready but still stall on evidence, restrictions, spend, or approval authority?
