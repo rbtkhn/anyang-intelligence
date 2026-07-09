@@ -71,8 +71,9 @@ def _current_picture(context: CoffeeContext) -> str:
     top_priority = _first_numbered(priority) or "Serve paid obligations before unpaid complexity."
     git_summary = _git_summary(context.git_status)
     commit = context.recent_commits[0] if context.recent_commits else "no recent commit visible"
+    root_name = context.repo_root.name or "operating-substrate"
     return (
-        f"Anyang Intelligence is operating from `repo_probe` with {git_summary}. "
+        f"Anyang Intelligence is operating from `{root_name}` with {git_summary}. "
         f"The latest visible commit is `{commit}`. "
         f"The portfolio rule still points to: {top_priority}"
     )

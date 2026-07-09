@@ -6,11 +6,11 @@ The starting thesis is simple: leaders should not have to reconstruct the state 
 
 ## Implementation Root
 
-This folder is currently named `repo_probe`, but it now functions as the Anyang Intelligence **operating substrate**: the executable working root where docs, customer memory, skills, CLIs, templates, tests, and recursive improvement live together.
+This folder is the Anyang Intelligence **operating substrate**: the executable working root where docs, customer memory, skills, CLIs, templates, tests, and recursive improvement live together.
 
-Treat `repo_probe` as the current physical path and `operating-substrate` as the target architectural identity. Do not rename the folder while the worktree contains mixed active slices; first stabilize and commit the live work, then promote or rename the implementation root deliberately.
+The previous implementation-root name was `repo_probe`. That name is now historical. The current physical path and architectural identity are both `operating-substrate`.
 
-See [docs/operating-substrate-migration-plan.md](docs/operating-substrate-migration-plan.md) for the controlled rename plan.
+See [docs/operating-substrate-migration-plan.md](docs/operating-substrate-migration-plan.md) for the completed rename plan and rollback notes.
 
 ## What This Is
 

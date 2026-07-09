@@ -1,12 +1,12 @@
 # Operating Substrate Migration Plan
 
-This plan defines how to move the current `repo_probe` implementation root toward the clearer `operating-substrate` identity.
+This plan defines how the former `repo_probe` implementation root moved toward the clearer `operating-substrate` identity.
 
-It is a migration plan, not an instruction to rename the folder immediately.
+Status: completed in the local workspace.
 
 ## Decision
 
-The current physical path is:
+The previous physical path was:
 
 ```text
 C:\dev\anyang-intelligence\repo_probe
@@ -18,13 +18,13 @@ The target architectural identity is:
 operating-substrate
 ```
 
-The preferred future physical path is likely:
+The current physical path is:
 
 ```text
 C:\dev\anyang-intelligence\operating-substrate
 ```
 
-Do not rename the folder while there is uncommitted work, active branch drift, unresolved validation failure, or an open push/sync ambiguity.
+Do not attempt another root rename while there is uncommitted work, active branch drift, unresolved validation failure, or an open push/sync ambiguity.
 
 ## Why Rename
 
@@ -68,7 +68,7 @@ The current layer architecture is working. The problem is the implementation-roo
 
 ## Pre-Migration Preconditions
 
-Before any filesystem rename:
+Before any future filesystem rename:
 
 - `git status --short --branch` shows a clean worktree.
 - Local commits are intentionally pushed, exported, or otherwise preserved.
@@ -91,10 +91,10 @@ Classify each reference as:
 
 ## Validation Before Rename
 
-From `repo_probe`, run:
+From the current root before a future rename, run:
 
 ```powershell
-$env:PYTHONPATH='C:\dev\anyang-intelligence\repo_probe\cli'
+$env:PYTHONPATH='C:\dev\anyang-intelligence\operating-substrate\cli'
 & 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m pytest -q
 & 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.cli validate customers
 & 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.install_cli validate customers
@@ -111,9 +111,9 @@ Expected result:
 
 ## Migration Sequence
 
-Use this sequence only after the preconditions pass.
+This is the sequence used for the `repo_probe` -> `operating-substrate` rename. Reuse it only after the preconditions pass.
 
-1. Close all shells, editors, and Codex sessions using `repo_probe` as the working directory.
+1. Close all shells, editors, and Codex sessions using the old implementation root as the working directory.
 2. Rename the folder at the filesystem level from `repo_probe` to `operating-substrate`.
 3. Open a fresh shell in `C:\dev\anyang-intelligence\operating-substrate`.
 4. Update path references that must change.
@@ -177,19 +177,19 @@ It does not authorize:
 
 Human approval is required before the actual rename.
 
-## Recommended Timing
+## Current Convention
 
-Do the rename after:
+Use this convention now:
+
+- `operating-substrate` = current physical path
+- `operating substrate` = architectural identity
+- `repo_probe` = historical name or rollback target only
+
+## Recommended Timing For Future Root Moves
+
+Do any future root move only after:
 
 - the current local commit stack is preserved outside the agent-blocked push path
 - the tree is clean
 - no customer delivery work is mid-edit
 - the operator is ready to reopen Codex sessions against the new path
-
-Until then, keep using:
-
-```text
-repo_probe = physical path
-operating substrate = architectural identity
-operating-substrate = planned physical path
-```

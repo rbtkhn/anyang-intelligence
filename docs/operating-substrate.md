@@ -6,17 +6,19 @@ The repo is no longer only a thesis about Executive Operating Systems. It now co
 
 ## Naming And Physical Path
 
-The current implementation root is physically named `repo_probe`. That name is now historical: it began as a probe, but the folder has become the live operating substrate.
+The current implementation root is physically named `operating-substrate`.
 
-The architectural identity is **operating substrate**. Until the worktree is clean and the rename can be done deliberately, use this convention:
+The previous name, `repo_probe`, is historical: it began as a probe, but the folder became the live operating substrate.
 
-- `repo_probe` means the current physical workspace path.
+Use this convention:
+
+- `operating-substrate` means the current physical workspace path.
 - `operating substrate` means the system layer being built here.
-- `operating-substrate` is the likely future folder name if the implementation root is renamed rather than promoted to the repo root.
+- `repo_probe` refers only to the historical folder name or rollback path.
 
-Do not treat `repo_probe` as disposable or experimental merely because of its name. It is the active implementation surface.
+Do not treat this folder as disposable or experimental. It is the active implementation surface.
 
-See [operating-substrate-migration-plan.md](operating-substrate-migration-plan.md) for the controlled path from `repo_probe` to a possible `operating-substrate` folder name.
+See [operating-substrate-migration-plan.md](operating-substrate-migration-plan.md) for the completed controlled path from `repo_probe` to `operating-substrate`.
 
 ## Core Thesis
 
