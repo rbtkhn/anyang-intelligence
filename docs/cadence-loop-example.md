@@ -1,6 +1,6 @@
 # Cadence Loop Example
 
-This example shows how native `coffee`, `bravo`, and `dream` work together as a recursive self-enhancement loop in Anyang Intelligence.
+This example shows how native `coffee`, `bravo`, `friction`, and `dream` work together as a recursive self-enhancement loop in Anyang Intelligence.
 
 The fixture is the recent creation of the native cadence skills themselves.
 
@@ -13,8 +13,8 @@ coffee
 work
   -> preserve the improvement in a repo-visible surface
 
-bravo
-  -> capture what worked and what pattern should be reinforced
+bravo or friction
+  -> capture what worked or what missed
 
 dream
   -> confirm what landed and what tomorrow inherits
@@ -39,13 +39,13 @@ What coffee did:
 
 Learning:
 
-- Anyang Intelligence needed its own cadence layer, grounded in `repo_probe`, customer folders, skills, and native CLIs.
+- Anyang Intelligence needed its own cadence layer, grounded in `operating-substrate`, customer folders, skills, and native CLIs.
 
 ### Work
 
 Action:
 
-- Added [coffee](../skills/coffee/SKILL.md), [dream](../skills/dream/SKILL.md), and [bravo](../skills/bravo/SKILL.md) as native skills.
+- Added [coffee](../skills/coffee/SKILL.md), [dream](../skills/dream/SKILL.md), [bravo](../skills/bravo/SKILL.md), and [friction](../skills/friction/SKILL.md) as native skills.
 - Linked them from [skills/README.md](../skills/README.md).
 - Connected them to [recursive-self-enhancement.md](recursive-self-enhancement.md) and [operating-substrate.md](operating-substrate.md).
 
@@ -75,6 +75,27 @@ Boundary:
 - Do not convert every satisfying moment into doctrine.
 - Do not generalize praise into authority.
 - Do not preserve customer-specific or private context as shared product doctrine.
+
+### Friction
+
+Signal:
+
+- The operator expresses dissatisfaction, says `friction`, or names a miss such as "too generic," "not quite," or "wrong direction."
+
+What friction captures:
+
+- The useful signal is not the negative feeling itself.
+- The useful signal is the specific miss, likely failure mode, smallest repair path, reusable lesson, and overcorrection boundary.
+
+Repair pattern:
+
+- When a conversational or artifact miss has clear operating value, classify it precisely and repair the smallest surface that prevents recurrence.
+
+Boundary:
+
+- Do not turn dissatisfaction into apology theater.
+- Do not overcorrect from one miss.
+- Do not weaken authority, validation, or membrane boundaries to satisfy the moment.
 
 ### Dream
 
@@ -107,6 +128,7 @@ What coffee inherited:
 coffee detects
 work changes
 bravo reinforces
+friction repairs
 dream consolidates
 coffee inherits
 ```
@@ -121,6 +143,7 @@ The system did not merely remember a good interaction. It changed the operating 
 
 - choosing improvements from friction
 - reinforcing improvements from satisfaction
+- repairing misses from dissatisfaction
 - confirming what landed before the next cycle
 
 That is recursive self-enhancement in the Anyang Intelligence sense: human-approved, repo-visible, bounded, validated improvement to the system that will handle the next similar work cycle.

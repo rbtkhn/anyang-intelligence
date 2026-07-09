@@ -1,7 +1,7 @@
 ---
 name: dream
 preferred_activation: dream
-description: Native Anyang Intelligence closeout ritual for repo_probe. Use for dream, day close, closeout, settle the system, or night review to consolidate the session, verify repo integrity, name what was preserved, and identify what tomorrow inherits without creating autonomous merge authority.
+description: Native Anyang Intelligence closeout ritual for operating-substrate. Use for dream, day close, closeout, settle the system, or night review to consolidate the session, verify repo integrity, name what was preserved, and identify what tomorrow inherits without creating autonomous merge authority.
 category: operator-coherence
 status: active
 scope_class: repo-governed
@@ -15,7 +15,7 @@ scope_class: repo-governed
 
 The operator may type only `dream`. Do not require them to say `anyang-dream`, `native dream`, or a repo qualifier.
 
-When working inside `anyang-intelligence/repo_probe`, this skill is authoritative. Do not route `dream` through strategy-codex `auto_dream.py`, cadence logs, conductor rollups, Grace-Mar memory files, or external night-close rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence dream reads this repo, its customer folders, its loop/install tooling, its skills, and git state.
+When working inside `anyang-intelligence/operating-substrate`, this skill is authoritative. Do not route `dream` through strategy-codex `auto_dream.py`, cadence logs, conductor rollups, Grace-Mar memory files, or external night-close rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence dream reads this repo, its customer folders, its loop/install tooling, its skills, and git state.
 
 When tools are available, prefer the native command:
 
@@ -138,9 +138,11 @@ Keep the default brief short. Expand only when a check fails, a warning is new, 
 
 ## Relationship To Coffee
 
-`coffee` and `dream` form the native Anyang Intelligence cadence pair:
+`coffee`, `bravo`, `friction`, and `dream` form the native Anyang Intelligence cadence loop:
 
 - `coffee` restores orientation and chooses the next A-D move.
+- `bravo` reinforces what worked.
+- `friction` repairs what missed.
 - `dream` settles the work cycle and names what tomorrow inherits.
 
 `coffee` may recommend durable improvements. `dream` confirms what actually landed and whether the repo is ready to rest.

@@ -113,7 +113,7 @@ That makes dream the consolidation ritual. If coffee asks what should improve ne
 
 Native [bravo](../skills/bravo/SKILL.md) is the positive-signal cadence that captures what the operator found especially good.
 
-Recursive self-enhancement should learn from friction and from excellence. Bravo names:
+Recursive self-enhancement should learn from excellence as well as friction. Bravo names:
 
 - what was praised
 - which property made it valuable
@@ -121,7 +121,21 @@ Recursive self-enhancement should learn from friction and from excellence. Bravo
 - what boundary prevents overgeneralization
 - whether the signal is a note, candidate, or preservation request
 
-That makes bravo the reinforcement ritual. If coffee notices what needs improvement and dream confirms what landed, bravo notices what should be repeated.
+That makes bravo the reinforcement ritual. If coffee notices what may need improvement and dream confirms what landed, bravo notices what should be repeated.
+
+## Relation To Friction
+
+Native [friction](../skills/friction/SKILL.md) is the dissatisfaction-signal cadence that captures what missed.
+
+Friction names:
+
+- what did not work
+- the likely failure mode
+- the smallest repair path
+- what future agents should do differently
+- what boundary prevents overcorrection
+
+That makes friction the repair ritual. If bravo notices what should be repeated, friction notices what should be revised, guarded, or tested before it recurs.
 
 ## Durable Improvement Test
 

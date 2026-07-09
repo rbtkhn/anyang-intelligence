@@ -1,7 +1,7 @@
 ---
 name: coffee
 preferred_activation: coffee
-description: Native Anyang Intelligence re-entry ritual for repo_probe. Use for coffee, where are we, what next, pause and reflect, reentry, or current state to restore operating context, name live obligations, extract one learning, and choose the next A-D move using Anyang Intelligence docs, customers, skills, and CLIs.
+description: Native Anyang Intelligence re-entry ritual for operating-substrate. Use for coffee, where are we, what next, pause and reflect, reentry, or current state to restore operating context, name live obligations, extract one learning, and choose the next A-D move using Anyang Intelligence docs, customers, skills, and CLIs.
 category: operator-coherence
 status: active
 scope_class: repo-governed
@@ -15,7 +15,7 @@ scope_class: repo-governed
 
 The operator may type only `coffee`. Do not require them to say `anyang-coffee`, `native coffee`, or a repo qualifier.
 
-When working inside `anyang-intelligence/repo_probe`, this skill is authoritative. Do not route `coffee` through strategy-codex scripts, cadence files, conductor menus, or external operator rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence coffee reads this repo, its customer folders, its loop/install tooling, and its skills.
+When working inside `anyang-intelligence/operating-substrate`, this skill is authoritative. Do not route `coffee` through strategy-codex scripts, cadence files, conductor menus, or external operator rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence coffee reads this repo, its customer folders, its loop/install tooling, and its skills.
 
 When tools are available, prefer the native command:
 

@@ -57,10 +57,10 @@ anyang-coffee
 Or point it at a repo path:
 
 ```bash
-anyang-coffee --repo C:\dev\anyang-intelligence\repo_probe
+anyang-coffee --repo C:\dev\anyang-intelligence\operating-substrate
 ```
 
-The output follows the native Anyang Intelligence shape: current picture, live obligations, waiting on, entropy flags, one learning, one improvement candidate, and an A-D coffee menu. Use this command when the global Codex skill registry points at an external `coffee` ritual but the work is inside `anyang-intelligence/repo_probe`.
+The output follows the native Anyang Intelligence shape: current picture, live obligations, waiting on, entropy flags, one learning, one improvement candidate, and an A-D coffee menu. Use this command when the global Codex skill registry points at an external `coffee` ritual but the work is inside `anyang-intelligence/operating-substrate`.
 
 ## Dream Closeout
 
@@ -75,10 +75,10 @@ anyang-dream
 Or point it at a repo path:
 
 ```bash
-anyang-dream --repo C:\dev\anyang-intelligence\repo_probe
+anyang-dream --repo C:\dev\anyang-intelligence\operating-substrate
 ```
 
-The output follows the native Anyang Intelligence closeout shape: recent rhythm, run status, touched surfaces, integrity and governance checks, and what tomorrow inherits. Use this command when the plain `dream` ritual should stay grounded in `anyang-intelligence/repo_probe` rather than any external closeout system.
+The output follows the native Anyang Intelligence closeout shape: recent rhythm, run status, touched surfaces, integrity and governance checks, and what tomorrow inherits. Use this command when the plain `dream` ritual should stay grounded in `anyang-intelligence/operating-substrate` rather than any external closeout system.
 
 ## Loop Schema
 

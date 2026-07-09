@@ -7,7 +7,7 @@ from .dream import build_dream_brief
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="anyang-dream", description="Native Anyang Intelligence dream closeout brief")
-    parser.add_argument("--repo", default=".", help="Path to the repo_probe root. Defaults to the current directory.")
+    parser.add_argument("--repo", default=".", help="Path to the operating-substrate root. Defaults to the current directory.")
     args = parser.parse_args(argv)
     print(build_dream_brief(args.repo))
     return 0
