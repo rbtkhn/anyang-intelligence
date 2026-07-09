@@ -156,6 +156,7 @@ Why it fits:
 - It is designed for young children and fits a 7-year-old learner better than a drill-first or web-first platform as the first iPad app.
 - It can support reading, writing, language, math, books, videos, creative activities, and social-emotional learning.
 - It gives the parent a low-friction way to observe engagement, frustration, preferences, and early skill signals.
+- It reflects prior due diligence across crowded learning-app options, reducing the parent's need to independently evaluate countless competing tools before the first month can begin.
 
 Use rule:
 
@@ -171,6 +172,19 @@ The first physical literacy tool is [reading-basket.md](reading-basket.md).
 The student evidence, milestone, and report system is [student-portfolio.md](student-portfolio.md).
 
 The first reporting layer is [monthly-portfolio-review.md](monthly-portfolio-review.md).
+
+The Khan governance layer is further defined in:
+
+- [khan-academy-signal-pipeline.md](khan-academy-signal-pipeline.md)
+- [khan-adapter-layer.md](khan-adapter-layer.md)
+- [khan-transition-point.md](khan-transition-point.md)
+- [khan-transition-readiness-target.md](khan-transition-readiness-target.md)
+
+These surfaces keep three distinctions explicit:
+
+- Khan Academy Kids is a starter resource, not proof of mastery.
+- Khan should keep doing its own in-product recommendation.
+- Elementary School may deliberately build toward readiness for the more structured main Khan Academy environment without turning that threshold into a grading system.
 
 ## Student Operating System Skills
 
@@ -188,7 +202,11 @@ Do not mention these internal skill names in parent-facing materials.
 
 ## Customer Offer
 
-The current customer-facing entry offer is a **free 30-Day Personalized Learning Plan** for new students.
+The current customer-facing entry offer is a **free 30-day collaborative build** of the family's `Learning Core` for new students.
+
+The first month should be collaborative enough that the family learns how the system works while it is being built.
+
+The intended handoff condition is that the customer can operate the `Learning Core` independently after the first 30 days if they want to.
 
 After that first month, the continuity offer is an optional **monthly subscription** that includes:
 
@@ -197,7 +215,7 @@ After that first month, the continuity offer is an optional **monthly subscripti
 - Personalized ongoing consultation.
 - Early access to new upgrades and features.
 
-The current money fact on the builder side is the **$1,000 one-time retainer** paid from Elementary School to Anyang Intelligence for a 30-Day Personalized Learning Plan for new students, including onboarding.
+The current money fact on the builder side is the **$1,000 one-time retainer** paid from Elementary School to Anyang Intelligence for a 30-day collaborative build of the family's `Learning Core`, including onboarding.
 
 Pricing work should only begin after the build can reliably provide:
 
@@ -212,9 +230,9 @@ No recurring price point should be treated as fully validated until real parent 
 
 ## One-Time Retainer
 
-Elementary School has paid Anyang Intelligence a **$1,000 one-time retainer** for a 30-Day Personalized Learning Plan for new students, including onboarding.
+Elementary School has paid Anyang Intelligence a **$1,000 one-time retainer** for a 30-day collaborative build of the family's `Learning Core`, including onboarding.
 
-The Executive OS should treat this as a scoped delivery obligation. The first delivery decision is what inputs are needed before the 30-day new-student plan can be finalized.
+The Executive OS should treat this as a scoped delivery obligation. The first delivery decision is what inputs are needed before the `Learning Core` can be built safely and handed off in usable form.
 
 Possible package directions include:
 
@@ -230,6 +248,15 @@ Possible package directions include:
 - Prototype personalized learning experience for one learner.
 
 The package should not begin delivery until inputs, timeline, child-safety boundaries, and parent approval rules are explicit.
+
+The lighter parent front door is now [parent-onboarding-survey.md](parent-onboarding-survey.md), with adaptive gap-closing logic in [phase-2-survey-generation.md](phase-2-survey-generation.md).
+
+The recurring commercial layer is further pressure-tested in:
+
+- [subscription-boundary.md](subscription-boundary.md)
+- [subscription-experience.md](subscription-experience.md)
+- [parent-journey-pressure-test.md](parent-journey-pressure-test.md)
+- [continuity-invitation-template.md](continuity-invitation-template.md)
 
 ## Weekly Parent Review
 

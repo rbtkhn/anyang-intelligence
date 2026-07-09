@@ -6,7 +6,7 @@ It is a hybrid scope document: internal enough to govern Anyang Intelligence exe
 
 ## Scope Decision
 
-The primary one-time package is a **30-Day Personalized Learning Plan** for new students in a parent-guided elementary learning context, including onboarding.
+The primary one-time package is a **30-day collaborative build of the family's `Learning Core`** for new students in a parent-guided elementary learning context, including onboarding.
 
 The plan may layer onto a student's public-school, homeschool, or hybrid learning reality. Its job is to add depth, continuity, and parent clarity around the student's actual education experience.
 
@@ -19,14 +19,14 @@ The retainer is a one-time service package. It is separate from the customer-fac
 - Amount: $1,000.
 - Payment type: one-time retainer.
 - Working classification: retainer/prepaid service obligation.
-- Deliverable: 30-Day Personalized Learning Plan for new students, including onboarding.
+- Deliverable: 30-day collaborative build of the family's `Learning Core`, including onboarding.
 - Pricing status: customer-facing offer hypothesis defined as free 30-day plan plus optional monthly continuity subscription.
 - Evidence needed: invoice, receipt, payment record, or other approved accounting evidence.
 - Review needed: owner/bookkeeper/CPA review if final accounting or tax classification is needed.
 
 ## Purpose
 
-The package should help a parent move from scattered new-student learning intentions to a usable first-month plan and onboarding path.
+The package should help a parent move from scattered new-student learning intentions to a usable first-month plan, onboarding path, and `Learning Core` they can continue using independently.
 
 It should define:
 
@@ -37,11 +37,11 @@ It should define:
 - What evidence will be saved.
 - How the first month will turn into next-month decisions.
 
-The goal is not to prove mastery or replace the parent. The goal is to make the first month of parent-led learning easier to see, guide, remember, and adjust.
+The goal is not to prove mastery or replace the parent. The goal is to make the first month of parent-led learning easier to see, guide, remember, and adjust while collaboratively building a `Learning Core` the family can continue using independently.
 
 ## Primary Deliverable
 
-The deliverable is a **30-Day Personalized Learning Plan**.
+The deliverable is a **30-day collaborative build** that includes a usable 30-day plan and the `Learning Core` surfaces needed to continue operating after the build.
 
 It should include:
 
@@ -56,7 +56,7 @@ It should include:
 - A first monthly portfolio review shape.
 - Parent decisions needed before or during the month.
 
-The plan should be practical enough for the parent to use without turning the home learning environment into bureaucracy.
+The plan and `Learning Core` should be practical enough for the parent to use without turning the home learning environment into bureaucracy.
 
 ## Supporting Components
 

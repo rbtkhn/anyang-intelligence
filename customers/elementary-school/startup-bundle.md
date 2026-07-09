@@ -4,6 +4,8 @@ This guide helps a parent start the Student Operating System experience for a 7-
 
 The goal is to make learning easier to plan, observe, personalize, and remember.
 
+Over the first 30 days, this startup bundle helps the family begin building its `Learning Core`: the parent-usable system that keeps plans, observations, resources, and next steps organized well enough to continue operating independently.
+
 This guide does not replace the parent, teacher, tutor, clinician, legal requirements, or human judgment. The parent remains the authority over curriculum, pacing, child-facing communication, sensitive information, and outside support.
 
 ## What You Are Getting
@@ -16,11 +18,23 @@ It helps you:
 - Turn those interests into useful learning plans.
 - Choose simple daily activities.
 - Use Khan Academy Kids intentionally instead of as random screen time.
+- Benefit from prior due diligence on starter tools instead of sorting through countless competing app options alone.
 - Notice frustration, curiosity, confidence, and growth.
 - Save evidence before it disappears.
 - Review each week and make the next week better.
 
-This is not just "an app." It is a simple way for the parent to see the learning picture without reconstructing everything from memory.
+This is not just "an app." It is part of the family's `Learning Core`: a simple way for the parent to see the learning picture without reconstructing everything from memory.
+
+Part of the value is curation. Khan Academy Kids is recommended here because Elementary School has already done meaningful option-sifting across crowded digital-learning choices and selected a starter tool that is free, child-friendly, parent-supervised, and useful for observation as well as practice.
+
+That curation now has a governed catalog layer behind it:
+
+- a public main Khan Academy catalogue for broader course-directory knowledge
+- a curated Khan Kids catalogue for truthful starter-tool recommendations
+
+The catalog is a scaffold for resource awareness and recommendation options. It does not choose for the child, replace parent approval, decide household fit, or prove mastery.
+
+The longer-range aim is not to stay in the starter state forever. One useful developmental target is readiness for the more structured main Khan Academy environment. See [khan-transition-readiness-target.md](khan-transition-readiness-target.md).
 
 ## First Week Setup
 
@@ -53,6 +67,7 @@ Boundary:
 Install Khan Academy Kids on the iPad.
 
 Use it as the first default digital learning app because it is free, child-friendly, and appropriate for a 7-year-old starter rhythm.
+It is also a recommendation shaped by prior due diligence, not a random app-store pick.
 
 Parent rule:
 
@@ -177,6 +192,13 @@ A good month should produce:
 
 The bundle is working when the parent feels more confident, less scattered, and better able to adapt learning to the actual child.
 
+It is working especially well when the family can feel the `Learning Core` taking shape:
+
+- plans are easier to revisit
+- observations are easier to interpret
+- resources are easier to reuse
+- next steps are easier to choose without starting from zero
+
 ## What This Is Not
 
 This is not:
@@ -202,6 +224,7 @@ The first month is successful when:
 - The child can point to work they are proud of.
 - Weekly reviews produce better next steps.
 - The parent feels more oriented and less alone in planning.
+- The family's `Learning Core` is usable enough that the parent can keep operating it.
 
 ## Parent Commitment
 

@@ -43,7 +43,7 @@ Elementary School should not delegate:
 
 Khan can recommend what is next **inside Khan**.
 
-Elementary School must decide whether Khan itself is being used well **inside the larger learning operating system**.
+Elementary School must decide whether Khan itself is being used well **inside the family's Learning Core**.
 
 ## Adapter-Layer Questions
 
@@ -117,6 +117,14 @@ The catalogue tells us:
 - what recommendation options are available
 
 The catalogue does not tell us whether the current learner should use more or less Khan.
+
+### Transition Point
+
+See [khan-transition-point.md](khan-transition-point.md).
+
+The transition note defines when the learner may be ready to move from Khan Academy Kids toward the main Khan Academy environment.
+
+It gives priority to visible capabilities and parent-approved readiness over raw completion counts.
 
 ### Signal Pipeline
 

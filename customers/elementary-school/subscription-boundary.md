@@ -1,22 +1,24 @@
 # Subscription Boundary
 
-This document defines the commercial boundary between the **free 30-Day Personalized Learning Plan** and the **monthly continuity subscription** in the Elementary School lane.
+This document defines the commercial boundary between the **free 30-day collaborative build of the family's `Learning Core`** and the **monthly continuity subscription** in the Elementary School lane.
 
 The goal is to keep the offer understandable, humane, and operationally sustainable.
 
 ## Boundary Decision
 
-The first 30-day plan is the trust-building entry experience.
+The first 30-day build is the trust-building entry experience.
 
 It should let a parent experience the Student Operating System in a bounded way before making any ongoing commitment.
+
+It should also leave the family with a `Learning Core` they can operate independently if they choose not to continue into the subscription layer.
 
 That experience may sit alongside public school, homeschool, or a hybrid arrangement. The lane's job is to add depth and continuity, not to pretend every family starts from the same schooling structure.
 
 The monthly continuity subscription begins only if the parent wants continuing guidance, interpretation, and higher-touch support after that first month.
 
-## Free 30-Day Plan Includes
+## Free 30-Day Build Includes
 
-The free entry plan should include:
+The free entry build should include:
 
 - One parent-reviewed 30-day learning plan for a new student.
 - One learner context summary based on parent-provided inputs.
@@ -27,12 +29,13 @@ The free entry plan should include:
 - One portfolio evidence plan.
 - One weekly parent review prompt set.
 - One next-step recommendation at the end of the month.
+- One companion second-brain structure the family can continue using independently.
 
-The free plan is allowed to be thoughtful and useful. It should not feel fake, crippled, or manipulative.
+The free build is allowed to be thoughtful and useful. It should not feel fake, crippled, or manipulative.
 
-## Free 30-Day Plan Does Not Include
+## Free 30-Day Build Does Not Include
 
-The free entry plan should not assume:
+The free entry build should not assume:
 
 - Ongoing weekly custom planning beyond the first month.
 - Unlimited revision cycles.
@@ -42,11 +45,11 @@ The free entry plan should not assume:
 - Premium newsletter archive or premium update stream.
 - Early feature access.
 
-If the free plan quietly includes the subscription layer, then the boundary is not real and the offer will be hard to sustain.
+If the free build quietly includes the subscription layer, then the boundary is not real and the offer will be hard to sustain.
 
 ## Monthly Continuity Subscription Includes
 
-The monthly continuity subscription is for families who want the Student Operating System to stay active after the first month.
+The monthly continuity subscription is for families who want the Student Operating System to stay active after the first month as an ongoing depth-and-continuity layer around the student's education experience.
 
 The continuity layer may include:
 

@@ -6,7 +6,7 @@ The goal is to turn the continuity offer into a real operating service instead o
 
 ## Purpose
 
-The monthly subscription exists to help a parent keep the Student Operating System alive after the first 30-day plan.
+The monthly subscription exists to help a parent keep the Student Operating System alive after the first 30-day collaborative build of the family's `Learning Core` as an ongoing layer of depth and continuity around the student's education experience.
 
 It should provide continuity, interpretation, and steady parent support around the student's real education environment, whether that is public school, homeschool, or a hybrid, without replacing parent authority or creating an unsustainable support burden.
 
@@ -17,7 +17,7 @@ The continuity experience should feel like:
 - a parent-guided operating rhythm
 - a place to bring observations and questions
 - a lightweight but recurring layer of interpretation
-- a way to keep plans, reading choices, and portfolio evidence from going stale
+- a way to keep school inputs, home observations, reading choices, and portfolio evidence from going stale
 
 The subscription is not meant to feel like emergency coverage, unlimited tutoring, or always-on household management.
 
@@ -158,7 +158,7 @@ Operators should preserve these subscription boundaries:
 
 The subscription is working when:
 
-- parents remain engaged after the first 30-day plan
+- parents remain engaged after the first 30-day build
 - monthly questions become clearer, not more chaotic
 - reading-basket, portfolio, and household-fit signals actually influence next recommendations
 - parents report lower planning friction
@@ -172,7 +172,7 @@ The subscription needs redesign when:
 - the chat group becomes a hidden direct-support queue
 - the newsletter becomes generic and skippable
 - consultation work sprawls beyond the promised boundary
-- families cannot tell what is free versus what belongs to continuity
+- families cannot tell what is included in the first 30-day build versus what belongs to continuity
 
 ## Relationship To Other Docs
 
