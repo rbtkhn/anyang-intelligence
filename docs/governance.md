@@ -35,6 +35,8 @@ Every material recommendation should identify:
 - Reversible and irreversible consequences.
 - Required human approval.
 
+Use [evidence-awareness-checklist.md](evidence-awareness-checklist.md) when a recommendation contains material claims that could affect action, trust, spending, customer commitments, publication, rights, child-facing decisions, governance, or cross-lane transfer.
+
 ## Early Customer Rule
 
 In early installations, trust is built through narrow authority, clear audit trails, and useful recurring outputs.

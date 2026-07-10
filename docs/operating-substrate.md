@@ -38,6 +38,8 @@ That compounding pattern is the repo's practical meaning of [recursive self-enha
 
 The system should get smarter without taking authority away from humans. It prepares decisions, checks quality, preserves evidence, and improves memory; it does not publish, spend, commit customers, make legal/tax judgments, or cross privacy membranes by itself.
 
+The north-star doctrine for this posture is [Artificial Enlightened Intelligence](artificial-enlightened-intelligence.md): capability that becomes more reflective, evidence-aware, membrane-disciplined, and deferential to human authority as it becomes more useful.
+
 ## System Layers
 
 ### 1. Philosophy And Governance
@@ -50,6 +52,8 @@ The foundation lives in `docs/`:
 - `docs/loops.md` defines the loop grammar.
 - `docs/membranes.md` defines cross-customer transfer rules.
 - `docs/governance.md` defines authority boundaries.
+- `docs/artificial-enlightened-intelligence.md` defines the repo's bounded meaning of enlightened AI.
+- `docs/evidence-awareness-checklist.md` defines claim classification and source-to-claim discipline.
 
 These docs answer what the system is allowed to become.
 
@@ -114,6 +118,7 @@ It can now:
 
 - Install customer operating folders more consistently.
 - Validate customer loops instead of relying on prose alone.
+- Classify material claims before they become operational.
 - Preserve governance boundaries as first-class structure.
 - Turn repeated customer work into skills.
 - Keep Media Production work moving through a human-approved pipeline.

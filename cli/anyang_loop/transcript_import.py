@@ -8,7 +8,7 @@ from typing import Any
 import yaml
 
 
-ALLOWED_LANES = {"innermost-loop", "moonshots", "nate-b-jones"}
+ALLOWED_LANES = {"external-interviews", "innermost-loop", "moonshots", "nate-b-jones"}
 ALLOWED_RIGHTS = {"internal-commit-approved", "uncertain-review-needed", "do-not-commit"}
 LEDGER_STATUSES = {
     "imported",

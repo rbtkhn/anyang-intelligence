@@ -242,6 +242,7 @@ Singularity Science transcript intake is archive-only infrastructure. It normali
 - `customers/singularity-science/archive/innermost-loop/transcripts/`
 - `customers/singularity-science/archive/moonshots/transcripts/`
 - `customers/singularity-science/archive/nate-b-jones/transcripts/`
+- `customers/singularity-science/archive/external-interviews/transcripts/`
 
 The manifest must live under `customers/singularity-science/archive/`.
 
