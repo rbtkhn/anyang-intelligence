@@ -32,6 +32,16 @@ def write_manifest(path: Path, transcript_a: Path, transcript_b: Path) -> Path:
         f'      "local_input_path": "{transcript_b.as_posix()}"\n'
         "    },\n"
         "    {\n"
+        '      "lane": "nate-b-jones",\n'
+        '      "title": "First Nate B. Jones",\n'
+        '      "slug": "first-nate-b-jones",\n'
+        '      "date_captured": "2026-07-08",\n'
+        f'      "source_ref": "https://example.com/nate-b-jones/{transcript_b.stem}",\n'
+        '      "rights_status": "internal-commit-approved",\n'
+        '      "capture_method": "manual export",\n'
+        f'      "local_input_path": "{transcript_b.as_posix()}"\n'
+        "    },\n"
+        "    {\n"
         '      "lane": "moonshots",\n'
         '      "title": "Rights Hold Moonshots",\n'
         '      "slug": "rights-hold-moonshots",\n'
@@ -84,6 +94,7 @@ def test_transcript_import_dry_run_and_report():
     assert "Missing source files: 1" in report
     assert "| innermost-loop | 2 | 1 | 0 | 1 | 50% |" in report
     assert "| moonshots | 3 | 1 | 1 | 0 | 33% |" in report
+    assert "| nate-b-jones | 1 | 1 | 0 | 0 | 100% |" in report
 
 
 def test_transcript_import_writes_files_and_ledger():
@@ -98,10 +109,12 @@ def test_transcript_import_writes_files_and_ledger():
 
     innermost = manifest.parent / "innermost-loop" / "transcripts" / "2026-07-08-captured-first-innermost-loop.md"
     moonshots = manifest.parent / "moonshots" / "transcripts" / "2026-07-08-captured-first-moonshots.md"
+    nate = manifest.parent / "nate-b-jones" / "transcripts" / "2026-07-08-captured-first-nate-b-jones.md"
     ledger = manifest.parent / "transcript-import-ledger.md"
 
     assert innermost.exists()
     assert moonshots.exists()
+    assert nate.exists()
     assert ledger.exists()
 
     innermost_text = innermost.read_text(encoding="utf-8")

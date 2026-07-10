@@ -9,7 +9,7 @@ It is not a public content channel, customer deliverable, or autonomous research
 | Field | Current state |
 | --- | --- |
 | Operating context | Internal singularity research project |
-| Primary source lanes | Innermost Loop and Moonshots |
+| Primary source lanes | Innermost Loop, Moonshots, and Nate B. Jones |
 | Core archive | [archive/](archive/) |
 | Primary cadence | Event-driven when transcripts are captured; weekly or ad hoc review when research signals accumulate |
 | Main output | Source notes, transcript analyses, research ledger rows, product implications, governance warnings, primitive candidates |

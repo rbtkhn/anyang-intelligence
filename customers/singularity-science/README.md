@@ -24,6 +24,7 @@ Current source lanes:
 
 - [Innermost Loop](archive/innermost-loop/README.md)
 - [Moonshots](archive/moonshots/README.md)
+- [Nate B. Jones](archive/nate-b-jones/README.md)
 
 The archive is for internal analysis. Do not treat transcripts as public content, customer-facing copy, or reusable doctrine without source discipline, rights review, and membrane translation.
 

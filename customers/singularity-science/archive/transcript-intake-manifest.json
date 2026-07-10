@@ -27,6 +27,20 @@
       "speaker": "",
       "episode_id": "",
       "notes": ""
+    },
+    {
+      "lane": "nate-b-jones",
+      "title": "Example Nate B. Jones Episode",
+      "slug": "example-nate-b-jones-episode",
+      "date_captured": "2026-07-08",
+      "date_published": "",
+      "source_ref": "https://example.com/nate-b-jones/example",
+      "rights_status": "uncertain-review-needed",
+      "capture_method": "manual transcript export",
+      "local_input_path": "C:/path/to/local/transcripts/example-nate-b-jones.txt",
+      "speaker": "Nate B. Jones",
+      "episode_id": "",
+      "notes": ""
     }
   ]
 }

@@ -32,6 +32,7 @@ Use this structure:
 customers/singularity-science/archive/
   innermost-loop/
   moonshots/
+  nate-b-jones/
 ```
 
 Raw transcripts and source material stay in this archive. Synthesis and product implications may move into `docs/`, `customers/`, or `skills/` only after membrane review and source discipline.
