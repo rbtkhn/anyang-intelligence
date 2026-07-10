@@ -6,6 +6,21 @@
 
 It also provides Singularity Science archive intake commands for transcript manifests.
 
+## Governed Operating Ledger
+
+`anyang-ops` is the local-first SQLite control plane for customer work. It stores typed sources, claims, work, evidence, approvals, outcomes, and append-only events, then generates sanitized weekly Markdown or JSON reviews.
+
+Customer commands require an explicit database path:
+
+```powershell
+$env:ANYANG_DATA_DIR = 'C:\path\outside\the\repository\grace-gems'
+anyang-ops init --tenant grace-gems --name "Grace Gems" --policy-profile governed-media-v1 --retainer-cents 100000 --contractor-budget-cents 50000 --tool-budget-cents 50000
+```
+
+Use `--dry-run` on every mutation command to inspect the intended operation. Use `anyang-ops audit --tenant grace-gems` for ledger integrity and `anyang-ops privacy-scan --repo .` before committing. Private evidence bodies and raw customer transcripts remain outside the database; use approved external references and redacted summaries.
+
+The ledger is canonical operating state. Generated Markdown is a review view, not a second writable source of truth.
+
 It also provides Elementary School catalog intake commands for governed course-directory assets.
 
 `anyang-coffee` renders the native Anyang Intelligence re-entry brief from repo state, portfolio docs, skills, and git status.
@@ -60,7 +75,13 @@ Or point it at a repo path:
 anyang-coffee --repo C:\dev\anyang-intelligence\operating-substrate
 ```
 
-The output follows the native Anyang Intelligence shape: current picture, live obligations, waiting on, entropy flags, one learning, one improvement candidate, and an A-D coffee menu. Use this command when the global Codex skill registry points at an external `coffee` ritual but the work is inside `anyang-intelligence/operating-substrate`.
+To consume the latest explicitly recorded dream handoff or emit machine-readable output:
+
+```bash
+anyang-coffee --repo . --db C:\private\anyang-ops.db --format json
+```
+
+Coffee uses a complete Git snapshot, preserves portfolio subsection context, and follows a fixed priority order: failed verification, recorded handoff, dirty-worktree risk, paid obligation or external blocker, then stale portfolio state. It never writes. Without a configured database it reports a Git-only fallback.
 
 ## Dream Closeout
 
@@ -78,7 +99,19 @@ Or point it at a repo path:
 anyang-dream --repo C:\dev\anyang-intelligence\operating-substrate
 ```
 
-The output follows the native Anyang Intelligence closeout shape: recent rhythm, run status, touched surfaces, integrity and governance checks, and what tomorrow inherits. Use this command when the plain `dream` ritual should stay grounded in `anyang-intelligence/operating-substrate` rather than any external closeout system.
+Fast verification is the default. Full verification adds pytest plus customer-install and loop validation:
+
+```bash
+anyang-dream --repo . --verify full
+```
+
+Dream remains read-only unless an external handoff is explicitly recorded:
+
+```bash
+anyang-dream --repo . --verify fast --record --db C:\private\anyang-ops.db --recorded-by operator
+```
+
+The repo-scoped handoff stores sanitized validation status, touched top-level surfaces, and one inheritance line. It is separate from customer tenants and creates no publication, delivery, spend, customer, or merge authority.
 
 ## Loop Schema
 

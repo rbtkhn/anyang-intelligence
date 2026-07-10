@@ -1,163 +1,137 @@
 from __future__ import annotations
 
-import subprocess
-from dataclasses import dataclass
+import json
 from pathlib import Path
+from typing import Any
+
+from .cadence_store import record_handoff, resolve_cadence_db
+from .cadence_verify import CheckResult, run_verification, validation_status
+from .repo_snapshot import RepoSnapshot, collect_repo_snapshot
 
 
-@dataclass(frozen=True)
-class DreamContext:
-    repo_root: Path
-    git_status: str
-    recent_commits: list[str]
-    changed_paths: list[str]
-    dashboard: str
-    skills_readme: str
-    membranes: str
+def build_dream_data(
+    repo_root: str | Path = ".",
+    *,
+    db_path: str | None = None,
+    verify: str = "fast",
+    record: bool = False,
+    recorded_by: str = "operator",
+) -> dict[str, Any]:
+    snapshot = collect_repo_snapshot(repo_root, recent_limit=8)
+    checks = run_verification(snapshot, verify)
+    overall = validation_status(checks)
+    fresh_codes = [f"validation:{check.name}" for check in checks if check.status == "fail"]
+    legacy_codes = [
+        "legacy:install-validation-warning"
+        for check in checks
+        if check.name == "install-validation" and "WARNING" in check.summary
+    ]
+    tomorrow = _tomorrow_inherits(snapshot, checks)
+    latest = snapshot.recent_commits[0] if snapshot.recent_commits else "no recent commit visible"
+    recent_rhythm = (
+        f"The repo is settled around `{latest}` with a {snapshot.worktree_state} worktree. "
+        f"This closeout observed {len(snapshot.changed_paths)} changed path(s) across "
+        f"{', '.join(snapshot.touched_surfaces) or 'no touched surfaces'} and verification status `{overall}`."
+    )
+    data: dict[str, Any] = {
+        "recent_rhythm": recent_rhythm,
+        "git": {
+            "branch": snapshot.branch,
+            "sync_status": snapshot.sync_status,
+            "worktree_state": snapshot.worktree_state,
+            "head": snapshot.head,
+        },
+        "validation_status": overall,
+        "validation": [check.as_dict() for check in checks],
+        "generated_artifacts": [],
+        "touched_surfaces": list(snapshot.touched_surfaces),
+        "integrity_and_governance": _governance_lines(snapshot, checks),
+        "tomorrow_inherits": tomorrow,
+        "fresh_issue_codes": fresh_codes,
+        "legacy_warning_codes": legacy_codes,
+        "snapshot": snapshot.as_dict(),
+        "recorded_handoff": None,
+    }
+    if record:
+        database = resolve_cadence_db(db_path, for_record=True)
+        assert database is not None
+        handoff = record_handoff(
+            database,
+            snapshot,
+            data["validation"],
+            fresh_codes,
+            legacy_codes,
+            tomorrow,
+            recorded_by,
+        )
+        data["recorded_handoff"] = handoff.as_dict()
+        data["generated_artifacts"] = [f"cadence handoff `{handoff.id}` in external SQLite"]
+    return data
 
 
 def build_dream_brief(repo_root: str | Path = ".") -> str:
-    root = Path(repo_root).resolve()
-    context = DreamContext(
-        repo_root=root,
-        git_status=_git(root, ["status", "--short", "--branch"]),
-        recent_commits=_git_lines(root, ["log", "--oneline", "--decorate", "-8"]),
-        changed_paths=_changed_paths(root),
-        dashboard=_read(root / "customers" / "operating-portfolio-dashboard.md"),
-        skills_readme=_read(root / "skills" / "README.md"),
-        membranes=_read(root / "docs" / "membranes.md"),
-    )
-    return render_dream_brief(context)
+    return render_dream_text(build_dream_data(repo_root))
 
 
-def render_dream_brief(context: DreamContext) -> str:
+def render_dream_text(data: dict[str, Any]) -> str:
+    generated = ", ".join(data["generated_artifacts"]) if data["generated_artifacts"] else "none; dream remained read-only"
+    validation = _validation_text(data["validation_status"], data["validation"])
+    git = data["git"]
     return "\n".join(
         [
             "Dream:",
             "",
             "Recent rhythm:",
-            _recent_rhythm(context),
+            data["recent_rhythm"],
             "",
             "Run status:",
-            f"- Git: {_git_state(context.git_status)}",
-            "- Validation: not run by `anyang-dream`; run native validators when the operator asks for verification.",
-            "- Generated artifacts: none; dream is read-only unless the operator explicitly asks for file changes.",
-            f"- Touched surfaces: {_touched_surfaces(context.changed_paths)}",
+            f"- Git: `{git['branch']}`; {git['worktree_state']} worktree; remote state `{git['sync_status']}`",
+            f"- Validation: {validation}",
+            f"- Generated artifacts: {generated}",
+            f"- Touched surfaces: {', '.join(data['touched_surfaces']) or 'none'}",
             "",
             "Integrity and governance:",
-            *_governance_lines(context),
+            *[f"- {line}" for line in data["integrity_and_governance"]],
             "",
             "Tomorrow inherits:",
-            f"- {_tomorrow_inherits(context)}",
+            f"- {data['tomorrow_inherits']}",
         ]
     )
 
 
-def _recent_rhythm(context: DreamContext) -> str:
-    commit = context.recent_commits[0] if context.recent_commits else "no recent commit visible"
-    if context.changed_paths:
-        return (
-            f"The repo has preserved recent work through `{commit}`, but the current cycle still has uncommitted surfaces. "
-            "The closeout job is to keep those surfaces legible, separated, and governed before the next commit."
-        )
-    return (
-        f"The repo appears settled around `{commit}` with no changed paths visible. "
-        "The closeout job is to preserve continuity and let tomorrow inherit a clean operating picture."
-    )
+def render_dream_json(data: dict[str, Any]) -> str:
+    return json.dumps(data, indent=2, sort_keys=True) + "\n"
 
 
-def _governance_lines(context: DreamContext) -> list[str]:
+def _tomorrow_inherits(snapshot: RepoSnapshot, checks: list[CheckResult]) -> str:
+    failed = [check for check in checks if check.status == "fail"]
+    if any(check.name == "privacy-scan" for check in failed):
+        return "Resolve the recorded privacy-scan findings before expanding or shipping the current slice."
+    if failed:
+        return "Resolve the failed verification checks before expanding or shipping the current slice."
+    if snapshot.dirty:
+        return "Validate and isolate one coherent dirty-worktree slice before shipping."
+    if snapshot.sync_status in {"ahead", "behind", "diverged"}:
+        return "Review remote synchronization state before assuming cross-session continuity."
+    return "Begin the next cycle from the highest-priority paid obligation in the portfolio dashboard."
+
+
+def _governance_lines(snapshot: RepoSnapshot, checks: list[CheckResult]) -> list[str]:
     lines: list[str] = []
-    changed = "\n".join(context.changed_paths).lower()
-    if "elementary-school" in changed:
-        lines.append(
-            "- Elementary School changes remain high-trust: preserve parent authority, child safety, evidence boundaries, and no unsupervised child-facing AI."
-        )
-    if "commercial" in changed or "subscription" in changed or "retainer" in changed:
-        lines.append(
-            "- Money language should keep retainers, donor-funded support, customer pricing, subscriptions, revenue, expenses, and hypotheses separate."
-        )
-    if "skills" in changed or "cli" in changed:
-        lines.append("- Skill and CLI changes should stay advisory unless tests and human authority boundaries remain explicit.")
+    failures = [check for check in checks if check.status == "fail"]
+    if failures:
+        lines.append(f"{len(failures)} fresh verification failure(s) remain; no clean-pass claim is permitted.")
+    if any(check.name == "install-validation" and "WARNING" in check.summary for check in checks):
+        lines.append("Install validation completed with known legacy warnings; they are not reported as fresh cadence failures.")
+    if "customers" in snapshot.touched_surfaces:
+        lines.append("Customer changes retain their local privacy, evidence, and human-authority boundaries.")
+    if "cli" in snapshot.touched_surfaces or "tests" in snapshot.touched_surfaces:
+        lines.append("CLI and test changes remain advisory and create no publication, spend, delivery, or merge authority.")
     if not lines:
-        lines.append("- No new boundary issue found from changed path names; preserve membrane rules before transferring patterns across customers.")
+        lines.append("No new boundary issue is supported by the snapshot; normal membrane rules remain in force.")
     return lines
 
 
-def _tomorrow_inherits(context: DreamContext) -> str:
-    changed = "\n".join(context.changed_paths).lower()
-    if "coffee" in changed or "dream" in changed:
-        return "Verify the native cadence path by using plain `coffee` and `dream` in the next agent session."
-    if "elementary-school" in changed:
-        return "Choose one Elementary School slice to validate and commit: onboarding, Khan transition, Learning Core, or continuity."
-    if context.changed_paths:
-        return "Split the dirty worktree into one coherent validated slice before shipping."
-    return "A clean re-entry path through native `coffee`."
-
-
-def _changed_paths(root: Path) -> list[str]:
-    paths = _git_lines(root, ["diff", "--name-only"])
-    status = _git_lines(root, ["status", "--short"])
-    for line in status:
-        if line.startswith("?? "):
-            paths.append(line[3:].strip())
-    return _dedupe(paths)
-
-
-def _git(root: Path, args: list[str]) -> str:
-    try:
-        result = subprocess.run(
-            ["git", *args],
-            cwd=root,
-            check=False,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-        )
-    except OSError as exc:
-        return f"git unavailable: {exc}"
-    output = result.stdout.strip()
-    if result.returncode != 0:
-        return f"git error: {result.stderr.strip() or output}"
-    return output or "(no output)"
-
-
-def _git_lines(root: Path, args: list[str]) -> list[str]:
-    output = _git(root, args)
-    if output.startswith("git unavailable:") or output.startswith("git error:") or output == "(no output)":
-        return []
-    return [line for line in output.splitlines() if line.strip()]
-
-
-def _read(path: Path) -> str:
-    try:
-        return path.read_text(encoding="utf-8")
-    except OSError:
-        return ""
-
-
-def _git_state(status: str) -> str:
-    branch = status.splitlines()[0] if status else "unknown branch"
-    dirty = any(line and not line.startswith("##") for line in status.splitlines())
-    return f"{branch}; {'dirty worktree' if dirty else 'clean worktree'}"
-
-
-def _touched_surfaces(paths: list[str]) -> str:
-    if not paths:
-        return "none"
-    surfaces: list[str] = []
-    for prefix in ("customers", "skills", "cli", "tests", "docs", "templates"):
-        if any(path.replace("\\", "/").startswith(prefix + "/") for path in paths):
-            surfaces.append(prefix)
-    return ", ".join(surfaces) if surfaces else ", ".join(paths[:5])
-
-
-def _dedupe(values: list[str]) -> list[str]:
-    seen: set[str] = set()
-    result: list[str] = []
-    for value in values:
-        normalized = value.strip()
-        if normalized and normalized not in seen:
-            seen.add(normalized)
-            result.append(normalized)
-    return result
+def _validation_text(overall: str, checks: list[dict[str, Any]]) -> str:
+    detail = ", ".join(f"{check['name']}={check['status']}" for check in checks)
+    return f"{overall} ({detail})"

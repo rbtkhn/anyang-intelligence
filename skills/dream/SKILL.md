@@ -23,6 +23,8 @@ When tools are available, prefer the native command:
 anyang-dream --repo .
 ```
 
+Native dream runs fast verification by default. It remains read-only unless the operator explicitly passes `--record`, which stores one sanitized repo-level handoff in external SQLite without creating customer authority.
+
 If the command is unavailable, perform the same read-only procedure manually from the inputs below.
 
 Use `dream` when the operator asks:
@@ -78,7 +80,7 @@ Do not require unavailable strategy-codex-only files such as `scripts/auto_dream
 1. Check git state first. Say whether the repo is clean, dirty, ahead, behind, or synced.
 2. Name the consolidation window from recent commits and current uncommitted work.
 3. Identify what was preserved in durable repo surfaces: customer docs, skills, templates, CLIs, tests, loop examples, or governance docs.
-4. Run available Anyang-native validation hooks when they fit the cycle and are not obviously unavailable.
+4. Run fast verification by default: `git diff --check`, privacy scanning when available, and compilation of changed Python files. Use `--verify full` for pytest plus install and loop validation, or `--verify none` only when intentionally skipping checks.
 5. Separate fresh issues from known legacy warnings.
 6. Check authority and membrane boundaries for the touched surfaces:
    - customer commitments
@@ -87,7 +89,7 @@ Do not require unavailable strategy-codex-only files such as `scripts/auto_dream
    - publication, spending, rights, external claims
    - cross-customer pattern transfer
    - private or sensitive context
-7. State what was not generated. In this repo, a normal `dream` does not create `last-dream.json`, cadence telemetry, notebook pages, memory surfaces, or autonomous follow-up tasks.
+7. State what was not generated. A normal dream remains read-only. `--record` creates only one sanitized external SQLite handoff; it does not create `last-dream.json`, a tracked cadence log, notebook pages, or autonomous follow-up tasks.
 8. Name one open loop or tomorrow inheritance. Prefer the most direct continuation of the preserved work.
 9. Do not edit, stage, commit, or push by default. `dream` is maintenance and closeout, not autonomous shipping, unless the operator explicitly asks.
 
@@ -96,6 +98,9 @@ Do not require unavailable strategy-codex-only files such as `scripts/auto_dream
 Use these when available and relevant:
 
 - `anyang-dream --repo .`
+- `anyang-dream --repo . --verify fast`
+- `anyang-dream --repo . --verify full`
+- `anyang-dream --repo . --verify fast --record --db <external-db>`
 - `git status --short --branch`
 - `git log --oneline --decorate -8`
 - `python -m anyang_loop.install_cli validate customers`
@@ -150,6 +155,7 @@ Keep the default brief short. Expand only when a check fails, a warning is new, 
 ## Guardrails
 
 - Do not create a new memory surface by default.
+- Record a cadence handoff only after explicit `--record`; failed verification may still be recorded so the next coffee inherits the blocker.
 - Do not invent a cadence log if the repo does not have one.
 - Do not pretend strategy-codex scripts exist in this repo.
 - Do not turn `dream` into a broad planning sprint.
@@ -159,6 +165,7 @@ Keep the default brief short. Expand only when a check fails, a warning is new, 
 - Preserve the distinction between one-time retainers and recurring subscription/customer pricing.
 - Preserve parent, owner/operator, client, and human approval authority.
 - Keep customer-owned AI interface training scoped to its customer folder unless an explicit membrane review extracts a reusable primitive.
+- Cadence handoffs are repository-level coordination records, not tenant learning, customer evidence, or approval receipts. Never store customer facts, raw paths with private identifiers, emails, transcripts, or evidence bodies in them.
 
 ## Done When
 

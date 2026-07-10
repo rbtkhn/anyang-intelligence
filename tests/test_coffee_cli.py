@@ -1,57 +1,88 @@
 from pathlib import Path
 
-from anyang_loop.coffee import build_coffee_brief
+from anyang_loop.cadence_store import record_handoff
+from anyang_loop.coffee import build_coffee_data
 from anyang_loop.coffee_cli import main
+from anyang_loop.repo_snapshot import collect_repo_snapshot
+
+from cadence_helpers import make_git_repo, write
 
 
-def write(path: Path, text: str) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text, encoding="utf-8")
+DASHBOARD = """# Operating Portfolio Dashboard
 
+## Current Cash Picture
 
-def make_repo(root: Path) -> None:
-    write(
-        root / "customers" / "operating-portfolio-dashboard.md",
-        """# Operating Portfolio Dashboard
+Unknown or pending:
+
+- Grace Gems owner intake.
+- Grace Gems margin evidence.
 
 ## Active Obligations
 
-- Elementary School paid Anyang Intelligence a $1,000 one-time retainer for the scoped 30-day collaborative build.
-- Await Grace Gems owner/operator intake response.
+### Elementary School
 
-## Immediate Decision Queue
+- Explore an unpaid curriculum idea.
 
-1. Elementary School: classify Ready / Provisional / Hold before drafting.
+### Media Production
 
-## Current Interpretation
+- Operate the Grace Gems $1,000/month service package.
 
-Paid obligations lead.
+## Portfolio Rule
 
 Current priority order:
 
 1. Serve Grace Gems through Media Production.
-2. Collect Elementary School parent intake responses.
-""",
+2. Deepen Elementary School later.
+"""
+
+
+def test_coffee_is_not_self_referential_and_preserves_priority(tmp_path: Path):
+    make_git_repo(tmp_path, DASHBOARD)
+    write(tmp_path / "skills" / "README.md", "# Skills\n\ncoffee\ndream\n")
+
+    data = build_coffee_data(tmp_path)
+
+    assert "native `anyang-coffee`" not in data["improvement_candidate"]
+    assert data["waiting_on"][:2] == ["Grace Gems owner intake.", "Grace Gems margin evidence."]
+    assert data["live_obligations"][0].startswith("Media Production:")
+    assert "git-only fallback" in data["current_picture"]
+
+
+def test_failed_recorded_dream_governs_next_coffee(tmp_path: Path):
+    make_git_repo(tmp_path, DASHBOARD)
+    snapshot = collect_repo_snapshot(tmp_path)
+    database = tmp_path / "external" / "cadence.db"
+    record_handoff(
+        database,
+        snapshot,
+        [{"name": "privacy-scan", "status": "fail", "exit_code": 1, "duration_ms": 2, "summary": "2 findings."}],
+        ["validation:privacy-scan"],
+        [],
+        "Resolve privacy findings before shipping.",
+        "operator",
+        recorded_at="2026-07-10T00:00:00Z",
     )
-    write(root / "customers" / "comparison-matrix.md", "# Customer Comparison Matrix\n")
-    write(root / "customers" / "commercial-hypotheses.md", "# Commercial Hypotheses\n")
-    write(root / "skills" / "README.md", "# Skills\n\n| [coffee](coffee/SKILL.md) | Native coffee. |\n")
+
+    data = build_coffee_data(tmp_path, str(database))
+
+    assert data["decision_reason"] == "validation-failure"
+    assert data["improvement_candidate"] == "Resolve privacy findings before shipping."
+    assert data["menu"][0].startswith("A. Confirm (recommended)")
 
 
-def test_build_coffee_brief_uses_native_shape(tmp_path):
-    make_repo(tmp_path)
-    output = build_coffee_brief(tmp_path)
-    assert "Current picture:" in output
-    assert "Live obligations:" in output
-    assert "Elementary School paid Anyang Intelligence" in output
-    assert "Coffee menu - reply A-D:" in output
-    assert "A. Confirm" in output
-    assert "D. Ship" in output
+def test_coffee_cli_json(tmp_path: Path, capsys):
+    make_git_repo(tmp_path, DASHBOARD)
+    assert main(["--repo", str(tmp_path), "--format", "json"]) == 0
+    assert '"decision_reason"' in capsys.readouterr().out
 
 
-def test_coffee_cli_prints_brief(tmp_path, capsys):
-    make_repo(tmp_path)
-    assert main(["--repo", str(tmp_path)]) == 0
-    captured = capsys.readouterr()
-    assert "native `anyang-coffee`" in captured.out
-    assert "Coffee menu - reply A-D:" in captured.out
+def test_coffee_explicit_missing_db_fails_but_implicit_missing_db_falls_back(tmp_path: Path, monkeypatch, capsys):
+    make_git_repo(tmp_path, DASHBOARD)
+    missing = tmp_path / "missing" / "cadence.db"
+
+    assert main(["--repo", str(tmp_path), "--db", str(missing)]) == 1
+    assert "does not exist" in capsys.readouterr().err
+
+    monkeypatch.setenv("ANYANG_DATA_DIR", str(tmp_path / "empty-data-dir"))
+    data = build_coffee_data(tmp_path)
+    assert "git-only fallback" in data["current_picture"]

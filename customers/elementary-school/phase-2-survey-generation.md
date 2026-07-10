@@ -1,5 +1,7 @@
 # Phase 2 Survey Generation
 
+Privacy classification: synthetic/pseudonymous fixture where named learner examples use pseudonyms and anonymized/example inputs.
+
 This document defines how Elementary School should generate a personalized **Phase 2 onboarding survey** from the completed **Phase 1 parent onboarding survey**.
 
 The goal is to make onboarding adaptive from the beginning.

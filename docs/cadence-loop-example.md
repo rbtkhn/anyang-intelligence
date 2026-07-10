@@ -2,7 +2,7 @@
 
 This example shows how native `coffee`, `bravo`, `friction`, and `dream` work together as a recursive self-enhancement loop in Anyang Intelligence.
 
-The fixture is the recent creation of the native cadence skills themselves.
+The original fixture was the creation of the native cadence skills themselves. The current implementation closes the operational seam with an optional sanitized external handoff.
 
 ## Loop Shape
 
@@ -17,9 +17,13 @@ bravo or friction
   -> capture what worked or what missed
 
 dream
+  -> run bounded verification
   -> confirm what landed and what tomorrow inherits
+  -> optionally record one sanitized repo-level handoff
 
 next coffee
+  -> consume the latest matching handoff when configured
+  -> compare it with the complete current Git snapshot
   -> re-enter with the improved operating surface
 ```
 
@@ -133,6 +137,10 @@ dream consolidates
 coffee inherits
 ```
 
+- Native coffee now inherits the exact bounded `tomorrow_inherits` statement only when the operator explicitly recorded dream to external SQLite. Otherwise it declares a Git-only fallback rather than pretending chat output persisted.
+- Both commands use the same snapshot collector, including staged, unstaged, deleted, renamed, and untracked paths.
+- A failed recorded verification outranks dirty-worktree and product-expansion recommendations in the next coffee.
+
 Next best use:
 
 - Apply the cadence trio to real customer work, especially Media Production / Grace Gems or Elementary School parent-intake artifacts, rather than continuing to build meta-cadence indefinitely.
@@ -153,3 +161,5 @@ That is recursive self-enhancement in the Anyang Intelligence sense: human-appro
 Do not use this cadence loop to produce infinite meta-work.
 
 The loop is valuable only when it improves future customer or product work. The next proof should come from applying it to a concrete lane, not from endlessly elaborating the cadence itself.
+
+Do not commit a cadence-state file. Do not store customer facts in cadence handoffs. Do not treat a recorded closeout as authority to commit, push, publish, spend, deliver, or change customer state.

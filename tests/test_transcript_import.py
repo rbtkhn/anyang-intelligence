@@ -131,6 +131,39 @@ def test_transcript_import_writes_files_and_ledger():
     assert "skipped-do-not-commit" in ledger_text
 
 
+def test_transcript_import_redacts_email_addresses():
+    tmp_path = Path(tempfile.mkdtemp())
+    transcript = tmp_path / "email-transcript.txt"
+    address = "person" + chr(64) + "example.com"
+    transcript.write_text(f"Contact {address} for details.", encoding="utf-8")
+    manifest = tmp_path / "customers" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest.parent.mkdir(parents=True, exist_ok=True)
+    manifest.write_text(
+        "{\n"
+        '  "transcripts": [\n'
+        "    {\n"
+        '      "lane": "innermost-loop",\n'
+        '      "title": "Email Transcript",\n'
+        '      "slug": "email-transcript",\n'
+        '      "date_captured": "2026-07-08",\n'
+        '      "source_ref": "https://example.com/email",\n'
+        '      "rights_status": "internal-commit-approved",\n'
+        '      "capture_method": "manual export",\n'
+        f'      "local_input_path": "{transcript.as_posix()}"\n'
+        "    }\n"
+        "  ]\n"
+        "}\n",
+        encoding="utf-8",
+    )
+
+    assert main(["import-transcripts", "--manifest", str(manifest)]) == 0
+
+    imported = manifest.parent / "innermost-loop" / "transcripts" / "2026-07-08-captured-email-transcript.md"
+    imported_text = imported.read_text(encoding="utf-8")
+    assert address not in imported_text
+    assert "[redacted-email]" in imported_text
+
+
 def test_transcript_import_duplicate_detection_and_no_overwrite():
     tmp_path = Path(tempfile.mkdtemp())
     transcript = tmp_path / "first-innermost.txt"

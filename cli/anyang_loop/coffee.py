@@ -1,203 +1,178 @@
 from __future__ import annotations
 
-import subprocess
+import json
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
+
+from .cadence_store import CadenceHandoff, latest_handoff, resolve_cadence_db
+from .portfolio_state import PortfolioState, parse_portfolio_dashboard
+from .repo_snapshot import RepoSnapshot, collect_repo_snapshot
 
 
 @dataclass(frozen=True)
 class CoffeeContext:
-    repo_root: Path
-    git_status: str
-    recent_commits: list[str]
-    changed_paths: list[str]
-    dashboard: str
-    comparison: str
-    commercial: str
-    skills_readme: str
+    snapshot: RepoSnapshot
+    portfolio: PortfolioState
+    handoff: CadenceHandoff | None
+    handoff_source: str
 
 
-def build_coffee_brief(repo_root: str | Path = ".") -> str:
+def build_coffee_context(repo_root: str | Path = ".", db_path: str | None = None) -> CoffeeContext:
     root = Path(repo_root).resolve()
-    context = CoffeeContext(
-        repo_root=root,
-        git_status=_git(root, ["status", "--short", "--branch"]),
-        recent_commits=_git_lines(root, ["log", "--oneline", "-5"]),
-        changed_paths=_git_lines(root, ["diff", "--name-only"]),
-        dashboard=_read(root / "customers" / "operating-portfolio-dashboard.md"),
-        comparison=_read(root / "customers" / "comparison-matrix.md"),
-        commercial=_read(root / "customers" / "commercial-hypotheses.md"),
-        skills_readme=_read(root / "skills" / "README.md"),
-    )
-    return render_coffee_brief(context)
+    snapshot = collect_repo_snapshot(root, recent_limit=5)
+    dashboard = _read(root / "customers" / "operating-portfolio-dashboard.md")
+    portfolio = parse_portfolio_dashboard(dashboard)
+    database = resolve_cadence_db(db_path, for_record=False)
+    handoff = latest_handoff(database, snapshot.repo_id) if database else None
+    source = str(database) if database else "git-only fallback"
+    return CoffeeContext(snapshot=snapshot, portfolio=portfolio, handoff=handoff, handoff_source=source)
 
 
-def render_coffee_brief(context: CoffeeContext) -> str:
-    current = _current_picture(context)
-    obligations = _live_obligations(context)
-    waiting = _waiting_on(context)
-    entropy = _entropy_flags(context)
-    learning = _one_learning(context)
-    improvement = _improvement_candidate(context)
-    menu = _menu(context, improvement)
+def build_coffee_data(repo_root: str | Path = ".", db_path: str | None = None) -> dict[str, Any]:
+    context = build_coffee_context(repo_root, db_path)
+    snapshot, portfolio, handoff = context.snapshot, context.portfolio, context.handoff
+    obligations = _ordered_obligations(portfolio)[:5]
+    waiting = list(portfolio.unresolved[:5]) or ["No external blocker is explicitly recorded in the portfolio dashboard."]
+    failures = _handoff_failures(handoff)
+    if failures:
+        learning = "The last recorded closeout found verification failures; the next cycle should resolve evidence before expanding scope."
+        improvement = handoff.tomorrow_inherits if handoff else "Resolve the recorded verification failure."
+        reason = "validation-failure"
+    elif handoff:
+        learning = f"The last recorded closeout bounded the next cycle: {handoff.tomorrow_inherits}"
+        improvement = handoff.tomorrow_inherits
+        reason = "recorded-handoff"
+    elif snapshot.dirty:
+        learning = "No recorded learning is available; current Git and portfolio state are orientation only."
+        improvement = "Validate and isolate one coherent dirty-worktree slice before shipping."
+        reason = "dirty-worktree"
+    elif portfolio.first_external_blocker:
+        learning = "No recorded learning is available; the portfolio still exposes an unresolved external input."
+        improvement = f"Clarify the highest-priority external blocker: {portfolio.first_external_blocker}"
+        reason = "external-blocker"
+    elif portfolio.first_paid_obligation:
+        learning = "No recorded learning is available; the next move should remain grounded in the first paid obligation."
+        improvement = f"Scope the next deliverable for {portfolio.first_paid_obligation}"
+        reason = "paid-obligation"
+    else:
+        learning = "No supported learning is recorded."
+        improvement = "Refresh the portfolio dashboard before selecting more work."
+        reason = "stale-portfolio"
+    entropy = _entropy(context, failures)
+    menu = _menu(context, reason, improvement)
+    latest = snapshot.recent_commits[0] if snapshot.recent_commits else "no recent commit visible"
+    return {
+        "current_picture": (
+            f"Anyang Intelligence is operating from `{snapshot.root.name}` on `{snapshot.branch}` with a "
+            f"{snapshot.worktree_state} worktree and remote state `{snapshot.sync_status}`. "
+            f"The latest visible commit is `{latest}`. Cadence continuity source: {context.handoff_source}."
+        ),
+        "live_obligations": obligations or ["No active obligation is explicitly recorded."],
+        "waiting_on": waiting,
+        "entropy_flags": entropy,
+        "one_learning": learning,
+        "improvement_candidate": improvement,
+        "menu": menu,
+        "decision_reason": reason,
+        "snapshot": snapshot.as_dict(),
+        "handoff": handoff.as_dict() if handoff else None,
+    }
+
+
+def build_coffee_brief(repo_root: str | Path = ".", db_path: str | None = None) -> str:
+    return render_coffee_text(build_coffee_data(repo_root, db_path))
+
+
+def render_coffee_text(data: dict[str, Any]) -> str:
     return "\n".join(
         [
             "Current picture:",
-            current,
+            data["current_picture"],
             "",
             "Live obligations:",
-            *_bullets(obligations),
+            *_bullets(data["live_obligations"]),
             "",
             "Waiting on:",
-            *_bullets(waiting),
+            *_bullets(data["waiting_on"]),
             "",
             "Entropy flags:",
-            *_bullets(entropy),
+            *_bullets(data["entropy_flags"]),
             "",
             "One learning:",
-            f"- {learning}",
+            f"- {data['one_learning']}",
             "",
             "Improvement candidate:",
-            f"- {improvement}",
+            f"- {data['improvement_candidate']}",
             "",
             "Coffee menu - reply A-D:",
-            *menu,
+            *data["menu"],
         ]
     )
 
 
-def _current_picture(context: CoffeeContext) -> str:
-    priority = _extract_after(context.dashboard, "Current priority order:", max_lines=6)
-    top_priority = _first_numbered(priority) or "Serve paid obligations before unpaid complexity."
-    git_summary = _git_summary(context.git_status)
-    commit = context.recent_commits[0] if context.recent_commits else "no recent commit visible"
-    root_name = context.repo_root.name or "operating-substrate"
-    return (
-        f"Anyang Intelligence is operating from `{root_name}` with {git_summary}. "
-        f"The latest visible commit is `{commit}`. "
-        f"The portfolio rule still points to: {top_priority}"
-    )
+def render_coffee_json(data: dict[str, Any]) -> str:
+    return json.dumps(data, indent=2, sort_keys=True) + "\n"
 
 
-def _live_obligations(context: CoffeeContext) -> list[str]:
-    obligations: list[str] = []
-    for line in _section_bullets(context.dashboard, "Active Obligations"):
-        normalized = _clean_bullet(line)
-        if _contains_any(normalized.lower(), ["$1,000", "paid", "retainer", "grace gems", "elementary school"]):
-            obligations.append(normalized)
-    if not obligations:
-        obligations = [
-            "Serve paid customer obligations before unpaid complexity.",
-            "Keep human approval boundaries explicit before delivery, publication, spending, or customer commitments.",
-        ]
-    return _dedupe(obligations)[:5]
+def _ordered_obligations(portfolio: PortfolioState) -> list[str]:
+    result: list[str] = []
+    lane_order: list[str] = []
+    for priority in portfolio.priorities:
+        lowered = priority.lower()
+        for lane in portfolio.obligations:
+            if lane.lower() in lowered or ("grace gems" in lowered and lane == "Media Production"):
+                if lane not in lane_order:
+                    lane_order.append(lane)
+    lane_order.extend(lane for lane in portfolio.obligations if lane not in lane_order)
+    for lane in lane_order:
+        result.extend(f"{lane}: {item}" for item in portfolio.obligations[lane])
+    return result
 
 
-def _waiting_on(context: CoffeeContext) -> list[str]:
-    waiting = [_clean_bullet(line) for line in _section_bullets(context.dashboard, "Current Cash Picture")]
-    waiting = [line for line in waiting if _contains_any(line.lower(), ["unknown", "pending", "await", "response"])]
-    if not waiting:
-        waiting = [_clean_bullet(line) for line in _section_bullets(context.dashboard, "Immediate Decision Queue")]
-    if not waiting:
-        waiting = ["Next customer input or operator decision before expanding scope."]
-    return _dedupe(waiting)[:5]
-
-
-def _entropy_flags(context: CoffeeContext) -> list[str]:
-    flags: list[str] = []
-    status = context.git_status.lower()
-    if "ahead" in status:
-        flags.append("Local commits are ahead of the remote; sync state should remain visible before assuming remote continuity.")
-    if _dirty_status(context.git_status):
-        flags.append("The worktree is dirty; split customer drafts, tooling, and skill work before staging.")
-    changed = "\n".join(context.changed_paths).lower()
-    if "elementary-school" in changed:
-        flags.append("Elementary School is high-trust child/family work; parent authority and evidence boundaries need extra scrutiny.")
-    if "subscription" in changed or "commercial-hypotheses" in changed:
-        flags.append("Pricing, retainer, subscription, donor support, and commercial hypotheses can blur unless named separately.")
-    if not flags:
-        flags.append("No major entropy flag detected from git state; rely on portfolio dashboard for priority pressure.")
-    return flags[:5]
-
-
-def _one_learning(context: CoffeeContext) -> str:
-    changed = "\n".join(context.changed_paths).lower()
-    commits = "\n".join(context.recent_commits).lower()
-    if "catalog" in changed or "catalog" in commits:
-        return "Catalog work is strongest when treated as a scaffold for resource awareness, not as curriculum authority or proof of mastery."
-    if "elementary-school" in changed:
-        return "Elementary School progress improves when onboarding, parent authority, readiness classification, and plan drafting stay visibly separated."
-    if "media-production" in changed:
-        return "Media Production work compounds when brief, quality gate, package, and ledger remain separate review surfaces."
-    if "skills" in changed:
-        return "Repeated operator behavior should become narrow skills only when it improves future execution without weakening human authority."
-    return "The Executive OS gets smarter when each work cycle preserves one durable improvement instead of expanding every possible surface."
-
-
-def _improvement_candidate(context: CoffeeContext) -> str:
-    changed = "\n".join(context.changed_paths).lower()
-    if "skills/coffee" in changed or "coffee" in context.skills_readme.lower():
-        return "Use native `anyang-coffee` plus `skills/coffee/SKILL.md` as the repo-local re-entry path before falling back to external cadence rituals."
-    if "elementary-school" in changed:
-        return "Stabilize the Elementary School dirty set into one coherent slice: onboarding, Khan transition, Learning Core, or Student Operating System skill."
-    if _dirty_status(context.git_status):
-        return "Run validation, then commit one clean thematic slice instead of letting mixed customer/docs/tooling changes accumulate."
-    return "Keep the portfolio dashboard current so paid obligations remain visible before new exploratory work."
-
-
-def _menu(context: CoffeeContext, improvement: str) -> list[str]:
-    changed = "\n".join(context.changed_paths).lower()
-    recommended = "D" if _dirty_status(context.git_status) else "A"
-    scope_target = (
-        "Elementary School readiness and parent-authority boundaries"
-        if "elementary-school" in changed
-        else "the highest-priority paid obligation from the portfolio dashboard"
-    )
-    deepen_target = (
-        "catalog -> Khan transition -> Learning Core architecture"
-        if "elementary-school" in changed
-        else "the next reusable primitive named by the comparison matrix"
-    )
-    ship_target = "one clean dirty-worktree slice" if _dirty_status(context.git_status) else "the selected improvement candidate"
-    lines = [
-        "A. Confirm{mark} - Run `anyang-install validate customers` and `anyang-loop validate customers`, then compare results with the portfolio dashboard.",
-        f"B. Scope{{mark}} - Clarify {scope_target} before drafting or expanding delivery.",
-        f"C. Deepen{{mark}} - Develop {deepen_target} without transferring private customer facts across membranes.",
-        f"D. Ship{{mark}} - Implement or commit {ship_target} while preserving human authority and validation evidence.",
-    ]
-    rendered: list[str] = []
-    for index, line in zip(("A", "B", "C", "D"), lines):
-        mark = " (recommended)" if index == recommended else ""
-        rendered.append(line.format(mark=mark))
-    if improvement.startswith("Use native `anyang-coffee`"):
-        rendered[0] = "A. Confirm (recommended) - Run `anyang-coffee --repo .` and verify it produces the native Anyang Intelligence coffee shape."
-        rendered[3] = "D. Ship - Commit the native coffee command, docs, and tests after validation."
-    return rendered
-
-
-def _git(root: Path, args: list[str]) -> str:
-    try:
-        result = subprocess.run(
-            ["git", *args],
-            cwd=root,
-            check=False,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-        )
-    except OSError as exc:
-        return f"git unavailable: {exc}"
-    output = result.stdout.strip()
-    if result.returncode != 0:
-        return f"git error: {result.stderr.strip() or output}"
-    return output or "(no output)"
-
-
-def _git_lines(root: Path, args: list[str]) -> list[str]:
-    output = _git(root, args)
-    if output.startswith("git unavailable:") or output.startswith("git error:") or output == "(no output)":
+def _handoff_failures(handoff: CadenceHandoff | None) -> list[dict[str, Any]]:
+    if not handoff:
         return []
-    return [line for line in output.splitlines() if line.strip()]
+    return [item for item in handoff.validation if item.get("status") == "fail"]
+
+
+def _entropy(context: CoffeeContext, failures: list[dict[str, Any]]) -> list[str]:
+    snapshot = context.snapshot
+    flags: list[str] = []
+    if failures:
+        flags.append(f"The last recorded dream contains {len(failures)} failed verification check(s).")
+    if snapshot.sync_status in {"ahead", "behind", "diverged"}:
+        flags.append(f"The local branch is {snapshot.sync_status}; remote continuity should not be assumed.")
+    if snapshot.dirty:
+        flags.append(
+            f"The worktree has {len(snapshot.changed_paths)} changed path(s), including {len(snapshot.untracked)} untracked path(s)."
+        )
+    if context.handoff and context.handoff.snapshot_fingerprint == snapshot.fingerprint:
+        flags.append("Repository state matches the latest recorded dream snapshot.")
+    if not context.portfolio.priorities:
+        flags.append("The portfolio dashboard has no parseable current priority order.")
+    return flags or ["No material entropy flag is supported by the current repository and portfolio state."]
+
+
+def _menu(context: CoffeeContext, reason: str, improvement: str) -> list[str]:
+    blocker = (context.portfolio.first_external_blocker or "the highest-priority external input").rstrip(".")
+    paid = (context.portfolio.first_paid_obligation or "the highest-priority paid obligation").rstrip(".")
+    recommended = {"validation-failure": "A", "dirty-worktree": "A", "external-blocker": "B", "paid-obligation": "B"}.get(reason, "A")
+    ship = (
+        "Ship the validated cadence or customer slice after human review."
+        if not context.snapshot.dirty and not _handoff_failures(context.handoff)
+        else "Hold shipping until the selected slice is cleanly validated."
+    )
+    options = {
+        "A": ("Confirm", f"Validate the evidence behind: {improvement}"),
+        "B": ("Scope", f"Clarify {blocker} before expanding {paid}."),
+        "C": ("Deepen", "Inspect the relevant loop, membrane, and authority boundary without transferring private context."),
+        "D": ("Ship", ship),
+    }
+    return [
+        f"{key}. {label}{' (recommended)' if key == recommended else ''} - {action}"
+        for key, (label, action) in options.items()
+    ]
 
 
 def _read(path: Path) -> str:
@@ -205,74 +180,6 @@ def _read(path: Path) -> str:
         return path.read_text(encoding="utf-8")
     except OSError:
         return ""
-
-
-def _git_summary(status: str) -> str:
-    first = status.splitlines()[0] if status else "unknown git state"
-    dirty = "dirty worktree" if _dirty_status(status) else "clean worktree"
-    return f"{first}; {dirty}"
-
-
-def _dirty_status(status: str) -> bool:
-    return any(line and not line.startswith("##") for line in status.splitlines())
-
-
-def _section_bullets(text: str, heading: str) -> list[str]:
-    section = _section(text, heading)
-    return [
-        line.strip()
-        for line in section.splitlines()
-        if line.strip().startswith(("-", "1.", "2.", "3.", "4.", "5.", "6.", "7.", "8.", "9."))
-    ]
-
-
-def _section(text: str, heading: str) -> str:
-    marker = f"## {heading}"
-    start = text.find(marker)
-    if start == -1:
-        return ""
-    tail = text[start + len(marker) :]
-    end = tail.find("\n## ")
-    return tail if end == -1 else tail[:end]
-
-
-def _extract_after(text: str, marker: str, max_lines: int) -> str:
-    start = text.find(marker)
-    if start == -1:
-        return ""
-    return "\n".join(text[start + len(marker) :].splitlines()[:max_lines])
-
-
-def _first_numbered(text: str) -> str | None:
-    for line in text.splitlines():
-        stripped = line.strip()
-        if len(stripped) > 3 and stripped[0].isdigit() and stripped[1] == ".":
-            return stripped[3:].strip()
-    return None
-
-
-def _clean_bullet(line: str) -> str:
-    stripped = line.strip()
-    if stripped.startswith("- "):
-        return stripped[2:].strip()
-    if len(stripped) > 3 and stripped[0].isdigit() and stripped[1] == ".":
-        return stripped[3:].strip()
-    return stripped
-
-
-def _contains_any(value: str, needles: list[str]) -> bool:
-    return any(needle in value for needle in needles)
-
-
-def _dedupe(values: list[str]) -> list[str]:
-    seen: set[str] = set()
-    result: list[str] = []
-    for value in values:
-        normalized = value.strip()
-        if normalized and normalized not in seen:
-            seen.add(normalized)
-            result.append(normalized)
-    return result
 
 
 def _bullets(values: list[str]) -> list[str]:

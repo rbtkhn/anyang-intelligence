@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import json
 from pathlib import Path
+import re
 from typing import Any
 
 import yaml
@@ -29,6 +30,8 @@ REQUIRED_FIELDS = (
     "capture_method",
     "local_input_path",
 )
+EMAIL_PATTERN = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE)
+REDACTED_EMAIL = "[redacted-email]"
 
 
 class TranscriptImportError(Exception):
@@ -225,7 +228,11 @@ def load_transcript_body(path: Path) -> str:
     stripped = text.strip()
     if not stripped:
         raise TranscriptImportError(f"Transcript body is empty after normalization: {path}")
-    return stripped.replace("\r\n", "\n")
+    return redact_transcript_body(stripped.replace("\r\n", "\n"))
+
+
+def redact_transcript_body(text: str) -> str:
+    return EMAIL_PATTERN.sub(REDACTED_EMAIL, text)
 
 
 def render_transcript(row: TranscriptManifestRow, body: str) -> str:

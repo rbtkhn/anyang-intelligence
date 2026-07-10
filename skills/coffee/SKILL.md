@@ -23,6 +23,8 @@ When tools are available, prefer the native command:
 anyang-coffee --repo .
 ```
 
+When an external cadence database is configured, native coffee reads the latest explicitly recorded dream handoff for this repository. Without one, it falls back honestly to Git and repository docs.
+
 If the command is unavailable, perform the same read-only procedure manually from the inputs below.
 
 Use `coffee` when the operator asks:
@@ -61,7 +63,7 @@ Read these first, in order:
 4. `skills/README.md`
 5. `docs/loops.md`
 6. `docs/membranes.md`
-7. `git status --short --branch`
+7. Complete Git snapshot: branch, sync state, staged, unstaged, deleted, renamed, and untracked paths
 8. Recent commits when useful: `git log --oneline -5`
 
 Optional, only when directly relevant:
@@ -79,12 +81,12 @@ Do not require unavailable strategy-codex-only files such as `scripts/operator_c
 
 1. Read the portfolio dashboard first. Treat it as the freshest repo-level source of truth unless the operator has just corrected it.
 2. Check git state so the operator knows whether the repo is clean, dirty, ahead, or behind.
-3. Name the last concrete repo movement from recent commits or the current worktree.
+3. Name the last concrete repo movement from recent commits, the complete current worktree, and the latest matching recorded dream when available.
 4. Identify paid obligations first. Do not let unpaid complexity crowd out paid commitments.
 5. Separate confirmed facts from hypotheses, donor-funded support, optional donations, revenue, expenses, asset values, and unplanned scope.
 6. Scan for contradiction risk: customer status, money, paid/free access, employee-facing language, outward-facing brand language, privacy membranes, and authority boundaries.
 7. Detect entropy: identify what is becoming stale, contradictory, overbuilt, under-scoped, unsupported by evidence, or too dependent on chat memory.
-8. Extract one learning from the last work cycle. Keep it concrete, such as "Media Production now has a brief -> quality gate -> package pipeline" or "Grace Gems needs trust made visible before public-facing claims."
+8. Extract one supported learning from the last recorded dream or durable repo change. If no supported learning exists, say so rather than inventing one.
 9. Choose one possible system improvement that would make the next cycle smarter: a skill, template, CLI check, customer doc update, quality gate, loop example, or priority decision.
 10. Produce a concise re-entry brief with the sections below.
 11. Do not edit, stage, commit, or push by default. `coffee` is read-only unless the operator chooses an action and asks to proceed.
@@ -94,6 +96,7 @@ Do not require unavailable strategy-codex-only files such as `scripts/operator_c
 Use these only when they fit the menu option or the operator asks to verify:
 
 - `anyang-coffee --repo .`
+- `anyang-coffee --repo . --db <external-db> --format json`
 - `python -m anyang_loop.cli validate customers`
 - `python -m anyang_loop.install_cli validate customers`
 - `python -m pytest`
@@ -116,6 +119,8 @@ work happens
 ```
 
 Only one improvement candidate should be emphasized. If everything is improved at once, `coffee` becomes sludge.
+
+Priority is deterministic: failed verification, recorded dream inheritance, dirty-worktree risk, paid obligation or external blocker, then stale portfolio state. Coffee must never recommend validating or expanding coffee merely because the skill is listed in the repo.
 
 Durable improvements should be preserved in the repo only after the operator chooses that action. Examples:
 
@@ -183,6 +188,7 @@ D. Ship - <specific implementation, documentation, or commit-ready move to execu
 - Preserve human authority over customer commitments, publication, spending, external claims, school/child-safety decisions, legal/tax conclusions, and cross-customer pattern transfer.
 - Transfer primitives across customers only through `docs/membranes.md`; do not transfer private facts, customer messages, sensitive source material, or authority decisions.
 - Prefer Anyang Intelligence's native CLIs and repo docs over remembered chat context.
+- Coffee is always read-only. A missing implicit cadence database is a Git-only fallback; an explicitly named unreadable database is an error.
 
 ## Done When
 

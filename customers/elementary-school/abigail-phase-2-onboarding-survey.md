@@ -1,6 +1,11 @@
+---
+privacy_class: synthetic-fixture
+pseudonym_note: Abigail is a pseudonym used for an anonymized/example learner fixture.
+---
+
 # Abigail Phase 2 Onboarding Survey
 
-This is the personalized **Phase 2 onboarding survey** for **Abigail**.
+This is a synthetic/pseudonymous fixture showing a personalized **Phase 2 onboarding survey** for **Abigail**.
 
 Phase 1 gave enough signal to classify the case as `Provisional`.
 
