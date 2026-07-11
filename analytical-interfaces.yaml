@@ -19,6 +19,18 @@ documents:
     document_type: forecast-template
     require_forecast: true
     require_deliberative_questions: true
+  - path: projects/singularity-science/2026-q1-china-humanoid-market-watch.md
+    document_type: quarterly-watch
+    template: false
+  - path: projects/singularity-science/2026-q2-china-humanoid-market-watch.md
+    document_type: quarterly-watch
+    template: false
+  - path: projects/singularity-science/china-humanoid-market-watch.md
+    document_type: watch-contract
+    template: false
+  - path: projects/singularity-science/primitives/embodied-agency-adoption-gate.md
+    document_type: adoption-gate
+    template: false
   - path: projects/singularity-science/archive/*/analysis-template.md
     document_type: analysis-template
 
