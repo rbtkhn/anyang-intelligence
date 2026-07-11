@@ -15,7 +15,7 @@ CONTENT_RULES = {
     "private-key": re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
     "credential-assignment": re.compile(r"(?i)\b(?:api[_-]?key|secret|password|token)\s*[:=]\s*['\"]?[A-Za-z0-9_\-/+=]{12,}"),
 }
-TEXT_SUFFIXES = {".md", ".txt", ".yaml", ".yml", ".json", ".toml", ".py"}
+TEXT_SUFFIXES = {".md", ".txt", ".yaml", ".yml", ".json", ".toml", ".py", ".csv", ".tsv"}
 SYNTHETIC_FIXTURE_MARKERS = (
     "privacy_class: synthetic-fixture",
     "synthetic/pseudonymous fixture",

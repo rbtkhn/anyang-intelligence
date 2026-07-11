@@ -8,3 +8,7 @@ dist/
 *.db-wal
 .anyang-private/
 generated-reviews/
+finance/**/*.csv
+finance/**/*.xlsx
+finance/**/*.ndjson
+finance/archive/

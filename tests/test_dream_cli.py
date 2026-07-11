@@ -98,6 +98,16 @@ def test_privacy_scan_includes_untracked_candidate_files(tmp_path: Path):
     assert any(finding.path == "untracked-private.txt" and finding.rule == "email-address" for finding in findings)
 
 
+def test_privacy_scan_includes_csv_candidate_files(tmp_path: Path):
+    make_git_repo(tmp_path)
+    unsafe_contact = "person" + chr(64) + "example.com"
+    write(tmp_path / "candidate-ledger.csv", f"record_id,counterparty\nFIN-0001,{unsafe_contact}\n")
+
+    findings = scan_repo(tmp_path)
+
+    assert any(finding.path == "candidate-ledger.csv" and finding.rule == "email-address" for finding in findings)
+
+
 def test_privacy_scan_allows_marked_synthetic_pseudonym_fixture(tmp_path: Path):
     make_git_repo(tmp_path)
     pseudonym = "Abi" + "gail"
