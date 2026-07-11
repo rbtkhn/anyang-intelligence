@@ -1,7 +1,7 @@
 name: grace-gems-listing-gate
 description: Review-gated marketplace listing loop for Grace Gems.
 loop_type: operating
-customer_lane: grace-gems
+project_lane: grace-gems
 authority: owner approval
 tags:
   - marketplace

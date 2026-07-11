@@ -17,7 +17,7 @@ The default implementation shape is a four to six week sprint:
 - Week 5: First coordination win and risk review.
 - Week 6: Learning loop, handoff, and next operating cycle.
 
-The canonical cross-customer method lives in [install-method.md](install-method.md). This implementation model describes why the work starts as installation before software; the install method describes the repeatable operating pattern.
+The canonical cross-project method lives in [install-method.md](install-method.md). This implementation model describes why the work starts as installation before software; the install method describes the repeatable operating pattern.
 
 ## What Gets Configured
 
@@ -27,6 +27,16 @@ The canonical cross-customer method lives in [install-method.md](install-method.
 - Coordination model: how owners, projects, and follow-ups are tracked.
 - Review cadence: how leadership sees the business each week.
 - Governance rules: what the AI may suggest, draft, summarize, or escalate.
+
+## Capability Progression
+
+The same operating architecture should govern expanding capability rather than treating each new tool as a separate exception:
+
+1. **Governed digital intelligence:** memory, decision preparation, coordination, and learning with human review.
+2. **Tool and workflow coordination:** bounded, reversible actions through approved tools with visible receipts, exception handling, and human override.
+3. **Conditional embodied capability:** physical systems only after a defined task, supervision model, maintenance plan, safety/privacy/security review, and accountable owner are in place.
+
+At every stage, the system preserves the memory, decision, review, and escalation loop. Increased capability does not reduce human accountability or create authority that the operator has not explicitly delegated.
 
 ## Success Criteria
 

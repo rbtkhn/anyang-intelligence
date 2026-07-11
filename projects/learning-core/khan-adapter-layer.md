@@ -1,21 +1,21 @@
 # Khan Adapter Layer
 
-This document defines how **Elementary School** should use **Khan Academy** and **Khan Academy Kids** without trying to replace their internal recommendation logic.
+This document defines how **Learning Core** should use **Khan Academy** and **Khan Academy Kids** without trying to replace their internal recommendation logic.
 
 ## Core Idea
 
 Khan already has its own recommendation and sequencing system inside the product.
 
-Elementary School does **not** need to build a competing recommendation engine for Khan content.
+Learning Core does **not** need to build a competing recommendation engine for Khan content.
 
-Elementary School does need to build the **adapter layer around Khan** so the product fits the actual child, parent, and household.
+Learning Core does need to build the **adapter layer around Khan** so the product fits the actual child, parent, and household.
 
 In short:
 
 ```text
 Khan recommends content inside Khan
   ->
-Elementary School decides how Khan should fit inside the Student Operating System
+Learning Core decides how Khan should fit inside the Student Operating System
 ```
 
 ## What Khan Should Be Trusted To Do
@@ -27,11 +27,11 @@ Khan can handle:
 - in-product next-content recommendation
 - skill-path structure inside the app or site
 
-Elementary School should treat this as product-native guidance, not as something it needs to reinvent.
+Learning Core should treat this as product-native guidance, not as something it needs to reinvent.
 
-## What Elementary School Should Not Delegate To Khan
+## What Learning Core Should Not Delegate To Khan
 
-Elementary School should not delegate:
+Learning Core should not delegate:
 
 - parent authority
 - household screen-time posture
@@ -43,7 +43,7 @@ Elementary School should not delegate:
 
 Khan can recommend what is next **inside Khan**.
 
-Elementary School must decide whether Khan itself is being used well **inside the family's Learning Core**.
+Learning Core must decide whether Khan itself is being used well **inside the family's Learning Core**.
 
 ## Adapter-Layer Questions
 
@@ -94,7 +94,7 @@ These determine whether Khan should expand, stay limited, or be reduced.
 
 ## Adapter-Layer Outputs
 
-Elementary School should output decisions like:
+Learning Core should output decisions like:
 
 - `use Khan Academy Kids as a 10-15 minute supervised starter block`
 - `keep Khan small; use it mainly for confidence and observation`
@@ -161,4 +161,4 @@ The adapter layer is working when:
 - Khan time stays inside household reality
 - strong in-app interest produces better off-app recommendations
 - repeated friction causes adjustment rather than drift
-- Elementary School leverages Khan's strengths without surrendering judgment to it
+- Learning Core leverages Khan's strengths without surrendering judgment to it

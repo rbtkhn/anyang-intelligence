@@ -1,6 +1,6 @@
-# Elementary School Membrane Notes
+# Learning Core Membrane Notes
 
-These notes describe how Elementary School should transfer lessons while protecting child, parent, and household context.
+These notes describe how Learning Core should transfer lessons while protecting child, parent, and household context.
 
 ## Transfer Boundary
 
@@ -29,6 +29,6 @@ Private or lane-local material includes:
 
 ## Working Rule
 
-Elementary School may transfer generic learning-governance patterns.
+Learning Core may transfer generic learning-governance patterns.
 
 It may not transfer private child or household context, or any unapproved child-facing language, without explicit parent approval.

@@ -41,7 +41,7 @@ What did not work, why did it miss, and what should change next time without ove
 Read or infer from the current thread first:
 
 1. The answer, artifact, workflow, decision, or repo change that missed.
-2. The immediate context: customer lane, skill, doc, CLI, template, governance surface, or operator cadence.
+2. The immediate context: project lane, skill, doc, CLI, template, governance surface, or operator cadence.
 3. Any explicit reason the operator gave for dissatisfaction.
 4. The expected direction from the previous prompt or menu choice.
 5. `git status --short --branch` only if the miss appears tied to repo state or a file change.

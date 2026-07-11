@@ -15,7 +15,7 @@ scope_class: repo-governed
 
 The operator may type only `coffee`. Do not require them to say `anyang-coffee`, `native coffee`, or a repo qualifier.
 
-When working inside `anyang-intelligence/operating-substrate`, this skill is authoritative. Do not route `coffee` through strategy-codex scripts, cadence files, conductor menus, or external operator rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence coffee reads this repo, its customer folders, its loop/install tooling, and its skills.
+When working inside `anyang-intelligence/operating-substrate`, this skill is authoritative. Do not route `coffee` through strategy-codex scripts, cadence files, conductor menus, or external operator rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence coffee reads this repo, its project folders, its loop/install tooling, and its skills.
 
 When tools are available, prefer the native command:
 
@@ -41,7 +41,7 @@ Use `coffee` when the operator asks:
 `coffee` helps the operator quickly see:
 
 - the current operating picture
-- which customer obligations are live
+- which project obligations are live
 - what is waiting on external input
 - where repo memory may be thin, stale, or contradictory
 - what the last cycle taught Anyang Intelligence about its own operating system
@@ -57,9 +57,9 @@ What did the last cycle teach us that should change how the Executive OS operate
 
 Read these first, in order:
 
-1. `customers/operating-portfolio-dashboard.md`
-2. `customers/comparison-matrix.md`
-3. `customers/commercial-hypotheses.md`
+1. `projects/operating-portfolio-dashboard.md`
+2. `projects/comparison-matrix.md`
+3. `projects/commercial-hypotheses.md`
 4. `skills/README.md`
 5. `docs/loops.md`
 6. `docs/membranes.md`
@@ -72,7 +72,7 @@ Optional, only when directly relevant:
 - the customer install or scope document
 - `cli/README.md` when loop or install tooling is implicated
 - `skills/customer-state-update/SKILL.md` if new customer facts appeared
-- recently changed skill, template, CLI, test, or customer-specific work-package docs
+- recently changed skill, template, CLI, test, or project-specific work-package docs
 - `git diff --stat` when the worktree is dirty
 
 Do not require unavailable strategy-codex-only files such as `scripts/operator_coffee.py`, work-cadence logs, conductor compression specs, or handoff-check scripts.
@@ -98,12 +98,12 @@ Use these only when they fit the menu option or the operator asks to verify:
 - `anyang-coffee --repo .`
 - `anyang-coffee --repo . --db <external-db> --format json`
 - `python -m anyang_loop.cli validate customers`
-- `python -m anyang_loop.install_cli validate customers`
+- `python -m anyang_loop.project_cli validate customers`
 - `python -m pytest`
 - `git status --short --branch`
 - `git diff --stat`
 
-If Python is unavailable, say so and fall back to manual repo inspection. Do not treat unavailable local tooling as a failed customer state.
+If Python is unavailable, say so and fall back to manual repo inspection. Do not treat unavailable local tooling as a failed project state.
 
 ## Recursive Improvement Loop
 
@@ -177,7 +177,7 @@ D. Ship - <specific implementation, documentation, or commit-ready move to execu
 ## Guardrails
 
 - Keep it light. `coffee` is a re-entry ritual, not a full audit.
-- Improve one layer at a time: customer state, skill, template, quality gate, priority, or decision.
+- Improve one layer at a time: project state, skill, template, quality gate, priority, or decision.
 - Do not turn every observation into a repo artifact. Preserve only durable improvements.
 - Do not invent facts that are not in the repo or the current conversation.
 - Do not refer to customer-facing or employee-facing documents as products of Anyang Intelligence unless that boundary is already approved.
@@ -185,8 +185,8 @@ D. Ship - <specific implementation, documentation, or commit-ready move to execu
 - Preserve the distinction between free participation and donor-funded support.
 - Preserve the distinction between a one-time retainer and a recurring subscription.
 - Preserve the distinction between Media Production's own operating system and the content it creates for Grace Gems or Predictive History.
-- Preserve human authority over customer commitments, publication, spending, external claims, school/child-safety decisions, legal/tax conclusions, and cross-customer pattern transfer.
-- Transfer primitives across customers only through `docs/membranes.md`; do not transfer private facts, customer messages, sensitive source material, or authority decisions.
+- Preserve human authority over customer commitments, publication, spending, external claims, school/child-safety decisions, legal/tax conclusions, and cross-project pattern transfer.
+- Transfer primitives across projects only through `docs/membranes.md`; do not transfer private facts, customer messages, sensitive source material, or authority decisions.
 - Prefer Anyang Intelligence's native CLIs and repo docs over remembered chat context.
 - Coffee is always read-only. A missing implicit cadence database is a Git-only fallback; an explicitly named unreadable database is an error.
 

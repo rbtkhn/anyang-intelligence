@@ -1,10 +1,10 @@
 # Approved With Changes Exemplar
 
-This is a fictional end-to-end example showing how the Elementary School lane should behave when a parent reviews a draft, approves the direction, and requests changes before use.
+This is a fictional end-to-end example showing how the Learning Core lane should behave when a parent reviews a draft, approves the direction, and requests changes before use.
 
 It is not a real family, student record, or delivery artifact.
 
-Treat this as the canonical revision exemplar for the `parent reviews -> system updates` part of the Elementary School loop.
+Treat this as the canonical revision exemplar for the `parent reviews -> system updates` part of the Learning Core loop.
 
 ## Purpose
 
@@ -203,4 +203,4 @@ draft sent
   -> safe-to-use status rechecked
 ```
 
-That is the concrete behavior the Elementary School lane should preserve.
+That is the concrete behavior the Learning Core lane should preserve.

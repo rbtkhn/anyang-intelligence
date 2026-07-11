@@ -1,6 +1,6 @@
 # One-Time Retainer Scope
 
-This document defines what the **$1,000 one-time retainer** from Elementary School to Anyang Intelligence produces before delivery begins.
+This document defines what the **$1,000 one-time retainer** from Learning Core to Anyang Intelligence produces before delivery begins.
 
 It is a hybrid scope document: internal enough to govern Anyang Intelligence execution, but clean enough to adapt into parent-facing language.
 
@@ -14,7 +14,7 @@ The retainer is a one-time service package. It is separate from the customer-fac
 
 ## Payment Record
 
-- Payer: Elementary School.
+- Payer: Learning Core.
 - Payee: Anyang Intelligence.
 - Amount: $1,000.
 - Payment type: one-time retainer.

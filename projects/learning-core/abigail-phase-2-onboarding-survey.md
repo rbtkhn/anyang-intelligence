@@ -111,6 +111,6 @@ The first section is the only part needed to move from `Provisional` toward draf
 
 ## Close
 
-Once Part 1 is complete, Elementary School should have the key authority and boundary details needed to move this case toward a first-month draft.
+Once Part 1 is complete, Learning Core should have the key authority and boundary details needed to move this case toward a first-month draft.
 
 Part 2 helps make that month more personalized, usable, and observant from the beginning.

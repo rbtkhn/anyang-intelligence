@@ -1,8 +1,8 @@
-# Customer Name Executive OS Install
+# Project Name Executive OS Install
 
 ## Purpose
 
-Install Anyang Intelligence as the executive operating system for [customer / organization / asset / community].
+Install Anyang Intelligence as the executive operating system for [project / organization / asset / community].
 
 The system should help [leadership / owner / organizer] [primary outcome] while preserving human authority and domain-specific safeguards.
 
@@ -21,7 +21,7 @@ Anyang Intelligence should behave like the executive layer of the operating cont
 
 | Field | Current starting point |
 | --- | --- |
-| Operating context | [type of customer] |
+| Operating context | [type of project] |
 | Core work | [work performed] |
 | Primary cadence | [review or operating rhythm] |
 | Primary constraint | [main constraint] |
@@ -85,7 +85,7 @@ The Executive OS may not:
 
 ## Membrane Boundary
 
-Use [../../docs/membranes.md](../../docs/membranes.md) before transferring lessons, facts, templates, claims, or operating patterns from this customer lane into another lane.
+Use [../../docs/membranes.md](../../docs/membranes.md) before transferring lessons, facts, templates, claims, or operating patterns from this project lane into another lane.
 
 Shareable primitives:
 
@@ -93,11 +93,11 @@ Shareable primitives:
 
 Keep local unless explicitly approved:
 
-- [Private facts, sensitive records, identities, financial details, customer messages, protected information, draft claims, or domain-specific risks].
+- [Private facts, sensitive records, identities, financial details, project messages, protected information, draft claims, or domain-specific risks].
 
 Required transfer filter:
 
-- Translate customer-specific facts into generic primitives before reuse.
+- Translate project-specific facts into generic primitives before reuse.
 - Preserve authority boundaries and evidence requirements.
 - Use the strictest applicable membrane when child, legal, financial, nonprofit, property, employment, contractor, or external-claim issues appear.
 

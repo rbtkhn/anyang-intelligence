@@ -1,7 +1,7 @@
 name: elementary-parent-intake-readiness
 description: Readiness loop that turns parent intake into a Ready, Provisional, or Hold decision before drafting a 30-day plan.
 loop_type: governance
-customer_lane: elementary-school
+project_lane: learning-core
 authority: parent or guardian approval
 tags:
   - intake

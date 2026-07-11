@@ -102,7 +102,7 @@ If the elicitation involves a high-trust lane, include authority checks:
 - What would require professional review?
 - What should trigger a pause?
 
-For Elementary School, parent or guardian authority controls child-facing decisions, saved/shared information, outside-support escalation, and plan use.
+For Learning Core, parent or guardian authority controls child-facing decisions, saved/shared information, outside-support escalation, and plan use.
 
 For Grace Gems, owner approval controls product, pricing, policy, authenticity, shipping, return, certificate, rush-order, promotion, and customer-message claims.
 
@@ -115,7 +115,7 @@ After answers arrive:
 1. Summarize the choice in plain language.
 2. Name assumptions and unresolved unknowns.
 3. Identify the next artifact or action.
-4. Update repo memory only when the answer changes a durable fact, scope, template, skill, checklist, loop, or customer state.
+4. Update repo memory only when the answer changes a durable fact, scope, template, skill, checklist, loop, or project state.
 5. If the answers reveal a recurring pattern, consider [../../docs/recursive-self-enhancement-checklist.md](../../docs/recursive-self-enhancement-checklist.md).
 
 Do not treat an answer as authority beyond the lane it belongs to.
@@ -172,7 +172,7 @@ Do not:
 - Use elicitation to delay obvious work.
 - Ask for private facts that are not needed.
 - Convert preferences into customer facts without confirmation.
-- Transfer answers across customer lanes without membrane review.
+- Transfer answers across project lanes without membrane review.
 - Treat operator answers as legal, tax, clinical, educational, accounting, or compliance conclusions.
 - Ask children directly unless a parent-approved Student Operating System skill explicitly governs the interaction.
 - Store sensitive answers in durable docs unless the authority and privacy boundary allow it.

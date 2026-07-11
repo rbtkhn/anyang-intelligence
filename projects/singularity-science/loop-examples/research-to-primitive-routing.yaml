@@ -1,7 +1,7 @@
 name: singularity-science-research-to-primitive-routing
 description: Governance loop that turns a source note or analysis memo into a preserved primitive, a lane-safe routing question, or a hold decision inside Singularity Science.
 loop_type: governance
-customer_lane: singularity-science
+project_lane: singularity-science
 authority: Anyang Intelligence operator approval
 tags:
   - research

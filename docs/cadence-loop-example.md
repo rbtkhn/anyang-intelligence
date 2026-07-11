@@ -43,7 +43,7 @@ What coffee did:
 
 Learning:
 
-- Anyang Intelligence needed its own cadence layer, grounded in `operating-substrate`, customer folders, skills, and native CLIs.
+- Anyang Intelligence needed its own cadence layer, grounded in `operating-substrate`, project folders, skills, and native CLIs.
 
 ### Work
 
@@ -78,7 +78,7 @@ Boundary:
 
 - Do not convert every satisfying moment into doctrine.
 - Do not generalize praise into authority.
-- Do not preserve customer-specific or private context as shared product doctrine.
+- Do not preserve project-specific or private context as shared product doctrine.
 
 ### Friction
 
@@ -143,7 +143,7 @@ coffee inherits
 
 Next best use:
 
-- Apply the cadence trio to real customer work, especially Media Production / Grace Gems or Elementary School parent-intake artifacts, rather than continuing to build meta-cadence indefinitely.
+- Apply the cadence trio to real customer work, especially Media Production / Grace Gems or Learning Core parent-intake artifacts, rather than continuing to build meta-cadence indefinitely.
 
 ## Why This Matters
 
@@ -162,4 +162,4 @@ Do not use this cadence loop to produce infinite meta-work.
 
 The loop is valuable only when it improves future customer or product work. The next proof should come from applying it to a concrete lane, not from endlessly elaborating the cadence itself.
 
-Do not commit a cadence-state file. Do not store customer facts in cadence handoffs. Do not treat a recorded closeout as authority to commit, push, publish, spend, deliver, or change customer state.
+Do not commit a cadence-state file. Do not store customer facts in cadence handoffs. Do not treat a recorded closeout as authority to commit, push, publish, spend, deliver, or change project state.

@@ -1,7 +1,7 @@
 name: media-production-creative-production-review
 description: Review loop that turns a draft asset, brief, or contractor review packet into a clear approve, revise, hold, or reject decision before delivery or publication review.
 loop_type: operating
-customer_lane: media-production
+project_lane: media-production
 authority: Anyang Intelligence operator approval
 tags:
   - creative

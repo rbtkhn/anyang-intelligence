@@ -43,6 +43,6 @@ In early installations, trust is built through narrow authority, clear audit tra
 
 ## Cross-Lane Membranes
 
-Use [membranes.md](membranes.md) when a lesson, fact, template, claim, or operating pattern may move between customer lanes.
+Use [membranes.md](membranes.md) when a lesson, fact, template, claim, or operating pattern may move between project lanes.
 
-The default rule is: transfer primitives, not private context. Customer-specific facts, sensitive information, and authority boundaries should not blur across lanes.
+The default rule is: transfer primitives, not private context. Project-specific facts, sensitive information, and authority boundaries should not blur across lanes.

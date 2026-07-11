@@ -132,10 +132,10 @@ def find_archive_root(manifest_path: str | Path) -> Path:
     path = Path(manifest_path).resolve()
     for candidate in [path.parent, *path.parents]:
         parts = candidate.parts[-3:]
-        if parts == ("customers", "singularity-science", "archive"):
+        if parts == ("projects", "singularity-science", "archive"):
             return candidate
     raise TranscriptImportError(
-        "Manifest must live under customers/singularity-science/archive so imported transcripts stay inside the archive membrane."
+        "Manifest must live under projects/singularity-science/archive so imported transcripts stay inside the archive membrane."
     )
 
 

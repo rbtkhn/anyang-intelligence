@@ -1,6 +1,6 @@
-# Elementary School Risk Register
+# Learning Core Risk Register
 
-This register tracks the main operating and governance risks for Elementary School.
+This register tracks the main operating and governance risks for Learning Core.
 
 Review cadence: weekly during active planning cycles, event-driven for intake or safety changes, and before any child-facing use.
 
@@ -11,4 +11,3 @@ Review cadence: weekly during active planning cycles, event-driven for intake or
 | App activity is treated as proof of mastery or diagnosis | Learning evidence becomes misleading and unsafe | Anyang Intelligence operator with parent approval boundary | Keep evidence map and no-diagnosis framing explicit | Each draft review |
 | Save/share boundaries drift across artifacts | Private child or family context could leak or be over-preserved | Parent or guardian approval boundary | Keep privacy and sharing decisions explicit in intake and approval record | Each plan review |
 | Embodied or ambient child-facing AI is normalized through convenience | Hidden authority leak and surveillance pressure increase | Parent or guardian approval boundary | Keep embodied-AI policy and worksheet at `Hold` by default | Before any tool review |
-

@@ -38,7 +38,7 @@ def test_cli_export_builtin(capsys):
 
 def test_cli_list_examples(capsys):
     root = Path(__file__).resolve().parents[1]
-    assert main(["list", str(root / "customers"), "--include-builtins"]) == 0
+    assert main(["list", str(root / "projects"), "--include-builtins"]) == 0
     captured = capsys.readouterr()
     assert "canonical-executive-loop" in captured.out
     assert "grace-gems-listing-gate" in captured.out

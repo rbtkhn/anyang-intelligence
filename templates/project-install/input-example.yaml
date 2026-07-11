@@ -1,5 +1,5 @@
-name: Example Customer
-slug: example-customer
+name: Example Project
+slug: example-project
 domain_description: Founder-led services business with recurring delivery, scattered context, and owner approval needs.
 context_map:
   Operating context: Founder-led services company
@@ -32,7 +32,6 @@ success_criteria:
   - Follow-ups have owners and review dates.
   - External claims are reviewed before use.
   - The operating context learns from outcomes.
-source_customers:
+source_projects:
   - grace-gems
   - media-production
-

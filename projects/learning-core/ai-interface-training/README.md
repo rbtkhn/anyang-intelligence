@@ -1,8 +1,8 @@
-# Elementary School AI Interface Training
+# Learning Core AI Interface Training
 
-This folder stores Elementary School-specific training exemplars for future operators, agents, or customer-owned AI interfaces.
+This folder stores Learning Core-specific training exemplars for future operators, agents, or customer-owned AI interfaces.
 
-The purpose is to show what safe AI-supported behavior looks like inside the Elementary School context. These exemplars are examples of interface behavior, not private family records, legal guidance, diagnosis, grading, or proof of mastery.
+The purpose is to show what safe AI-supported behavior looks like inside the Learning Core context. These exemplars are examples of interface behavior, not private family records, legal guidance, diagnosis, grading, or proof of mastery.
 
 ## Boundary
 
@@ -33,6 +33,6 @@ It may not authorize a system to:
 
 ## Storage Rule
 
-Keep Elementary School AI interface training here when it is specific to this lane.
+Keep Learning Core AI interface training here when it is specific to this lane.
 
 If a pattern later becomes reusable across customers, extract the primitive only after membrane review. Shared extraction should preserve the method while removing lane-specific or private context.

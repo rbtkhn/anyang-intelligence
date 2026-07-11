@@ -76,7 +76,7 @@ Checklist:
 
 Recommended default status: `hold` unless a narrow fulfillment problem is already well defined
 
-### Elementary School
+### Learning Core
 
 Primary exposure areas:
 
@@ -94,7 +94,7 @@ Checklist:
 
 Recommended default status: `hold`
 
-### Non-Profit
+### retired Non-Profit project
 
 Primary exposure areas:
 
@@ -112,7 +112,7 @@ Checklist:
 
 Recommended default status: `watch`
 
-### Mountain Home
+### Mountain Villa
 
 Primary exposure areas:
 

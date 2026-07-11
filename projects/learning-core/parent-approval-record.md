@@ -19,7 +19,7 @@ Use this record to:
 
 ## Operating Loop
 
-This artifact sits inside the Elementary School loop:
+This artifact sits inside the Learning Core loop:
 
 ```text
 observe

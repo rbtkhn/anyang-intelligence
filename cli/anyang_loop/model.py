@@ -58,7 +58,7 @@ class LoopDefinition:
     governance_boundary: str
     description: str = ""
     loop_type: str = "operating"
-    customer_lane: str = ""
+    project_lane: str = ""
     authority: str = "human"
     source_path: str = ""
     tags: list[str] = field(default_factory=list)
@@ -79,7 +79,7 @@ class LoopDefinition:
             name=name,
             description=coerce_text(normalized.get("description", "")),
             loop_type=loop_type,
-            customer_lane=coerce_text(normalized.get("customer_lane", "")),
+            project_lane=coerce_text(normalized.get("project_lane", "")),
             authority=coerce_text(normalized.get("authority", "human")) or "human",
             source_path=source_path,
             tags=coerce_list(normalized.get("tags", [])),
@@ -98,7 +98,7 @@ class LoopDefinition:
             "name": self.name,
             "description": self.description,
             "loop_type": self.loop_type,
-            "customer_lane": self.customer_lane,
+            "project_lane": self.project_lane,
             "authority": self.authority,
             "source_path": self.source_path,
             "tags": self.tags,
@@ -145,4 +145,3 @@ def infer_name_from_source(source_path: str) -> str:
     if not source_path:
         return "untitled-loop"
     return Path(source_path).stem.replace("_", "-")
-

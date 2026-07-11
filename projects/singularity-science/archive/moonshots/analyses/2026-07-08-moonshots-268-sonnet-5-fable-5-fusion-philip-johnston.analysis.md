@@ -3,8 +3,8 @@
 ## Source
 
 - Title: Sonnet 5 Drops, Fable 5 Will Return & Fusion's First Plant Gets Licensed W/ Philip Johnston | #268
-- Source note: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.source-note.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/source-notes/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.source-note.md)
-- Transcript: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md)
+- Source note: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.source-note.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/source-notes/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.source-note.md)
+- Transcript: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md)
 - Date analyzed: 2026-07-08
 
 ## Episode Rollup
@@ -60,7 +60,7 @@ Routing packet:
 Source episode: Moonshots #268
 Seam: robotics / embodied AI
 Transferable question or checklist: Where would cheap robotics create trust, supervision, maintenance, and override pressure first, even if the hardware arrives earlier than expected?
-Receiving lane: Mountain Home
+Receiving lane: Mountain Villa
 Membrane classification: translate first
 Human authority required: owner approval before any physical-world adoption or monitoring change
 Evidence still needed: stronger primary pricing and capability evidence for the specific robotics claims

@@ -100,7 +100,7 @@ It is also:
 Does this interaction preserve the person's agency, consent, attention, privacy, and right to remain the authority over their own mind?
 ```
 
-This is especially important for Elementary School, embodied AI, media production, and any future interface that could influence children, families, customers, donors, voters, or vulnerable users.
+This is especially important for Learning Core, embodied AI, media production, and any future interface that could influence children, families, customers, donors, voters, or vulnerable users.
 
 ## Failure Modes
 

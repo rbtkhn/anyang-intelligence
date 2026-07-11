@@ -1,10 +1,10 @@
-# Customer Name
+# Project Name
 
-Customer Name is a [domain] installation for the Anyang Intelligence Executive Operating System.
+Project Name is a [domain] installation for the Anyang Intelligence Executive Operating System.
 
 ## Organization
 
-Customer Name is a [short operating context]:
+Project Name is a [short operating context]:
 
 - Work: [core work performed].
 - Cadence: [daily / weekly / monthly / seasonal / event-driven rhythm].
@@ -12,7 +12,7 @@ Customer Name is a [short operating context]:
 
 ## Executive OS Role
 
-Anyang Intelligence acts as the executive operating layer for Customer Name.
+Anyang Intelligence acts as the executive operating layer for Project Name.
 
 In practical terms, the Executive OS helps:
 
@@ -26,7 +26,7 @@ The system does not replace [human roles, professional judgment, legal authority
 
 ## Operating Thesis
 
-[Customer Name] should not be managed as [current failure mode].
+[Project Name] should not be managed as [current failure mode].
 
 The Executive OS should help the operating context stay coherent:
 
@@ -42,4 +42,4 @@ The Executive OS should help the operating context stay coherent:
 
 ## Installation
 
-See [executive-os-install.md](executive-os-install.md) for the first Customer Name Executive OS install design.
+See [executive-os-install.md](executive-os-install.md) for the first Project Name Executive OS install design.

@@ -1,4 +1,4 @@
-# Mountain Home Turn Exemplar
+# Mountain Villa Turn Exemplar
 
 This worked example shows a property-risk turn that stops cleanly at owner and professional judgment.
 
@@ -39,7 +39,7 @@ Owner or professional review remains required for:
 ```text
 Turn Receipt
 
-Lane: Mountain Home
+Lane: Mountain Villa
 Workflow surface: seasonal risk review
 Date: 2026-07-08
 
@@ -107,7 +107,7 @@ Task:
 Review a property-risk signal and prepare the next safe action.
 
 System:
-Mountain Home operating lane
+Mountain Villa operating lane
 
 Date:
 2026-07-08

@@ -5,7 +5,7 @@ Source: Moonshots
 URL: https://www.youtube.com/watch?v=BX9ofqxmeYw
 Date published: unknown at intake
 Date captured: 2026-06-19
-Transcript location: [2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-2026-06-19.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/transcripts/2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-2026-06-19.md)
+Transcript location: [2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-2026-06-19.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-2026-06-19.md)
 Rights status: internal-commit-approved
 Capture method: youtube-transcript-operator-paste
 Why it matters: This episode is an early Moonshots bundle of several seams that later became central to Singularity Science: frontier-model access being framed as a sovereignty and governance issue, recursive-self-improvement changing capital and IPO logic, compute and launch infrastructure being narrated as one coupled substrate, and labor / legitimacy questions arising from AI-driven economic repricing.
@@ -31,9 +31,9 @@ What remains worldview-only:
 Relevant lanes:
   - Media Production: moderate relevance where frontier-governance rhetoric, infrastructure narratives, and speculative AI-economy claims shape reviewable storytelling.
   - Grace Gems: light relevance through automation and labor-price narratives, but little immediate operating use.
-  - Elementary School: light-to-moderate relevance where frontier-model-control rhetoric and labor-displacement anxiety could distort approval or adoption narratives.
+  - Learning Core: light-to-moderate relevance where frontier-model-control rhetoric and labor-displacement anxiety could distort approval or adoption narratives.
   - Non-Profit: strong relevance for governance, labor-transition, geopolitical-legitimacy, and institutional-review framing.
-  - Mountain Home: light relevance through property-service automation and infrastructure-risk narratives, but mostly indirect.
+  - Mountain Villa: light relevance through property-service automation and infrastructure-risk narratives, but mostly indirect.
   - Book Club: moderate relevance as a worldview source on sovereignty, capital, and superintelligence rhetoric.
 Usable claims:
   - The episode treats frontier-model access as a control surface shaped by state power, not only by lab roadmap decisions.

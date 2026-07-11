@@ -1,10 +1,10 @@
 # Hold After Review Exemplar
 
-This is a fictional end-to-end example showing how the Elementary School lane should behave when parent review reveals a boundary, concern, or missing clarity that pauses plan use.
+This is a fictional end-to-end example showing how the Learning Core lane should behave when parent review reveals a boundary, concern, or missing clarity that pauses plan use.
 
 It is not a real family, student record, or delivery artifact.
 
-Treat this as the canonical pause exemplar for the `parent reviews -> system updates` part of the Elementary School loop when the correct outcome is **not proceed yet**.
+Treat this as the canonical pause exemplar for the `parent reviews -> system updates` part of the Learning Core loop when the correct outcome is **not proceed yet**.
 
 ## Purpose
 
@@ -206,4 +206,4 @@ draft sent
   -> next clarification path is named
 ```
 
-That is the concrete behavior the Elementary School lane should preserve when review stops the plan rather than refining it.
+That is the concrete behavior the Learning Core lane should preserve when review stops the plan rather than refining it.

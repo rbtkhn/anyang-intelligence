@@ -143,7 +143,7 @@ Collect:
 - Reading confidence level as observed by the parent.
 - Whether the child prefers fiction, nonfiction, graphic novels, joke books, magazines, field guides, poetry, recipes, or read-alouds.
 - Any reading frustration or avoidance patterns.
-- Whether the parent wants Elementary School to observe basket choices and make next-basket recommendations from those signals.
+- Whether the parent wants Learning Core to observe basket choices and make next-basket recommendations from those signals.
 
 Starter basket target:
 

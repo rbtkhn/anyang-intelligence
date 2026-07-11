@@ -1,6 +1,6 @@
-# Elementary School Operating Review
+# Learning Core Operating Review
 
-This is the recurring operating review surface for Elementary School.
+This is the recurring operating review surface for Learning Core.
 
 Cadence: weekly during active plan use, event-driven for intake changes or safety concerns, and monthly alongside portfolio review.
 

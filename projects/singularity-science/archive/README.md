@@ -29,14 +29,14 @@ Archive material may not be used to:
 Use this structure:
 
 ```text
-customers/singularity-science/archive/
+projects/singularity-science/archive/
   innermost-loop/
   moonshots/
   nate-b-jones/
   external-interviews/
 ```
 
-Raw transcripts and source material stay in this archive. Synthesis and product implications may move into `docs/`, `customers/`, or `skills/` only after membrane review and source discipline.
+Raw transcripts and source material stay in this archive. Synthesis and product implications may move into `docs/`, `projects/`, or `skills/` only after membrane review and source discipline.
 
 Contact details in source bodies should be redacted during import. Preserve source references and attribution metadata, but do not preserve raw email addresses or similar direct contact strings inside archived transcript text unless the operator explicitly approves a narrower source-preservation exception.
 

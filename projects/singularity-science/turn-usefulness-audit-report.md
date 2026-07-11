@@ -4,9 +4,9 @@ This report audits turn usefulness across the cross-repo core:
 
 - Singularity Science
 - Media Production
-- Elementary School
-- Non-Profit
-- Mountain Home
+- Learning Core
+- retired Non-Profit project
+- Mountain Villa
 - Grace Gems
 
 The audit uses the Singularity Science framework as its standard:
@@ -23,7 +23,7 @@ Companion score matrix:
 
 The repo already contains a meaningful turn-usefulness philosophy, but maturity is uneven across lanes.
 
-The strongest pattern is in Elementary School: turns are tightly gated, approvals are meaningful, and loop definitions survive validator checks. The weakest pattern is not bad governance. It is incomplete workflow instrumentation in the other lanes. Many lanes already say the right things, but fewer can yet prove that a good turn survives repeated use without hidden supervision or symbolic approval.
+The strongest pattern is in Learning Core: turns are tightly gated, approvals are meaningful, and loop definitions survive validator checks. The weakest pattern is not bad governance. It is incomplete workflow instrumentation in the other lanes. Many lanes already say the right things, but fewer can yet prove that a good turn survives repeated use without hidden supervision or symbolic approval.
 
 The central repo-wide finding is:
 
@@ -52,8 +52,8 @@ Governance cap:
 
 Workflow evidence used:
 
-- `anyang_loop.install_cli validate customers`
-- `anyang_loop.cli validate customers\elementary-school`
+- `anyang_loop.project_cli validate customers`
+- `anyang_loop.cli validate projects\learning-core`
 - YAML inventory of lane loop examples
 - targeted review of workflow-facing artifacts in each target lane
 
@@ -71,7 +71,7 @@ The audit used this failure taxonomy:
 
 ## Lane Findings
 
-### Elementary School
+### Learning Core
 
 This is the strongest lane in the audit and the calibration lane for the scoring model.
 
@@ -133,7 +133,7 @@ Weakness:
 
 Read:
 
-- best candidate for next useful-turn instrumentation outside Elementary School
+- best candidate for next useful-turn instrumentation outside Learning Core
 - turn usefulness is implied well, but not yet measured well
 
 ### Grace Gems
@@ -155,7 +155,7 @@ Read:
 
 - strongest next step is an owner-review receipt or listing usefulness scorecard
 
-### Mountain Home
+### Mountain Villa
 
 This lane has strong risk framing and one strong formal loop.
 
@@ -175,7 +175,7 @@ Read:
 - good governance core
 - needs more review and override artifacts to raise usefulness without raising automation risk
 
-### Non-Profit
+### retired Non-Profit project
 
 This lane has the lowest score in the audited core, but mainly because it is under-instrumented, not because it is careless.
 
@@ -201,7 +201,7 @@ Read:
 - Most lanes are better at preserving authority than at chasing unsafe automation.
 - The repo is increasingly good at gates, holds, and approval boundaries.
 - Research-side Singularity Science now has a reusable framework for evaluating useful turns.
-- Elementary School proves that turn usefulness can be made concrete and governed.
+- Learning Core proves that turn usefulness can be made concrete and governed.
 
 ### What is missing
 
@@ -215,14 +215,14 @@ Read:
 ### Quick wins
 
 1. **Add generated support files across the audited lanes**
-   - Target: Singularity Science, Media Production, Grace Gems, Mountain Home, Non-Profit, Elementary School
+   - Target: Singularity Science, Media Production, Grace Gems, Mountain Villa, retired Non-Profit project, Learning Core
    - Problem: repeated validator warnings weaken operating review completeness
    - Expected usefulness gain: moderate
    - Governance benefit: clearer recurring review surfaces and explicit risk handling
    - Artifact type: generated support docs and `loop-examples/` where missing
 
-2. **Add loop examples for Media Production and Non-Profit**
-   - Target: Media Production, Non-Profit
+2. **Add loop examples for Media Production and retired Non-Profit project**
+   - Target: Media Production, retired Non-Profit project
    - Problem: strong workflow intent, weak repeatable formal loops
    - Expected usefulness gain: high
    - Governance benefit: makes approval and review paths more inspectable
@@ -237,15 +237,15 @@ Read:
 
 ### Medium lifts
 
-4. **Add score-based regression checks to Elementary School**
-   - Target: Elementary School
+4. **Add score-based regression checks to Learning Core**
+   - Target: Learning Core
    - Problem: strongest lane is still mostly document- and exemplar-driven
    - Expected usefulness gain: medium
    - Governance benefit: preserves safety while making quality drift visible earlier
    - Artifact type: scored exemplar notes or turn-usefulness receipt template
 
-5. **Add a risk-review worksheet for Mountain Home**
-   - Target: Mountain Home
+5. **Add a risk-review worksheet for Mountain Villa**
+   - Target: Mountain Villa
    - Problem: one strong seasonal loop, thin broader execution support
    - Expected usefulness gain: medium
    - Governance benefit: reduces false reassurance and hidden escalation drift
@@ -261,7 +261,7 @@ Read:
    - Artifact type: research-to-primitive loop example, receiving-lane test receipts, or preserved audit traces
 
 7. **Create lane-specific turn-usefulness scorecards**
-   - Target: Media Production, Grace Gems, Non-Profit, Mountain Home
+   - Target: Media Production, Grace Gems, retired Non-Profit project, Mountain Villa
    - Problem: general scorecard exists, but lane-level operating tasks are not yet measured consistently
    - Expected usefulness gain: high
    - Governance benefit: turns polished-looking outputs into inspectable work units
@@ -271,4 +271,4 @@ Read:
 
 The repo is not weak at turn usefulness. It is uneven.
 
-Elementary School already demonstrates what a governed high-usefulness lane can look like. Singularity Science now has the conceptual machinery to evaluate turns and ambient agency well. The next repo-wide move is to push that maturity outward: formalize loops, add review receipts, and make useful-turn survival measurable in the lanes where good judgment already exists but completion evidence is still thin.
+Learning Core already demonstrates what a governed high-usefulness lane can look like. Singularity Science now has the conceptual machinery to evaluate turns and ambient agency well. The next repo-wide move is to push that maturity outward: formalize loops, add review receipts, and make useful-turn survival measurable in the lanes where good judgment already exists but completion evidence is still thin.

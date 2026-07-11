@@ -24,10 +24,10 @@ This skill turns a source signal into a review-ready creative production brief. 
 
 Read these first:
 
-1. `customers/media-production/README.md`
-2. `customers/media-production/executive-os-install.md`
-3. `customers/media-production/creative-production-operator-onboarding.md`
-4. `customers/media-production/creative-abundance-quality-gate.md`
+1. `projects/media-production/README.md`
+2. `projects/media-production/executive-os-install.md`
+3. `projects/media-production/creative-production-operator-onboarding.md`
+4. `projects/media-production/creative-abundance-quality-gate.md`
 
 Then read the relevant source for the requested lane:
 
@@ -51,7 +51,7 @@ If both lanes appear, split the brief into two lane-specific briefs instead of b
 
 For Grace Gems briefs:
 
-- Do **not** invent product details, prices, dimensions, materials, gemstone identity, authenticity claims, shipping promises, return/repair promises, rush-order commitments, certificate/appraisal language, or customer-specific facts.
+- Do **not** invent product details, prices, dimensions, materials, gemstone identity, authenticity claims, shipping promises, return/repair promises, rush-order commitments, certificate/appraisal language, or project-specific facts.
 - Mark product, policy, pricing, authenticity, shipping, and customer-promise claims as **owner approval required** unless already approved in the provided source.
 - Use Grace Gems work to improve buyer clarity, listing trust, customer support, FAQ/objection handling, and reusable product communication.
 - If the source is a buyer message or support transcript, preserve privacy and convert the issue into a generic customer-confusion pattern unless explicit reuse is approved.
@@ -159,4 +159,3 @@ The operator has a review-ready production brief that:
 - Identifies rights, claims, source, budget, and approval risks.
 - Recommends exactly one first asset.
 - Stops before publication, delivery, packaging, ledger update, or contractor assignment.
-

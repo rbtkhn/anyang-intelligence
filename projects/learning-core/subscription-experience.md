@@ -1,6 +1,6 @@
 # Subscription Experience
 
-This document defines what the **monthly continuity subscription** should feel like and produce in the Elementary School lane.
+This document defines what the **monthly continuity subscription** should feel like and produce in the Learning Core lane.
 
 The goal is to turn the continuity offer into a real operating service instead of a vague promise.
 

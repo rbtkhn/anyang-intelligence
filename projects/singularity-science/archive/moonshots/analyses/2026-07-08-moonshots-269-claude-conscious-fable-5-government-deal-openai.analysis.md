@@ -3,8 +3,8 @@
 ## Source
 
 - Title: Claude is Conscious, Fable 5's Gov't Deal, and Sam Altman offers 5% of OpenAI | #269
-- Source note: [2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.source-note.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/source-notes/2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.source-note.md)
-- Transcript: [2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md)
+- Source note: [2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.source-note.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/source-notes/2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.source-note.md)
+- Transcript: [2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md)
 - Date analyzed: 2026-07-08
 
 ## Episode Rollup

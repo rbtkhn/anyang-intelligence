@@ -2,7 +2,7 @@
 
 Singularity Science is an ongoing Anyang Intelligence research project for tracking singularity-relevant source streams, interpreting their operating implications, and converting useful lessons into governed Executive OS primitives.
 
-It is not a customer installation in the same sense as Grace Gems, Elementary School, or Media Production. It lives beside them because it is an operating lane with its own source material, analyses, cadence, and membrane boundaries.
+It is not a customer installation in the same sense as Grace Gems, Learning Core, or Media Production. It lives beside them because it is an operating lane with its own source material, analyses, cadence, and membrane boundaries.
 
 ## Role
 
@@ -64,9 +64,9 @@ Insights may route into:
 
 - Media Production for creative pipeline, AI tools, synthetic media, and asset workflows.
 - Grace Gems for marketplace trust, AI shopping, and customer support automation.
-- Elementary School for tutoring, child safety, parent authority, and AI interface boundaries.
-- Non-Profit for reporting, board governance, and donor operations.
-- Mountain Home for robotics, monitoring, and property-risk sensing.
+- Learning Core for tutoring, child safety, parent authority, and AI interface boundaries.
+- retired Non-Profit project for reporting, board governance, and donor operations.
+- Mountain Villa for robotics, monitoring, and property-risk sensing.
 - Book Club for discussion support and community memory.
 
 Route synthesized implications, not transcript bulk.

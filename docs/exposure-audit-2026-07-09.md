@@ -2,12 +2,12 @@
 
 ## Scope
 
-Reviewed the tracked working tree, file names, Git history indicators, configured remote, repository ignore rules, and current customer-data doctrine. This audit records exposure shape without reproducing sensitive content.
+Reviewed the tracked working tree, file names, Git history indicators, configured remote, repository ignore rules, and current project-data doctrine. This audit records exposure shape without reproducing sensitive content.
 
 ## Findings
 
-1. Two identifiable learner records were tracked in the Elementary School lane. They contained a child's first name, age, schooling context, and learning observations.
-2. The records were moved to `C:\dev\anyang-intelligence\tenant-private\elementary-school`, outside the `operating-substrate` Git repository. Their tracked versions are deleted.
+1. Two identifiable learner records were tracked in the Learning Core lane. They contained a child's first name, age, schooling context, and learning observations.
+2. The records were moved to `C:\dev\anyang-intelligence\tenant-private\learning-core`, outside the `operating-substrate` Git repository. Their tracked versions are deleted.
 3. The records remain present in prior Git commits. No history rewrite has been performed.
 4. An `origin` GitHub remote is configured. This local audit does not establish repository visibility, clone count, cache state, or who may have accessed prior commits.
 5. The previous repository controls described membranes but did not technically prevent identifiable tenant data from being committed.
@@ -16,7 +16,7 @@ Reviewed the tracked working tree, file names, Git history indicators, configure
 
 - Current working copies are quarantined outside Git.
 - Database and generated-review patterns are ignored.
-- The privacy scanner blocks known identifying content, common contact/credential patterns, private tenant paths, and customer-specific intake filenames.
+- The privacy scanner blocks known identifying content, common contact/credential patterns, private tenant paths, and project-specific intake filenames.
 - The data-handling policy now makes tenant storage, consent, retention, deletion, and incident response explicit.
 
 ## Required Follow-Up

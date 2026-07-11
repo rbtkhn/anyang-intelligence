@@ -102,7 +102,7 @@ def test_privacy_scan_allows_marked_synthetic_pseudonym_fixture(tmp_path: Path):
     make_git_repo(tmp_path)
     pseudonym = "Abi" + "gail"
     write(
-        tmp_path / "customers" / "elementary-school" / f"{pseudonym.lower()}-fixture.md",
+        tmp_path / "projects" / "learning-core" / f"{pseudonym.lower()}-fixture.md",
         f"---\nprivacy_class: synthetic-fixture\n---\n\n# {pseudonym} Fixture\n\n{pseudonym} is a pseudonym.\n",
     )
 

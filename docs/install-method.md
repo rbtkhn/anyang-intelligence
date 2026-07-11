@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The install method is the repeatable pattern behind every Anyang Intelligence customer installation.
+The install method is the repeatable pattern behind every Anyang Intelligence project.
 
 Each customer has a different domain, but the Executive OS should always answer the same core question:
 
@@ -92,7 +92,7 @@ The default month should move from legibility to action:
 - Week 3: Operating review and risk boundary.
 - Week 4: First review, first learning loop, and next-cycle plan.
 
-Customer-specific installs can expand this into a four to six week sprint when needed.
+Project-specific installs can expand this into a four to six week sprint when needed.
 
 ### 7. Success Criteria
 
@@ -111,15 +111,15 @@ Good criteria answer:
 
 ## Output Standard
 
-Every customer installation should include:
+Every project should include:
 
 - A `README.md` describing the domain, Executive OS role, operating thesis, and install link.
 - An `executive-os-install.md` describing the installation method for that domain.
 
-Use [templates/customer-install/](../templates/customer-install/README.md) as the starting point for new customer folders.
+Use [templates/project-install/](../templates/project-install/README.md) as the starting point for new project folders.
 
 ## Product Implication
 
 The install method is the bridge from service to software.
 
-Repeated patterns across customer installs become product primitives. Customer-specific details stay as configuration, templates, or vertical modules.
+Repeated patterns across customer installs become product primitives. Project-specific details stay as configuration, templates, or vertical modules.

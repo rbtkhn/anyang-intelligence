@@ -14,7 +14,7 @@ The reading basket helps the parent:
 - Turn reading into portfolio evidence without making it feel like a test.
 - Build a better next book list from real engagement.
 
-Elementary School uses the reading basket as an observation surface:
+Learning Core uses the reading basket as an observation surface:
 
 - observe what the student chooses, avoids, rereads, abandons, or asks for
 - gather insight about interest, confidence, friction, and format preference
@@ -110,14 +110,14 @@ Parent observation prompts:
 
 ## Recommendation Loop
 
-Elementary School should treat reading-basket use as a small recommendation system grounded in real student behavior.
+Learning Core should treat reading-basket use as a small recommendation system grounded in real student behavior.
 
 The loop looks like:
 
 ```text
 student chooses from basket
   -> parent observes one or two signals
-  -> Elementary School gathers insight
+  -> Learning Core gathers insight
   -> next basket recommendation improves
 ```
 
@@ -131,7 +131,7 @@ Useful signals include:
 - which books require help immediately
 - which books create visible frustration or drift
 
-From those signals, Elementary School can recommend:
+From those signals, Learning Core can recommend:
 
 - more books like this
 - fewer books like this

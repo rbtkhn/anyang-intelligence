@@ -1,6 +1,6 @@
 # Embodied AI Parent Review Worksheet
 
-This is a parent-review worksheet for any child-facing robot, kiosk, embodied tutor, or similar device considered inside the Elementary School lane.
+This is a parent-review worksheet for any child-facing robot, kiosk, embodied tutor, or similar device considered inside the Learning Core lane.
 
 Its job is to slow down novelty pressure, preserve parent authority, and make the review questions concrete before any use is treated as normal, safe, or plan-worthy.
 

@@ -1,31 +1,32 @@
 # Portfolio Knowledge Synergies
 
-This map records knowledge that should transfer across customer lanes.
+This map records knowledge that should transfer across project lanes.
 
 The purpose is to make Anyang Intelligence smarter with each install without collapsing distinct domains into one generic workflow.
 
-Use [../docs/membranes.md](../docs/membranes.md) before transferring any lesson that includes customer-specific facts, sensitive information, authority boundaries, financial/legal implications, child/family context, donor context, property context, or unapproved external claims.
+Use [../docs/membranes.md](../docs/membranes.md) before transferring any lesson that includes project-specific facts, sensitive information, authority boundaries, financial/legal implications, child/family context, donor context, property context, or unapproved external claims.
 
 ## Core Principle
 
 Each customer teaches a reusable operating primitive.
 
-The primitive should move across the portfolio; the customer-specific facts, promises, compliance posture, and human authority boundaries should not blur.
+The primitive should move across the portfolio; the project-specific facts, promises, compliance posture, and human authority boundaries should not blur.
 
 ## Cross-Lane Knowledge Map
 
 | Knowledge lane | First visible source | Applies to | Reusable pattern |
 | --- | --- | --- | --- |
-| Tax and financial governance | Media Production contractor allocation; Book Club donor-funded retainer; Non-Profit real estate asset | All customers with money, assets, donations, retainers, or contractor payments | Classify cash movement conservatively, preserve evidence, and prepare professional-review questions before final positions |
-| Evidence discipline | Grace Gems claims; Mountain Home property proof; Elementary School portfolio artifacts | All customers | Do not trust memory alone; tie decisions to receipts, approvals, source notes, photos, exports, or artifacts |
-| Cadence | Book Club monthly rhythm; Media Production weekly production review; Elementary School daily/weekly review; Mountain Home seasonal gates | All customers | Match review rhythm to the natural operating cycle instead of forcing one cadence everywhere |
-| Trust architecture | Grace Gems storefront signals and owner-approved claims | Media Production, Non-Profit, Elementary School, Book Club | Make trust visible without inventing promises; separate draft language from approved external claims |
-| Capacity governance | Creative Production Operator allocation and workload | Media Production, Grace Gems, Book Club, Non-Profit | Keep obligations smaller than capacity; do not sell or promise output before the operator loop can deliver |
-| Donor and community stewardship | Book Club free participation with donor-funded support | Non-Profit, Book Club, Elementary School community versions | Preserve the difference between optional support, donor-funded materials, paid access, and service revenue |
-| Asset stewardship | Non-Profit real estate portfolio; Mountain Home five-acre property | Mountain Home, Non-Profit, Grace Gems inventory-adjacent work | Treat asset values, maintenance, insurance, valuation, and capital improvements as evidence-heavy governance domains |
-| Child and family safety | Elementary School personalized homeschool experience | Elementary School, future family/community products | Parent/guardian authority, privacy, review, and escalation must be stricter than normal creative or business workflows |
+| Tax and financial governance | Media Production contractor allocation; Book Club donor-funded retainer; retired Non-Profit project real estate asset | All customers with money, assets, donations, retainers, or contractor payments | Classify cash movement conservatively, preserve evidence, and prepare professional-review questions before final positions |
+| Evidence discipline | Grace Gems claims; Mountain Villa property proof; Learning Core portfolio artifacts | All customers | Do not trust memory alone; tie decisions to receipts, approvals, source notes, photos, exports, or artifacts |
+| Cadence | Book Club monthly rhythm; Media Production weekly production review; Learning Core daily/weekly review; Mountain Villa seasonal gates | All customers | Match review rhythm to the natural operating cycle instead of forcing one cadence everywhere |
+| Trust architecture | Grace Gems storefront signals and owner-approved claims | Media Production, retired Non-Profit project, Learning Core, Book Club | Make trust visible without inventing promises; separate draft language from approved external claims |
+| Capacity governance | Creative Production Operator allocation and workload | Media Production, Grace Gems, Book Club, retired Non-Profit project | Keep obligations smaller than capacity; do not sell or promise output before the operator loop can deliver |
+| Donor and community stewardship | Book Club free participation with donor-funded support | retired Non-Profit project, Book Club, Learning Core community versions | Preserve the difference between optional support, donor-funded materials, paid access, and service revenue |
+| Asset stewardship | retired Non-Profit project real estate portfolio; Mountain Villa five-acre property | Mountain Villa, retired Non-Profit project, Grace Gems inventory-adjacent work | Treat asset values, maintenance, insurance, valuation, and capital improvements as evidence-heavy governance domains |
+| Child and family safety | Learning Core personalized homeschool experience | Learning Core, future family/community products | Parent/guardian authority, privacy, review, and escalation must be stricter than normal creative or business workflows |
 | Creative abundance | Media Production abundance principle | Media Production, Grace Gems, Book Club, Predictive History-adjacent work | Prefer assets that reduce future friction, increase clarity, can be reused, and teach the system something |
 | Marketplace learning | Grace Gems Etsy evaluation and customer support transcripts | Grace Gems, Media Production, future small businesses | Convert buyer questions, objections, and listing performance into better creative, FAQs, and decision gates |
+| Embodied agency | Governed digital workflows; Mountain Villa monitoring and stewardship context; Singularity Science robotics research | Mountain Villa, Media Production, future relevant projects | Expand from advice to bounded action only when a task is useful, human authority is explicit, outcomes are evidenced, and safety, privacy, maintenance, security, insurance, and override needs are satisfied |
 
 ## Contractor Country And Tax Synergy
 
@@ -59,12 +60,13 @@ Use these rules when moving knowledge between lanes:
 - Convert lessons into checklists, quality gates, templates, and review questions.
 - Do not let a strong pattern in one lane override a stricter governance need in another lane.
 - When a lesson touches money, children, real estate, nonprofit funds, external claims, or legal commitments, route it through the appropriate guardrail before updating state.
+- Embodied systems inherit the strictest relevant lane membrane; they do not create authority, safety-critical action, or a deployment commitment by themselves.
 
 ## Immediate High-Leverage Synergies
 
 1. Use Grace Gems trust architecture to improve Media Production's general client creative QA.
-2. Use Media Production's capacity governance to keep Book Club and Non-Profit support from becoming overbuilt.
-3. Use Book Club's free-participation/donor-support distinction as a model for Non-Profit donor stewardship.
-4. Use Mountain Home and Non-Profit asset stewardship to strengthen evidence discipline around valuation, insurance, maintenance, and board/owner approvals.
-5. Use Elementary School's parent-review posture as the strictest model for any future family-facing or child-adjacent service.
-6. Use the tax-financial governance guardrail before any new retainer, donation, contractor payment, subscription, reimbursement, asset value, or real-estate decision enters customer state.
+2. Use Media Production's capacity governance to keep Book Club and retired Non-Profit project support from becoming overbuilt.
+3. Use Book Club's free-participation/donor-support distinction as a model for retired Non-Profit project donor stewardship.
+4. Use Mountain Villa and retired Non-Profit project asset stewardship to strengthen evidence discipline around valuation, insurance, maintenance, and board/owner approvals.
+5. Use Learning Core's parent-review posture as the strictest model for any future family-facing or child-adjacent service.
+6. Use the tax-financial governance guardrail before any new retainer, donation, contractor payment, subscription, reimbursement, asset value, or real-estate decision enters project state.

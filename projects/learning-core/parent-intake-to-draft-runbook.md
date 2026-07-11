@@ -1,6 +1,6 @@
 # Parent Intake To Draft Runbook
 
-This is the operator front door for the paid Elementary School 30-day plan workflow.
+This is the operator front door for the paid Learning Core 30-day plan workflow.
 
 Use it when a real parent intake response arrives for the **30-Day Personalized Learning Plan** for new students, including onboarding.
 

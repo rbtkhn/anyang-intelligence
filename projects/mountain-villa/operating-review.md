@@ -1,6 +1,6 @@
-# Mountain Home Operating Review
+# Mountain Villa Operating Review
 
-This is the recurring operating review surface for Mountain Home.
+This is the recurring operating review surface for Mountain Villa.
 
 Cadence: weekly during active risk windows, monthly when conditions are stable, and before each seasonal transition.
 
@@ -27,6 +27,12 @@ Cadence: weekly during active risk windows, monthly when conditions are stable, 
 
 - Which seasonal gate is next?
 - What must be done before that season arrives?
+
+### Retreat Readiness
+
+- Does the property feel calm, cared for, and ready for the owner or an owner-approved visit?
+- Which comfort, presentation, landscape, or amenity items would most improve the retreat without displacing risk reduction?
+- What hosting-preparedness item can be planned or reviewed, while remaining on hold until the owner approves any guest use, spend, contractor work, or rental decision?
 
 ### Next Actions
 

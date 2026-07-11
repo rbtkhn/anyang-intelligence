@@ -25,7 +25,7 @@ It helps you:
 
 This is not just "an app." It is part of the family's `Learning Core`: a simple way for the parent to see the learning picture without reconstructing everything from memory.
 
-Part of the value is curation. Khan Academy Kids is recommended here because Elementary School has already done meaningful option-sifting across crowded digital-learning choices and selected a starter tool that is free, child-friendly, parent-supervised, and useful for observation as well as practice.
+Part of the value is curation. Khan Academy Kids is recommended here because Learning Core has already done meaningful option-sifting across crowded digital-learning choices and selected a starter tool that is free, child-friendly, parent-supervised, and useful for observation as well as practice.
 
 That curation now has a governed catalog layer behind it:
 

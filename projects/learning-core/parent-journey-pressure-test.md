@@ -1,6 +1,6 @@
 # Parent Journey Pressure Test
 
-This document pressure-tests the Elementary School offer as one parent journey:
+This document pressure-tests the Learning Core offer as one parent journey:
 
 ```text
 intake

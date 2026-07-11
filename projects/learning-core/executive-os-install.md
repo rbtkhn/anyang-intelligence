@@ -26,7 +26,7 @@ Anyang Intelligence should behave like a careful Student Operating System layer:
 | Customer offer | Free 30-day plan, then optional monthly continuity subscription |
 | Paid retainer received | $1,000 |
 | Retainer type | One-time services |
-| Payer | Elementary School |
+| Payer | Learning Core |
 | Payee | Anyang Intelligence |
 | One-time service scope | 30-Day Personalized Learning Plan for new students, including onboarding |
 | Grade band | Elementary / K-5 |
@@ -184,7 +184,7 @@ These surfaces keep three distinctions explicit:
 
 - Khan Academy Kids is a starter resource, not proof of mastery.
 - Khan should keep doing its own in-product recommendation.
-- Elementary School may deliberately build toward readiness for the more structured main Khan Academy environment without turning that threshold into a grading system.
+- Learning Core may deliberately build toward readiness for the more structured main Khan Academy environment without turning that threshold into a grading system.
 
 ## Student Operating System Skills
 
@@ -202,7 +202,7 @@ Do not mention these internal skill names in parent-facing materials.
 
 ## Customer Offer
 
-The current customer-facing entry offer is a **free 30-day collaborative build** of the family's `Learning Core` for new students.
+The current project-facing entry offer is a **free 30-day collaborative build** of the family's `Learning Core` for new students.
 
 The first month should be collaborative enough that the family learns how the system works while it is being built.
 
@@ -215,7 +215,7 @@ After that first month, the continuity offer is an optional **monthly subscripti
 - Personalized ongoing consultation.
 - Early access to new upgrades and features.
 
-The current money fact on the builder side is the **$1,000 one-time retainer** paid from Elementary School to Anyang Intelligence for a 30-day collaborative build of the family's `Learning Core`, including onboarding.
+The current money fact on the builder side is the **$1,000 one-time retainer** paid from Learning Core to Anyang Intelligence for a 30-day collaborative build of the family's `Learning Core`, including onboarding.
 
 Pricing work should only begin after the build can reliably provide:
 
@@ -230,7 +230,7 @@ No recurring price point should be treated as fully validated until real parent 
 
 ## One-Time Retainer
 
-Elementary School has paid Anyang Intelligence a **$1,000 one-time retainer** for a 30-day collaborative build of the family's `Learning Core`, including onboarding.
+Learning Core has paid Anyang Intelligence a **$1,000 one-time retainer** for a 30-day collaborative build of the family's `Learning Core`, including onboarding.
 
 The Executive OS should treat this as a scoped delivery obligation. The first delivery decision is what inputs are needed before the `Learning Core` can be built safely and handed off in usable form.
 

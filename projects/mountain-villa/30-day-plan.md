@@ -1,6 +1,6 @@
-# Mountain Home 30-Day Plan
+# Mountain Villa 30-Day Plan
 
-This plan creates the first recurring review surfaces for Mountain Home.
+This plan creates the first recurring review surfaces for Mountain Villa.
 
 ## Week 1: Baseline Review Surfaces
 
@@ -25,4 +25,4 @@ This plan creates the first recurring review surfaces for Mountain Home.
 - Run the first full operating review.
 - Update the decision log from real risk and maintenance pressure.
 - Choose the next 30-day property focus: mitigation, continuity, maintenance, or inspection readiness.
-
+- Add a retreat-readiness review: comfort, presentation, landscape, amenities, and owner-approved hosting preparedness, after risk work is ranked and protected.

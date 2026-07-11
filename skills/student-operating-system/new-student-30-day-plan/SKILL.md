@@ -1,11 +1,11 @@
 ---
 name: new-student-30-day-plan
-description: Student Operating System procedure for creating the scoped 30-Day Personalized Learning Plan for new students, including onboarding, from parent-approved inputs. Use when drafting the Elementary School retainer deliverable, new-student onboarding plan, first-month learning plan, or 30-day parent-reviewed plan while preserving parent authority and child-safety boundaries.
+description: Student Operating System procedure for creating the scoped 30-Day Personalized Learning Plan for new students, including onboarding, from parent-approved inputs. Use when drafting the Learning Core retainer deliverable, new-student onboarding plan, first-month learning plan, or 30-day parent-reviewed plan while preserving parent authority and child-safety boundaries.
 ---
 
 # New Student 30-Day Plan Skill
 
-Use this skill to create the scoped Elementary School retainer deliverable: a **30-Day Personalized Learning Plan** for new students, including onboarding.
+Use this skill to create the scoped Learning Core retainer deliverable: a **30-Day Personalized Learning Plan** for new students, including onboarding.
 
 This is a Student Operating System-level skill. It assembles approved inputs into the first-month plan. It does **not** define customer pricing, replace parent authority, create a full curriculum, diagnose, grade, prove mastery, or authorize unsupervised child-facing AI.
 
@@ -13,14 +13,14 @@ This is a Student Operating System-level skill. It assembles approved inputs int
 
 Read these first:
 
-1. `customers/elementary-school/one-time-retainer-scope.md`
-2. `customers/elementary-school/executive-os-install.md`
-3. `customers/elementary-school/30-day-plan-inputs.md`
-4. `customers/elementary-school/30-day-plan-template.md`
-5. `customers/elementary-school/startup-bundle.md`
-6. `customers/elementary-school/reading-basket.md`
-7. `customers/elementary-school/student-portfolio.md`
-8. `customers/elementary-school/monthly-portfolio-review.md`
+1. `projects/learning-core/one-time-retainer-scope.md`
+2. `projects/learning-core/executive-os-install.md`
+3. `projects/learning-core/30-day-plan-inputs.md`
+4. `projects/learning-core/30-day-plan-template.md`
+5. `projects/learning-core/startup-bundle.md`
+6. `projects/learning-core/reading-basket.md`
+7. `projects/learning-core/student-portfolio.md`
+8. `projects/learning-core/monthly-portfolio-review.md`
 
 When available, also read:
 

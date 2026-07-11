@@ -1,12 +1,12 @@
 from pathlib import Path
 import tempfile
 
-from anyang_loop.install_cli import main
+from anyang_loop.project_cli import main
 from anyang_loop.transcript_import import import_transcripts, render_completion_report
 
 
 def write_manifest(path: Path, transcript_a: Path, transcript_b: Path) -> Path:
-    manifest = path / "customers" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest = path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         "{\n"
@@ -136,7 +136,7 @@ def test_transcript_import_redacts_email_addresses():
     transcript = tmp_path / "email-transcript.txt"
     address = "person" + chr(64) + "example.com"
     transcript.write_text(f"Contact {address} for details.", encoding="utf-8")
-    manifest = tmp_path / "customers" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         "{\n"
@@ -168,7 +168,7 @@ def test_transcript_import_duplicate_detection_and_no_overwrite():
     tmp_path = Path(tempfile.mkdtemp())
     transcript = tmp_path / "first-innermost.txt"
     transcript.write_text("First transcript body.", encoding="utf-8")
-    manifest = tmp_path / "customers" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         "{\n"
@@ -201,7 +201,7 @@ def test_transcript_import_validation_failures(capsys):
     tmp_path = Path(tempfile.mkdtemp())
     transcript = tmp_path / "blank.txt"
     transcript.write_text("   \n", encoding="utf-8")
-    manifest = tmp_path / "customers" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         "{\n"

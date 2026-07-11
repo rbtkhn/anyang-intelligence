@@ -1,4 +1,4 @@
-# Elementary School Approval Exemplar
+# Learning Core Approval Exemplar
 
 This worked example shows what meaningful parent approval looks like after a provisional plan draft is returned for review.
 
@@ -15,7 +15,7 @@ The case is fictionalized but follows the lane's real authority rules.
 ```text
 Approval Receipt
 
-Lane: Elementary School
+Lane: Learning Core
 Workflow surface: parent plan approval
 Date: 2026-07-08
 

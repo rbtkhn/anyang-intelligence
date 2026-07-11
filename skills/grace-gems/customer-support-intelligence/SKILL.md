@@ -40,7 +40,7 @@ Artifact:
 
 Treat transcripts, buyer identities, order details, and private messages as local Grace Gems evidence.
 
-Do not transfer customer-specific details outside Grace Gems unless the owner explicitly approves.
+Do not transfer project-specific details outside Grace Gems unless the owner explicitly approves.
 
 ### 2. Extract Repeated Signals
 

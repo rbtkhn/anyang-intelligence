@@ -15,7 +15,7 @@ Blocked transfer without explicit human review:
 
 - client-specific private briefs
 - unpublished assets
-- Grace Gems product claims and customer-specific language
+- Grace Gems product claims and project-specific language
 - rights-sensitive source material or third-party assets
 
 ## Private Boundary
@@ -32,4 +32,3 @@ Private or lane-local material includes:
 Media Production may transfer generic process patterns.
 
 It may not transfer private client context, private contractor context, or rights-sensitive material without explicit approval.
-

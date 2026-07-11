@@ -5,7 +5,7 @@ Source: Moonshots
 URL: https://www.youtube.com/watch?v=XCunMF6frio
 Date published: unknown at intake
 Date captured: 2026-07-08
-Transcript location: [2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md)
+Transcript location: [2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md)
 Rights status: internal-commit-approved
 Capture method: user-provided transcript paste
 Why it matters: This episode compresses several high-pressure Singularity Science themes into one source: frontier-model governance moving toward standing state obligations, interpretability being framed as access to model inner life, AI-native chip and RF design accelerating the recursive loop, and legal structures straining under superintelligent invention and state-scale IP enforcement. It is useful because it mixes real governance and infrastructure pressure with stronger speculative rhetoric, which makes it valuable for product-intelligence synthesis and verification discipline.
@@ -31,9 +31,9 @@ What remains worldview-only:
 Relevant lanes:
   - Media Production: strong relevance where frontier-model governance, consciousness rhetoric, and AI-designed technical infrastructure affect narrative framing and review discipline.
   - Grace Gems: light relevance through automation rhetoric and trust implications, but little immediate operating effect.
-  - Elementary School: moderate governance relevance because consciousness language, ambient-monitoring ideas, and frontier-model normalization can distort child-facing AI expectations and approval discipline.
+  - Learning Core: moderate governance relevance because consciousness language, ambient-monitoring ideas, and frontier-model normalization can distort child-facing AI expectations and approval discipline.
   - Non-Profit: moderate relevance for governance, labor displacement narratives, regulatory capture risk, and IP / institutional legitimacy questions.
-  - Mountain Home: light-to-moderate relevance through physical-world autonomy, monitoring, and AI-designed infrastructure trajectories, but mostly indirect.
+  - Mountain Villa: light-to-moderate relevance through physical-world autonomy, monitoring, and AI-designed infrastructure trajectories, but mostly indirect.
   - Book Club: moderate relevance as a worldview and discussion source on consciousness, law, state power, and recursive self-improvement.
 Usable claims:
   - The episode frames Anthropic's Fable 5 return as an early example of a frontier lab taking on standing obligations to the U.S. government.

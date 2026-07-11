@@ -5,7 +5,7 @@ Source: Moonshots
 URL: https://www.youtube.com/watch?v=P2HJEz3oqLs
 Date published: unknown at intake
 Date captured: 2026-06-09
-Transcript location: [2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/transcripts/2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md)
+Transcript location: [2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md)
 Rights status: internal-commit-approved
 Capture method: youtube-transcript-operator-paste
 Why it matters: This unscheduled episode concentrates several high-pressure Moonshots seams in an early, unusually explicit form: recursive-self-improvement being framed as an immediate governance event, frontier-lab slowdown talk colliding with state-coordination scenarios, Argentina being framed as a jurisdictional experiment for non-human corporations, and enterprise agent adoption revealing permissions and redesign bottlenecks.
@@ -31,9 +31,9 @@ What remains worldview-only:
 Relevant lanes:
   - Media Production: moderate relevance where governance, slowdown, and AI-native-enterprise rhetoric shape reviewable story framing.
   - Grace Gems: light relevance through agent-permissions and labor-redesign narratives, but mostly indirect.
-  - Elementary School: moderate relevance where personhood, autonomy, and governance rhetoric could distort child-facing AI expectations and approval discipline.
+  - Learning Core: moderate relevance where personhood, autonomy, and governance rhetoric could distort child-facing AI expectations and approval discipline.
   - Non-Profit: strong relevance for governance, institutional redesign, board-review cadence, workforce transition, and legitimacy questions.
-  - Mountain Home: light-to-moderate relevance through agent permissions, override, and operational control questions, but mostly indirect.
+  - Mountain Villa: light-to-moderate relevance through agent permissions, override, and operational control questions, but mostly indirect.
   - Book Club: strong relevance as a worldview source on recursive self-improvement, non-human legal structures, and techno-political acceleration rhetoric.
 Usable claims:
   - The episode treats recursive self-improvement as a governance problem, not only a capability story.

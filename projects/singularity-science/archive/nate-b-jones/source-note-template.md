@@ -36,9 +36,9 @@ What remains worldview-only:
 Relevant lanes:
   - Media Production:
   - Grace Gems:
-  - Elementary School:
+  - Learning Core:
   - Non-Profit:
-  - Mountain Home:
+  - Mountain Villa:
   - Book Club:
 
 Usable claims:

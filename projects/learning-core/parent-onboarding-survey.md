@@ -8,7 +8,7 @@ Use it before drafting the **30-Day Personalized Learning Plan**.
 
 ## Purpose
 
-This survey helps Elementary School quickly learn:
+This survey helps Learning Core quickly learn:
 
 - what kind of situation the student is currently in
 - what kind of learner context is already visible

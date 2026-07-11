@@ -1,6 +1,6 @@
 # Subscription Boundary
 
-This document defines the commercial boundary between the **free 30-day collaborative build of the family's `Learning Core`** and the **monthly continuity subscription** in the Elementary School lane.
+This document defines the commercial boundary between the **free 30-day collaborative build of the family's `Learning Core`** and the **monthly continuity subscription** in the Learning Core lane.
 
 The goal is to keep the offer understandable, humane, and operationally sustainable.
 

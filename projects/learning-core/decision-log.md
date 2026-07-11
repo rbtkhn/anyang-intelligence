@@ -1,6 +1,6 @@
-# Elementary School Decision Log
+# Learning Core Decision Log
 
-This log preserves operating decisions for Elementary School.
+This log preserves operating decisions for Learning Core.
 
 Use it when intake, approval, privacy, child-safety, tool, or plan-structure decisions materially change how the Student Operating System operates.
 
@@ -18,4 +18,3 @@ Use it when intake, approval, privacy, child-safety, tool, or plan-structure dec
 | Date | Decision | Why it was chosen | Review trigger |
 | --- | --- | --- | --- |
 | YYYY-MM-DD |  |  |  |
-

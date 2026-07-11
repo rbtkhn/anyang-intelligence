@@ -1,6 +1,6 @@
-# Elementary School Embodied AI Hold Policy
+# Learning Core Embodied AI Hold Policy
 
-This policy is a review gate for any child-facing robot, kiosk, tutoring device, or embodied AI interface considered inside the Elementary School lane.
+This policy is a review gate for any child-facing robot, kiosk, tutoring device, or embodied AI interface considered inside the Learning Core lane.
 
 Its purpose is to prevent premature adoption, preserve parent and adult authority, and stop novelty pressure from turning into child-facing operating change before the safety case is clear.
 
@@ -16,7 +16,7 @@ Use with:
 
 Default state: `Hold`.
 
-No child-facing embodied AI should be treated as approved, normal, or implied by default in Elementary School.
+No child-facing embodied AI should be treated as approved, normal, or implied by default in Learning Core.
 
 The operator may review an embodied AI proposal, but use must remain paused until parent authority, supervision, safety posture, and human override are explicit.
 
@@ -31,7 +31,7 @@ This policy covers:
 - mobile sensing or monitoring devices that interact directly with a child
 - physical systems that appear to instruct, watch, coach, redirect, or evaluate the learner
 
-This policy does not automatically approve software-only learning tools. Those still require the ordinary Elementary School authority and safety gates.
+This policy does not automatically approve software-only learning tools. Those still require the ordinary Learning Core authority and safety gates.
 
 ## Why The Default Is Hold
 
@@ -136,4 +136,4 @@ What would need to be true to move out of Hold:
 
 This policy is a child-safety and authority guardrail, not a recommendation to buy or adopt embodied AI.
 
-Route only the review discipline. Do not route Singularity Science source rhetoric, robotics pricing claims, or deployment timelines into Elementary School as operating pressure.
+Route only the review discipline. Do not route Singularity Science source rhetoric, robotics pricing claims, or deployment timelines into Learning Core as operating pressure.

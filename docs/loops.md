@@ -50,11 +50,10 @@ Operating loops run customer work.
 Examples:
 
 - Book Club: book selection, meeting, discussion, memory, next selection.
-- Elementary School: learner signal, parent review, learning plan, experience, evidence, reflection, adjustment.
+- Learning Core: learner signal, parent review, learning plan, experience, evidence, reflection, adjustment.
 - Grace Gems: listing signal, listing gate, publish/revise/hold, customer response, marketplace update.
 - Media Production: idea, brief, production, quality gate, publish, performance review, learning.
-- Mountain Home: property signal, risk rank, mitigation, proof, seasonal readiness update.
-- Non-Profit: mission priority, program, funding/stewardship, delivery, impact evidence, strategy update.
+- Mountain Villa: property signal, risk rank, mitigation, proof, seasonal readiness update.
 
 ### Governance Loops
 
@@ -63,8 +62,7 @@ Governance loops prevent the Executive OS from acting beyond authority.
 Examples:
 
 - Owner approval before Grace Gems product, pricing, policy, shipping, refund, certificate, or authenticity claims.
-- Parent/guardian review before Elementary School child-facing learning decisions.
-- Board or leadership review before Non-Profit mission, grant, donor, real estate, or impact claims.
+- Parent/guardian review before Learning Core child-facing learning decisions.
 - CPA/bookkeeper review before final tax, withholding, payroll, nonprofit, contractor, or asset classification.
 - Human approval before Media Production publication, client commitments, rights decisions, spending, or hiring.
 
@@ -114,7 +112,7 @@ Different domains need different rhythms:
 - Daily: learner plans, urgent operations, high-change customer signals.
 - Weekly: executive reviews, marketplace review, production review, property risk review.
 - Monthly: book club, nonprofit leadership review, portfolio review, donor/material stewardship.
-- Seasonal: Mountain Home readiness, school-year planning, campaign cycles, grant/reporting cycles.
+- Seasonal: Mountain Villa readiness, school-year planning, campaign cycles, grant/reporting cycles.
 - Event-driven: payment received, contractor hired, customer complaint, safety risk, owner approval, board decision, tax-sensitive question.
 
 The right cadence is the one that catches meaningful change before it becomes drift.
@@ -160,7 +158,7 @@ Watch for these loop failures:
 
 Loops should become a first-class product primitive.
 
-Every customer installation should eventually be expressible as:
+Every project should eventually be expressible as:
 
 ```text
 loop name
@@ -175,6 +173,6 @@ learning update
 governance boundary
 ```
 
-Customer-specific loops describe the domain. Shared loop infrastructure becomes the software spine.
+Project-specific loops describe the domain. Shared loop infrastructure becomes the software spine.
 
 Loops move work forward. [Membranes](membranes.md) decide what may move across customer or domain boundaries.

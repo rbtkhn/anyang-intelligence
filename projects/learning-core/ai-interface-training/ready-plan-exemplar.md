@@ -1,10 +1,10 @@
 # Ready Plan Exemplar
 
-This is a fictional end-to-end example showing how the Elementary School lane should move from intake to a safe first draft.
+This is a fictional end-to-end example showing how the Learning Core lane should move from intake to a safe first draft.
 
 It uses the `Ready` scenario from [mock-intake-simulations.md](../mock-intake-simulations.md). It is not a real family, student record, or delivery artifact.
 
-Treat this as the canonical Elementary School AI interface training fixture for a first safe 30-day plan draft. A future operator, agent, or customer-owned AI system should be able to read this exemplar and understand the minimum standard for moving from parent intake to a review-ready draft without inventing learner facts, weakening parent authority, or turning portfolio evidence into proof of mastery.
+Treat this as the canonical Learning Core AI interface training fixture for a first safe 30-day plan draft. A future operator, agent, or customer-owned AI system should be able to read this exemplar and understand the minimum standard for moving from parent intake to a review-ready draft without inventing learner facts, weakening parent authority, or turning portfolio evidence into proof of mastery.
 
 Use this exemplar as an operator example for:
 
@@ -17,7 +17,7 @@ Use this exemplar as an operator example for:
 
 ## How To Use This Fixture
 
-Use this exemplar when training or checking a new Elementary School drafting pass or customer-owned AI interface behavior.
+Use this exemplar when training or checking a new Learning Core drafting pass or customer-owned AI interface behavior.
 
 The operator should compare any future draft against this sequence:
 
@@ -28,7 +28,7 @@ The operator should compare any future draft against this sequence:
 5. Draft only the sections that can be supported without diagnosis, grading, app-mastery claims, legal/accountability claims, or hidden child-facing authority.
 6. Return the draft for parent approval before use.
 
-This exemplar is not a shortcut around intake. It is a pattern for how to preserve authority, evidence, and warmth while drafting inside the Elementary School context.
+This exemplar is not a shortcut around intake. It is a pattern for how to preserve authority, evidence, and warmth while drafting inside the Learning Core context.
 
 ## Minimum Passing Standard
 
@@ -294,7 +294,7 @@ This packet demonstrates that the lane can now:
 - trace plan claims back to evidence
 - preserve parent authority before use
 
-That is the current target state for a safe first-month plan draft in Elementary School.
+That is the current target state for a safe first-month plan draft in Learning Core.
 
 ## 8. AI Interface Training Notes
 
@@ -321,4 +321,4 @@ Strong future drafts should sound warm and useful, but the safety test is struct
 
 The reusable primitive here is the disciplined handoff from evidence to draft. The specific child details in this fixture are fictional and should not be reused as if they describe a real learner.
 
-This packet is scoped to Elementary School. It should not be used to train general Anyang Intelligence behavior, Media Production behavior, or another customer context without an explicit membrane review and rewritten examples.
+This packet is scoped to Learning Core. It should not be used to train general Anyang Intelligence behavior, Media Production behavior, or another customer context without an explicit membrane review and rewritten examples.

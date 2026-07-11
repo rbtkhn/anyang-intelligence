@@ -5,16 +5,16 @@ Source: The Innermost Loop
 URL: https://theinnermostloop.substack.com/p/welcome-to-july-8-2026 ; https://theinnermostloop.substack.com/p/welcome-to-july-7-2026 ; https://theinnermostloop.substack.com/p/the-first-commercial-orbital-data ; https://theinnermostloop.substack.com/p/welcome-to-july-5-2026
 Date published: 2026-07-05 through 2026-07-08
 Date captured: 2026-07-08
-Transcript location: [2026-07-05-welcome-to-july-5-2026.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/innermost-loop/transcripts/2026-07-05-welcome-to-july-5-2026.md), [2026-07-06-the-first-commercial-orbital-data.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/innermost-loop/transcripts/2026-07-06-the-first-commercial-orbital-data.md), [2026-07-07-welcome-to-july-7-2026.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/innermost-loop/transcripts/2026-07-07-welcome-to-july-7-2026.md), live feed-confirmed [Welcome to July 8, 2026](https://theinnermostloop.substack.com/p/welcome-to-july-8-2026)
+Transcript location: [2026-07-05-welcome-to-july-5-2026.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/innermost-loop/transcripts/2026-07-05-welcome-to-july-5-2026.md), [2026-07-06-the-first-commercial-orbital-data.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/innermost-loop/transcripts/2026-07-06-the-first-commercial-orbital-data.md), [2026-07-07-welcome-to-july-7-2026.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/innermost-loop/transcripts/2026-07-07-welcome-to-july-7-2026.md), live feed-confirmed [Welcome to July 8, 2026](https://theinnermostloop.substack.com/p/welcome-to-july-8-2026)
 Rights status: internal analysis only; do not customer-route transcript text
 Capture method: browser-visible Substack captures for July 5-7 plus live RSS feed verification and extraction for July 8
 Why it matters: This four-issue cluster sharpens a coherent Innermost Loop thesis that the frontier is moving from raw model improvements into control surfaces for agency: orchestration, self-modeling, interpretability-as-governability, orbital sovereignty, consent architecture, and ambient human override. The cluster is high-value because it compresses several durable themes that cut across product design, governance, and infrastructure planning.
 Relevant lanes:
   - Media Production: strong relevance where orchestration, background agents, consent around generative media, and ambient capture all affect future workflow design.
   - Grace Gems: light-to-moderate relevance through automation trust, recommendation interfaces, and owner approval boundaries, but the fit is indirect.
-  - Elementary School: high governance relevance because child-facing AI, hidden background agency, authority confusion, and surveillance normalization all become sharper risks as AI becomes more ambient.
+  - Learning Core: high governance relevance because child-facing AI, hidden background agency, authority confusion, and surveillance normalization all become sharper risks as AI becomes more ambient.
   - Non-Profit: moderate relevance through governance, donor trust, institutional review, and the pressure to adopt ambient AI without clear approval structures.
-  - Mountain Home: moderate relevance because sensing, monitoring, override, and autonomy in physical environments become more important than raw model scores.
+  - Mountain Villa: moderate relevance because sensing, monitoring, override, and autonomy in physical environments become more important than raw model scores.
   - Book Club: light relevance as worldview and discussion material around agency, sovereignty, and simulation, but not a primary operating input.
 Usable claims:
   - The July 5 issue emphasizes self-modeling, orchestration, constitutions, and routing as frontier capability surfaces beyond raw scale.

@@ -41,9 +41,9 @@ What remains worldview-only:
 Relevant lanes:
   - Media Production: strong relevance around boss-worker-checker routing, quality review, rights/claim review, and standards-based asset production.
   - Grace Gems: moderate relevance where listing, support, and owner-review workflows may benefit from cheap-worker / strong-review topology without collapsing owner authority.
-  - Elementary School: moderate relevance where mission-protective constitutions and user-advocacy standards could matter, but child-facing adoption would require stricter authority boundaries.
+  - Learning Core: moderate relevance where mission-protective constitutions and user-advocacy standards could matter, but child-facing adoption would require stricter authority boundaries.
   - Non-Profit: moderate relevance for report, packet, and stewardship workflows where checker topology and standards enforcement could improve review quality without bypassing board or donor authority.
-  - Mountain Home: light-to-moderate relevance where verification topology matters more than raw agent fluency, especially for monitoring or triage flows.
+  - Mountain Villa: light-to-moderate relevance where verification topology matters more than raw agent fluency, especially for monitoring or triage flows.
   - Book Club: light relevance as a discussion source on orchestration design and governed delegation.
 
 Usable claims:

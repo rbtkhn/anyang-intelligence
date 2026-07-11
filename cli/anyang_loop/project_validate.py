@@ -21,7 +21,7 @@ INSTALL_SECTIONS = (
 
 
 @dataclass
-class InstallValidationResult:
+class ProjectValidationResult:
     path: Path
     errors: list[str]
     warnings: list[str]
@@ -31,28 +31,28 @@ class InstallValidationResult:
         return not self.errors
 
 
-def validate_install_path(path: str | Path) -> list[InstallValidationResult]:
+def validate_project_path(path: str | Path) -> list[ProjectValidationResult]:
     root = Path(path)
-    if is_customer_folder(root) and not is_customer_collection(root):
-        return [validate_customer_folder(root, strict=True)]
-    results: list[InstallValidationResult] = []
+    if is_project_folder(root) and not is_project_collection(root):
+        return [validate_project_folder(root, strict=True)]
+    results: list[ProjectValidationResult] = []
     for child in sorted(root.iterdir()):
-        if child.is_dir() and is_customer_folder(child):
-            results.append(validate_customer_folder(child, strict=False))
+        if child.is_dir() and is_project_folder(child):
+            results.append(validate_project_folder(child, strict=False))
     if not results:
-        results.append(InstallValidationResult(root, ["No customer folders found."], []))
+        results.append(ProjectValidationResult(root, ["No project folders found."], []))
     return results
 
 
-def is_customer_folder(path: Path) -> bool:
+def is_project_folder(path: Path) -> bool:
     return (path / "README.md").exists() or (path / "executive-os-install.md").exists()
 
 
-def is_customer_collection(path: Path) -> bool:
+def is_project_collection(path: Path) -> bool:
     return any(child.is_dir() and (child / "executive-os-install.md").exists() for child in path.iterdir())
 
 
-def validate_customer_folder(path: Path, strict: bool) -> InstallValidationResult:
+def validate_project_folder(path: Path, strict: bool) -> ProjectValidationResult:
     errors: list[str] = []
     warnings: list[str] = []
     for filename in CORE_FILES:
@@ -93,4 +93,4 @@ def validate_customer_folder(path: Path, strict: bool) -> InstallValidationResul
     else:
         warnings.append("Missing loop-examples directory.")
 
-    return InstallValidationResult(path, errors, warnings)
+    return ProjectValidationResult(path, errors, warnings)

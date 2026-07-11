@@ -20,7 +20,7 @@ Use this skill when the operator asks for:
 - `update the media production ledger`
 - a Creative Production Operator shipped-work or reuse record
 
-This skill turns shipped, reused, reviewed, or approved Media Production work into evidence-backed creative memory. It can prepare a ledger-ready entry by default. It only appends to `customers/media-production/creative-abundance-ledger-template.md` when the operator explicitly asks to update the file and the shipped/reused evidence is clear.
+This skill turns shipped, reused, reviewed, or approved Media Production work into evidence-backed creative memory. It can prepare a ledger-ready entry by default. It only appends to `projects/media-production/creative-abundance-ledger-template.md` when the operator explicitly asks to update the file and the shipped/reused evidence is clear.
 
 It does **not** publish, deliver, approve claims, approve spend, mark work shipped without evidence, assign contractor work, or make final performance conclusions by itself.
 
@@ -28,11 +28,11 @@ It does **not** publish, deliver, approve claims, approve spend, mark work shipp
 
 Read these first:
 
-1. `customers/media-production/creative-abundance-ledger-template.md`
-2. `customers/media-production/executive-os-install.md`
-3. `customers/media-production/creative-production-operator-onboarding.md`
-4. `customers/media-production/creative-abundance-quality-gate.md`
-5. `customers/media-production/README.md`
+1. `projects/media-production/creative-abundance-ledger-template.md`
+2. `projects/media-production/executive-os-install.md`
+3. `projects/media-production/creative-production-operator-onboarding.md`
+4. `projects/media-production/creative-abundance-quality-gate.md`
+5. `projects/media-production/README.md`
 
 When available, also read:
 
@@ -144,7 +144,7 @@ Use `pending` honestly when outcome, audience response, customer response, reuse
 
 ## Append Rules
 
-Append to `customers/media-production/creative-abundance-ledger-template.md` only when all are true:
+Append to `projects/media-production/creative-abundance-ledger-template.md` only when all are true:
 
 - The operator explicitly asks to update or append the ledger.
 - The entry is **Shipped**, **Reused**, **Approved pending shipment**, or **Learning update**, not **Draft record** or **Hold**.

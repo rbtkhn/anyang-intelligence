@@ -14,7 +14,7 @@
 - Core thesis: abundant AI could either decentralize capability and support human flourishing or concentrate authority, persuasion, labor power, and cognitive control inside institutions that humans are not prepared to govern.
 - Highest-ROI next action: preserve this as a scenario-pressure source and extract a cognitive-liberty review gate only after comparing recurrence across Singularity Science sources.
 - Best candidate primitive: Cognitive-liberty review gate
-- Best receiving lane: Singularity Science first; Elementary School and Media Production only through translated questions.
+- Best receiving lane: Singularity Science first; Learning Core and Media Production only through translated questions.
 - What remains worldview-only: the strongest timelines and institutional collapse predictions.
 
 ## Seam Inventory
@@ -88,7 +88,7 @@ What stays inside Singularity Science: transcript text, speaker-specific claims,
   - specific state or corporate misuse forecasts
 - Verification burden: high
 - Primitive opportunity: cognitive-liberty review gate for any tool touching persuasion, child-facing interaction, emotion, mental privacy, ambient presence, or embodied agency
-- Lane-safe routing opportunity: not directly; needs careful translation before Elementary School use
+- Lane-safe routing opportunity: not directly; needs careful translation before Learning Core use
 - Membrane risk: high; child-safety and mental-health implications require conservative handling
 - ROI disposition: primitive-candidate
 

@@ -1,6 +1,6 @@
-# Elementary School Turn Exemplar
+# Learning Core Turn Exemplar
 
-This worked example shows a governed intake-to-draft turn for Elementary School.
+This worked example shows a governed intake-to-draft turn for Learning Core.
 
 The case is fictionalized but shaped to match the lane's real authority and evidence rules.
 
@@ -43,7 +43,7 @@ Parent or guardian approval remains required for:
 ```text
 Turn Receipt
 
-Lane: Elementary School
+Lane: Learning Core
 Workflow surface: parent intake to draft readiness
 Date: 2026-07-08
 
@@ -110,7 +110,7 @@ Task:
 Review a parent intake and decide whether drafting is Ready, Provisional, or Hold.
 
 System:
-Elementary School operating lane
+Learning Core operating lane
 
 Date:
 2026-07-08

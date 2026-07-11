@@ -120,10 +120,10 @@ def find_catalog_root(manifest_path: str | Path) -> Path:
     path = Path(manifest_path).resolve()
     for candidate in [path.parent, *path.parents]:
         parts = candidate.parts[-3:]
-        if parts == ("customers", "elementary-school", "catalog"):
+        if parts == ("projects", "learning-core", "catalog"):
             return candidate
     raise CatalogImportError(
-        "Manifest must live under customers/elementary-school/catalog so catalogue assets stay inside the Elementary School membrane."
+        "Manifest must live under projects/learning-core/catalog so catalogue assets stay inside the Learning Core membrane."
     )
 
 
@@ -250,7 +250,7 @@ def write_catalog_ledger(summary: CatalogImportSummary) -> None:
     lines = [
         "# Catalog Import Ledger",
         "",
-        "This ledger tracks structured catalog-entry imports for Elementary School.",
+        "This ledger tracks structured catalog-entry imports for Learning Core.",
         "",
         "Statuses:",
         "",

@@ -15,7 +15,7 @@ work happens
   -> the next cycle starts smarter
 ```
 
-The key distinction is that the system does not merely remember what happened. It changes its own operating surface so a future agent, operator, or customer lane does not need to rediscover the same lesson from chat memory.
+The key distinction is that the system does not merely remember what happened. It changes its own operating surface so a future agent, operator, or project lane does not need to rediscover the same lesson from chat memory.
 
 This is not autonomous self-modification in the loose sci-fi sense. It is governed improvement: human-approved, repo-visible, evidence-backed changes to the procedures Anyang Intelligence uses to do future work.
 
@@ -39,7 +39,7 @@ Do not treat chat recall alone as system improvement.
 
 Anyang Intelligence compounds when real work becomes better infrastructure.
 
-The point is not to accumulate anecdotes. The point is to reduce repeated confusion, prevent known failure modes, and raise the baseline quality of future work across agents, operators, and customer lanes.
+The point is not to accumulate anecdotes. The point is to reduce repeated confusion, prevent known failure modes, and raise the baseline quality of future work across agents, operators, and project lanes.
 
 This means the system should not simply say:
 
@@ -154,9 +154,9 @@ If the change crosses authority, privacy, customer-scope, or safety boundaries, 
 
 For an end-of-cycle operating gate, use [recursive-self-enhancement-checklist.md](recursive-self-enhancement-checklist.md).
 
-## Elementary School Example
+## Learning Core Example
 
-The Elementary School lane provides a clean example:
+The Learning Core lane provides a clean example:
 
 ```text
 parent intake idea
@@ -171,7 +171,7 @@ The important point is not that the system discussed a failure mode. The importa
 
 That is the difference between memory and enhancement.
 
-The formal loop version lives in [customers/elementary-school/loop-examples/parent-intake-readiness.yaml](../customers/elementary-school/loop-examples/parent-intake-readiness.yaml). Its learning update requires real or simulated intake outcomes to improve the intake message, readiness checklist, Hold response, or plan template when a recurring failure mode appears.
+The formal loop version lives in [projects/learning-core/loop-examples/parent-intake-readiness.yaml](../projects/learning-core/loop-examples/parent-intake-readiness.yaml). Its learning update requires real or simulated intake outcomes to improve the intake message, readiness checklist, Hold response, or plan template when a recurring failure mode appears.
 
 ## Boundaries
 

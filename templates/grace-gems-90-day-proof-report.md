@@ -40,4 +40,4 @@ State which workflow repeated, what measurable value it created, what remained m
 
 ## Next Boundary
 
-Do not open another customer lane until this decision is approved and recorded.
+Do not open another project lane until this decision is approved and recorded.

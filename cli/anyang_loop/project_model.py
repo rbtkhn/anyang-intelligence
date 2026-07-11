@@ -9,12 +9,12 @@ import yaml
 from .model import coerce_list, coerce_text
 
 
-class InstallInputError(ValueError):
+class ProjectInputError(ValueError):
     """Raised when installer input is missing required structure."""
 
 
 @dataclass
-class InstallInput:
+class ProjectInput:
     name: str
     domain_description: str
     context_map: dict[str, str]
@@ -25,17 +25,17 @@ class InstallInput:
     risks: list[str] = field(default_factory=list)
     governance_boundary: str = ""
     success_criteria: list[str] = field(default_factory=list)
-    source_customers: list[str] = field(default_factory=list)
+    source_projects: list[str] = field(default_factory=list)
 
     @classmethod
-    def from_mapping(cls, data: dict[str, Any]) -> "InstallInput":
+    def from_mapping(cls, data: dict[str, Any]) -> "ProjectInput":
         required = ("name", "domain_description", "context_map")
         missing = [key for key in required if key not in data or not data[key]]
         if missing:
-            raise InstallInputError(f"Missing required install input fields: {', '.join(missing)}")
+            raise ProjectInputError(f"Missing required install input fields: {', '.join(missing)}")
         context = data["context_map"]
         if not isinstance(context, dict):
-            raise InstallInputError("context_map must be a mapping.")
+            raise ProjectInputError("context_map must be a mapping.")
         name = coerce_text(data["name"])
         return cls(
             name=name,
@@ -48,7 +48,7 @@ class InstallInput:
             risks=coerce_list(data.get("risks")),
             governance_boundary=coerce_text(data.get("governance_boundary")),
             success_criteria=coerce_list(data.get("success_criteria")),
-            source_customers=coerce_list(data.get("source_customers")),
+            source_projects=coerce_list(data.get("source_projects")),
         )
 
     @property
@@ -66,11 +66,11 @@ class InstallInput:
         return self.context_map.get("Executive OS job", "Make context, decisions, risks, and learning easier to reconstruct")
 
 
-def load_install_input(path: str | Path) -> InstallInput:
+def load_project_input(path: str | Path) -> ProjectInput:
     data = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
     if not isinstance(data, dict):
-        raise InstallInputError("Install input must be a YAML mapping.")
-    return InstallInput.from_mapping(data)
+        raise ProjectInputError("Install input must be a YAML mapping.")
+    return ProjectInput.from_mapping(data)
 
 
 def slugify(value: str) -> str:
@@ -83,5 +83,4 @@ def slugify(value: str) -> str:
         elif not previous_dash:
             chars.append("-")
             previous_dash = True
-    return "".join(chars).strip("-") or "customer"
-
+    return "".join(chars).strip("-") or "project"

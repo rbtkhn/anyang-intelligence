@@ -3,8 +3,8 @@
 ## Source
 
 - Title: SpaceX IPOs at $2.89T Market Cap, US Govt Suspends Fable & Mythos 5, Altman Delays OpenAI's IPO | #265
-- Source note: [2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-openai-ipo-delay.source-note.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/source-notes/2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-openai-ipo-delay.source-note.md)
-- Transcript: [2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-2026-06-19.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/transcripts/2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-2026-06-19.md)
+- Source note: [2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-openai-ipo-delay.source-note.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/source-notes/2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-openai-ipo-delay.source-note.md)
+- Transcript: [2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-2026-06-19.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-2026-06-19.md)
 - Date analyzed: 2026-07-08
 
 ## Episode Rollup

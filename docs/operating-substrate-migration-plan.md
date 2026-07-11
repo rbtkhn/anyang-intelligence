@@ -57,7 +57,7 @@ Keep:
 
 - `docs/`
 - `cli/`
-- `customers/`
+- `projects/`
 - `skills/`
 - `templates/`
 - `tests/`
@@ -97,7 +97,7 @@ From the current root before a future rename, run:
 $env:PYTHONPATH='C:\dev\anyang-intelligence\operating-substrate\cli'
 & 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m pytest -q
 & 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.cli validate customers
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.install_cli validate customers
+& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.project_cli validate customers
 & 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.coffee_cli --repo .
 & 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.dream_cli --repo .
 ```
@@ -135,7 +135,7 @@ From `operating-substrate`, run:
 $env:PYTHONPATH='C:\dev\anyang-intelligence\operating-substrate\cli'
 & 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m pytest -q
 & 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.cli validate customers
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.install_cli validate customers
+& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.project_cli validate customers
 & 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.coffee_cli --repo .
 & 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.dream_cli --repo .
 ```
@@ -172,7 +172,7 @@ It does not authorize:
 - changing customer commitments
 - altering pricing hypotheses
 - changing the authority model
-- reorganizing customer folders
+- reorganizing project folders
 - merging global Codex skill behavior beyond the explicit routing override
 
 Human approval is required before the actual rename.

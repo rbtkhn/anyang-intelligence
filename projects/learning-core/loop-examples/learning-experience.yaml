@@ -1,7 +1,7 @@
 name: elementary-learning-experience
 description: Parent-reviewed learning experience loop for an elementary learner.
 loop_type: operating
-customer_lane: elementary-school
+project_lane: learning-core
 authority: parent or guardian approval
 tags:
   - learning

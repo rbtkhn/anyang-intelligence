@@ -67,7 +67,7 @@ Relationship: **advisory**.
 
 Singularity Science may inform customer lanes, but it does not create customer obligations directly.
 
-Research output may suggest implications for Media Production, Grace Gems, Elementary School, Non-Profit, Mountain Home, or Book Club. Those implications remain advisory until a human operator chooses to route them through the relevant customer membrane.
+Research output may suggest implications for Media Production, Grace Gems, Learning Core, retired Non-Profit project, Mountain Villa, or Book Club. Those implications remain advisory until a human operator chooses to route them through the relevant customer membrane.
 
 ## Governance Priority
 

@@ -133,8 +133,8 @@ lane: singularity-science
 
 
 def test_discover_loop_files_skips_non_loop_catalog_yaml(tmp_path):
-    catalog = tmp_path / "customers" / "elementary-school" / "catalog"
-    loops = tmp_path / "customers" / "elementary-school" / "loop-examples"
+    catalog = tmp_path / "projects" / "learning-core" / "catalog"
+    loops = tmp_path / "projects" / "learning-core" / "loop-examples"
     catalog.mkdir(parents=True)
     loops.mkdir(parents=True)
     (catalog / "khan-catalog-manifest.sample.yaml").write_text("catalog_entries: []\n", encoding="utf-8")
@@ -154,14 +154,14 @@ governance_boundary: parent approval required
         encoding="utf-8",
     )
 
-    discovered = discover_loop_files(tmp_path / "customers")
+    discovered = discover_loop_files(tmp_path / "projects")
 
     assert discovered == [loop_file]
 
 
-def test_customer_examples_parse():
+def test_project_examples_parse():
     root = Path(__file__).resolve().parents[1]
-    examples = list(root.glob("customers/*/loop-examples/*.yaml"))
+    examples = list(root.glob("projects/*/loop-examples/*.yaml"))
     assert examples
     for path in examples:
         loop = parse_yaml(path.read_text(encoding="utf-8"), str(path))

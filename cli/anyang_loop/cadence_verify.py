@@ -68,13 +68,13 @@ def run_verification(
                 _command_check(
                     "install-validation",
                     snapshot.root,
-                    [sys.executable, "-m", "anyang_loop.install_cli", "validate", "customers"],
+                    [sys.executable, "-m", "anyang_loop.project_cli", "validate", "projects"],
                     runner,
                 ),
                 _command_check(
                     "loop-validation",
                     snapshot.root,
-                    [sys.executable, "-m", "anyang_loop.cli", "validate", "customers"],
+                    [sys.executable, "-m", "anyang_loop.cli", "validate", "projects"],
                     runner,
                 ),
             ]

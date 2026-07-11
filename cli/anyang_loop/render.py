@@ -30,7 +30,7 @@ def render_markdown(loop: LoopDefinition) -> str:
 | Field | Value |
 | --- | --- |
 | Loop type | {loop.loop_type} |
-| Customer lane | {loop.customer_lane} |
+| Project lane | {loop.project_lane} |
 | Authority | {loop.authority} |
 | Tags | {tags} |
 
@@ -80,7 +80,7 @@ def template_loop(name: str, loop_type: str) -> LoopDefinition:
         name=name,
         description="Starter loop definition. Replace bracketed text before treating this loop as operational.",
         loop_type=loop_type,
-        customer_lane="[customer or shared]",
+        project_lane="[project or shared]",
         authority="human approval required",
         tags=[loop_type],
         signal="[What starts this loop?]",
@@ -99,4 +99,3 @@ def template_loop(name: str, loop_type: str) -> LoopDefinition:
 
 def loop_to_yaml_data(loop: LoopDefinition) -> dict[str, Any]:
     return loop.as_dict()
-

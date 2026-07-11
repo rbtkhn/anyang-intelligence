@@ -41,7 +41,7 @@ What exactly worked here, and should that pattern improve the next similar cycle
 Read or infer from the current thread first:
 
 1. The artifact, response, decision, or workflow the operator praised.
-2. The immediate context: customer lane, skill, doc, CLI, template, or governance surface.
+2. The immediate context: project lane, skill, doc, CLI, template, or governance surface.
 3. Any explicit reason the operator gave for the praise.
 4. `git status --short --branch` only if the praise appears tied to a repo change.
 5. The relevant touched file or skill only when a durable preservation decision is likely.
@@ -63,7 +63,7 @@ Optional, only when directly relevant:
    - `Pattern candidate`: likely reusable if it repeats or applies to a near-term lane.
    - `Preserve`: operator-approved candidate for a doc, skill, template, checklist, example, or guardrail update.
 4. Name where the pattern might repeat.
-5. Name the boundary: what should not be generalized, especially private customer facts, customer-specific authority decisions, child-safety context, legal/tax conclusions, spending approval, rights decisions, or publication authority.
+5. Name the boundary: what should not be generalized, especially private customer facts, project-specific authority decisions, child-safety context, legal/tax conclusions, spending approval, rights decisions, or publication authority.
 6. If preservation is not already explicitly requested, do not edit files. Offer the smallest useful next action.
 
 ## Output Shape

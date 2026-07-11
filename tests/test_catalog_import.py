@@ -2,11 +2,11 @@ from pathlib import Path
 import tempfile
 
 from anyang_loop.catalog_import import import_catalog, render_catalog_completion_report
-from anyang_loop.install_cli import main
+from anyang_loop.project_cli import main
 
 
 def write_catalog_manifest(path: Path) -> Path:
-    manifest = path / "customers" / "elementary-school" / "catalog" / "khan-catalog-manifest.yaml"
+    manifest = path / "projects" / "learning-core" / "catalog" / "khan-catalog-manifest.yaml"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         "catalog_entries:\n"
@@ -93,7 +93,7 @@ def test_catalog_import_writes_files_and_ledger():
 
 def test_catalog_import_duplicate_detection_and_no_overwrite():
     tmp_path = Path(tempfile.mkdtemp())
-    manifest = tmp_path / "customers" / "elementary-school" / "catalog" / "khan-catalog-manifest.yaml"
+    manifest = tmp_path / "projects" / "learning-core" / "catalog" / "khan-catalog-manifest.yaml"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         "catalog_entries:\n"
@@ -136,7 +136,7 @@ def test_catalog_import_duplicate_detection_and_no_overwrite():
 
 def test_catalog_import_validation_failures(capsys):
     tmp_path = Path(tempfile.mkdtemp())
-    manifest = tmp_path / "customers" / "elementary-school" / "catalog" / "khan-catalog-manifest.yaml"
+    manifest = tmp_path / "projects" / "learning-core" / "catalog" / "khan-catalog-manifest.yaml"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         "catalog_entries:\n"

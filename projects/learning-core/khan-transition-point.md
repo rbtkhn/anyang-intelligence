@@ -1,12 +1,12 @@
 # Khan Transition Point
 
-This document defines the transition point between **Khan Academy Kids** and the main **Khan Academy** experience inside Elementary School.
+This document defines the transition point between **Khan Academy Kids** and the main **Khan Academy** experience inside Learning Core.
 
 The goal is not to treat the transition as a badge, graduation, or automatic promotion.
 
 The goal is to define when the learner is showing enough **visible capability**, **fit**, and **readiness** that the main Khan Academy environment can become useful.
 
-See [khan-transition-readiness-target.md](khan-transition-readiness-target.md) for the companion doctrine that treats this threshold as a deliberate capability target Elementary School can build toward.
+See [khan-transition-readiness-target.md](khan-transition-readiness-target.md) for the companion doctrine that treats this threshold as a deliberate capability target Learning Core can build toward.
 
 ## Core Principle
 
@@ -156,7 +156,7 @@ These are more trustworthy than a completion badge by itself.
 
 ## Suggested Transition Rule
 
-Elementary School should treat the transition as appropriate when:
+Learning Core should treat the transition as appropriate when:
 
 - Khan Academy Kids use is no longer mainly a startup support tool
 - the learner is showing several readiness capabilities at once
@@ -197,14 +197,14 @@ It should usually not begin as:
 
 ## Governance Boundary
 
-Elementary School may use:
+Learning Core may use:
 
 - capability signals
 - parent observation
 - household fit
 - limited course-completion context
 
-Elementary School may not use:
+Learning Core may not use:
 
 - completion badges as transition authority
 - app progress as mastery proof

@@ -1,6 +1,6 @@
 # Dual Khan Catalogue Doctrine
 
-Elementary School should treat Khan-related directory knowledge as **two parallel catalogue surfaces**, not one blended source of truth.
+Learning Core should treat Khan-related directory knowledge as **two parallel catalogue surfaces**, not one blended source of truth.
 
 The catalogue layer is a **scaffold inside the Student Operating System**.
 
@@ -23,7 +23,7 @@ catalogue layer
 
 This is the public-web-backed catalogue for the main Khan Academy product.
 
-Use it when Elementary School needs:
+Use it when Learning Core needs:
 
 - a durable external course tree
 - a structured source for enrichment or reinforcement ideas
@@ -39,7 +39,7 @@ Trust profile:
 
 This is the governed, manually curated catalogue for Khan Academy Kids.
 
-Use it when Elementary School needs:
+Use it when Learning Core needs:
 
 - a truthful starter-tool directory for early-learning recommendations
 - a parent-facing explanation of what kinds of Khan Kids content exist
@@ -57,7 +57,7 @@ The two products are related, but they are not interchangeable:
 
 - the main Khan Academy site is more publicly inspectable
 - Khan Academy Kids is app-centered and exposes much of its real scope inside the app library
-- Elementary School recommendation logic needs both, but with different evidence claims
+- Learning Core recommendation logic needs both, but with different evidence claims
 
 If the surfaces are blended carelessly, the system will overstate certainty about Khan Kids and understate the different role of the main Khan Academy catalogue.
 

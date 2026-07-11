@@ -8,7 +8,7 @@ BUILTINS = {
         name="canonical-executive-loop",
         description="The inherited Executive OS loop: memory -> decision -> coordination -> review -> learning -> updated memory.",
         loop_type="operating",
-        customer_lane="shared",
+        project_lane="shared",
         authority="human leadership",
         tags=["builtin", "executive-os", "canonical"],
         source_path="docs/loops.md",
@@ -32,7 +32,7 @@ BUILTINS = {
         name="recursive-improvement-loop",
         description="The Anyang Intelligence self-improvement loop that turns friction into better docs, skills, templates, or guardrails.",
         loop_type="recursive",
-        customer_lane="shared",
+        project_lane="shared",
         authority="operator",
         tags=["builtin", "recursive", "coffee"],
         source_path="docs/loops.md; skills/coffee/SKILL.md",
@@ -60,4 +60,3 @@ def get_builtin(name: str) -> LoopDefinition | None:
 
 def all_builtins() -> list[LoopDefinition]:
     return list(BUILTINS.values())
-

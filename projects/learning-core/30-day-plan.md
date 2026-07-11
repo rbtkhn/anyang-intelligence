@@ -1,4 +1,4 @@
-# Elementary School 30-Day Plan
+# Learning Core 30-Day Plan
 
 This plan strengthens the recurring operating supports around the Student Operating System.
 
@@ -25,4 +25,3 @@ This plan strengthens the recurring operating supports around the Student Operat
 - Run the first recurring operating review using the lane’s current cases or fixtures.
 - Update the risk register and decision log from real or simulated workflow pressure.
 - Choose the next 30-day focus: intake quality, draft quality, approval clarity, or evidence quality.
-

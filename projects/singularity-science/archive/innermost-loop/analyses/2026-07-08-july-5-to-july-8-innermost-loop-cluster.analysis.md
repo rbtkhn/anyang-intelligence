@@ -3,8 +3,8 @@
 ## Source
 
 - Title: Innermost Loop cluster: July 5, 2026 to July 8, 2026
-- Source note: [2026-07-08-july-5-to-july-8-innermost-loop-cluster.source-note.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/innermost-loop/source-notes/2026-07-08-july-5-to-july-8-innermost-loop-cluster.source-note.md)
-- Transcript: [2026-07-05-welcome-to-july-5-2026.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/innermost-loop/transcripts/2026-07-05-welcome-to-july-5-2026.md), [2026-07-06-the-first-commercial-orbital-data.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/innermost-loop/transcripts/2026-07-06-the-first-commercial-orbital-data.md), [2026-07-07-welcome-to-july-7-2026.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/innermost-loop/transcripts/2026-07-07-welcome-to-july-7-2026.md), live feed-confirmed [Welcome to July 8, 2026](https://theinnermostloop.substack.com/p/welcome-to-july-8-2026)
+- Source note: [2026-07-08-july-5-to-july-8-innermost-loop-cluster.source-note.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/innermost-loop/source-notes/2026-07-08-july-5-to-july-8-innermost-loop-cluster.source-note.md)
+- Transcript: [2026-07-05-welcome-to-july-5-2026.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/innermost-loop/transcripts/2026-07-05-welcome-to-july-5-2026.md), [2026-07-06-the-first-commercial-orbital-data.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/innermost-loop/transcripts/2026-07-06-the-first-commercial-orbital-data.md), [2026-07-07-welcome-to-july-7-2026.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/innermost-loop/transcripts/2026-07-07-welcome-to-july-7-2026.md), live feed-confirmed [Welcome to July 8, 2026](https://theinnermostloop.substack.com/p/welcome-to-july-8-2026)
 - Date analyzed: 2026-07-08
 
 ## Core Signal
@@ -53,9 +53,9 @@ It also suggests a durable product principle: the highest-leverage AI systems ma
 | --- | --- | --- |
 | Media Production | Strong relevance for agent orchestration, synthetic-media consent, background tooling, and ambient creative workflows | high |
 | Grace Gems | Indirect relevance for trust, recommendation interfaces, and owner approval boundaries | medium-low |
-| Elementary School | High relevance because ambient AI and authority ambiguity are child-safety issues before they are capability opportunities | high |
+| Learning Core | High relevance because ambient AI and authority ambiguity are child-safety issues before they are capability opportunities | high |
 | Non-Profit | Moderate relevance through governance, donor-trust, and review-path design | medium |
-| Mountain Home | Moderate relevance for monitoring, sensing, override, and autonomy in physical environments | medium |
+| Mountain Villa | Moderate relevance for monitoring, sensing, override, and autonomy in physical environments | medium |
 | Book Club | Light relevance as worldview and discussion material rather than direct operations | low |
 
 ## Governance Concern

@@ -1,6 +1,6 @@
-# Recursive Self-Enhancement In Elementary School
+# Recursive Self-Enhancement In Learning Core
 
-This note explains how recursive self-enhancement showed up in the Elementary School lane.
+This note explains how recursive self-enhancement showed up in the Learning Core lane.
 
 The point is not that the lane produced more notes. The point is that real intake friction was converted into safer operating surfaces for the next similar case.
 
@@ -57,7 +57,7 @@ This lane now starts smarter because future intake work does not need to redisco
 - how to classify `Ready`, `Provisional`, and `Hold`
 - how to improve the intake surfaces when a recurring failure mode appears
 
-That is recursive self-enhancement in practice: governed, repo-visible, evidence-backed improvement to the Elementary School operating surface.
+That is recursive self-enhancement in practice: governed, repo-visible, evidence-backed improvement to the Learning Core operating surface.
 
 ## Boundary Reminder
 

@@ -1,6 +1,6 @@
 # Mock Intake Simulations
 
-These simulations test whether the Elementary School intake and onboarding gate can classify parent responses without inventing learner facts.
+These simulations test whether the Learning Core intake and onboarding gate can classify parent responses without inventing learner facts.
 
 All scenarios are fictional. They are not real families, student records, diagnoses, or delivery artifacts.
 

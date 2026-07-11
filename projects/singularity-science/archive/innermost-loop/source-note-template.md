@@ -15,9 +15,9 @@ Why it matters:
 Relevant lanes:
   - Media Production:
   - Grace Gems:
-  - Elementary School:
+  - Learning Core:
   - Non-Profit:
-  - Mountain Home:
+  - Mountain Villa:
   - Book Club:
 Usable claims:
 Open questions:

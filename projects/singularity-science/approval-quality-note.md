@@ -52,9 +52,9 @@ Use this simple assessment in approval receipts:
 
 Approval quality matters most where the cost of symbolic approval is high:
 
-- Elementary School: parent authority, child-facing language, privacy, and support boundaries
+- Learning Core: parent authority, child-facing language, privacy, and support boundaries
 - Grace Gems: owner approval over claims, pricing, customer promises, and storefront changes
-- Non-Profit: leadership or board authority over external claims, donor or grant commitments, restrictions, and stewardship
+- retired Non-Profit project: leadership or board authority over external claims, donor or grant commitments, restrictions, and stewardship
 
 ## Practical Use
 

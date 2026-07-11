@@ -19,7 +19,7 @@ dev = [
 
 [project.scripts]
 anyang-loop = "anyang_loop.cli:main"
-anyang-install = "anyang_loop.install_cli:main"
+anyang-project = "anyang_loop.project_cli:main"
 anyang-coffee = "anyang_loop.coffee_cli:main"
 anyang-dream = "anyang_loop.dream_cli:main"
 anyang-ops = "anyang_loop.ops_cli:main"

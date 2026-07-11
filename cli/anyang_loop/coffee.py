@@ -21,7 +21,7 @@ class CoffeeContext:
 def build_coffee_context(repo_root: str | Path = ".", db_path: str | None = None) -> CoffeeContext:
     root = Path(repo_root).resolve()
     snapshot = collect_repo_snapshot(root, recent_limit=5)
-    dashboard = _read(root / "customers" / "operating-portfolio-dashboard.md")
+    dashboard = _read(root / "projects" / "operating-portfolio-dashboard.md")
     portfolio = parse_portfolio_dashboard(dashboard)
     database = resolve_cadence_db(db_path, for_record=False)
     handoff = latest_handoff(database, snapshot.repo_id) if database else None
@@ -159,7 +159,7 @@ def _menu(context: CoffeeContext, reason: str, improvement: str) -> list[str]:
     paid = (context.portfolio.first_paid_obligation or "the highest-priority paid obligation").rstrip(".")
     recommended = {"validation-failure": "A", "dirty-worktree": "A", "external-blocker": "B", "paid-obligation": "B"}.get(reason, "A")
     ship = (
-        "Ship the validated cadence or customer slice after human review."
+        "Ship the validated cadence or project slice after human review."
         if not context.snapshot.dirty and not _handoff_failures(context.handoff)
         else "Hold shipping until the selected slice is cleanly validated."
     )

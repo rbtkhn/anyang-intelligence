@@ -12,7 +12,7 @@ Statuses:
 - `skipped-do-not-commit`: rights status explicitly prevents commit
 - `invalid-manifest`: manifest metadata is incomplete or malformed
 
-Manifest: `C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/transcript-intake-manifest.generated.json`
+Manifest: `C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/transcript-intake-manifest.generated.json`
 
 | Lane | Title | Destination | Rights status | Import status | Follow-up | Notes |
 | --- | --- | --- | --- | --- | --- | --- |

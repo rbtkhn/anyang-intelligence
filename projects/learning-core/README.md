@@ -1,6 +1,6 @@
-# Elementary School
+# Learning Core
 
-Elementary School is an Anyang Intelligence build for the **Student Operating System**, a parent-guided learning operating system built on the Anyang Intelligence Executive OS method.
+Learning Core is an Anyang Intelligence build for the **Student Operating System**, a parent-guided learning operating system built on the Anyang Intelligence Executive OS method.
 
 ## Organization
 
@@ -10,7 +10,7 @@ The Student Operating System is a high-trust elementary learning operating conte
 - Cadence: daily learning rhythm, weekly parent review, monthly portfolio review, seasonal learning goals, and school-year planning.
 - Operating challenge: create a rich individualized learning experience without replacing parent authority, child safety, human care, or required education accountability.
 - Paid retainer received: $1,000.
-- Payer: Elementary School.
+- Payer: Learning Core.
 - Payee: Anyang Intelligence.
 - Retainer type: one-time services.
 - Service scope: 30-Day Personalized Learning Plan for new students, including onboarding, defined in [one-time-retainer-scope.md](one-time-retainer-scope.md).
@@ -56,7 +56,7 @@ Role in the system:
 - Support early reading, writing, language, math, books, videos, creative activities, and social-emotional learning.
 - Give the parent a safe starter tool that supports the scoped 30-Day Personalized Learning Plan.
 - Generate parent-observed engagement signals for the first learner profile and daily rhythm.
-- Reflect Elementary School's due diligence in sifting through crowded digital-learning options so the parent does not have to start from an app marketplace with no clear filter.
+- Reflect Learning Core's due diligence in sifting through crowded digital-learning options so the parent does not have to start from an app marketplace with no clear filter.
 
 Boundary:
 
@@ -82,9 +82,9 @@ See [mock-intake-simulations.md](mock-intake-simulations.md) for three fictional
 
 See [hold-response-template.md](hold-response-template.md) for the parent-facing pause message used when intake is classified as `Hold`.
 
-See [recursive-self-enhancement.md](recursive-self-enhancement.md) for the lane-specific note showing how Elementary School intake friction was converted into reusable onboarding infrastructure.
+See [recursive-self-enhancement.md](recursive-self-enhancement.md) for the lane-specific note showing how Learning Core intake friction was converted into reusable onboarding infrastructure.
 
-See [naming-architecture.md](naming-architecture.md) for the lane rule that keeps `Elementary School`, `Learning Core`, and `Student Operating System` distinct.
+See [naming-architecture.md](naming-architecture.md) for the lane rule that keeps `Learning Core`, `Learning Core`, and `Student Operating System` distinct.
 
 See [plan-drafting-gate.md](plan-drafting-gate.md) for the internal/operator checklist that controls how `Ready` and `Provisional` intake is safely converted into a 30-day plan draft.
 
@@ -96,7 +96,7 @@ See [embodied-ai-parent-review-worksheet.md](embodied-ai-parent-review-worksheet
 
 See [mock-ready-plan-evidence-map.md](mock-ready-plan-evidence-map.md) for a fictional `Ready` intake traceability test before any real parent-facing plan is drafted.
 
-See [ai-interface-training/](ai-interface-training/) for Elementary School-specific AI interface training exemplars, including the canonical fictional `Ready` plan exemplar for intake review, drafting-gate use, evidence mapping, safe draft structure, and parent approval handoff.
+See [ai-interface-training/](ai-interface-training/) for Learning Core-specific AI interface training exemplars, including the canonical fictional `Ready` plan exemplar for intake review, drafting-gate use, evidence mapping, safe draft structure, and parent approval handoff.
 
 The same training folder now also includes an `approved with changes` exemplar for showing how parent edits should update both the approval record and the plan before use.
 
@@ -126,11 +126,11 @@ See [catalog/khan-kids-curated-catalog.yaml](catalog/khan-kids-curated-catalog.y
 
 See [catalog/khan-kids-in-app-capture-spec.md](catalog/khan-kids-in-app-capture-spec.md) for the future manual in-app capture path that can deepen the Khan Kids directory without overstating public coverage.
 
-See [khan-adapter-layer.md](khan-adapter-layer.md) for the operating doctrine that says Khan should keep doing Khan-style in-product recommendation, while Elementary School governs how Khan fits into the broader Student Operating System.
+See [khan-adapter-layer.md](khan-adapter-layer.md) for the operating doctrine that says Khan should keep doing Khan-style in-product recommendation, while Learning Core governs how Khan fits into the broader Student Operating System.
 
 See [khan-transition-point.md](khan-transition-point.md) for the handoff rule between Khan Academy Kids and the main Khan Academy environment, with specific capability signals and a narrow role for course completion.
 
-See [khan-transition-readiness-target.md](khan-transition-readiness-target.md) for the deeper doctrine that turns that handoff threshold into a deliberate capability target Elementary School can build toward over time.
+See [khan-transition-readiness-target.md](khan-transition-readiness-target.md) for the deeper doctrine that turns that handoff threshold into a deliberate capability target Learning Core can build toward over time.
 
 See [khan-academy-signal-pipeline.md](khan-academy-signal-pipeline.md) for the governed signal path that turns Khan Academy Kids observations into learner-profile updates, portfolio evidence, and better next-step recommendations.
 
@@ -144,13 +144,13 @@ See [continuity-invitation-template.md](continuity-invitation-template.md) for t
 
 See [learning-core-ob1-integration.md](learning-core-ob1-integration.md) for the architecture note that explains how the family's `Learning Core` could interface with `OB1 / Open Brain` as a governed memory substrate.
 
-For repo-local Codex work, see [elementary-school-lane skill](../../skills/student-operating-system/elementary-school-lane/SKILL.md) for the lane-specific front door that ties together naming, onboarding, readiness, drafting, continuity, and Khan/reading-basket interpretation rules.
+For repo-local Codex work, see [learning-core-lane skill](../../skills/student-operating-system/learning-core-lane/SKILL.md) for the lane-specific front door that ties together naming, onboarding, readiness, drafting, continuity, and Khan/reading-basket interpretation rules.
 
 ## Customer Offer
 
-The current customer-facing entry offer is a **free 30-day collaborative build** of the family's `Learning Core` for new students whose family wants more depth, continuity, and parent clarity around a public-school, homeschool, or hybrid education experience.
+The current project-facing entry offer is a **free 30-day collaborative build** of the family's `Learning Core` for new students whose family wants more depth, continuity, and parent clarity around a public-school, homeschool, or hybrid education experience.
 
-Part of that value proposition is curation. Elementary School does due diligence on starter tools, learning supports, and recommendation logic so the parent does not have to personally sift through countless competing apps, programs, and product claims alone.
+Part of that value proposition is curation. Learning Core does due diligence on starter tools, learning supports, and recommendation logic so the parent does not have to personally sift through countless competing apps, programs, and product claims alone.
 
 The goal of that first 30 days is to collaborate with the customer until the family's `Learning Core` becomes usable enough that they can operate it independently if they choose.
 
@@ -161,15 +161,15 @@ After the first 30-day build, the continuity offer is a **monthly subscription**
 - Personalized ongoing consultation.
 - Early access to new upgrades and features.
 
-This offer shape is now part of the Elementary School lane hypothesis. It should still be treated as an evolving product model rather than a fully validated market offer.
+Learning Core now provides **$1,000 per month in confirmed recurring revenue** to Anyang Intelligence through this continuity service. The service remains subject to parent authority, child-safety boundaries, and the agreed scope.
 
 ## Paid Retainer
 
-Elementary School has paid Anyang Intelligence a **$1,000 one-time retainer** for a scoped 30-day collaborative build of the family's `Learning Core`, including onboarding.
+Learning Core has paid Anyang Intelligence a **$1,000 one-time retainer** for a scoped 30-day collaborative build of the family's `Learning Core`, including onboarding.
 
 This should be treated as a paid discovery and service-design obligation. The one-time service package is defined in [one-time-retainer-scope.md](one-time-retainer-scope.md) before delivery begins.
 
-The retainer should not automatically become customer pricing. It is a separate cash event and should be scoped intentionally.
+The retainer is a separate historical cash event from the confirmed monthly continuity revenue and should remain scoped intentionally.
 
 ## Installation
 

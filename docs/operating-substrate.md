@@ -2,7 +2,7 @@
 
 This document summarizes the system Anyang Intelligence has built so far.
 
-The repo is no longer only a thesis about Executive Operating Systems. It now contains the first pieces of an operating substrate: docs that define the philosophy, command-line tools that make installations and loops repeatable, customer folders that preserve domain context, and skills that encode recurring procedures.
+The repo is no longer only a thesis about Executive Operating Systems. It now contains the first pieces of an operating substrate: docs that define the philosophy, command-line tools that make installations and loops repeatable, project folders that preserve domain context, and skills that encode recurring procedures.
 
 ## Naming And Physical Path
 
@@ -50,7 +50,7 @@ The foundation lives in `docs/`:
 - `docs/product.md` defines the product boundary.
 - `docs/install-method.md` defines the repeatable 7-part installation method.
 - `docs/loops.md` defines the loop grammar.
-- `docs/membranes.md` defines cross-customer transfer rules.
+- `docs/membranes.md` defines cross-project transfer rules.
 - `docs/governance.md` defines authority boundaries.
 - `docs/artificial-enlightened-intelligence.md` defines the repo's bounded meaning of enlightened AI.
 - `docs/evidence-awareness-checklist.md` defines claim classification and source-to-claim discipline.
@@ -62,18 +62,18 @@ These docs answer what the system is allowed to become.
 The first installable Python tools now live under `cli/`:
 
 - `anyang-loop` parses, validates, simulates, lists, and exports 8-element loop definitions.
-- `anyang-install` scaffolds and validates customer installations from structured YAML input.
+- `anyang-project` scaffolds and validates projects from structured YAML input.
 
 This matters because it turns the operating philosophy into repeatable infrastructure. A customer install no longer has to begin from a blank page, and a loop can be checked for signal, memory, decision, action, evidence, cadence, learning update, and governance boundary.
 
 ### 3. Customer Operating Memory
 
-The `customers/` folder holds the live operating portfolio:
+The `projects/` folder holds the live operating portfolio:
 
 - Media Production is the clearest near-term commercial proof because it has a $1,000/month Grace Gems retainer, a defined production role, and measurable outputs.
 - Grace Gems is both a direct operating case and the first paying client of Media Production.
-- Elementary School is paid but high-trust; it should move through scope and safety discipline before delivery.
-- Book Club, Mountain Home, and Non-Profit broaden the operating model across community, property, asset, donor, board, and mission contexts.
+- Learning Core is paid but high-trust; it should move through scope and safety discipline before delivery.
+- Book Club and Mountain Villa broaden the operating model across community, property, and asset contexts.
 
 The portfolio is intentionally mixed. It teaches which primitives generalize and which facts must stay local.
 
@@ -104,9 +104,9 @@ See [cadence-loop-example.md](cadence-loop-example.md) for a short fixture showi
 
 ### 5. Internal Research Archive
 
-The `customers/singularity-science/` folder stores the Singularity Science research project.
+The `projects/singularity-science/` folder stores the Singularity Science research project.
 
-Its [archive](../customers/singularity-science/archive/README.md) holds internal analysis source material for Innermost Loop and Moonshots. This keeps transcripts, source notes, analyses, and research ledgers separate from docs, skills, and customer deliverables while still placing the ongoing research project beside other Anyang Intelligence operating lanes.
+Its [archive](../projects/singularity-science/archive/README.md) holds internal analysis source material for Innermost Loop and Moonshots. This keeps transcripts, source notes, analyses, and research ledgers separate from docs, skills, and customer deliverables while still placing the ongoing research project beside other Anyang Intelligence operating lanes.
 
 Archive material can inform product judgment, governance warnings, and reusable primitive candidates. It should not be treated as public content, customer-facing copy, or reusable doctrine without source discipline, rights review, and membrane translation.
 
@@ -165,9 +165,9 @@ Reasons:
 - It has visible production constraints.
 - It has repeatable creative work.
 - It has quality and evidence needs that can become software primitives.
-- It is lower-risk than Elementary School while still commercially meaningful.
+- It is lower-risk than Learning Core while still commercially meaningful.
 
-Elementary School remains important, but its trust boundary means scope and safety must lead. Non-Profit and Mountain Home are valuable governance proofs, but they should not displace paid operating obligations until the primary proof loop is stable.
+Learning Core remains important, but its trust boundary means scope and safety must lead. Mountain Villa is a valuable governance proof, but it should not displace paid operating obligations until the primary proof loop is stable.
 
 ## Next Leverage Points
 
@@ -176,8 +176,8 @@ The next valuable improvements are likely:
 - A Media Production weekly operating review that uses brief, gate, package, and ledger outputs.
 - A Grace Gems first-week deliverables plan tied to owner approval boundaries.
 - A Creative Production Operator onboarding/sourcing gate before contractor work begins.
-- Real Elementary School parent intake responses run through the readiness loop before any 30-day plan draft.
-- A cross-customer primitive map that turns lessons into templates without leaking private context.
+- Real Learning Core parent intake responses run through the readiness loop before any 30-day plan draft.
+- A cross-project primitive map that turns lessons into templates without leaking private context.
 
 Each next step should follow the same rule: preserve one durable improvement only when it makes the next operating cycle smarter.
 

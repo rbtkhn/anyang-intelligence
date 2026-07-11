@@ -4,7 +4,7 @@ The monthly portfolio review turns student portfolio artifacts into a parent-rea
 
 Its job is not to grade the child. Its job is to help the parent see growth, pride, interests, friction, milestones, and next steps.
 
-This review closes and restarts the Elementary School operating loop:
+This review closes and restarts the Learning Core operating loop:
 
 ```text
 observe

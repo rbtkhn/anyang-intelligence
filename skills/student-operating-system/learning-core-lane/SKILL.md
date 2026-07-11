@@ -1,11 +1,11 @@
 ---
-name: elementary-school-lane
-description: Elementary School lane procedure for Student Operating System work. Use when Anyang Intelligence work involves the Elementary School customer lane, Learning Core naming, parent onboarding, readiness classification, Phase 1 or Phase 2 survey flow, 30-day draft gating, continuity invitation logic, or Khan Academy Kids and reading-basket signals inside the Elementary School offer.
+name: learning-core-lane
+description: Learning Core lane procedure for Student Operating System work. Use when Anyang Intelligence work involves the Learning Core project lane, Learning Core naming, parent onboarding, readiness classification, Phase 1 or Phase 2 survey flow, 30-day draft gating, continuity invitation logic, or Khan Academy Kids and reading-basket signals inside the Learning Core offer.
 ---
 
-# Elementary School Lane
+# Learning Core Lane
 
-Use this skill to keep Elementary School work aligned with the lane's current doctrine.
+Use this skill to keep Learning Core work aligned with the lane's current doctrine.
 
 This is the lane-specific front door for work that sits above the generic Student Operating System skills.
 
@@ -13,24 +13,24 @@ This is the lane-specific front door for work that sits above the generic Studen
 
 Read these first:
 
-1. `customers/elementary-school/README.md`
-2. `customers/elementary-school/naming-architecture.md`
-3. `customers/elementary-school/parent-onboarding-survey.md`
-4. `customers/elementary-school/phase-2-survey-generation.md`
-5. `customers/elementary-school/onboarding-readiness-checklist.md`
-6. `customers/elementary-school/plan-drafting-gate.md`
-7. `customers/elementary-school/subscription-boundary.md`
-8. `customers/elementary-school/subscription-experience.md`
+1. `projects/learning-core/README.md`
+2. `projects/learning-core/naming-architecture.md`
+3. `projects/learning-core/parent-onboarding-survey.md`
+4. `projects/learning-core/phase-2-survey-generation.md`
+5. `projects/learning-core/onboarding-readiness-checklist.md`
+6. `projects/learning-core/plan-drafting-gate.md`
+7. `projects/learning-core/subscription-boundary.md`
+8. `projects/learning-core/subscription-experience.md`
 
 Read these when the task touches them:
 
-- `customers/elementary-school/khan-adapter-layer.md`
-- `customers/elementary-school/khan-transition-point.md`
-- `customers/elementary-school/khan-transition-readiness-target.md`
-- `customers/elementary-school/khan-academy-signal-pipeline.md`
-- `customers/elementary-school/reading-basket.md`
-- `customers/elementary-school/monthly-portfolio-review.md`
-- `customers/elementary-school/learning-core-ob1-integration.md`
+- `projects/learning-core/khan-adapter-layer.md`
+- `projects/learning-core/khan-transition-point.md`
+- `projects/learning-core/khan-transition-readiness-target.md`
+- `projects/learning-core/khan-academy-signal-pipeline.md`
+- `projects/learning-core/reading-basket.md`
+- `projects/learning-core/monthly-portfolio-review.md`
+- `projects/learning-core/learning-core-ob1-integration.md`
 
 Use related Student Operating System skills after this lane framing is clear:
 
@@ -43,7 +43,7 @@ Use related Student Operating System skills after this lane framing is clear:
 
 Keep these layers distinct:
 
-- `Elementary School` = the customer lane
+- `Learning Core` = the project lane
 - `Learning Core` = the family's operating artifact
 - `Student Operating System` = the broader method layer
 
@@ -51,13 +51,13 @@ Do not use these terms as synonyms.
 
 Preferred sentence pattern:
 
-- `Elementary School` delivers a collaborative build of the family's `Learning Core`.
+- `Learning Core` delivers a collaborative build of the family's `Learning Core`.
 - The `Learning Core` is built using the Student Operating System method.
 - Continuity support helps the family keep the `Learning Core` alive over time.
 
 ## Standard Lane Flow
 
-Default Elementary School flow:
+Default Learning Core flow:
 
 ```text
 registration and Phase 1 survey
@@ -168,7 +168,7 @@ The Khan transition doctrine is about capability readiness and fit, not automati
 When this skill is used, produce:
 
 ```text
-Elementary School lane check:
+Learning Core lane check:
 - Lane object:
 - Naming layer:
 - Parent-facing or operator-facing:
@@ -180,14 +180,14 @@ Elementary School lane check:
 - Next artifact to update:
 
 Artifact:
-<survey, intake summary, phase-2 follow-up, readiness note, draft gate note, continuity invitation, doctrine update, or related Elementary School artifact>
+<survey, intake summary, phase-2 follow-up, readiness note, draft gate note, continuity invitation, doctrine update, or related Learning Core artifact>
 ```
 
 ## Guardrails
 
 Do not:
 
-- blur `Elementary School`, `Learning Core`, and `Student Operating System`
+- blur `Learning Core`, `Learning Core`, and `Student Operating System`
 - diagnose or grade the child
 - treat app activity as proof of mastery
 - imply the subscription is the hidden real product
@@ -197,7 +197,7 @@ Do not:
 
 ## Done When
 
-The Elementary School artifact or decision:
+The Learning Core artifact or decision:
 
 - uses the right naming layer
 - fits the lane's onboarding and readiness flow

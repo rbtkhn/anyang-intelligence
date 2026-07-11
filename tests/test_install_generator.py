@@ -1,27 +1,27 @@
 from pathlib import Path
 import tempfile
 
-from anyang_loop.install_cli import main
-from anyang_loop.install_model import load_install_input
-from anyang_loop.install_render import build_customer_files
-from anyang_loop.install_validate import validate_install_path
+from anyang_loop.project_cli import main
+from anyang_loop.project_model import load_project_input
+from anyang_loop.project_render import build_project_files
+from anyang_loop.project_validate import validate_project_path
 from anyang_loop.membrane import classify_text, extract_patterns
 from anyang_loop.parser import parse_yaml
 
 
 def example_input_path() -> Path:
-    return Path(__file__).resolve().parents[1] / "templates" / "customer-install" / "input-example.yaml"
+    return Path(__file__).resolve().parents[1] / "templates" / "project-install" / "input-example.yaml"
 
 
-def test_load_install_input():
-    spec = load_install_input(example_input_path())
-    assert spec.slug == "example-customer"
+def test_load_project_input():
+    spec = load_project_input(example_input_path())
+    assert spec.slug == "example-project"
     assert "Operating context" in spec.context_map
 
 
-def test_build_customer_files_contains_required_scaffold():
-    spec = load_install_input(example_input_path())
-    files = build_customer_files(spec)
+def test_build_project_files_contains_required_scaffold():
+    spec = load_project_input(example_input_path())
+    files = build_project_files(spec)
     for name in (
         "README.md",
         "executive-os-install.md",
@@ -36,11 +36,11 @@ def test_build_customer_files_contains_required_scaffold():
     assert len(loop_files) == 3
     for name in loop_files:
         loop = parse_yaml(files[name], name)
-        assert loop.customer_lane == "example-customer"
+        assert loop.project_lane == "example-project"
 
 
 def test_cli_new_validate_and_overwrite_protection():
-    output = Path(tempfile.mkdtemp()) / "example-customer"
+    output = Path(tempfile.mkdtemp()) / "example-project"
     assert main(["new", str(example_input_path()), "--output", str(output)]) == 0
     assert (output / "executive-os-install.md").exists()
     assert main(["new", str(example_input_path()), "--output", str(output)]) == 1
@@ -60,25 +60,25 @@ def test_render_formats():
     assert (html / "index.html").exists()
 
 
-def test_validate_incomplete_customer_fails():
+def test_validate_incomplete_project_fails():
     tmp_path = Path(tempfile.mkdtemp())
-    customer = tmp_path / "thin"
-    customer.mkdir()
-    (customer / "README.md").write_text("# Thin\n", encoding="utf-8")
-    results = validate_install_path(customer)
+    project = tmp_path / "thin"
+    project.mkdir()
+    (project / "README.md").write_text("# Thin\n", encoding="utf-8")
+    results = validate_project_path(project)
     assert results[0].errors
 
 
 def test_membrane_classification_sensitive_terms():
-    classification, reason, approval = classify_text("Private customer pricing and tax review")
+    classification, reason, approval = classify_text("Private project pricing and tax review")
     assert classification in {"approval required", "professional review required", "keep local"}
     assert reason
     assert approval
 
 
-def test_extract_patterns_from_customers():
+def test_extract_patterns_from_projects():
     root = Path(__file__).resolve().parents[1]
-    candidates = extract_patterns(root / "customers")
+    candidates = extract_patterns(root / "projects")
     assert candidates
     assert any("review" in candidate.transfer_candidate.lower() for candidate in candidates)
 
@@ -87,6 +87,6 @@ def test_cli_extract_patterns():
     tmp_path = Path(tempfile.mkdtemp())
     root = Path(__file__).resolve().parents[1]
     output = tmp_path / "patterns.md"
-    assert main(["extract-patterns", str(root / "customers"), "--output", str(output)]) == 0
+    assert main(["extract-patterns", str(root / "projects"), "--output", str(output)]) == 0
     text = output.read_text(encoding="utf-8")
     assert "Membrane classification" in text

@@ -1,22 +1,22 @@
-# Customer State Update Skill
+# Project State Update Skill
 
-Use this skill when a customer fact changes or a new customer fact is introduced.
+Use this skill when a project fact changes or a new project fact is introduced.
 
 Examples:
 
 - Revenue, retainer, donation, salary, budget, asset value, or pricing changes.
-- A customer moves from hypothesis to paid obligation.
-- A customer service scope is defined, corrected, or marked unplanned.
-- A relationship changes across customers, such as one customer buying services from another.
-- A customer-facing, employee-facing, or internal-only language boundary needs correction.
+- A project moves from hypothesis to paid obligation.
+- A project service scope is defined, corrected, or marked unplanned.
+- A relationship changes across projects, such as one project buying services from another.
+- A project-facing, employee-facing, or internal-only language boundary needs correction.
 
-If the fact involves money, tax-sensitive classification, accounting evidence, payroll, donations, retainers, reimbursements, asset values, inventory, real estate, or nonprofit funds, run the `tax-financial-governance` check before updating customer state.
+If the fact involves money, tax-sensitive classification, accounting evidence, payroll, donations, retainers, reimbursements, asset values, inventory, real estate, or nonprofit funds, run the `tax-financial-governance` check before updating project state.
 
 ## Purpose
 
-Keep customer state coherent across the Anyang Intelligence repo.
+Keep project state coherent across the Anyang Intelligence repo.
 
-The goal is to prevent drift between customer folders, portfolio dashboards, comparison matrices, commercial hypotheses, and service-package documents.
+The goal is to prevent drift between project folders, portfolio dashboards, comparison matrices, commercial hypotheses, and service-package documents.
 
 ## Update Procedure
 
@@ -36,7 +36,7 @@ Before editing, classify the new fact:
 - Service scope defined.
 - Internal note only.
 - Employee-facing instruction.
-- Customer-facing instruction.
+- Project-facing instruction.
 
 Do not collapse these categories. For example, a donor-funded retainer is not the same as paid participation.
 
@@ -46,13 +46,13 @@ For any money-related fact, also classify the financial-governance status using 
 
 Check whether the fact belongs in:
 
-- `customers/<customer>/README.md`
-- `customers/<customer>/executive-os-install.md`
-- Customer-specific service package docs.
+- `projects/<project>/README.md`
+- `projects/<project>/executive-os-install.md`
+- Project-specific service package docs.
 - Employee onboarding docs.
-- `customers/operating-portfolio-dashboard.md`
-- `customers/comparison-matrix.md`
-- `customers/commercial-hypotheses.md`
+- `projects/operating-portfolio-dashboard.md`
+- `projects/comparison-matrix.md`
+- `projects/commercial-hypotheses.md`
 - Root `README.md`
 - Shared templates, playbooks, or docs.
 
@@ -63,11 +63,11 @@ If the fact affects money or obligations, the operating portfolio dashboard almo
 Before writing, decide the document audience:
 
 - Internal Anyang Intelligence operating document.
-- Customer-facing document.
+- Project-facing document.
 - Employee-facing document.
 - Public/service document.
 
-Avoid leaking internal platform language into employee-facing or customer-facing docs unless intentionally part of the artifact.
+Avoid leaking internal platform language into employee-facing or project-facing docs unless intentionally part of the artifact.
 
 ### 4. Remove Stale Contradictions
 
@@ -75,7 +75,7 @@ Search for old versions of the fact.
 
 Recommended search patterns:
 
-- Customer name.
+- Project name.
 - Dollar amount.
 - `retainer`
 - `paid`
@@ -91,7 +91,7 @@ Update or remove stale claims in the same change.
 
 ### 5. Update Portfolio State
 
-When relevant, update the customer's:
+When relevant, update the project's:
 
 - Current status.
 - Revenue / asset status.
@@ -128,7 +128,7 @@ Before committing:
 
 ## Output Standard
 
-Every customer state update should leave the repo with:
+Every project state update should leave the repo with:
 
 - One clear source of truth for the current fact.
 - No obvious contradictions across portfolio docs.

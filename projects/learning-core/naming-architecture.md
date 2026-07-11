@@ -1,6 +1,6 @@
-# Elementary School Naming Architecture
+# Learning Core Naming Architecture
 
-This note defines how `Elementary School`, `Learning Core`, and `Student Operating System` should be used inside Anyang Intelligence.
+This note defines how `Learning Core`, `Learning Core`, and `Student Operating System` should be used inside Anyang Intelligence.
 
 The goal is to keep the lane, the family artifact, and the broader method distinct so they do not blur together in planning, documentation, or parent-facing communication.
 
@@ -8,15 +8,15 @@ The goal is to keep the lane, the family artifact, and the broader method distin
 
 Use the three names like this:
 
-- `Elementary School` = the customer lane
+- `Learning Core` = the project lane
 - `Learning Core` = the family's operating artifact
 - `Student Operating System` = the broader method and doctrine layer
 
 These are related, but they are not interchangeable.
 
-## 1. Elementary School
+## 1. Learning Core
 
-`Elementary School` names the lane.
+`Learning Core` names the lane.
 
 Use it when referring to:
 
@@ -29,11 +29,11 @@ Use it when referring to:
 
 Good examples:
 
-- Elementary School is an Anyang Intelligence customer lane.
-- Elementary School offers a free 30-day collaborative build followed by an optional continuity subscription.
-- Elementary School should preserve parent authority and child safety.
+- Learning Core is an Anyang Intelligence project lane.
+- Learning Core offers a free 30-day collaborative build followed by an optional continuity subscription.
+- Learning Core should preserve parent authority and child safety.
 
-Do not use `Elementary School` as the name of the family artifact itself.
+Do not use `Learning Core` as the name of the family artifact itself.
 
 ## 2. Learning Core
 
@@ -66,7 +66,7 @@ Use it when referring to:
 - the general model of parent-guided educational support
 - readiness, planning, evidence, and review logic
 - architecture notes and system design
-- reusable method that could later serve more than one customer lane
+- reusable method that could later serve more than one project lane
 
 Good examples:
 
@@ -80,7 +80,7 @@ Do not use `Student Operating System` as a direct synonym for the family's `Lear
 
 This is the preferred relationship:
 
-- `Elementary School` delivers a 30-day collaborative build of the family's `Learning Core`.
+- `Learning Core` delivers a 30-day collaborative build of the family's `Learning Core`.
 - That `Learning Core` is built using the Student Operating System method.
 - The continuity subscription helps the family keep the `Learning Core` alive over time.
 
@@ -88,7 +88,7 @@ This is the preferred relationship:
 
 Prefer these defaults:
 
-- lane dashboards, portfolio tracking, repo folders, and commercial tables: `Elementary School`
+- lane dashboards, portfolio tracking, repo folders, and commercial tables: `Learning Core`
 - parent-facing offer copy, onboarding, handoff, continuity, and memory-interface language: `Learning Core`
 - doctrine notes, architecture notes, readiness logic, and system-design language: `Student Operating System`
 
@@ -102,6 +102,6 @@ If the names collapse together, the lane starts sounding confused:
 
 This distinction keeps the lane legible:
 
-- `Elementary School` = where the work lives
+- `Learning Core` = where the work lives
 - `Learning Core` = what the family uses
 - `Student Operating System` = how the system thinks

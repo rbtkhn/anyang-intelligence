@@ -50,7 +50,7 @@ The strictest applicable class wins.
 - Email addresses, phone numbers, credentials, tokens, private keys, or private database files.
 - Exact private property access/security details.
 - Tenant folders named `tenant-private`, `customer-private`, or `raw-customer-transcripts`.
-- Unredacted intake summaries or customer-specific plan-input drafts.
+- Unredacted intake summaries or project-specific plan-input drafts.
 
 Run `anyang-ops privacy-scan --repo .` before commit and in CI. A finding blocks shipment until the content is removed, replaced with a synthetic fixture, or the scanner rule is narrowly corrected without weakening this policy.
 

@@ -20,8 +20,8 @@ SENSITIVE_RULES = {
         "child",
         "family",
         "donor",
-        "customer transcript",
-        "customer message",
+        "project transcript",
+        "project message",
         "pricing",
         "margin",
         "spending",
@@ -73,12 +73,12 @@ def classify_text(text: str) -> tuple[str, str, str]:
                 approval = "professional review" if classification == "professional review required" else "owner/operator"
                 return classification, f"Matched sensitive membrane term: {word}", approval
     if any(word in lowered for word in PRIMITIVE_WORDS):
-        return "translate first", "Looks like a reusable operating primitive, but customer context should be stripped.", "none"
+        return "translate first", "Looks like a reusable operating primitive, but project context should be stripped.", "none"
     return "translate first", "Candidate needs review before reuse.", "none"
 
 
-def extract_patterns(customers_path: str | Path) -> list[PatternCandidate]:
-    root = Path(customers_path)
+def extract_patterns(projects_path: str | Path) -> list[PatternCandidate]:
+    root = Path(projects_path)
     candidates: list[PatternCandidate] = []
     for readme in sorted(root.glob("*/README.md")):
         lane = readme.parent.name
@@ -105,12 +105,11 @@ def extract_patterns(customers_path: str | Path) -> list[PatternCandidate]:
 
 def make_safe_version(text: str) -> str:
     replacements = {
-        "Grace Gems": "the customer",
-        "Mountain Home": "the customer",
-        "Book Club": "the customer",
-        "Elementary School": "the customer",
-        "Media Production": "the customer",
-        "Non-Profit": "the customer",
+        "Grace Gems": "the project",
+        "Mountain Villa": "the project",
+        "Book Club": "the project",
+        "Learning Core": "the project",
+        "Media Production": "the project",
     }
     safe = text
     for source, target in replacements.items():
@@ -120,7 +119,7 @@ def make_safe_version(text: str) -> str:
 
 def render_pattern_report(candidates: list[PatternCandidate]) -> str:
     lines = [
-        "# Cross-Customer Pattern Candidates",
+        "# Cross-Project Pattern Candidates",
         "",
         "Review-only report. Do not auto-promote these candidates into shared templates without human membrane review.",
         "",
@@ -147,4 +146,3 @@ def render_pattern_report(candidates: list[PatternCandidate]) -> str:
             ]
         )
     return "\n".join(lines)
-

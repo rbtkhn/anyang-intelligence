@@ -25,10 +25,10 @@ This skill reviews a draft or review-ready Media Production asset before it is t
 
 Read these first:
 
-1. `customers/media-production/creative-abundance-quality-gate.md`
-2. `customers/media-production/creative-production-operator-onboarding.md`
-3. `customers/media-production/executive-os-install.md`
-4. `customers/media-production/README.md`
+1. `projects/media-production/creative-abundance-quality-gate.md`
+2. `projects/media-production/creative-production-operator-onboarding.md`
+3. `projects/media-production/executive-os-install.md`
+4. `projects/media-production/README.md`
 
 When available, also read:
 
@@ -206,4 +206,3 @@ The operator has:
 - Any source, rights, claim, budget, or human-approval blockers named.
 - One concrete next action.
 - No accidental publication, delivery, packaging, ledger update, spend approval, or contractor assignment.
-

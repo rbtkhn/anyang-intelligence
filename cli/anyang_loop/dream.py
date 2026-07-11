@@ -123,8 +123,8 @@ def _governance_lines(snapshot: RepoSnapshot, checks: list[CheckResult]) -> list
         lines.append(f"{len(failures)} fresh verification failure(s) remain; no clean-pass claim is permitted.")
     if any(check.name == "install-validation" and "WARNING" in check.summary for check in checks):
         lines.append("Install validation completed with known legacy warnings; they are not reported as fresh cadence failures.")
-    if "customers" in snapshot.touched_surfaces:
-        lines.append("Customer changes retain their local privacy, evidence, and human-authority boundaries.")
+    if "projects" in snapshot.touched_surfaces:
+        lines.append("Project changes retain their local privacy, evidence, and human-authority boundaries.")
     if "cli" in snapshot.touched_surfaces or "tests" in snapshot.touched_surfaces:
         lines.append("CLI and test changes remain advisory and create no publication, spend, delivery, or merge authority.")
     if not lines:

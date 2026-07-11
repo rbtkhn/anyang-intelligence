@@ -1,10 +1,10 @@
 # Embodied AI Hold Exemplar
 
-This is a fictional end-to-end example showing how the Elementary School lane should behave when a parent asks about a child-facing robot, kiosk, or embodied tutoring device and the correct default answer is `Hold`.
+This is a fictional end-to-end example showing how the Learning Core lane should behave when a parent asks about a child-facing robot, kiosk, or embodied tutoring device and the correct default answer is `Hold`.
 
 It is not a real family, student record, or delivery artifact.
 
-Treat this as the canonical embodied-AI pause exemplar for future operators, agents, or customer-owned AI interfaces working inside the Elementary School lane.
+Treat this as the canonical embodied-AI pause exemplar for future operators, agents, or customer-owned AI interfaces working inside the Learning Core lane.
 
 ## Purpose
 
@@ -144,4 +144,4 @@ An embodied-AI hold response passes when:
 
 This exemplar teaches safe review behavior, not product endorsement.
 
-Do not use it to imply that child-facing embodied AI is expected, required, or already approved inside Elementary School.
+Do not use it to imply that child-facing embodied AI is expected, required, or already approved inside Learning Core.

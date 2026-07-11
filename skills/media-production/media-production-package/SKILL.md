@@ -26,11 +26,11 @@ This skill turns an approved or review-ready asset into an organized package tha
 
 Read these first:
 
-1. `customers/media-production/README.md`
-2. `customers/media-production/executive-os-install.md`
-3. `customers/media-production/creative-production-operator-onboarding.md`
-4. `customers/media-production/creative-abundance-quality-gate.md`
-5. `customers/media-production/creative-abundance-ledger-template.md`
+1. `projects/media-production/README.md`
+2. `projects/media-production/executive-os-install.md`
+3. `projects/media-production/creative-production-operator-onboarding.md`
+4. `projects/media-production/creative-abundance-quality-gate.md`
+5. `projects/media-production/creative-abundance-ledger-template.md`
 
 When available, also read:
 

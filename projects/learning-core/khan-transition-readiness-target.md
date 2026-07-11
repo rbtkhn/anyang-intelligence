@@ -1,6 +1,6 @@
 # Khan Transition Readiness Target
 
-This document defines the **transition-readiness threshold** between **Khan Academy Kids** and the main **Khan Academy** experience as a deliberate developmental target for Elementary School.
+This document defines the **transition-readiness threshold** between **Khan Academy Kids** and the main **Khan Academy** experience as a deliberate developmental target for Learning Core.
 
 The point is not to say:
 
@@ -12,7 +12,7 @@ The point is to say:
 
 - the learner is becoming ready for more structured, more self-propelled digital learning
 
-That readiness threshold can be used as a meaningful target that Elementary School pushes toward deliberately.
+That readiness threshold can be used as a meaningful target that Learning Core pushes toward deliberately.
 
 ## Core Idea
 
@@ -20,7 +20,7 @@ The Khan transition threshold is not just a handoff rule.
 
 It is a **target capability bundle**.
 
-Elementary School can use that bundle as a practical aim because it develops abilities that matter beyond Khan itself:
+Learning Core can use that bundle as a practical aim because it develops abilities that matter beyond Khan itself:
 
 - reading stamina
 - instruction-following
@@ -39,7 +39,7 @@ These help with:
 
 ## The Readiness Target
 
-Elementary School should treat the target as:
+Learning Core should treat the target as:
 
 `readiness for structured self-propelled digital learning`
 
@@ -65,7 +65,7 @@ Why it matters:
 
 - the main Khan environment requires more reading participation
 
-What Elementary School can deliberately build:
+What Learning Core can deliberately build:
 
 - daily reading practice
 - short instruction-following tasks
@@ -84,7 +84,7 @@ Why it matters:
 
 - main Khan works better when the learner can stay in the lane long enough to benefit from it
 
-What Elementary School can deliberately build:
+What Learning Core can deliberately build:
 
 - short but steady practice blocks
 - simple finish-what-we-start expectations
@@ -103,7 +103,7 @@ Why it matters:
 
 - the main Khan environment asks for more interface handling
 
-What Elementary School can deliberately build:
+What Learning Core can deliberately build:
 
 - light supervised app independence
 - short "you try first" moments
@@ -122,7 +122,7 @@ Why it matters:
 
 - structured digital learning becomes more useful when correction does not end the session
 
-What Elementary School can deliberately build:
+What Learning Core can deliberately build:
 
 - normalize mistakes
 - use low-stakes practice
@@ -141,7 +141,7 @@ Why it matters:
 
 - main Khan is stronger when the learner can participate in a sequence rather than only sampling novelty
 
-What Elementary School can deliberately build:
+What Learning Core can deliberately build:
 
 - repeatable weekly rhythm
 - familiar activity lanes
@@ -160,7 +160,7 @@ Why it matters:
 
 - readiness is not just in the child; it is in the operating environment
 
-What Elementary School can deliberately build:
+What Learning Core can deliberately build:
 
 - realistic time blocks
 - clear screen-time rules
@@ -178,7 +178,7 @@ The learner is **approaching threshold** when:
 - frustration is more recoverable
 - structured tasks are becoming more doable
 
-At this stage, Elementary School should still focus on building capacity rather than forcing the transition.
+At this stage, Learning Core should still focus on building capacity rather than forcing the transition.
 
 ## What Counts As At The Threshold
 
@@ -210,9 +210,9 @@ It does not establish:
 
 Completion is supporting evidence, not the threshold itself.
 
-## How Elementary School Should Push Toward The Target
+## How Learning Core Should Push Toward The Target
 
-Elementary School should deliberately shape the month toward this threshold by increasing:
+Learning Core should deliberately shape the month toward this threshold by increasing:
 
 - reading stamina
 - follow-through
@@ -246,7 +246,7 @@ It may not be used to:
 
 This readiness target is working when:
 
-- Elementary School has a concrete capability aim to build toward
+- Learning Core has a concrete capability aim to build toward
 - the learner becomes more able to handle structured digital learning
 - the parent can see why specific routines are being recommended
 - the eventual Khan transition feels earned and usable

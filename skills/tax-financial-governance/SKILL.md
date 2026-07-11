@@ -75,7 +75,7 @@ Required review:
 <owner | bookkeeper | CPA/tax professional | attorney | board | parent/guardian | other>
 
 Next safe action:
-<record | ask for missing evidence | hold classification | prepare professional-review question | update customer state>
+<record | ask for missing evidence | hold classification | prepare professional-review question | update project state>
 ```
 
 ## Review Procedure
@@ -144,7 +144,7 @@ Common evidence types:
 Use:
 
 - `low` when the classification is obvious, low-stakes, and evidence is available.
-- `medium` when the classification affects customer state, reporting, reimbursement, expense tracking, or future pricing.
+- `medium` when the classification affects project state, reporting, reimbursement, expense tracking, or future pricing.
 - `high` when the classification affects payroll, taxes, nonprofit funds, real estate, restricted funds, inventory, customer refunds, legal commitments, or external claims.
 - `professional review required` when a tax, accounting, legal, payroll, nonprofit, investment, or jurisdictional position would be needed.
 
@@ -172,7 +172,7 @@ Use one:
 - Hold classification.
 - Prepare a CPA/bookkeeper question.
 - Prepare an owner/board approval question.
-- Update customer state after classification is clear.
+- Update project state after classification is clear.
 
 ## Portfolio-Specific Guardrails
 
@@ -180,9 +180,8 @@ Preserve these distinctions unless the operator gives a new confirmed fact:
 
 - Grace Gems paying Media Production is service revenue to Media Production, but Grace Gems business economics remain unknown.
 - Book Club participation is free; donor-funded support is not paid access.
-- Elementary School's `$1,000` retainer is payment from Elementary School to Anyang Intelligence for a scoped 30-Day Personalized Learning Plan for new students, including onboarding. Customer pricing has not been designed yet.
-- Non-Profit's `$200,000` real estate portfolio is an asset value, not operating revenue.
-- Mountain Home has property stewardship implications but no current revenue.
+- Learning Core's `$1,000` retainer is payment from Learning Core to Anyang Intelligence for a scoped 30-Day Personalized Learning Plan for new students, including onboarding. Customer pricing has not been designed yet.
+- Mountain Villa has property stewardship implications but no current revenue.
 - Media Production's `$500/month` Creative Production Operator allocation is a planned outsourced contractor/service-expense allocation while the role is unfilled; any actual payment requires appropriate contract, invoice, payment, and tax/accounting review.
 - Contractor country matters for governance. Before paying an outsourced contractor, preserve the contractor's country/residency, where the work is physically performed, contract, invoice, payment record, and W-8/W-9 status as applicable. Do not make a final withholding, reporting, treaty, payroll, labor-law, VAT/GST, sanctions/export-control, or permanent-establishment conclusion without professional review.
 

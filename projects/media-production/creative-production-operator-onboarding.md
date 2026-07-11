@@ -439,7 +439,7 @@ Pass standard:
 ### Week 1: Learn the System
 
 - Read this guide.
-- Review the Media Production customer folder.
+- Review the Media Production project folder.
 - Learn what Grace Gems needs from Media Production.
 - Learn what Predictive History is.
 - Review one sample Grace Gems product or customer question.

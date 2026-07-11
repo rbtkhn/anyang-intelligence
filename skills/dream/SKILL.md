@@ -15,7 +15,7 @@ scope_class: repo-governed
 
 The operator may type only `dream`. Do not require them to say `anyang-dream`, `native dream`, or a repo qualifier.
 
-When working inside `anyang-intelligence/operating-substrate`, this skill is authoritative. Do not route `dream` through strategy-codex `auto_dream.py`, cadence logs, conductor rollups, Grace-Mar memory files, or external night-close rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence dream reads this repo, its customer folders, its loop/install tooling, its skills, and git state.
+When working inside `anyang-intelligence/operating-substrate`, this skill is authoritative. Do not route `dream` through strategy-codex `auto_dream.py`, cadence logs, conductor rollups, Grace-Mar memory files, or external night-close rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence dream reads this repo, its project folders, its loop/install tooling, its skills, and git state.
 
 When tools are available, prefer the native command:
 
@@ -59,7 +59,7 @@ Read these first, in order:
 
 1. `git status --short --branch`
 2. Recent commits: `git log --oneline --decorate -8`
-3. `customers/operating-portfolio-dashboard.md`
+3. `projects/operating-portfolio-dashboard.md`
 4. `skills/README.md`
 5. `docs/recursive-self-enhancement.md`
 6. `docs/membranes.md`
@@ -69,7 +69,7 @@ Optional, only when directly relevant:
 
 - `git diff --stat` when the worktree is dirty
 - `cli/README.md` when loop or install tooling changed
-- `customers/README.md` when customer folder structure changed
+- `projects/README.md` when project folder structure changed
 - `docs/operating-substrate.md` when the repo's meta-operating layer changed
 - `pyproject.toml` and `tests/` when Python tooling changed
 
@@ -79,7 +79,7 @@ Do not require unavailable strategy-codex-only files such as `scripts/auto_dream
 
 1. Check git state first. Say whether the repo is clean, dirty, ahead, behind, or synced.
 2. Name the consolidation window from recent commits and current uncommitted work.
-3. Identify what was preserved in durable repo surfaces: customer docs, skills, templates, CLIs, tests, loop examples, or governance docs.
+3. Identify what was preserved in durable repo surfaces: project docs, skills, templates, CLIs, tests, loop examples, or governance docs.
 4. Run fast verification by default: `git diff --check`, privacy scanning when available, and compilation of changed Python files. Use `--verify full` for pytest plus install and loop validation, or `--verify none` only when intentionally skipping checks.
 5. Separate fresh issues from known legacy warnings.
 6. Check authority and membrane boundaries for the touched surfaces:
@@ -87,7 +87,7 @@ Do not require unavailable strategy-codex-only files such as `scripts/auto_dream
    - parent or owner authority
    - child-safety decisions
    - publication, spending, rights, external claims
-   - cross-customer pattern transfer
+   - cross-project pattern transfer
    - private or sensitive context
 7. State what was not generated. A normal dream remains read-only. `--record` creates only one sanitized external SQLite handoff; it does not create `last-dream.json`, a tracked cadence log, notebook pages, or autonomous follow-up tasks.
 8. Name one open loop or tomorrow inheritance. Prefer the most direct continuation of the preserved work.
@@ -103,7 +103,7 @@ Use these when available and relevant:
 - `anyang-dream --repo . --verify fast --record --db <external-db>`
 - `git status --short --branch`
 - `git log --oneline --decorate -8`
-- `python -m anyang_loop.install_cli validate customers`
+- `python -m anyang_loop.project_cli validate customers`
 - `python -m anyang_loop.cli validate customers`
 - `python -m pytest`
 - `git diff --check`
@@ -130,7 +130,7 @@ Run status:
 - Git: <clean/dirty/ahead/behind/synced>
 - Validation: <pass/fail/skipped, with known legacy warnings separated>
 - Generated artifacts: <none, or named files>
-- Touched surfaces: <docs/customers/skills/cli/tests>
+- Touched surfaces: <docs/projects/skills/cli/tests>
 
 Integrity and governance:
 - <one or more relevant boundary checks, or "No new boundary issue found.">
@@ -159,12 +159,12 @@ Keep the default brief short. Expand only when a check fails, a warning is new, 
 - Do not invent a cadence log if the repo does not have one.
 - Do not pretend strategy-codex scripts exist in this repo.
 - Do not turn `dream` into a broad planning sprint.
-- Do not treat warnings from legacy hand-built customer folders as new failures unless today's work caused them.
+- Do not treat warnings from legacy hand-built project folders as new failures unless today's work caused them.
 - Do not merge, stage, commit, push, publish, or transfer customer patterns across membranes without operator authority.
 - Preserve the distinction between paid obligations, hypotheses, donations, revenue, expenses, and asset values.
 - Preserve the distinction between one-time retainers and recurring subscription/customer pricing.
 - Preserve parent, owner/operator, client, and human approval authority.
-- Keep customer-owned AI interface training scoped to its customer folder unless an explicit membrane review extracts a reusable primitive.
+- Keep customer-owned AI interface training scoped to its project folder unless an explicit membrane review extracts a reusable primitive.
 - Cadence handoffs are repository-level coordination records, not tenant learning, customer evidence, or approval receipts. Never store customer facts, raw paths with private identifiers, emails, transcripts, or evidence bodies in them.
 
 ## Done When

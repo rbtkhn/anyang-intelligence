@@ -3,8 +3,8 @@
 ## Source
 
 - Title: Emerging Situation: Anthropic's Global Pause, Recursive Self-Improvement, and AI Personhood Arrives
-- Source note: [2026-06-09-moonshots-emerging-anthropic-global-pause-recursive-self-improvement-ai-personhood.source-note.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/source-notes/2026-06-09-moonshots-emerging-anthropic-global-pause-recursive-self-improvement-ai-personhood.source-note.md)
-- Transcript: [2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/transcripts/2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md)
+- Source note: [2026-06-09-moonshots-emerging-anthropic-global-pause-recursive-self-improvement-ai-personhood.source-note.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/source-notes/2026-06-09-moonshots-emerging-anthropic-global-pause-recursive-self-improvement-ai-personhood.source-note.md)
+- Transcript: [2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md)
 - Date analyzed: 2026-07-08
 
 ## Episode Rollup

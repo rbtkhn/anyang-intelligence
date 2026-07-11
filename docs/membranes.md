@@ -2,7 +2,7 @@
 
 Membranes are the filter-judgment layer between work lanes.
 
-Anyang Intelligence should learn across customers, but not everything should be shared. A useful Executive OS transfers operating wisdom while protecting customer-specific facts, authority boundaries, sensitive information, and domain obligations.
+Anyang Intelligence should learn across projects, but not everything should be shared. A useful Executive OS transfers operating wisdom while protecting project-specific facts, authority boundaries, sensitive information, and domain obligations.
 
 ## Core Principle
 
@@ -79,7 +79,7 @@ Use these rules when a lesson wants to move:
 - Public facts can cross only with source context and without exaggeration.
 - Sensitive facts require explicit approval before reuse.
 - Money facts route through tax-financial governance before becoming shared financial guidance.
-- Child/family facts stay inside the Elementary School lane unless anonymized into safety principles.
+- Child/family facts stay inside the Learning Core lane unless anonymized into safety principles.
 - Donor and nonprofit facts preserve restrictions, governance, and board authority.
 - Property facts preserve owner authority, safety implications, and insurance/legal sensitivity.
 - Creative lessons can cross freely only after removing client-specific claims, assets, and private context.
@@ -129,11 +129,10 @@ Default action: rewrite for the receiving audience and remove unnecessary Anyang
 | Lane | What can transfer out | What must be filtered |
 | --- | --- | --- |
 | Book Club | Light cadence, community stewardship, non-transactional donor support | Member identities, private preferences, donor details, social dynamics |
-| Elementary School | Parent-review posture, child-safety guardrails, portfolio evidence structure | Child information, family details, learning concerns, legal/accountability specifics |
+| Learning Core | Parent-review posture, child-safety guardrails, portfolio evidence structure | Child information, family details, learning concerns, legal/accountability specifics |
 | Grace Gems | Trust architecture, marketplace QA, owner-approval claim discipline | Customer transcripts, product margins, private policies, unapproved claims |
 | Media Production | Production cadence, creative abundance, quality gates, capacity governance | Client assets, contractor personal data, rights-sensitive materials, private client strategy |
-| Mountain Home | Risk ranking, seasonal readiness, proof standards, continuity planning | Property access/security, insurance details, exact vulnerabilities, owner private facts |
-| Non-Profit | Board review, donor stewardship, impact evidence, asset governance | Donor identities, restricted-fund details, board deliberations, beneficiary-sensitive details |
+| Mountain Villa | Risk ranking, seasonal readiness, proof standards, continuity planning | Property access/security, insurance details, exact vulnerabilities, owner private facts |
 
 ## Membrane Output
 

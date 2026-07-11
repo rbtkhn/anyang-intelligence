@@ -44,7 +44,7 @@ The parent remains the authority layer at every step.
 
 ## Catalog Knowledge Versus Use Signals
 
-Elementary School should keep these two lanes separate:
+Learning Core should keep these two lanes separate:
 
 ```text
 catalogue knowledge
@@ -63,7 +63,7 @@ Only actual parent-observed use should update learner-fit judgments.
 
 ## Signal Types
 
-Elementary School should pay attention to these specific signal types:
+Learning Core should pay attention to these specific signal types:
 
 ### 1. Choice Signal
 

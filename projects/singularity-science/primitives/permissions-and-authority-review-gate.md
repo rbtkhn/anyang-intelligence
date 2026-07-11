@@ -84,7 +84,7 @@ Recommended default: `watch`
 
 Recommended default: `watch`
 
-### Elementary School
+### Learning Core
 
 - Does the workflow stay firmly inside parent and adult authority, or is it beginning to act as if child-facing permission already exists?
 - Could a strong tutoring or intake workflow create pressure to skip adult approval because the output looks complete?
@@ -92,7 +92,7 @@ Recommended default: `watch`
 
 Recommended default: `hold`
 
-### Non-Profit
+### retired Non-Profit project
 
 - Can the workflow draft governance material without implying donor, board, grant, or stewardship authority?
 - Are board review and donor review still meaningful, or are they becoming ceremonial after the packet is assembled?
@@ -100,7 +100,7 @@ Recommended default: `hold`
 
 Recommended default: `watch`
 
-### Mountain Home
+### Mountain Villa
 
 - Is the workflow only surfacing risk, or is it drifting toward contractor, safety, access, or emergency authority?
 - Would better automation help, or does the real bottleneck remain human judgment, property access, or fallback responsibility?

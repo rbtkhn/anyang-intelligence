@@ -42,7 +42,7 @@ Cognitive-liberty review gate: a reusable review surface for tools that may affe
 
 ## Likely Best Receiving Lane
 
-Singularity Science first, with later translated implications for Elementary School and Media Production only after membrane review.
+Singularity Science first, with later translated implications for Learning Core and Media Production only after membrane review.
 
 ## What Remains Worldview-Only
 
@@ -54,9 +54,9 @@ Singularity Science first, with later translated implications for Elementary Sch
 
 - Media Production: useful for positive-future storytelling, collaborative AI creativity, rights-aware production briefs, and non-decorative judgment-support imagery.
 - Grace Gems: no immediate routing; preserve only broad trust/authenticity signals unless a concrete commerce primitive emerges.
-- Elementary School: relevant only as a high-caution child-facing autonomy and persuasion warning surface.
+- Learning Core: relevant only as a high-caution child-facing autonomy and persuasion warning surface.
 - Non-Profit: relevant for governance, institutional trust, and power concentration questions; no policy claims without verification.
-- Mountain Home: low direct relevance; possible resilience and local-capability framing only.
+- Mountain Villa: low direct relevance; possible resilience and local-capability framing only.
 - Book Club: useful as discussion material about personhood, agency, dignity, and human purpose if framed as a prompt, not doctrine.
 
 ## Usable Claims

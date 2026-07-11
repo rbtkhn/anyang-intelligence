@@ -19,7 +19,7 @@ Unknown or pending:
 
 ## Active Obligations
 
-### Elementary School
+### Learning Core
 
 - Explore an unpaid curriculum idea.
 
@@ -32,7 +32,7 @@ Unknown or pending:
 Current priority order:
 
 1. Serve Grace Gems through Media Production.
-2. Deepen Elementary School later.
+2. Deepen Learning Core later.
 """
 
 

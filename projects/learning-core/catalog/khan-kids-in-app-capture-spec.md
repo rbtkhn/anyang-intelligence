@@ -6,7 +6,7 @@ This note defines the future governed intake path for richer Khan Academy Kids c
 
 The public web does not appear to expose the full Khan Kids library as a clean external course catalogue.
 
-Because of that, Elementary School should treat richer Khan Kids coverage as a **manual intake process**, not as an assumed public import surface.
+Because of that, Learning Core should treat richer Khan Kids coverage as a **manual intake process**, not as an assumed public import surface.
 
 ## Intake Method
 

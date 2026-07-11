@@ -5,7 +5,7 @@ Source: Moonshots
 URL: https://www.youtube.com/watch?v=XjOLz--C_nQ
 Date published: unknown at intake
 Date captured: 2026-07-08
-Transcript location: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md](/C:/dev/anyang-intelligence/repo_probe/customers/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md)
+Transcript location: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md)
 Rights status: internal-commit-approved
 Capture method: user-provided transcript paste
 Why it matters: This episode concentrates several active Singularity Science seams in one place: frontier model gating after the Fable 5 pull, robotics cost compression through China's low-cost humanoids, orbital compute economics and launch bottlenecks, fusion/regulatory progress, and vertical integration in space infrastructure.
@@ -31,9 +31,9 @@ What remains worldview-only:
 Relevant lanes:
   - Media Production: strong relevance around robotics narratives, orbital compute, and synthetic-future storytelling frames.
   - Grace Gems: light relevance through automation cost curves and trust/affordability implications, but mostly indirect.
-  - Elementary School: moderate governance relevance where frontier-model access, robotics normalization, and AI-underestimation narratives affect child-facing AI expectations.
+  - Learning Core: moderate governance relevance where frontier-model access, robotics normalization, and AI-underestimation narratives affect child-facing AI expectations.
   - Non-Profit: moderate relevance for workforce disruption, capital concentration, and infrastructure governance frames.
-  - Mountain Home: moderate relevance through domestic/service robotics affordability and physical-world automation trajectories.
+  - Mountain Villa: moderate relevance through domestic/service robotics affordability and physical-world automation trajectories.
   - Book Club: light relevance as a discussion source on singularity rhetoric, abundance framing, and future imaginaries.
 Usable claims:
   - The episode treats Sonnet 5 as a temporary gap-filler while Fable 5 is expected to return after a government pull.

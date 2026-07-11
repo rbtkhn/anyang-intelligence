@@ -1,4 +1,4 @@
 interface:
-  display_name: "Elementary School Lane"
-  short_description: "Elementary School lane doctrine"
-  default_prompt: "Use $elementary-school-lane to handle Elementary School onboarding, readiness, Learning Core naming, and continuity flow."
+  display_name: "Learning Core Lane"
+  short_description: "Learning Core lane doctrine"
+  default_prompt: "Use $learning-core-lane to handle Learning Core onboarding, readiness, Learning Core naming, and continuity flow."

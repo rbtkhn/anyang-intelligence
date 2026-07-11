@@ -75,7 +75,7 @@ Recommended default: `watch`
 
 Recommended default: `watch`
 
-### Elementary School
+### Learning Core
 
 - Does the system change what the parent notices, approves, or says directly to the child?
 - Could a child experience the system as an authority even if the parent technically remains in charge?
@@ -83,7 +83,7 @@ Recommended default: `watch`
 
 Recommended default: `hold`
 
-### Non-Profit
+### retired Non-Profit project
 
 - Is the system drafting or is it quietly steering donor language, reporting tone, or board-facing framing?
 - Could institutional review become symbolic because the system is doing too much before review?
@@ -91,7 +91,7 @@ Recommended default: `hold`
 
 Recommended default: `watch`
 
-### Mountain Home
+### Mountain Villa
 
 - Is the system only surfacing signals, or beginning to substitute for owner judgment about risk or response?
 - Would the owner know what was ignored, escalated, or automatically categorized?
