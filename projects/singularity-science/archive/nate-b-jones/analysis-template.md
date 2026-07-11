@@ -1,8 +1,18 @@
-# Nate B. Jones Analysis Template
+# Nate B. Jones Analysis: Recover Reusable Orchestration Mechanisms without Laundering Benchmarks
+
+Title rationale: The template must preserve useful orchestration mechanics while preventing worked examples and cost shorthand from becoming doctrine.
 
 Use this template for Nate B. Jones seam-first extraction.
 
 Nate B. Jones sources usually bundle several operating claims, worked examples, and orchestration judgments. Extract 2-5 seams, then classify each seam into exactly one ROI disposition.
+
+## Lead Judgment
+
+State the strongest reusable orchestration mechanism, why it matters, and which benchmark, cost, or capability claim remains provisional.
+
+## Controlling Object
+
+Whether an orchestration seam is repeatable and governed enough to become a primitive rather than a source-specific worked example.
 
 ## Source
 
@@ -64,6 +74,12 @@ What stays inside Singularity Science:
 - What repeated from prior Nate B. Jones or adjacent Singularity Science sources:
 - What looks new:
 - What should be watched for recurrence:
+
+## Uncertainty
+
+| Status and cause | Consequence | Evidence that would reduce it |
+| --- | --- | --- |
+| Source-limited—complete the benchmark, cost, or provenance gap | State what cannot yet route or generalize | Name the independent source, repeated observation, or lane-safe test needed |
 
 ## Boundary
 

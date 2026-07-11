@@ -29,6 +29,13 @@ from .ops_service import (
     transition_work,
 )
 from .privacy_scan import render_findings, scan_repo
+from .cadence_metrics import (
+    COMPLETION_STATUSES,
+    EVENT_TYPES,
+    STATE_SOURCES,
+    measurement_report,
+    record_measurement,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -200,6 +207,28 @@ def build_parser() -> argparse.ArgumentParser:
     audit.add_argument("--format", choices=("markdown", "json"), default="markdown")
     audit.set_defaults(func=cmd_audit)
 
+    cadence = sub.add_parser("cadence", help="Measure cadence reconstruction performance")
+    cadence_sub = cadence.add_subparsers(required=True)
+    cadence_record = cadence_sub.add_parser("record", help="Record one completed or attempted cadence event")
+    cadence_record.add_argument("--repo-id", required=True)
+    cadence_record.add_argument("--event-type", choices=EVENT_TYPES, required=True)
+    cadence_record.add_argument("--scheduled", action=argparse.BooleanOptionalAction, required=True)
+    cadence_record.add_argument("--completion-status", choices=COMPLETION_STATUSES, required=True)
+    cadence_record.add_argument("--state-source", choices=STATE_SOURCES, required=True)
+    cadence_record.add_argument("--manual-reconstruction", action=argparse.BooleanOptionalAction, required=True)
+    cadence_record.add_argument("--reconstruction-minutes", type=float, required=True)
+    cadence_record.add_argument("--evidence-check-passed", action=argparse.BooleanOptionalAction, required=True)
+    cadence_record.add_argument("--privacy-check-passed", action=argparse.BooleanOptionalAction, required=True)
+    cadence_record.add_argument("--authority-check-passed", action=argparse.BooleanOptionalAction, required=True)
+    cadence_record.add_argument("--recorded-by", required=True)
+    cadence_record.add_argument("--occurred-at")
+    _dry(cadence_record)
+    cadence_record.set_defaults(func=cmd_cadence_record)
+    cadence_report = cadence_sub.add_parser("report", help="Report the latest cadence measurement sample")
+    cadence_report.add_argument("--repo-id", required=True)
+    cadence_report.add_argument("--limit", type=int, default=10)
+    cadence_report.set_defaults(func=cmd_cadence_report)
+
     privacy = sub.add_parser("privacy-scan")
     privacy.add_argument("--repo", default=".")
     privacy.set_defaults(func=cmd_privacy_scan)
@@ -211,7 +240,7 @@ def resolve_db(args: argparse.Namespace, *, allow_new: bool = False) -> Path:
     if not raw:
         data_dir = os.environ.get("ANYANG_DATA_DIR")
         if not data_dir:
-            raise OpsError("Provide --db or set ANYANG_DATA_DIR; customer state is never created inside the repo implicitly")
+            raise OpsError("Provide --db or set ANYANG_DATA_DIR; project state is never created inside the repo implicitly")
         raw = str(Path(data_dir) / "anyang-ops.db")
     path = Path(raw).expanduser().resolve()
     if not allow_new and not path.exists():
@@ -296,6 +325,27 @@ def cmd_audit(args: argparse.Namespace) -> int:
         for issue in data["issues"]:
             print(f"- {issue['code']}: {issue['message']}")
     return 0 if data["ok"] else 1
+
+
+def cmd_cadence_record(args: argparse.Namespace) -> int:
+    values = _pick(
+        vars(args), "repo_id", "event_type", "scheduled", "completion_status", "state_source",
+        "manual_reconstruction", "reconstruction_minutes", "evidence_check_passed",
+        "privacy_check_passed", "authority_check_passed", "recorded_by", "occurred_at",
+    )
+    if args.dry_run:
+        return print_result({"dry_run": True, "action": "record_cadence_measurement", "inputs": values})
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        measurement = record_measurement(connection, **values)
+    return print_result(measurement.as_dict())
+
+
+def cmd_cadence_report(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        report = measurement_report(connection, args.repo_id, args.limit)
+    return print_result(report)
 
 
 def cmd_privacy_scan(args: argparse.Namespace) -> int:

@@ -2,7 +2,7 @@
 
 `anyang-loop` validates and renders Executive OS loop definitions for Anyang Intelligence.
 
-`anyang-install` scaffolds and validates customer Executive OS installation folders from deterministic templates.
+`anyang-project` scaffolds and validates project Executive OS folders from deterministic templates.
 
 It also provides Singularity Science archive intake commands for transcript manifests.
 
@@ -19,9 +19,36 @@ anyang-ops init --tenant grace-gems --name "Grace Gems" --policy-profile governe
 
 Use `--dry-run` on every mutation command to inspect the intended operation. Use `anyang-ops audit --tenant grace-gems` for ledger integrity and `anyang-ops privacy-scan --repo .` before committing. Private evidence bodies and raw customer transcripts remain outside the database; use approved external references and redacted summaries.
 
+### Cadence reconstruction baseline
+
+Record each real cadence event immediately after it completes or stops. Do not backfill simulated successes:
+
+```bash
+anyang-ops --db C:\private\anyang-ops.db cadence record \
+  --repo-id anyang-intelligence \
+  --event-type coffee \
+  --scheduled \
+  --completion-status completed \
+  --state-source git_fallback \
+  --no-manual-reconstruction \
+  --reconstruction-minutes 0 \
+  --evidence-check-passed \
+  --privacy-check-passed \
+  --authority-check-passed \
+  --recorded-by operator
+```
+
+Review the latest ten events:
+
+```bash
+anyang-ops --db C:\private\anyang-ops.db cadence report --repo-id anyang-intelligence --limit 10
+```
+
+The completion rate uses completed events as its denominator. An event enters the numerator only when it required no manual reconstruction and passed evidence, privacy, and authority checks. Partial and abandoned events remain visible but do not inflate the rate. `sample_ready` becomes true after the requested number of events has been recorded.
+
 The ledger is canonical operating state. Generated Markdown is a review view, not a second writable source of truth.
 
-It also provides Elementary School catalog intake commands for governed course-directory assets.
+It also provides Learning Core catalog intake commands for governed course-directory assets.
 
 `anyang-coffee` renders the native Anyang Intelligence re-entry brief from repo state, portfolio docs, skills, and git status.
 
@@ -52,7 +79,7 @@ Then run:
 
 ```bash
 anyang-loop --help
-anyang-install --help
+anyang-project --help
 anyang-coffee --help
 anyang-dream --help
 ```
@@ -99,7 +126,7 @@ Or point it at a repo path:
 anyang-dream --repo C:\dev\anyang-intelligence\operating-substrate
 ```
 
-Fast verification is the default. Full verification adds pytest plus customer-install and loop validation:
+Fast verification is the default. Full verification adds pytest plus project-install and loop validation:
 
 ```bash
 anyang-dream --repo . --verify full
@@ -121,7 +148,7 @@ YAML:
 name: weekly-executive-review
 description: Weekly operating loop for leadership review.
 loop_type: operating
-customer_lane: shared
+project_lane: shared
 authority: human leadership
 tags:
   - weekly
@@ -182,12 +209,12 @@ Human leadership approves commitments and external claims.
 ## Commands
 
 ```bash
-anyang-loop validate customers/grace-gems/loop-examples
+anyang-loop validate projects/grace-gems/loop-examples
 anyang-loop new weekly-review --format markdown --type operating
 anyang-loop list customers --include-builtins
 anyang-loop simulate canonical-executive-loop
 anyang-loop export recursive-improvement-loop --format obsidian
-anyang-loop export customers/grace-gems/loop-examples/listing-gate.yaml --format json
+anyang-loop export projects/grace-gems/loop-examples/listing-gate.yaml --format json
 ```
 
 `validate` exits nonzero when required grammar fields are missing. Warnings are advisory and should be reviewed before treating a loop as operational.
@@ -210,7 +237,7 @@ anyang-loop export customers/grace-gems/loop-examples/listing-gate.yaml --format
 
 ## Human Authority And Membranes
 
-Use [`docs/membranes.md`](../docs/membranes.md) before moving lessons across customers. Transfer primitives, not private context. A valid loop may still be unsafe to reuse if it leaks customer facts, bypasses authority, or turns an impression into doctrine without evidence.
+Use [`docs/membranes.md`](../docs/membranes.md) before moving lessons across projects. Transfer primitives, not private context. A valid loop may still be unsafe to reuse if it leaks customer facts, bypasses authority, or turns an impression into doctrine without evidence.
 
 ## Installer Generator
 
@@ -239,62 +266,72 @@ risks:
 governance_boundary: Humans approve commitments, external communications, spending, and client-facing claims.
 ```
 
-Generate a Markdown customer folder:
+Generate a Markdown project folder:
 
 ```bash
-anyang-install new templates/customer-install/input-example.yaml --output customers/example-customer
+anyang-project new templates/project-install/input-example.yaml --output projects/example-customer
 ```
 
-Validate a generated folder or the whole customer portfolio:
+Validate a generated folder or the whole project portfolio:
 
 ```bash
-anyang-install validate customers/example-customer
-anyang-install validate customers
+anyang-project validate projects/example-customer
+anyang-project validate projects
 ```
 
-Render without placing under `customers/`:
+Validate the curated reader-facing analytical interfaces:
 
 ```bash
-anyang-install render templates/customer-install/input-example.yaml --format markdown --output tmp/example-markdown
-anyang-install render templates/customer-install/input-example.yaml --format obsidian --output tmp/example-vault
-anyang-install render templates/customer-install/input-example.yaml --format html --output tmp/example-dashboard
+anyang-project validate-interfaces
+anyang-project validate-interfaces --manifest analytical-interfaces.yaml
+anyang-project validate-interfaces --path templates/operating-review.md
+```
+
+The manifest separates governed publication and decision surfaces from provenance-bearing archives and stable identifiers. Objective diagnostics are release gates; accountable human review still judges whether a title or distinction faithfully carries the evidence.
+
+Render without placing under `projects/`:
+
+```bash
+anyang-project render templates/project-install/input-example.yaml --format markdown --output tmp/example-markdown
+anyang-project render templates/project-install/input-example.yaml --format obsidian --output tmp/example-vault
+anyang-project render templates/project-install/input-example.yaml --format html --output tmp/example-dashboard
 ```
 
 Extract membrane-aware pattern candidates:
 
 ```bash
-anyang-install extract-patterns customers --output customers/pattern-candidates.md
+anyang-project extract-patterns projects --output projects/pattern-candidates.md
 ```
 
-Pattern extraction is review-only. It never updates templates or customer folders automatically.
+Pattern extraction is review-only. It never updates templates or project folders automatically.
 
 ## Transcript Intake
 
 Singularity Science transcript intake is archive-only infrastructure. It normalizes internal transcript files into:
 
-- `customers/singularity-science/archive/innermost-loop/transcripts/`
-- `customers/singularity-science/archive/moonshots/transcripts/`
-- `customers/singularity-science/archive/nate-b-jones/transcripts/`
-- `customers/singularity-science/archive/external-interviews/transcripts/`
+- `projects/singularity-science/archive/innermost-loop/transcripts/`
+- `projects/singularity-science/archive/moonshots/transcripts/`
+- `projects/singularity-science/archive/nate-b-jones/transcripts/`
+- `projects/singularity-science/archive/external-interviews/transcripts/`
 
-The manifest must live under `customers/singularity-science/archive/`.
+The manifest must live under `projects/singularity-science/archive/`.
 
 Dry run an import:
 
 ```bash
-anyang-install import-transcripts --manifest customers/singularity-science/archive/transcript-intake-manifest.json --dry-run
+anyang-project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json --dry-run
 ```
 
 Run the import:
 
 ```bash
-anyang-install import-transcripts --manifest customers/singularity-science/archive/transcript-intake-manifest.json
+anyang-project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json
 ```
 
 Report completeness:
 
 ```bash
-anyang-install report-transcript-import --manifest customers/singularity-science/archive/transcript-intake-manifest.json
+anyang-project report-transcript-import --manifest projects/singularity-science/archive/transcript-intake-manifest.json
 ```
 
 Manifest rows require:
@@ -324,31 +361,31 @@ Optional manifest fields include:
 
 When `title_date` is present, transcript filenames use it ahead of `date_published` so issue-dated source streams like Innermost Loop preserve their visible source date.
 
-## Elementary School Catalog Intake
+## Learning Core Catalog Intake
 
-Elementary School catalog intake is a governed content-directory import surface. It supports:
+Learning Core catalog intake is a governed content-directory import surface. It supports:
 
 - public-web-backed main Khan Academy catalog entries
 - curated Khan Academy Kids catalog entries
 
-The manifest must live under `customers/elementary-school/catalog/`.
+The manifest must live under `projects/learning-core/catalog/`.
 
 Dry run an import:
 
 ```bash
-anyang-install import-catalog --manifest customers/elementary-school/catalog/khan-catalog-manifest.sample.yaml --dry-run
+anyang-project import-catalog --manifest projects/learning-core/catalog/khan-catalog-manifest.sample.yaml --dry-run
 ```
 
 Run the import:
 
 ```bash
-anyang-install import-catalog --manifest customers/elementary-school/catalog/khan-catalog-manifest.sample.yaml
+anyang-project import-catalog --manifest projects/learning-core/catalog/khan-catalog-manifest.sample.yaml
 ```
 
 Report completeness:
 
 ```bash
-anyang-install report-catalog-import --manifest customers/elementary-school/catalog/khan-catalog-manifest.sample.yaml
+anyang-project report-catalog-import --manifest projects/learning-core/catalog/khan-catalog-manifest.sample.yaml
 ```
 
 Catalog manifest rows require:

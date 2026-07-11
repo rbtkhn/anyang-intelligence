@@ -1,5 +1,7 @@
 # Weekly Executive Review
 
+Use [Analytical Interfaces](../docs/analytical-interfaces.md) for the review title, lead judgment, controlling object, decision questions, and uncertainty causes. Run `anyang-project validate-interfaces` when the output is a governed publication or decision surface.
+
 ## Purpose
 
 Create a recurring leadership surface that answers what changed, what matters, and what needs action.

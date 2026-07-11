@@ -5,16 +5,16 @@ from pathlib import Path
 
 import yaml
 
-from .install_model import InstallInput
+from .project_model import ProjectInput
 from .model import LoopDefinition
 from .render import render_loop
 
 
-def build_customer_files(spec: InstallInput) -> dict[str, str]:
+def build_project_files(spec: ProjectInput) -> dict[str, str]:
     loops = build_loops(spec)
     files = {
         "README.md": render_readme(spec),
-        "executive-os-install.md": render_install_doc(spec),
+        "executive-os-install.md": render_project_doc(spec),
         "risk-register.md": render_risk_register(spec),
         "decision-log.md": render_decision_log(spec),
         "operating-review.md": render_operating_review(spec),
@@ -26,7 +26,7 @@ def build_customer_files(spec: InstallInput) -> dict[str, str]:
     return files
 
 
-def build_loops(spec: InstallInput) -> list[LoopDefinition]:
+def build_loops(spec: ProjectInput) -> list[LoopDefinition]:
     memory = spec.memory_objects or ["Context map", "Decisions", "Risks", "Follow-ups", "Lessons learned"]
     decisions = spec.decisions or ["Next-cycle priority decision", "Risk or escalation decision"]
     governance = spec.governance_boundary or "Humans approve commitments, external communications, spending, and domain-sensitive decisions."
@@ -35,7 +35,7 @@ def build_loops(spec: InstallInput) -> list[LoopDefinition]:
             name=f"{spec.slug}-operating-loop",
             description=f"Primary operating loop for {spec.name}.",
             loop_type="operating",
-            customer_lane=spec.slug,
+            project_lane=spec.slug,
             authority="human leadership",
             tags=["generated", "operating"],
             signal=f"A meaningful change, open question, or review window appears in {spec.name}.",
@@ -51,7 +51,7 @@ def build_loops(spec: InstallInput) -> list[LoopDefinition]:
             name=f"{spec.slug}-governance-loop",
             description=f"Authority and risk boundary loop for {spec.name}.",
             loop_type="governance",
-            customer_lane=spec.slug,
+            project_lane=spec.slug,
             authority="human approval",
             tags=["generated", "governance"],
             signal=f"A decision touches {spec.primary_risk}, sensitive information, spending, external claims, or professional judgment.",
@@ -67,7 +67,7 @@ def build_loops(spec: InstallInput) -> list[LoopDefinition]:
             name=f"{spec.slug}-learning-loop",
             description=f"Learning loop for improving {spec.name} over time.",
             loop_type="learning",
-            customer_lane=spec.slug,
+            project_lane=spec.slug,
             authority="human leadership",
             tags=["generated", "learning"],
             signal="An operating review, outcome, surprise, mistake, or useful pattern appears.",
@@ -77,15 +77,15 @@ def build_loops(spec: InstallInput) -> list[LoopDefinition]:
             evidence="Lesson learned, review note, changed template, risk update, decision record, or artifact.",
             cadence=spec.primary_cadence,
             learning_update="Convert outcomes into updated memory and candidate reusable primitives after membrane review.",
-            governance_boundary="Humans decide whether lessons become customer state or reusable Anyang Intelligence primitives.",
+            governance_boundary="Humans decide whether lessons become project state or reusable Anyang Intelligence primitives.",
         ),
     ]
 
 
-def render_readme(spec: InstallInput) -> str:
+def render_readme(spec: ProjectInput) -> str:
     return f"""# {spec.name}
 
-{spec.name} is a customer installation for the Anyang Intelligence Executive Operating System.
+{spec.name} is a project installation for the Anyang Intelligence Executive Operating System.
 
 ## Domain
 
@@ -105,11 +105,11 @@ The system does not replace human authority. It prepares decisions, coordinates 
 
 See [executive-os-install.md](executive-os-install.md) for the generated install design.
 
-Use [membrane-notes.md](membrane-notes.md) before transferring lessons from this customer lane into another lane.
+Use [membrane-notes.md](membrane-notes.md) before transferring lessons from this project lane into another lane.
 """
 
 
-def render_install_doc(spec: InstallInput) -> str:
+def render_project_doc(spec: ProjectInput) -> str:
     memory = bullet_list(spec.memory_objects or ["Context map", "Decisions", "Risks", "Follow-ups", "Lessons learned"])
     decisions = bullet_list(spec.decisions or ["Recurring operating decisions", "High-consequence decisions", "Risk or escalation decisions"])
     success = bullet_list(spec.success_criteria or [
@@ -188,7 +188,7 @@ The Executive OS recommends, organizes, and prepares. Humans retain final author
 """
 
 
-def render_risk_register(spec: InstallInput) -> str:
+def render_risk_register(spec: ProjectInput) -> str:
     rows = "\n".join(f"| {risk} | Operating | TBD | TBD | Human owner | Define mitigation and evidence | {spec.primary_cadence} |" for risk in (spec.risks or [spec.primary_risk]))
     return f"""# {spec.name} Risk Register
 
@@ -200,7 +200,7 @@ def render_risk_register(spec: InstallInput) -> str:
 
 - Strategy.
 - Finance.
-- Customer.
+- Project.
 - Product.
 - Operations.
 - People.
@@ -210,7 +210,7 @@ def render_risk_register(spec: InstallInput) -> str:
 """
 
 
-def render_decision_log(spec: InstallInput) -> str:
+def render_decision_log(spec: ProjectInput) -> str:
     return f"""# {spec.name} Decision Log
 
 | Date | Decision | Owner | Status | Review date | Source memo |
@@ -228,18 +228,26 @@ def render_decision_log(spec: InstallInput) -> str:
 """
 
 
-def render_operating_review(spec: InstallInput) -> str:
-    return f"""# {spec.name} Operating Review
+def render_operating_review(spec: ProjectInput) -> str:
+    return f"""# {spec.name}: Where Changed Evidence Alters the Next Decision
+
+Title rationale: This review makes the operating change and its decision consequence visible before the supporting detail.
 
 ## Review Date
 
+Record the review date and evidence window.
 
-## Executive Summary
+## Lead Judgment
 
+State what changed, why it matters, the mechanism producing the change, and the decision consequence.
 
-## What Changed
+## Controlling Object
 
--
+Name the contested relationship or threshold this review is waiting to resolve.
+
+## The Evidence That Changed the Operating Picture
+
+- Record the strongest dated change and its evidence pointer.
 
 ## Metrics Narrative
 
@@ -255,6 +263,8 @@ def render_operating_review(spec: InstallInput) -> str:
 | Decision | Owner | Needed by | Status |
 | --- | --- | --- | --- |
 |  |  |  |  |
+
+Decision question: Does the changed evidence justify revising the current priority without outrunning the authority or evidence boundary?
 
 ## Blockers
 
@@ -273,10 +283,16 @@ def render_operating_review(spec: InstallInput) -> str:
 | Action | Owner | Due date |
 | --- | --- | --- |
 |  |  |  |
+
+## Uncertainty
+
+| Status and cause | Consequence | Evidence that would reduce it |
+| --- | --- | --- |
+| Unknown—required operating evidence has not yet been entered | Keep the next decision provisional | Name the receipt, metric, approval, or observation needed |
 """
 
 
-def render_30_day_plan(spec: InstallInput) -> str:
+def render_30_day_plan(spec: ProjectInput) -> str:
     return f"""# {spec.name} 30-Day Installation Plan
 
 ## Week 1: Context and Source Map
@@ -307,13 +323,13 @@ def render_30_day_plan(spec: InstallInput) -> str:
 """
 
 
-def render_membrane_notes(spec: InstallInput) -> str:
-    sources = ", ".join(spec.source_customers) if spec.source_customers else "none declared"
+def render_membrane_notes(spec: ProjectInput) -> str:
+    sources = ", ".join(spec.source_projects) if spec.source_projects else "none declared"
     return f"""# {spec.name} Membrane Notes
 
-Use [../../docs/membranes.md](../../docs/membranes.md) before transferring lessons, facts, templates, claims, or operating patterns from this customer lane into another lane.
+Use [../../docs/membranes.md](../../docs/membranes.md) before transferring lessons, facts, templates, claims, or operating patterns from this project lane into another lane.
 
-## Source Customers Considered
+## Source Projects Considered
 
 {sources}
 
@@ -330,30 +346,30 @@ Use [../../docs/membranes.md](../../docs/membranes.md) before transferring lesso
 
 - Private facts.
 - Sensitive records.
-- Customer identities or private messages.
+- Project identities or private messages.
 - Financial details.
 - Legal, tax, educational, safety, property, donor, contractor, or compliance-sensitive context.
 - Draft claims not approved for external use.
 
 ## Required Transfer Filter
 
-- Translate customer-specific facts into generic primitives before reuse.
+- Translate project-specific facts into generic primitives before reuse.
 - Preserve human authority boundaries and evidence requirements.
 - Use the strictest applicable membrane when sensitive content appears.
 """
 
 
-def render_obsidian(spec: InstallInput) -> dict[str, str]:
-    files = build_customer_files(spec)
+def render_obsidian(spec: ProjectInput) -> dict[str, str]:
+    files = build_project_files(spec)
     rendered: dict[str, str] = {}
     for path, content in files.items():
         obsidian_path = path.replace(".md", ".md").replace("loop-examples/", "Loops/")
-        rendered[obsidian_path] = "#customer-install #anyang-intelligence\n\n[[Membranes]] [[Governance]]\n\n" + content
+        rendered[obsidian_path] = "#project-install #anyang-intelligence\n\n[[Membranes]] [[Governance]]\n\n" + content
     rendered["Index.md"] = f"# {spec.name} Vault Index\n\n- [[README]]\n- [[executive-os-install]]\n- [[30-day-plan]]\n- [[membrane-notes]]\n"
     return rendered
 
 
-def render_html_dashboard(spec: InstallInput) -> str:
+def render_html_dashboard(spec: ProjectInput) -> str:
     loops = build_loops(spec)
     risk_items = "".join(f"<li>{html.escape(risk)}</li>" for risk in (spec.risks or [spec.primary_risk]))
     loop_items = "".join(f"<li><strong>{html.escape(loop.name)}</strong>: {html.escape(loop.loop_type)} - {html.escape(loop.cadence)}</li>" for loop in loops)
@@ -374,7 +390,7 @@ def render_html_dashboard(spec: InstallInput) -> str:
 <body>
   <h1>{html.escape(spec.name)} Executive OS Dashboard</h1>
   <p>{html.escape(spec.domain_description)}</p>
-  <div class="warning">Human authority remains final. Use membrane review before transferring customer lessons.</div>
+  <div class="warning">Human authority remains final. Use membrane review before transferring project lessons.</div>
   <h2>Context Map</h2>
   <table>{context_rows}</table>
   <h2>Loops</h2>
@@ -404,4 +420,3 @@ def context_table(context: dict[str, str]) -> str:
 
 def bullet_list(items: list[str]) -> str:
     return "\n".join(f"- {item}" for item in items)
-

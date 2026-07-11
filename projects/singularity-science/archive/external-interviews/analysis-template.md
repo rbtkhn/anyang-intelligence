@@ -1,6 +1,16 @@
-# External Interview Analysis Template
+# External Interview Analysis: Test Transferable Mechanisms against Source Rhetoric
+
+Title rationale: This template keeps reusable operating mechanisms distinct from a speaker's authority, identity, and unverified predictions.
 
 Use this template for seam-first extraction from external interviews.
+
+## Lead Judgment
+
+State the strongest transferable mechanism, why it matters, and which part must remain attributed or provisional.
+
+## Controlling Object
+
+Whether a source seam can survive verification and membrane review strongly enough to change a receiving lane's operating question.
 
 ## Source
 
@@ -64,6 +74,12 @@ What stays inside Singularity Science:
 - What repeated from prior Singularity Science sources:
 - What looks new:
 - What should be watched for recurrence:
+
+## Uncertainty
+
+| Status and cause | Consequence | Evidence that would reduce it |
+| --- | --- | --- |
+| Source-limited—complete the dependency or missing evidence | State what cannot yet transfer or become doctrine | Name the independent source, operating test, or recurrence needed |
 
 ## Boundary
 

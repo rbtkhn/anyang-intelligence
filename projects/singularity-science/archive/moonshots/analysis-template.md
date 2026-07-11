@@ -1,8 +1,18 @@
-# Moonshots Analysis Template
+# Moonshots Analysis: Separate Reusable Acceleration Mechanisms from Optimistic Timelines
+
+Title rationale: The template's central distinction is between a durable mechanism worth routing and acceleration rhetoric that requires verification.
 
 Use this template for Moonshots seam-first extraction.
 
 Moonshots episodes usually bundle several stories. Extract 2-5 seams, then classify each seam into exactly one ROI disposition.
+
+## Lead Judgment
+
+State the highest-value durable mechanism, why it matters, and which timeline, benchmark, or cost claim remains provisional.
+
+## Controlling Object
+
+Whether a reported acceleration signal yields a governed reusable primitive or remains worldview-only until independent evidence appears.
 
 ## Source
 
@@ -64,6 +74,12 @@ What stays inside Singularity Science:
 - What repeated from prior Moonshots episodes:
 - What looks new:
 - What should be watched for recurrence:
+
+## Uncertainty
+
+| Status and cause | Consequence | Evidence that would reduce it |
+| --- | --- | --- |
+| Source-limited—complete the benchmark, timeline, or provenance gap | State what must remain a watch item | Name the independent benchmark, dated source, or operating test needed |
 
 ## Boundary
 

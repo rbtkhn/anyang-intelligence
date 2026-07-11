@@ -1,6 +1,16 @@
-# Analysis Template
+# Innermost Loop Analysis: Separate Durable Agency Signals from Acceleration Noise
+
+Title rationale: This template must distinguish an operating change worth preserving from source rhetoric that remains unverified.
 
 Use this template for Innermost Loop analysis.
+
+## Lead Judgment
+
+State what changed, why it matters to Anyang Intelligence, the mechanism that could make it durable, and what remains source-limited.
+
+## Controlling Object
+
+Whether the observed signal changes a governed operating capability or only increases attention without decision-relevant evidence.
 
 ## Source
 
@@ -33,9 +43,9 @@ Why should Anyang Intelligence care?
 | --- | --- | --- |
 | Media Production |  |  |
 | Grace Gems |  |  |
-| Elementary School |  |  |
+| Learning Core |  |  |
 | Non-Profit |  |  |
-| Mountain Home |  |  |
+| Mountain Villa |  |  |
 | Book Club |  |  |
 
 ## Governance Concern
@@ -59,6 +69,12 @@ watch / candidate / tested / preserved / rejected
 ## Next Watch Item
 
 What should be checked in the next source or operating cycle?
+
+## Uncertainty
+
+| Status and cause | Consequence | Evidence that would reduce it |
+| --- | --- | --- |
+| Source-limited—complete the evidentiary cause | State which implication must remain provisional | Name the independent source, operating test, or repeated observation needed |
 
 ## Boundary
 

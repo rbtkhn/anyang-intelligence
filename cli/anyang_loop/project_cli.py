@@ -3,9 +3,9 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from .install_model import InstallInputError, load_install_input
-from .install_render import build_customer_files, render_html_dashboard, render_obsidian, write_files
-from .install_validate import validate_install_path
+from .project_model import ProjectInputError, load_project_input
+from .project_render import build_project_files, render_html_dashboard, render_obsidian, write_files
+from .project_validate import validate_project_path
 from .membrane import extract_patterns, render_pattern_report
 from .catalog_import import (
     CatalogImportError,
@@ -19,6 +19,7 @@ from .transcript_import import (
     render_completion_report,
     render_import_summary,
 )
+from .analytical_interfaces import validate_manifest
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -26,7 +27,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         return args.func(args)
-    except InstallInputError as exc:
+    except ProjectInputError as exc:
         print(f"ERROR: {exc}")
         return 1
     except FileExistsError as exc:
@@ -41,24 +42,24 @@ def main(argv: list[str] | None = None) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="anyang-install", description="Anyang Intelligence customer installer generator")
+    parser = argparse.ArgumentParser(prog="anyang-project", description="Anyang Intelligence project installer generator")
     subparsers = parser.add_subparsers(required=True)
 
-    new = subparsers.add_parser("new", help="Scaffold a customer install folder")
+    new = subparsers.add_parser("new", help="Scaffold a project install folder")
     new.add_argument("input")
     new.add_argument("--output", required=True)
     new.add_argument("--force", action="store_true")
     new.set_defaults(func=cmd_new)
 
-    render = subparsers.add_parser("render", help="Render install files without requiring customer placement")
+    render = subparsers.add_parser("render", help="Render install files without requiring project placement")
     render.add_argument("input")
     render.add_argument("--format", choices=("markdown", "obsidian", "html"), required=True)
     render.add_argument("--output", required=True)
     render.add_argument("--force", action="store_true")
     render.set_defaults(func=cmd_render)
 
-    extract = subparsers.add_parser("extract-patterns", help="Extract membrane-aware cross-customer pattern candidates")
-    extract.add_argument("customers_path")
+    extract = subparsers.add_parser("extract-patterns", help="Extract membrane-aware cross-project pattern candidates")
+    extract.add_argument("projects_path")
     extract.add_argument("--output", required=True)
     extract.set_defaults(func=cmd_extract_patterns)
 
@@ -76,37 +77,44 @@ def build_parser() -> argparse.ArgumentParser:
     report_cmd.set_defaults(func=cmd_report_transcript_import)
 
     import_catalog_cmd = subparsers.add_parser(
-        "import-catalog", help="Import Elementary School catalog entries from a manifest into the catalog area"
+        "import-catalog", help="Import Learning Core catalog entries from a manifest into the catalog area"
     )
     import_catalog_cmd.add_argument("--manifest", required=True)
     import_catalog_cmd.add_argument("--dry-run", action="store_true")
     import_catalog_cmd.set_defaults(func=cmd_import_catalog)
 
     report_catalog_cmd = subparsers.add_parser(
-        "report-catalog-import", help="Report Elementary School catalog import completeness from a manifest"
+        "report-catalog-import", help="Report Learning Core catalog import completeness from a manifest"
     )
     report_catalog_cmd.add_argument("--manifest", required=True)
     report_catalog_cmd.set_defaults(func=cmd_report_catalog_import)
 
-    validate = subparsers.add_parser("validate", help="Validate customer install folders")
+    validate = subparsers.add_parser("validate", help="Validate project install folders")
     validate.add_argument("path")
     validate.set_defaults(func=cmd_validate)
+
+    interfaces = subparsers.add_parser(
+        "validate-interfaces", help="Validate curated reader-facing analytical interfaces"
+    )
+    interfaces.add_argument("--manifest")
+    interfaces.add_argument("--path")
+    interfaces.set_defaults(func=cmd_validate_interfaces)
     return parser
 
 
 def cmd_new(args: argparse.Namespace) -> int:
-    spec = load_install_input(args.input)
-    files = build_customer_files(spec)
+    spec = load_project_input(args.input)
+    files = build_project_files(spec)
     write_files(files, Path(args.output), force=args.force)
-    print(f"Created customer install scaffold: {args.output}")
+    print(f"Created project install scaffold: {args.output}")
     return 0
 
 
 def cmd_render(args: argparse.Namespace) -> int:
-    spec = load_install_input(args.input)
+    spec = load_project_input(args.input)
     output = Path(args.output)
     if args.format == "markdown":
-        files = build_customer_files(spec)
+        files = build_project_files(spec)
         write_files(files, output, force=args.force)
     elif args.format == "obsidian":
         write_files(render_obsidian(spec), output, force=args.force)
@@ -117,7 +125,7 @@ def cmd_render(args: argparse.Namespace) -> int:
 
 
 def cmd_extract_patterns(args: argparse.Namespace) -> int:
-    candidates = extract_patterns(args.customers_path)
+    candidates = extract_patterns(args.projects_path)
     report = render_pattern_report(candidates)
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -153,7 +161,7 @@ def cmd_report_catalog_import(args: argparse.Namespace) -> int:
 
 
 def cmd_validate(args: argparse.Namespace) -> int:
-    results = validate_install_path(args.path)
+    results = validate_project_path(args.path)
     exit_code = 0
     for result in results:
         label = result.path.as_posix()
@@ -167,6 +175,16 @@ def cmd_validate(args: argparse.Namespace) -> int:
         for error in result.errors:
             print(f"- ERROR: {error}")
     return exit_code
+
+
+def cmd_validate_interfaces(args: argparse.Namespace) -> int:
+    diagnostics = validate_manifest(args.manifest, args.path)
+    for diagnostic in diagnostics:
+        print(f"ERROR {diagnostic.code} {diagnostic.path.as_posix()}: {diagnostic.message}")
+    if diagnostics:
+        return 1
+    print("OK analytical interfaces")
+    return 0
 
 
 if __name__ == "__main__":

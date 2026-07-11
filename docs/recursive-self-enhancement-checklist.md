@@ -1,5 +1,7 @@
 # Recursive Self-Enhancement Checklist
 
+Reader-facing publications, decisions, and reusable templates must also follow [Analytical Interfaces](analytical-interfaces.md) and clear `anyang-project validate-interfaces` before review. Validator success does not replace accountable human editorial judgment.
+
 Use this checklist at the end of a meaningful work cycle to decide whether the cycle should improve Anyang Intelligence's operating surface.
 
 This is a lightweight gate, not a mandate to create more process. If there is no durable lesson, stop.
@@ -71,7 +73,7 @@ Before calling the cycle enhanced, confirm:
 Use the relevant check:
 
 - loop change: `anyang-loop validate <path>`
-- customer-folder change: `anyang-install validate customers`
+- customer-folder change: `anyang-project validate customers`
 - Python/tooling change: `python -m pytest`
 - documentation change: read the diff and scan for boundary leaks
 

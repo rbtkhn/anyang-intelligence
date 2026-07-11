@@ -1,0 +1,31 @@
+version: 1
+
+defaults:
+  document_type: reader-facing
+  template: true
+  require_title_rationale: true
+  require_lead_judgment: true
+  require_controlling_object: true
+  require_uncertainty: true
+  require_forecast: false
+  require_deliberative_questions: false
+
+documents:
+  - path: templates/operating-review.md
+    require_deliberative_questions: true
+  - path: playbooks/decision-memo.md
+    require_deliberative_questions: true
+  - path: projects/singularity-science/templates/china-humanoid-quarterly-watch-template.md
+    document_type: forecast-template
+    require_forecast: true
+    require_deliberative_questions: true
+  - path: projects/singularity-science/archive/*/analysis-template.md
+    document_type: analysis-template
+
+exemptions:
+  - projects/singularity-science/archive/**/transcripts/**
+  - projects/singularity-science/archive/**/source-notes/**
+  - projects/singularity-science/archive/**/*manifest*.json
+  - migration-backups/**
+  - strategy_codex_probe/**
+  - tenant-private/**

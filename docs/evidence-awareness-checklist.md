@@ -2,6 +2,8 @@
 
 This checklist is the repo-wide claim discipline gate for Anyang Intelligence.
 
+Use [Analytical Interfaces](analytical-interfaces.md) alongside this checklist: this document governs whether a claim is supportable, while that contract governs whether the resulting judgment is recoverable from reader-facing labels and structure.
+
 Use it when a doc, skill, customer artifact, research analysis, recommendation, plan, brief, operating review, or generated output makes claims that could affect action, trust, spending, child-facing decisions, customer commitments, publication, rights, governance, or cross-lane transfer.
 
 The goal is not to make every sentence bureaucratic. The goal is to prevent polished language from outrunning evidence.
@@ -28,7 +30,7 @@ Before using a material claim, ask:
 - What exact sentence or recommendation depends on this claim?
 - What source, approval, artifact, or observation supports it?
 - Who has authority to approve or reject it?
-- Is it local to one customer lane or safe to generalize?
+- Is it local to one project lane or safe to generalize?
 - Is it stable, or could it change with time, policy, prices, ownership, model behavior, law, or customer context?
 - What would go wrong if this claim is false, overstated, stale, or used outside its membrane?
 - Should the output say `unknown`, `provisional`, `needs review`, or `hold` instead?
@@ -58,7 +60,7 @@ Use [templates/claim-discipline-map.md](../templates/claim-discipline-map.md) wh
 
 ## Lane Defaults
 
-### Elementary School
+### Learning Core
 
 Default to `unsupported-hold` unless the claim comes from parent-approved intake, parent-approved student voice, approved resources, or a neutral template default.
 
@@ -80,11 +82,11 @@ Default to `speculative-scenario` for forecasts, model capability claims, govern
 
 Move to `source-backed` only with source metadata, verification notes, and rights-aware attribution. Move outward only after membrane translation.
 
-### Non-Profit
+### retired Non-Profit project
 
 Default to `provisional-assumption` or `unsupported-hold` for donor intent, restricted funds, grant compliance, board authority, tax treatment, employment, or program impact claims unless the appropriate authority and evidence are visible.
 
-### Mountain Home
+### Mountain Villa
 
 Default to `provisional-assumption` for safety, property condition, maintenance urgency, insurance, vendor, cost, and legal implications unless supported by records, photos, owner review, professional inspection, or other direct evidence.
 

@@ -4,7 +4,7 @@ import sqlite3
 from pathlib import Path
 
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 
 
 SCHEMA = """
@@ -195,10 +195,30 @@ CREATE TABLE IF NOT EXISTS cadence_handoff (
     explicit_record INTEGER NOT NULL CHECK (explicit_record = 1)
 );
 
+CREATE TABLE IF NOT EXISTS cadence_measurement (
+    id TEXT PRIMARY KEY,
+    repo_id TEXT NOT NULL,
+    occurred_at TEXT NOT NULL,
+    event_type TEXT NOT NULL CHECK (event_type IN ('coffee', 'dream', 'operating_review', 'other')),
+    scheduled INTEGER NOT NULL CHECK (scheduled IN (0, 1)),
+    completion_status TEXT NOT NULL CHECK (completion_status IN ('completed', 'partial', 'abandoned')),
+    state_source TEXT NOT NULL CHECK (state_source IN ('recorded_handoff', 'git_fallback', 'manual_reconstruction')),
+    manual_reconstruction INTEGER NOT NULL CHECK (manual_reconstruction IN (0, 1)),
+    reconstruction_minutes REAL NOT NULL CHECK (reconstruction_minutes >= 0),
+    evidence_check_passed INTEGER NOT NULL CHECK (evidence_check_passed IN (0, 1)),
+    privacy_check_passed INTEGER NOT NULL CHECK (privacy_check_passed IN (0, 1)),
+    authority_check_passed INTEGER NOT NULL CHECK (authority_check_passed IN (0, 1)),
+    recorded_by TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    CHECK (manual_reconstruction = 1 OR reconstruction_minutes = 0),
+    CHECK (state_source != 'manual_reconstruction' OR manual_reconstruction = 1)
+);
+
 CREATE INDEX IF NOT EXISTS idx_work_tenant_state ON work_item(tenant_id, state);
 CREATE INDEX IF NOT EXISTS idx_event_tenant_created ON event(tenant_id, created_at);
 CREATE INDEX IF NOT EXISTS idx_approval_work_scope ON approval(work_id, scope);
 CREATE INDEX IF NOT EXISTS idx_cadence_repo_recorded ON cadence_handoff(repo_id, recorded_at DESC);
+CREATE INDEX IF NOT EXISTS idx_cadence_measurement_repo_occurred ON cadence_measurement(repo_id, occurred_at DESC);
 """
 
 
