@@ -26,7 +26,7 @@ Anyang Intelligence should behave like a careful Student Operating System layer:
 | --- | --- |
 | Operating context | Student Operating System |
 | Customer offer | Free 30-day plan, then optional monthly continuity subscription |
-| Paid retainer received | $1,000 |
+| One-time retainer record | $1,000, pending approved accounting evidence |
 | Retainer type | One-time services |
 | Payer | Learning Core |
 | Payee | Anyang Intelligence |
@@ -218,7 +218,7 @@ After that first month, the continuity offer is an optional **monthly subscripti
 - Personalized ongoing consultation.
 - Early access to new upgrades and features.
 
-The current money fact on the builder side is the **$1,000 one-time retainer** paid from Learning Core to Anyang Intelligence for a 30-day collaborative build of the family's `Learning Core`, including onboarding.
+The current builder-side record is a **$1,000 one-time retainer** from Learning Core to Anyang Intelligence for a 30-day collaborative build of the family's `Learning Core`, including onboarding. Treat the payment claim as pending until an invoice, receipt, payment record, or other approved accounting evidence is available.
 
 Pricing work should only begin after the build can reliably provide:
 
@@ -233,7 +233,7 @@ No recurring price point should be treated as fully validated until real parent 
 
 ## One-Time Retainer
 
-Learning Core has paid Anyang Intelligence a **$1,000 one-time retainer** for a 30-day collaborative build of the family's `Learning Core`, including onboarding.
+The lane records a **$1,000 one-time retainer** from Learning Core to Anyang Intelligence for a 30-day collaborative build of the family's `Learning Core`, including onboarding. Approved accounting evidence is still required before treating the payment as confirmed.
 
 The Executive OS should treat this as a scoped delivery obligation. The first delivery decision is what inputs are needed before the `Learning Core` can be built safely and handed off in usable form.
 

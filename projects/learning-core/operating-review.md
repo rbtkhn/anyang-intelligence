@@ -1,43 +1,67 @@
 # Learning Core Operating Review
 
-This is the recurring operating review surface for Learning Core.
+This recurring review asks whether Learning Core is helping a learner build a coherent life of learning while remaining light enough for a family to use.
 
-Cadence: weekly during active plan use, event-driven for intake changes or safety concerns, and monthly alongside portfolio review.
+Cadence: five minutes weekly during active plan use, event-driven for intake, privacy, safety, or support changes, and a fuller reflection at month end.
 
-## Review Questions
+## Readiness And Authority
 
-### Intake and Drafting
+- Is the case correctly classified as `Ready`, `Provisional`, or `Hold`?
+- What has the parent explicitly approved for drafting, child-facing use, saving, and sharing?
+- What remains missing, provisional, declined, or paused?
+- Did any safety, privacy, authority, overload, or outside-support signal require an immediate pause or `Hold`?
 
-- Which cases are `Ready`, `Provisional`, or `Hold`?
-- Which missing inputs still block safe drafting?
-- Where did the runbook or readiness checklist catch issues early?
+## Coherence Across Contexts
 
-### Approval and Safety
+- What question, idea, activity, or skill connected across home, school, books, projects, tools, relationships, or ordinary life?
+- Did the plan help the family notice a meaningful connection, or merely produce more activity?
+- What unfinished question or direction is worth carrying forward?
 
-- What has the parent explicitly approved?
-- What remains provisional or not approved?
-- Did any child-facing language, save/share rule, or support concern need stronger review?
+## Selective Continuity
 
-### Evidence and Learning
+- Did the family preserve only one learner-selected item, one parent observation, and one open question or next direction this week?
+- Why is each trace useful for reflection or a future choice?
+- Did convenience create pressure toward continuous observation, exhaustive capture, or automatic sharing?
+- Does the parent still control what is saved, shared, omitted, or deleted?
 
-- Which observations, portfolio artifacts, or reflections actually improved the next plan step?
-- Where did evidence stay too thin or too app-dependent?
+## Evidence And Adjustment
 
-### Tool and Boundary Review
+- Which two aligned signals, if any, justify an ordinary adjustment?
+- Are observations still being kept distinct from interpretations?
+- Is evidence too thin, too app-dependent, or too detached from the learner's actual life?
+- Should the next action be to repeat, pause, preserve, watch, or try something small?
 
-- Did any tool, prompt, app, or embodied-AI request create boundary pressure?
-- What should remain on `Hold`?
+## Learner Ownership
 
-### Turn Usefulness Review
+- What meaningful or proud item did the learner choose?
+- What connection did the learner notice or discuss?
+- What possible next step did the learner suggest?
+- Is ownership increasing in a developmentally appropriate way without weakening current parent authority?
 
-- Which turn created the most meaningful safe forward motion for a learner or parent this cycle?
-- Which turn looked complete but still hid cleanup around evidence, authority, or child-facing wording?
-- Where did the system stop too early and force the parent or operator to rebuild context?
-- Where did any draft or recommendation get too close to bypassing parent approval?
-- Which repeated failure mode should become a tighter checklist, template, or hold rule?
+## Tool Subordination
 
-### Next Actions
+- Did any plan, app, portfolio, book, project, school setting, service, or embodied-AI idea begin acting like the whole `Learning Core`?
+- Is each active tool serving a parent-approved learner need?
+- What can be removed or simplified while preserving the useful learning loop?
 
-- What should be drafted next?
-- What must wait for parent clarification?
-- What should be updated in the lane’s templates or training surfaces?
+## Family Independence
+
+- Can the family understand and use its current plan, selected traces, reflections, and next direction without reconstructing hidden context?
+- Would ending subscription support leave the family's usable `Learning Core` intact?
+- Is continuity coming from family-owned artifacts and judgment rather than dependence on a service or tool?
+
+## Five-Minute Weekly Decision
+
+- **Repeat:**
+- **Pause:**
+- **Preserve:**
+- **Watch:**
+- **Try next:**
+
+## Month-End Reflection
+
+- What connected across contexts?
+- What mattered enough to preserve?
+- What did the learner increasingly notice, select, connect, or propose?
+- What one direction should guide the next cycle?
+- What must still wait for parent clarification or stronger evidence?

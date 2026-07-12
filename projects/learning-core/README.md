@@ -15,7 +15,7 @@ The Student Operating System is a high-trust elementary learning operating conte
 - Work: personalized elementary learning, parent-guided support, daily learning plans, enrichment, progress tracking, portfolio evidence, and family communication.
 - Cadence: daily learning rhythm, weekly parent review, monthly portfolio review, seasonal learning goals, and school-year planning.
 - Operating challenge: create a rich individualized learning experience without replacing parent authority, child safety, human care, or required education accountability.
-- Paid retainer received: $1,000.
+- One-time retainer record: $1,000, pending invoice, receipt, payment record, or other approved accounting evidence.
 - Payer: Learning Core.
 - Payee: Anyang Intelligence.
 - Retainer type: one-time services.
@@ -171,15 +171,15 @@ After the first 30-day build, the continuity offer is a **monthly subscription**
 - Personalized ongoing consultation.
 - Early access to new upgrades and features.
 
-Learning Core now provides **$1,000 per month in confirmed recurring revenue** to Anyang Intelligence through this continuity service. The service remains subject to parent authority, child-safety boundaries, and the agreed scope.
+The monthly continuity subscription is an **unvalidated offer hypothesis**. No recurring revenue should be described as confirmed until approved enrollment, payment, retention, and support-load evidence exists.
 
 ## Paid Retainer
 
-Learning Core has paid Anyang Intelligence a **$1,000 one-time retainer** for a scoped 30-day collaborative build of the family's `Learning Core`, including onboarding.
+The lane records a **$1,000 one-time retainer** from Learning Core to Anyang Intelligence for a scoped 30-day collaborative build of the family's `Learning Core`, including onboarding. The payment claim remains pending invoice, receipt, payment record, or other approved accounting evidence.
 
 This should be treated as a paid discovery and service-design obligation. The one-time service package is defined in [one-time-retainer-scope.md](one-time-retainer-scope.md) before delivery begins.
 
-The retainer is a separate historical cash event from the confirmed monthly continuity revenue and should remain scoped intentionally.
+The retainer record is separate from the unvalidated monthly continuity offer and should remain scoped intentionally.
 
 ## Installation
 

@@ -1,6 +1,6 @@
 # One-Time Retainer Scope
 
-This document defines what the **$1,000 one-time retainer** from Learning Core to Anyang Intelligence produces before delivery begins.
+This document defines what the recorded **$1,000 one-time retainer** from Learning Core to Anyang Intelligence would produce before delivery begins. The payment claim remains pending approved accounting evidence.
 
 It is a hybrid scope document: internal enough to govern Anyang Intelligence execution, but clean enough to adapt into parent-facing language.
 
