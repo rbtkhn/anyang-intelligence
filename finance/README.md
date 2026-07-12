@@ -12,6 +12,7 @@ Whether each financial record has a stable identifier, effective date, evidence 
 
 ## Authority and Storage
 
+- The repository-wide relationship between SQLite, XLSX, and CSV is defined in [The File Extension Does Not Decide Which Record Governs](../docs/data-store-roles.md).
 - `anyang-intelligence-ledger.xlsx` is the provisional authoritative operating ledger.
 - `anyang-intelligence-ledger.csv` is a source snapshot retained for traceability, not a second writable source of truth.
 - `archive/` preserves superseded or divergent source copies until a human confirms their evidence has been reconciled.

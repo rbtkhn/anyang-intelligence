@@ -6,6 +6,15 @@ dist/
 *.db
 *.db-shm
 *.db-wal
+.env
+.env.*
+!.env.example
+*.log
+*.parquet
+*.arrow
+*.feather
+*.bak
+*.zip
 .anyang-private/
 generated-reviews/
 finance/**/*.csv

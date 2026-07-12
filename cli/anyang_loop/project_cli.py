@@ -20,6 +20,7 @@ from .transcript_import import (
     render_import_summary,
 )
 from .analytical_interfaces import validate_manifest
+from .artifact_state import validate_artifact_manifest
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -99,6 +100,12 @@ def build_parser() -> argparse.ArgumentParser:
     interfaces.add_argument("--manifest")
     interfaces.add_argument("--path")
     interfaces.set_defaults(func=cmd_validate_interfaces)
+
+    artifacts = subparsers.add_parser(
+        "validate-artifacts", help="Validate curated artifact authority, provenance, mutability, and recovery contracts"
+    )
+    artifacts.add_argument("--manifest")
+    artifacts.set_defaults(func=cmd_validate_artifacts)
     return parser
 
 
@@ -184,6 +191,16 @@ def cmd_validate_interfaces(args: argparse.Namespace) -> int:
     if diagnostics:
         return 1
     print("OK analytical interfaces")
+    return 0
+
+
+def cmd_validate_artifacts(args: argparse.Namespace) -> int:
+    diagnostics = validate_artifact_manifest(args.manifest)
+    for diagnostic in diagnostics:
+        print(f"ERROR {diagnostic.code} {diagnostic.path.as_posix()}: {diagnostic.message}")
+    if diagnostics:
+        return 1
+    print("OK artifact state contracts")
     return 0
 
 

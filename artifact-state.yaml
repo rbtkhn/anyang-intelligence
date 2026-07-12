@@ -1,0 +1,89 @@
+version: 1
+
+governance:
+  owner: repository-operator
+  review_cadence: quarterly
+  next_review: 2026-10-01
+  expansion_rule: Add a blocking declaration only for a consequential, recurring, objectively detectable failure.
+  retirement_rule: Remove or narrow controls whose false positives, maintenance cost, or blocked legitimate work exceed demonstrated benefit.
+
+exceptions: []
+
+# This curated manifest governs consequential artifact roles. Paths may describe
+# external operator-controlled storage; validation inspects declarations, not data.
+artifacts:
+  operating-ledger:
+    path: "${ANYANG_DATA_DIR}/anyang-operating-ledger.db"
+    operation: Record accepted tenants, claims, work, evidence, approvals, outcomes, and cadence events.
+    domain: operating-state
+    authority: canonical
+    data_class: tenant-private
+    provenance:
+      schema: cli/anyang_loop/ops_db.py
+      origin: Governed anyang-ops commands and approved migrations.
+    mutability:
+      method: Transactional writes through anyang-ops and approved schema migration code.
+      writers: [anyang-ops, approved-migration]
+      direct_edit: prohibited
+    recovery:
+      method: Restore an operator-approved encrypted SQLite-safe backup.
+      verification: [sqlite-integrity-check, schema-version-check, recent-event-reconciliation]
+    git:
+      tracked: false
+
+  operating-review:
+    path: generated-reviews/*.md
+    operation: Expose a human-readable review of governed operating state.
+    domain: operating-review
+    authority: derived
+    data_class: tenant-private
+    provenance:
+      sources: [operating-ledger]
+      origin: anyang-ops review weekly
+      as_of_required: true
+    mutability:
+      method: Regenerate from the ledger; do not edit as a peer record.
+      writers: [anyang-ops]
+      direct_edit: prohibited
+    recovery:
+      method: Regenerate from the restored operating ledger.
+      verification: [source-tenant-check, as-of-check, review-regeneration]
+    git:
+      tracked: false
+
+  finance-source-snapshot:
+    path: finance/anyang-intelligence-ledger.csv
+    operation: Preserve the imported financial source snapshot for traceability and reconciliation.
+    domain: finance-source
+    authority: evidentiary
+    data_class: internal-sensitive
+    provenance:
+      origin: Original internal finance source capture retained without silent overwrite.
+    mutability:
+      method: Preserve immutably; corrections enter a new reviewed artifact.
+      writers: [authorized-finance-operator]
+      direct_edit: prohibited
+    recovery:
+      method: Restore the checksum-verified source capture from approved internal storage.
+      verification: [checksum-check, row-identifier-check, source-date-check]
+    git:
+      tracked: false
+
+  finance-ledger:
+    path: finance/anyang-intelligence-ledger.xlsx
+    operation: Support bounded human reconciliation and approval of internal financial records.
+    domain: finance-ledger
+    authority: provisional
+    data_class: internal-sensitive
+    provenance:
+      sources: [finance-source-snapshot]
+      origin: Human-reviewed reconciliation workbook.
+    mutability:
+      method: Reviewed workbook edits by the designated finance operator.
+      writers: [authorized-finance-operator]
+      direct_edit: reviewed-only
+    recovery:
+      method: Restore the last approved workbook version and reconcile subsequent source records.
+      verification: [formula-check, source-link-check, reconciliation-status-check]
+    git:
+      tracked: false

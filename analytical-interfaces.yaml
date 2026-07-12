@@ -1,5 +1,14 @@
 version: 1
 
+governance:
+  owner: accountable-publication-reviewer
+  review_cadence: quarterly
+  next_review: 2026-10-01
+  expansion_rule: Expand only when reader-outcome evidence shows lower semantic entropy or a recurring objective failure.
+  retirement_rule: Narrow or remove checks that create formulaic overrides without improving retrieval, recall, or decision quality.
+
+exceptions: []
+
 defaults:
   document_type: reader-facing
   template: true

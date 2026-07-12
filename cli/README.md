@@ -289,6 +289,17 @@ anyang-project validate-interfaces --path templates/operating-review.md
 
 The manifest separates governed publication and decision surfaces from provenance-bearing archives and stable identifiers. Objective diagnostics are release gates; accountable human review still judges whether a title or distinction faithfully carries the evidence.
 
+Validate the curated artifact-state contract:
+
+```bash
+anyang-project validate-artifacts
+anyang-project validate-artifacts --manifest artifact-state.yaml
+```
+
+The artifact manifest declares each consequential representation's operation, authority, provenance, permitted write path, and recovery procedure. It may name operator-controlled external paths, but validation reads only the declarations and never private artifact contents. Derived artifacts must name their sources, each domain may have only one canonical authority, and non-public authoritative state may not be tracked in Git.
+
+Manifest governance metadata names an owner, review cadence, next review, expansion rule, and retirement rule. Any exception must name its control, scope, reason, approver, expiration, and review condition; expired exceptions fail validation. Use the quarterly [governance control review](../docs/governance-control-review.md) to keep, narrow, make advisory, or retire controls before adding new validator families.
+
 Render without placing under `projects/`:
 
 ```bash
