@@ -2,9 +2,11 @@
 
 ## Purpose
 
-Install Anyang Intelligence as the Student Operating System for elementary learning.
+Install Anyang Intelligence to help a learner build a coherent life of learning.
 
-The system should help a parent or guardian add individualized depth, continuity, reflection, and coordination around a student's existing education experience, whether that experience is primarily public school, homeschool, or a hybrid, while preserving human authority, child safety, and education accountability.
+The system should help a parent or guardian connect questions, experiences, evidence, and next directions across the learner's actual life, whether learning happens through public school, homeschool, a hybrid arrangement, books, libraries, travel, projects, tools, relationships, or ordinary life. The Student Operating System is the method; the family's portable `Learning Core` is what the family uses.
+
+Portability is a defining principle, not the sole purpose. The purpose is coherence: learning should accumulate into understanding and agency rather than fragment across places and handoffs. The system preserves human authority, child safety, privacy, and education accountability and does not replace institutions or continuously record the learner.
 
 ## Executive Mandate
 
@@ -101,14 +103,15 @@ The Executive OS should prepare structured decisions for:
 The default loop is:
 
 ```text
-learner signal
-  -> parent review
-  -> learning plan
-  -> lesson / project / experience
-  -> portfolio evidence
-  -> reflection
-  -> next learning adjustment
+experience
+  -> notice with the learner and parent
+  -> connect across contexts
+  -> preserve only what is useful
+  -> reflect
+  -> choose the next parent-reviewed move
 ```
+
+Early in the arc, the parent carries most of this loop. As the learner develops, the system should help parent and learner carry it together and then help the learner increasingly select evidence, explain connections, reflect, and propose next directions.
 
 ## Child Learning Guardrails
 

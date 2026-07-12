@@ -9,6 +9,20 @@ Use this skill to keep Learning Core work aligned with the lane's current doctri
 
 This is the lane-specific front door for work that sits above the generic Student Operating System skills.
 
+## Governing Purpose
+
+Learning Core helps a learner build a coherent life of learning.
+
+Treat portability across home, school, libraries, travel, projects, tools, relationships, and stages of life as a defining principle, not the sole purpose. The developmental arc is parent-carried, then jointly carried, then increasingly learner-owned.
+
+Use this loop when shaping work:
+
+```text
+experience -> notice -> connect -> preserve -> reflect -> choose
+```
+
+Plans, portfolios, apps, books, projects, and services support the loop; none is the whole Learning Core. Preserve selected continuity without continuous observation. Learning Core does not record the learner everywhere; it helps the learner carry forward what is worth remembering.
+
 ## Read First
 
 Read these first:
@@ -54,6 +68,7 @@ Preferred sentence pattern:
 - `Learning Core` delivers a collaborative build of the family's `Learning Core`.
 - The `Learning Core` is built using the Student Operating System method.
 - Continuity support helps the family keep the `Learning Core` alive over time.
+- School is somewhere a learner may go; the family's `Learning Core` is something the learner can increasingly take with them.
 
 ## Standard Lane Flow
 
@@ -135,6 +150,8 @@ Good continuity logic:
 - the parent wants continuity without rebuilding context
 - school, reading, and home signals need interpretation together
 - the `Learning Core` is useful and worth keeping alive
+- the family retains a usable, intelligible Learning Core without continued subscription
+- the learner is ready to share more responsibility for selection, reflection, or direction
 
 Bad continuity logic:
 
@@ -191,9 +208,12 @@ Do not:
 - diagnose or grade the child
 - treat app activity as proof of mastery
 - imply the subscription is the hidden real product
+- imply the subscription owns the family's continuity or learning memory
 - replace parent judgment
 - hide missing evidence behind confident prose
 - imply OB1 is required for the `Learning Core`
+- turn portability into continuous observation, automatic sharing, or exhaustive memory
+- describe a plan, portfolio, app, school setting, or service as the whole Learning Core
 
 ## Done When
 
@@ -204,3 +224,5 @@ The Learning Core artifact or decision:
 - preserves parent authority and child-safety boundaries
 - keeps the free-month and continuity boundary honest
 - treats observation as evidence and recommendation as governed interpretation
+- contributes to a coherent life of learning across contexts
+- preserves the parent-to-learner ownership arc without weakening current parent authority

@@ -1,8 +1,8 @@
 # Student Portfolio
 
-The student portfolio is the place where the learner keeps work they are proud of, milestones worth remembering, and parent-reviewed reports that make growth visible.
+The student portfolio is the selective learning memory the learner can carry forward: proud work, worthwhile questions, meaningful connections, milestones, unfinished threads, and parent-reviewed reflections that make growth visible.
 
-Its job is to make growth visible to the child and useful to the parent.
+Its job is to help the learner and parent remember what matters across places and over time. It is not the whole Learning Core; it supports the larger cycle of experience, noticing, connection, preservation, reflection, and choice.
 
 ## Purpose
 
@@ -14,6 +14,8 @@ The student portfolio helps:
 - Show progress across reading, writing, math, art, projects, questions, and habits.
 - Build the child's sense that learning creates a visible body of work.
 - Connect physical work, digital work, observations, and reports into one learning-memory system.
+- Carry questions and learning threads between home, school, libraries, travel, projects, tools, and conversations.
+- Give the learner increasing ownership over what is worth remembering and what direction should follow.
 
 ## Setup
 
@@ -55,7 +57,9 @@ Save work that fits one of these standards:
 - It shows a new skill.
 - It shows persistence through difficulty.
 - It captures a meaningful question.
+- It reveals a connection between experiences, subjects, people, or places.
 - It represents a milestone.
+- It preserves an unfinished thread the learner wants to return to.
 - It helps the parent understand the child's learning.
 
 Examples:
@@ -97,7 +101,7 @@ Child reflection, if available:
 
 ## Child Choice Rule
 
-The child should help choose what goes into the portfolio.
+The child should help choose what goes into the portfolio. For younger learners, the parent provides the container and safety boundary while the child begins practicing selection and reflection. Over time, the learner should take increasing responsibility for choosing, explaining, organizing, and carrying work forward.
 
 Ask:
 
@@ -165,5 +169,7 @@ Examples:
 ## Boundary
 
 The student portfolio is not a gradebook, diagnosis, legal compliance file, or complete transcript by itself.
+
+It is also not an exhaustive record of the learner's life. Do not continuously capture location, conversation, app activity, behavior, or ordinary experience merely because storage is possible. The parent and learner decide what is useful to preserve, forget, or share.
 
 It is a parent-reviewed evidence and celebration system. If portfolio evidence raises concerns about reading, writing, attention, speech/language, math, behavior, health, or development, the parent should consider teacher, tutor, clinician, or specialist support.

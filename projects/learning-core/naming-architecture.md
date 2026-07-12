@@ -4,6 +4,8 @@ This note defines how `Learning Core`, `Learning Core`, and `Student Operating S
 
 The goal is to keep the lane, the family artifact, and the broader method distinct so they do not blur together in planning, documentation, or parent-facing communication.
 
+All three layers serve one purpose: help a learner build a coherent life of learning. Portability across contexts is a defining principle, and increasing learner ownership is the developmental arc.
+
 ## Core Naming Rule
 
 Use the three names like this:
@@ -39,6 +41,8 @@ Do not use `Learning Core` as the name of the family artifact itself.
 
 `Learning Core` names the thing the family receives and uses.
 
+It is a portable center of continuity, not a school replacement, single plan, app, portfolio, subscription, or exhaustive record.
+
 Use it when referring to:
 
 - the family's living planning system
@@ -47,10 +51,13 @@ Use it when referring to:
 - portfolio and reading-basket interpretation
 - recommendation context
 - memory, continuity, and handoff surfaces
+- selected questions and unfinished learning threads carried across contexts
+- learner reflection and increasing ownership of next directions
 
 Good examples:
 
 - The first 30 days should leave the family with a usable `Learning Core`.
+- School is somewhere a learner may go; the family's `Learning Core` is something the learner can increasingly take with them.
 - The continuity subscription helps keep the `Learning Core` alive.
 - The family's `Learning Core` may optionally interface with OB1.
 
@@ -105,3 +112,5 @@ This distinction keeps the lane legible:
 - `Learning Core` = where the work lives
 - `Learning Core` = what the family uses
 - `Student Operating System` = how the system thinks
+
+The 30-day plan, portfolio, reading basket, apps, projects, and reviews are supporting surfaces. None should be described as if it were the whole `Learning Core`.

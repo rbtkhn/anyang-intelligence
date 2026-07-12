@@ -1,16 +1,20 @@
 # Startup Bundle
 
-This guide helps a parent start the Student Operating System experience for a 7-year-old learner.
+This guide helps a parent begin a portable `Learning Core` for a 7-year-old learner: the first usable structure for building a coherent life of learning across school, home, books, tools, projects, places, and ordinary days.
 
 The goal is to make learning easier to plan, observe, personalize, and remember.
 
-Over the first 30 days, this startup bundle helps the family begin building its `Learning Core`: the parent-usable system that keeps plans, observations, resources, and next steps organized well enough to continue operating independently.
+Over the first 30 days, this startup bundle helps the family begin building its `Learning Core`: a parent-guided, increasingly learner-owned system that keeps worthwhile questions, experiences, connections, evidence, and next directions coherent enough to continue operating independently.
+
+The bundle does not attempt to record everything the learner does. It helps the family notice selectively, connect experiences, preserve what matters, reflect, and choose what comes next.
 
 This guide does not replace the parent, teacher, tutor, clinician, legal requirements, or human judgment. The parent remains the authority over curriculum, pacing, child-facing communication, sensitive information, and outside support.
 
 ## What You Are Getting
 
 Student Operating System is a parent-led learning operating system.
+
+The parent carries the system initially. The learner should immediately have age-appropriate choices—what they are curious about, what they are proud of, and what they want to remember. Over time, parent and learner carry the Learning Core together, with increasing learner ownership of reflection and direction.
 
 It helps you:
 

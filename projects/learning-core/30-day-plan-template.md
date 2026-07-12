@@ -4,6 +4,10 @@ This template is the parent-facing shell for the **30-Day Personalized Learning 
 
 Use it after the inputs in [30-day-plan-inputs.md](30-day-plan-inputs.md) are collected or clearly marked as missing. The plan should feel like a warm parent coach: practical, calm, and easy to adapt.
 
+This plan is a temporary view of the learner's current direction, not the whole Learning Core. It should connect learning across classrooms, home, books, libraries, travel, projects, tools, relationships, and ordinary life while leaving the family able to revise direction as new evidence appears.
+
+Use the plan to support a larger loop: `experience -> notice -> connect -> preserve -> reflect -> choose`. Preserve only useful, parent-approved context; do not turn portability into continuous observation or exhaustive recordkeeping.
+
 Do not include pricing, retainer, subscription, or internal skill language in the completed parent-facing plan.
 
 The planning logic is:
@@ -76,6 +80,10 @@ Use observations, not fixed labels.
 - Strengths: `[observed strengths]`
 - Friction or support signals: `[observed friction, uncertainty, or support needs]`
 - Parent constraints: `[schedule, energy, resources, family context, boundaries]`
+- Learning environments: `[school, home, library, travel, community, books, tools, projects, relationships, or other relevant settings]`
+- Threads worth carrying across environments: `[questions, interests, unfinished work, useful strategies, or emerging connections]`
+- Learner ownership now: `[choices or reflections the learner can already carry]`
+- Next ownership step: `[one age-appropriate responsibility the learner can begin sharing]`
 - Evidence quality: `[strong / medium / thin; explain briefly]`
 
 ## 30-Day Rhythm

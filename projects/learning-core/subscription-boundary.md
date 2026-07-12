@@ -12,6 +12,8 @@ It should let a parent experience the Student Operating System in a bounded way 
 
 It should also leave the family with a `Learning Core` they can operate independently if they choose not to continue into the subscription layer.
 
+The `Learning Core` belongs operationally to the family. Ending the subscription must not remove the family's plans, selected learning memory, portfolio structure, questions, or ability to continue the experience-notice-connect-preserve-reflect-choose loop.
+
 That experience may sit alongside public school, homeschool, or a hybrid arrangement. The lane's job is to add depth and continuity, not to pretend every family starts from the same schooling structure.
 
 The monthly continuity subscription begins only if the parent wants continuing guidance, interpretation, and higher-touch support after that first month.
@@ -49,7 +51,7 @@ If the free build quietly includes the subscription layer, then the boundary is 
 
 ## Monthly Continuity Subscription Includes
 
-The monthly continuity subscription is for families who want the Student Operating System to stay active after the first month as an ongoing depth-and-continuity layer around the student's education experience.
+The monthly continuity subscription is for families who want ongoing help interpreting and strengthening their own Learning Core after the first month. It supports continuity; it does not own the family's continuity or make the learner's coherent life of learning dependent on Anyang Intelligence.
 
 The continuity layer may include:
 
@@ -71,6 +73,7 @@ Its value is ongoing operating support:
 - Parent observations become interpreted, not just stored.
 - The plan adapts from real learner signals over time.
 - The family gains continuity, perspective, and earlier access to product improvements.
+- The learner can increasingly participate in selecting what matters, making connections, reflecting, and choosing next directions.
 
 ## Subscription Trigger
 
@@ -96,6 +99,8 @@ Operators should keep these boundaries explicit:
 - Do not hide the transition point between free and paid support.
 - Do not use child-safety, urgency, or parent anxiety as conversion pressure.
 - Do not place pricing or subscription language inside the child-facing or parent-facing plan body unless that surface is intentionally commercial.
+- Do not imply that cancellation erases, disables, or invalidates the family's Learning Core.
+- Do not make essential learning memory proprietary to the subscription; leave the family with portable, intelligible artifacts it can continue using.
 
 ## Evidence To Validate
 
