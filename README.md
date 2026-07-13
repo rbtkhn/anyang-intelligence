@@ -60,12 +60,12 @@ anyang-intelligence/
     README.md
     customer-state-update/
       SKILL.md
-  customers/
+  projects/
     README.md
     book-club/
       README.md
       executive-os-install.md
-    elementary-school/
+    learning-core/
       README.md
       executive-os-install.md
     grace-gems/
@@ -74,10 +74,7 @@ anyang-intelligence/
     media-production/
       README.md
       executive-os-install.md
-    mountain-home/
-      README.md
-      executive-os-install.md
-    non-profit/
+    mountain-villa/
       README.md
       executive-os-install.md
   playbooks/
@@ -95,9 +92,9 @@ anyang-intelligence/
 
 This repo is in concept and operating-design stage. The immediate goal is to define the Executive OS clearly enough to install it manually with early organizations before turning repeated patterns into software.
 
-The current installations are tracked in [customers/](customers/README.md): Grace Gems proves marketplace execution governance, Mountain Home proves property and asset-risk governance, Book Club proves lightweight community cadence governance, Media Production proves creative pipeline governance, Non-Profit proves mission, program, donor, and impact governance, and Elementary School proves high-trust educational operations.
+The current installations are tracked in [projects/](projects/README.md): Grace Gems proves marketplace execution governance, Mountain Villa proves property and asset-risk governance, Book Club proves lightweight community cadence governance, Media Production proves creative pipeline governance, and Learning Core proves high-trust educational operations.
 
-The shared method is captured in [docs/install-method.md](docs/install-method.md). The loop grammar is captured in [docs/loops.md](docs/loops.md), the cross-lane filter judgment is captured in [docs/membranes.md](docs/membranes.md), and material claim discipline is captured in [docs/evidence-awareness-checklist.md](docs/evidence-awareness-checklist.md). Each customer installation should adapt that method to its own domain instead of inventing a new operating shape from scratch.
+The shared method is captured in [docs/install-method.md](docs/install-method.md). The loop grammar is captured in [docs/loops.md](docs/loops.md), the cross-lane filter judgment is captured in [docs/membranes.md](docs/membranes.md), material claim discipline is captured in [docs/evidence-awareness-checklist.md](docs/evidence-awareness-checklist.md), and reader-facing judgment is governed by [docs/analytical-interfaces.md](docs/analytical-interfaces.md). Each project should adapt that method to its own domain instead of inventing a new operating shape from scratch.
 
 The current system-level buildout is summarized in [docs/operating-substrate.md](docs/operating-substrate.md).
 
