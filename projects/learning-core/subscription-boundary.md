@@ -12,7 +12,7 @@ It should let a parent experience the Student Operating System in a bounded way 
 
 It should also leave the family with a `Learning Core` they can operate independently if they choose not to continue into the subscription layer.
 
-The `Learning Core` belongs operationally to the family. Ending the subscription must not remove the family's plans, selected learning memory, portfolio structure, questions, or ability to continue the experience-notice-connect-preserve-reflect-choose loop.
+The `Learning Core` belongs operationally to the family. If school is something the learner takes with them, no subscription can own that school. Ending the subscription must not remove the family's plans, selected learning memory, portfolio structure, questions, or ability to continue the experience-notice-connect-preserve-reflect-choose loop.
 
 That experience may sit alongside public school, homeschool, or a hybrid arrangement. The lane's job is to add depth and continuity, not to pretend every family starts from the same schooling structure.
 

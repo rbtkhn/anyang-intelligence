@@ -1,6 +1,8 @@
 # Startup Bundle
 
-This guide helps a parent begin a portable `Learning Core` for a 7-year-old learner: the first usable structure for building a coherent life of learning across school, home, books, tools, projects, places, and ordinary days.
+This guide helps a parent begin a portable `Learning Core` for a 7-year-old learner: the first usable structure for making school something the learner can take with them across classrooms, home, books, tools, projects, places, and ordinary days.
+
+This does not turn the bundle into a school, curriculum, or authority. It helps the family connect what the learner encounters in different settings so questions, meaning, and direction do not disappear at the edge of a place or schedule.
 
 The goal is to make learning easier to plan, observe, personalize, and remember.
 

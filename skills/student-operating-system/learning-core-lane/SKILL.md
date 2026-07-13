@@ -13,7 +13,9 @@ This is the lane-specific front door for work that sits above the generic Studen
 
 Learning Core helps a learner build a coherent life of learning.
 
-Treat portability across home, school, libraries, travel, projects, tools, relationships, and stages of life as a defining principle, not the sole purpose. The developmental arc is parent-carried, then jointly carried, then increasingly learner-owned.
+Governing expression: **School is not somewhere you go. It is something you take with you.**
+
+Treat this as a definition of learner-carried school: the connected questions, experiences, selected evidence, reflection, and direction that remain with the learner across home, classrooms, libraries, travel, projects, tools, relationships, and stages of life. Do not use it to erase or replace institutional school, teachers, parents, homeschool structures, or accountability. The developmental arc is parent-carried, then jointly carried, then increasingly learner-owned.
 
 Use this loop when shaping work:
 
@@ -68,7 +70,7 @@ Preferred sentence pattern:
 - `Learning Core` delivers a collaborative build of the family's `Learning Core`.
 - The `Learning Core` is built using the Student Operating System method.
 - Continuity support helps the family keep the `Learning Core` alive over time.
-- School is somewhere a learner may go; the family's `Learning Core` is something the learner can increasingly take with them.
+- School is not only somewhere a learner goes; through the family's `Learning Core`, it becomes something the learner can increasingly take with them.
 
 ## Standard Lane Flow
 
@@ -212,6 +214,7 @@ Do not:
 - replace parent judgment
 - hide missing evidence behind confident prose
 - imply OB1 is required for the `Learning Core`
+- use learner-carried school to imply institutional, instructional, legal, or accountability authority
 - turn portability into continuous observation, automatic sharing, or exhaustive memory
 - describe a plan, portfolio, app, school setting, or service as the whole Learning Core
 
@@ -225,4 +228,5 @@ The Learning Core artifact or decision:
 - keeps the free-month and continuity boundary honest
 - treats observation as evidence and recommendation as governed interpretation
 - contributes to a coherent life of learning across contexts
+- makes school increasingly learner-carried without claiming to replace institutional school
 - preserves the parent-to-learner ownership arc without weakening current parent authority

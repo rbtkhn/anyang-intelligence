@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Install Anyang Intelligence to help a learner build a coherent life of learning.
+Install Anyang Intelligence to help a learner build a coherent life of learning: school not merely as somewhere the learner goes, but as something the learner can increasingly take with them.
 
-The system should help a parent or guardian connect questions, experiences, evidence, and next directions across the learner's actual life, whether learning happens through public school, homeschool, a hybrid arrangement, books, libraries, travel, projects, tools, relationships, or ordinary life. The Student Operating System is the method; the family's portable `Learning Core` is what the family uses.
+The system should help a parent or guardian connect questions, experiences, evidence, and next directions across the learner's actual life, whether learning happens through public school, homeschool, a hybrid arrangement, books, libraries, travel, projects, tools, relationships, or ordinary life. The Student Operating System is the method; the family's portable `Learning Core` is the structure that lets the learner carry school across those settings.
 
-Portability is a defining principle, not the sole purpose. The purpose is coherence: learning should accumulate into understanding and agency rather than fragment across places and handoffs. The system preserves human authority, child safety, privacy, and education accountability and does not replace institutions or continuously record the learner.
+Portability is a defining principle, not the sole purpose. The purpose is coherence: learning should accumulate into understanding and agency rather than fragment across places and handoffs. In this sense, learner-carried school is not a claim to replace an institution, teacher of record, parent, or accountability structure. It is the connected learning life that remains with the learner when a class, tool, project, or setting ends. The system preserves human authority, child safety, privacy, and education accountability and does not continuously record the learner.
 
 ## Executive Mandate
 

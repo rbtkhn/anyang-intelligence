@@ -2,9 +2,11 @@
 
 **Learning Core helps a learner build a coherent life of learning.**
 
-School is somewhere you go. Learning Core is something you take with you.
+**School is not somewhere you go. It is something you take with you.**
 
-Learning Core is an Anyang Intelligence project lane that helps a family build a parent-guided, increasingly learner-owned `Learning Core`: a system that connects questions, experiences, evidence, and next directions across home, school, libraries, travel, projects, tools, relationships, and stages of life. It uses the **Student Operating System** method without replacing schools, teachers, homeschool structures, parent authority, or education accountability.
+This does not deny the importance of classrooms, teachers, homeschool structures, institutions, or accountable places of learning. It names the part of school that should belong to the learner: connected questions, experiences, evidence, reflection, and direction that can travel across settings and stages of life.
+
+Learning Core is an Anyang Intelligence project lane that helps a family build a parent-guided, increasingly learner-owned `Learning Core`: the family-owned structure that makes this learner-carried school possible. It uses the **Student Operating System** method without replacing schools, teachers, homeschool structures, parent authority, or education accountability.
 
 Portability here means intentional continuity, not continuous observation. Learning Core does not record the learner everywhere. It helps the learner carry forward what is worth remembering.
 
@@ -39,9 +41,9 @@ The system does not replace parents, teachers, tutors, clinicians, legal require
 
 ## Operating Thesis
 
-A traditional education experience, whether public school or homeschool, should not become a pile of worksheets, apps, handoffs, and forgotten good intentions.
+A traditional education experience, whether public school or homeschool, should not become a pile of worksheets, apps, handoffs, and forgotten good intentions. If school exists only as a place or schedule, much of its meaning disappears when the learner leaves that setting.
 
-The family's `Learning Core` should help experiences in different places contribute to one coherent life of learning. A classroom, kitchen table, library, museum, trip, book, app, project, or conversation can each carry part of the learning without any one surface becoming the whole system:
+The family's `Learning Core` should help the learner take school with them by connecting experiences in different places into one coherent life of learning. A classroom, kitchen table, library, museum, trip, book, app, project, or conversation can each carry part of the learning without any one surface becoming the whole system:
 
 ```text
 experience
@@ -52,7 +54,7 @@ experience
   -> choose
 ```
 
-Plans, portfolios, reading baskets, apps, projects, and reviews support this loop. They are views and tools around the learner's developing life of learning, not the final object.
+Plans, portfolios, reading baskets, apps, projects, and reviews support this loop. They are views and tools around the learner's developing life of learning, not the school the learner carries.
 
 For an elementary learner, the parent initially carries most of the Learning Core. Over time, parent and learner carry it together, and the learner increasingly chooses what matters, makes connections, reflects, and helps direct the next move.
 

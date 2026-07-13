@@ -4,7 +4,14 @@ This note defines how `Learning Core`, `Learning Core`, and `Student Operating S
 
 The goal is to keep the lane, the family artifact, and the broader method distinct so they do not blur together in planning, documentation, or parent-facing communication.
 
-All three layers serve one purpose: help a learner build a coherent life of learning. Portability across contexts is a defining principle, and increasing learner ownership is the developmental arc.
+All three layers serve one purpose: help a learner build a coherent life of learning. The governing expression is: **School is not somewhere you go. It is something you take with you.** Portability across contexts is a defining principle, and increasing learner ownership is the developmental arc.
+
+Here, `school` has two related meanings:
+
+- institutional school: the places, people, relationships, instruction, and accountability structures through which learning may be organized
+- learner-carried school: the questions, connections, selected evidence, reflection, and direction that remain with the learner across settings and over time
+
+The `Learning Core` supports the second meaning without claiming to replace or absorb the first.
 
 ## Core Naming Rule
 
@@ -41,7 +48,7 @@ Do not use `Learning Core` as the name of the family artifact itself.
 
 `Learning Core` names the thing the family receives and uses.
 
-It is a portable center of continuity, not a school replacement, single plan, app, portfolio, subscription, or exhaustive record.
+It is the family-owned structure for learner-carried school: a portable center of continuity, not an institutional-school replacement, single plan, app, portfolio, subscription, or exhaustive record.
 
 Use it when referring to:
 
@@ -57,7 +64,7 @@ Use it when referring to:
 Good examples:
 
 - The first 30 days should leave the family with a usable `Learning Core`.
-- School is somewhere a learner may go; the family's `Learning Core` is something the learner can increasingly take with them.
+- School is not only somewhere a learner goes; through the family's `Learning Core`, it becomes something the learner can increasingly take with them.
 - The continuity subscription helps keep the `Learning Core` alive.
 - The family's `Learning Core` may optionally interface with OB1.
 
@@ -90,6 +97,7 @@ This is the preferred relationship:
 - `Learning Core` delivers a 30-day collaborative build of the family's `Learning Core`.
 - That `Learning Core` is built using the Student Operating System method.
 - The continuity subscription helps the family keep the `Learning Core` alive over time.
+- The `Learning Core` helps school remain connected to the learner across places without claiming institutional authority.
 
 ## Usage By Surface
 
@@ -113,4 +121,4 @@ This distinction keeps the lane legible:
 - `Learning Core` = what the family uses
 - `Student Operating System` = how the system thinks
 
-The 30-day plan, portfolio, reading basket, apps, projects, and reviews are supporting surfaces. None should be described as if it were the whole `Learning Core`.
+The 30-day plan, portfolio, reading basket, apps, projects, schools, and reviews are supporting contexts or surfaces. None should be described as if it were the whole learner-carried school or `Learning Core`.

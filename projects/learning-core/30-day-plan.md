@@ -1,6 +1,6 @@
 # Learning Core 30-Day Plan
 
-This is the first-real-cycle operating plan for Learning Core. It should help one family use a lightweight, parent-guided `Learning Core` without turning ordinary learning into a program-management burden.
+This is the first-real-cycle operating plan for Learning Core. It should help one family begin making school something the learner can take with them through a lightweight, parent-guided `Learning Core`, without turning ordinary learning into a program-management burden.
 
 The current lane remains `Hold` until real parent input satisfies the waiting conditions below. Fixtures may test the workflow, but they are not delivery evidence.
 
@@ -47,6 +47,7 @@ Classify the intake as `Ready`, `Provisional`, or `Hold` using the existing read
 ## Week 3: Look For Coherence
 
 - Notice whether learning in one context connected with a question, activity, or idea from another context.
+- Ask whether something encountered in a classroom, at home, in a book, through a project, or in ordinary life became part of the learner's continuing understanding rather than staying trapped in that setting.
 - Check that no plan, app, portfolio, book, project, or school setting has started acting like the whole `Learning Core`.
 - Preserve what is useful for continuity, not a complete record of the learner's life.
 - Repeat the learner's three small ownership actions and the five-minute parent review.
@@ -86,6 +87,7 @@ Ordinary adjustments should normally rest on two aligned signals. Safety, privac
 The first cycle succeeds when the family has a clearer next direction and can explain:
 
 - What connected across learning contexts.
+- What part of school the learner can now carry beyond the place where it began.
 - What mattered enough to preserve.
 - What the learner increasingly noticed or chose.
 - What should guide the next cycle.
