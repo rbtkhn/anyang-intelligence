@@ -23,6 +23,12 @@ An Executive Operating System is an organization-specific intelligence layer tha
 
 This is not an "AI CEO" that replaces leadership. It is an AI-native operating partner that makes leadership more coherent, better informed, and easier to compound over time.
 
+## Strategic Direction: Embodied Agency
+
+Anyang Intelligence builds governed intelligence systems that help people understand, coordinate, and eventually act in digital and physical worlds. The direction is not autonomous authority: every consequential action remains bounded by explicit human approval, evidence, safety, privacy, security, and accountability requirements.
+
+Today, the work is primarily digital operating infrastructure. Over time, the same memory, decision, review, and escalation architecture may govern useful tools, workflow automation, and physical systems where a defined task, maintenance plan, and human override make their use responsible.
+
 ## First Wedge
 
 The first version is service-led installation for founder-led teams and lean organizations with real complexity but limited executive infrastructure.
