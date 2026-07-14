@@ -1,0 +1,103 @@
+version: 1
+
+governance:
+  owner: repository-operator
+  review_cadence: quarterly
+  expansion_rule: Add a phase only after a real repeated workflow demonstrates a bounded capability and objective invariants.
+  retirement_rule: Retire or narrow phases whose controls no longer prevent more risk than they introduce.
+
+phases:
+  singularity-transcript-intake:
+    objective: Land rights-governed transcript sources into the internal Singularity Science archive.
+    capability: anyang-project import-transcripts
+    canonical_inputs:
+      - singularity-transcript-manifest
+      - singularity-transcript-source-bodies
+    derived_outputs:
+      - singularity-transcript-archive
+      - singularity-transcript-import-ledger
+    working_state:
+      - in-memory-preflight-diagnostics
+      - bounded-temporary-rendered-files
+    public_state: none
+    advisory_state:
+      - standalone-preflight-output
+      - transition-result
+      - phase-handoff
+    may_read:
+      - invoked-manifest
+      - manifest-referenced-source-bodies
+    may_write:
+      - projects/singularity-science/archive/innermost-loop/transcripts/**
+      - projects/singularity-science/archive/moonshots/transcripts/**
+      - projects/singularity-science/archive/nate-b-jones/transcripts/**
+      - projects/singularity-science/archive/external-interviews/transcripts/**
+      - projects/singularity-science/archive/transcript-import-ledger.md
+    operations:
+      create:
+        - projects/singularity-science/archive/*/transcripts/*.md
+      modify:
+        - projects/singularity-science/archive/transcript-import-ledger.md
+      delete: []
+    must_not_write_without_explicit_authorization:
+      - .git/**
+      - .github/**
+      - docs/**
+      - skills/**
+      - projects/learning-core/**
+      - projects/grace-gems/**
+      - projects/book-club/**
+      - projects/media-production/**
+      - projects/mountain-villa/**
+      - projects/singularity-science/*.md
+      - projects/singularity-science/loop-examples/**
+      - projects/singularity-science/primitives/**
+      - projects/singularity-science/templates/**
+      - projects/singularity-science/archive/*/analyses/**
+      - projects/singularity-science/archive/*/source-notes/**
+      - external-systems:*
+    invariants:
+      - invoked-manifest-authoritative-for-phase
+      - manifest-valid
+      - source-present
+      - rights-governed
+      - destination-contained
+      - destination-no-overwrite
+      - contact-details-redacted
+      - actual-delta-within-plan
+      - no-cross-project-output
+    warnings:
+      - unrelated-dirty-worktree
+      - manifest-authority-ambiguity
+    row_holds:
+      - uncertain-review-needed
+      - do-not-commit-terminal-non-write
+    authorization_required:
+      - requested-write-outside-envelope
+      - protected-surface-intersection
+    blockers:
+      - contract-invalid
+      - invalid-manifest
+      - missing-approved-source
+      - dirty-permitted-write-surface
+      - path-escape
+      - conflicting-destination
+      - protected-surface-intersection
+      - unexpected-delta
+    stop_conditions:
+      - Stop before mutation when any phase blocker is present.
+      - Stop after mutation when the actual repository delta exceeds the normalized write plan.
+      - Stop before source-note, analysis, customer implication, publication, Git, or external-system work.
+    recovery:
+      method: Remove bounded temporary files, reconcile manifest destinations without overwrite, verify landed provenance, and regenerate the derived ledger.
+      verification:
+        - destination-content-check
+        - manifest-reconciliation
+        - actual-delta-within-plan
+    complete_when:
+      - Every manifest row has a terminal imported, already-present, rights-hold, or do-not-commit outcome.
+      - The derived ledger reconciles with the invoked manifest and archive destinations.
+      - The actual repository delta remains within the normalized write plan.
+    next_phase:
+      owner: singularity-source-note
+      authority: advisory-handoff-only

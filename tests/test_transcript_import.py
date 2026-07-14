@@ -2,7 +2,9 @@ from pathlib import Path
 import tempfile
 
 from anyang_loop.project_cli import main
-from anyang_loop.transcript_import import import_transcripts, render_completion_report
+from anyang_loop.phase_preflight import TRANSCRIPT_PHASE, run_preflight
+from anyang_loop.transcript_import import TEMP_SUFFIX, import_transcripts, render_completion_report, temporary_path
+from cadence_helpers import make_git_repo, run
 
 
 def write_manifest(path: Path, transcript_a: Path, transcript_b: Path) -> Path:
@@ -80,6 +82,7 @@ def write_manifest(path: Path, transcript_a: Path, transcript_b: Path) -> Path:
 
 def test_transcript_import_dry_run_and_report():
     tmp_path = Path(tempfile.mkdtemp())
+    make_git_repo(tmp_path)
     transcript_a = tmp_path / "first-innermost.txt"
     transcript_b = tmp_path / "first-moonshots.txt"
     transcript_a.write_text("Innermost transcript body.", encoding="utf-8")
@@ -97,8 +100,9 @@ def test_transcript_import_dry_run_and_report():
     assert "| nate-b-jones | 1 | 1 | 0 | 0 | 100% |" in report
 
 
-def test_transcript_import_writes_files_and_ledger():
+def test_transcript_import_blocks_all_writes_when_any_approved_source_is_missing():
     tmp_path = Path(tempfile.mkdtemp())
+    make_git_repo(tmp_path)
     transcript_a = tmp_path / "first-innermost.txt"
     transcript_b = tmp_path / "first-moonshots.txt"
     transcript_a.write_text("Innermost transcript body.", encoding="utf-8")
@@ -112,27 +116,15 @@ def test_transcript_import_writes_files_and_ledger():
     nate = manifest.parent / "nate-b-jones" / "transcripts" / "2026-07-08-captured-first-nate-b-jones.md"
     ledger = manifest.parent / "transcript-import-ledger.md"
 
-    assert innermost.exists()
-    assert moonshots.exists()
-    assert nate.exists()
-    assert ledger.exists()
-
-    innermost_text = innermost.read_text(encoding="utf-8")
-    assert "rights_status: internal-commit-approved" in innermost_text
-    assert "## Transcript" in innermost_text
-    assert "Innermost transcript body." in innermost_text
-    front_matter = innermost_text.split("---", 2)[1]
-    assert "\n...\n" not in front_matter
-
-    ledger_text = ledger.read_text(encoding="utf-8")
-    assert "needs-source-note" in ledger_text
-    assert "blocked-rights" in ledger_text
-    assert "missing-source" in ledger_text
-    assert "skipped-do-not-commit" in ledger_text
+    assert not innermost.exists()
+    assert not moonshots.exists()
+    assert not nate.exists()
+    assert not ledger.exists()
 
 
 def test_transcript_import_redacts_email_addresses():
     tmp_path = Path(tempfile.mkdtemp())
+    make_git_repo(tmp_path)
     transcript = tmp_path / "email-transcript.txt"
     address = "person" + chr(64) + "example.com"
     transcript.write_text(f"Contact {address} for details.", encoding="utf-8")
@@ -162,10 +154,14 @@ def test_transcript_import_redacts_email_addresses():
     imported_text = imported.read_text(encoding="utf-8")
     assert address not in imported_text
     assert "[redacted-email]" in imported_text
+    ledger = manifest.parent / "transcript-import-ledger.md"
+    assert ledger.exists()
+    assert "Manifest: `projects/singularity-science/archive/transcript-intake-manifest.json`" in ledger.read_text(encoding="utf-8")
 
 
 def test_transcript_import_duplicate_detection_and_no_overwrite():
     tmp_path = Path(tempfile.mkdtemp())
+    make_git_repo(tmp_path)
     transcript = tmp_path / "first-innermost.txt"
     transcript.write_text("First transcript body.", encoding="utf-8")
     manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
@@ -193,12 +189,13 @@ def test_transcript_import_duplicate_detection_and_no_overwrite():
     original_text = imported.read_text(encoding="utf-8")
 
     transcript.write_text("Updated transcript body that should not overwrite.", encoding="utf-8")
-    assert main(["import-transcripts", "--manifest", str(manifest)]) == 0
+    assert main(["import-transcripts", "--manifest", str(manifest)]) == 1
     assert imported.read_text(encoding="utf-8") == original_text
 
 
 def test_transcript_import_validation_failures(capsys):
     tmp_path = Path(tempfile.mkdtemp())
+    make_git_repo(tmp_path)
     transcript = tmp_path / "blank.txt"
     transcript.write_text("   \n", encoding="utf-8")
     manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
@@ -257,3 +254,66 @@ def test_transcript_import_validation_failures(capsys):
     assert "Missing required fields: slug." in captured.out
     assert "Missing required fields: rights_status." in captured.out
     assert "Transcript body is empty after normalization" in captured.out
+
+
+def test_rights_hold_does_not_block_independently_approved_row_and_json_transition(capsys):
+    tmp_path = Path(tempfile.mkdtemp())
+    make_git_repo(tmp_path)
+    approved = tmp_path / "approved.txt"
+    held = tmp_path / "held.txt"
+    approved.write_text("Approved source.", encoding="utf-8")
+    held.write_text("Held source.", encoding="utf-8")
+    manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest.parent.mkdir(parents=True, exist_ok=True)
+    manifest.write_text(
+        '{"transcripts": ['
+        '{"lane":"moonshots","title":"Approved","slug":"approved","date_captured":"2026-07-13",'
+        f'"source_ref":"internal","rights_status":"internal-commit-approved","capture_method":"manual","local_input_path":"{approved.as_posix()}"}},'
+        '{"lane":"moonshots","title":"Held","slug":"held","date_captured":"2026-07-13",'
+        f'"source_ref":"internal","rights_status":"uncertain-review-needed","capture_method":"manual","local_input_path":"{held.as_posix()}"}}]}}\n',
+        encoding="utf-8",
+    )
+    run(tmp_path, "git", "add", ".")
+    run(tmp_path, "git", "commit", "-m", "intake fixture")
+
+    assert main(["import-transcripts", "--manifest", str(manifest), "--format", "json"]) == 0
+    payload = __import__("json").loads(capsys.readouterr().out)
+
+    assert (manifest.parent / "moonshots" / "transcripts" / "2026-07-13-captured-approved.md").exists()
+    assert not (manifest.parent / "moonshots" / "transcripts" / "2026-07-13-captured-held.md").exists()
+    assert [row["status"] for row in payload["import"]["rows"]] == ["imported", "blocked-rights"]
+    assert payload["transition"]["baseline_fingerprint"]
+    assert payload["transition"]["status"] == "pass"
+    assert all(item["status"] == "pass" for item in payload["validation_results"])
+    assert payload["handoff"]["authority"].startswith("advisory-only")
+
+
+def test_mutation_rechecks_state_and_recovery_removes_bounded_temp_file():
+    tmp_path = Path(tempfile.mkdtemp())
+    make_git_repo(tmp_path)
+    source = tmp_path / "source.txt"
+    source.write_text("Stable source.", encoding="utf-8")
+    manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest.parent.mkdir(parents=True, exist_ok=True)
+    manifest.write_text(
+        '{"transcripts":[{"lane":"innermost-loop","title":"Stable","slug":"stable","date_captured":"2026-07-13",'
+        f'"source_ref":"internal","rights_status":"internal-commit-approved","capture_method":"manual","local_input_path":"{source.as_posix()}"}}]}}\n',
+        encoding="utf-8",
+    )
+    run(tmp_path, "git", "add", ".")
+    run(tmp_path, "git", "commit", "-m", "intake fixture")
+    standalone = run_preflight(TRANSCRIPT_PHASE, manifest, repo_root=tmp_path)
+    destination = standalone.summary.planned_destinations[0]
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(standalone.summary.results[0].expected_content, encoding="utf-8")
+    temp = temporary_path(standalone.summary.ledger_path)
+    temp.write_text("abandoned", encoding="utf-8")
+
+    assert temp.name.endswith(TEMP_SUFFIX)
+    assert main(["import-transcripts", "--manifest", str(manifest)]) == 0
+    assert not temp.exists()
+    assert standalone.summary.ledger_path.exists()
+
+    destination.write_text("late conflicting state", encoding="utf-8")
+    assert main(["import-transcripts", "--manifest", str(manifest)]) == 1
+    assert destination.read_text(encoding="utf-8") == "late conflicting state"

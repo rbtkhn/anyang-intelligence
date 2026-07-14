@@ -22,4 +22,5 @@ jobs:
       - run: anyang-loop validate projects
       - run: anyang-project validate-interfaces
       - run: anyang-project validate-artifacts
+      - run: anyang-project validate-agency
       - run: anyang-ops privacy-scan --repo .

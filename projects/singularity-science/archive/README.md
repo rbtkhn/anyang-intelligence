@@ -45,9 +45,12 @@ Contact details in source bodies should be redacted during import. Preserve sour
 Use these archive-level intake surfaces for batch transcript landing:
 
 - `transcript-intake-manifest.json`
+- `transcript-intake-manifest.generated.json`
 - `transcript-import-ledger.md`
 
-The manifest is the operator-facing batch intake file. The ledger is the repo-visible completeness surface showing what was imported, blocked, skipped, or still needs a source note.
+The manifest explicitly supplied with `--manifest` is canonical for that invocation, together with the source bodies it references. The generic and generated manifests are parallel candidate inputs; neither is a permanent authority merely because it exists or is newer. Their overlap is an existing ambiguity that preflight must disclose rather than silently resolve.
+
+The ledger is a derived, regenerable completeness projection showing what was imported, blocked, skipped, or still needs a source note. Existing ledger rows may retain stale provenance from earlier tooling, including machine-local manifest paths; they are advisory until reconciled by a governed import. New ledger provenance is repository-relative when the manifest is inside this repository.
 
 Transcript import is archive intake only. It does not automatically create source notes, analysis memos, customer implications, or public claims.
 

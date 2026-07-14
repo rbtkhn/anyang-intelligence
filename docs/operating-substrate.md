@@ -52,6 +52,7 @@ The foundation lives in `docs/`:
 - `docs/loops.md` defines the loop grammar.
 - `docs/membranes.md` defines cross-project transfer rules.
 - `docs/governance.md` defines authority boundaries.
+- `docs/repository-anchored-bounded-agency.md` defines how a session reconstructs a phase-specific authority envelope from durable contracts and live preflight state.
 - `docs/artificial-enlightened-intelligence.md` defines the repo's bounded meaning of enlightened AI.
 - `docs/evidence-awareness-checklist.md` defines claim classification and source-to-claim discipline.
 

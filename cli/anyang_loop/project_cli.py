@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 from .project_model import ProjectInputError, load_project_input
@@ -15,12 +16,25 @@ from .catalog_import import (
 )
 from .transcript_import import (
     TranscriptImportError,
+    execute_import_plan,
     import_transcripts,
+    import_summary_dict,
+    recover_import,
     render_completion_report,
     render_import_summary,
 )
 from .analytical_interfaces import validate_manifest
 from .artifact_state import validate_artifact_manifest
+from .bounded_agency import AgencyContractError, validate_agency_manifest
+from .phase_preflight import (
+    TRANSCRIPT_PHASE,
+    render_preflight,
+    render_preflight_json,
+    run_preflight,
+    validate_phase_result,
+    verify_transition,
+)
+from .repo_snapshot import collect_repo_snapshot
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -38,6 +52,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERROR: {exc}")
         return 1
     except CatalogImportError as exc:
+        print(f"ERROR: {exc}")
+        return 1
+    except AgencyContractError as exc:
         print(f"ERROR: {exc}")
         return 1
 
@@ -69,6 +86,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     import_cmd.add_argument("--manifest", required=True)
     import_cmd.add_argument("--dry-run", action="store_true")
+    import_cmd.add_argument("--format", choices=("text", "json"), default="text")
     import_cmd.set_defaults(func=cmd_import_transcripts)
 
     report_cmd = subparsers.add_parser(
@@ -106,6 +124,16 @@ def build_parser() -> argparse.ArgumentParser:
     )
     artifacts.add_argument("--manifest")
     artifacts.set_defaults(func=cmd_validate_artifacts)
+
+    agency = subparsers.add_parser("validate-agency", help="Validate repository-anchored bounded-agency contracts")
+    agency.add_argument("--manifest")
+    agency.set_defaults(func=cmd_validate_agency)
+
+    preflight = subparsers.add_parser("preflight", help="Reconstruct live state for a bounded operating phase")
+    preflight.add_argument("--phase", required=True)
+    preflight.add_argument("--manifest", required=True)
+    preflight.add_argument("--format", choices=("text", "json"), default="text")
+    preflight.set_defaults(func=cmd_preflight)
     return parser
 
 
@@ -142,10 +170,52 @@ def cmd_extract_patterns(args: argparse.Namespace) -> int:
 
 
 def cmd_import_transcripts(args: argparse.Namespace) -> int:
-    summary = import_transcripts(args.manifest, dry_run=args.dry_run)
-    print(render_import_summary(summary))
-    error_statuses = {"invalid-manifest", "missing-source"}
-    return 1 if any(result.status in error_statuses for result in summary.results) else 0
+    preflight = run_preflight(TRANSCRIPT_PHASE, args.manifest)
+    if preflight.exit_code:
+        print(render_preflight_json(preflight) if args.format == "json" else render_preflight(preflight))
+        return preflight.exit_code
+    if args.dry_run:
+        summary = preflight.summary
+        if summary is None:
+            return 1
+        if args.format == "json":
+            print(json.dumps({"preflight": preflight.as_dict(), "import": import_summary_dict(summary)}, indent=2, sort_keys=True))
+        else:
+            print(render_preflight(preflight))
+            print()
+            print(render_import_summary(summary))
+        return 0
+
+    before = preflight.snapshot
+    summary = preflight.summary
+    if summary is None:
+        return 1
+    summary.dry_run = False
+    recover_import(summary)
+    execute_import_plan(summary)
+    summary.executed = True
+    after = collect_repo_snapshot(before.root)
+    transition = verify_transition(before, after, preflight.expected_writes)
+    validation_results = validate_phase_result(preflight, summary, transition)
+    validation_passed = all(result["status"] == "pass" for result in validation_results)
+    handoff = {
+        "status": "validated" if validation_passed and summary.complete else "blocked",
+        "next_phase": preflight.phase.next_phase,
+        "authority": "advisory-only; successor must run a new preflight",
+    }
+    if args.format == "json":
+        print(json.dumps({"preflight": preflight.as_dict(), "import": import_summary_dict(summary), "transition": transition, "validation_results": validation_results, "handoff": handoff}, indent=2, sort_keys=True))
+    else:
+        print(render_import_summary(summary))
+        print()
+        print(f"Postflight delta: {transition['status']}")
+        for path in transition["unexpected_delta"]:
+            print(f"- BLOCK unexpected-delta: {path}")
+        print(f"Phase validators: {'pass' if validation_passed else 'fail'}")
+        for result in validation_results:
+            print(f"- {result['status'].upper()} {result['code']}")
+        print(f"Handoff: {handoff['status']} -> {handoff['next_phase']['owner']} ({handoff['authority']})")
+    return 0 if validation_passed and summary.complete else 1
 
 
 def cmd_report_transcript_import(args: argparse.Namespace) -> int:
@@ -202,6 +272,22 @@ def cmd_validate_artifacts(args: argparse.Namespace) -> int:
         return 1
     print("OK artifact state contracts")
     return 0
+
+
+def cmd_validate_agency(args: argparse.Namespace) -> int:
+    diagnostics = validate_agency_manifest(args.manifest)
+    for diagnostic in diagnostics:
+        print(f"ERROR {diagnostic.code} {diagnostic.path.as_posix()}: {diagnostic.message}")
+    if diagnostics:
+        return 1
+    print("OK bounded agency contracts")
+    return 0
+
+
+def cmd_preflight(args: argparse.Namespace) -> int:
+    preflight = run_preflight(args.phase, args.manifest)
+    print(render_preflight_json(preflight) if args.format == "json" else render_preflight(preflight))
+    return preflight.exit_code
 
 
 if __name__ == "__main__":

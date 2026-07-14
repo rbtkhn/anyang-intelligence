@@ -298,6 +298,15 @@ anyang-project validate-artifacts --manifest artifact-state.yaml
 
 The artifact manifest declares each consequential representation's operation, authority, provenance, permitted write path, and recovery procedure. It may name operator-controlled external paths, but validation reads only the declarations and never private artifact contents. Derived artifacts must name their sources, each domain may have only one canonical authority, and non-public authoritative state may not be tracked in Git.
 
+Validate the phase-authority contract:
+
+```bash
+anyang-project validate-agency
+anyang-project validate-agency --manifest bounded-agency.yaml
+```
+
+`artifact-state.yaml` governs artifact authority, provenance, mutability, and recovery. `bounded-agency.yaml` separately governs what one temporary operating phase may read and write. See [Repository-Anchored Bounded Agency](../docs/repository-anchored-bounded-agency.md) for the composition rules and enforcement boundary.
+
 Manifest governance metadata names an owner, review cadence, next review, expansion rule, and retirement rule. Any exception must name its control, scope, reason, approver, expiration, and review condition; expired exceptions fail validation. Use the quarterly [governance control review](../docs/governance-control-review.md) to keep, narrow, make advisory, or retire controls before adding new validator families.
 
 Render without placing under `projects/`:
@@ -333,10 +342,20 @@ Dry run an import:
 anyang-project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json --dry-run
 ```
 
+Inspect the live phase state without writing:
+
+```bash
+anyang-project preflight --phase singularity-transcript-intake --manifest projects/singularity-science/archive/transcript-intake-manifest.json
+anyang-project preflight --phase singularity-transcript-intake --manifest projects/singularity-science/archive/transcript-intake-manifest.json --format json
+```
+
+Preflight exit `0` means the phase may begin, including when non-blocking warnings or row-level rights holds are visible. Exit `1` means the contract or invocation is blocked. Exit `2` means the request is valid but requires the operator to widen authority. Preflight is read-only and never grants authority; the mutation command reconstructs state again and postflight checks the resulting repository delta.
+
 Run the import:
 
 ```bash
 anyang-project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json
+anyang-project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json --format json
 ```
 
 Report completeness:

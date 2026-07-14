@@ -87,3 +87,77 @@ artifacts:
       verification: [formula-check, source-link-check, reconciliation-status-check]
     git:
       tracked: false
+
+  singularity-transcript-manifest:
+    path: projects/singularity-science/archive/transcript-intake-manifest*.json
+    operation: Declare an operator-selected batch of transcript sources and intake metadata.
+    domain: singularity-transcript-intake
+    authority: evidentiary
+    data_class: internal-sanitized
+    provenance:
+      origin: Operator-selected manifest; canonical only for the invocation that names it explicitly.
+    mutability:
+      method: Reviewed manifest edits before invoking the bounded transcript-intake capability.
+      writers: [repository-operator]
+      direct_edit: reviewed-only
+    recovery:
+      method: Restore the reviewed manifest or reconstruct it from approved source references.
+      verification: [manifest-schema-check, source-reference-check, rights-status-check]
+    git:
+      tracked: true
+
+  singularity-transcript-source-bodies:
+    path: manifest-referenced external transcript bodies
+    operation: Supply source text to the bounded transcript-intake capability.
+    domain: singularity-transcript-sources
+    authority: evidentiary
+    data_class: external-operator-controlled
+    provenance:
+      origin: Files explicitly referenced by the invoked transcript manifest.
+    mutability:
+      method: Source bodies remain outside the capability's write authority.
+      writers: [source-owner, repository-operator]
+      direct_edit: outside-phase
+    recovery:
+      method: Restore from the operator-approved source location.
+      verification: [source-presence-check, encoding-check, rights-status-check]
+    git:
+      tracked: false
+
+  singularity-transcript-archive:
+    path: projects/singularity-science/archive/*/transcripts/*.md
+    operation: Preserve normalized internal transcript source material with attribution and rights metadata.
+    domain: singularity-transcript-archive
+    authority: evidentiary
+    data_class: internal-source
+    provenance:
+      sources: [singularity-transcript-manifest, singularity-transcript-source-bodies]
+      origin: anyang-project import-transcripts
+    mutability:
+      method: Create through the bounded import capability; never overwrite an existing destination silently.
+      writers: [anyang-project-import-transcripts]
+      direct_edit: prohibited
+    recovery:
+      method: Reconcile the invoked manifest with existing destinations and rerun the bounded importer.
+      verification: [destination-content-check, manifest-reconciliation, privacy-check]
+    git:
+      tracked: true
+
+  singularity-transcript-import-ledger:
+    path: projects/singularity-science/archive/transcript-import-ledger.md
+    operation: Expose the terminal intake status of rows in the invoked manifest.
+    domain: singularity-transcript-import-review
+    authority: derived
+    data_class: internal-sanitized
+    provenance:
+      sources: [singularity-transcript-manifest, singularity-transcript-archive]
+      origin: anyang-project import-transcripts
+    mutability:
+      method: Regenerate from the invoked manifest and reconciled archive destinations.
+      writers: [anyang-project-import-transcripts]
+      direct_edit: prohibited
+    recovery:
+      method: Regenerate after manifest-to-archive reconciliation.
+      verification: [manifest-reconciliation, destination-content-check, repo-relative-provenance-check]
+    git:
+      tracked: true
