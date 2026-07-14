@@ -1,6 +1,6 @@
 ---
 name: learning-core-lane
-description: Learning Core lane procedure for Student Operating System work. Use when Anyang Intelligence work involves the Learning Core project lane, Learning Core naming, parent onboarding, readiness classification, Phase 1 or Phase 2 survey flow, 30-day draft gating, continuity invitation logic, or Khan Academy Kids and reading-basket signals inside the Learning Core offer.
+description: Learning Core lane procedure for Student Operating System work. Use when Anyang Intelligence work involves the Learning Core project lane, Learning Core naming, governed learner intake, readiness classification, initial or changed learner profiles, 30-day draft gating, continuity invitation logic, or Khan Academy Kids and reading-basket signals inside the Learning Core offer.
 ---
 
 # Learning Core Lane
@@ -31,12 +31,14 @@ Read these first:
 
 1. `projects/learning-core/README.md`
 2. `projects/learning-core/naming-architecture.md`
-3. `projects/learning-core/parent-onboarding-survey.md`
-4. `projects/learning-core/phase-2-survey-generation.md`
-5. `projects/learning-core/onboarding-readiness-checklist.md`
-6. `projects/learning-core/plan-drafting-gate.md`
-7. `projects/learning-core/subscription-boundary.md`
-8. `projects/learning-core/subscription-experience.md`
+3. `projects/learning-core/parent-intake-to-draft-runbook.md`
+4. `projects/learning-core/parent-intake-message.md`
+5. `projects/learning-core/parent-intake-summary-template.md`
+6. `projects/learning-core/initial-learner-profile-template.md`
+7. `projects/learning-core/onboarding-readiness-checklist.md`
+8. `projects/learning-core/plan-drafting-gate.md`
+9. `projects/learning-core/subscription-boundary.md`
+10. `projects/learning-core/subscription-experience.md`
 
 Read these when the task touches them:
 
@@ -51,6 +53,7 @@ Read these when the task touches them:
 Use related Student Operating System skills after this lane framing is clear:
 
 - `skills/student-operating-system/parent-interface/SKILL.md`
+- `skills/student-operating-system/learner-intake/SKILL.md`
 - `skills/student-operating-system/learner-profile/SKILL.md`
 - `skills/student-operating-system/new-student-30-day-plan/SKILL.md`
 - `skills/student-operating-system/weekly-parent-review/SKILL.md`
@@ -77,13 +80,17 @@ Preferred sentence pattern:
 Default Learning Core flow:
 
 ```text
-registration and Phase 1 survey
-  -> readiness review
-  -> personalized Phase 2 if needed
-  -> Ready / Provisional / Hold
-  -> plan drafting gate
+learner-intake create
+  -> authority and privacy gate
+  -> evidence-first conversation
+  -> Ready / Provisional / Hold intake
+  -> proposed initial profile
+  -> exact guardian approval
+  -> operator-confirmed private persistence
+  -> separate plan drafting gate
   -> 30-day collaborative build
   -> observation and evidence loop
+  -> learner-intake change when evidence justifies review
   -> continuity invitation if month-one evidence justifies it
 ```
 
@@ -99,14 +106,14 @@ Classify the case before drafting:
 
 When in doubt, prefer `Provisional` or `Hold` over overconfident drafting.
 
-## Parent-Facing Survey Rule
+## Learner Intake Rule
 
-Use the lane's survey logic like this:
+Use `$learner-intake create` to establish a first profile and `$learner-intake change` to govern a possible revision. The intake has two short conversations:
 
-- Phase 1 = fast signal capture
-- Phase 2 = personalized follow-up based on what Phase 1 left unclear
+- authority and privacy first;
+- evidence-first learner fit second.
 
-Do not ask the parent to design the 30-day plan for us.
+Ask no more than three questions at a time and expand only where an answer could change readiness, profile wording, household fit, evidence handling, or the next action. Do not ask the parent to design the 30-day plan.
 
 Prefer:
 
@@ -123,6 +130,8 @@ Avoid:
 - abstract theory
 - parent-as-planner questions
 - false precision about mastery or grade placement
+
+The learner profile is not effective merely because it was drafted or approved. It becomes effective only after exact guardian approval and operator-confirmed preservation in the tenant-private store.
 
 ## Drafting Rule
 
@@ -192,7 +201,9 @@ Learning Core lane check:
 - Naming layer:
 - Parent-facing or operator-facing:
 - Intake stage:
+- Intake mode: [create / change]
 - Readiness status:
+- Profile state:
 - Drafting posture:
 - Evidence available:
 - Boundary or caution signal:
@@ -213,6 +224,8 @@ Do not:
 - imply the subscription owns the family's continuity or learning memory
 - replace parent judgment
 - hide missing evidence behind confident prose
+- treat intake, readiness, profile approval, persistence, drafting, or plan use as interchangeable authority
+- modify an effective learner profile without an exact guardian-approved change set
 - imply OB1 is required for the `Learning Core`
 - use learner-carried school to imply institutional, instructional, legal, or accountability authority
 - turn portability into continuous observation, automatic sharing, or exhaustive memory

@@ -1,239 +1,130 @@
-# 30-Day Plan Inputs
+# Evidence-First 30-Day Plan Inputs
 
-This checklist gathers the inputs needed before Anyang Intelligence drafts the **30-Day Personalized Learning Plan** for new students, including onboarding.
+This checklist defines which intake evidence may support a **30-Day Personalized Learning Plan**. Use it only after the parent has completed the guided intake, verified the pseudonymous summary, and separately authorized drafting.
 
-The plan is primarily for the parent to use while guiding the child. The tone should be warm and practical: enough structure to reduce planning friction, not so much structure that the family feels managed.
+The goal is not to complete a learner profile. It is to collect the smallest parent-approved evidence that changes a first-month planning decision.
 
 ## Planning Defaults
 
-Use these defaults unless the parent gives a different direction:
-
 - Primary user: parent guiding the child.
-- Learner profile depth: medium, based on parent intake, student survey, and early observations.
-- Parent time expectation: unknown; offer lighter and fuller options where daily time affects the plan.
-- First-month priority: observation, rhythm-building, and parent confidence before heavy academic acceleration.
-- Khan Academy Kids role: small daily support block, not the core curriculum.
-- Onboarding output: full intake, survey, portfolio, reading basket, app setup, and first-week routine.
-- Portfolio burden: parent chooses case-by-case.
-- Tone: warm parent coach.
-- Risk posture: note patterns carefully, avoid alarm, and defer to parent/professional review when needed.
+- First-month priority: observation, cross-context connection, sustainable rhythm, and parent confidence.
+- Learner profile depth: only what the parent-approved evidence supports.
+- Household structure: minimum viable and ordinary rhythms; add a fuller option only when useful.
+- Tools: optional unless parent approval and learner fit justify them.
+- Evidence: three light weekly traces by default, which the parent may narrow.
+- Tone: warm, practical, and non-diagnostic.
+- Independence: the family's Learning Core should become easier to carry without service dependence.
 
-## Parent Goals
+Do not default to Khan Academy Kids, a reading basket, detailed daily plans, app setup, a digital portfolio, or exhaustive resource collection.
 
-Collect:
+## Required Authority Inputs
 
-- What would make the first 30 days feel successful?
-- What does the parent most want to reduce: planning friction, uncertainty, scattered materials, reading resistance, math resistance, lack of rhythm, lack of evidence, or something else?
-- What does the parent want the child to experience more of: confidence, curiosity, independence, reading, writing, math, projects, movement, creativity, or family connection?
-- What should the plan avoid?
+Confirm from the parent-verified summary:
 
-## Parent Authority And Boundaries
+- parent or guardian authority;
+- separate drafting authorization;
+- who approves the draft before use;
+- who approves child-facing language;
+- what may be preserved, deleted, and shared;
+- tools, topics, activities, or approaches that are excluded;
+- what caution or outside-support context may inform planning.
 
-Confirm:
+If any authority or privacy item is unclear, drafting remains `Hold`.
 
-- Who approves the plan before use?
-- Who decides curriculum, pacing, and child-facing communication?
-- What information should not be saved?
-- What information should not be shared?
-- Are there legal, district, homeschool, reporting, or accountability requirements the parent wants considered?
-- Are there any topics, activities, apps, or approaches the parent does not want used?
+## Direction Inputs
 
-If parent authority or sensitive-information rules are unclear, hold the plan until they are clear.
+Use:
 
-## Learner Context
+- what the parent wants to understand this month;
+- what would make the month useful without requiring a level change;
+- what the plan should avoid;
+- what already works and should not be disrupted.
 
-Collect a medium-depth starter profile:
+Turn these into a bounded first-month direction, not a promise of mastery or acceleration.
 
-- Age or grade band.
-- Current daily rhythm.
-- Current learning resources.
-- Current reading comfort.
-- Current math comfort.
-- Writing or drawing comfort.
-- Favorite topics, books, games, animals, places, shows, activities, or projects.
-- What the child is proud of right now.
-- What feels hard or frustrating.
-- Preferred learning modes: reading, watching, building, drawing, talking, moving, playing, listening, or experimenting.
-- Any known support needs the parent wants considered.
+## Learner Evidence
 
-Do not turn starter information into fixed labels, grades, or diagnoses.
+Require at least one concrete parent-observed signal. Prefer:
 
-## Student Startup Survey
+- a recent learning episode that went well;
+- what the learner chose, noticed, asked, built, repeated, or connected;
+- a recent friction episode and its immediate context;
+- what helped the friction ease;
+- a current source of pride, interest, or return;
+- an example of learning crossing settings or relationships.
 
-Use or adapt the Startup Bundle survey:
+Keep observations separate from interpretations. Do not infer a diagnosis, grade level, exact placement, mastery, hidden motivation, or fixed learning style.
 
-- What do you like learning about right now?
-- What is something you are proud you can do?
-- What is something that feels hard or frustrating?
-- What books, shows, games, animals, places, or activities do you like?
-- If you could make a project about anything, what would you make?
-- Do you like learning best by reading, watching, building, drawing, talking, moving, or playing?
-- What is one thing you want grown-ups to know about how you learn?
+## Learner Ownership Inputs
 
-The survey is a conversation starter, not a test. The parent decides what to save and use.
+Clarify:
 
-## Schedule And Parent Time
+- choices the learner can already carry;
+- parent structure still needed;
+- whether the learner may choose one meaningful artifact each week;
+- what the family hopes the learner can increasingly notice, choose, connect, or propose independently.
 
-Collect:
+Optional parent-approved learner voice may inform these inputs but cannot be required.
 
-- Which days are learning days?
-- What time of day is usually best?
-- How much parent time is realistic on a light day?
-- How much parent time is realistic on a fuller day?
-- Whether the parent wants a screen-time budget for learning activities, and the daily or weekly limit if so.
-- Are there naps, work schedules, siblings, travel, appointments, or activities to plan around?
-- Does the parent prefer a fixed daily rhythm or flexible menu?
+## Household-Fit Inputs
 
-Because parent availability may vary, the plan should include:
+Use:
 
-- A minimum viable day.
-- A standard day.
-- An optional fuller day.
+- what a difficult household day can sustain;
+- what an ordinary day allows;
+- fixed-rhythm, flexible-menu, or undecided preference;
+- parent preparation burden;
+- screen-time boundary and whether all learning apps remain inside it;
+- signs to shorten, pivot, pause, or seek outside-support review.
 
-If the parent sets a screen-time budget, the plan should fit inside it rather than treating app time as a separate unlimited category.
+Do not invent an exact schedule. Offer lighter and fuller options only where they reduce planning friction.
 
-Optional high-value household-fit signals:
+## Resource And Tool Inputs
 
-- Parent energy budget:
-  - what a low-energy day can still support
-- Prep budget:
-  - how much setup the parent is willing to do
-- Frustration threshold:
-  - what signs mean pause, pivot, or shorten
-- Evidence burden budget:
-  - how much documentation is realistic before it becomes paperwork
+Collect only resources that could change the first-week plan:
 
-If these are known, use them to make the plan more realistic. If they are unknown, do not block drafting when the core readiness layer is otherwise clear.
+- books, materials, spaces, curriculum, or projects already easy to use;
+- approved, excluded, and undecided tools;
+- Khan Academy Kids stance;
+- reading-basket stance;
+- detailed-daily-plan stance.
 
-## Current Resources
+An undecided optional tool can remain omitted. It does not need to be resolved by adding pressure or complexity.
 
-Collect:
-
-- Curriculum already in use, if any.
-- Books currently available.
-- Apps or websites already used.
-- Physical materials available: paper, pencils, art supplies, dice, cards, coins, counting objects, ruler, measuring tape, blocks, outdoor space.
-- Projects or topics already started.
-- Any tools the parent wants to avoid.
-
-## Khan Academy Kids Setup
+## Evidence Inputs
 
 Confirm:
 
-- Is Khan Academy Kids installed?
-- Does the parent approve using it as a small daily support block?
-- What time limit should be used?
-- Whether Khan Academy Kids time must fit inside a broader screen-time budget.
-- What should the parent observe: choices, frustration, ease, favorite activities, avoided activities, questions?
-- What app evidence, if any, may be saved?
+- evidence that would genuinely help the parent understand the month;
+- capture that would feel excessive or like paperwork;
+- who decides what is preserved or deleted;
+- whether the three default weekly traces fit:
+  1. one learner-selected item;
+  2. one concise parent observation;
+  3. one open question or next direction.
 
-Default use rule:
+The parent may narrow or decline any trace. Do not continuously capture ordinary learner activity merely because a tool permits it.
 
-- 15-20 minutes on learning days.
-- Parent-supervised.
-- Observation source, not full curriculum, grade, diagnosis, or proof of mastery.
+## Caution And Support Inputs
 
-## Reading Basket Setup
+Use only parent-approved planning implications from safety, health, developmental, emotional, legal, accountability, or outside-support context.
 
-Collect:
+- State patterns calmly and provisionally.
+- Do not preserve unnecessary private history.
+- Do not diagnose, grade, or infer mastery.
+- Return high-stakes decisions to the parent and relevant qualified support.
+- Safety, privacy, authority, overload, or higher-stakes concerns may trigger immediate `Hold`.
 
-- Current books the child likes.
-- Books the child avoids.
-- Books the parent wants included.
-- Reading confidence level as observed by the parent.
-- Whether the child prefers fiction, nonfiction, graphic novels, joke books, magazines, field guides, poetry, recipes, or read-alouds.
-- Any reading frustration or avoidance patterns.
-- Whether the parent wants Learning Core to observe basket choices and make next-basket recommendations from those signals.
+## Draft Readiness
 
-Starter basket target:
+Draft only when:
 
-- 2 easy confidence books.
-- 2 current-level books.
-- 1 stretch book.
-- 1 interest-led nonfiction book.
-- 1 parent read-aloud.
-- Optional fun format tied to the child's interests.
+- the intake is `Ready` or `Provisional` under [onboarding-readiness-checklist.md](onboarding-readiness-checklist.md);
+- the parent has verified the pseudonymous summary;
+- separate drafting authorization is recorded;
+- learner-specific claims are traceable to approved evidence;
+- missing inputs and provisional assumptions are visible;
+- the intended rhythm fits the household boundary;
+- save/share and child-facing approval gates remain explicit.
 
-Recommendation posture:
-
-- observe what the student chooses, avoids, rereads, and requests
-- gather insight from those patterns
-- use the insight to recommend the next basket more accurately
-
-## Student Portfolio Setup
-
-Confirm:
-
-- Physical portfolio location.
-- Digital folder location, if any.
-- Who decides what gets saved.
-- How often the parent wants to save evidence.
-- Whether the child will choose proud work weekly.
-- What kinds of artifacts are easiest to preserve: photos, worksheets, drawings, recordings, screenshots, notes, projects, questions, or milestone entries.
-
-Evidence collection should be parent-chosen case by case. A good default is to save only what helps the parent see the learning arc.
-
-## Onboarding Checklist
-
-Before or during week one:
-
-- Confirm parent goals and boundaries.
-- Ask or review the student startup survey.
-- Set up Khan Academy Kids with parent-supervised use.
-- Build or refresh the reading basket.
-- Create the parent observation notebook.
-- Create or confirm the student portfolio.
-- Choose a weekly parent review time.
-- Choose what kind of evidence to save during week one.
-- Confirm what would trigger a pause or parent review.
-
-## Risk And Support Signals
-
-Use a moderate risk posture:
-
-- Note recurring patterns without alarm.
-- Avoid diagnosis, grades, fixed labels, or proof-of-mastery claims.
-- Surface support signals for parent review.
-- Recommend teacher, tutor, clinician, specialist, attorney, district, or other qualified support only when the pattern or stakes call for it.
-
-Watch gently for:
-
-- Persistent reading frustration.
-- Persistent writing resistance.
-- Persistent math confusion.
-- Attention, fatigue, behavior, speech/language, health, or developmental concerns.
-- Strong avoidance or distress.
-- Any concern the parent names as important.
-
-## Parent Approval Checklist
-
-Before the 30-day plan is used, the parent should approve:
-
-- Daily rhythm.
-- Screen-time budget, if any.
-- Khan Academy Kids rule.
-- Reading basket plan.
-- Portfolio evidence plan.
-- Week 1 focus.
-- Child-facing prompts or survey language.
-- Watch items and support signals.
-- What information may be saved.
-- What information may be shared.
-- First monthly portfolio review shape.
-
-## Ready To Draft
-
-The plan is ready to draft when these are known:
-
-- Parent goal.
-- Parent authority and privacy boundaries.
-- Basic learner context.
-- Schedule and parent-time range.
-- Screen-time budget or explicit no-budget decision.
-- Current resources.
-- Khan Academy Kids decision.
-- Reading basket status.
-- Portfolio setup status.
-- First-week onboarding needs.
-
-If some items are missing but parent authority and safety boundaries are clear, draft a provisional plan with assumptions clearly marked.
+Use [plan-drafting-gate.md](plan-drafting-gate.md) and [plan-draft-evidence-map.md](plan-draft-evidence-map.md). Return every draft for parent review through [parent-approval-record.md](parent-approval-record.md) before use.

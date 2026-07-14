@@ -35,9 +35,10 @@ Do not treat mock simulations, example language, or operator intuition as real l
 Before filling the template, confirm:
 
 - intake status is `Ready` or `Provisional`
+- the parent has verified the pseudonymous intake summary
 - approval authority is clear
 - privacy and sharing boundaries are clear enough to draft safely
-- the parent has approved plan drafting from the current intake
+- the parent has separately approved plan drafting from the current intake
 - missing inputs are listed explicitly
 - any provisional assumptions are listed explicitly
 

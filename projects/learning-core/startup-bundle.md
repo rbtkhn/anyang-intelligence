@@ -44,9 +44,9 @@ The longer-range aim is not to stay in the starter state forever. One useful dev
 
 ## First Week Setup
 
-### 1. Ask The Student Survey
+### 1. Invite Optional Learner Voice
 
-Before choosing activities, ask the learner a short, low-pressure survey.
+After parent approval, invite no more than three short, low-pressure questions.
 
 Use the survey as a conversation starter, not a test. The parent may read the questions aloud, skip any question that creates stress, and write down short answers in the parent observation notebook.
 
@@ -54,13 +54,9 @@ Ask:
 
 - What do you like learning about right now?
 - What is something you are proud you can do?
-- What is something that feels hard or frustrating?
-- What books, shows, games, animals, places, or activities do you like?
 - If you could make a project about anything, what would you make?
-- Do you like learning best by reading, watching, building, drawing, talking, moving, or playing?
-- What is one thing you want grown-ups to know about how you learn?
 
-Save the answers as the first learner-interest artifact in the student portfolio.
+Preserve an answer only when the parent approves and the learner is comfortable. Learner participation is optional.
 
 Boundary:
 
@@ -68,25 +64,23 @@ Boundary:
 - Do not pressure the child to give complete answers.
 - Parent judgment controls what is saved, shared, or used for planning.
 
-### 2. Install The Starter App
+### 2. Decide Whether A Starter App Helps
 
-Install Khan Academy Kids on the iPad.
+Use Khan Academy Kids only when the parent approves it and it fits the learner and household. Otherwise omit it without replacement pressure.
 
-Use it as the first default digital learning app because it is free, child-friendly, and appropriate for a 7-year-old starter rhythm.
-It is also a recommendation shaped by prior due diligence, not a random app-store pick.
+When approved, it is one vetted option because it is free, child-friendly, and can support a light elementary rhythm. Prior due diligence makes it available without making it compulsory.
 
-Parent rule:
+If approved, the parent sets the time, supervision, screen-budget fit, and evidence rule.
 
-- Start with 15-20 minutes per day.
 - Stay close enough to observe.
 - Do not treat app progress as a grade, diagnosis, or proof of mastery.
-- Record what the child chose, avoided, enjoyed, or found frustrating.
+- Preserve only parent-approved observations that change a useful decision.
 
 ### 3. Create The Parent Observation Notebook
 
 Use a paper notebook, notes app, or shared document.
 
-Each day, write 3-5 quick notes:
+Once per week, preserve one concise observation when useful:
 
 - What did the child choose?
 - What was easy?
@@ -94,19 +88,13 @@ Each day, write 3-5 quick notes:
 - What sparked curiosity?
 - What should we try next?
 
-This notebook is the first memory layer.
+This notebook is a selective memory layer, not a daily surveillance requirement.
 
-### 4. Build A Reading Basket
+### 4. Decide Whether A Reading Basket Helps
 
-Start with 5-10 books:
+Use a small reading basket only when the parent wants one and available books make it low-friction. Otherwise keep current reading practices.
 
-- 2 easy confidence books.
-- 2 current-level books.
-- 1 stretch book.
-- 1 interest-led nonfiction book.
-- 1 parent read-aloud book.
-
-The reading basket should make reading visible, inviting, and low-friction.
+If used, it should make reading visible, inviting, and low-friction without pretending exact book matches are already known.
 
 Use [reading-basket.md](reading-basket.md) for the full reading basket setup, daily use, portfolio evidence, and weekly review.
 
@@ -123,11 +111,11 @@ Use simple physical materials:
 
 At age 7, concrete objects help math become real before it becomes abstract.
 
-### 6. Create A Student Portfolio
+### 6. Choose A Light Evidence Surface
 
-Use a folder, binder, portfolio box, accordion folder, and simple digital folder.
+Use an existing folder, a simple physical or digital surface, or only the three weekly traces. The parent may decline a portfolio.
 
-Save dated samples:
+Possible parent-approved evidence includes:
 
 - Writing.
 - Drawings.
@@ -142,7 +130,7 @@ Save dated samples:
 - Milestones worth remembering.
 - Monthly reports.
 
-The portfolio makes learning visible and helps the child see a growing body of work.
+The evidence surface should make important learning visible without turning ordinary life into documentation.
 
 Use [student-portfolio.md](student-portfolio.md) for setup, child choice, physical work, digital work, reports, weekly use, monthly review, and milestone tracking.
 
@@ -150,14 +138,12 @@ Use [monthly-portfolio-review.md](monthly-portfolio-review.md) at the end of the
 
 ## Daily Rhythm
 
-Use a simple rhythm first:
+Use the lightest parent-approved rhythm first. For example:
 
 ```text
-read
-  -> Khan Academy Kids
-  -> hands-on math or writing
-  -> project / art / outside time
-  -> parent note
+read, explore, build, move, converse, or practice
+  -> notice one useful signal
+  -> preserve only what matters
 ```
 
 Keep the rhythm light. The first month is about observing the learner and building consistency, not filling every minute.
@@ -183,17 +169,14 @@ This review turns scattered learning moments into a coherent next step.
 
 A good month should make the child's learning easier to see, remember, and support.
 
-A good month should produce:
+A good month may produce:
 
 - 4 weekly parent reviews.
-- 1 brief student survey captured as a learner-interest artifact.
-- 12-20 useful parent observations.
-- 8-16 saved portfolio artifacts, including proud work and milestones.
-- 1 updated learner profile.
+- Up to three light traces per week: one learner-selected item, one concise parent observation, and one open question or next direction.
+- A clearer, still-provisional understanding of the learner rather than a fixed profile.
 - 1 next-month learning focus.
-- 1 list of books, activities, or projects that fit the child.
-- 1 refreshed reading basket based on real child interest and difficulty.
-- 1 monthly portfolio review that summarizes proud work, milestones, growth, interests, friction, and next steps.
+- A short list of books, activities, or projects worth repeating when supported by evidence.
+- A month-end reflection on what connected, mattered, and should guide the next cycle.
 - Clearer understanding of what helps the child learn.
 
 The bundle is working when the parent feels more confident, less scattered, and better able to adapt learning to the actual child.
@@ -224,9 +207,9 @@ When something feels high-stakes, the parent should slow down and seek the right
 The first month is successful when:
 
 - The parent knows the child's learning rhythm better than before.
-- The child has a gentle daily learning routine.
-- Khan Academy Kids is used intentionally, not passively.
-- The portfolio has real artifacts.
+- The family has a gentle rhythm that survives ordinary constraints.
+- Any approved tools remain subordinate to parent judgment and learner fit.
+- Selected evidence shows what mattered without excessive capture.
 - The child can point to work they are proud of.
 - Weekly reviews produce better next steps.
 - The parent feels more oriented and less alone in planning.
@@ -236,11 +219,9 @@ The first month is successful when:
 
 The parent should commit to:
 
-- 15-20 minutes of supervised Khan Academy Kids use on learning days.
-- 10 minutes of reading most days.
-- 3-5 quick observation notes per day.
+- The minimum viable rhythm the household can genuinely sustain.
 - One weekly review.
-- Saving a few artifacts each week.
-- Asking the child what they are proud of each week.
+- Preserving only the parent-approved weekly traces that remain useful.
+- Offering the learner one small opportunity to choose what mattered.
 
 Small, consistent observation is better than an ambitious plan that collapses.

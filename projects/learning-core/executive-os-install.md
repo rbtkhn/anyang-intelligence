@@ -151,7 +151,7 @@ Transferable lessons should be anonymized into safety principles, parent-review 
 
 ## Startup Resource Bundle
 
-Khan Academy Kids is the first default iPad app in the Student Operating System Startup Bundle.
+Khan Academy Kids is a vetted optional iPad app in the Student Operating System Startup Bundle.
 
 Why it fits:
 
@@ -161,9 +161,9 @@ Why it fits:
 - It gives the parent a low-friction way to observe engagement, frustration, preferences, and early skill signals.
 - It reflects prior due diligence across crowded learning-app options, reducing the parent's need to independently evaluate countless competing tools before the first month can begin.
 
-Use rule:
+Use rule when parent-approved:
 
-- Start with 15-20 minutes per day.
+- The parent sets the time and screen-budget fit.
 - Parent or guardian reviews what the child used and how the child responded.
 - Save only meaningful observations as learner-profile or portfolio evidence.
 - Do not treat app progress as a diagnosis, grade, curriculum replacement, or proof of mastery without parent review.
@@ -252,7 +252,7 @@ Possible package directions include:
 
 The package should not begin delivery until inputs, timeline, child-safety boundaries, and parent approval rules are explicit.
 
-The lighter parent front door is now [parent-onboarding-survey.md](parent-onboarding-survey.md), with adaptive gap-closing logic in [phase-2-survey-generation.md](phase-2-survey-generation.md).
+The parent front door is the timed [evidence-first intake conversation](parent-intake-message.md). The optional [pseudonymous preview](parent-onboarding-survey.md) may shorten that conversation, while [adaptive clarification](phase-2-survey-generation.md) asks only questions that can change readiness or the first-week plan.
 
 The recurring commercial layer is further pressure-tested in:
 
@@ -293,11 +293,11 @@ The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and
 - Capture learner interests, strengths, challenges, rhythms, and current resources.
 - Capture parent goals and non-negotiable boundaries.
 - Complete the brief student survey and save it as the first learner-interest artifact in the student portfolio.
-- Install Khan Academy Kids on the iPad as the starter app, with parent-supervised use.
-- Record first observations from Khan Academy Kids: engagement, frustration, preferred activities, and parent questions.
+- Record whether Khan Academy Kids is approved, declined, or undecided; omit it when not approved.
+- If used, preserve only parent-approved observations that change a useful decision.
 - Give the parent the Startup Bundle and confirm the first-week setup.
-- Build the first reading basket with confidence books, current-level books, one stretch book, one interest-led nonfiction book, and one parent read-aloud.
-- Create the student portfolio with sections for reading, writing, math, art/projects, questions/discoveries, milestones, parent notes, and reports.
+- Build a reading basket only when the parent wants one and available books make it low-friction.
+- Use a light parent-approved evidence surface or only the three weekly traces; do not require a full portfolio.
 - Identify applicable education accountability requirements.
 - Create the first learner context map.
 
@@ -305,8 +305,7 @@ The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and
 
 - Draft a parent-reviewed daily rhythm.
 - Define subject blocks, breaks, enrichment, reading, and project time.
-- Decide where the 15-20 minute Khan Academy Kids block belongs in the daily rhythm.
-- Add a 10-minute daily reading basket block.
+- Place any approved app or reading block inside the household's rhythm and screen-time boundary.
 - Create the first weekly learning plan.
 
 ### Week 3: Portfolio and Progress Evidence

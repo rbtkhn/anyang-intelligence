@@ -1,154 +1,116 @@
-# Onboarding Readiness Checklist
+# Evidence-First Intake Readiness Checklist
 
-This is an internal/operator checklist for deciding whether parent intake is sufficient to draft the **30-Day Personalized Learning Plan**.
+Use this internal checklist after the two conversations in [parent-intake-message.md](parent-intake-message.md) and before preparing the parent-verification packet.
 
-Use it after reviewing:
+Assign exactly one state:
 
-- [parent-intake-message.md](parent-intake-message.md)
-- [30-day-plan-inputs.md](30-day-plan-inputs.md)
-- [30-day-plan-template.md](30-day-plan-template.md)
-- [../../skills/student-operating-system/new-student-30-day-plan/SKILL.md](../../skills/student-operating-system/new-student-30-day-plan/SKILL.md)
+- `Ready`: sufficient parent-approved evidence exists to ask separately for drafting authorization.
+- `Provisional`: required boundaries are clear, but optional learner-fit evidence remains thin and can stay visible.
+- `Hold`: a required authority, privacy, context, rhythm, tool, overload, or outside-support boundary remains unresolved.
 
-Classify each case as:
+## Core Rules
 
-- `Ready`: Draft the plan now.
-- `Provisional`: Draft only if missing details are clearly marked and parent authority and safety boundaries are already clear.
-- `Hold`: Do not draft yet. Request the missing authority, privacy, safety, schedule, or learner-context inputs first.
+- Do not invent learner facts.
+- Prefer recent observable episodes to general traits.
+- Keep observation separate from interpretation.
+- A single event is a signal, not a fixed label.
+- Intake permission, drafting permission, and plan-use approval are separate.
+- Real family information stays outside Git.
 
-## Core Rule
+## Required Waiting Conditions
 
-Do not invent learner facts.
+Every condition below must be resolved before `Ready` or `Provisional`:
 
-If the parent has not provided a real answer, mark the item as missing, unknown, or parent-pending. Do not fill gaps with guessed strengths, challenges, interests, schedule, reading level, math level, writing level, support needs, or home routines.
+### Authority And Privacy
 
-## Required Before Drafting
+- Parent or guardian authority is confirmed.
+- Intake and classification permission is explicit.
+- A parent-approved learner label is available.
+- Draft, child-facing, plan-use, and evidence authorities are identified.
+- Discussion, preservation, deletion, and sharing boundaries are explicit.
+- Prohibited tools, topics, activities, and approaches are known or explicitly absent.
 
-These are the minimum conditions for `Ready`:
+### Learner Context And Direction
 
-- Parent goal for the first 30 days is stated.
-- Parent or guardian approval authority is clear.
-- Privacy and sharing boundaries are clear enough to use the intake safely.
-- Basic learner context is present:
-  - age or grade band
-  - current rhythm or starting-point notes
-  - at least some strengths, interests, or friction signals
-- Schedule and parent-time reality is known at least roughly.
-- Current resources are known at least at a starter level.
-- Khan Academy Kids decision is known:
-  - approved
-  - not using
-  - parent undecided but explicitly noted
-- Reading basket status is known at least roughly.
-- Portfolio evidence approach is known at least roughly.
-- Parent approval gate before plan use is explicit.
+- The parent has named what they want to understand or support this month.
+- The plan's avoidances and what should not be disrupted are known.
+- Broad learner and schooling context is sufficient without collecting identifiers.
+- At least one concrete parent-observed learner signal is available.
+- Observation and interpretation can be distinguished.
 
-If any item above is missing in a way that affects authority, privacy, safety, schedule, or basic learner context, mark `Hold`.
+### Household Fit
 
-## Optional But Helpful
+- A minimum viable household day is understood.
+- Ordinary parent time and preparation burden are understood sufficiently to avoid an idealized plan.
+- Rhythm preference or explicit uncertainty is recorded.
+- Screen-time, shorten, pivot, pause, and overload boundaries are known.
 
-These strengthen plan quality but do not automatically block drafting:
+### Tools, Evidence, And Caution
 
-- Student voice responses.
-- Named favorite topics, books, games, animals, places, shows, or projects.
-- Parent notes about what the child is proud of.
-- Parent notes about what the child avoids or finds frustrating.
-- Clear preference for fixed rhythm versus flexible menu.
-- Existing curriculum details.
-- Specific available materials list.
-- Specific reading-basket titles.
-- Preferred portfolio formats.
-- Weekly parent review timing.
-- Parent notes about what to observe during Khan Academy Kids.
+- Relevant tools are approved, excluded, or explicitly undecided.
+- Khan Academy Kids, reading basket, and detailed daily planning each remain optional and have a recorded stance.
+- Useful evidence, excessive capture, and preservation/deletion authority are clear.
+- Caution or outside-support context is clarified enough to plan safely, including what may be considered.
+- Immediate pause or outside-support review triggers are explicit or explicitly absent.
 
-If these are missing but the core safety and authority layer is intact, the case may still be `Provisional`.
+If any required waiting condition remains unresolved, assign `Hold`. Do not use `Provisional` to route around it.
 
-## Hold Conditions
+## Ready
 
-Mark `Hold` if any of these are true:
+Assign `Ready` when:
 
-- It is unclear who approves the plan before use.
-- Privacy, sharing, or record-keeping boundaries are unclear enough to create risk.
-- The parent has not approved whether a plan should be drafted from the intake.
-- Basic learner context is too thin to avoid invention.
-- Schedule or parent-time reality is unknown enough that the daily rhythm would be guesswork.
-- The parent names a safety, health, developmental, emotional, legal, or accountability concern that needs clarification before planning.
-- The parent names a topic, tool, or activity boundary that is ambiguous.
-- The intake suggests outside-support context matters, but the parent has not said whether that context may be considered.
-- The operator would need to infer child-facing language, support posture, or information-sharing rules without parent approval.
+- every waiting condition is resolved;
+- the parent has supplied enough concrete context to avoid invention;
+- household and tool decisions can support a bounded first-week rhythm;
+- evidence quality is `strong` or `medium` for the intended level of personalization;
+- no learner-specific claim requires a provisional assumption.
 
-`Hold` output should request only the missing decisions or facts needed to move safely.
+Next action: complete [parent-intake-summary-template.md](parent-intake-summary-template.md), obtain parent verification, then ask separately for drafting authorization.
 
-## Provisional Assumptions
+## Provisional
 
-Use `Provisional` only when authority and safety are clear enough to proceed.
+Assign `Provisional` only when:
 
-Allowed provisional assumptions:
+- every waiting condition is resolved;
+- authority, privacy, safety, and overload boundaries are fully clear;
+- a safe light rhythm could be drafted without claiming unsupported learner truth;
+- remaining gaps affect optional tailoring rather than required safety or feasibility;
+- each missing input and assumption can remain visible;
+- evidence quality is honestly labeled `thin` where appropriate.
 
-- Offer a minimum viable day, standard day, and fuller day when parent time is only roughly known.
-- Use warm, low-pressure onboarding language if the parent has approved the overall plan process.
-- Leave specific titles, exact time blocks, or exact materials open when the parent has provided enough starter context to avoid invention.
-- Mark evidence quality as thin when the learner picture is still emerging.
+Allowed provisional structure includes minimum viable, ordinary, and optional fuller-day choices; open resource placeholders; and observation-first activities. It does not include assumed diagnoses, levels, mastery, motivation, routines, app permission, or save/share consent.
 
-Do not assume:
+## Hold
 
-- a diagnosis
-- grade-level performance
-- mastery
-- hidden motivation
-- exact reading or math placement
-- unsupervised app use
-- consent to save or share information
+Assign `Hold` when any required condition is unresolved, when drafting would require invention, or when safety, privacy, authority, overload, or higher-stakes support concerns need clarification.
 
-Every provisional assumption should be visible in the plan as an assumption or missing input.
+Use [hold-response-template.md](hold-response-template.md). Remove questions already answered and request only the missing decision or fact.
 
-## Parent Approval Gates
+## Optional Learner Voice
 
-Before a drafted plan is used, confirm the parent approves:
+Learner voice may strengthen evidence but is never required for readiness when the parent intake is otherwise sufficient.
 
-- daily rhythm
-- learning resources and activities
-- Khan Academy Kids use rule
-- reading basket direction
-- portfolio evidence plan
-- child-facing prompts or survey language
-- watch items or support signals named in the plan
-- what information may be saved
-- what information may be shared
+Check that:
 
-If these approvals are not yet granted, the draft may exist for review, but the plan is not ready for use.
+- the parent approved the questions;
+- no more than three low-pressure questions were asked;
+- the learner could skip or stop;
+- preservation was separately parent-approved;
+- the responses are not treated as proof, diagnosis, or fixed identity.
 
-## Privacy And Safety Checks
+## Parent Verification Gate
 
-Check each intake for these boundaries:
+Before the intake is complete:
 
-- The parent remains the authority layer.
-- The plan does not diagnose, grade, or claim proof of mastery.
-- App activity is treated as practice or observation, not a verdict on the child.
-- Sensitive information is handled only within parent-approved save/share boundaries.
-- Child-facing AI is not implied as unsupervised.
-- High-stakes concerns are surfaced for parent review, not normalized or hidden.
+- prepare the pseudonymous summary;
+- show observations and interpretations separately;
+- show the permissions matrix;
+- show the readiness rationale, missing inputs, and assumptions;
+- let the parent correct or remove information;
+- record whether the approved summary may be retained in the tenant-private store.
 
-If any of these fail, stop and resolve the boundary before drafting.
+Do not save a completed real-family packet in this repository.
 
-## Intake-To-Plan Handoff
+## Completion Decision
 
-Use this handoff path:
-
-1. Review the parent intake message response set.
-2. Check the inputs against [30-day-plan-inputs.md](30-day-plan-inputs.md).
-3. Classify the case:
-   - `Ready`
-   - `Provisional`
-   - `Hold`
-4. If `Hold`, send a short missing-input request and do not draft the plan.
-5. If `Provisional`, list assumptions explicitly before filling [30-day-plan-template.md](30-day-plan-template.md).
-6. If `Ready`, fill [30-day-plan-template.md](30-day-plan-template.md) using only parent-approved inputs and observed signals.
-7. Before use, confirm the parent approval gates.
-
-## Quick Decision Summary
-
-Use `Ready` when the operator can draft from real parent-approved inputs without guessing.
-
-Use `Provisional` when the operator can draft a clearly labeled starter plan without compromising authority, privacy, or safety.
-
-Use `Hold` when drafting would require invention or would cross an unclear boundary.
+The intake is complete only when the parent has verified the summary, the readiness state has an evidence-based rationale, unresolved items remain visible, and the next action names its human authority.

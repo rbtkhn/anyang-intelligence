@@ -1,162 +1,140 @@
-# Parent Intake To Draft Runbook
+# Evidence-First Intake To Draft-Decision Runbook
 
-This is the operator front door for the paid Learning Core 30-day plan workflow.
+This is the operator front door for a real Learning Core parent intake. Its endpoint is a parent-verified intake summary, one readiness status, and a separately approved initial learner-profile packet—not an automatic 30-day plan draft.
 
-Use it when a real parent intake response arrives for the **30-Day Personalized Learning Plan** for new students, including onboarding.
+Use `$learner-intake create` with [parent-intake-message.md](parent-intake-message.md) for the two guided conversations. Use `$learner-intake change` when a confirmed-effective profile already exists and new evidence may justify reconsideration. [parent-onboarding-survey.md](parent-onboarding-survey.md) remains only an optional pseudonymous preview.
 
-The goal is to move from parent response to one of three safe states:
+## Authority And Data Boundary
 
-- `Ready`: draft the plan from parent-approved inputs.
-- `Provisional`: draft a clearly labeled starter plan with visible assumptions.
-- `Hold`: do not draft; request missing authority, safety, privacy, schedule, or learner-context inputs first.
+- The parent or guardian controls intake, child-facing questions, preservation, sharing, drafting, and plan use.
+- Use a parent-approved learner label. Do not collect identifiers in repository surfaces.
+- Treat live answers as temporary working state until the parent verifies the summary.
+- Keep real family information out of Git and `projects/learning-core/`.
+- Store an approved case record only in the operator-controlled tenant-private store.
+- Treat guardian approval and operator-confirmed persistence as separate transitions.
+- Keep the prior profile effective until preservation of an approved replacement is confirmed.
+- Do not contact schools, teachers, specialists, applications, or other systems.
 
-## Governing Rule
+The repository may hold reusable blank templates and synthetic fixtures, but never the real intake packet.
 
-Do not draft from vibes.
+## Process
 
-The plan may use:
+### 1. Authority And Privacy Gate
 
-- parent-approved intake answers
-- parent-approved learner observations or student voice
-- parent-approved privacy, save, share, and approval rules
-- neutral template defaults that do not claim learner-specific truth
-- clearly labeled provisional assumptions when the case is safe enough for `Provisional`
+Target 8–10 minutes; stop at 12.
 
-The plan may not use:
+Confirm:
 
-- guessed learner facts
-- diagnosis-like language
-- app activity as proof of mastery
-- unapproved child-facing prompts
-- unapproved save/share rules
-- pricing, subscription, or internal retainer language
-- embodied AI, robot, kiosk, or child-facing agent use unless separately cleared by the hold policy
+- parent or guardian authority;
+- permission to conduct and classify the intake;
+- parent-approved learner label;
+- separate approvers for drafting, child-facing questions, plan use, and saved evidence;
+- what may be discussed, preserved, deleted, or shared;
+- excluded tools, topics, activities, or approaches;
+- whether caution or outside-support context exists and what minimum planning implication may be considered.
 
-## First 15-Minute Triage
+If authority, privacy, save/share, or caution boundaries are unresolved, assign `Hold`. Do not move into learner-specific intake.
 
-When the parent response arrives:
+### 2. Evidence-First Learner Conversation
 
-1. Save or paste the parent response into the working notes for the case.
-2. Mark whether the parent explicitly approves drafting from the current response.
-3. Check authority:
-   - Who approves the plan before use?
-   - Who approves child-facing language?
-   - Who approves what information may be saved or shared?
-4. Check the minimum learner context:
-   - age or grade band
-   - first-month goal
-   - current rhythm or starting point
-   - at least some interests, strengths, friction, or support signals
-5. Check schedule reality:
-   - learning days
-   - parent time
-   - screen-time budget, if any
-   - major household constraints
-6. Check starter resources:
-   - Khan Academy Kids approval, hold, or undecided status
-   - reading basket status
-   - portfolio evidence approach
-7. Check support and safety:
-   - high-stakes concerns
-   - outside-support context
-   - topics, tools, or activities to avoid
-8. Assign one status only: `Ready`, `Provisional`, or `Hold`.
+Target 15–20 minutes; stop at 25.
 
-If the operator cannot assign one status after this pass, choose `Hold`.
+Collect only inputs that could change a planning decision:
 
-## Status Rules
+- what the parent wants to understand this month;
+- useful success even without an academic-level change;
+- explicit avoidances;
+- what already works and should be preserved;
+- one recent positive learning episode;
+- one recent friction episode, its immediate context, and what helped;
+- one concrete choice, question, connection, artifact, or repeated interest;
+- where learning already crosses contexts;
+- choices the learner can carry and support the parent still needs to provide;
+- minimum viable and ordinary household capacity;
+- pivot, pause, screen-time, and preparation boundaries;
+- currently usable resources and first-week tool decisions;
+- useful evidence, excessive capture, deletion authority, and outside-support triggers;
+- the independence the family hopes the learner can increasingly carry forward.
 
-### Ready
+Record observations separately from parent interpretations. Do not convert one episode into a fixed label or request an exhaustive resource inventory.
 
-Use `Ready` only when:
+### 3. Optional Learner Voice
 
-- parent authority is explicit
-- drafting approval is explicit
-- privacy and sharing boundaries are clear
-- basic learner context is sufficient to avoid invention
-- schedule and parent-time reality are clear enough to plan
-- starter resources are approved, declined, or clearly marked undecided
-- parent approval before plan use is explicit
+Target 5–7 minutes after explicit parent approval.
 
-Next action:
+Ask at most the three questions in [parent-intake-message.md](parent-intake-message.md). The learner may skip any question. Stop when comfort, attention, or interest falls. Child participation is optional and cannot block an otherwise sufficient parent intake.
 
-1. Fill [plan-draft-evidence-map.md](plan-draft-evidence-map.md).
-2. Draft from [30-day-plan-template.md](30-day-plan-template.md).
-3. Return the draft for parent approval.
-4. Record approval state in [parent-approval-record.md](parent-approval-record.md).
+### 4. Offline Classification
 
-### Provisional
+Target 10–15 minutes.
 
-Use `Provisional` when:
+Apply [onboarding-readiness-checklist.md](onboarding-readiness-checklist.md) and assign exactly one state:
 
-- parent authority and safety are clear
-- drafting approval is clear
-- some details are thin, but a safe starter plan can be useful
-- every missing fact can remain visible as a missing input or provisional assumption
+- `Ready`: all required authority, privacy, learner-context, concrete-signal, household-rhythm, tool, and caution conditions are sufficiently clear.
+- `Provisional`: required authority and safety conditions are clear, but optional learner-fit evidence remains thin and every gap can stay visible.
+- `Hold`: any required authority, privacy, learner-context, rhythm, tool, overload, or outside-support boundary remains unresolved.
 
-Next action:
+When uncertain between statuses, choose the safer status. Never use `Provisional` to route around a waiting condition.
 
-1. List all missing inputs before drafting.
-2. List all provisional assumptions before drafting.
-3. Fill [plan-draft-evidence-map.md](plan-draft-evidence-map.md).
-4. Draft from [30-day-plan-template.md](30-day-plan-template.md) with `Plan status: Provisional`.
-5. Return the draft for parent review before use.
-6. Record approval or required changes in [parent-approval-record.md](parent-approval-record.md).
+### 5. Parent Verification
 
-### Hold
+Target 5–8 minutes.
 
-Use `Hold` when:
+Prepare a packet from [parent-intake-summary-template.md](parent-intake-summary-template.md). Ask the parent to:
 
-- parent approval authority is unclear
-- drafting approval is missing
-- privacy or sharing boundaries are unclear
-- learner context is too thin to avoid invention
-- schedule or parent-time reality is too unclear to plan
-- high-stakes support, safety, legal, accountability, health, developmental, or emotional concerns need clarification
-- the parent names an ambiguous boundary around a tool, activity, app, prompt, or support context
-- embodied AI, robot, kiosk, or child-facing agent use is requested without explicit safety and override clearance
+- correct the summary;
+- confirm the permissions matrix;
+- approve or remove each preserved learner signal;
+- confirm the classification rationale;
+- decide what may be retained in the tenant-private store.
 
-Next action:
+Do not preserve the packet before this review unless the parent already approved that temporary handling.
 
-1. Do not draft the plan.
-2. Use [hold-response-template.md](hold-response-template.md).
-3. Ask only for the missing decisions or facts needed to move safely.
-4. Re-run this runbook when the parent replies.
+### 6. Initial Learner Profile
 
-## Required Evidence Bundle
+Prepare a separate proposed profile using [initial-learner-profile-template.md](initial-learner-profile-template.md). Show the complete profile to the named guardian and request an exact decision.
 
-Before any plan draft is sent for review, the operator should have:
+- `Approved` produces an approved initial-profile packet in `Awaiting Persistence`.
+- `Changes Requested` requires a complete corrected profile and a new exact confirmation.
+- `Rejected` leaves no effective profile.
 
-- parent response or parent-approved notes
-- readiness status: `Ready` or `Provisional`
-- missing-input list, if any
-- provisional-assumption list, if any
-- evidence map linking draft sections to inputs
-- draft plan
-- parent approval record shell
+Only an authorized operator's confirmation that the approved packet was preserved in the tenant-private store makes the profile `Effective`. Do not place the real packet in Git.
 
-The evidence bundle is what prevents the plan from becoming a polished guess.
+### 7. Next-Action Gate
 
-## Handoff Checklist
+- For `Hold`, use [hold-response-template.md](hold-response-template.md) and request only missing decisions.
+- For `Ready` or `Provisional`, require the confirmed-effective initial profile, then ask separately whether the parent authorizes an evidence-mapped 30-day draft.
+- If drafting is approved, then use [plan-drafting-gate.md](plan-drafting-gate.md) and [plan-draft-evidence-map.md](plan-draft-evidence-map.md).
 
-Before leaving the intake stage, answer:
+Classification does not grant drafting authority. A draft does not grant authority for use.
 
-- What did the parent explicitly approve?
-- What did the parent explicitly prohibit or pause?
-- What is still unknown?
-- What learner-specific claims are supported by parent input?
-- What assumptions, if any, are labeled?
-- What must the parent approve before use?
-- Is the plan safe to draft, or should it remain `Hold`?
+## Question Quality Rules
 
-## Related Docs
+Prefer questions that:
 
-- [parent-intake-message.md](parent-intake-message.md)
-- [30-day-plan-inputs.md](30-day-plan-inputs.md)
-- [onboarding-readiness-checklist.md](onboarding-readiness-checklist.md)
-- [plan-drafting-gate.md](plan-drafting-gate.md)
-- [plan-draft-evidence-map.md](plan-draft-evidence-map.md)
-- [30-day-plan-template.md](30-day-plan-template.md)
-- [parent-approval-record.md](parent-approval-record.md)
-- [hold-response-template.md](hold-response-template.md)
-- [embodied-ai-hold-policy.md](embodied-ai-hold-policy.md)
+- ask for a recent event rather than a general trait;
+- distinguish observation from interpretation;
+- reveal what should be preserved as well as what should change;
+- alter readiness, rhythm, resources, evidence, safety, or the next decision;
+- help the family become more independent rather than more dependent on the service.
+
+Defer questions that merely make the profile look complete.
+
+## Completion Test
+
+The intake is complete only when:
+
+- the parent has verified the pseudonymous summary;
+- permissions and prohibited uses are explicit;
+- one readiness status has an evidence-based rationale;
+- any profile that was proposed has an explicit guardian decision;
+- any effective profile has operator-confirmed tenant-private persistence;
+- missing inputs and assumptions remain visible;
+- the next action names its human authority;
+- no real family record has entered Git.
+
+## Existing Profile Changes
+
+Use `$learner-intake change` rather than repeating full intake. Require the latest effective profile, its version and approval receipt, current authority boundaries, and the new evidence. Produce `No Change`, `Open Question`, an exact `Profile Change Proposal`, or `Hold`.
+
+Evidence may justify a proposal but cannot modify the profile. The named guardian must approve the exact before-and-after change set, and the prior version remains effective until an authorized operator confirms persistence of the replacement.

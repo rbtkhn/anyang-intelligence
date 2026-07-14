@@ -1,218 +1,96 @@
-# Phase 2 Survey Generation
+# Adaptive Intake Clarification
 
-Privacy classification: synthetic/pseudonymous fixture where named learner examples use pseudonyms and anonymized/example inputs.
-
-This document defines how Learning Core should generate a personalized **Phase 2 onboarding survey** from the completed **Phase 1 parent onboarding survey**.
-
-The goal is to make onboarding adaptive from the beginning.
-
-Phase 1 should classify the case shape.
-
-Phase 2 should ask only the next useful questions needed to move a case from `Provisional` toward `Ready`, or to confirm that it should remain `Hold`.
-
-## Core Logic
+This document defines how to ask only the follow-up questions needed after an evidence-first parent intake. It no longer assumes a registration survey followed by a second generic form.
 
 Use this sequence:
 
 ```text
-phase 1 survey completed
-  -> classify case shape
-  -> identify missing authority / boundary / learner / rhythm / resource details
-  -> generate only the follow-up questions needed for this case
-  -> collect answers
-  -> reclassify as Ready / Provisional / Hold
+authority and privacy gate
+  -> evidence-first learner conversation
+  -> readiness review
+  -> ask only decision-changing clarifications
+  -> reclassify Ready / Provisional / Hold
 ```
 
-Phase 2 should not repeat the whole intake.
+## Core Rule
 
-It should close gaps.
+Do not repeat the intake. Generate a clarification only when the answer could:
 
-## What Phase 1 Decides
+- clear or confirm a waiting condition;
+- change readiness status;
+- change the first-week rhythm or resource choice;
+- narrow evidence preservation;
+- identify a pause or outside-support boundary;
+- remove an unsupported assumption.
 
-Phase 1 should help the operator or system identify:
+Keep the clarification to 1–5 questions whenever possible. If many required conditions remain unresolved, use `Hold` and schedule another bounded parent conversation rather than sending a long form.
 
-- learner situation
-- planning need
-- schooling context
-- learner-picture depth
-- support level
-- rhythm reality
-- first-month avoid posture
-- starter-app stance
-- reading posture
-- caution / outside-support posture
+## Clarification Blocks
 
-Those answers should route the next questions.
+### Authority Or Privacy
 
-## What Phase 2 Should Gather
+Use only when a required boundary is missing:
 
-Phase 2 should gather only the missing items that block a safe draft:
+- Who holds the unresolved approval decision?
+- May the identified information be discussed or used for planning?
+- What must not be preserved or shared?
+- Who decides whether the pseudonymous summary may be retained?
 
-- authority and drafting approval
-- save / share boundaries
-- current resources and curriculum
-- concrete learner interests
-- concrete proud-work examples
-- concrete friction examples
-- reading details when needed
-- Khan Academy Kids decision details when needed
-- outside-support context when needed
-- portfolio setup details when needed
-- schedule details when needed
+Do not request names, contact details, precise locations, school names, or other identifiers in repository-linked surfaces.
 
-## Routing Rules
+### Concrete Learner Signal
 
-### 1. Authority / Boundary Block
+Use when the learner picture is too abstract:
 
-Include this block when any of these are missing:
+- What happened during one recent learning moment that went well?
+- What did the learner choose, notice, ask, build, repeat, or connect?
+- What happened immediately before one recent moment of friction?
+- What helped the moment ease?
 
-- parent or guardian name
-- contact info
-- drafting approval
-- who approves the plan before use
-- what may not be saved
-- what may not be shared
+Ask for an event, not a trait or diagnosis.
 
-Recommended questions:
+### Household Reality
 
-- Who should be the main parent or guardian contact for this plan?
-- Do you approve drafting a first-month plan from the information you have already shared?
-- Is there anything you do not want saved?
-- Is there anything you do not want shared?
+Use when a rhythm would otherwise be invented:
 
-### 2. Learner Detail Block
+- What can a difficult household day genuinely sustain?
+- What does an ordinary day allow?
+- What preparation burden is realistic?
+- What signs mean shorten, pivot, or pause?
 
-Include this block when the learner picture is `B`, `C`, or `D`, or when concrete learner examples are still missing.
+### Tool Decision
 
-Recommended questions:
+Use only for a tool that could affect the first week:
 
-- What topics, activities, books, games, or projects does your child return to most often?
-- What is your child proud of right now?
-- What currently feels hard, frustrating, or often avoided?
-- What kind of learning seems to work best: reading, talking, building, drawing, moving, watching, or playing?
+- Is this tool approved, excluded, or undecided?
+- Must it stay inside a screen-time budget?
+- What useful observation, if any, should it support?
 
-### 3. Rhythm And Household Reality Block
+An undecided optional tool may simply be omitted. Do not pressure a decision.
 
-Include this block when the rhythm is variable, moderate-but-unspecified, or likely to create planning guesswork.
+### Evidence Boundary
 
-Recommended questions:
+Use when preservation remains unclear:
 
-- Which days are active learning days?
-- What time of day usually works best?
-- How much adult help is realistic on a lighter day?
-- How much adult help is realistic on a fuller day?
-- Do you want a fixed rhythm or a flexible menu?
+- What evidence would genuinely help?
+- What would feel excessive?
+- Who decides what is preserved or deleted?
+- Should the learner choose one meaningful artifact weekly?
 
-### 4. Resource Block
+### Caution Or Outside Support
 
-Include this block when current books, curriculum, materials, or active tools are still unknown.
+Use when the parent has signaled relevant context:
 
-Recommended questions:
+- What minimum planning implication may be considered?
+- What should remain outside the plan?
+- What should trigger an immediate pause or qualified-support review?
 
-- What books are already in the house?
-- Is there a curriculum or program already in use?
-- What apps or websites are already being used?
-- What materials are easy to use right now?
+Do not ask for unnecessary private history or interpret the context diagnostically.
 
-### 5. Khan Academy Kids Block
+## Reclassification
 
-Include this block when Phase 1 answer 8 is `B` or `D`.
+- Move to `Ready` when all waiting conditions are resolved and the intended personalization is supported by medium or strong evidence.
+- Use `Provisional` when all waiting conditions are resolved but optional learner-fit evidence remains thin and visible.
+- Keep `Hold` whenever authority, privacy, basic learner context, household feasibility, relevant tool boundaries, overload, or outside-support context remains unresolved.
 
-If answer 8 is `B` (`maybe`), ask:
-
-- Is Khan Academy Kids installed already?
-- What would you want help deciding about it?
-- If you try it, what time limit feels safe?
-- Should it stay inside a broader screen-time budget?
-
-If answer 8 is `D` (`already using it`), ask:
-
-- How much time is it currently used?
-- What does your child choose or avoid inside the app?
-- What would you want observed or adjusted?
-
-Do not include this block when answer 8 is `C` unless the parent reopens the topic.
-
-### 6. Reading Detail Block
-
-Include this block when Phase 1 answer 9 is `B`, `C`, or `D`.
-
-Recommended questions:
-
-- What kinds of books does your child choose voluntarily?
-- What kinds of books are resisted or abandoned?
-- Does your child prefer fiction, nonfiction, graphic formats, jokes, field guides, poetry, or read-alouds?
-- What does reading frustration look like when it shows up?
-
-### 7. Caution / Outside-Support Block
-
-Include this block when Phase 1 answer 10 is `C` or `D`.
-
-If answer 10 is `C`, ask:
-
-- What specific concern should be handled carefully?
-- What usually triggers that concern?
-- What kind of planning posture feels safest?
-
-If answer 10 is `D`, ask:
-
-- Are there teacher, tutor, clinician, specialist, or school notes you want considered?
-- Do you want that outside-support context included in planning now?
-- Is there anything that should stay outside the plan for now?
-
-### 8. Portfolio Block
-
-Include this block when a draft will likely be usable soon but evidence storage is still unclear.
-
-Recommended questions:
-
-- Where would you like work to be saved?
-- Do you want a physical portfolio, digital folder, or both?
-- Who decides what gets saved?
-- Should your child choose proud work each week?
-
-## Phase 2 Composition Rules
-
-Build the survey from blocks, not from one fixed form.
-
-Recommended composition:
-
-- always include the Authority / Boundary Block if missing
-- include 2-4 more blocks based on the Phase 1 answers
-- keep the total Phase 2 survey compact enough to feel like a continuation, not a restart
-
-Good target:
-
-- 6 to 12 short questions total
-
-## Abigail Example Routing
-
-Abigail's Phase 1 answers imply:
-
-- include Authority / Boundary Block
-- include Learner Detail Block
-- include Resource Block
-- include Khan Academy Kids Block because the answer was `maybe`
-- include Reading Detail Block because reading is mixed
-- optionally include a light Rhythm Block only if time-of-day or learning-day details are still needed
-
-Do not include a heavy Caution / Outside-Support Block yet, because no explicit high-stakes concern has been named; only ask whether outside-support context exists and may be considered.
-
-## Reclassification Rule
-
-After Phase 2 returns:
-
-- mark `Ready` if authority, boundaries, learner detail, rhythm reality, starter-tool posture, and caution posture are now clear enough to draft without invention
-- keep `Provisional` if the core picture is usable but still thin in a few non-blocking areas
-- mark `Hold` if outside-support, privacy, authority, or major learner-context gaps still prevent a safe draft
-
-## Boundary
-
-Phase 2 is not:
-
-- a full restart of intake
-- a second generic registration form
-- a diagnostic instrument
-- a substitute for parent approval
-
-It is a personalized gap-closing survey generated from the actual Phase 1 answers.
+Record the result in [parent-intake-summary-template.md](parent-intake-summary-template.md) and return it to the parent for correction before preservation or a separate drafting decision.

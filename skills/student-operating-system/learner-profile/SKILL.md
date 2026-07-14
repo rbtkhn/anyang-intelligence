@@ -1,108 +1,79 @@
 ---
 name: learner-profile
-description: Student Operating System learner profile procedure. Use when Student Operating System work involves building, updating, or reviewing a learner profile from parent goals, student survey answers, parent observations, reading basket signals, Khan Academy Kids observations, portfolio artifacts, interests, strengths, friction, motivations, support needs, or next learning priorities.
+description: Internal Student Operating System procedure for analyzing evidence and preparing guardian-reviewable learner profiles or exact profile change proposals. Use inside $learner-intake create or $learner-intake change, or when comparing approved learner evidence with the latest effective profile; do not use it as a separate family-facing intake or as authority to mutate a profile.
 ---
 
-# Learner Profile Skill
+# Learner Profile
 
-Use this skill to turn scattered learner signals into a parent-reviewed learner profile.
+Use this skill as the evidence-analysis subroutine behind `$learner-intake`. Produce observations, interpretations, profile wording, and exact proposed changes without claiming mutation authority.
 
-This is a Student Operating System-level skill, not a generic education profile.
+## Required Inputs
 
-## Purpose
+For an initial profile, require a parent-verified intake packet and its authority receipt.
 
-Help Anyang Intelligence keep the learner profile:
+For a revision, require:
 
-- Useful for parent decisions.
-- Grounded in observed evidence.
-- Open to change.
-- Free of diagnosis, grades, and fixed labels.
-- Connected to the next learning cycle.
+- opaque learner reference;
+- latest confirmed-effective profile and version;
+- corresponding approval receipt;
+- current authority and preservation boundaries;
+- new evidence permitted for this use.
 
-## Standard Output
+Return `Hold` instead of reconstructing missing authority or profile state from memory.
 
-When this skill is used, produce:
+## Analyze Evidence
 
-```text
-Learner-profile checklist:
-- Parent goal:
-- Student voice:
-- Observed interests:
-- Strengths:
-- Friction or support signals:
-- Useful evidence:
-- Open questions:
-- Next profile update:
+1. Separate observed events from parent interpretation, learner voice, and operator hypothesis.
+2. Classify evidence as `strong`, `medium`, `thin`, or `none`.
+3. Preserve context and counterevidence.
+4. Use `Missing` instead of making the profile appear complete.
+5. Keep app activity, one episode, and operator intuition from becoming mastery, diagnosis, grade, or fixed-trait claims.
+6. Keep only information that could change a planning, support, evidence, or safety decision.
 
-Artifact:
-<learner profile note, profile update, intake summary, or next-cycle learner context>
-```
+## Prepare An Initial Profile
 
-## Procedure
+Use `projects/learning-core/initial-learner-profile-template.md`. Keep it `Proposed Initial Profile` until the complete contents are explicitly approved by the guardian named in the authority receipt.
 
-### 1. Gather Evidence
+Approval produces an `Approved Initial Profile Packet` in `Awaiting Persistence`. Only operator confirmation of tenant-private preservation makes it `Effective`.
 
-Use evidence from:
+## Prepare A Change
 
-- Parent goals.
-- Student survey answers.
-- Parent observations.
-- Reading basket signals.
-- Khan Academy Kids parent-observed engagement notes.
-- Student portfolio artifacts.
-- Proud work.
-- Monthly portfolio review.
-- Learning plan outcomes.
+Compare new evidence with the effective profile and produce one outcome:
 
-If evidence is thin, say so and keep the profile provisional.
+- `No Change`;
+- `Open Question`;
+- exact `Profile Change Proposal`;
+- `Hold`.
 
-### 2. Separate Signal From Interpretation
+Require two aligned signals for an ordinary proposal. A single signal may add an open question but may not replace an effective profile claim.
 
-Write observations as observations.
+For a proposal, show:
 
-Prefer:
+- current effective version;
+- each affected field;
+- exact before-and-after wording;
+- evidence and counterevidence;
+- uncertainty retained;
+- preservation or deletion implications;
+- complete proposed resulting profile.
 
-- "The learner chose animal books three times."
-- "The learner avoided long writing tasks this week."
-- "The learner was proud of finishing the drawing."
+Do not modify the effective profile. Exact guardian approval creates an approved packet; operator-confirmed preservation creates the new effective version. The prior version remains effective until then.
 
-Avoid:
+## Approval And Removal
 
-- Diagnosis.
-- Permanent personality labels.
-- Grade-level claims without evidence.
-- Claims based only on app progress.
+- Accept approval only from the guardian named in the current authority receipt.
+- Bind approval to the exact displayed contents and base version.
+- Rerender a smaller change set before accepting partial approval.
+- Never infer approval from silence, continued use, weekly review, readiness, drafting authorization, or plan approval.
+- Allow guardian-requested reconsideration at any time, but authorize only the exact confirmed correction, revision, or removal.
+- Stop use and return `Hold` for safety or privacy concerns without silently rewriting profile content.
+- Keep learner-requested content out of use while correction or removal awaits guardian resolution.
+- For approved removal, retain only the minimum audit fact; do not repeat removed sensitive content.
 
-### 3. Preserve Student Voice
+## Next Use
 
-Include the learner's own words, choices, or preferences when available.
-
-Do not overrule parent judgment or turn one answer into a permanent profile claim.
-
-### 4. Identify Next Use
-
-Every learner profile update should support one next action:
-
-- Choose a book.
-- Draft a daily rhythm.
-- Adjust a weekly plan.
-- Save portfolio evidence.
-- Ask a parent question.
-- Watch a support signal.
-- Prepare a professional-support question if needed.
-
-## Guardrails
-
-Do not:
-
-- Diagnose.
-- Grade.
-- Label the child.
-- Treat the profile as permanent.
-- Treat app activity as proof of mastery.
-- Replace parent, teacher, tutor, clinician, or specialist judgment.
-- Use pricing or monetary-value language in parent-facing artifacts.
+Connect an effective profile to one bounded next action, such as choosing a resource, adjusting a rhythm, identifying a next signal, or informing an authorized plan draft. Never let the profile replace parent, teacher, tutor, clinician, or specialist judgment.
 
 ## Done When
 
-The learner profile has parent goals, student voice, observed interests, strengths, friction or support signals, useful evidence, open questions, and one clear next use.
+The output is evidence-grounded, non-diagnostic, explicit about uncertainty, bound to the right authority, and in one honest state: proposed, awaiting guardian decision, awaiting persistence, effective after operator confirmation, no change, deferred, rejected, or hold.

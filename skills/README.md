@@ -22,7 +22,8 @@ These are product-level skills for Student Operating System work. They are not g
 | --- | --- |
 | [parent-interface](student-operating-system/parent-interface/SKILL.md) | Use for parent/guardian-mediated Student Operating System decisions, reviews, communication, approval, and parent-facing artifacts. |
 | [student-experience](student-operating-system/student-experience/SKILL.md) | Use for child-safe Student Operating System learning experiences, prompts, surveys, reflections, portfolio choices, and learner-interest artifacts. |
-| [learner-profile](student-operating-system/learner-profile/SKILL.md) | Use for building or updating learner profiles from parent goals, student voice, observations, portfolio evidence, interests, strengths, friction, and next priorities. |
+| [learner-intake](student-operating-system/learner-intake/SKILL.md) | Use `$learner-intake create` to establish a first profile or `$learner-intake change` to govern a guardian-approved revision. |
+| [learner-profile](student-operating-system/learner-profile/SKILL.md) | Use internally behind learner intake to analyze evidence and prepare proposed profile wording without mutation authority. |
 | [weekly-parent-review](student-operating-system/weekly-parent-review/SKILL.md) | Use for turning weekly observations, activities, evidence, friction, and outcomes into parent-reviewed next-week decisions. |
 | [learning-plan](student-operating-system/learning-plan/SKILL.md) | Use for drafting parent-reviewed daily rhythms, weekly plans, activities, reading plans, projects, and next-cycle learning priorities. |
 | [new-student-30-day-plan](student-operating-system/new-student-30-day-plan/SKILL.md) | Use for creating the scoped 30-Day Personalized Learning Plan for new students, including onboarding, from parent-approved inputs. |

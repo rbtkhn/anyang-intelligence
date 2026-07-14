@@ -1,0 +1,4 @@
+interface:
+  display_name: "Learner Intake"
+  short_description: "Create or change guardian-approved learner profiles"
+  default_prompt: "Use $learner-intake create to begin a governed learner intake and prepare an initial profile."

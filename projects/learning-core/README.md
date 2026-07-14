@@ -60,14 +60,14 @@ For an elementary learner, the parent initially carries most of the Learning Cor
 
 ## Starter Resource Bundle
 
-Khan Academy Kids should be included in the startup bundle as the first default iPad learning app.
+Khan Academy Kids may be included as a vetted optional iPad learning app when the parent approves it and it fits the learner, household rhythm, and screen-time boundary.
 
 Role in the system:
 
-- Provide a free, low-friction, child-friendly daily practice and exploration app.
+- Provide a free, low-friction, child-friendly practice and exploration option.
 - Support early reading, writing, language, math, books, videos, creative activities, and social-emotional learning.
-- Give the parent a safe starter tool that supports the scoped 30-Day Personalized Learning Plan.
-- Generate parent-observed engagement signals for the first learner profile and daily rhythm.
+- Give the parent a vetted optional tool that may support the scoped 30-Day Personalized Learning Plan.
+- Offer parent-observed engagement signals when the tool is actually used.
 - Reflect Learning Core's due diligence in sifting through crowded digital-learning options so the parent does not have to start from an app marketplace with no clear filter.
 
 Boundary:
@@ -78,17 +78,19 @@ Boundary:
 
 See [startup-bundle.md](startup-bundle.md) for the parent-facing Startup Bundle.
 
-See [30-day-plan-inputs.md](30-day-plan-inputs.md) for the parent goals, learner context, onboarding, safety, and approval inputs needed before drafting the 30-Day Personalized Learning Plan.
+See [30-day-plan-inputs.md](30-day-plan-inputs.md) for the minimum evidence, household-fit, safety, and approval inputs allowed to support the 30-Day Personalized Learning Plan.
 
-See [parent-intake-message.md](parent-intake-message.md) for the adaptable parent message used to collect those inputs before drafting.
+See [parent-intake-message.md](parent-intake-message.md) for the two-part evidence-first parent conversation: a short authority and privacy gate followed by recent learning episodes and household fit.
 
-See [parent-onboarding-survey.md](parent-onboarding-survey.md) for the lighter 10-question multiple-choice registration and onboarding survey used when the parent needs a faster front door.
+See [parent-onboarding-survey.md](parent-onboarding-survey.md) for an optional pseudonymous preview that helps the parent prepare without collecting registration or contact details.
 
 See [parent-guide-signals.md](parent-guide-signals.md) for the parent-set budgets and household-fit signals the Student Operating System can use to adapt plans to real family constraints.
 
-See [parent-intake-to-draft-runbook.md](parent-intake-to-draft-runbook.md) for the operator front door used when a real parent response arrives and the case needs to be classified as `Ready`, `Provisional`, or `Hold`.
+See [parent-intake-to-draft-runbook.md](parent-intake-to-draft-runbook.md) for the timed operator process from parent authority through classification and a separate draft-decision gate.
 
 See [onboarding-readiness-checklist.md](onboarding-readiness-checklist.md) for the internal/operator checklist that converts parent intake into a `Ready`, `Provisional`, or `Hold` decision before drafting.
+
+See [parent-intake-summary-template.md](parent-intake-summary-template.md) for the blank parent-verification packet. Completed real-family copies remain tenant-private and outside Git.
 
 See [mock-intake-simulations.md](mock-intake-simulations.md) for three fictional intake tests that exercise the Ready, Provisional, and Hold gates.
 
@@ -117,6 +119,8 @@ It also now includes a `hold after review` exemplar for showing how parent revie
 See [parent-approval-record.md](parent-approval-record.md) for the internal/operator artifact that records what the parent approved, what changed, what remains provisional, and whether a draft is safe to use.
 
 See [parent-approval-checklist.md](parent-approval-checklist.md) for the parent-facing review surface that makes it easy to approve, change, or pause draft elements before use.
+
+See [parent-intake-to-draft-runbook.md](parent-intake-to-draft-runbook.md) for the governed evidence-first intake flow and [initial-learner-profile-template.md](initial-learner-profile-template.md) for the separate blank profile structure. Real completed intake and profile records remain outside Git in the operator-controlled tenant-private store.
 
 See [30-day-plan-template.md](30-day-plan-template.md) for the parent-facing plan shell used after inputs are approved.
 
@@ -156,7 +160,9 @@ See [continuity-invitation-template.md](continuity-invitation-template.md) for t
 
 See [learning-core-ob1-integration.md](learning-core-ob1-integration.md) for the architecture note that explains how the family's `Learning Core` could interface with `OB1 / Open Brain` as a governed memory substrate.
 
-For repo-local Codex work, see [learning-core-lane skill](../../skills/student-operating-system/learning-core-lane/SKILL.md) for the lane-specific front door that ties together naming, onboarding, readiness, drafting, continuity, and Khan/reading-basket interpretation rules.
+For repo-local Codex work, use [`$learner-intake create`](../../skills/student-operating-system/learner-intake/SKILL.md) to establish a first guardian-approved profile or `$learner-intake change` to govern a possible revision. The skill produces copy-ready packets and cannot claim a profile is effective until an authorized operator confirms private persistence.
+
+See the [learning-core-lane skill](../../skills/student-operating-system/learning-core-lane/SKILL.md) for the broader lane-specific front door tying together naming, intake, readiness, drafting, continuity, and Khan/reading-basket interpretation rules.
 
 ## Customer Offer
 

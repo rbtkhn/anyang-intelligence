@@ -1,6 +1,6 @@
 ---
 name: new-student-30-day-plan
-description: Student Operating System procedure for creating the scoped 30-Day Personalized Learning Plan for new students, including onboarding, from parent-approved inputs. Use when drafting the Learning Core retainer deliverable, new-student onboarding plan, first-month learning plan, or 30-day parent-reviewed plan while preserving parent authority and child-safety boundaries.
+description: Student Operating System procedure for creating the scoped 30-Day Personalized Learning Plan for new students from a verified intake, confirmed-effective learner profile, and separate guardian drafting authorization. Use when drafting the Learning Core retainer deliverable, new-student onboarding plan, first-month learning plan, or 30-day parent-reviewed plan while preserving parent authority and child-safety boundaries.
 ---
 
 # New Student 30-Day Plan Skill
@@ -22,10 +22,17 @@ Read these first:
 7. `projects/learning-core/student-portfolio.md`
 8. `projects/learning-core/monthly-portfolio-review.md`
 
+Also require the tenant-private, operator-supplied:
+
+- parent-verified intake packet;
+- latest confirmed-effective learner profile and version reference;
+- current authority and preservation receipt;
+- separate guardian authorization to draft the 30-day plan.
+
 When available, also read:
 
 - Parent goals and non-negotiable boundaries.
-- Student startup survey answers.
+- Parent-approved learner voice, when available.
 - Parent observations.
 - Khan Academy Kids engagement notes.
 - Reading basket status or book list.
@@ -43,9 +50,9 @@ Classify readiness before drafting:
 
 | Status | Use when | Action |
 | --- | --- | --- |
-| **Ready** | Parent goals, boundaries, schedule, starter resources, and learner signals are available. | Draft the 30-day plan. |
-| **Provisional** | Some inputs are missing, but a safe starter plan can be drafted for parent review. | Draft with clear assumptions and missing inputs. |
-| **Hold** | Parent authority, safety boundary, schedule, or basic learner context is missing. | Do not draft the plan; list required inputs. |
+| **Ready** | Verified intake, effective profile, current boundaries, and drafting authorization are available; required planning inputs are clear. | Draft the 30-day plan. |
+| **Provisional** | Required authority is clear and the effective profile is available, but optional learner-fit evidence remains thin. | Draft with clear assumptions and missing inputs. |
+| **Hold** | Intake, effective profile, drafting authority, safety boundary, schedule, or basic learner context is missing or stale. | Do not draft the plan; list required inputs. |
 
 When in doubt, choose **Provisional** or **Hold**, not **Ready**.
 
@@ -188,7 +195,7 @@ Avoid crowding all subjects into every day. The first month should reveal the le
 The plan must include an onboarding sequence:
 
 - Confirm parent goals and boundaries.
-- Ask or review the student startup survey.
+- Review the verified intake and latest confirmed-effective learner profile.
 - Confirm Khan Academy Kids setup and use rule.
 - Build or refresh the reading basket.
 - Create or confirm the student portfolio.
@@ -228,7 +235,8 @@ If persistent reading, writing, attention, speech/language, math, behavior, heal
 
 Use these when needed:
 
-- `skills/student-operating-system/learner-profile/SKILL.md` when learner context is missing or stale.
+- `skills/student-operating-system/learner-intake/SKILL.md` in `create` mode when no effective learner profile exists, or `change` mode when the profile may be stale. Do not draft from a proposed or approved-but-unpreserved profile.
+- `skills/student-operating-system/learner-profile/SKILL.md` only as the internal evidence-analysis subroutine behind learner intake.
 - `skills/student-operating-system/parent-interface/SKILL.md` when parent approval, parent-facing language, or parent decision records are the main task.
 - `skills/student-operating-system/learning-plan/SKILL.md` for shorter daily, weekly, reading, project, or next-cycle plans.
 - `skills/student-operating-system/weekly-parent-review/SKILL.md` after a week of evidence exists.

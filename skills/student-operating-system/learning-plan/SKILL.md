@@ -53,7 +53,7 @@ Use:
 - Khan Academy Kids observations.
 - Known friction or support signals.
 
-If the learner profile is missing or stale, prepare a learner-profile update first.
+Use only the latest confirmed-effective learner profile. If it is missing, route to `$learner-intake create`; if it may be stale, route to `$learner-intake change`. Do not plan from a proposed or approved-but-unpreserved profile.
 
 ### 2. Keep The Plan Humane
 

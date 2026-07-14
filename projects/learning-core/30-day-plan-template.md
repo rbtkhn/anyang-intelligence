@@ -25,7 +25,7 @@ The draft should preserve that loop rather than pretending the first plan is the
 ## Plan Status
 
 - Plan status: `[Ready / Provisional / Hold]`
-- Learner: `[Name or parent-approved label]`
+- Learner: `[Parent-approved label]`
 - Plan dates: `[Start date - end date]`
 - Parent goal: `[Primary parent goal for the first 30 days]`
 - Inputs checked: `[Brief list]`
@@ -58,11 +58,11 @@ This plan does not replace the parent, teacher, tutor, clinician, legal authorit
 
 - Confirm the parent goal for the first 30 days: `[fill in]`
 - Confirm parent boundaries and privacy rules: `[fill in]`
-- Review the student startup survey: `[complete / planned / skipped for now]`
-- Set up Khan Academy Kids: `[complete / planned / not using]`
-- Build or refresh the reading basket: `[complete / planned]`
-- Create the parent observation notebook: `[complete / planned]`
-- Create or confirm the student portfolio: `[complete / planned]`
+- Review optional parent-approved learner voice: `[complete / skipped / not requested]`
+- Khan Academy Kids: `[approved and planned / declined / undecided and omitted]`
+- Reading basket: `[useful now / optional / declined / undecided and omitted]`
+- Parent observation surface: `[existing / light setup planned / not needed]`
+- Portfolio: `[physical / digital / light weekly traces only / declined / undecided]`
 - Choose the weekly parent review time: `[fill in]`
 
 ### Week 1 Setup
@@ -98,16 +98,16 @@ Use the lightest rhythm that works. The goal is consistency and observation, not
 - Read or look at books: `[5-10 minutes]`
 - Khan Academy Kids or alternate practice: `[optional / time limit]`
 - One small hands-on, writing, math, art, movement, or project moment: `[fill in]`
-- Parent note: `[one observation]`
+- Parent note: `[one concise observation when useful]`
 
 ### Standard Day
 
 - Reading: `[fill in]`
-- Khan Academy Kids: `[15-20 minutes, parent-supervised unless parent changes this, and inside the parent screen-time budget if one exists]`
+- Khan Academy Kids or alternate practice: `[optional parent-approved block / omitted]`
 - Hands-on practice: `[math, writing, building, drawing, etc.]`
 - Project / enrichment: `[interest-led activity]`
 - Movement / play / outside time: `[fill in]`
-- Parent observation: `[3-5 notes when realistic]`
+- Parent observation: `[one concise observation when useful]`
 - Portfolio evidence: `[save only when useful]`
 
 ### Fuller Day Option
@@ -178,9 +178,9 @@ Reading review question:
 
 ## Khan Academy Kids Use Rule
 
-Default:
+If parent-approved:
 
-- Use for `[15-20 minutes]` on learning days.
+- Use for `[parent-set time]` on approved learning days.
 - Parent-supervised.
 - Fit inside the parent screen-time budget if one exists.
 - Treat it as an observation and practice tool.
