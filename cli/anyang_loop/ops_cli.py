@@ -11,22 +11,31 @@ from .ops_db import connect, migrate, schema_version
 from .ops_render import audit_data, render_json, render_weekly_markdown, weekly_review_data
 from .ops_service import (
     APPROVAL_SCOPES,
+    DEPENDENCY_ROLES,
+    DEPENDENCY_TYPES,
     EVIDENCE_CLASSIFICATIONS,
+    EPISTEMIC_STATES,
+    SOURCE_INDEPENDENCE_STATES,
     WORK_STATES,
     OpsError,
     add_actor,
     add_claim,
+    add_claim_dependency,
     add_evidence,
     add_source,
     create_work,
     grant_authority,
     init_tenant,
+    list_epistemic_impacts,
     now_utc,
     record_approval,
     record_outcome,
     revoke_approval,
     revoke_authority,
+    retire_claim_dependency,
+    transition_claim,
     transition_work,
+    update_epistemic_impact,
 )
 from .privacy_scan import render_findings, scan_repo
 from .cadence_metrics import (
@@ -99,6 +108,8 @@ def build_parser() -> argparse.ArgumentParser:
     source_add.add_argument("--rights-status", required=True)
     source_add.add_argument("--evidence-ref", required=True)
     source_add.add_argument("--fresh-until")
+    source_add.add_argument("--origin-group")
+    source_add.add_argument("--independence-status", choices=SOURCE_INDEPENDENCE_STATES, default="unknown")
     source_add.add_argument("--redacted-summary", default="")
     source_add.add_argument("--actor", default="operator")
     _dry(source_add)
@@ -113,11 +124,86 @@ def build_parser() -> argparse.ArgumentParser:
     claim_add.add_argument("--evidence-strength", choices=("strong", "medium", "thin", "none"), required=True)
     claim_add.add_argument("--scope", required=True)
     claim_add.add_argument("--status", choices=("active", "provisional", "hold", "retired"), required=True)
+    claim_add.add_argument("--epistemic-state", choices=EPISTEMIC_STATES, default="unresolved")
     claim_add.add_argument("--source-id", action="append", default=[])
     claim_add.add_argument("--expires-at")
     claim_add.add_argument("--actor", default="operator")
     _dry(claim_add)
     claim_add.set_defaults(func=cmd_claim_add)
+    claim_transition = claim_sub.add_parser("transition")
+    claim_transition.add_argument("claim_id")
+    claim_transition.add_argument("target", choices=EPISTEMIC_STATES)
+    claim_transition.add_argument("--cause-type", required=True)
+    claim_transition.add_argument("--cause-ref", required=True)
+    claim_transition.add_argument("--actor", required=True)
+    claim_transition.add_argument("--rationale", required=True)
+    _dry(claim_transition)
+    claim_transition.set_defaults(
+        func=lambda args: mutate(
+            args,
+            transition_claim,
+            args.claim_id,
+            args.target,
+            args.cause_type,
+            args.cause_ref,
+            args.actor,
+            args.rationale,
+        )
+    )
+
+    dependency = sub.add_parser("dependency", help="Manage downstream epistemic dependencies")
+    dependency_sub = dependency.add_subparsers(required=True)
+    dependency_add = dependency_sub.add_parser("add")
+    _tenant(dependency_add)
+    dependency_add.add_argument("--upstream-claim-id", required=True)
+    dependency_add.add_argument("--downstream-type", choices=DEPENDENCY_TYPES, required=True)
+    dependency_add.add_argument("--downstream-ref", required=True)
+    dependency_add.add_argument("--role", choices=DEPENDENCY_ROLES, required=True)
+    dependency_add.add_argument("--actor", required=True)
+    _dry(dependency_add)
+    dependency_add.set_defaults(
+        func=lambda args: mutate(
+            args,
+            add_claim_dependency,
+            args.tenant,
+            args.upstream_claim_id,
+            args.downstream_type,
+            args.downstream_ref,
+            args.role,
+            args.actor,
+        )
+    )
+    dependency_retire = dependency_sub.add_parser("retire")
+    dependency_retire.add_argument("dependency_id")
+    dependency_retire.add_argument("--actor", required=True)
+    _dry(dependency_retire)
+    dependency_retire.set_defaults(
+        func=lambda args: mutate(args, retire_claim_dependency, args.dependency_id, args.actor)
+    )
+
+    impact = sub.add_parser("impact", help="Review downstream epistemic impacts")
+    impact_sub = impact.add_subparsers(required=True)
+    impact_list = impact_sub.add_parser("list")
+    _tenant(impact_list)
+    impact_list.add_argument("--status", choices=("open", "acknowledged", "resolved"))
+    impact_list.set_defaults(func=cmd_impact_list)
+    impact_ack = impact_sub.add_parser("acknowledge")
+    impact_ack.add_argument("impact_id")
+    impact_ack.add_argument("--actor", required=True)
+    _dry(impact_ack)
+    impact_ack.set_defaults(
+        func=lambda args: mutate(args, update_epistemic_impact, args.impact_id, "acknowledged", args.actor)
+    )
+    impact_resolve = impact_sub.add_parser("resolve")
+    impact_resolve.add_argument("impact_id")
+    impact_resolve.add_argument("--actor", required=True)
+    impact_resolve.add_argument("--resolution", required=True)
+    _dry(impact_resolve)
+    impact_resolve.set_defaults(
+        func=lambda args: mutate(
+            args, update_epistemic_impact, args.impact_id, "resolved", args.actor, args.resolution
+        )
+    )
 
     work = sub.add_parser("work")
     work_sub = work.add_subparsers(required=True)
@@ -270,18 +356,25 @@ def mutate(args: argparse.Namespace, function: Callable, *positional, **keywords
     if args.dry_run:
         return print_result({"dry_run": True, "action": function.__name__, "inputs": _safe(vars(args))})
     with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
         result = function(connection, *positional, **keywords)
     return print_result(result.as_dict())
 
 
 def cmd_source_add(args: argparse.Namespace) -> int:
     values = vars(args).copy()
-    return mutate(args, add_source, args.tenant, **_pick(values, "title", "source_type", "provenance", "sensitivity", "rights_status", "evidence_ref", "fresh_until", "redacted_summary", "actor"))
+    return mutate(args, add_source, args.tenant, **_pick(values, "title", "source_type", "provenance", "sensitivity", "rights_status", "evidence_ref", "fresh_until", "origin_group", "independence_status", "redacted_summary", "actor"))
 
 
 def cmd_claim_add(args: argparse.Namespace) -> int:
     values = vars(args).copy()
-    return mutate(args, add_claim, args.tenant, args.source_id, **_pick(values, "text", "classification", "evidence_strength", "scope", "status", "expires_at", "actor"))
+    return mutate(args, add_claim, args.tenant, args.source_id, **_pick(values, "text", "classification", "evidence_strength", "scope", "status", "epistemic_state", "expires_at", "actor"))
+
+
+def cmd_impact_list(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        impacts = list_epistemic_impacts(connection, args.tenant, args.status)
+    return print_result({"tenant": args.tenant, "impacts": impacts})
 
 
 def cmd_work_create(args: argparse.Namespace) -> int:

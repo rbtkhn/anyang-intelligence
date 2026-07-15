@@ -19,6 +19,20 @@ anyang-ops init --tenant grace-gems --name "Grace Gems" --policy-profile governe
 
 Use `--dry-run` on every mutation command to inspect the intended operation. Use `anyang-ops audit --tenant grace-gems` for ledger integrity and `anyang-ops privacy-scan --repo .` before committing. Private evidence bodies and raw customer transcripts remain outside the database; use approved external references and redacted summaries.
 
+Schema v4 keeps epistemic state distinct from operational claim status. Human
+operators can record a cause-bearing state change, bind downstream uses, and
+clear the resulting review queue:
+
+```bash
+anyang-ops dependency add --tenant grace-gems --upstream-claim-id CLAIM_ID --downstream-type publication --downstream-ref LISTING_VERSION --role support --actor REVIEWER
+anyang-ops claim transition CLAIM_ID contested --cause-type contradictory-source --cause-ref SOURCE_REF --actor REVIEWER --rationale "Material conflict requires review."
+anyang-ops impact list --tenant grace-gems --status open
+anyang-ops impact resolve IMPACT_ID --actor REVIEWER --resolution "Publication was reviewed against the changed warrant."
+```
+
+Claim transitions are hash-linked and append-only. Propagation creates review
+obligations; it never upgrades evidence or silently rewrites downstream state.
+
 ### Cadence reconstruction baseline
 
 Record each real cadence event immediately after it completes or stops. Do not backfill simulated successes:
@@ -439,6 +453,19 @@ Optional catalog fields include:
 At least one provenance field is required: `source_url` or `source_note`.
 
 ## Verification
+
+Validate the curated claim-to-surface nervous system and report its operational
+entropy separately from the still-required human outcome measurement:
+
+```bash
+anyang-project validate-epistemics
+anyang-project epistemic-report
+anyang-project epistemic-report --retrieval-success 0.83 --revision-impact-accuracy 0.75
+```
+
+The governing states, transition rules, and non-upgrade law are defined in
+[`docs/epistemic-constitution.md`](../docs/epistemic-constitution.md). The
+curated cohort and baseline are declared in [`epistemic-state.yaml`](../epistemic-state.yaml).
 
 ```bash
 python -m pip install -e .[dev]

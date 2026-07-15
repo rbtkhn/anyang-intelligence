@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import sqlite3
 from collections import Counter
 from datetime import date, datetime, timedelta, timezone
@@ -211,7 +212,125 @@ def audit_data(connection: sqlite3.Connection, tenant: str, as_of: str | None = 
                 issues.append({"code": "missing-source-lineage", "claim_id": claim["id"], "message": "Supported claim lacks source lineage."})
         if claim["expires_at"] and claim["expires_at"] < cutoff and claim["status"] == "active":
             issues.append({"code": "expired-active-claim", "claim_id": claim["id"], "message": "Expired claim remains active."})
-    return {"tenant": tenant, "as_of": cutoff, "ok": not issues, "issues": issues}
+        if claim["epistemic_state"] in {"disconfirmed", "retired"} and claim["status"] == "active":
+            issues.append({"code": "epistemically-unusable-active-claim", "claim_id": claim["id"], "message": "Disconfirmed or retired claim remains operationally active."})
+        if not _valid_transition_chain(connection, claim["id"]):
+            issues.append({"code": "invalid-claim-transition-chain", "claim_id": claim["id"], "message": "Claim transition history is missing or fails hash-chain verification."})
+    epistemic = _epistemic_entropy(connection, tid)
+    issues.extend(epistemic["critical_gaps"])
+    return {"tenant": tenant, "as_of": cutoff, "ok": not issues, "issues": issues, "epistemic": epistemic}
+
+
+def _epistemic_entropy(connection: sqlite3.Connection, tenant_id_value: str) -> dict[str, Any]:
+    points = maximum = 0
+    independence_gaps: list[str] = []
+    independent_support_counts: dict[str, int] = {}
+    claims = connection.execute("SELECT * FROM claim WHERE tenant_id = ? ORDER BY id", (tenant_id_value,)).fetchall()
+    for claim in claims:
+        maximum += 9
+        points += 0 if claim["epistemic_state"] and claim["id"] else 2
+        sources = connection.execute(
+            """SELECT s.* FROM source s JOIN claim_source cs ON cs.source_id = s.id
+            WHERE cs.claim_id = ? ORDER BY s.id""",
+            (claim["id"],),
+        ).fetchall()
+        if claim["classification"] != "template-default" and not sources:
+            points += 2
+        if not str(claim["scope"]).strip():
+            points += 1
+        dependencies = connection.execute(
+            "SELECT * FROM claim_dependency WHERE upstream_claim_id = ? AND active = 1",
+            (claim["id"],),
+        ).fetchall()
+        if claim["status"] == "active" and not dependencies:
+            points += 2
+        if not _valid_transition_chain(connection, claim["id"]):
+            points += 2
+        if claim["evidence_strength"] == "strong" and len(sources) > 1:
+            maximum += 4
+            independent_origins = {
+                str(source["origin_group"])
+                for source in sources
+                if source["independence_status"] == "independent" and source["origin_group"]
+            }
+            independent_support_counts[claim["id"]] = len(independent_origins)
+            origin_groups = [str(source["origin_group"]) for source in sources if source["origin_group"]]
+            independence_unproven = any(
+                source["independence_status"] != "independent" or not source["origin_group"] for source in sources
+            )
+            derived_repetition = len(set(origin_groups)) < len(origin_groups)
+            if independence_unproven:
+                points += 1
+                independence_gaps.append(claim["id"])
+            if any(source["independence_status"] == "dependent" for source in sources) or derived_repetition:
+                points += 3
+        open_impacts = connection.execute(
+            """SELECT * FROM epistemic_impact WHERE upstream_claim_id = ?
+            AND status != 'resolved' AND impact_type != 'no-action'""",
+            (claim["id"],),
+        ).fetchall()
+        if open_impacts:
+            maximum += 3
+            points += 3
+    critical_gaps = [
+        {
+            "code": "open-critical-epistemic-impact",
+            "claim_id": row["upstream_claim_id"],
+            "message": f"Open {row['impact_type']} impact remains on {row['downstream_type']}:{row['downstream_ref']}.",
+        }
+        for row in connection.execute(
+            """SELECT * FROM epistemic_impact WHERE tenant_id = ? AND status != 'resolved'
+            AND impact_type IN ('review-required', 'unresolved', 'stale')
+            AND downstream_type IN ('forecast', 'publication') ORDER BY id""",
+            (tenant_id_value,),
+        )
+    ]
+    rate = round((100.0 * points / maximum), 2) if maximum else 0.0
+    return {
+        "structural_points": points,
+        "structural_maximum": maximum,
+        "structural_entropy_rate": rate,
+        "claim_count": len(claims),
+        "transition_count": connection.execute(
+            "SELECT COUNT(*) FROM claim_transition WHERE tenant_id = ?", (tenant_id_value,)
+        ).fetchone()[0],
+        "open_impact_count": connection.execute(
+            "SELECT COUNT(*) FROM epistemic_impact WHERE tenant_id = ? AND status != 'resolved'", (tenant_id_value,)
+        ).fetchone()[0],
+        "independent_support_counts": independent_support_counts,
+        "independence_gap_claim_ids": independence_gaps,
+        "critical_gaps": critical_gaps,
+    }
+
+
+def _valid_transition_chain(connection: sqlite3.Connection, claim_id: str) -> bool:
+    rows = connection.execute(
+        "SELECT * FROM claim_transition WHERE claim_id = ? ORDER BY version", (claim_id,)
+    ).fetchall()
+    if not rows:
+        return False
+    prior = ""
+    for expected_version, row in enumerate(rows, start=1):
+        if row["version"] != expected_version or row["prior_transition_hash"] != prior:
+            return False
+        payload = {
+            "id": row["id"],
+            "claim_id": row["claim_id"],
+            "version": row["version"],
+            "from_state": row["from_state"],
+            "to_state": row["to_state"],
+            "cause_type": row["cause_type"],
+            "cause_ref": row["cause_ref"],
+            "actor": row["actor"],
+            "rationale": row["rationale"],
+            "prior_transition_hash": row["prior_transition_hash"],
+            "created_at": row["created_at"],
+        }
+        digest = hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+        if digest != row["transition_hash"]:
+            return False
+        prior = digest
+    return True
 
 
 def _dict(row: sqlite3.Row) -> dict[str, Any]:

@@ -17,10 +17,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install -e ".[dev]"
-      - run: python -m pytest -q --basetemp=.pytest_cache/pytest-ci-${{ matrix.os }}-${{ matrix.python-version }}
+      - run: python -m pytest -q --basetemp=.pytest-ci-${{ matrix.os }}-${{ matrix.python-version }}
       - run: anyang-project validate projects
       - run: anyang-loop validate projects
       - run: anyang-project validate-interfaces
       - run: anyang-project validate-artifacts
       - run: anyang-project validate-agency
+      - run: anyang-project validate-epistemics
       - run: anyang-ops privacy-scan --repo .
