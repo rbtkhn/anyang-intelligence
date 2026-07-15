@@ -29,3 +29,6 @@ package-dir = {"" = "cli"}
 
 [tool.setuptools.packages.find]
 where = ["cli"]
+
+[tool.pytest.ini_options]
+addopts = "--basetemp=.pytest_cache/pytest-local"

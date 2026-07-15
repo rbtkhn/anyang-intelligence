@@ -42,6 +42,22 @@ def test_fast_verification_reports_failure_and_unavailable(tmp_path: Path):
     assert all(result.status in {"pass", "fail", "unavailable"} for result in results)
 
 
+def test_full_verification_uses_an_isolated_repo_local_pytest_temp(tmp_path: Path):
+    make_git_repo(tmp_path)
+    snapshot = collect_repo_snapshot(tmp_path)
+    commands = []
+
+    def runner(root, command):
+        commands.append((root, command))
+        return 0, "", ""
+
+    run_verification(snapshot, "full", command_runner=runner)
+
+    pytest_command = next(command for _, command in commands if "pytest" in command)
+    basetemp_index = pytest_command.index("--basetemp")
+    assert Path(pytest_command[basetemp_index + 1]) == tmp_path / ".pytest_cache" / "dream-full"
+
+
 def test_dream_record_then_coffee_inherits(tmp_path: Path, capsys):
     make_git_repo(tmp_path)
     write(tmp_path / "untracked.txt", "work\n")
