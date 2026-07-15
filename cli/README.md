@@ -33,6 +33,20 @@ anyang-ops impact resolve IMPACT_ID --actor REVIEWER --resolution "Publication w
 Claim transitions are hash-linked and append-only. Propagation creates review
 obligations; it never upgrades evidence or silently rewrites downstream state.
 
+Review the live queue, reconstruct one claim, or prepare a read-only impact
+packet without changing ledger state:
+
+```bash
+anyang-ops epistemic review --tenant grace-gems --format markdown
+anyang-ops epistemic explain --tenant grace-gems --claim-id CLAIM_ID --format json
+anyang-ops epistemic packet --tenant grace-gems --impact-id IMPACT_ID --format markdown
+```
+
+The review queue orders open critical forecast/publication impacts as P0, other
+open actionable impacts as P1, and acknowledged or conditional impacts as P2.
+Resolved and `no-action` records remain in ledger history but are excluded from
+actionable totals. Weekly reviews include the same prioritized model.
+
 ### Cadence reconstruction baseline
 
 Record each real cadence event immediately after it completes or stops. Do not backfill simulated successes:
@@ -462,6 +476,20 @@ anyang-project validate-epistemics
 anyang-project epistemic-report
 anyang-project epistemic-report --retrieval-success 0.83 --revision-impact-accuracy 0.75
 ```
+
+Score the fixed twelve-surface human benchmark from a sanitized response file:
+
+```bash
+anyang-project epistemic-benchmark score --responses benchmark-responses.yaml --format markdown
+```
+
+The version-1 response file requires `reviewed_at`, a pseudonymous
+`reviewer_alias`, and one entry for every manifest cohort surface. Each surface
+records `elapsed_seconds`, boolean checks for `controlling_claim`,
+`state_and_scope`, `upstream_support`, `latest_transition_cause`, and
+`downstream_and_next_evidence`, plus `predicted_dependencies`. Scoring is
+read-only and emits a reviewed, ready-to-paste aggregate block; it never edits
+the manifest.
 
 The governing states, transition rules, and non-upgrade law are defined in
 [`docs/epistemic-constitution.md`](../docs/epistemic-constitution.md). The

@@ -8,6 +8,14 @@ from pathlib import Path
 from typing import Callable
 
 from .ops_db import connect, migrate, schema_version
+from .epistemic_review import (
+    claim_explanation_data,
+    epistemic_review_data,
+    impact_packet_data,
+    render_claim_explanation_markdown,
+    render_epistemic_review_markdown,
+    render_impact_packet_markdown,
+)
 from .ops_render import audit_data, render_json, render_weekly_markdown, weekly_review_data
 from .ops_service import (
     APPROVAL_SCOPES,
@@ -205,6 +213,24 @@ def build_parser() -> argparse.ArgumentParser:
         )
     )
 
+    epistemic = sub.add_parser("epistemic", help="Explain and review live epistemic state")
+    epistemic_sub = epistemic.add_subparsers(required=True)
+    epistemic_review = epistemic_sub.add_parser("review", help="Show the prioritized epistemic review queue")
+    _tenant(epistemic_review)
+    epistemic_review.add_argument("--as-of")
+    _read_format(epistemic_review)
+    epistemic_review.set_defaults(func=cmd_epistemic_review)
+    epistemic_explain = epistemic_sub.add_parser("explain", help="Explain one controlling claim")
+    _tenant(epistemic_explain)
+    epistemic_explain.add_argument("--claim-id", required=True)
+    _read_format(epistemic_explain)
+    epistemic_explain.set_defaults(func=cmd_epistemic_explain)
+    epistemic_packet = epistemic_sub.add_parser("packet", help="Build an evidence-change review packet")
+    _tenant(epistemic_packet)
+    epistemic_packet.add_argument("--impact-id", required=True)
+    _read_format(epistemic_packet)
+    epistemic_packet.set_defaults(func=cmd_epistemic_packet)
+
     work = sub.add_parser("work")
     work_sub = work.add_subparsers(required=True)
     work_create = work_sub.add_parser("create")
@@ -377,6 +403,24 @@ def cmd_impact_list(args: argparse.Namespace) -> int:
     return print_result({"tenant": args.tenant, "impacts": impacts})
 
 
+def cmd_epistemic_review(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        data = epistemic_review_data(connection, args.tenant, args.as_of)
+    return _emit_read_output(args, data, render_epistemic_review_markdown)
+
+
+def cmd_epistemic_explain(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        data = claim_explanation_data(connection, args.tenant, args.claim_id)
+    return _emit_read_output(args, data, render_claim_explanation_markdown)
+
+
+def cmd_epistemic_packet(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        data = impact_packet_data(connection, args.tenant, args.impact_id)
+    return _emit_read_output(args, data, render_impact_packet_markdown)
+
+
 def cmd_work_create(args: argparse.Namespace) -> int:
     values = vars(args).copy()
     return mutate(args, create_work, args.tenant, args.source_id, args.claim_id, **_pick(values, "title", "asset_job", "owner", "reviewer", "deliverable", "assignee", "due_at", "capacity_hours", "budget_cents", "actor"))
@@ -458,6 +502,20 @@ def _tenant(parser: argparse.ArgumentParser) -> None:
 
 def _dry(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--dry-run", action="store_true")
+
+
+def _read_format(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--format", choices=("markdown", "json"), default="markdown")
+    parser.add_argument("--output")
+
+
+def _emit_read_output(args: argparse.Namespace, data: dict, markdown_renderer: Callable[[dict], str]) -> int:
+    output = render_json(data) if args.format == "json" else markdown_renderer(data)
+    if args.output:
+        Path(args.output).write_text(output, encoding="utf-8")
+    else:
+        print(output, end="")
+    return 0
 
 
 def _pick(values: dict, *keys: str) -> dict:

@@ -7,6 +7,7 @@ from collections import Counter
 from datetime import date, datetime, timedelta, timezone
 from typing import Any
 
+from .epistemic_review import epistemic_review_data
 from .ops_service import WORK_STATES, tenant_id
 
 
@@ -78,6 +79,7 @@ def weekly_review_data(
         for row in outcomes
         if row["metric"] == "owner_usefulness" and row["metric_value"] is not None
     ]
+    epistemic = epistemic_review_data(connection, tenant, cutoff)
     return {
         "tenant": {"slug": tenant_row["slug"], "name": tenant_row["name"], "policy_profile": tenant_row["policy_profile"]},
         "period": {"week_start": start.isoformat(), "week_end": (end - timedelta(days=1)).isoformat(), "as_of": cutoff},
@@ -86,6 +88,13 @@ def weekly_review_data(
         "blocked": blocked,
         "overdue": overdue,
         "unsafe_or_stale_claims": unsafe_claims,
+        "epistemic_review": {
+            "counts": epistemic["counts"],
+            "items": epistemic["items"][:5],
+            "unsafe_claims": epistemic["unsafe_claims"],
+            "independence_gaps": epistemic["independence_gaps"],
+            "human_authority": epistemic["human_authority"],
+        },
         "approvals_required": approval_required,
         "approvals_recorded": [
             {
@@ -156,6 +165,21 @@ def render_weekly_markdown(data: dict[str, Any]) -> str:
         "",
         "## Unsafe Or Stale Claims",
         *_bullets(data["unsafe_or_stale_claims"], lambda row: f"{row['text']} - {row['classification']} / {row['status']}"),
+        "",
+        "## Epistemic Review Required",
+        (
+            f"- Actionable: {data['epistemic_review']['counts']['actionable']} "
+            f"(P0 {data['epistemic_review']['counts']['P0']}, "
+            f"P1 {data['epistemic_review']['counts']['P1']}, "
+            f"P2 {data['epistemic_review']['counts']['P2']})"
+        ),
+        *_bullets(
+            data["epistemic_review"]["items"],
+            lambda row: (
+                f"{row['priority']} - {row['impact_type']} - "
+                f"{row['downstream_type']}:{row['downstream_ref']} - claim {row['claim_id']}"
+            ),
+        ),
         "",
         "## Approvals Required",
         *_bullets(data["approvals_required"], lambda row: f"{row['title']} - {row['required']}"),

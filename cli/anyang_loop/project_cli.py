@@ -26,6 +26,11 @@ from .transcript_import import (
 from .analytical_interfaces import validate_manifest
 from .artifact_state import validate_artifact_manifest
 from .epistemic_state import epistemic_report, validate_epistemic_manifest
+from .epistemic_benchmark import (
+    EpistemicBenchmarkError,
+    render_epistemic_benchmark_markdown,
+    score_epistemic_benchmark,
+)
 from .bounded_agency import AgencyContractError, validate_agency_manifest
 from .phase_preflight import (
     TRANSCRIPT_PHASE,
@@ -56,6 +61,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERROR: {exc}")
         return 1
     except AgencyContractError as exc:
+        print(f"ERROR: {exc}")
+        return 1
+    except EpistemicBenchmarkError as exc:
         print(f"ERROR: {exc}")
         return 1
 
@@ -144,6 +152,16 @@ def build_parser() -> argparse.ArgumentParser:
     entropy.add_argument("--retrieval-success", type=float)
     entropy.add_argument("--revision-impact-accuracy", type=float)
     entropy.set_defaults(func=cmd_epistemic_report)
+
+    benchmark = subparsers.add_parser(
+        "epistemic-benchmark", help="Score the fixed human epistemic-outcome cohort"
+    )
+    benchmark_sub = benchmark.add_subparsers(required=True)
+    benchmark_score = benchmark_sub.add_parser("score", help="Score sanitized benchmark responses")
+    benchmark_score.add_argument("--manifest")
+    benchmark_score.add_argument("--responses", required=True)
+    benchmark_score.add_argument("--format", choices=("markdown", "json"), default="markdown")
+    benchmark_score.set_defaults(func=cmd_epistemic_benchmark_score)
 
     preflight = subparsers.add_parser("preflight", help="Reconstruct live state for a bounded operating phase")
     preflight.add_argument("--phase", required=True)
@@ -332,6 +350,15 @@ def cmd_epistemic_report(args: argparse.Namespace) -> int:
     )
     print(json.dumps(report, indent=2, sort_keys=True))
     return 0 if report["acceptance"]["zero_critical_gaps"] else 1
+
+
+def cmd_epistemic_benchmark_score(args: argparse.Namespace) -> int:
+    result = score_epistemic_benchmark(args.manifest, args.responses)
+    if args.format == "json":
+        print(json.dumps(result, indent=2, sort_keys=True))
+    else:
+        print(render_epistemic_benchmark_markdown(result), end="")
+    return 0 if result["acceptance"]["zero_critical_gaps"] else 1
 
 
 def cmd_preflight(args: argparse.Namespace) -> int:
