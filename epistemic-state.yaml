@@ -1,0 +1,221 @@
+version: 1
+
+governance:
+  owner: repository-operator
+  review_cadence: quarterly
+  enforcement: advisory-except-objective-critical-gaps
+  governing_law: Downstream activity may carry posture but may not upgrade upstream warrant.
+
+baseline:
+  recorded_at: 2026-07-15
+  structural_points: 186
+  structural_maximum: 186
+  structural_entropy_rate: 100.0
+  composite_entropy: null
+  method: Pre-program surfaces had no claim-state, dependency, transition, or impact manifest bindings.
+
+human_measurement:
+  retrieval_success: null
+  revision_impact_accuracy: null
+  review_minutes: null
+  false_positives: null
+  overrides: null
+
+rollout_history:
+  - wave: constitution-and-manifest
+    recorded_at: 2026-07-15
+    structural_points: 0
+    structural_maximum: 186
+    structural_entropy_rate: 0.0
+    absolute_point_change: -186
+    structural_relative_reduction: 1.0
+    critical_gap_count: 0
+    review_minutes: null
+    false_positives: null
+    overrides: null
+    composite_status: pending-human-measurement
+
+human_outcome_cohort:
+  - singularity-watch-contract
+  - singularity-q2-watch
+  - singularity-q3-watch
+  - embodied-adoption-gate
+  - learner-intake
+  - learner-profile-template
+  - grace-trust-claim-review
+  - grace-marketplace-gate
+  - media-quality-gate
+  - media-package
+  - mountain-seasonal-readiness
+  - operating-portfolio-dashboard
+
+surface_defaults: &surface_defaults
+  as_of: 2026-07-15
+  review_trigger: Upstream evidence, authority, scope, or material interpretation changes.
+  next_evidence: A reviewed, independently traced upstream record capable of changing the bounded claim.
+  source_version: Repository content reviewed at the declared as-of date.
+  transition:
+    cause: baseline-backfill
+    actor: repository-operator
+    history_ref: docs/epistemic-entropy-baseline.md
+  source_independence: not-asserted
+  corroboration_asserted: false
+  downstream_repetition_as_evidence: false
+  open_impacts: []
+
+surfaces:
+  singularity-watch-contract:
+    <<: *surface_defaults
+    path: projects/singularity-science/china-humanoid-market-watch.md
+    lane: singularity-science
+    kind: decision
+    criticality: critical
+    claim_id: ss-humanoid-watch-threshold
+    epistemic_state: adopted
+    scope: Vendor-neutral evidence threshold for a reversible humanoid test.
+    provenance: [docs/evidence-awareness-checklist.md, docs/analytical-interfaces.md]
+    dependencies: [ss-humanoid-q2-posture, ss-humanoid-q3-posture]
+    approval_binding: Repository operator approval is required before action.
+
+  singularity-q2-watch:
+    <<: *surface_defaults
+    path: projects/singularity-science/2026-q2-china-humanoid-market-watch.md
+    lane: singularity-science
+    kind: decision
+    criticality: high
+    claim_id: ss-humanoid-q2-posture
+    epistemic_state: interpreted
+    scope: Q2 2026 evidence and bounded candidate posture.
+    provenance: [projects/singularity-science/china-humanoid-market-watch.md]
+    dependencies: [ss-humanoid-watch-threshold, ss-humanoid-q3-posture]
+    approval_binding: Repository operator review is required before operational use.
+
+  singularity-q3-watch:
+    <<: *surface_defaults
+    path: projects/singularity-science/2026-q3-china-humanoid-market-watch.md
+    lane: singularity-science
+    kind: decision
+    criticality: critical
+    claim_id: ss-humanoid-q3-posture
+    epistemic_state: interpreted
+    scope: Open Q3 2026 evidence ledger and candidate posture.
+    provenance: [projects/singularity-science/2026-q2-china-humanoid-market-watch.md]
+    dependencies: [ss-humanoid-q2-posture, ss-humanoid-watch-threshold]
+    approval_binding: Repository operator review is required before the posture authorizes action.
+
+  embodied-adoption-gate:
+    <<: *surface_defaults
+    path: projects/singularity-science/primitives/embodied-agency-adoption-gate.md
+    lane: singularity-science
+    kind: approval
+    criticality: critical
+    claim_id: ss-embodied-adoption-gate
+    epistemic_state: adopted
+    scope: Human approval boundary for embodied-agency adoption.
+    provenance: [projects/singularity-science/china-humanoid-market-watch.md]
+    dependencies: [ss-humanoid-watch-threshold]
+    approval_binding: Owner approval remains mandatory.
+
+  learner-intake:
+    <<: *surface_defaults
+    path: skills/student-operating-system/learner-intake/SKILL.md
+    lane: learning-core
+    kind: approval
+    criticality: critical
+    claim_id: lc-governed-learner-intake
+    epistemic_state: adopted
+    scope: Guardian-authorized learner intake and profile-state transitions.
+    provenance: [docs/evidence-awareness-checklist.md, docs/governance.md]
+    dependencies: [lc-initial-profile-template]
+    approval_binding: Named guardian approval is required.
+
+  learner-profile-template:
+    <<: *surface_defaults
+    path: projects/learning-core/initial-learner-profile-template.md
+    lane: learning-core
+    kind: decision
+    criticality: critical
+    claim_id: lc-initial-profile-template
+    epistemic_state: adopted
+    scope: Proposed and approved initial learner profile structure.
+    provenance: [skills/student-operating-system/learner-intake/SKILL.md]
+    dependencies: [lc-governed-learner-intake]
+    approval_binding: Exact guardian approval and operator-confirmed persistence are required.
+
+  grace-trust-claim-review:
+    <<: *surface_defaults
+    path: skills/grace-gems/trust-claim-review/SKILL.md
+    lane: grace-gems
+    kind: approval
+    criticality: critical
+    claim_id: gg-trust-claim-gate
+    epistemic_state: adopted
+    scope: Product and policy claim review before external use.
+    provenance: [docs/evidence-awareness-checklist.md, docs/governance.md]
+    dependencies: [gg-marketplace-gate]
+    approval_binding: Grace Gems owner approval is required.
+
+  grace-marketplace-gate:
+    <<: *surface_defaults
+    path: skills/grace-gems/marketplace-listing-gate/SKILL.md
+    lane: grace-gems
+    kind: approval
+    criticality: critical
+    claim_id: gg-marketplace-gate
+    epistemic_state: adopted
+    scope: Listing publish, revise, hold, promote, or retire decision preparation.
+    provenance: [skills/grace-gems/trust-claim-review/SKILL.md]
+    dependencies: [gg-trust-claim-gate]
+    approval_binding: Grace Gems owner approval is required before publication.
+
+  media-quality-gate:
+    <<: *surface_defaults
+    path: skills/media-production/media-production-quality-gate/SKILL.md
+    lane: media-production
+    kind: approval
+    criticality: critical
+    claim_id: mp-quality-gate
+    epistemic_state: adopted
+    scope: Media asset approval, revision, hold, or rejection readiness.
+    provenance: [docs/evidence-awareness-checklist.md, docs/governance.md]
+    dependencies: [mp-package]
+    approval_binding: Human publication or delivery approval remains required.
+
+  media-package:
+    <<: *surface_defaults
+    path: skills/media-production/media-production-package/SKILL.md
+    lane: media-production
+    kind: approval
+    criticality: high
+    claim_id: mp-package
+    epistemic_state: adopted
+    scope: Packaging of approved or review-ready media assets.
+    provenance: [skills/media-production/media-production-quality-gate/SKILL.md]
+    dependencies: [mp-quality-gate]
+    approval_binding: Packaging grants no publication or delivery authority.
+
+  mountain-seasonal-readiness:
+    <<: *surface_defaults
+    path: projects/mountain-villa/loop-examples/seasonal-readiness.yaml
+    lane: mountain-villa
+    kind: decision
+    criticality: critical
+    claim_id: mv-seasonal-readiness
+    epistemic_state: adopted
+    scope: Evidence-aware seasonal property readiness decisions.
+    provenance: [docs/governance.md, docs/evidence-awareness-checklist.md]
+    dependencies: [portfolio-governed-priority]
+    approval_binding: Owner and applicable professional review remain required.
+
+  operating-portfolio-dashboard:
+    <<: *surface_defaults
+    path: projects/operating-portfolio-dashboard.md
+    lane: portfolio
+    kind: decision
+    criticality: critical
+    claim_id: portfolio-governed-priority
+    epistemic_state: interpreted
+    scope: Current cross-lane priorities, blockers, and advisory posture.
+    provenance: [docs/governance.md, docs/membranes.md]
+    dependencies: [ss-humanoid-watch-threshold, lc-governed-learner-intake, gg-trust-claim-gate, mp-quality-gate, mv-seasonal-readiness]
+    approval_binding: Repository operator remains accountable for priorities and commitments.

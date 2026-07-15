@@ -42,7 +42,7 @@ def test_schema_migrates_existing_database_to_cadence_measurements():
 
     with connect(path) as connection:
         migrate(connection, "2026-07-11T00:00:00Z")
-        assert schema_version(connection) == SCHEMA_VERSION == 3
+        assert schema_version(connection) == SCHEMA_VERSION == 4
         assert connection.execute(
             "SELECT name FROM sqlite_master WHERE type='table' AND name='cadence_measurement'"
         ).fetchone()

@@ -12,6 +12,25 @@ exceptions: []
 # This curated manifest governs consequential artifact roles. Paths may describe
 # external operator-controlled storage; validation inspects declarations, not data.
 artifacts:
+  epistemic-state-contract:
+    path: epistemic-state.yaml
+    operation: Bind consequential repository surfaces to claim identity, state, provenance, dependencies, review triggers, and approval posture.
+    domain: epistemic-governance
+    authority: canonical
+    data_class: public
+    provenance:
+      sources: [operating-ledger]
+      origin: Human-reviewed repository governance under docs/epistemic-constitution.md.
+    mutability:
+      method: Reviewed manifest changes followed by epistemic validation and control review.
+      writers: [repository-operator]
+      direct_edit: reviewed-only
+    recovery:
+      method: Restore the last reviewed Git version and rerun the epistemic validator.
+      verification: [epistemic-schema-check, critical-gap-check, human-cohort-check]
+    git:
+      tracked: true
+
   operating-ledger:
     path: "${ANYANG_DATA_DIR}/anyang-operating-ledger.db"
     operation: Record accepted tenants, claims, work, evidence, approvals, outcomes, and cadence events.

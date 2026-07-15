@@ -25,6 +25,7 @@ from .transcript_import import (
 )
 from .analytical_interfaces import validate_manifest
 from .artifact_state import validate_artifact_manifest
+from .epistemic_state import epistemic_report, validate_epistemic_manifest
 from .bounded_agency import AgencyContractError, validate_agency_manifest
 from .phase_preflight import (
     TRANSCRIPT_PHASE,
@@ -128,6 +129,21 @@ def build_parser() -> argparse.ArgumentParser:
     agency = subparsers.add_parser("validate-agency", help="Validate repository-anchored bounded-agency contracts")
     agency.add_argument("--manifest")
     agency.set_defaults(func=cmd_validate_agency)
+
+    epistemics = subparsers.add_parser(
+        "validate-epistemics", help="Validate curated claim state, provenance, dependency, and transition contracts"
+    )
+    epistemics.add_argument("--manifest")
+    epistemics.add_argument("--format", choices=("text", "json"), default="text")
+    epistemics.set_defaults(func=cmd_validate_epistemics)
+
+    entropy = subparsers.add_parser(
+        "epistemic-report", help="Report repository operational epistemic entropy"
+    )
+    entropy.add_argument("--manifest")
+    entropy.add_argument("--retrieval-success", type=float)
+    entropy.add_argument("--revision-impact-accuracy", type=float)
+    entropy.set_defaults(func=cmd_epistemic_report)
 
     preflight = subparsers.add_parser("preflight", help="Reconstruct live state for a bounded operating phase")
     preflight.add_argument("--phase", required=True)
@@ -282,6 +298,40 @@ def cmd_validate_agency(args: argparse.Namespace) -> int:
         return 1
     print("OK bounded agency contracts")
     return 0
+
+
+def cmd_validate_epistemics(args: argparse.Namespace) -> int:
+    diagnostics = validate_epistemic_manifest(args.manifest)
+    if args.format == "json":
+        print(
+            json.dumps(
+                [
+                    {"code": item.code, "path": str(item.path), "message": item.message, "critical": item.critical}
+                    for item in diagnostics
+                ],
+                indent=2,
+                sort_keys=True,
+            )
+        )
+    else:
+        for diagnostic in diagnostics:
+            severity = "CRITICAL" if diagnostic.critical else "ERROR"
+            print(f"{severity} {diagnostic.code} {diagnostic.path.as_posix()}: {diagnostic.message}")
+    if diagnostics:
+        return 1
+    if args.format == "text":
+        print("OK epistemic state contracts")
+    return 0
+
+
+def cmd_epistemic_report(args: argparse.Namespace) -> int:
+    report = epistemic_report(
+        args.manifest,
+        retrieval_success=args.retrieval_success,
+        revision_impact_accuracy=args.revision_impact_accuracy,
+    )
+    print(json.dumps(report, indent=2, sort_keys=True))
+    return 0 if report["acceptance"]["zero_critical_gaps"] else 1
 
 
 def cmd_preflight(args: argparse.Namespace) -> int:

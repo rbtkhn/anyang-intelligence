@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import hashlib
+import json
 import sqlite3
 from pathlib import Path
 
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 
 
 SCHEMA = """
@@ -57,6 +59,10 @@ CREATE TABLE IF NOT EXISTS source (
     rights_status TEXT NOT NULL,
     evidence_ref TEXT NOT NULL,
     fresh_until TEXT,
+    origin_group TEXT,
+    independence_status TEXT NOT NULL DEFAULT 'unknown' CHECK (
+        independence_status IN ('unknown', 'independent', 'dependent')
+    ),
     redacted_summary TEXT NOT NULL DEFAULT '',
     created_at TEXT NOT NULL
 );
@@ -72,6 +78,11 @@ CREATE TABLE IF NOT EXISTS claim (
     evidence_strength TEXT NOT NULL CHECK (evidence_strength IN ('strong', 'medium', 'thin', 'none')),
     scope TEXT NOT NULL,
     status TEXT NOT NULL CHECK (status IN ('active', 'provisional', 'hold', 'retired')),
+    epistemic_state TEXT NOT NULL DEFAULT 'unresolved' CHECK (epistemic_state IN (
+        'attributed', 'interpreted', 'contested', 'supported',
+        'disconfirmed', 'unresolved', 'adopted', 'retired'
+    )),
+    epistemic_version INTEGER NOT NULL DEFAULT 1 CHECK (epistemic_version > 0),
     expires_at TEXT,
     created_at TEXT NOT NULL
 );
@@ -112,6 +123,62 @@ CREATE TABLE IF NOT EXISTS work_claim (
     work_id TEXT NOT NULL REFERENCES work_item(id),
     claim_id TEXT NOT NULL REFERENCES claim(id),
     PRIMARY KEY (work_id, claim_id)
+);
+
+CREATE TABLE IF NOT EXISTS claim_transition (
+    id TEXT PRIMARY KEY,
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    claim_id TEXT NOT NULL REFERENCES claim(id),
+    version INTEGER NOT NULL CHECK (version > 0),
+    from_state TEXT,
+    to_state TEXT NOT NULL CHECK (to_state IN (
+        'attributed', 'interpreted', 'contested', 'supported',
+        'disconfirmed', 'unresolved', 'adopted', 'retired'
+    )),
+    cause_type TEXT NOT NULL,
+    cause_ref TEXT NOT NULL,
+    actor TEXT NOT NULL,
+    rationale TEXT NOT NULL,
+    prior_transition_hash TEXT NOT NULL DEFAULT '',
+    transition_hash TEXT NOT NULL UNIQUE,
+    created_at TEXT NOT NULL,
+    UNIQUE (claim_id, version)
+);
+
+CREATE TABLE IF NOT EXISTS claim_dependency (
+    id TEXT PRIMARY KEY,
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    upstream_claim_id TEXT NOT NULL REFERENCES claim(id),
+    downstream_type TEXT NOT NULL CHECK (
+        downstream_type IN ('claim', 'work', 'artifact', 'forecast', 'publication')
+    ),
+    downstream_ref TEXT NOT NULL,
+    dependency_role TEXT NOT NULL CHECK (
+        dependency_role IN ('support', 'assumption', 'context', 'alternative', 'authorization')
+    ),
+    active INTEGER NOT NULL DEFAULT 1 CHECK (active IN (0, 1)),
+    created_at TEXT NOT NULL,
+    retired_at TEXT
+);
+
+CREATE TABLE IF NOT EXISTS epistemic_impact (
+    id TEXT PRIMARY KEY,
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    transition_id TEXT NOT NULL REFERENCES claim_transition(id),
+    upstream_claim_id TEXT NOT NULL REFERENCES claim(id),
+    dependency_id TEXT NOT NULL REFERENCES claim_dependency(id),
+    downstream_type TEXT NOT NULL,
+    downstream_ref TEXT NOT NULL,
+    impact_type TEXT NOT NULL CHECK (
+        impact_type IN ('review-required', 'conditional', 'unresolved', 'stale', 'no-action')
+    ),
+    status TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open', 'acknowledged', 'resolved')),
+    reason TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    acknowledged_at TEXT,
+    resolved_at TEXT,
+    resolved_by TEXT,
+    resolution TEXT NOT NULL DEFAULT ''
 );
 
 CREATE TABLE IF NOT EXISTS evidence (
@@ -219,6 +286,21 @@ CREATE INDEX IF NOT EXISTS idx_event_tenant_created ON event(tenant_id, created_
 CREATE INDEX IF NOT EXISTS idx_approval_work_scope ON approval(work_id, scope);
 CREATE INDEX IF NOT EXISTS idx_cadence_repo_recorded ON cadence_handoff(repo_id, recorded_at DESC);
 CREATE INDEX IF NOT EXISTS idx_cadence_measurement_repo_occurred ON cadence_measurement(repo_id, occurred_at DESC);
+CREATE INDEX IF NOT EXISTS idx_claim_transition_claim_version ON claim_transition(claim_id, version);
+CREATE INDEX IF NOT EXISTS idx_claim_dependency_upstream ON claim_dependency(upstream_claim_id, active);
+CREATE INDEX IF NOT EXISTS idx_epistemic_impact_status ON epistemic_impact(tenant_id, status, impact_type);
+
+CREATE TRIGGER IF NOT EXISTS claim_transition_append_only_update
+BEFORE UPDATE ON claim_transition
+BEGIN
+    SELECT RAISE(ABORT, 'claim_transition is append-only');
+END;
+
+CREATE TRIGGER IF NOT EXISTS claim_transition_append_only_delete
+BEFORE DELETE ON claim_transition
+BEGIN
+    SELECT RAISE(ABORT, 'claim_transition is append-only');
+END;
 """
 
 
@@ -234,11 +316,81 @@ def connect(path: str | Path, *, create_parent: bool = False) -> sqlite3.Connect
 
 def migrate(connection: sqlite3.Connection, applied_at: str) -> None:
     connection.executescript(SCHEMA)
+    _ensure_column(connection, "source", "origin_group", "TEXT")
+    _ensure_column(
+        connection,
+        "source",
+        "independence_status",
+        "TEXT NOT NULL DEFAULT 'unknown' CHECK (independence_status IN ('unknown', 'independent', 'dependent'))",
+    )
+    _ensure_column(
+        connection,
+        "claim",
+        "epistemic_state",
+        "TEXT NOT NULL DEFAULT 'unresolved' CHECK (epistemic_state IN ('attributed', 'interpreted', 'contested', 'supported', 'disconfirmed', 'unresolved', 'adopted', 'retired'))",
+    )
+    _ensure_column(connection, "claim", "epistemic_version", "INTEGER NOT NULL DEFAULT 1 CHECK (epistemic_version > 0)")
+    _backfill_legacy_claim_transitions(connection, applied_at)
     connection.execute(
         "INSERT OR IGNORE INTO schema_migration(version, applied_at) VALUES (?, ?)",
         (SCHEMA_VERSION, applied_at),
     )
     connection.commit()
+
+
+def _ensure_column(connection: sqlite3.Connection, table: str, column: str, declaration: str) -> None:
+    columns = {row[1] for row in connection.execute(f"PRAGMA table_info({table})")}
+    if column not in columns:
+        connection.execute(f"ALTER TABLE {table} ADD COLUMN {column} {declaration}")
+
+
+def _backfill_legacy_claim_transitions(connection: sqlite3.Connection, applied_at: str) -> None:
+    rows = connection.execute(
+        """SELECT c.* FROM claim c
+        WHERE NOT EXISTS (SELECT 1 FROM claim_transition t WHERE t.claim_id = c.id)
+        ORDER BY c.id"""
+    ).fetchall()
+    for claim in rows:
+        transition_id = f"legacy-migration-{claim['id']}"
+        payload = {
+            "id": transition_id,
+            "claim_id": claim["id"],
+            "version": 1,
+            "from_state": None,
+            "to_state": "unresolved",
+            "cause_type": "legacy-migration",
+            "cause_ref": "schema-v4",
+            "actor": "system",
+            "rationale": "Pre-v4 epistemic history was not reconstructed.",
+            "prior_transition_hash": "",
+            "created_at": applied_at,
+        }
+        digest = hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+        connection.execute(
+            """INSERT INTO claim_transition(
+                id, tenant_id, claim_id, version, from_state, to_state, cause_type,
+                cause_ref, actor, rationale, prior_transition_hash, transition_hash, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            (
+                transition_id,
+                claim["tenant_id"],
+                claim["id"],
+                1,
+                None,
+                "unresolved",
+                "legacy-migration",
+                "schema-v4",
+                "system",
+                "Pre-v4 epistemic history was not reconstructed.",
+                "",
+                digest,
+                applied_at,
+            ),
+        )
+        connection.execute(
+            "UPDATE claim SET epistemic_state = 'unresolved', epistemic_version = 1 WHERE id = ?",
+            (claim["id"],),
+        )
 
 
 def schema_version(connection: sqlite3.Connection) -> int:

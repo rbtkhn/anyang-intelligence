@@ -23,4 +23,5 @@ jobs:
       - run: anyang-project validate-interfaces
       - run: anyang-project validate-artifacts
       - run: anyang-project validate-agency
+      - run: anyang-project validate-epistemics
       - run: anyang-ops privacy-scan --repo .
