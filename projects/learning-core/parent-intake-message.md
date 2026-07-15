@@ -45,6 +45,8 @@ If authority, privacy, save/share rules, or caution boundaries remain unclear, p
 
 Target: 15–20 minutes. Stop at 25 minutes and defer lower-value detail.
 
+For the Success–Friction–Bridge pilot, the operator presents the canonical [clickable create cards](../../skills/student-operating-system/learner-intake/references/clickable-create-cards.md) in batches of no more than three. Those cards replace—not supplement—the open-ended prompts below. Every Phase 2 and Phase 3 response is clickable; conditional cards appear only when the preceding answer makes them useful.
+
 ### Direction
 
 1. What would you like to understand better about your child by the end of this month?
@@ -109,6 +111,8 @@ The parent may narrow this further.
 ## Optional Learner Voice
 
 Target: 5–7 minutes, only after the parent approves the questions.
+
+For the pilot, use the three learner cards in the [clickable create cards](../../skills/student-operating-system/learner-intake/references/clickable-create-cards.md) instead of the questions below. Do not ask both sets.
 
 Ask no more than:
 

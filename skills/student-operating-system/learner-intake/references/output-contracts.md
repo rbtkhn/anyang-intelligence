@@ -9,6 +9,9 @@ Authority And Privacy Receipt
 - Opaque learner reference:
 - Parent-approved display label:
 - Named guardian approver:
+- Requested mode: [create / change]
+- Effective-profile check: [none confirmed / existing profile found / possible duplicate / not checked]
+- Effective-profile check confirmed by operator: [yes / no]
 - Intake or review authorized: [yes / no]
 - May discuss:
 - May handle temporarily:
@@ -22,6 +25,8 @@ Authority And Privacy Receipt
 ```
 
 This receipt is canonical for authority and save/share boundaries. Profiles reference it; they do not copy its rules.
+
+For `create`, `none confirmed` with operator confirmation is required before learner-specific intake. Route `existing profile found` to `change`; route `possible duplicate` or `not checked` to `Hold`.
 
 ## Intake And Readiness Packet
 

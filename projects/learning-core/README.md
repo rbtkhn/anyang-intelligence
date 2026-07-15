@@ -92,6 +92,8 @@ See [onboarding-readiness-checklist.md](onboarding-readiness-checklist.md) for t
 
 See [parent-intake-summary-template.md](parent-intake-summary-template.md) for the blank parent-verification packet. Completed real-family copies remain tenant-private and outside Git.
 
+See [success-friction-bridge-intake-report.md](success-friction-bridge-intake-report.md) for the proposed contrastive intake design that pairs one success episode, one friction episode, learner-selected bridge, and one small first-cycle experiment without turning the episodes into fixed learner labels.
+
 See [mock-intake-simulations.md](mock-intake-simulations.md) for three fictional intake tests that exercise the Ready, Provisional, and Hold gates.
 
 See [hold-response-template.md](hold-response-template.md) for the parent-facing pause message used when intake is classified as `Hold`.

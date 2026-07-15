@@ -39,6 +39,8 @@ If authority, privacy, save/share, or caution boundaries are unresolved, assign 
 
 Target 15–20 minutes; stop at 25.
 
+When the Success–Friction–Bridge pilot is selected, use the canonical [clickable create cards](../../skills/student-operating-system/learner-intake/references/clickable-create-cards.md) instead of asking the open-ended prompts below. Ask all short readiness cards and six core episode cards, then only conditional cards whose trigger applies. Do not run both versions.
+
 Collect only inputs that could change a planning decision:
 
 - what the parent wants to understand this month;
@@ -62,7 +64,7 @@ Record observations separately from parent interpretations. Do not convert one e
 
 Target 5–7 minutes after explicit parent approval.
 
-Ask at most the three questions in [parent-intake-message.md](parent-intake-message.md). The learner may skip any question. Stop when comfort, attention, or interest falls. Child participation is optional and cannot block an otherwise sufficient parent intake.
+For the pilot, ask at most the three learner cards in the [clickable create cards](../../skills/student-operating-system/learner-intake/references/clickable-create-cards.md). Otherwise use the three questions in [parent-intake-message.md](parent-intake-message.md). The learner may skip any question. Stop when comfort, attention, or interest falls. Child participation is optional and cannot block an otherwise sufficient parent intake.
 
 ### 4. Offline Classification
 

@@ -17,6 +17,8 @@ Avoid diagnosis, grade placement, fixed learning-style claims, exhaustive invent
 
 ## Create Sequence
 
+For the Success–Friction–Bridge pilot, use [clickable-create-cards.md](clickable-create-cards.md) for all Phase 2 and Phase 3 questions. Do not ask the open-ended equivalents in addition. Ask six core evidence cards, only the triggered conditional cards, and the short readiness cards. A required `Not clear yet`, `Uncertain`, or undecided boundary remains visible and may produce `Hold`; never choose an answer for the family.
+
 ### Authority And Privacy
 
 Confirm the parent-approved label, opaque operator reference, guardian authority, intake permission, discussion boundary, preservation and deletion rules, sharing boundary, exclusions, and minimum relevant caution implication.

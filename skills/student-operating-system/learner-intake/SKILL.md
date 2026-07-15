@@ -19,6 +19,8 @@ Read before either mode:
 
 Read `references/question-strategy.md` before asking family questions. Use `skills/student-operating-system/learner-profile/SKILL.md` as the internal evidence-analysis procedure; do not expose it as a competing family-facing entry point.
 
+When the operator selects the Success–Friction–Bridge pilot or requests clickable Phase 2–3 questions, also read `references/clickable-create-cards.md` and `projects/learning-core/success-friction-bridge-intake-report.md`. Use the reference as the canonical card set and the report as rationale. The cards remain a provisional module inside `create`, never a replacement for approval gates.
+
 ## Select The Mode
 
 - `$learner-intake create`: establish a first profile from a parent-authorized intake.
