@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import py_compile
+import os
 import subprocess
 import sys
 import time
@@ -10,6 +11,7 @@ from typing import Callable
 
 from .privacy_scan import scan_repo
 from .repo_snapshot import RepoSnapshot
+from .runtime_bootstrap import RuntimeBootstrapError, resolve_validation_python
 
 
 @dataclass(frozen=True)
@@ -31,6 +33,7 @@ class CheckResult:
 
 
 CommandRunner = Callable[[Path, list[str]], tuple[int, str, str]]
+RuntimeResolver = Callable[[Path], Path]
 
 
 def run_verification(
@@ -38,6 +41,7 @@ def run_verification(
     mode: str,
     *,
     command_runner: CommandRunner | None = None,
+    runtime_resolver: RuntimeResolver | None = None,
 ) -> list[CheckResult]:
     if mode not in {"fast", "full", "none"}:
         raise ValueError(f"Unknown verification mode: {mode}")
@@ -50,13 +54,28 @@ def run_verification(
         _compile_check(snapshot),
     ]
     if mode == "full":
+        resolver = runtime_resolver or _resolve_runtime_python
+        started = time.perf_counter()
+        try:
+            validation_python = resolver(snapshot.root)
+        except (OSError, RuntimeError, ValueError) as exc:
+            results.append(
+                CheckResult(
+                    "validation-runtime",
+                    "unavailable",
+                    None,
+                    _elapsed(started),
+                    f"Validation runtime unavailable: {type(exc).__name__}: {exc}",
+                )
+            )
+            return results
         results.extend(
             [
                 _command_check(
                     "pytest",
                     snapshot.root,
                     [
-                        sys.executable,
+                        str(validation_python),
                         "-m",
                         "pytest",
                         "-q",
@@ -68,18 +87,25 @@ def run_verification(
                 _command_check(
                     "install-validation",
                     snapshot.root,
-                    [sys.executable, "-m", "anyang_loop.project_cli", "validate", "projects"],
+                    [str(validation_python), "-m", "anyang_loop.project_cli", "validate", "projects"],
                     runner,
                 ),
                 _command_check(
                     "loop-validation",
                     snapshot.root,
-                    [sys.executable, "-m", "anyang_loop.cli", "validate", "projects"],
+                    [str(validation_python), "-m", "anyang_loop.cli", "validate", "projects"],
                     runner,
                 ),
             ]
         )
     return results
+
+
+def _resolve_runtime_python(root: Path) -> Path:
+    return resolve_validation_python(
+        root,
+        reporter=lambda message: print(message, file=sys.stderr, flush=True),
+    )
 
 
 def validation_status(results: list[CheckResult]) -> str:
@@ -143,7 +169,18 @@ def _compile_check(snapshot: RepoSnapshot) -> CheckResult:
 
 
 def _run_command(root: Path, command: list[str]) -> tuple[int, str, str]:
-    result = subprocess.run(command, cwd=root, check=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    env = os.environ.copy()
+    cli_path = str(root / "cli")
+    env["PYTHONPATH"] = cli_path + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+    result = subprocess.run(
+        command,
+        cwd=root,
+        env=env,
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
     return result.returncode, result.stdout, result.stderr
 
 

@@ -28,7 +28,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     output = render_dream_json(data) if args.format == "json" else render_dream_text(data) + "\n"
     print(output, end="")
-    return 0
+    return 0 if data["validation_status"] in {"pass", "skipped"} else 1
 
 
 if __name__ == "__main__":

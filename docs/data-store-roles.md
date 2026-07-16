@@ -144,7 +144,7 @@ Git should not track by default:
 - divergent backups whose authority is unresolved;
 - evidence bodies, bank references, credentials, contact details, or restricted locations.
 
-Run `anyang-ops privacy-scan --repo .` before commit. Passing the scanner is a minimum control, not publication approval.
+Run `.\tools\run.ps1 ops privacy-scan --repo .` before commit. Passing the scanner is a minimum control, not publication approval.
 
 ## Recovery and Deletion Differ by Format
 
@@ -182,6 +182,6 @@ Before introducing or relying on a data, configuration, event, analytical, evide
 - environment files, logs, sidecars, and backups cannot enter Git accidentally;
 - human approval remains explicit for publication and consequential use.
 
-For the repository's curated high-consequence boundaries, encode these answers in [`artifact-state.yaml`](../artifact-state.yaml) and run `anyang-project validate-artifacts`. The manifest governs declarations, including paths to private external storage; it does not authorize the validator to open private artifacts or make subjective authority decisions.
+For the repository's curated high-consequence boundaries, encode these answers in [`artifact-state.yaml`](../artifact-state.yaml) and run `.\tools\run.ps1 project validate-artifacts`. The manifest governs declarations, including paths to private external storage; it does not authorize the validator to open private artifacts or make subjective authority decisions.
 
 Review the value and cost of these controls through [Governance Earns Its Place by Preventing More Risk than It Creates](governance-control-review.md). A declaration or validator remains infrastructure only while it prevents more risk than it introduces.

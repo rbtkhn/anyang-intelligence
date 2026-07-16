@@ -53,7 +53,7 @@ The strictest applicable class wins.
 - Tenant folders named `tenant-private`, `customer-private`, or `raw-customer-transcripts`.
 - Unredacted intake summaries or project-specific plan-input drafts.
 
-Run `anyang-ops privacy-scan --repo .` before commit and in CI. A finding blocks shipment until the content is removed, replaced with a synthetic fixture, or the scanner rule is narrowly corrected without weakening this policy.
+Run `.\tools\run.ps1 ops privacy-scan --repo .` before commit and the canonical validation driver in CI. A finding blocks shipment until the content is removed, replaced with a synthetic fixture, or the scanner rule is narrowly corrected without weakening this policy.
 
 ## Incident Response
 

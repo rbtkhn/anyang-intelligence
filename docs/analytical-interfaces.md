@@ -32,7 +32,7 @@ Whether a reader scanning only labels, headings, summaries, and tables can recon
 5. State the lead judgment and controlling object before filling supporting sections.
 6. Replace generic analytical headings with claims while retaining useful navigation headings.
 7. Name uncertainty causes and build causal forecast or deliberative-question fields when those surfaces apply.
-8. Run `anyang-project validate-interfaces`; then obtain accountable human review for analytical quality.
+8. Run `.\tools\run.ps1 project validate-interfaces`; then obtain accountable human review for analytical quality.
 
 ## Working Pattern
 

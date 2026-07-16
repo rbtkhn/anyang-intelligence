@@ -123,3 +123,12 @@ python3 tools/validate_repo.py
 ```
 
 The bootstrap accepts an explicit `-Python <path>` or `ANYANG_PYTHON`, falls back to Codex's bundled Windows Python when needed, derives dependencies from `pyproject.toml`, and caches them under the operating-system user cache outside the repository. The cache is keyed by repository, Python version, platform, and dependency declarations, so repeated validation reuses it while source code always loads directly from `cli/`. Use `--refresh` only to rebuild the current keyed environment.
+
+Run individual repository commands through the same environment:
+
+```powershell
+.\tools\run.ps1 project validate projects
+.\tools\run.ps1 dream --repo . --verify full
+```
+
+On macOS or Linux, use `python3 tools/run_repo.py <project|loop|ops|coffee|dream> ...`. Installed `anyang-*` entry points remain available after package installation, but repository workflows do not depend on them.

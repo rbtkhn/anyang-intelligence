@@ -10,24 +10,24 @@ It also provides Singularity Science archive intake commands for transcript mani
 
 `anyang-ops` is the local-first SQLite control plane for customer work. It stores typed sources, claims, work, evidence, approvals, outcomes, and append-only events, then generates sanitized weekly Markdown or JSON reviews.
 
-Customer commands require an explicit database path:
+Repository workflows use `tools/run.ps1` (or `python3 tools/run_repo.py` on macOS/Linux). Customer commands require an explicit database path:
 
 ```powershell
 $env:ANYANG_DATA_DIR = 'C:\path\outside\the\repository\grace-gems'
-anyang-ops init --tenant grace-gems --name "Grace Gems" --policy-profile governed-media-v1 --retainer-cents 100000 --contractor-budget-cents 50000 --tool-budget-cents 50000
+.\tools\run.ps1 ops init --tenant grace-gems --name "Grace Gems" --policy-profile governed-media-v1 --retainer-cents 100000 --contractor-budget-cents 50000 --tool-budget-cents 50000
 ```
 
-Use `--dry-run` on every mutation command to inspect the intended operation. Use `anyang-ops audit --tenant grace-gems` for ledger integrity and `anyang-ops privacy-scan --repo .` before committing. Private evidence bodies and raw customer transcripts remain outside the database; use approved external references and redacted summaries.
+Use `--dry-run` on every mutation command to inspect the intended operation. Use `.\tools\run.ps1 ops audit --tenant grace-gems` for ledger integrity and `.\tools\run.ps1 ops privacy-scan --repo .` before committing. Private evidence bodies and raw customer transcripts remain outside the database; use approved external references and redacted summaries.
 
 Schema v4 keeps epistemic state distinct from operational claim status. Human
 operators can record a cause-bearing state change, bind downstream uses, and
 clear the resulting review queue:
 
 ```bash
-anyang-ops dependency add --tenant grace-gems --upstream-claim-id CLAIM_ID --downstream-type publication --downstream-ref LISTING_VERSION --role support --actor REVIEWER
-anyang-ops claim transition CLAIM_ID contested --cause-type contradictory-source --cause-ref SOURCE_REF --actor REVIEWER --rationale "Material conflict requires review."
-anyang-ops impact list --tenant grace-gems --status open
-anyang-ops impact resolve IMPACT_ID --actor REVIEWER --resolution "Publication was reviewed against the changed warrant."
+.\tools\run.ps1 ops dependency add --tenant grace-gems --upstream-claim-id CLAIM_ID --downstream-type publication --downstream-ref LISTING_VERSION --role support --actor REVIEWER
+.\tools\run.ps1 ops claim transition CLAIM_ID contested --cause-type contradictory-source --cause-ref SOURCE_REF --actor REVIEWER --rationale "Material conflict requires review."
+.\tools\run.ps1 ops impact list --tenant grace-gems --status open
+.\tools\run.ps1 ops impact resolve IMPACT_ID --actor REVIEWER --resolution "Publication was reviewed against the changed warrant."
 ```
 
 Claim transitions are hash-linked and append-only. Propagation creates review
@@ -37,9 +37,9 @@ Review the live queue, reconstruct one claim, or prepare a read-only impact
 packet without changing ledger state:
 
 ```bash
-anyang-ops epistemic review --tenant grace-gems --format markdown
-anyang-ops epistemic explain --tenant grace-gems --claim-id CLAIM_ID --format json
-anyang-ops epistemic packet --tenant grace-gems --impact-id IMPACT_ID --format markdown
+.\tools\run.ps1 ops epistemic review --tenant grace-gems --format markdown
+.\tools\run.ps1 ops epistemic explain --tenant grace-gems --claim-id CLAIM_ID --format json
+.\tools\run.ps1 ops epistemic packet --tenant grace-gems --impact-id IMPACT_ID --format markdown
 ```
 
 The review queue orders open critical forecast/publication impacts as P0, other
@@ -52,7 +52,7 @@ actionable totals. Weekly reviews include the same prioritized model.
 Record each real cadence event immediately after it completes or stops. Do not backfill simulated successes:
 
 ```bash
-anyang-ops --db C:\private\anyang-ops.db cadence record \
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db cadence record \
   --repo-id anyang-intelligence \
   --event-type coffee \
   --scheduled \
@@ -69,7 +69,7 @@ anyang-ops --db C:\private\anyang-ops.db cadence record \
 Review the latest ten events:
 
 ```bash
-anyang-ops --db C:\private\anyang-ops.db cadence report --repo-id anyang-intelligence --limit 10
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db cadence report --repo-id anyang-intelligence --limit 10
 ```
 
 The completion rate uses completed events as its denominator. An event enters the numerator only when it required no manual reconstruction and passed evidence, privacy, and authority checks. Partial and abandoned events remain visible but do not inflate the rate. `sample_ready` becomes true after the requested number of events has been recorded.
@@ -103,7 +103,7 @@ From the repo root:
 python -m pip install -e .[dev]
 ```
 
-Then run:
+Installed entry points remain available to package users:
 
 ```bash
 anyang-loop --help
@@ -122,26 +122,36 @@ For repository validation, no preinstalled development extras are required. From
 
 The launcher locates Python, bootstraps dependencies declared in `pyproject.toml` into an external user cache, and runs pytest plus every CI validator and the privacy scan. On macOS or Linux use `python3 tools/validate_repo.py`.
 
+Run an individual repo command through the same environment without installing entry points:
+
+```powershell
+.\tools\run.ps1 project validate projects
+.\tools\run.ps1 loop validate projects
+.\tools\run.ps1 ops privacy-scan --repo .
+```
+
+On macOS or Linux use `python3 tools/run_repo.py <surface> ...`. Supported surfaces are `project`, `loop`, `ops`, `coffee`, and `dream`.
+
 ## Coffee Re-Entry
 
 `anyang-coffee` operationalizes the native [coffee skill](../skills/coffee/SKILL.md). It is read-only: it does not edit, stage, commit, push, publish, or approve anything.
 
-Run it from the repo root:
+Run it from the repo root through the canonical runtime:
 
 ```bash
-anyang-coffee
+.\tools\run.ps1 coffee
 ```
 
 Or point it at a repo path:
 
 ```bash
-anyang-coffee --repo C:\dev\anyang-intelligence\operating-substrate
+.\tools\run.ps1 coffee --repo .
 ```
 
 To consume the latest explicitly recorded dream handoff or emit machine-readable output:
 
 ```bash
-anyang-coffee --repo . --db C:\private\anyang-ops.db --format json
+.\tools\run.ps1 coffee --repo . --db C:\private\anyang-ops.db --format json
 ```
 
 Coffee uses a complete Git snapshot, preserves portfolio subsection context, and follows a fixed priority order: failed verification, recorded handoff, dirty-worktree risk, paid obligation or external blocker, then stale portfolio state. It never writes. Without a configured database it reports a Git-only fallback.
@@ -150,28 +160,28 @@ Coffee uses a complete Git snapshot, preserves portfolio subsection context, and
 
 `anyang-dream` operationalizes the native [dream skill](../skills/dream/SKILL.md). It is read-only by default: it does not edit, stage, commit, push, publish, or approve anything.
 
-Run it from the repo root:
+Run it from the repo root through the canonical runtime:
 
 ```bash
-anyang-dream
+.\tools\run.ps1 dream
 ```
 
 Or point it at a repo path:
 
 ```bash
-anyang-dream --repo C:\dev\anyang-intelligence\operating-substrate
+.\tools\run.ps1 dream --repo .
 ```
 
 Fast verification is the default. Full verification adds pytest plus project-install and loop validation:
 
 ```bash
-anyang-dream --repo . --verify full
+.\tools\run.ps1 dream --repo . --verify full
 ```
 
 Dream remains read-only unless an external handoff is explicitly recorded:
 
 ```bash
-anyang-dream --repo . --verify fast --record --db C:\private\anyang-ops.db --recorded-by operator
+.\tools\run.ps1 dream --repo . --verify fast --record --db C:\private\anyang-ops.db --recorded-by operator
 ```
 
 The repo-scoped handoff stores sanitized validation status, touched top-level surfaces, and one inheritance line. It is separate from customer tenants and creates no publication, delivery, spend, customer, or merge authority.
@@ -244,13 +254,13 @@ Human leadership approves commitments and external claims.
 
 ## Commands
 
-```bash
-anyang-loop validate projects/grace-gems/loop-examples
-anyang-loop new weekly-review --format markdown --type operating
-anyang-loop list customers --include-builtins
-anyang-loop simulate canonical-executive-loop
-anyang-loop export recursive-improvement-loop --format obsidian
-anyang-loop export projects/grace-gems/loop-examples/listing-gate.yaml --format json
+```powershell
+.\tools\run.ps1 loop validate projects/grace-gems/loop-examples
+.\tools\run.ps1 loop new weekly-review --format markdown --type operating
+.\tools\run.ps1 loop list customers --include-builtins
+.\tools\run.ps1 loop simulate canonical-executive-loop
+.\tools\run.ps1 loop export recursive-improvement-loop --format obsidian
+.\tools\run.ps1 loop export projects/grace-gems/loop-examples/listing-gate.yaml --format json
 ```
 
 `validate` exits nonzero when required grammar fields are missing. Warnings are advisory and should be reviewed before treating a loop as operational.
@@ -304,41 +314,41 @@ governance_boundary: Humans approve commitments, external communications, spendi
 
 Generate a Markdown project folder:
 
-```bash
-anyang-project new templates/project-install/input-example.yaml --output projects/example-customer
+```powershell
+.\tools\run.ps1 project new templates/project-install/input-example.yaml --output projects/example-customer
 ```
 
 Validate a generated folder or the whole project portfolio:
 
-```bash
-anyang-project validate projects/example-customer
-anyang-project validate projects
+```powershell
+.\tools\run.ps1 project validate projects/example-customer
+.\tools\run.ps1 project validate projects
 ```
 
 Validate the curated reader-facing analytical interfaces:
 
-```bash
-anyang-project validate-interfaces
-anyang-project validate-interfaces --manifest analytical-interfaces.yaml
-anyang-project validate-interfaces --path templates/operating-review.md
+```powershell
+.\tools\run.ps1 project validate-interfaces
+.\tools\run.ps1 project validate-interfaces --manifest analytical-interfaces.yaml
+.\tools\run.ps1 project validate-interfaces --path templates/operating-review.md
 ```
 
 The manifest separates governed publication and decision surfaces from provenance-bearing archives and stable identifiers. Objective diagnostics are release gates; accountable human review still judges whether a title or distinction faithfully carries the evidence.
 
 Validate the curated artifact-state contract:
 
-```bash
-anyang-project validate-artifacts
-anyang-project validate-artifacts --manifest artifact-state.yaml
+```powershell
+.\tools\run.ps1 project validate-artifacts
+.\tools\run.ps1 project validate-artifacts --manifest artifact-state.yaml
 ```
 
 The artifact manifest declares each consequential representation's operation, authority, provenance, permitted write path, and recovery procedure. It may name operator-controlled external paths, but validation reads only the declarations and never private artifact contents. Derived artifacts must name their sources, each domain may have only one canonical authority, and non-public authoritative state may not be tracked in Git.
 
 Validate the phase-authority contract:
 
-```bash
-anyang-project validate-agency
-anyang-project validate-agency --manifest bounded-agency.yaml
+```powershell
+.\tools\run.ps1 project validate-agency
+.\tools\run.ps1 project validate-agency --manifest bounded-agency.yaml
 ```
 
 `artifact-state.yaml` governs artifact authority, provenance, mutability, and recovery. `bounded-agency.yaml` separately governs what one temporary operating phase may read and write. See [Repository-Anchored Bounded Agency](../docs/repository-anchored-bounded-agency.md) for the composition rules and enforcement boundary.
@@ -347,16 +357,16 @@ Manifest governance metadata names an owner, review cadence, next review, expans
 
 Render without placing under `projects/`:
 
-```bash
-anyang-project render templates/project-install/input-example.yaml --format markdown --output tmp/example-markdown
-anyang-project render templates/project-install/input-example.yaml --format obsidian --output tmp/example-vault
-anyang-project render templates/project-install/input-example.yaml --format html --output tmp/example-dashboard
+```powershell
+.\tools\run.ps1 project render templates/project-install/input-example.yaml --format markdown --output tmp/example-markdown
+.\tools\run.ps1 project render templates/project-install/input-example.yaml --format obsidian --output tmp/example-vault
+.\tools\run.ps1 project render templates/project-install/input-example.yaml --format html --output tmp/example-dashboard
 ```
 
 Extract membrane-aware pattern candidates:
 
-```bash
-anyang-project extract-patterns projects --output projects/pattern-candidates.md
+```powershell
+.\tools\run.ps1 project extract-patterns projects --output projects/pattern-candidates.md
 ```
 
 Pattern extraction is review-only. It never updates templates or project folders automatically.
@@ -374,30 +384,30 @@ The manifest must live under `projects/singularity-science/archive/`.
 
 Dry run an import:
 
-```bash
-anyang-project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json --dry-run
+```powershell
+.\tools\run.ps1 project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json --dry-run
 ```
 
 Inspect the live phase state without writing:
 
-```bash
-anyang-project preflight --phase singularity-transcript-intake --manifest projects/singularity-science/archive/transcript-intake-manifest.json
-anyang-project preflight --phase singularity-transcript-intake --manifest projects/singularity-science/archive/transcript-intake-manifest.json --format json
+```powershell
+.\tools\run.ps1 project preflight --phase singularity-transcript-intake --manifest projects/singularity-science/archive/transcript-intake-manifest.json
+.\tools\run.ps1 project preflight --phase singularity-transcript-intake --manifest projects/singularity-science/archive/transcript-intake-manifest.json --format json
 ```
 
 Preflight exit `0` means the phase may begin, including when non-blocking warnings or row-level rights holds are visible. Exit `1` means the contract or invocation is blocked. Exit `2` means the request is valid but requires the operator to widen authority. Preflight is read-only and never grants authority; the mutation command reconstructs state again and postflight checks the resulting repository delta.
 
 Run the import:
 
-```bash
-anyang-project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json
-anyang-project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json --format json
+```powershell
+.\tools\run.ps1 project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json
+.\tools\run.ps1 project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json --format json
 ```
 
 Report completeness:
 
-```bash
-anyang-project report-transcript-import --manifest projects/singularity-science/archive/transcript-intake-manifest.json
+```powershell
+.\tools\run.ps1 project report-transcript-import --manifest projects/singularity-science/archive/transcript-intake-manifest.json
 ```
 
 Manifest rows require:
@@ -438,20 +448,20 @@ The manifest must live under `projects/learning-core/catalog/`.
 
 Dry run an import:
 
-```bash
-anyang-project import-catalog --manifest projects/learning-core/catalog/khan-catalog-manifest.sample.yaml --dry-run
+```powershell
+.\tools\run.ps1 project import-catalog --manifest projects/learning-core/catalog/khan-catalog-manifest.sample.yaml --dry-run
 ```
 
 Run the import:
 
-```bash
-anyang-project import-catalog --manifest projects/learning-core/catalog/khan-catalog-manifest.sample.yaml
+```powershell
+.\tools\run.ps1 project import-catalog --manifest projects/learning-core/catalog/khan-catalog-manifest.sample.yaml
 ```
 
 Report completeness:
 
-```bash
-anyang-project report-catalog-import --manifest projects/learning-core/catalog/khan-catalog-manifest.sample.yaml
+```powershell
+.\tools\run.ps1 project report-catalog-import --manifest projects/learning-core/catalog/khan-catalog-manifest.sample.yaml
 ```
 
 Catalog manifest rows require:
@@ -479,10 +489,10 @@ At least one provenance field is required: `source_url` or `source_note`.
 Validate the curated claim-to-surface nervous system and report its operational
 entropy separately from the still-required human outcome measurement:
 
-```bash
-anyang-project validate-epistemics
-anyang-project epistemic-report
-anyang-project epistemic-report --retrieval-success 0.83 --revision-impact-accuracy 0.75
+```powershell
+.\tools\run.ps1 project validate-epistemics
+.\tools\run.ps1 project epistemic-report
+.\tools\run.ps1 project epistemic-report --retrieval-success 0.83 --revision-impact-accuracy 0.75
 ```
 
 CI runs `epistemic-report` as a visible readiness check. Missing human
@@ -491,8 +501,8 @@ objective critical gaps still return a failing status.
 
 Score the fixed twelve-surface human benchmark from a sanitized response file:
 
-```bash
-anyang-project epistemic-benchmark score --responses benchmark-responses.yaml --format markdown
+```powershell
+.\tools\run.ps1 project epistemic-benchmark score --responses benchmark-responses.yaml --format markdown
 ```
 
 The version-1 response file requires `reviewed_at`, a pseudonymous
@@ -507,7 +517,4 @@ The governing states, transition rules, and non-upgrade law are defined in
 [`docs/epistemic-constitution.md`](../docs/epistemic-constitution.md). The
 curated cohort and baseline are declared in [`epistemic-state.yaml`](../epistemic-state.yaml).
 
-```bash
-python -m pip install -e .[dev]
-python -m pytest
-```
+For repository testing and validation, run `.\tools\validate.ps1` on Windows or `python3 tools/validate_repo.py` on macOS or Linux.

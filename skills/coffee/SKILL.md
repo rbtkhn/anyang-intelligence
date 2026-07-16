@@ -20,8 +20,10 @@ When working inside `anyang-intelligence/operating-substrate`, this skill is aut
 When tools are available, prefer the native command:
 
 ```text
-anyang-coffee --repo .
+.\tools\run.ps1 coffee --repo .
 ```
+
+On macOS or Linux, use `python3 tools/run_repo.py coffee --repo .`.
 
 When an external cadence database is configured, native coffee reads the latest explicitly recorded dream handoff for this repository. Without one, it falls back honestly to Git and repository docs.
 
@@ -95,15 +97,15 @@ Do not require unavailable strategy-codex-only files such as `scripts/operator_c
 
 Use these only when they fit the menu option or the operator asks to verify:
 
-- `anyang-coffee --repo .`
-- `anyang-coffee --repo . --db <external-db> --format json`
-- `python -m anyang_loop.cli validate customers`
-- `python -m anyang_loop.project_cli validate customers`
-- `python -m pytest`
+- `.\tools\run.ps1 coffee --repo .`
+- `.\tools\run.ps1 coffee --repo . --db <external-db> --format json`
+- `.\tools\run.ps1 loop validate projects`
+- `.\tools\run.ps1 project validate projects`
+- `.\tools\validate.ps1`
 - `git status --short --branch`
 - `git diff --stat`
 
-If Python is unavailable, say so and fall back to manual repo inspection. Do not treat unavailable local tooling as a failed project state.
+The repo runners locate Python and bootstrap declared dependencies outside the repository. If Python 3.10+ itself is unavailable, say so and fall back to manual repo inspection. Do not treat unavailable local tooling as a failed project state.
 
 ## Recursive Improvement Loop
 

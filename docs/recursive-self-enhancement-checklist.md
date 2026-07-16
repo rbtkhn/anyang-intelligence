@@ -79,9 +79,9 @@ When the cycle began with an audit, also confirm:
 
 Use the relevant check:
 
-- loop change: `anyang-loop validate <path>`
-- customer-folder change: `anyang-project validate customers`
-- Python/tooling change: `python -m pytest`
+- loop change: `.\tools\run.ps1 loop validate <path>`
+- project-folder change: `.\tools\run.ps1 project validate projects`
+- Python/tooling change: `.\tools\validate.ps1`
 - documentation change: read the diff and scan for boundary leaks
 
 If validation is not available, state what was manually checked.

@@ -20,7 +20,11 @@ def build_dream_data(
     snapshot = collect_repo_snapshot(repo_root, recent_limit=8)
     checks = run_verification(snapshot, verify)
     overall = validation_status(checks)
-    fresh_codes = [f"validation:{check.name}" for check in checks if check.status == "fail"]
+    fresh_codes = [
+        f"validation:{check.name}"
+        for check in checks
+        if check.status in {"fail", "unavailable"}
+    ]
     legacy_codes = [
         "legacy:install-validation-warning"
         for check in checks
@@ -105,10 +109,13 @@ def render_dream_json(data: dict[str, Any]) -> str:
 
 def _tomorrow_inherits(snapshot: RepoSnapshot, checks: list[CheckResult]) -> str:
     failed = [check for check in checks if check.status == "fail"]
+    unavailable = [check for check in checks if check.status == "unavailable"]
     if any(check.name == "privacy-scan" for check in failed):
         return "Resolve the recorded privacy-scan findings before expanding or shipping the current slice."
     if failed:
         return "Resolve the failed verification checks before expanding or shipping the current slice."
+    if unavailable:
+        return "Restore the unavailable verification checks before claiming a clean closeout or shipping the current slice."
     if snapshot.dirty:
         return "Validate and isolate one coherent dirty-worktree slice before shipping."
     if snapshot.sync_status in {"ahead", "behind", "diverged"}:
@@ -121,6 +128,9 @@ def _governance_lines(snapshot: RepoSnapshot, checks: list[CheckResult]) -> list
     failures = [check for check in checks if check.status == "fail"]
     if failures:
         lines.append(f"{len(failures)} fresh verification failure(s) remain; no clean-pass claim is permitted.")
+    unavailable = [check for check in checks if check.status == "unavailable"]
+    if unavailable:
+        lines.append(f"{len(unavailable)} required verification check(s) are unavailable; no clean-pass claim is permitted.")
     if any(check.name == "install-validation" and "WARNING" in check.summary for check in checks):
         lines.append("Install validation completed with known legacy warnings; they are not reported as fresh cadence failures.")
     if "projects" in snapshot.touched_surfaces:

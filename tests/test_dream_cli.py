@@ -3,9 +3,11 @@ import sqlite3
 from pathlib import Path
 
 import pytest
+import anyang_loop.dream_cli as dream_cli_module
 
 from anyang_loop.cadence_store import latest_handoff, record_handoff
 from anyang_loop.cadence_verify import run_verification
+from anyang_loop.cadence_verify import CheckResult
 from anyang_loop.coffee_cli import main as coffee_main
 from anyang_loop.dream import build_dream_data
 from anyang_loop.dream_cli import main as dream_main
@@ -35,7 +37,12 @@ def test_fast_verification_reports_failure_and_unavailable(tmp_path: Path):
             return 1, "", "whitespace error"
         return 127, "", "not found"
 
-    results = run_verification(snapshot, "full", command_runner=runner)
+    results = run_verification(
+        snapshot,
+        "full",
+        command_runner=runner,
+        runtime_resolver=lambda _root: Path("validated-python"),
+    )
 
     assert results[0].status == "fail"
     assert any(result.status == "unavailable" for result in results)
@@ -51,11 +58,58 @@ def test_full_verification_uses_an_isolated_repo_local_pytest_temp(tmp_path: Pat
         commands.append((root, command))
         return 0, "", ""
 
-    run_verification(snapshot, "full", command_runner=runner)
+    run_verification(
+        snapshot,
+        "full",
+        command_runner=runner,
+        runtime_resolver=lambda _root: Path("validated-python"),
+    )
 
     pytest_command = next(command for _, command in commands if "pytest" in command)
+    assert pytest_command[0] == "validated-python"
     basetemp_index = pytest_command.index("--basetemp")
     assert Path(pytest_command[basetemp_index + 1]) == tmp_path / ".pytest_cache" / "dream-full"
+
+
+def test_full_verification_reports_runtime_bootstrap_failure(tmp_path: Path):
+    make_git_repo(tmp_path)
+    snapshot = collect_repo_snapshot(tmp_path)
+
+    def unavailable(_root):
+        raise RuntimeError("offline")
+
+    results = run_verification(snapshot, "full", runtime_resolver=unavailable)
+
+    assert results[-1].name == "validation-runtime"
+    assert results[-1].status == "unavailable"
+
+
+def test_unavailable_check_becomes_fresh_issue_and_tomorrow_inheritance(tmp_path: Path, monkeypatch):
+    make_git_repo(tmp_path)
+    unavailable = CheckResult("pytest", "unavailable", 1, 1, "missing")
+    monkeypatch.setattr("anyang_loop.dream.run_verification", lambda *_args, **_kwargs: [unavailable])
+
+    data = build_dream_data(tmp_path, verify="full")
+
+    assert data["validation_status"] == "partial"
+    assert data["fresh_issue_codes"] == ["validation:pytest"]
+    assert "unavailable verification" in data["tomorrow_inherits"]
+    assert "no clean-pass claim" in data["integrity_and_governance"][0]
+
+
+@pytest.mark.parametrize(
+    ("status", "expected"),
+    [("pass", 0), ("skipped", 0), ("partial", 1), ("fail", 1)],
+)
+def test_dream_cli_exit_code_matches_validation_status(status, expected, monkeypatch, capsys):
+    monkeypatch.setattr(
+        dream_cli_module,
+        "build_dream_data",
+        lambda *_args, **_kwargs: {"validation_status": status, "recorded_handoff": {"id": "synthetic"}},
+    )
+
+    assert dream_cli_module.main(["--format", "json", "--verify", "none"]) == expected
+    assert json.loads(capsys.readouterr().out)["validation_status"] == status
 
 
 def test_dream_record_then_coffee_inherits(tmp_path: Path, capsys):

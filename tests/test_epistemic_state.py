@@ -40,7 +40,9 @@ def test_ci_surfaces_pending_human_measurement_without_blocking(capsys):
     assert output["human_measurement_check"]["blocking"] is False
     workflow = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "validate.yml").read_text(encoding="utf-8")
     assert "python-version: ['3.10', '3.12', '3.13']" in workflow
-    assert "run: anyang-project epistemic-report" in workflow
+    assert "run: python tools/validate_repo.py" in workflow
+    validator = (Path(__file__).resolve().parents[1] / "tools" / "validate_repo.py").read_text(encoding="utf-8")
+    assert '("epistemic report", project + ["epistemic-report"])' in validator
 
 
 def test_human_burden_and_composite_acceptance_use_declared_formula(tmp_path):

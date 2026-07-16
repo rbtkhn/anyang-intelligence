@@ -2,7 +2,7 @@
 
 This plan defines how the former `repo_probe` implementation root moved toward the clearer `operating-substrate` identity.
 
-Status: completed in the local workspace.
+Status: historical and completed. Commands below use the current canonical launchers; the recorded paths describe the migration but are not executable guidance.
 
 ## Decision
 
@@ -94,12 +94,9 @@ Classify each reference as:
 From the current root before a future rename, run:
 
 ```powershell
-$env:PYTHONPATH='C:\dev\anyang-intelligence\operating-substrate\cli'
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m pytest -q
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.cli validate customers
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.project_cli validate customers
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.coffee_cli --repo .
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.dream_cli --repo .
+.\tools\validate.ps1
+.\tools\run.ps1 coffee --repo .
+.\tools\run.ps1 dream --repo .
 ```
 
 Expected result:
@@ -132,12 +129,9 @@ C:\Users\rober\.codex\skills\dream\SKILL.md
 From `operating-substrate`, run:
 
 ```powershell
-$env:PYTHONPATH='C:\dev\anyang-intelligence\operating-substrate\cli'
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m pytest -q
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.cli validate customers
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.project_cli validate customers
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.coffee_cli --repo .
-& 'C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' -m anyang_loop.dream_cli --repo .
+.\tools\validate.ps1
+.\tools\run.ps1 coffee --repo .
+.\tools\run.ps1 dream --repo .
 ```
 
 Also verify:

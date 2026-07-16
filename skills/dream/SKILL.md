@@ -20,10 +20,14 @@ When working inside `anyang-intelligence/operating-substrate`, this skill is aut
 When tools are available, prefer the native command:
 
 ```text
-anyang-dream --repo .
+.\tools\run.ps1 dream --repo .
 ```
 
+On macOS or Linux, use `python3 tools/run_repo.py dream --repo .`.
+
 Native dream runs fast verification by default. It remains read-only unless the operator explicitly passes `--record`, which stores one sanitized repo-level handoff in external SQLite without creating customer authority.
+
+Full verification may create or reuse a dependency-keyed tooling cache outside the repository. This is local validation state, not a repo artifact, tenant record, approval, or customer-system write.
 
 If the command is unavailable, perform the same read-only procedure manually from the inputs below.
 
@@ -97,24 +101,20 @@ Do not require unavailable strategy-codex-only files such as `scripts/auto_dream
 
 Use these when available and relevant:
 
-- `anyang-dream --repo .`
-- `anyang-dream --repo . --verify fast`
-- `anyang-dream --repo . --verify full`
-- `anyang-dream --repo . --verify fast --record --db <external-db>`
+- `.\tools\run.ps1 dream --repo .`
+- `.\tools\run.ps1 dream --repo . --verify fast`
+- `.\tools\run.ps1 dream --repo . --verify full`
+- `.\tools\run.ps1 dream --repo . --verify fast --record --db <external-db>`
 - `git status --short --branch`
 - `git log --oneline --decorate -8`
-- `python -m anyang_loop.project_cli validate customers`
-- `python -m anyang_loop.cli validate customers`
-- `python -m pytest`
+- `.\tools\run.ps1 project validate projects`
+- `.\tools\run.ps1 loop validate projects`
+- `.\tools\validate.ps1`
 - `git diff --check`
 
-In this repo, local `python`, `py`, or `pytest` may not be on `PATH`. If needed, use the Codex bundled Python runtime when available:
+The repo runners locate Python through `-Python`, `ANYANG_PYTHON`, PATH, or the user-relative Codex runtime and bootstrap declared dependencies outside Git. Do not hard-code a user profile or runtime path.
 
-```text
-C:\Users\rober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe
-```
-
-If a verifier reaches visible completion but the process does not exit, report that caveat honestly. Do not call it a clean pass unless the command exits cleanly.
+If full verification is partial or failed, Dream still renders the report and exits nonzero. If a verifier reaches visible completion but the process does not exit, report that caveat honestly. Do not call it a clean pass unless the command exits cleanly.
 
 ## Output Shape
 

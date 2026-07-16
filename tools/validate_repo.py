@@ -4,139 +4,27 @@
 from __future__ import annotations
 
 import argparse
-import ast
-import hashlib
-import json
 import os
 from pathlib import Path
-import shutil
 import subprocess
 import sys
-import venv
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-MINIMUM_PYTHON = (3, 10)
-BOOTSTRAP_VERSION = 1
+sys.path.insert(0, str(REPO_ROOT / "cli"))
 
-
-def _toml_string_array(text: str, section: str, key: str) -> list[str]:
-    current_section = ""
-    collecting = False
-    buffer: list[str] = []
-
-    for raw_line in text.splitlines():
-        line = raw_line.strip()
-        if line.startswith("[") and line.endswith("]") and not collecting:
-            current_section = line[1:-1]
-            continue
-        if current_section != section:
-            continue
-        if not collecting:
-            prefix = f"{key} ="
-            if not line.startswith(prefix):
-                continue
-            line = line[len(prefix) :].strip()
-            collecting = True
-        buffer.append(line)
-        if "]" in line:
-            break
-
-    if not buffer or "]" not in buffer[-1]:
-        raise ValueError(f"Missing TOML string array: [{section}] {key}")
-    value = ast.literal_eval("\n".join(buffer))
-    if not isinstance(value, list) or not all(isinstance(item, str) for item in value):
-        raise ValueError(f"Expected a string array: [{section}] {key}")
-    return value
-
-
-def validation_requirements(pyproject: Path) -> list[str]:
-    text = pyproject.read_text(encoding="utf-8")
-    runtime = _toml_string_array(text, "project", "dependencies")
-    development = _toml_string_array(text, "project.optional-dependencies", "dev")
-    return list(dict.fromkeys(runtime + development))
-
-
-def _is_within(path: Path, parent: Path) -> bool:
-    try:
-        path.relative_to(parent)
-    except ValueError:
-        return False
-    return True
-
-
-def validation_cache_root(repo_root: Path, environ: dict[str, str] | None = None) -> Path:
-    env = os.environ if environ is None else environ
-    if env.get("ANYANG_VALIDATION_CACHE"):
-        root = Path(env["ANYANG_VALIDATION_CACHE"]).expanduser()
-    elif env.get("LOCALAPPDATA"):
-        root = Path(env["LOCALAPPDATA"]) / "AnyangIntelligence" / "validation"
-    elif env.get("XDG_CACHE_HOME"):
-        root = Path(env["XDG_CACHE_HOME"]) / "anyang-intelligence" / "validation"
-    else:
-        root = Path.home() / ".cache" / "anyang-intelligence" / "validation"
-
-    resolved = root.resolve()
-    if _is_within(resolved, repo_root.resolve()):
-        raise ValueError("Validation cache must remain outside the repository")
-    return resolved
-
-
-def validation_environment_path(repo_root: Path, cache_root: Path, requirements: list[str]) -> Path:
-    repo_key = hashlib.sha256(str(repo_root.resolve()).encode("utf-8")).hexdigest()[:12]
-    payload = {
-        "bootstrap": BOOTSTRAP_VERSION,
-        "python": list(sys.version_info[:2]),
-        "platform": sys.platform,
-        "requirements": requirements,
-    }
-    dependency_key = hashlib.sha256(json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()[:12]
-    version = f"py{sys.version_info.major}{sys.version_info.minor}"
-    return cache_root / repo_key / f"{version}-{dependency_key}"
-
-
-def environment_python(environment: Path) -> Path:
-    return environment / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
-
-
-def ensure_validation_environment(
-    repo_root: Path,
-    cache_root: Path,
-    requirements: list[str],
-    *,
-    refresh: bool = False,
-) -> Path:
-    environment = validation_environment_path(repo_root, cache_root, requirements)
-    python = environment_python(environment)
-    marker = environment / ".anyang-validation.json"
-
-    if refresh and environment.exists():
-        shutil.rmtree(environment)
-    if python.is_file() and marker.is_file():
-        return python
-    if environment.exists():
-        shutil.rmtree(environment)
-
-    environment.parent.mkdir(parents=True, exist_ok=True)
-    print(f"Bootstrapping validation environment: {environment}", flush=True)
-    venv.EnvBuilder(with_pip=True).create(environment)
-    subprocess.run(
-        [
-            str(python),
-            "-m",
-            "pip",
-            "install",
-            "--disable-pip-version-check",
-            *requirements,
-        ],
-        cwd=repo_root,
-        check=True,
-    )
-    marker.write_text(
-        json.dumps({"requirements": requirements, "source": "pyproject.toml"}, indent=2) + "\n",
-        encoding="utf-8",
-    )
-    return python
+from anyang_loop.runtime_bootstrap import (  # noqa: E402
+    MINIMUM_PYTHON,
+    RuntimeBootstrapError,
+    ensure_supported_python,
+    ensure_validation_environment,
+    environment_python,
+    is_within as _is_within,
+    resolve_validation_python,
+    validation_cache_root,
+    validation_environment_path,
+    validation_requirements,
+)
 
 
 def validation_commands(python: Path, repo_root: Path) -> list[tuple[str, list[str]]]:
@@ -165,11 +53,15 @@ def validation_commands(python: Path, repo_root: Path) -> list[tuple[str, list[s
     ]
 
 
-def run_validation(python: Path, repo_root: Path) -> None:
+def runtime_environment(repo_root: Path) -> dict[str, str]:
     env = os.environ.copy()
     cli_path = str(repo_root / "cli")
     env["PYTHONPATH"] = cli_path + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+    return env
 
+
+def run_validation(python: Path, repo_root: Path) -> None:
+    env = runtime_environment(repo_root)
     for label, command in validation_commands(python, repo_root):
         print(f"\n== {label} ==", flush=True)
         subprocess.run(command, cwd=repo_root, env=env, check=True)
@@ -184,28 +76,25 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--cache-dir", type=Path, help="Override the external validation cache directory")
     args = parser.parse_args(argv)
 
-    if sys.version_info < MINIMUM_PYTHON:
-        parser.error("Python 3.10 or newer is required")
+    try:
+        ensure_supported_python()
+        python = resolve_validation_python(
+            REPO_ROOT,
+            cache_dir=args.cache_dir,
+            refresh=args.refresh,
+            reporter=lambda message: print(message, file=sys.stderr, flush=True),
+        )
+    except (OSError, RuntimeBootstrapError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
 
-    requirements = validation_requirements(REPO_ROOT / "pyproject.toml")
-    cache_root = (
-        args.cache_dir.expanduser().resolve()
-        if args.cache_dir
-        else validation_cache_root(REPO_ROOT)
-    )
-    if _is_within(cache_root, REPO_ROOT.resolve()):
-        parser.error("Validation cache must remain outside the repository")
-
-    python = ensure_validation_environment(
-        REPO_ROOT,
-        cache_root,
-        requirements,
-        refresh=args.refresh,
-    )
     print(f"Validation Python: {python}")
     print(f"Dependency source: {REPO_ROOT / 'pyproject.toml'}")
     if not args.bootstrap_only:
-        run_validation(python, REPO_ROOT)
+        try:
+            run_validation(python, REPO_ROOT)
+        except subprocess.CalledProcessError as exc:
+            return exc.returncode or 1
     return 0
 
 
