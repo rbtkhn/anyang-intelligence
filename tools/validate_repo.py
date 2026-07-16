@@ -29,6 +29,7 @@ from anyang_loop.runtime_bootstrap import (  # noqa: E402
 
 def validation_commands(python: Path, repo_root: Path) -> list[tuple[str, list[str]]]:
     project = [str(python), "-m", "anyang_loop.project_cli"]
+    pytest_base = repo_root / ".pytest_cache" / f"validate-repo-{os.getpid()}"
     return [
         (
             "pytest",
@@ -39,7 +40,7 @@ def validation_commands(python: Path, repo_root: Path) -> list[tuple[str, list[s
                 "-q",
                 "-p",
                 "no:cacheprovider",
-                f"--basetemp={repo_root / '.pytest_cache' / 'validate-repo'}",
+                f"--basetemp={pytest_base}",
             ],
         ),
         ("project installs", project + ["validate", "projects"]),
@@ -61,6 +62,9 @@ def runtime_environment(repo_root: Path) -> dict[str, str]:
 
 
 def run_validation(python: Path, repo_root: Path) -> None:
+    # Pytest accepts a missing --basetemp directory, but its parent must exist.
+    # Fresh CI checkouts do not contain ignored .pytest_cache state.
+    (repo_root / ".pytest_cache").mkdir(parents=True, exist_ok=True)
     env = runtime_environment(repo_root)
     for label, command in validation_commands(python, repo_root):
         print(f"\n== {label} ==", flush=True)

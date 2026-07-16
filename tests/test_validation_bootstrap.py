@@ -88,7 +88,27 @@ def test_validation_command_set_matches_ci_controls():
     ]
     pytest_command = commands[0][1]
     assert "no:cacheprovider" in pytest_command
-    assert str(ROOT / ".pytest_cache" / "validate-repo") in pytest_command[-1]
+    assert pytest_command[-1] == f"--basetemp={ROOT / '.pytest_cache' / f'validate-repo-{os.getpid()}'}"
+
+
+def test_run_validation_prepares_pytest_parent_in_fresh_checkout(tmp_path: Path, monkeypatch):
+    module = load_bootstrap()
+    repo_root = tmp_path / "fresh-checkout"
+    repo_root.mkdir()
+    calls = []
+
+    def fake_run(command, *, cwd, env, check):
+        assert (repo_root / ".pytest_cache").is_dir()
+        calls.append((command, cwd, env, check))
+
+    monkeypatch.setattr(module.subprocess, "run", fake_run)
+
+    module.run_validation(Path("python"), repo_root)
+
+    assert len(calls) == len(module.validation_commands(Path("python"), repo_root))
+    assert calls[0][0][-1] == (
+        f"--basetemp={repo_root / '.pytest_cache' / f'validate-repo-{os.getpid()}'}"
+    )
 
 
 def test_windows_launcher_has_stable_overrides_and_codex_fallback():

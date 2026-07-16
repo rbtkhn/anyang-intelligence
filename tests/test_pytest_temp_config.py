@@ -16,4 +16,5 @@ def test_canonical_validation_driver_uses_a_repo_local_base_temp():
     validator = (ROOT / "tools/validate_repo.py").read_text(encoding="utf-8")
 
     assert "python tools/validate_repo.py" in workflow
-    assert 'f"--basetemp={repo_root / \'.pytest_cache\' / \'validate-repo\'}"' in validator
+    assert 'f"validate-repo-{os.getpid()}"' in validator
+    assert 'f"--basetemp={pytest_base}"' in validator
