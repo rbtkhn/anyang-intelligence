@@ -1,0 +1,7 @@
+interface:
+  display_name: "Business Intake"
+  short_description: "Govern owner-approved business intake"
+  default_prompt: "Use $business-intake create to prepare a governed initial business context."
+
+policy:
+  allow_implicit_invocation: false

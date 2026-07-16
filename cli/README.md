@@ -114,6 +114,14 @@ anyang-dream --help
 
 If your shell does not have Python on `PATH`, install or activate a Python 3.10+ environment first.
 
+For repository validation, no preinstalled development extras are required. From PowerShell use:
+
+```powershell
+.\tools\validate.ps1
+```
+
+The launcher locates Python, bootstraps dependencies declared in `pyproject.toml` into an external user cache, and runs pytest plus every CI validator and the privacy scan. On macOS or Linux use `python3 tools/validate_repo.py`.
+
 ## Coffee Re-Entry
 
 `anyang-coffee` operationalizes the native [coffee skill](../skills/coffee/SKILL.md). It is read-only: it does not edit, stage, commit, push, publish, or approve anything.

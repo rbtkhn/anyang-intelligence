@@ -107,3 +107,19 @@ The current system-level buildout is summarized in [docs/operating-substrate.md]
 The repo's north-star AI posture is defined in [docs/artificial-enlightened-intelligence.md](docs/artificial-enlightened-intelligence.md): more capability should produce more evidence discipline, stronger membranes, clearer authority boundaries, and safer recursive improvement.
 
 Reusable maintenance procedures are tracked in [skills/](skills/README.md).
+
+## Local Validation
+
+Run the complete CI-equivalent validation from PowerShell without preinstalling PyYAML, pytest, or the package:
+
+```powershell
+.\tools\validate.ps1
+```
+
+On macOS or Linux, run:
+
+```bash
+python3 tools/validate_repo.py
+```
+
+The bootstrap accepts an explicit `-Python <path>` or `ANYANG_PYTHON`, falls back to Codex's bundled Windows Python when needed, derives dependencies from `pyproject.toml`, and caches them under the operating-system user cache outside the repository. The cache is keyed by repository, Python version, platform, and dependency declarations, so repeated validation reuses it while source code always loads directly from `cli/`. Use `--refresh` only to rebuild the current keyed environment.

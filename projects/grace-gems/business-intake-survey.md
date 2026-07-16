@@ -2,13 +2,13 @@
 
 ## Purpose
 
-Phase 1 is a lightweight WeChat intake message for the Grace Gems owner/operator.
+Phase 1 is the Grace Gems project-specific question set for explicit `$business-intake create` use. It is a lightweight WeChat intake message for the owner/operator and does not replace the skill's authority, readiness, approval, or persistence gates.
 
 The goal is not to collect everything. The goal is to get enough context for Anyang Intelligence to create the first company context map, identify obvious risks, and prepare the first operating review.
 
 ## WeChat Message
 
-Hi, we are setting up the first Grace Gems operating review for Anyang Intelligence. To get started, please send the five most useful things below. Short answers are fine, and screenshots/exports are welcome.
+Hi, we are preparing the inputs for a possible first Grace Gems operating review. To get started, please send the six most useful things below. Short answers are fine. Screenshots or exports are welcome only when you approve their review; please redact buyer names, contact details, order details, and anything else you do not want handled.
 
 1. **Current goal:** What is the most important goal for Grace Gems over the next 30-90 days? For example: more sales, better profit, cleaner listings, fewer customer issues, moving inventory, improving one shop, or something else.
 
@@ -16,11 +16,13 @@ Hi, we are setting up the first Grace Gems operating review for Anyang Intellige
 
 3. **Basic cost/pricing info:** For those listings, please send whatever you know about sale price, material cost, shipping cost, packaging cost, labor time, and whether they are advertised. Approximate numbers are okay.
 
-4. **Customer support chat transcripts:** Please send recent customer support / buyer message transcripts, especially conversations involving confusion, customization, shipping time, returns, complaints, refunds, or repeated questions. Screenshots or copied text are both fine. Please remove anything you do not want reviewed.
+4. **Customer support patterns:** Please send redacted examples or summaries of recent buyer questions, especially patterns involving confusion, customization, shipping time, returns, complaints, refunds, or repeated questions. Prefer recurring patterns and opaque source references over raw transcripts. Do not include buyer identities, contact details, or order details.
 
 5. **Owner decision rules:** What should Anyang Intelligence never change or recommend without approval? For example: prices, publishing listings, sending customer replies, ad spend, refunds, shop policies, product claims, or anything else.
 
-Once we have these five inputs, we will produce a first-pass Grace Gems operating review: priority listings, margin/data gaps, customer-promise risks, and the best first 30-day focus.
+6. **Fulfillment and production capacity:** What lead times, inventory limits, custom-work limits, staffing constraints, weekly production capacity, or pause conditions should control the first month? Please distinguish confirmed capacity from a target or hope.
+
+Once these inputs pass the shared `$business-intake create` authority and readiness gates, Anyang Intelligence may prepare an owner-reviewable business context. Context approval and private persistence remain separate. The first operating review and the week-one Media Production backlog each require separate owner authorization; no intake answer authorizes publication, pricing, spending, hiring, promotion, customer communication, or source changes.
 
 ## Phase 1 Output
 
@@ -32,7 +34,10 @@ After the owner/operator responds, Anyang Intelligence should produce:
 - Customer support root-cause summary.
 - Customer promise risk list.
 - Owner approval boundary.
+- Fulfillment and realistic production-capacity constraints.
 - Recommended first 30-day focus.
+
+These are proposed operating-review inputs, not completed decisions or authorization to act.
 
 ## Later Intake
 
