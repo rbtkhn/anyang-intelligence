@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project State Update"
+  short_description: "Keep project facts coherent across the portfolio"
+  default_prompt: "Use $project-state-update to reconcile this new project fact across the repository."

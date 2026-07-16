@@ -1,3 +1,8 @@
+---
+name: project-state-update
+description: Keep Anyang Intelligence project facts coherent across project documents and portfolio state. Use when a project fact, financial classification, paid obligation, scope, cross-project relationship, status, or audience boundary changes and stale contradictions must be reconciled safely.
+---
+
 # Project State Update Skill
 
 Use this skill when a project fact changes or a new project fact is introduced.

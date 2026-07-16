@@ -477,6 +477,10 @@ anyang-project epistemic-report
 anyang-project epistemic-report --retrieval-success 0.83 --revision-impact-accuracy 0.75
 ```
 
+CI runs `epistemic-report` as a visible readiness check. Missing human
+measurements keep composite acceptance pending but do not fail the build;
+objective critical gaps still return a failing status.
+
 Score the fixed twelve-surface human benchmark from a sanitized response file:
 
 ```bash

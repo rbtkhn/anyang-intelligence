@@ -98,6 +98,18 @@ def validate_epistemic_manifest(path: str | Path | None = None) -> list[Epistemi
         diagnostics.append(EpistemicDiagnostic("human-cohort-invalid", manifest_path, "Human outcome cohort must contain exactly twelve unique surface IDs."))
     elif any(item not in surfaces for item in cohort):
         diagnostics.append(EpistemicDiagnostic("human-cohort-unknown", manifest_path, "Human outcome cohort references an unknown surface."))
+    human = data.get("human_measurement")
+    required_measurements = ("retrieval_success", "revision_impact_accuracy", "review_minutes", "false_positives", "overrides")
+    if not isinstance(human, dict) or any(key not in human for key in required_measurements):
+        diagnostics.append(EpistemicDiagnostic("human-measurement-contract-incomplete", manifest_path, "Human measurement must declare every aggregate field, even while values remain pending."))
+    else:
+        check = human.get("check")
+        if not isinstance(check, dict) or check != {
+            "visibility": "ci-report",
+            "blocking": False,
+            "required_for_composite_acceptance": True,
+        }:
+            diagnostics.append(EpistemicDiagnostic("human-measurement-check-invalid", manifest_path, "Human measurement check must remain visible in CI, nonblocking while pending, and required for composite acceptance."))
     return diagnostics
 
 
@@ -118,6 +130,7 @@ def epistemic_report(
         per_surface.append(result)
     structural_rate = round(100.0 * points / maximum, 2) if maximum else 0.0
     human = data.get("human_measurement", {})
+    human_check = human.get("check", {}) if isinstance(human, dict) else {}
     retrieval = retrieval_success if retrieval_success is not None else human.get("retrieval_success")
     revision = revision_impact_accuracy if revision_impact_accuracy is not None else human.get("revision_impact_accuracy")
     human_burden = composite = reduction = None
@@ -149,6 +162,17 @@ def epistemic_report(
             "revision_impact_accuracy": revision,
             "burden": human_burden,
             "status": "measured" if human_burden is not None else "pending-human-measurement",
+        },
+        "human_measurement_check": {
+            "status": "recorded" if human_burden is not None else "pending",
+            "visibility": human_check.get("visibility", "ci-report"),
+            "blocking": bool(human_check.get("blocking", False)),
+            "required_for_composite_acceptance": bool(human_check.get("required_for_composite_acceptance", True)),
+            "message": (
+                "Human outcomes are recorded and included in the composite calculation."
+                if human_burden is not None
+                else "Human outcomes are not recorded; composite acceptance remains pending."
+            ),
         },
         "composite_entropy": composite,
         "relative_reduction": reduction,

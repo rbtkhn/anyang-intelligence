@@ -15,6 +15,10 @@ baseline:
   method: Pre-program surfaces had no claim-state, dependency, transition, or impact manifest bindings.
 
 human_measurement:
+  check:
+    visibility: ci-report
+    blocking: false
+    required_for_composite_acceptance: true
   retrieval_success: null
   revision_impact_accuracy: null
   review_minutes: null

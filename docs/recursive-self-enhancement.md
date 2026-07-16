@@ -64,6 +64,33 @@ Use this default sequence:
 
 The improvement should be small enough to stay grounded and large enough to matter.
 
+## Audit-To-Action Pattern
+
+Use this subroutine when a bounded audit reveals a repo-visible improvement candidate:
+
+```text
+read-only audit
+  -> plain-English finding
+  -> prioritized actionable recommendations
+  -> explicit operator approval
+  -> implement only the approved scope
+  -> focused and whole-system verification
+  -> report what changed and what remains uncertain
+```
+
+Keep the audit and implementation as separate authority phases. A recommendation is not approval, one approved item does not authorize a batch, and excluded or unreviewed surfaces remain coverage gaps rather than implied passes.
+
+Call the pattern successful only when:
+
+- the audit boundary and blind spots are visible
+- recommendations are concrete enough to approve individually
+- the operator explicitly authorizes implementation
+- the resulting diff stays within the approved scope
+- relevant focused checks and repository-wide safeguards pass
+- the handoff distinguishes structural improvement from unmeasured behavioral benefit
+
+The reusable property is not any particular audit finding. It is the governed conversion of evidence into a small, reviewable, verified operating improvement.
+
 ## Relation To Loops
 
 [Loops](loops.md) are the operating grammar for recursive self-enhancement.

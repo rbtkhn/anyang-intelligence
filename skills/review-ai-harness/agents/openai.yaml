@@ -1,0 +1,7 @@
+interface:
+  display_name: "Review AI Harness"
+  short_description: "Audit the visible AI setup safely"
+  default_prompt: "Use $review-ai-harness to run a read-only review of this repository AI setup."
+
+policy:
+  allow_implicit_invocation: false

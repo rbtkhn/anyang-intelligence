@@ -41,6 +41,7 @@ from .phase_preflight import (
     verify_transition,
 )
 from .repo_snapshot import collect_repo_snapshot
+from .harness_review import HarnessReviewError, record_decisions, render_harness, scan_harness
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -64,6 +65,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERROR: {exc}")
         return 1
     except EpistemicBenchmarkError as exc:
+        print(f"ERROR: {exc}")
+        return 1
+    except HarnessReviewError as exc:
         print(f"ERROR: {exc}")
         return 1
 
@@ -168,6 +172,22 @@ def build_parser() -> argparse.ArgumentParser:
     preflight.add_argument("--manifest", required=True)
     preflight.add_argument("--format", choices=("text", "json"), default="text")
     preflight.set_defaults(func=cmd_preflight)
+
+    harness = subparsers.add_parser("harness", help="Review the visible repository AI harness without source mutation")
+    harness_sub = harness.add_subparsers(required=True)
+    harness_scan = harness_sub.add_parser("scan", help="Create a tracked-file harness inventory and review template")
+    harness_scan.add_argument("--repo", default=".")
+    harness_scan.add_argument("--output")
+    harness_scan.set_defaults(func=cmd_harness_scan)
+    harness_render = harness_sub.add_parser("render", help="Validate a semantic review and render the reader packet")
+    harness_render.add_argument("--packet", required=True)
+    harness_render.add_argument("--review", required=True)
+    harness_render.set_defaults(func=cmd_harness_render)
+    harness_decide = harness_sub.add_parser("decide", help="Record explicit proposal approvals and rejections")
+    harness_decide.add_argument("--packet", required=True)
+    harness_decide.add_argument("--approve", nargs="*", type=int, default=[])
+    harness_decide.add_argument("--reject", nargs="*", type=int, default=[])
+    harness_decide.set_defaults(func=cmd_harness_decide)
     return parser
 
 
@@ -365,6 +385,26 @@ def cmd_preflight(args: argparse.Namespace) -> int:
     preflight = run_preflight(args.phase, args.manifest)
     print(render_preflight_json(preflight) if args.format == "json" else render_preflight(preflight))
     return preflight.exit_code
+
+
+def cmd_harness_scan(args: argparse.Namespace) -> int:
+    packet = scan_harness(args.repo, args.output)
+    print(f"Created harness review packet: {packet}")
+    print(f"Semantic review template: {packet / '.harness-review' / 'semantic-review.template.json'}")
+    return 0
+
+
+def cmd_harness_render(args: argparse.Namespace) -> int:
+    report = render_harness(args.packet, args.review)
+    print(f"Rendered AI setup report: {report}")
+    return 0
+
+
+def cmd_harness_decide(args: argparse.Namespace) -> int:
+    review = record_decisions(args.packet, args.approve, args.reject)
+    print(f"Recorded proposal decisions: {review}")
+    print("No source changes were applied; v1 has no apply command.")
+    return 0
 
 
 if __name__ == "__main__":

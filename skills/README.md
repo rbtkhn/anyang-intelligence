@@ -13,6 +13,8 @@ Skills are reusable operating procedures for maintaining the Anyang Intelligence
 | [customer-state-update](customer-state-update/SKILL.md) | Use when customer facts, money, obligations, scope, or language boundaries change. |
 | [elicitation](elicitation/SKILL.md) | Use when missing human judgment, preferences, authority, constraints, or context should be gathered through concise direct questions, multiple choice, or structured intake before safe execution. |
 | [tax-financial-governance](tax-financial-governance/SKILL.md) | Use when money, tax-sensitive classification, accounting evidence, or financial governance risk appears. |
+| [project-state-update](project-state-update/SKILL.md) | Use when a project fact, paid obligation, scope, status, relationship, or audience boundary changes and portfolio state must be reconciled. |
+| [review-ai-harness](review-ai-harness/SKILL.md) | Use only when explicitly invoked to map the tracked Codex setup, render a read-only AI harness report, or record numbered proposals without applying source changes. |
 
 ## Student Operating System Skills
 

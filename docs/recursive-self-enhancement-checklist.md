@@ -68,6 +68,13 @@ Before calling the cycle enhanced, confirm:
 - it does not turn a recommendation into human approval
 - it does not add pricing, legal, tax, child-safety, or compliance claims without authority
 
+When the cycle began with an audit, also confirm:
+
+- the audit remained read-only until explicit approval
+- findings were translated into individually actionable recommendations
+- only the approved recommendations were implemented
+- coverage gaps and unmeasured outcomes remain visible
+
 ## 6. Validate When Possible
 
 Use the relevant check:
