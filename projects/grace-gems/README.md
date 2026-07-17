@@ -46,6 +46,6 @@ product idea
 
 See [executive-os-install.md](executive-os-install.md) for the first Grace Gems Executive OS install design.
 
-Use [business-intake-survey.md](business-intake-survey.md) to collect the owner/operator context required before installation.
+Before preparing the first operating review, explicitly invoke `$business-intake create` and use [business-intake-survey.md](business-intake-survey.md) as the project-specific question set. Intake readiness, exact owner approval, operator-confirmed external tenant-private persistence, and authorization of the first operating review are separate gates. Until they are satisfied, keep live business context and operating work on `Hold`; never store completed private intake packets in Git.
 
 Use [public-shop-signal-brief.md](public-shop-signal-brief.md) to understand the public GraceGemsUS Etsy storefront signals before preparing the first operating review or creative-support backlog.

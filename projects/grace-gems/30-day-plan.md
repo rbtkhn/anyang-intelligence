@@ -2,6 +2,8 @@
 
 This plan creates the first recurring operating support surfaces for Grace Gems.
 
+Entry gate: complete explicit `$business-intake create`, obtain exact owner context approval, confirm external tenant-private persistence, and separately obtain authorization for the first operating review. Until then, this plan remains proposed and on `Hold`.
+
 ## Week 1: Control Surface Baseline
 
 - Create the first risk register and decision log.
@@ -25,4 +27,3 @@ This plan creates the first recurring operating support surfaces for Grace Gems.
 - Run the first full weekly-style operating review as a monthly checkpoint.
 - Update the risk register from real listing and customer pressure.
 - Choose the next 30-day storefront, listing, or trust-clarity focus.
-

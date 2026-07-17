@@ -11,6 +11,7 @@ ROUTE = ROOT / "skills/business-intake/agents/openai.yaml"
 ADAPTER = ROOT / ".agents/skills/business-intake/SKILL.md"
 ADAPTER_ROUTE = ROOT / ".agents/skills/business-intake/agents/openai.yaml"
 GRACE_GEMS = ROOT / "projects/grace-gems/business-intake-survey.md"
+MOUNTAIN_VILLA = ROOT / "projects/mountain-villa/business-intake-survey.md"
 
 
 def read(path: Path) -> str:
@@ -48,6 +49,7 @@ def test_discovery_adapter_routes_to_the_complete_canonical_contract():
     assert "references/question-strategy.md" in canonical
     assert "references/output-contracts.md" in canonical
     assert "projects/grace-gems/business-intake-survey.md" in canonical
+    assert "projects/mountain-villa/business-intake-survey.md" in canonical
     assert QUESTION_STRATEGY.is_file()
     assert OUTPUT_CONTRACTS.is_file()
 
@@ -117,3 +119,46 @@ def test_grace_gems_route_has_all_required_inputs_and_separate_authorizations():
     assert "redact buyer names" in survey
     assert "first operating review and the week-one Media Production backlog each require separate owner authorization" in survey
     assert "no intake answer authorizes publication, pricing, spending, hiring, promotion, customer communication, or source changes" in survey
+    assert "two batches of no more than three questions" in survey
+
+
+def test_managed_business_projects_are_intake_gated():
+    portfolio = read(ROOT / "projects/README.md")
+    assert "Grace Gems and Mountain Villa are businesses under Anyang Intelligence management" in portfolio
+    assert "$business-intake create" in portfolio
+
+    for project in ("grace-gems", "mountain-villa"):
+        readme = read(ROOT / "projects" / project / "README.md")
+        install = read(ROOT / "projects" / project / "executive-os-install.md")
+        plan = read(ROOT / "projects" / project / "30-day-plan.md")
+        combined = readme + install + plan
+
+        assert "$business-intake create" in combined
+        assert "external tenant-private persistence" in combined
+        assert "separately" in combined and "first operating review" in combined
+        assert "`Hold`" in combined
+
+
+def test_mountain_villa_route_covers_evidence_privacy_and_authority_boundaries():
+    survey = read(MOUNTAIN_VILLA)
+    strategy = read(QUESTION_STRATEGY)
+
+    assert "$business-intake create" in survey
+    assert "batches of no more than three" in survey
+    for evidence_group in (
+        "Goal and intended decision",
+        "Asset, stakeholders, and channels",
+        "Economics and evidence quality",
+        "Operating signals",
+        "Capacity and pause conditions",
+        "Owner decision rules",
+    ):
+        assert evidence_group in survey
+    for boundary in (
+        "Do not place completed answers or packets in Git",
+        "Awaiting Persistence",
+        "separate owner authorization",
+        "property access, publication, pricing, spending, hiring, contractor work",
+    ):
+        assert boundary in survey
+    assert "do not infer a rental" in strategy

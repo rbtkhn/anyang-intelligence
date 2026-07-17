@@ -54,3 +54,5 @@ The owner-set objective is to sell Mountain Villa for **$500,000**. This is a ta
 ## Installation
 
 See [executive-os-install.md](executive-os-install.md) for the first Mountain Villa Executive OS install design.
+
+Before preparing the first operating review, explicitly invoke `$business-intake create` and use [business-intake-survey.md](business-intake-survey.md) as the project-specific question set. Intake readiness, exact owner approval, operator-confirmed external tenant-private persistence, and authorization of the first operating review are separate gates. Until they are satisfied, keep private property-business context and operating work on `Hold`; never store completed private intake packets in Git.

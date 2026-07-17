@@ -2,6 +2,8 @@
 
 This plan creates the first recurring review surfaces for Mountain Villa.
 
+Entry gate: complete explicit `$business-intake create`, obtain exact owner context approval, confirm external tenant-private persistence, and separately obtain authorization for the first operating review. Until then, this plan remains proposed and on `Hold`.
+
 ## Week 1: Baseline Review Surfaces
 
 - Create the first risk register and decision log.

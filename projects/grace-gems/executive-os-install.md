@@ -115,7 +115,7 @@ The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and
 
 ## Initial 30-Day Plan
 
-Before Week 1, complete the [business intake survey](business-intake-survey.md).
+Before Week 1, explicitly run `$business-intake create` with the [business intake survey](business-intake-survey.md). Do not begin operating work until the named owner approves the exact proposed context, an authorized operator confirms external tenant-private persistence, and the owner separately authorizes the first operating review. Intake answers alone authorize none of those steps.
 
 ### Week 1: Baseline Controls
 

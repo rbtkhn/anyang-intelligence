@@ -24,16 +24,20 @@ Use the [operating portfolio dashboard](operating-portfolio-dashboard.md) to see
 | [Learning Core](learning-core/README.md) | Personalized homeschool experience | Learner profile, daily learning plans, parent review, portfolio evidence, child-safety guardrails |
 | [Grace Gems](grace-gems/README.md) | Marketplace business | Listing gates, margin discipline, customer-promise clarity, weekly marketplace execution |
 | [Media Production](media-production/README.md) | Digital media production | Editorial calendar, production pipeline, quality gates, distribution, audience learning |
-| [Mountain Villa](mountain-villa/README.md) | Property and asset governance | Risk register, continuity planning, seasonal readiness, maintenance prioritization |
+| [Mountain Villa](mountain-villa/README.md) | Property business and asset governance | Risk register, continuity planning, seasonal readiness, maintenance prioritization |
 | [Singularity Science](singularity-science/README.md) | Internal singularity research project | Transcript archive, source notes, research ledger, product implications, governance warnings, reusable primitive candidates |
 
 ## Portfolio Logic
 
 The early portfolio should stay small and sharp.
 
-Grace Gems shows that an Executive OS can run commercial operating loops. Mountain Villa shows that the same pattern can govern a real-world asset where risk, readiness, and continuity matter more than revenue. Book Club shows the lightest version of the pattern: keeping a small community enjoyable, coordinated, and continuous without making it feel over-managed. Media Production shows creative operations: moving ideas through editorial judgment, production, quality review, distribution, and audience learning. Learning Core shows high-trust personalized education where learner experience, privacy, safety, parent authority, and accountability must remain human-led. Singularity Science shows how an internal research lane can turn broad singularity sources into product implications and governance warnings without treating transcripts as public content.
+Grace Gems shows that an Executive OS can run commercial operating loops. Mountain Villa is also a business under Anyang Intelligence management, centered on property stewardship and a possible owner-governed sale; its operating model makes risk, readiness, continuity, and professional review more important than assuming recurring revenue. Book Club shows the lightest version of the pattern: keeping a small community enjoyable, coordinated, and continuous without making it feel over-managed. Media Production shows creative operations: moving ideas through editorial judgment, production, quality review, distribution, and audience learning. Learning Core shows high-trust personalized education where learner experience, privacy, safety, parent authority, and accountability must remain human-led. Singularity Science shows how an internal research lane can turn broad singularity sources into product implications and governance warnings without treating transcripts as public content.
 
 Together they test the core Anyang Intelligence claim: an Executive OS is not a chatbot or a dashboard. It is a living executive layer that keeps a complex operating context coherent.
+
+## Managed Business Intake
+
+Grace Gems and Mountain Villa are businesses under Anyang Intelligence management. Before either begins a first operating review, explicitly invoke `$business-intake create` and use its project-specific question set. Intake readiness, owner context approval, external tenant-private persistence, and operating-review authorization remain separate gates.
 
 ## Shared Pattern
 

@@ -4,17 +4,23 @@
 
 Phase 1 is the Grace Gems project-specific question set for explicit `$business-intake create` use. It is a lightweight WeChat intake message for the owner/operator and does not replace the skill's authority, readiness, approval, or persistence gates.
 
+Do not send the business questions until the shared authority and data gate is `Confirmed`. Ask them in two batches of no more than three questions, reflecting and labeling uncertainty between batches.
+
 The goal is not to collect everything. The goal is to get enough context for Anyang Intelligence to create the first company context map, identify obvious risks, and prepare the first operating review.
 
 ## WeChat Message
 
-Hi, we are preparing the inputs for a possible first Grace Gems operating review. To get started, please send the six most useful things below. Short answers are fine. Screenshots or exports are welcome only when you approve their review; please redact buyer names, contact details, order details, and anything else you do not want handled.
+Hi, we are preparing the inputs for a possible first Grace Gems operating review. To get started, please send the six most useful things below in two short batches. Short answers are fine. Screenshots or exports are welcome only when you approve their review; please redact buyer names, contact details, order details, and anything else you do not want handled.
+
+### Batch 1
 
 1. **Current goal:** What is the most important goal for Grace Gems over the next 30-90 days? For example: more sales, better profit, cleaner listings, fewer customer issues, moving inventory, improving one shop, or something else.
 
 2. **Top listings:** Please send the 5-10 listings you most want reviewed first. Links are best. If you know which ones get the most views, favorites, sales, or customer questions, please mark that too.
 
 3. **Basic cost/pricing info:** For those listings, please send whatever you know about sale price, material cost, shipping cost, packaging cost, labor time, and whether they are advertised. Approximate numbers are okay.
+
+### Batch 2
 
 4. **Customer support patterns:** Please send redacted examples or summaries of recent buyer questions, especially patterns involving confusion, customization, shipping time, returns, complaints, refunds, or repeated questions. Prefer recurring patterns and opaque source references over raw transcripts. Do not include buyer identities, contact details, or order details.
 

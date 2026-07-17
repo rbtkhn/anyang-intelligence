@@ -17,7 +17,7 @@ Read before either mode:
 4. `docs/governance.md`
 5. `docs/membranes.md`
 
-For Grace Gems, also read `projects/grace-gems/business-intake-survey.md`. Treat it as the project-specific question set under this skill, not as a separate authority or persistence workflow.
+For Grace Gems, also read `projects/grace-gems/business-intake-survey.md`. For Mountain Villa, also read `projects/mountain-villa/business-intake-survey.md`. Treat each as a project-specific question set under this skill, not as a separate authority or persistence workflow.
 
 ## Select The Mode
 

@@ -42,6 +42,8 @@ For `change`, begin with the trigger, affected section, new evidence, counterevi
 
 For Grace Gems, use `projects/grace-gems/business-intake-survey.md` as the canonical project-specific question set. Its six evidence groups satisfy the project route but do not replace the shared authority, approval, readiness, or persistence gates.
 
+For Mountain Villa, use `projects/mountain-villa/business-intake-survey.md` as the canonical project-specific question set. Preserve the stricter property, safety, professional-review, access, security, and financial/legal membranes; do not infer a rental or hospitality business model.
+
 ## Question Quality
 
 Prefer recent evidence, observable operating sequences, bounded estimates, and explicit missing values. Avoid exhaustive histories, raw private records, leading questions, duplicate questions, and requests for information that cannot change the next action.
