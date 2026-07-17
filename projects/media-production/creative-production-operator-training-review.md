@@ -22,11 +22,11 @@ Review date:
 
 The trainer should review the packet as a teaching conversation, not only as a score. Start with what is clear and useful, then identify the smallest changes that would make the operator safer, easier to review, or more effective.
 
-- [ ] Canva visual pair is readable, related, and focused.
-- [ ] CapCut draft has a clear hook and works without sound.
-- [ ] Audacity original is preserved and cleaned output is clear.
-- [ ] YouTube Studio preparation is unpublished and identifies missing approvals.
-- [ ] Wikimedia source, license, attribution, and uncertainty are recorded.
+- [ ] Brief identifies audience, asset job, supplied facts, missing information, and risks.
+- [ ] Three concepts are meaningfully different and one recommendation is explained.
+- [ ] Graphic or thumbnail is readable, focused, correctly sized, and revisable.
+- [ ] CapCut draft has a clear hook, body, closing card, and readable captions.
+- [ ] Source and rights notes identify sources, usage status, attribution, and uncertainty.
 - [ ] Google Drive contains `brief`, `assets`, `exports`, `source-notes`, and `review`.
 - [ ] Google Drive sharing is limited to the trainer-approved reviewer boundary.
 - [ ] Reviewer access and navigation were confirmed.
@@ -34,6 +34,8 @@ The trainer should review the packet as a teaching conversation, not only as a s
 - [ ] Facts, assumptions, missing information, rights, and claims are distinguished.
 - [ ] AI/tool use is disclosed and files are reviewable.
 - [ ] Decision request and next action are explicit.
+
+Optional supporting checks, when assigned: Audacity original is preserved and cleaned output is clear; YouTube Studio preparation is unpublished and identifies missing approvals.
 
 ## Decision guidance
 

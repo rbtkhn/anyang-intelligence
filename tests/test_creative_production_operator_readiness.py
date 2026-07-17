@@ -120,13 +120,20 @@ def test_operator_training_has_bounded_prerequisite_and_google_drive_controls():
     assert "friendly 90-minute" in skills
     assert "You do not need to produce portfolio-perfect work" in skills
     assert "Suggested time" in skills
+    assert "Google Drive delivery and review packet | 15 minutes" in skills
     assert "Do not create an account or upload anything externally" in skills
-    for tool in ("Canva", "CapCut", "Audacity", "YouTube Studio", "Wikimedia Commons", "Google Drive"):
+    for tool in ("Canva", "CapCut", "Google Drive"):
         assert tool in skills
     for folder in ("brief/", "assets/", "exports/", "source-notes/", "review/"):
         assert folder in skills
     assert "external repository submission" in skills
     assert "synthetic or approved public-source topic" in skills
+    assert "simulated gig order" in skills
+    for package in ("Basic:", "Standard:", "Premium:"):
+        assert package in skills
+    assert "Optional secondary tool familiarity" in skills
+    assert "Audacity" in skills
+    assert "YouTube Studio" in skills
     assert "Google Drive sharing is limited" in review
     assert "14-Day Guided Ramp" in ramp
     assert "assignment gate" in ramp

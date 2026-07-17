@@ -2,9 +2,9 @@
 
 Status: `Use only after an authorized readiness decision`
 
-This is a friendly 90-minute prerequisite orientation and skills check before the 14-day guided ramp. It helps you show how you think, organize work, use common production tools, and ask for help when something is unclear. You do not need to produce portfolio-perfect work. You do need to leave a reviewer with an honest, understandable, and usable packet.
+This is a friendly 90-minute prerequisite orientation and skills check built around the services Media Production intends to offer. It helps you show how you turn an approved brief into clear, organized, source-aware creative work. You do not need to produce portfolio-perfect work. You do need to leave a reviewer with an honest, understandable, and usable packet.
 
-This is not hiring, contracting, spending, client-assignment, or publication authorization.
+This is not hiring, contracting, spending, client-assignment, customer-contact, or publication authorization.
 
 ## Boundaries
 
@@ -15,45 +15,60 @@ This is not hiring, contracting, spending, client-assignment, or publication aut
 - Disclose AI and other tool use.
 - Use trainer-approved private storage, or a public/private proof repository reviewed for synthetic/public-source content and rights safety.
 
-## How to work
+## The simulated gig order
 
-Choose one simple synthetic or approved public-source topic that you can understand quickly. Spend the first few minutes deciding what the audience should understand, then make small, clear drafts. If a tool is unfamiliar, say so in your notes and show the best safe attempt you can make. Asking a scope question is better than inventing a fact or silently guessing.
+Pretend a small business, educator, or media project has hired Media Production for a small content package. Use a supplied or trainer-approved public topic and prepare work that could fit the service packages:
 
-Use this time guide. You may move a few minutes between tasks, but keep the total at 90 minutes:
+- Basic: one social graphic or thumbnail.
+- Standard: three related graphics or thumbnails.
+- Premium: three graphics plus one short vertical video.
+
+For this prerequisite, complete the required core order below. The trainer is evaluating the production process and review discipline, not commercial performance.
+
+## Suggested time plan — 90 minutes total
 
 | Task | Suggested time |
 | --- | ---: |
-| Canva | 15 minutes |
-| CapCut | 15 minutes |
-| Audacity | 10 minutes |
-| YouTube Studio preparation | 10 minutes |
-| Wikimedia Commons rights note | 10 minutes |
-| Google Drive sharing | 15 minutes |
-| Repository proof and final handoff | 15 minutes |
+| Brief intake and source boundary | 10 minutes |
+| Concept set and recommendation | 15 minutes |
+| Graphic or thumbnail draft | 15 minutes |
+| Short vertical video draft | 25 minutes |
+| Source and rights note | 10 minutes |
+| Google Drive delivery and review packet | 15 minutes |
 
-## Required tasks and evidence
+Move a few minutes between tasks if needed, but stop at 90 minutes and report actual time.
 
-### Canva — visual pair
+## Required core deliverables
 
-Create one thumbnail and one square graphic for the same topic. Aim for readable text, one focal idea, and a clear relationship between the two pieces. Deliver two exports and a short visual-direction note.
+### 1. Brief intake
 
-### CapCut — short video
+Write a short production brief with:
 
-Create a 20–30 second vertical draft with a hook, body visual, closing card, and readable captions. A simple edit is fine. Do not publish. Deliver the draft and hook note.
+- topic or product;
+- intended audience;
+- asset job;
+- supplied facts and approved copy;
+- missing information and do-not-invent list;
+- requested formats; and
+- one risk or uncertainty.
 
-### Audacity — audio cleanup
+### 2. Concept set
 
-Clean a short voice note or rights-safe sample, preserve the original, and deliver both files with a change note. If the source is already clean, explain what you checked.
+Create three meaningfully different concepts for the same order. Explain which concept you recommend and why. Concepts may be written descriptions or low-fidelity sketches.
 
-### YouTube Studio — unpublished preparation
+### 3. Graphic or thumbnail draft — Canva or equivalent
 
-Prepare a draft title, description, three keywords, thumbnail placeholder, pinned-comment draft, and missing-before-publication checklist. Do not publish, create an account, or enter a live channel. A written mock upload form is sufficient.
+Create one review-ready social graphic or YouTube thumbnail. Use readable text, one focal idea, appropriate dimensions, and source-safe elements. Deliver an editable or easily revisable file plus an export.
 
-### Wikimedia Commons — rights note
+### 4. Short vertical video draft — CapCut or equivalent
 
-Record creator, source URL, license/public-domain status, attribution requirement, intended use, and uncertainty for one potentially useful asset.
+Create a 20–30 second vertical draft with a clear hook, body visual, closing card, and readable captions. A simple edit is fine. Do not publish. Deliver the draft or private review file and a short hook note.
 
-### Google Drive — team file sharing
+### 5. Source and rights note
+
+Record the sources used, creator or owner where relevant, license or usage status, attribution requirement, intended use, AI/tool use, and unresolved uncertainty. Use original, trainer-provided, or approved public-source elements only.
+
+### 6. Google Drive delivery and review packet
 
 Create a synthetic/public-source project folder with exactly these subfolders:
 
@@ -65,9 +80,21 @@ source-notes/
 review/
 ```
 
-Apply the trainer-approved sharing setting only after the trainer confirms the reviewer and sharing action. Share it with the trainer or designated reviewer, and confirm reviewer access and navigation. Deliver the folder link, permissions, naming convention, access limitations, and `delivery_note.md`. Never place client data or private candidate records in the shared folder.
+Apply the trainer-approved sharing setting only after the trainer confirms the reviewer and sharing action. Confirm reviewer access and navigation. Deliver the folder link, permissions, naming convention, access limitations, `delivery_note.md`, and a review note stating:
 
-### Repository proof
+- what was made;
+- what decision is needed;
+- what remains uncertain;
+- what should happen next; and
+- one reuse idea.
+
+Never place client data or private candidate records in the shared folder.
+
+## Optional secondary tool familiarity
+
+Audacity audio cleanup and YouTube Studio upload preparation are useful supporting skills, but they are not required for the core gig-capability pass. A trainer may request one as a remediation or later ramp exercise. YouTube preparation must remain an unpublished written mockup; Audacity work must preserve the original audio.
+
+## Repository proof
 
 If the trainer authorizes an external repository submission, provide only synthetic/public-source proof: `README.md`, file manifest, source/rights notes, AI/tool disclosure, review questions, recommended next action, and links/placeholders for large files. A private folder or trainer-approved local handoff is also acceptable. The trainer must review repository visibility and contents; public is not automatically approved.
 
@@ -75,7 +102,9 @@ If the trainer authorizes an external repository submission, provide only synthe
 
 - The reviewer can find the files without guessing.
 - The work has a clear audience and purpose, even if it is rough.
+- The concepts are genuinely different rather than cosmetic variations.
 - Facts, assumptions, missing information, and rights questions are easy to distinguish.
+- The work resembles a real Basic, Standard, or Premium service order.
 - You explain what you tried, what you would improve, and where you need a decision.
 - You stop at a boundary instead of publishing, sharing too broadly, spending, or inventing.
 
