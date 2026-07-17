@@ -1,10 +1,10 @@
 # Media Production
 
-Media Production is a digital media production company installation for the Anyang Intelligence Executive Operating System.
+Media Production is an internal department and service line of Anyang Intelligence. It provides creative production for Anyang Intelligence clients, internal ventures, and approved partners.
 
 ## Company
 
-Media Production is a creative operating context:
+Media Production is a creative operating department:
 
 - Work: digital media strategy, artistic content production, publishing support, and distribution.
 - Cadence: recurring editorial and production cycles.
@@ -22,7 +22,7 @@ Media Production is a creative operating context:
 
 ## Executive OS Role
 
-Anyang Intelligence acts as the executive operating layer for the production company.
+Anyang Intelligence owns the department's client relationships, budgets, approvals, operating system, and production decisions.
 
 In practical terms, the Executive OS helps:
 
@@ -91,6 +91,10 @@ See [grace-gems-monthly-service-package.md](grace-gems-monthly-service-package.m
 See [grace-gems-trust-architecture-kit.md](grace-gems-trust-architecture-kit.md) for the first Grace Gems visual trust production lane.
 
 ## Contractor Onboarding
+
+See [creative-production-operator-readiness-sprint.md](creative-production-operator-readiness-sprint.md) for the synthetic, pre-engagement readiness process. Preparing or running that sprint does not authorize candidate outreach, contracting, spending, or live client work.
+
+See [creative-production-operator-readiness-exercise.md](creative-production-operator-readiness-exercise.md) for the fixed claim-neutral exercise used by an authorized sprint.
 
 See [creative-production-operator-onboarding.md](creative-production-operator-onboarding.md) for the Creative Production Operator onboarding guide.
 

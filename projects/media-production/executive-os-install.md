@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Install Anyang Intelligence as the executive operating system for a digital media production company.
+Define Media Production as an internal Anyang Intelligence department and service line with a governed creative production operating system.
 
-The first paying client use case is providing monthly creative production support to Grace Gems for $1,000 per month.
+The first external client use case is Anyang Intelligence providing monthly creative production support to Grace Gems through Media Production for $1,000 per month.
 
 The first creative development lane is creating diverse supplementary artistic content for the Predictive History YouTube channel.
 
@@ -12,7 +12,7 @@ The system should help the company choose the right artistic directions, coordin
 
 ## Executive Mandate
 
-Anyang Intelligence should behave like the executive layer of the production company:
+Anyang Intelligence should govern Media Production as its parent organization:
 
 - See the whole media operation.
 - Maintain the editorial strategy, client context, and production memory.

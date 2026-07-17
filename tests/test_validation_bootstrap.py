@@ -91,6 +91,16 @@ def test_validation_command_set_matches_ci_controls():
     assert pytest_command[-1] == f"--basetemp={ROOT / '.pytest_cache' / f'validate-repo-{os.getpid()}'}"
 
 
+def test_python_launcher_prefers_bundled_dependency_aware_runtime():
+    launcher = PYTHON_LAUNCHER.read_text(encoding="utf-8")
+
+    bundled_marker = "$codexPython = Join-Path $env:USERPROFILE"
+    path_marker = "$pathPython = Get-Command python"
+    assert bundled_marker in launcher
+    assert path_marker in launcher
+    assert launcher.index(bundled_marker) < launcher.index(path_marker)
+
+
 def test_run_validation_prepares_pytest_parent_in_fresh_checkout(tmp_path: Path, monkeypatch):
     module = load_bootstrap()
     repo_root = tmp_path / "fresh-checkout"
@@ -120,7 +130,7 @@ def test_windows_launcher_has_stable_overrides_and_codex_fallback():
     assert "python_launcher.ps1" in launcher
     assert "[switch]$BootstrapOnly" in launcher
     assert "[switch]$Refresh" in launcher
-    assert "-not $selected -and $env:USERPROFILE" in resolver
+    assert "$env:USERPROFILE" in resolver
     assert "$pathPython.Source -and" in resolver
 
 

@@ -7,14 +7,18 @@ function Resolve-AnyangPython {
     } elseif ($env:ANYANG_PYTHON) {
         $selected = $env:ANYANG_PYTHON
     } else {
-        $pathPython = Get-Command python -ErrorAction SilentlyContinue
-        if ($pathPython -and $pathPython.Source -and (Test-Path -LiteralPath $pathPython.Source -PathType Leaf)) {
-            $selected = $pathPython.Source
-        }
-        if (-not $selected -and $env:USERPROFILE) {
+        # Prefer the bundled runtime so repository commands get the dependency
+        # set declared by the workspace rather than an arbitrary PATH Python.
+        if ($env:USERPROFILE) {
             $codexPython = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
             if (Test-Path -LiteralPath $codexPython -PathType Leaf) {
                 $selected = $codexPython
+            }
+        }
+        if (-not $selected) {
+            $pathPython = Get-Command python -ErrorAction SilentlyContinue
+            if ($pathPython -and $pathPython.Source -and (Test-Path -LiteralPath $pathPython.Source -PathType Leaf)) {
+                $selected = $pathPython.Source
             }
         }
         if (-not $selected) {

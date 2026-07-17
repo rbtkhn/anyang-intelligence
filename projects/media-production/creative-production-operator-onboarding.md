@@ -4,7 +4,11 @@ Position: Creative Production Operator, Media Production
 
 Audience: Creative Production Operator
 
-Engagement model: outsourced contract role for Media Production, not direct employment by Anyang Intelligence.
+Operating relationship: Media Production is an internal Anyang Intelligence department and service line.
+
+Engagement model: outsourced contract role engaged by Anyang Intelligence to support Media Production, not direct employment by Anyang Intelligence.
+
+Entry condition: begin this onboarding only after an authorized [readiness sprint](creative-production-operator-readiness-sprint.md) returns `Advance to bounded onboarding` or `Conditional advance` and any stated entry conditions are satisfied. That readiness decision does not itself authorize contracting, spending, client access, or live assignments.
 
 ## Welcome
 
@@ -262,7 +266,7 @@ Before starting, demonstrate basic fluency with the six free production tools be
 
 For these pre-training tasks, choose your own topic. Pick something you actually care about: a hobby, book, film, place, historical figure, recipe, product, sport, artist, local business, personal project, or learning goal. Use the same topic across all six tasks so the final folder feels like one small production package.
 
-After completing the tasks, upload the final work to GitHub. GitHub is the review destination for this pre-training package. In your own GitHub account, place the work in a folder path named `media-production/training/<chosen-topic>/`. Google Drive may be used for staging or large temporary files, but the submitted work should be represented in GitHub with clear file names and notes.
+Do not perform this pre-training path during the synthetic readiness sprint. Candidate-created readiness records and completed submissions must use the sprint owner's approved private storage outside Git. Any later training or portfolio exercise that uses GitHub requires separate human authorization and must not contain client data or private candidate records.
 
 ### 1. Canva Free: Thumbnail and Social Graphic Task
 
@@ -468,7 +472,7 @@ Pass standard:
 
 ## Day-One Assignment
 
-Your first assignment is to create a one-page production brief for one Grace Gems product/customer-support need or one Predictive History topic.
+After the lane-specific assignment gate passes, your first live assignment is to create a one-page production brief for one approved Grace Gems product/customer-support need or one approved Predictive History topic. Grace Gems work remains unavailable while its owner-approved business context is on `Hold`.
 
 The brief should include:
 

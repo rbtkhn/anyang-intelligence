@@ -4,6 +4,8 @@ Use this gate before a Media Production asset is treated as ready for client rev
 
 The goal is to confirm that the asset creates useful abundance: clarity, trust, reuse, learning, and lower friction.
 
+This gate owns asset quality and review readiness. It does not grant publication, client-delivery, rights-clearance, spending, contractor, or claim authority. When one of those permissions is unresolved, record the issue and route it to [permissions-and-authority-review.md](permissions-and-authority-review.md).
+
 ## Asset Metadata
 
 - Client:
@@ -43,8 +45,9 @@ Pass condition: the asset creates identifiable value beyond existing as content.
 - Is anything uncertain clearly flagged?
 - Does the asset avoid exaggeration or invented claims?
 - Are source notes, product references, or approval needs recorded?
+- Are any rights, licensing, client, publication, spend, or claim decisions still awaiting human authority?
 
-Pass condition: no material claim is unsupported or misleading.
+Pass condition: no material claim is unsupported or misleading, and unresolved authority questions are explicitly routed for review.
 
 ## 4. Reuse And Compounding
 
@@ -68,10 +71,10 @@ Pass condition: the asset is useful to someone outside the production process.
 
 - Does this fit the Creative Production Operator's current workload?
 - Does it require any paid tool, asset, contractor, or spend?
-- If spending is needed, has a human approved it?
+- If spending is needed, is the required human approval recorded or is the item held?
 - Does this asset create enough value to justify the effort?
 
-Pass condition: the work fits current capacity and budget constraints.
+Pass condition: the work fits current capacity and budget constraints; missing spend authority produces a hold or permissions review.
 
 ## 7. Final Decision
 

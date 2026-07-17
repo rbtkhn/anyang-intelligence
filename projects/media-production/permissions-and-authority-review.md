@@ -13,6 +13,8 @@ Use it between:
 
 Its purpose is to stop false completion when orchestration quality outruns real authority.
 
+The quality gate owns whether an asset is clear, useful, source-aware, reviewable, and ready for a human decision. This review owns whether the workflow is permitted to cross an authority boundary. Use the quality gate first for ordinary asset review; use this review when a permission or human-approval boundary is unresolved.
+
 ## Use When
 
 Run this review when a workflow or turn:
@@ -49,6 +51,8 @@ Common Media Production triggers:
 - propose revisions
 - surface likely rights or claim issues
 - recommend next action
+
+These are workflow-completion decisions, not permission to publish, deliver, spend, clear rights, or commit a contractor.
 
 ### Must Return For Human Approval
 

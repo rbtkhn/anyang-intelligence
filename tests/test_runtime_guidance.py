@@ -6,6 +6,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 ACTIVE_GUIDANCE = [
+    ROOT / "AGENTS.md",
     ROOT / "README.md",
     ROOT / "cli" / "README.md",
     ROOT / "docs" / "analytical-interfaces.md",
@@ -45,3 +46,11 @@ def test_active_skills_route_repo_commands_through_launchers() -> None:
     assert ".\\tools\\run.ps1 project harness" in harness
     assert ".\\tools\\validate.ps1" in coffee
     assert ".\\tools\\validate.ps1" in dream
+
+
+def test_agent_runtime_contract_routes_validation_through_canonical_launcher() -> None:
+    contract = (ROOT / "AGENTS.md").read_text(encoding="utf-8").lower()
+
+    assert ".\\tools\\validate.ps1" in contract
+    assert "python3 tools/validate_repo.py" in contract
+    assert "do not invoke pytest directly" in contract

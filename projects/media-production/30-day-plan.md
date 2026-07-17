@@ -1,15 +1,17 @@
 # Media Production 30-Day Plan
 
-This plan creates the first recurring review surfaces for Media Production without changing the underlying operating model.
+This plan creates the first recurring review surfaces for Media Production as an internal Anyang Intelligence department and service line.
 
 ## Week 1: Review Surface Baseline
 
 - Create the first risk register and decision log entries.
 - Review current Grace Gems and Predictive History priorities.
 - Confirm the production board, assignment gate, and quality gate are the active workflow front doors.
+- Prepare the Creative Production Operator readiness sprint and synthetic exercise; keep candidate contact and live client work behind separate authorization.
 
 ## Week 2: Assignment Discipline
 
+- If candidate interaction has been separately authorized, run the readiness sprint and record an evidence-backed decision outside Git.
 - Run all active or upcoming contractor-facing tasks through the assignment gate.
 - Normalize review packet expectations for every production handoff.
 - Identify the top recurring reasons assignments need revision.
@@ -25,4 +27,3 @@ This plan creates the first recurring review surfaces for Media Production witho
 - Run the first weekly-style operating review as a monthly checkpoint.
 - Update the risk register and decision log from real production pressure.
 - Choose the next 30-day production focus and backlog priorities.
-

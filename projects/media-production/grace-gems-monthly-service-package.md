@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Grace Gems is the first paying client for Media Production.
+Grace Gems is the first paying client served by Anyang Intelligence through its Media Production department.
 
-Grace Gems pays Media Production $1,000 per month for recurring creative production support. This retainer funds the first Media Production operating model:
+Grace Gems pays Anyang Intelligence $1,000 per month for recurring creative production support delivered through Media Production. This retainer funds the first Media Production operating model:
 
 - $500 per month for the outsourced Creative Production Operator contractor allocation.
 - $500 per month for tools, light asset costs, production support, experiments, or retained margin.
