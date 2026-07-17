@@ -98,6 +98,10 @@ See [creative-production-operator-readiness-exercise.md](creative-production-ope
 
 See [creative-production-operator-onboarding.md](creative-production-operator-onboarding.md) for the Creative Production Operator onboarding guide.
 
+See [creative-production-operator-prerequisite-skills-test.md](creative-production-operator-prerequisite-skills-test.md) for the 90-minute prerequisite, including Google Drive team file sharing.
+
+See [creative-production-operator-14-day-ramp.md](creative-production-operator-14-day-ramp.md) and [creative-production-operator-training-review.md](creative-production-operator-training-review.md) for guided onboarding and trainer review.
+
 See [creative-production-operator-assignment-gate.md](creative-production-operator-assignment-gate.md) before assigning any work to the Creative Production Operator.
 
 See [creative-production-operator-assignment-template.md](creative-production-operator-assignment-template.md) for the task brief format used after an assignment passes the gate.

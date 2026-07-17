@@ -90,7 +90,7 @@ def test_onboarding_distinguishes_internal_department_from_outsourced_role():
 
     assert "Media Production is an internal Anyang Intelligence department" in onboarding
     assert "outsourced contract role engaged by Anyang Intelligence" in onboarding
-    assert "completed submissions must use the sprint owner's approved private storage outside Git" in onboarding
+    assert "Do not upload client data or private candidate records" in onboarding
 
 
 def test_quality_gate_owns_readiness_and_routes_authority_questions():
@@ -108,3 +108,27 @@ def test_permissions_review_owns_authority_boundaries():
     assert "This review owns whether the workflow is permitted to cross an authority boundary" in permissions
     assert "not permission to publish, deliver, spend, clear rights, or commit a contractor" in permissions
     assert "sole owner for publication, delivery, rights clearance, spend, client commitment, claim approval, and contractor-authority boundaries" in harness_map
+
+
+def test_operator_training_has_bounded_prerequisite_and_google_drive_controls():
+    skills = read(PROJECT / "creative-production-operator-prerequisite-skills-test.md")
+    ramp = read(PROJECT / "creative-production-operator-14-day-ramp.md")
+    review = read(PROJECT / "creative-production-operator-training-review.md")
+    onboarding = read(PROJECT / "creative-production-operator-onboarding.md")
+
+    assert "90-minute prerequisite" in skills
+    assert "friendly 90-minute" in skills
+    assert "You do not need to produce portfolio-perfect work" in skills
+    assert "Suggested time" in skills
+    assert "Do not create an account or upload anything externally" in skills
+    for tool in ("Canva", "CapCut", "Audacity", "YouTube Studio", "Wikimedia Commons", "Google Drive"):
+        assert tool in skills
+    for folder in ("brief/", "assets/", "exports/", "source-notes/", "review/"):
+        assert folder in skills
+    assert "external repository submission" in skills
+    assert "synthetic or approved public-source topic" in skills
+    assert "Google Drive sharing is limited" in review
+    assert "14-Day Guided Ramp" in ramp
+    assert "assignment gate" in ramp
+    assert "current prerequisite is the" in onboarding
+    assert "legacy reference material only" in onboarding

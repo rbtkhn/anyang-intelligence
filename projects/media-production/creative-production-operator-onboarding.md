@@ -260,13 +260,15 @@ Use simple status labels:
 
 ## Pre-Training Tool Familiarity
 
+The current prerequisite is the friendly [90-minute skills test](creative-production-operator-prerequisite-skills-test.md), followed after a trainer `Pass` by the [14-day guided ramp](creative-production-operator-14-day-ramp.md). The long tool examples below are legacy reference material only; use the fixed prerequisite packet and [training review checklist](creative-production-operator-training-review.md) for an actual operator intake.
+
 Google Search and ChatGPT are assumed baseline skills for this role.
 
 Before starting, demonstrate basic fluency with the six free production tools below. Each task should take 20 minutes. The goal is not perfection. The goal is to show that you can produce, organize, and explain a useful draft under time pressure.
 
 For these pre-training tasks, choose your own topic. Pick something you actually care about: a hobby, book, film, place, historical figure, recipe, product, sport, artist, local business, personal project, or learning goal. Use the same topic across all six tasks so the final folder feels like one small production package.
 
-Do not perform this pre-training path during the synthetic readiness sprint. Candidate-created readiness records and completed submissions must use the sprint owner's approved private storage outside Git. Any later training or portfolio exercise that uses GitHub requires separate human authorization and must not contain client data or private candidate records.
+For the current prerequisite, use a public or private proof repository only after the trainer reviews its visibility and contents. Google Drive team sharing is a separate required competency and must use the trainer-approved synthetic/public-source folder boundary. Do not upload client data or private candidate records to either system.
 
 ### 1. Canva Free: Thumbnail and Social Graphic Task
 
