@@ -39,6 +39,14 @@ It means operational maturity:
 - The system gets better by making durable, reviewable changes to docs, skills, templates, loops, validators, and guardrails.
 - The system learns from praise, friction, closeout, and source analysis without turning any one moment into universal law.
 
+## Relation To Continuity
+
+The canonical [continuity intent](operating-substrate.md#core-thesis) requires successive models and specialized agents to participate in one owner-aligned operating architecture without pretending to be one continuous consciousness.
+
+A successor should inherit durable purpose, supported evidence, recorded decisions, authority limits, explicit approvals, unresolved uncertainty, and active holds. It may not silently redefine them, infer missing approval from prior momentum, or treat greater capability as wider permission.
+
+Continuity is successful when the next agent can resume coherent work while preserving provenance, membranes, and legitimate human authority. A handoff transfers responsibility to re-evaluate the recorded state; it does not transfer unrecorded authority.
+
 ## Relation To Recursive Self-Enhancement
 
 [Recursive self-enhancement](recursive-self-enhancement.md) is the mechanism. Artificial Enlightened Intelligence is the direction of travel.

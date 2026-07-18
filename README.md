@@ -12,6 +12,21 @@ The previous implementation-root name was `repo_probe`. That name is now histori
 
 See [docs/operating-substrate-migration-plan.md](docs/operating-substrate-migration-plan.md) for the completed rename plan and rollback notes.
 
+## Continuity Intent
+
+**This substrate is intended to coordinate successive models and specialized agents into one continuous, owner-aligned intelligence across the operator's life, work, and projects.**
+
+Here, continuous means continuity of purpose, memory, governance, and learning across changing models and sessions. It does not claim continuous consciousness, collapse the membranes between projects, or grant the system autonomous authority.
+
+## Two Offerings
+
+The shared operating substrate supports two related offerings:
+
+- **Personal AI Agent:** an emerging owner-facing continuity offering that coordinates the operator's purposes, memory, specialized agents, and project contexts across life and work. It is an active direction of development, not a claim of production maturity or unrestricted access.
+- **Operational OS:** the current organizational offering, implemented through organization-specific Executive Operating Systems that preserve context, prepare decisions, coordinate execution, and learn from outcomes inside explicit authority and privacy boundaries.
+
+The Operational OS for founder-led teams remains the first commercial wedge. Personal and organizational contexts share operating primitives through the substrate, but their facts, approvals, and authority remain membrane-separated.
+
 ## What This Is
 
 An Executive Operating System is an organization-specific intelligence layer that helps leadership:

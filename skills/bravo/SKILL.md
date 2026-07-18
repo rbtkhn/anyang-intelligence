@@ -54,6 +54,12 @@ Optional, only when directly relevant:
 - `skills/dream/SKILL.md`
 - the customer or skill artifact being praised
 
+## Intent Recovery Subroutine
+
+When praise is compressed or evaluative without explanation and recent context identifies the likely praised object, automatically read and follow `skills/intent-recovery/SKILL.md` in `Bravo` mode before the procedure below. Show `Recovered intent: <inferred valued property>` only when the inference materially affects the pattern classification. Use the full recovery output when more than one valued property is plausible.
+
+Skip recovery when the operator already names the valued property, gives an exact choice or command, or supplies an explicit preservation decision. Recovered praise remains inference and never upgrades `Pattern noticed` or `Pattern candidate` to `Preserve`.
+
 ## Procedure
 
 1. Identify the praised object. If unclear, name the most likely object from the immediate context.

@@ -41,6 +41,12 @@ Before business-specific questions:
 
 Return `Hold` when identity, authority, purpose, privacy, preservation, sharing, deletion, exclusions, or mode remains unclear. Request only the missing decision; do not pressure the owner to disclose private information.
 
+## Intent Recovery For Owner Language
+
+When an owner expresses a goal or constraint informally, metaphorically, or with acknowledged difficulty articulating it, automatically read and follow `skills/intent-recovery/SKILL.md` in `Business intake` mode before asking follow-up questions. Show the full intent-recovery output and ask the owner to confirm or correct the articulation before including it in a Proposed Business Context.
+
+Skip recovery for factual receipts, exact economics, explicit approvals, clear answers, and genuinely missing evidence. Never use recovered intent to supply economics, capacity, customer facts, private strategy, approval, or authority. Keep unconfirmed articulations out of completed packets and use `Missing` for unsupported facts.
+
 ## Create
 
 1. Require operator confirmation that no effective business context exists for the reference.

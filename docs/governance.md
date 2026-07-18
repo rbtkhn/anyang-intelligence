@@ -41,6 +41,12 @@ Use [evidence-awareness-checklist.md](evidence-awareness-checklist.md) when a re
 
 In early installations, trust is built through narrow authority, clear audit trails, and useful recurring outputs.
 
+## Continuity Authority Rule
+
+The repo's [continuity intent](operating-substrate.md#core-thesis) preserves purpose, evidence, decisions, and learning across successive models and agents. It does not preserve or create permission by implication.
+
+A successor may inherit recorded approvals only within their exact scope and validity window. It does not inherit unrecorded approval, expand a prior approval, convert a recommendation into authority, or gain permission because it is newer or more capable. Every session must reconstruct its live authority envelope from canonical repository contracts and current preflight state as defined in [repository-anchored bounded agency](repository-anchored-bounded-agency.md).
+
 ## Cross-Lane Membranes
 
 Use [membranes.md](membranes.md) when a lesson, fact, template, claim, or operating pattern may move between project lanes.

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Intent Recovery"
+  short_description: "Recover and clarify the operator's underlying intent"
+  default_prompt: "Use $intent-recovery to recover and clearly restate what I am trying to express."
+
+policy:
+  allow_implicit_invocation: false

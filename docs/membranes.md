@@ -8,6 +8,8 @@ Anyang Intelligence should learn across projects, but not everything should be s
 
 Transfer primitives, not private context.
 
+Continuity across the Personal AI Agent and Operational OS does not make project-local information globally available. The coordinating layer may route work and preserve the existence of separate obligations, but facts, evidence, approvals, credentials, and private strategy remain inside their governing contexts unless a membrane review permits a bounded transfer.
+
 A good membrane allows lessons to pass while blocking inappropriate leakage.
 
 ```text
@@ -172,6 +174,7 @@ Watch for:
 - **Governance leak:** tax, legal, child-safety, nonprofit, or property decisions bypass review.
 - **Identity leak:** a person, donor, contractor, child, customer, or family becomes identifiable when not needed.
 - **Commercial leak:** private pricing, margin, strategy, or performance assumptions become shared claims.
+- **Continuity leak:** a successor agent or coordinating layer treats access in one session or project as durable access everywhere.
 
 ## Product Implication
 

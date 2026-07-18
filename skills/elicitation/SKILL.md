@@ -9,6 +9,8 @@ Use this skill to draw out the minimum human input needed for high-quality Anyan
 
 Elicitation is not interrogation. It is a structured way to help the operator or customer make hidden context explicit so the Executive OS can act safely and usefully.
 
+When meaning is likely already present but compressed or poorly articulated, automatically read and follow the complete canonical [intent recovery](../intent-recovery/SKILL.md) contract before asking. Use its `Elicitation` mode and adaptive receipt. Use elicitation only when human input, authority, preference, evidence, or a consequential distinction is genuinely missing.
+
 ## Purpose
 
 Use elicitation to:
@@ -35,6 +37,10 @@ Ask questions when missing information materially affects:
 Do not ask when the answer is already in the repo, can be safely inferred, or the cost of delay is higher than the risk of a reasonable assumption.
 
 ## Procedure
+
+### 0. Recover Before Asking
+
+If the input qualifies for bounded automatic recovery, restate the high-confidence intent and continue without a question when the next step is already authorized and reversible. For medium confidence, show the full recovery output and ask only when the competing interpretations change the next action. Skip recovery for exact choices, clear commands, factual receipts, explicit approvals, and missing evidence.
 
 ### 1. Name The Unknowns
 

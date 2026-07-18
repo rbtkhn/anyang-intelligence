@@ -55,6 +55,12 @@ Optional, only when directly relevant:
 - `skills/dream/SKILL.md`
 - the customer, skill, CLI, or doc artifact that missed
 
+## Intent Recovery Subroutine
+
+When dissatisfaction is compressed or evaluative without explanation and recent context identifies the likely missed object, automatically read and follow `skills/intent-recovery/SKILL.md` in `Friction` mode before the procedure below. Show `Recovered intent: <inferred desired correction>` only when it materially affects the repair path. Use the full recovery output when competing corrections would lead to different work.
+
+Skip recovery when the operator already states the miss, gives an exact choice or command, or explicitly authorizes a specific repair. Recovered dissatisfaction remains inference and never authorizes file edits or broad overcorrection.
+
 ## Procedure
 
 1. Identify the missed object. If unclear, name the most likely object from the immediate context.

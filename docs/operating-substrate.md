@@ -22,6 +22,10 @@ See [operating-substrate-migration-plan.md](operating-substrate-migration-plan.m
 
 ## Core Thesis
 
+This substrate is intended to coordinate successive models and specialized agents into one continuous, owner-aligned intelligence across the operator's life, work, and projects.
+
+The continuity is architectural rather than a claim of consciousness or identity. Purpose, memory, evidence, governance, and learning should survive changes in model, agent, tool, machine, and session while project membranes and legitimate human authority remain intact.
+
 Anyang Intelligence compounds when real customer work produces reusable operating primitives.
 
 The pattern is:

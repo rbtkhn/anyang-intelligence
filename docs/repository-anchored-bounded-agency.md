@@ -2,6 +2,8 @@
 
 Repository-anchored bounded agency separates durable operating authority from temporary session state.
 
+This is the permission model beneath the canonical [continuity intent](operating-substrate.md#core-thesis). Successive models and specialized agents can inherit durable purpose, evidence, obligations, and governance from the repository, but each session must reconstruct current permission rather than treating continuity as standing authority.
+
 ```text
 repository contracts = durable memory
 canonical data = authority for a declared operation
@@ -27,6 +29,8 @@ This layer composes existing controls rather than replacing them:
 - Git and filesystem inspection reconstruct live repository state.
 
 Artifact authority and phase permission are different. An artifact declaration says what a surface means and how it may be maintained. A phase envelope says which subset of those operations a temporary session may perform.
+
+Model or agent succession does not widen that subset. Missing, stale, revoked, ambiguous, or out-of-scope approval remains unavailable until the operator or governing contract resolves it.
 
 ## State Roles
 
