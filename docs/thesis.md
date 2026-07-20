@@ -19,6 +19,8 @@ The canonical continuity intent and its boundaries are defined in [Operating Sub
 
 Interpretation gate: when a proposed thesis change begins as compressed or metaphorical operator language, load [intent recovery](../skills/intent-recovery/SKILL.md) in `Product doctrine` mode. Preserve the result as a vision, product hypothesis, or doctrine candidate until the operator explicitly approves both the direction and any repository edit.
 
+Current approved strategic hypothesis: [Trusted Intelligence Integration](trusted-intelligence-integration.md). It is a positioning lens layered over the existing Executive OS thesis, not an approved replacement.
+
 ## First Principles
 
 Every organization needs four executive functions:

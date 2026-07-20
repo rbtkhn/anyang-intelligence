@@ -15,6 +15,8 @@ The first commercial product remains a service-led Operational OS installation t
 
 Interpretation gate: before converting compressed operator language into a product claim or product-definition change, load [intent recovery](../skills/intent-recovery/SKILL.md) in `Product doctrine` mode. An inferred articulation is not an approved direction or authorization to edit this surface.
 
+Approved positioning hypothesis: [Trusted Intelligence Integration](trusted-intelligence-integration.md). Validate it through the existing service-led Executive OS wedge before changing the approved product category.
+
 ## Strategic Direction: Embodied Agency
 
 Anyang Intelligence builds governed intelligence systems that help people understand, coordinate, and eventually act in digital and physical worlds. The Executive OS is the control layer: it preserves context, frames decisions, records approvals, verifies outcomes, and escalates exceptions before a system is trusted with a wider scope of action.
