@@ -43,7 +43,7 @@ Compare the signal against existing Singularity Science sources. Identify recurr
 
 Propose a receiving lane or research task, but do not create it automatically. State why the lane is appropriate, what stays inside Singularity Science, what human approval is required, and what customer or public authority is explicitly not created.
 
-Use `cli/anyang_loop/worldmonitor_promotion_gate.py` when deciding whether a receipt should remain a receipt, be held, be rejected as noise, or become eligible for human-reviewed Singularity Science source-note promotion. The gate never writes an archive artifact.
+Use `cli/anyang_loop/worldmonitor_promotion_gate.py` when deciding whether a receipt should remain a receipt, be held, be rejected as noise, or become eligible for human-reviewed Singularity Science source-note promotion. A promote disposition requires `archive_approval_status=approved` and a non-empty `archive_approval_receipt_ref`; the gate never writes an archive artifact.
 
 ### Closeout
 

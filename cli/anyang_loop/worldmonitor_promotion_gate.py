@@ -32,6 +32,8 @@ def evaluate_promotion(
     rights_status_known: bool,
     independent_corroboration: bool = False,
     duplicate_of: str | None = None,
+    archive_approval_status: str = "not_requested",
+    archive_approval_receipt_ref: str = "",
 ) -> PromotionDecision:
     """Return a promotion recommendation without writing or routing anything."""
     if receipt.lane != "singularity-science":
@@ -48,4 +50,9 @@ def evaluate_promotion(
         return PromotionDecision(PromotionDisposition.HOLD, "Hold until freshness or confidence uncertainty is resolved.")
     if not independent_corroboration:
         return PromotionDecision(PromotionDisposition.RETAIN_RECEIPT, "Retain as an external receipt pending independent corroboration.")
+    if archive_approval_status != "approved" or not archive_approval_receipt_ref.strip():
+        return PromotionDecision(
+            PromotionDisposition.HOLD,
+            "Evidence is eligible for review, but explicit archive approval and a receipt reference are required before source-note intake.",
+        )
     return PromotionDecision(PromotionDisposition.PROMOTE_SOURCE_NOTE, "Eligible for human-reviewed Singularity Science source-note promotion; no archive write performed.")

@@ -32,6 +32,8 @@ def test_relevant_signal_with_complete_evidence_is_only_eligible_for_human_promo
         source_body_available=True,
         rights_status_known=True,
         independent_corroboration=True,
+        archive_approval_status="approved",
+        archive_approval_receipt_ref="approval://singularity-science/001",
     )
     assert decision.disposition is PromotionDisposition.PROMOTE_SOURCE_NOTE
     assert decision.human_review_required is True
@@ -47,6 +49,30 @@ def test_missing_source_body_holds(receipt):
 def test_uncorroborated_signal_stays_at_receipt(receipt):
     decision = evaluate_promotion(receipt, materially_relevant=True, source_body_available=True, rights_status_known=True)
     assert decision.disposition is PromotionDisposition.RETAIN_RECEIPT
+
+
+def test_corroborated_signal_without_archive_approval_is_held(receipt):
+    decision = evaluate_promotion(
+        receipt,
+        materially_relevant=True,
+        source_body_available=True,
+        rights_status_known=True,
+        independent_corroboration=True,
+    )
+    assert decision.disposition is PromotionDisposition.HOLD
+    assert "archive approval" in decision.rationale
+
+
+def test_archive_approval_requires_receipt_reference(receipt):
+    decision = evaluate_promotion(
+        receipt,
+        materially_relevant=True,
+        source_body_available=True,
+        rights_status_known=True,
+        independent_corroboration=True,
+        archive_approval_status="approved",
+    )
+    assert decision.disposition is PromotionDisposition.HOLD
 
 
 def test_duplicate_signal_is_not_promoted(receipt):

@@ -20,6 +20,8 @@ This gate is the bridge between the World Monitor receipt layer and the Innermos
 - Does promotion preserve observation/inference separation?
 - What human approval is required before source-note creation?
 
+Promotion is not allowed to proceed on evidence quality alone. The caller must supply `archive_approval_status=approved` and a non-empty `archive_approval_receipt_ref`. Without both, the disposition remains `hold-for-more-evidence`.
+
 ## Boundary
 
 The gate does not create a source note, transcript, claim, approval, customer routing, public statement, permission, or doctrine. Its output is a recommendation for the existing Singularity Intake workflow.
