@@ -1,5 +1,7 @@
 # Operating Review: Where Changed Evidence Alters the Next Decision
 
+> Add the [authority header](authority-header.md) before recording a consequential review.
+
 Title rationale: This reusable title makes the review's intellectual operation—turning changed evidence into a decision—visible before project-specific drafting.
 
 ## Review Date

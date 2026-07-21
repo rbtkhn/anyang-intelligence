@@ -1,5 +1,7 @@
 # Decision Log
 
+> Add the [authority header](authority-header.md) to every consequential decision.
+
 | Date | Decision | Owner | Status | Review date | Source memo |
 | --- | --- | --- | --- | --- | --- |
 |  |  |  |  |  |  |

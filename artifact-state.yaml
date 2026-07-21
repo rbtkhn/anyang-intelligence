@@ -12,6 +12,25 @@ exceptions: []
 # This curated manifest governs consequential artifact roles. Paths may describe
 # external operator-controlled storage; validation inspects declarations, not data.
 artifacts:
+  ai-ceo-authority-envelope:
+    path: authority-envelope.yaml
+    operation: Define durable, reviewed authority domains and prohibitions for the Anyang AI CEO.
+    domain: governance
+    authority: canonical
+    data_class: public
+    provenance:
+      sources: [operator-governance]
+      origin: Human-reviewed authority contract for Anyang Intelligence.
+    mutability:
+      method: Reviewed operator change followed by authority validation.
+      writers: [repository-operator]
+      direct_edit: reviewed-only
+    recovery:
+      method: Restore the last reviewed Git version and rerun authority validation.
+      verification: [authority-schema-check, prohibition-check]
+    git:
+      tracked: true
+
   epistemic-state-contract:
     path: epistemic-state.yaml
     operation: Bind consequential repository surfaces to claim identity, state, provenance, dependencies, review triggers, and approval posture.

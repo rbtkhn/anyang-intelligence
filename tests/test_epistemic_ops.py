@@ -110,7 +110,7 @@ def test_v3_to_v4_migration_preserves_claim_and_marks_history_unresolved(tmp_pat
         migrate(connection, NOW)
         claim = connection.execute("SELECT * FROM claim WHERE id = 'c1'").fetchone()
         transition = connection.execute("SELECT * FROM claim_transition WHERE claim_id = 'c1'").fetchone()
-        assert schema_version(connection) == SCHEMA_VERSION == 4
+        assert schema_version(connection) == SCHEMA_VERSION
         assert (claim["text"], claim["scope"], claim["status"]) == (
             "Preserved legacy text",
             "Preserved scope",

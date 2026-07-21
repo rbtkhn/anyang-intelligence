@@ -6,7 +6,7 @@ import sqlite3
 from pathlib import Path
 
 
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 6
 
 
 SCHEMA = """
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS authority_grant (
     id TEXT PRIMARY KEY,
     tenant_id TEXT NOT NULL REFERENCES tenant(id),
     actor_id TEXT NOT NULL REFERENCES actor(id),
-    scope TEXT NOT NULL CHECK (scope IN ('assign', 'claim_use', 'spend', 'delivery', 'publication')),
+    scope TEXT NOT NULL CHECK (scope IN ('assign', 'claim_use', 'spend', 'delivery', 'publication', 'business_context')),
     effective_at TEXT NOT NULL,
     expires_at TEXT,
     revoked_at TEXT,
@@ -232,6 +232,117 @@ CREATE TABLE IF NOT EXISTS event (
     created_at TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS authority_receipt (
+    id TEXT PRIMARY KEY,
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    actor TEXT NOT NULL CHECK (actor IN ('engineer', 'executive', 'interface', 'client')),
+    domain TEXT NOT NULL,
+    lane TEXT NOT NULL,
+    action TEXT NOT NULL,
+    target TEXT NOT NULL,
+    limits TEXT NOT NULL DEFAULT '',
+    evidence_ref TEXT NOT NULL,
+    approver TEXT NOT NULL CHECK (approver IN ('engineer', 'client')),
+    effective_at TEXT NOT NULL,
+    expires_at TEXT NOT NULL,
+    review_cadence TEXT NOT NULL DEFAULT '',
+    audit_ref TEXT NOT NULL,
+    recovery_ref TEXT NOT NULL,
+    status TEXT NOT NULL CHECK (status IN ('proposed', 'approved', 'revoked', 'expired')),
+    revoked_at TEXT,
+    created_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS authority_conflict (
+    id TEXT PRIMARY KEY,
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    target TEXT NOT NULL,
+    instructions_json TEXT NOT NULL,
+    resolution_owner TEXT NOT NULL CHECK (resolution_owner IN ('engineer', 'client')),
+    status TEXT NOT NULL CHECK (status IN ('open', 'resolved')),
+    resolution TEXT NOT NULL DEFAULT '',
+    created_at TEXT NOT NULL,
+    resolved_at TEXT
+);
+
+CREATE TABLE IF NOT EXISTS emergency_stop (
+    id TEXT PRIMARY KEY,
+    repo_id TEXT NOT NULL,
+    status TEXT NOT NULL CHECK (status IN ('active', 'cleared')),
+    activated_by TEXT NOT NULL CHECK (activated_by = 'engineer'),
+    reason TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    cleared_at TEXT,
+    restart_receipt_ref TEXT NOT NULL DEFAULT ''
+);
+
+CREATE TABLE IF NOT EXISTS authority_observation (
+    id TEXT PRIMARY KEY,
+    tenant_id TEXT REFERENCES tenant(id),
+    actor TEXT NOT NULL,
+    domain TEXT NOT NULL,
+    lane TEXT NOT NULL,
+    action TEXT NOT NULL,
+    target TEXT NOT NULL,
+    outcome TEXT NOT NULL,
+    receipt_id TEXT REFERENCES authority_receipt(id),
+    evidence_ref TEXT NOT NULL DEFAULT '',
+    minutes REAL NOT NULL DEFAULT 0 CHECK (minutes >= 0),
+    created_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS business_context_version (
+    id TEXT PRIMARY KEY,
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    business_reference TEXT NOT NULL,
+    version_label TEXT NOT NULL,
+    base_context_id TEXT REFERENCES business_context_version(id),
+    external_content_ref TEXT NOT NULL,
+    content_hash TEXT NOT NULL,
+    authority_receipt_ref TEXT NOT NULL,
+    readiness TEXT NOT NULL CHECK (readiness IN ('ready', 'provisional', 'hold')),
+    state TEXT NOT NULL CHECK (state IN (
+        'proposed', 'awaiting_persistence', 'effective', 'superseded',
+        'rejected', 'changes_requested', 'hold'
+    )),
+    created_by TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    effective_at TEXT,
+    superseded_at TEXT,
+    UNIQUE (tenant_id, version_label)
+);
+
+CREATE TABLE IF NOT EXISTS business_context_evidence (
+    id TEXT PRIMARY KEY,
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    context_version_id TEXT NOT NULL REFERENCES business_context_version(id),
+    evidence_class TEXT NOT NULL CHECK (evidence_class IN ('confirmed', 'estimate', 'hypothesis', 'missing')),
+    evidence_kind TEXT NOT NULL,
+    redacted_summary TEXT NOT NULL,
+    source_ref TEXT NOT NULL,
+    confidence TEXT NOT NULL CHECK (confidence IN ('high', 'medium', 'low', 'unknown')),
+    sensitivity TEXT NOT NULL CHECK (sensitivity IN ('public', 'internal', 'private', 'restricted')),
+    created_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS business_context_decision (
+    id TEXT PRIMARY KEY,
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    context_version_id TEXT NOT NULL REFERENCES business_context_version(id),
+    decision_type TEXT NOT NULL CHECK (decision_type IN (
+        'context_approval', 'persistence_confirmation', 'operating_review_authorization'
+    )),
+    decision TEXT NOT NULL CHECK (decision IN (
+        'approved', 'rejected', 'changes_requested', 'confirmed', 'failed', 'declined'
+    )),
+    actor_id TEXT NOT NULL REFERENCES actor(id),
+    subject_hash TEXT NOT NULL,
+    conditions TEXT NOT NULL DEFAULT '',
+    external_ref TEXT NOT NULL DEFAULT '',
+    revoked_at TEXT,
+    created_at TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS learning_event (
     id TEXT PRIMARY KEY,
     tenant_id TEXT NOT NULL REFERENCES tenant(id),
@@ -289,6 +400,44 @@ CREATE INDEX IF NOT EXISTS idx_cadence_measurement_repo_occurred ON cadence_meas
 CREATE INDEX IF NOT EXISTS idx_claim_transition_claim_version ON claim_transition(claim_id, version);
 CREATE INDEX IF NOT EXISTS idx_claim_dependency_upstream ON claim_dependency(upstream_claim_id, active);
 CREATE INDEX IF NOT EXISTS idx_epistemic_impact_status ON epistemic_impact(tenant_id, status, impact_type);
+CREATE INDEX IF NOT EXISTS idx_business_context_tenant_state ON business_context_version(tenant_id, state);
+CREATE INDEX IF NOT EXISTS idx_business_context_evidence_version ON business_context_evidence(context_version_id, evidence_class);
+CREATE INDEX IF NOT EXISTS idx_business_context_decision_version ON business_context_decision(context_version_id, decision_type, created_at);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_business_context_one_effective
+ON business_context_version(tenant_id) WHERE state = 'effective';
+
+CREATE TRIGGER IF NOT EXISTS business_context_content_immutable
+BEFORE UPDATE OF business_reference, version_label, base_context_id, external_content_ref,
+    content_hash, authority_receipt_ref, readiness, created_by, created_at
+ON business_context_version
+BEGIN
+    SELECT RAISE(ABORT, 'business context version content is immutable');
+END;
+
+CREATE TRIGGER IF NOT EXISTS business_context_evidence_immutable_update
+BEFORE UPDATE ON business_context_evidence
+BEGIN
+    SELECT RAISE(ABORT, 'business context evidence is immutable');
+END;
+
+CREATE TRIGGER IF NOT EXISTS business_context_evidence_immutable_delete
+BEFORE DELETE ON business_context_evidence
+BEGIN
+    SELECT RAISE(ABORT, 'business context evidence is immutable');
+END;
+
+CREATE TRIGGER IF NOT EXISTS business_context_decision_immutable_update
+BEFORE UPDATE ON business_context_decision
+BEGIN
+    SELECT RAISE(ABORT, 'business context decisions are immutable');
+END;
+
+CREATE TRIGGER IF NOT EXISTS business_context_decision_immutable_delete
+BEFORE DELETE ON business_context_decision
+BEGIN
+    SELECT RAISE(ABORT, 'business context decisions are immutable');
+END;
 
 CREATE TRIGGER IF NOT EXISTS claim_transition_append_only_update
 BEFORE UPDATE ON claim_transition
@@ -316,6 +465,7 @@ def connect(path: str | Path, *, create_parent: bool = False) -> sqlite3.Connect
 
 def migrate(connection: sqlite3.Connection, applied_at: str) -> None:
     connection.executescript(SCHEMA)
+    _ensure_business_context_authority_scope(connection)
     _ensure_column(connection, "source", "origin_group", "TEXT")
     _ensure_column(
         connection,
@@ -336,6 +486,41 @@ def migrate(connection: sqlite3.Connection, applied_at: str) -> None:
         (SCHEMA_VERSION, applied_at),
     )
     connection.commit()
+
+
+def _ensure_business_context_authority_scope(connection: sqlite3.Connection) -> None:
+    row = connection.execute(
+        "SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'authority_grant'"
+    ).fetchone()
+    if row and "business_context" in str(row[0]):
+        return
+    connection.execute("PRAGMA foreign_keys = OFF")
+    try:
+        connection.executescript(
+            """
+            ALTER TABLE authority_grant RENAME TO authority_grant_v4;
+            CREATE TABLE authority_grant (
+                id TEXT PRIMARY KEY,
+                tenant_id TEXT NOT NULL REFERENCES tenant(id),
+                actor_id TEXT NOT NULL REFERENCES actor(id),
+                scope TEXT NOT NULL CHECK (scope IN (
+                    'assign', 'claim_use', 'spend', 'delivery', 'publication', 'business_context'
+                )),
+                effective_at TEXT NOT NULL,
+                expires_at TEXT,
+                revoked_at TEXT,
+                created_at TEXT NOT NULL
+            );
+            INSERT INTO authority_grant(
+                id, tenant_id, actor_id, scope, effective_at, expires_at, revoked_at, created_at
+            )
+            SELECT id, tenant_id, actor_id, scope, effective_at, expires_at, revoked_at, created_at
+            FROM authority_grant_v4;
+            DROP TABLE authority_grant_v4;
+            """
+        )
+    finally:
+        connection.execute("PRAGMA foreign_keys = ON")
 
 
 def _ensure_column(connection: sqlite3.Connection, table: str, column: str, declaration: str) -> None:

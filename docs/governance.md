@@ -4,6 +4,14 @@
 
 The Executive OS is advisory infrastructure. Humans remain accountable for decisions, commitments, approvals, and external claims.
 
+## Executive Authority Envelope
+
+The Anyang Executive operates under the reviewed [authority envelope](../authority-envelope.yaml). The envelope defines bounded organizational coordination; it does not transfer legal personhood, human accountability, or client-company authority to the Executive.
+
+The Engineer retains final system and company authority. The Executive may prepare, prioritize, coordinate, direct the Interface within delegated scope, and propose reversible internal changes. Execution of consequential actions requires an explicit current approval receipt. Preflight reports the active envelope but never grants authority.
+
+Every grant names its lane, permitted actions, exclusions, evidence, approver, effective date, expiry or review date, audit record, revocation path, and recovery method. Grace Gems and other clients remain advisory boundaries; their human CEOs retain authority over their companies.
+
 ## Authority Boundaries
 
 The system may:

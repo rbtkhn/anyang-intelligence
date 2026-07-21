@@ -32,6 +32,8 @@ from .epistemic_benchmark import (
     score_epistemic_benchmark,
 )
 from .bounded_agency import AgencyContractError, validate_agency_manifest
+from .authority import authority_preflight, validate_authority_envelope
+from .authority_inventory import inventory_authority, render_inventory
 from .phase_preflight import (
     TRANSCRIPT_PHASE,
     render_preflight,
@@ -141,6 +143,22 @@ def build_parser() -> argparse.ArgumentParser:
     agency = subparsers.add_parser("validate-agency", help="Validate repository-anchored bounded-agency contracts")
     agency.add_argument("--manifest")
     agency.set_defaults(func=cmd_validate_agency)
+
+    authority = subparsers.add_parser("validate-authority", help="Validate the Anyang AI CEO authority envelope")
+    authority.add_argument("--manifest")
+    authority.set_defaults(func=cmd_validate_authority)
+
+    authority_preflight_cmd = subparsers.add_parser("authority-preflight", help="Report authority without granting it")
+    authority_preflight_cmd.add_argument("--domain", required=True)
+    authority_preflight_cmd.add_argument("--action", required=True)
+    authority_preflight_cmd.add_argument("--manifest")
+    authority_preflight_cmd.add_argument("--format", choices=("text", "json"), default="text")
+    authority_preflight_cmd.set_defaults(func=cmd_authority_preflight)
+
+    inventory = subparsers.add_parser("authority-inventory", help="Inventory role and authority drift without mutation")
+    inventory.add_argument("--repo", default=".")
+    inventory.add_argument("--format", choices=("text", "json"), default="text")
+    inventory.set_defaults(func=cmd_authority_inventory)
 
     epistemics = subparsers.add_parser(
         "validate-epistemics", help="Validate curated claim state, provenance, dependency, and transition contracts"
@@ -335,6 +353,35 @@ def cmd_validate_agency(args: argparse.Namespace) -> int:
     if diagnostics:
         return 1
     print("OK bounded agency contracts")
+    return 0
+
+
+def cmd_validate_authority(args: argparse.Namespace) -> int:
+    diagnostics = validate_authority_envelope(args.manifest)
+    for diagnostic in diagnostics:
+        print(f"ERROR {diagnostic.code} {diagnostic.path.as_posix()}: {diagnostic.message}")
+    if diagnostics:
+        return 1
+    print("OK AI CEO authority envelope")
+    return 0
+
+
+def cmd_authority_preflight(args: argparse.Namespace) -> int:
+    result = authority_preflight(args.domain, args.action, args.manifest)
+    if args.format == "json":
+        print(json.dumps(result.as_dict(), indent=2, sort_keys=True))
+    else:
+        print(f"{result.status.upper()}: {result.domain}/{result.action}")
+        print(f"- approver: {result.authority}")
+        print(f"- approval required: {result.approval_required}")
+        print(f"- enforcement: preflight reports; never grants authority")
+        for blocker in result.blockers:
+            print(f"- blocker: {blocker}")
+    return 1 if result.status == "blocked" else 0
+
+
+def cmd_authority_inventory(args: argparse.Namespace) -> int:
+    print(render_inventory(inventory_authority(args.repo), args.format), end="")
     return 0
 
 

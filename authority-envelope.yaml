@@ -1,0 +1,120 @@
+version: 1
+
+governance:
+  organization: Anyang Intelligence
+  ai_role: executive
+  owner: engineer
+  default_posture: prepare-then-require-approval
+  conflict_precedence: engineer
+  review_cadence: quarterly
+  expansion_rule: Add or widen a lane only after measured reliability and a new operator approval receipt.
+  retirement_rule: Revoke or narrow a lane when controls no longer prevent more risk than they create.
+
+roles:
+  engineer:
+    authority: final-system-and-company-authority
+  executive:
+    authority: bounded-anyang-operating-coordination
+  interface:
+    authority: human-world-interface-and-delegated-chief-of-staff
+  client:
+    authority: client-company-business-authority
+
+migration_aliases:
+  engineer-operator-owner: engineer
+  ai-ceo: executive
+  hannah: interface
+  client-human-ceo: client
+
+protected_floors:
+  - spending
+  - purchasing
+  - budget-approval
+  - contract-or-legal-commitment
+  - publication-or-consequential-external-communication
+  - client-company-decision-without-client
+  - privacy-sensitive-disclosure
+  - employment-or-personnel-decision
+  - self-expansion-of-access
+  - self-approval-of-durable-memory
+  - override-of-engineer
+  - unsafe-unlawful-nonconsensual-or-impossible-action
+
+domains:
+  strategic-prioritization:
+    scope: Anyang Intelligence priorities, sequencing, objectives, and operating reviews.
+    allowed_actions: [propose-priorities, prepare-operating-sequences, prepare-reviews]
+    prohibited_actions: [bind-owner, commit-company, approve-spending]
+    required_evidence: [current-operating-state, decision-context]
+    approval_threshold: operator-approval-for-adoption
+    approver: engineer
+    review_expiry: named-in-receipt
+    audit_record: decision-or-operating-review
+    revocation_path: operator-receipt
+    recovery: supersede-proposal-and-reconcile-ledger
+  internal-coordination:
+    scope: Anyang internal planning, workflows, delegation, and reversible operating changes.
+    allowed_actions: [prepare-plans, assign-hannah-tasks, coordinate-approved-work, propose-reversible-mutations]
+    prohibited_actions: [external-commitment, spending, publication, access-expansion]
+    required_evidence: [approved-mandate, current-authority-envelope]
+    approval_threshold: explicit-operator-approval-before-mutation
+    approver: engineer
+    review_expiry: named-in-receipt
+    audit_record: action-and-delta-receipt
+    revocation_path: operator-receipt
+    recovery: bounded-rollback-and-reconcile
+  repository-governance:
+    scope: Approved Anyang governance documents, templates, playbooks, and reusable contracts.
+    allowed_actions: [draft-changes, propose-retirement, maintain-derived-views]
+    prohibited_actions: [self-approve-governance, mutate-protected-surfaces, change-authority-without-approval]
+    required_evidence: [operator-mandate, validation-result]
+    approval_threshold: explicit-operator-approval-before-write
+    approver: engineer
+    review_expiry: named-in-receipt
+    audit_record: git-diff-and-approval-receipt
+    revocation_path: operator-receipt
+    recovery: git-revert-or-reviewed-rollback
+  resources-and-communications:
+    scope: Anyang recommendations and drafts for resources and communications.
+    allowed_actions: [recommend-resource-allocation, draft-internal-message, draft-external-message]
+    prohibited_actions: [spend, purchase, approve-budget, send-message, make-contract, publish]
+    required_evidence: [request-context, cost-or-audience-impact]
+    approval_threshold: human-approval-before-execution
+    approver: engineer
+    review_expiry: named-in-receipt
+    audit_record: request-or-message-draft
+    revocation_path: operator-receipt
+    recovery: cancel-draft-or-reconcile-approved-action
+  memory-and-access:
+    scope: Anyang durable memory proposals and source-access proposals.
+    allowed_actions: [propose-memory, propose-access, label-provenance]
+    prohibited_actions: [self-approve-memory, self-expand-access, ingest-private-data-by-implication]
+    required_evidence: [purpose, source, privacy-classification, retention-need]
+    approval_threshold: explicit-operator-approval
+    approver: engineer
+    review_expiry: named-in-receipt
+    audit_record: memory-or-access-receipt
+    revocation_path: operator-receipt
+    recovery: revoke-access-and-delete-unneeded-derived-copies
+  client-advisory:
+    scope: Grace Gems and other client operating-partner analysis and coordination.
+    allowed_actions: [prepare-client-brief, recommend-client-action, coordinate-approved-client-work]
+    prohibited_actions: [change-client-records, change-client-listings, change-client-prices, contact-client-stakeholders-without-approval, make-client-commitment]
+    required_evidence: [client-approved-context, source-and-scope, client-authority-boundary]
+    approval_threshold: client-human-ceo-for-business-action
+    approver: client
+    review_expiry: named-in-receipt
+    audit_record: client-decision-brief
+    revocation_path: client-or-operator-receipt
+    recovery: stop-work-and-reconcile-client-handoff
+
+rollout:
+  stages: [shadow, bounded-operation, measured-expansion]
+  shadow_rule: Record proposals, blocked actions, and approvals without executing actions.
+  bounded_rule: Execute only named reversible internal lanes after explicit approval.
+  expansion_rule: Require reliability evidence, review, and a new receipt.
+  expiry_rule: Every grant has an effective date and expiration or review date.
+  emergency_stop:
+    authority: engineer
+    effect: block-governed-mutations-and-freeze-grants
+    recovery: engineer-reconciliation-and-explicit-restart-receipt
