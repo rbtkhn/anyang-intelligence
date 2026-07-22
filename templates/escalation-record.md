@@ -5,6 +5,7 @@
 - Date and reporter:
 - Message type: `escalation`
 - Trigger: `Authority / Deadline / Privacy / Legal / Reputation / Conflicting instruction / Tool failure / Other`
+- Executive Council trigger: Money / Spending / Pricing / Compensation / Publication / Rights / Claims / External representation / Legal / Tax / Medical / Educational / Safety / Child-related / Privacy / New commitment / Changed scope / Unclear ownership / Contradictory facts / Out-of-scope third-party request
 - Situation:
 - Direct observations:
 - Explicit stakeholder statements:
@@ -17,5 +18,7 @@
 - Decision owner:
 - Stop condition:
 - Approved action:
+- Authority scope:
+- No action taken if held or blocked:
 - Recovery or follow-up:
 - Closed date:

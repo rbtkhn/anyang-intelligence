@@ -1,8 +1,8 @@
 # Loops
 
-Loops are the operating spine of Anyang Intelligence.
+Loops are the operating spine of Executive Council, the product developed by Anyang Intelligence.
 
-An Executive OS is not just memory, a dashboard, or a chat interface. It is a set of living loops that turn context into decisions, decisions into coordinated action, action into evidence, and evidence into better future judgment.
+Executive Council is not just memory, a dashboard, or a chat interface. It is a set of living loops that turn context into decisions, decisions into coordinated action, action into evidence, and evidence into better future judgment.
 
 ## Canonical Executive Loop
 
@@ -17,7 +17,7 @@ memory
   -> updated memory
 ```
 
-This is the core recursive structure of the Executive OS.
+This is the core recursive structure of Executive Council.
 
 - `memory` preserves facts, assumptions, commitments, risks, and open loops.
 - `decision` turns ambiguity into options, tradeoffs, recommendations, and human approval points.
@@ -57,7 +57,7 @@ Examples:
 
 ### Governance Loops
 
-Governance loops prevent the Executive OS from acting beyond authority.
+Governance loops prevent Executive Council from acting beyond authority.
 
 Examples:
 

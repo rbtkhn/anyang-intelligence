@@ -72,12 +72,12 @@ def build_loops(spec: ProjectInput) -> list[LoopDefinition]:
             tags=["generated", "learning"],
             signal="An operating review, outcome, surprise, mistake, or useful pattern appears.",
             memory_objects=["Expected outcome", "Actual outcome", "Surprises", "Lessons", "Changed risks"],
-            decision="Decide what the Executive OS should remember, change, preserve, or stop doing next cycle.",
+            decision="Decide what Executive Council should remember, change, preserve, or stop doing next cycle.",
             action="Update memory, templates, risk register, decision log, or review questions after human approval.",
             evidence="Lesson learned, review note, changed template, risk update, decision record, or artifact.",
             cadence=spec.primary_cadence,
             learning_update="Convert outcomes into updated memory and candidate reusable primitives after membrane review.",
-            governance_boundary="Humans decide whether lessons become project state or reusable Anyang Intelligence primitives.",
+            governance_boundary="Humans decide whether lessons become project state or reusable Executive Council primitives.",
         ),
     ]
 
@@ -85,17 +85,17 @@ def build_loops(spec: ProjectInput) -> list[LoopDefinition]:
 def render_readme(spec: ProjectInput) -> str:
     return f"""# {spec.name}
 
-{spec.name} is a project installation for the Anyang Intelligence Executive Operating System.
+{spec.name} is a project installation for the Anyang Intelligence Executive Council.
 
 ## Domain
 
 {spec.domain_description}
 
-## Executive OS Role
+## Executive Council Role
 
-Anyang Intelligence acts as the executive operating layer for this context. Its job is to {spec.executive_os_job}.
+Executive Council acts as the governed operating layer for this context. Its job is to {spec.executive_os_job}.
 
-The system does not replace human authority. It prepares decisions, coordinates execution, preserves memory, and keeps the operating context learning.
+Executive Council does not replace human authority. It prepares decisions, coordinates execution, preserves memory, and keeps the operating context learning.
 
 ## Operating Thesis
 
@@ -103,7 +103,7 @@ The system does not replace human authority. It prepares decisions, coordinates 
 
 ## Installation
 
-See [executive-os-install.md](executive-os-install.md) for the generated install design.
+See [executive-os-install.md](executive-os-install.md) for the generated Executive Council installation. The filename remains a compatibility alias.
 
 Use [membrane-notes.md](membrane-notes.md) before transferring lessons from this project lane into another lane.
 """
@@ -120,17 +120,17 @@ def render_project_doc(spec: ProjectInput) -> str:
         "Reviews are useful enough to repeat.",
         "The operating context learns from its own outcomes.",
     ])
-    return f"""# {spec.name} Executive OS Install
+    return f"""# {spec.name} Executive Council Installation
 
 ## Purpose
 
-Install Anyang Intelligence as the executive operating system for {spec.name}.
+Install Executive Council, developed by Anyang Intelligence, for {spec.name}.
 
 The system should help leadership coordinate {spec.domain_description} while preserving human authority and domain-specific safeguards.
 
-## Executive Mandate
+## Council Mandate
 
-Anyang Intelligence should behave like the executive layer of the operating context:
+Executive Council should behave like the governed operating layer of the operating context:
 
 - See the whole operating context.
 - Maintain memory, risks, decisions, owners, and follow-ups.
@@ -149,7 +149,7 @@ Anyang Intelligence should behave like the executive layer of the operating cont
 
 ## Decision System
 
-The Executive OS should prepare structured decisions for:
+Executive Council should prepare structured decisions for:
 
 {decisions}
 
@@ -170,9 +170,9 @@ The review should answer:
 
 {spec.governance_boundary or "Humans retain authority over commitments, external communication, spending, legal, financial, educational, safety-sensitive, and professional-review decisions."}
 
-The Executive OS may organize context, draft reviews, surface risks, recommend options, and preserve lessons.
+Executive Council may organize context, draft reviews, surface risks, recommend options, and preserve lessons.
 
-The Executive OS may not make binding commitments, send external communications, approve spending, replace professional judgment, or expose sensitive information beyond approved access rules.
+Executive Council may not make binding commitments, send external communications, approve spending, replace professional judgment, or expose sensitive information beyond approved access rules.
 
 ## 30-Day Installation Plan
 
@@ -184,7 +184,7 @@ See [30-day-plan.md](30-day-plan.md).
 
 ## Human Authority
 
-The Executive OS recommends, organizes, and prepares. Humans retain final authority over domain-specific decisions, approvals, commitments, communications, and external claims.
+Executive Council recommends, organizes, and prepares. Humans retain final authority over domain-specific decisions, approvals, commitments, communications, and external claims.
 """
 
 
@@ -378,7 +378,7 @@ def render_html_dashboard(spec: ProjectInput) -> str:
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{html.escape(spec.name)} Executive OS Dashboard</title>
+  <title>{html.escape(spec.name)} Executive Council Dashboard</title>
   <style>
     body {{ font-family: Georgia, serif; max-width: 920px; margin: 40px auto; line-height: 1.5; color: #1f2a24; }}
     h1, h2 {{ color: #143d2b; }}
@@ -388,7 +388,7 @@ def render_html_dashboard(spec: ProjectInput) -> str:
   </style>
 </head>
 <body>
-  <h1>{html.escape(spec.name)} Executive OS Dashboard</h1>
+  <h1>{html.escape(spec.name)} Executive Council Dashboard</h1>
   <p>{html.escape(spec.domain_description)}</p>
   <div class="warning">Human authority remains final. Use membrane review before transferring project lessons.</div>
   <h2>Context Map</h2>

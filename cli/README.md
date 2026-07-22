@@ -1,8 +1,8 @@
 # Anyang CLI Tools
 
-`anyang-loop` validates and renders Executive OS loop definitions for Anyang Intelligence.
+The council-loop command validates and renders Executive Council loop definitions for Anyang Intelligence. The legacy anyang-loop command remains supported.
 
-`anyang-project` scaffolds and validates project Executive OS folders from deterministic templates.
+The council-project command scaffolds and validates Executive Council project folders from deterministic templates. The legacy anyang-project command remains supported.
 
 It also provides Singularity Science archive intake commands for transcript manifests.
 
@@ -346,6 +346,14 @@ Validate the curated reader-facing analytical interfaces:
 .\tools\run.ps1 project validate-interfaces --manifest analytical-interfaces.yaml
 .\tools\run.ps1 project validate-interfaces --path templates/operating-review.md
 ```
+
+Validate a bounded automation value-proof packet before treating its result as evidence:
+
+```powershell
+.\tools\run.ps1 project validate-value-proof --path templates/automation-value-proof.md
+```
+
+The template is intentionally incomplete and should fail until a real pilot packet is populated. The validator checks objective structure, quantitative-evidence prerequisites, approval boundaries, exception plans, and repo privacy rules; it does not decide whether an automation is valuable or ready to deploy.
 
 The manifest separates governed publication and decision surfaces from provenance-bearing archives and stable identifiers. Objective diagnostics are release gates; accountable human review still judges whether a title or distinction faithfully carries the evidence.
 

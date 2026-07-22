@@ -63,7 +63,10 @@ class ProjectInput:
 
     @property
     def executive_os_job(self) -> str:
-        return self.context_map.get("Executive OS job", "Make context, decisions, risks, and learning easier to reconstruct")
+        return self.context_map.get(
+            "Executive Council job",
+            self.context_map.get("Executive OS job", "Make context, decisions, risks, and learning easier to reconstruct"),
+        )
 
 
 def load_project_input(path: str | Path) -> ProjectInput:

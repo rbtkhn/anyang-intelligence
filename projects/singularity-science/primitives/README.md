@@ -16,6 +16,7 @@ They are not customer commitments, public claims, or automatic policy.
 | [Permissions and Authority Review Gate](permissions-and-authority-review-gate.md) | A workflow looks capable, but real value is blocked by data access, tool access, spending authority, signing authority, approval integrity, or override design | Translate into lane-safe review questions about where authority, not intelligence, is the true bottleneck before changing any workflow or delegation pattern | candidate |
 | [Acceleration-Source Verification Gate](acceleration-source-verification-gate.md) | A Moonshots-style source compresses bold claims, unstable timelines, and strong acceleration rhetoric into a persuasive seam that may still produce reusable operating value | Use before routing Moonshots seams into lane-safe questions, primitives, or product implications when verification burden and rhetoric risk are both high | preserved |
 | [Turn Receipt Template](../turn-receipt-template.md) | A bounded turn produced a real workflow result and its absorbed work, approvals, or cleanup burden should be preserved | Use as the default receipt shape before adding lane-specific scoring or failure-mode notes | candidate |
+| [Translation Integrity Review Gate](translation-integrity-review-gate.md) | Meaning crosses from intent through system behavior into an operational claim, approval, or lane action | Require intent, outcome, evidence, burden, authority, and next learning cycle before consequential translation | candidate |
 
 ## Routing Rules
 
@@ -38,6 +39,8 @@ archive source
 ```
 
 Do not skip from source material to lane action.
+
+For consequential translation boundaries, invoke the [Translation Integrity Review Gate](translation-integrity-review-gate.md). A `pass` is not a substitute for human approval.
 
 ## Lane Routing
 
@@ -85,9 +88,12 @@ Primitive:
 Source lane:
 Receiving lane:
 Transferable question or checklist:
+Beneficiary:
+Expected operational outcome:
+Evidence needed:
+Translation integrity status:
 Membrane classification:
 Human authority required:
-Evidence needed:
 Default state:
 What stays inside Singularity Science:
 ```

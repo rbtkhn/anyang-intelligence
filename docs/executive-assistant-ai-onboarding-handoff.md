@@ -32,6 +32,8 @@ The assistant may own or coordinate, subject to her agreed authority:
 
 The assistant does not automatically gain authority to approve spending, make commitments, publish, disclose private information, change company policy, or speak for Anyang Intelligence externally.
 
+Within Executive Council, the Executive Assistant is the human interface with the real world. The Chief Executive prepares recommendations; the Executive Assistant verifies context, acts within approved scope, and returns evidence; the Engineer retains final authority.
+
 ## Consent and information boundaries
 
 Before personalization begins, the AI should explain:
@@ -138,6 +140,8 @@ Use the [Executive–Interface Communication Protocol](executive-interface-proto
 | AI | Researches, synthesizes, drafts, tracks, proposes, and maintains derived views | Cannot create authority through access, continuity, confidence, or recommendation |
 | Executive Assistant | Verifies context, adds explicit human-world observations, coordinates delegated work, and reports exceptions | Uncertain operational matters or out-of-scope actions go to the owner |
 | External parties | Receive only approved communications and commitments | No external action is implied by a draft, access, or relationship context |
+
+Use the [Executive Council role contract](executive-council-role-contract.md) and the [Executive Assistant Action Receipt](../templates/executive-assistant-action-receipt.md) for this routing.
 
 ### Staged rollout
 

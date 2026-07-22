@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "anyang-loop"
 version = "0.1.0"
-description = "Loop Grammar Engine for Anyang Intelligence Executive OS loops"
+description = "Executive Council loop and operating substrate engine for Anyang Intelligence"
 readme = "cli/README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -23,6 +23,11 @@ anyang-project = "anyang_loop.project_cli:main"
 anyang-coffee = "anyang_loop.coffee_cli:main"
 anyang-dream = "anyang_loop.dream_cli:main"
 anyang-ops = "anyang_loop.ops_cli:main"
+council-loop = "executive_council.cli:main"
+council-project = "executive_council.project_cli:main"
+council-coffee = "executive_council.coffee_cli:main"
+council-dream = "executive_council.dream_cli:main"
+council-ops = "executive_council.ops_cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "cli"}

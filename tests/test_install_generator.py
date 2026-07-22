@@ -17,6 +17,17 @@ def test_load_project_input():
     spec = load_project_input(example_input_path())
     assert spec.slug == "example-project"
     assert "Operating context" in spec.context_map
+    assert spec.executive_os_job.startswith("Make decisions")
+
+
+def test_canonical_project_job_precedes_legacy_key(tmp_path):
+    path = tmp_path / "input.yaml"
+    path.write_text(
+        "name: Test\ndomain_description: Test\ncontext_map:\n"
+        "  Executive OS job: legacy\n  Executive Council job: canonical\n",
+        encoding="utf-8",
+    )
+    assert load_project_input(path).executive_os_job == "canonical"
 
 
 def test_build_project_files_contains_required_scaffold():
@@ -58,6 +69,7 @@ def test_render_formats():
     assert (markdown / "README.md").exists()
     assert (obsidian / "Index.md").exists()
     assert (html / "index.html").exists()
+    assert "Executive Council" in (html / "index.html").read_text(encoding="utf-8")
 
 
 def test_validate_incomplete_project_fails():

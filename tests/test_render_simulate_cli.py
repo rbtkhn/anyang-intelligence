@@ -5,6 +5,7 @@ from anyang_loop.cli import main
 from anyang_loop.builtins import get_builtin
 from anyang_loop.render import render_loop
 from anyang_loop.simulate import simulate_loop
+from executive_council.cli import main as council_main
 
 
 def test_render_formats():
@@ -34,6 +35,15 @@ def test_cli_export_builtin(capsys):
     assert main(["export", "canonical-executive-loop", "--format", "json"]) == 0
     captured = capsys.readouterr()
     assert "canonical-executive-loop" in captured.out
+
+
+def test_council_builtin_and_cli_alias(capsys):
+    loop = get_builtin("council-loop")
+    assert loop is not None
+    assert "executive-council" in loop.tags
+    assert council_main(["export", "council-loop", "--format", "json"]) == 0
+    captured = capsys.readouterr()
+    assert '"name": "council-loop"' in captured.out
 
 
 def test_cli_list_examples(capsys):

@@ -32,6 +32,15 @@ What the approver reviewed:
 Evidence shown to the approver:
 - 
 
+Translation integrity evidence reviewed:
+- Human intent:
+- System behavior:
+- Operational outcome:
+- Primary value metric:
+- Quality / risk guardrail:
+- New burden introduced:
+- Unresolved translation risk:
+
 Open uncertainties still visible at approval time:
 - 
 

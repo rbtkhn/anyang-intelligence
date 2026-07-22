@@ -36,11 +36,29 @@ Current level:
 ## Proposed application
 
 - Candidate primitive or decision rule:
+- Translation integrity review: use [Translation Integrity Review Gate](primitives/translation-integrity-review-gate.md)
+- Pain:
+- Desired transformation:
+- Who is accountable:
+- Evidence of improvement:
+- Failure or exception condition:
+- Quality / risk guardrail:
+- New burden introduced:
+- Value gained:
+- Net operating judgment:
 - Receiving lane:
 - Test task:
 - Expected benefit:
 - Human authority required:
 - What remains inside Singularity Science:
+
+Translation integrity status:
+
+Reason code:
+
+Next learning action:
+
+Next review trigger:
 
 ## Observation after test
 

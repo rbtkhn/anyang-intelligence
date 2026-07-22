@@ -1,5 +1,7 @@
 # Assistant Approval Receipt
 
+This receipt records the Executive Assistant's approved role preferences and delegated operating scope. It does not grant company-level authority.
+
 Status: `Proposed — awaiting Assistant review`
 
 ## Approved Scope
@@ -22,6 +24,12 @@ Status: `Proposed — awaiting Assistant review`
 - Delegated operational actions:
 - Actions requiring owner approval:
 - Actions never delegated by implication:
+
+## Executive Council role boundary
+
+- Chief Executive: prepares recommendations and approval requests.
+- Executive Assistant: acts as the human interface with the real world within approved scope.
+- Engineer: retains final authority over Executive Council, the company, permissions, commitments, and consequential actions.
 
 ## Review
 

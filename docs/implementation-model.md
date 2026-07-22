@@ -1,6 +1,6 @@
 # Implementation Model
 
-## Installation Over SaaS First
+## Executive Council Installation Over SaaS First
 
 The first version should be installed manually with early organizations before it becomes software.
 
@@ -22,7 +22,7 @@ The canonical cross-project method lives in [install-method.md](install-method.m
 ## What Gets Configured
 
 - Source map: where business truth currently lives.
-- Memory model: what the Executive OS must remember.
+- Memory model: what Executive Council must remember.
 - Decision model: how decisions are framed, reviewed, and logged.
 - Coordination model: how owners, projects, and follow-ups are tracked.
 - Review cadence: how leadership sees the business each week.

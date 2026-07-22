@@ -2,11 +2,11 @@
 
 ## Principle
 
-The Executive OS is advisory infrastructure. Humans remain accountable for decisions, commitments, approvals, and external claims.
+Executive Council is advisory product infrastructure developed by Anyang Intelligence. Humans remain accountable for decisions, commitments, approvals, and external claims.
 
 ## Executive Authority Envelope
 
-The Anyang Executive operates under the reviewed [authority envelope](../authority-envelope.yaml). The envelope defines bounded organizational coordination; it does not transfer legal personhood, human accountability, or client-company authority to the Executive.
+Executive Council operates under the reviewed [authority envelope](../authority-envelope.yaml). The envelope defines bounded organizational coordination; it does not transfer legal personhood, human accountability, or client-company authority to the Council.
 
 The Engineer retains final system and company authority. The Executive may prepare, prioritize, coordinate, direct the Interface within delegated scope, and propose reversible internal changes. Execution of consequential actions requires an explicit current approval receipt. Preflight reports the active envelope but never grants authority.
 
@@ -31,6 +31,12 @@ The system may not:
 - Send external communications without approval.
 - Access systems beyond the agreed source map.
 - Present unverified outputs as fact.
+
+## Executive Council Role Boundary
+
+The Chief Executive recommends. The Executive Assistant acts within scope. The Engineer decides what is permitted.
+
+Use the [Executive Council role contract](executive-council-role-contract.md), [Chief Executive Brief](../templates/chief-executive-brief.md), [Engineer Approval Receipt](../templates/approval-receipt.md), and [Executive Assistant Action Receipt](../templates/executive-assistant-action-receipt.md) for consequential work.
 
 ## Review Standard
 

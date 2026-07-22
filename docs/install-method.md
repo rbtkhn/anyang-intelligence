@@ -1,10 +1,10 @@
-# Executive OS Install Method
+# Executive Council Installation Method
 
 ## Purpose
 
-The install method is the repeatable pattern behind every Anyang Intelligence project.
+The installation method is the repeatable pattern behind every Anyang Intelligence project using Executive Council.
 
-Each customer has a different domain, but the Executive OS should always answer the same core question:
+Each customer has a different domain, but Executive Council should always answer the same core question:
 
 What does this operating context need to remember, decide, coordinate, review, and learn?
 
@@ -25,7 +25,7 @@ Capture:
 - What constraints shape decisions.
 - What risks or failure modes matter most.
 
-The context map prevents the Executive OS from becoming generic.
+The context map prevents Executive Council from becoming generic.
 
 ### 2. Executive Memory Objects
 
@@ -37,7 +37,7 @@ The goal is not to store everything. The goal is to preserve the information lea
 
 ### 3. Decision System
 
-Define the decisions the Executive OS should prepare.
+Define the decisions Executive Council should prepare.
 
 Every installation should identify:
 
@@ -46,7 +46,7 @@ Every installation should identify:
 - Decisions that currently depend on scattered context.
 - Decisions that need evidence, options, tradeoffs, or approval.
 
-The Executive OS prepares decisions. Humans retain authority.
+Executive Council prepares decisions. Humans retain authority.
 
 ### 4. Operating Review Cadence
 
@@ -67,7 +67,7 @@ Every review should answer:
 
 ### 5. Risk and Governance Boundary
 
-Define what the Executive OS may and may not do.
+Define what Executive Council may and may not do.
 
 Every installation needs explicit boundaries for:
 

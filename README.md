@@ -111,7 +111,7 @@ anyang-intelligence/
 
 ## Current Status
 
-This repo is in concept and operating-design stage. The immediate goal is to define the Executive OS clearly enough to install it manually with early organizations before turning repeated patterns into software.
+This repo is in concept and operating-design stage. The immediate goal is to define Executive Council clearly enough to install it manually with early organizations before turning repeated patterns into software.
 
 The current installations are tracked in [projects/](projects/README.md): Grace Gems proves marketplace execution governance, Mountain Villa proves property and asset-risk governance, Book Club proves lightweight community cadence governance, Media Production proves creative pipeline governance, and Learning Core proves high-trust educational operations.
 

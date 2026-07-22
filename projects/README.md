@@ -1,10 +1,10 @@
 # Projects
 
-Projects are concrete operating contexts where Anyang Intelligence acts as the Executive Operating System. A project may be client work, an internal build, research, community stewardship, asset stewardship, or a hypothesis.
+Projects are concrete operating contexts where Anyang Intelligence installs or operates Executive Council. A project may be client work, an internal build, research, community stewardship, asset stewardship, or a hypothesis.
 
 The goal is to prove the pattern across different kinds of complexity before turning repeated workflows into software.
 
-Each project should follow the shared [Executive OS install method](../docs/install-method.md), then adapt the method to its domain.
+Each project should follow the shared [Executive Council installation method](../docs/install-method.md), then adapt the method to its domain.
 
 New project folders should start from the reusable [project template](../templates/project-install/README.md).
 
@@ -18,7 +18,7 @@ Use the [operating portfolio dashboard](operating-portfolio-dashboard.md) to see
 
 ## Current Installations
 
-| Installation | Domain | Executive OS proof |
+| Installation | Domain | Executive Council proof |
 | --- | --- | --- |
 | [Book Club](book-club/README.md) | Recreational community | Monthly cadence, book selection, discussion memory, host coordination, member experience |
 | [Learning Core](learning-core/README.md) | Personalized homeschool experience | Learner profile, daily learning plans, parent review, portfolio evidence, child-safety guardrails |
@@ -33,7 +33,7 @@ The early portfolio should stay small and sharp.
 
 Grace Gems shows that an Executive OS can run commercial operating loops. Mountain Villa is also a business under Anyang Intelligence management, centered on property stewardship and a possible owner-governed sale; its operating model makes risk, readiness, continuity, and professional review more important than assuming recurring revenue. Book Club shows the lightest version of the pattern: keeping a small community enjoyable, coordinated, and continuous without making it feel over-managed. Media Production shows creative operations: moving ideas through editorial judgment, production, quality review, distribution, and audience learning. Learning Core shows high-trust personalized education where learner experience, privacy, safety, parent authority, and accountability must remain human-led. Singularity Science shows how an internal research lane can turn broad singularity sources into product implications and governance warnings without treating transcripts as public content.
 
-Together they test the core Anyang Intelligence claim: an Executive OS is not a chatbot or a dashboard. It is a living executive layer that keeps a complex operating context coherent.
+Together they test the core product claim: Executive Council is not a chatbot or a dashboard. It is a living intelligence layer that keeps a complex operating context coherent.
 
 ## Managed Business Intake
 
@@ -44,7 +44,7 @@ Grace Gems and Mountain Villa are businesses under Anyang Intelligence managemen
 Every project should define:
 
 - Context map.
-- Executive memory objects.
+- Executive Council memory objects.
 - Decision system.
 - Operating review cadence.
 - Risk and governance boundary.
@@ -53,6 +53,6 @@ Every project should define:
 
 ## Loop Grammar Engine
 
-Customer operating loops can be formalized with the optional [`anyang-loop`](../cli/README.md) CLI. Use it when a customer loop needs machine-checkable signal, memory, decision, action, evidence, cadence, learning update, and governance boundary fields.
+Customer operating loops can be formalized with the optional council-loop CLI. The legacy anyang-loop command remains supported. Use it when a customer loop needs machine-checkable signal, memory, decision, action, evidence, cadence, learning update, and governance boundary fields.
 
 Examples live under customer `loop-examples/` folders. These examples should transfer operating primitives, not private customer context; use [membranes](../docs/membranes.md) before adapting one customer loop into another lane.
