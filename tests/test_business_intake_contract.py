@@ -90,6 +90,24 @@ def test_private_data_and_external_authority_remain_separate():
         assert phrase in combined
 
 
+def test_intake_can_emit_a_sanitized_non_mutating_control_manifest():
+    canonical = read(CANONICAL)
+    contracts = read(OUTPUT_CONTRACTS)
+    combined = canonical + contracts
+
+    for phrase in (
+        "ops intake status",
+        "sanitized intake-control manifest",
+        "separately invoked `ops intake` command",
+        "base_version",
+        "unresolved_gates",
+        "raw messages",
+        "local absolute paths",
+    ):
+        assert phrase in combined
+    assert "never write a private business record" in canonical
+
+
 def test_question_strategy_covers_six_evidence_groups_in_small_batches():
     strategy = read(QUESTION_STRATEGY)
     assert "no more than three questions at once" in strategy

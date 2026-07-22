@@ -19,6 +19,7 @@ from .epistemic_review import (
 from .ops_render import audit_data, render_json, render_weekly_markdown, weekly_review_data
 from .ops_service import (
     APPROVAL_SCOPES,
+    AUTHORITY_SCOPES,
     DEPENDENCY_ROLES,
     DEPENDENCY_TYPES,
     EVIDENCE_CLASSIFICATIONS,
@@ -44,6 +45,17 @@ from .ops_service import (
     transition_claim,
     transition_work,
     update_epistemic_impact,
+)
+from .intake_control import (
+    authorize_review,
+    bootstrap_context,
+    decide_context,
+    intake_status,
+    load_manifest,
+    manifest_hash,
+    persist_context,
+    propose_context,
+    render_intake_status,
 )
 from .privacy_scan import render_findings, scan_repo
 from .cadence_metrics import (
@@ -94,7 +106,7 @@ def build_parser() -> argparse.ArgumentParser:
     authority_grant = authority_sub.add_parser("grant")
     _tenant(authority_grant)
     authority_grant.add_argument("--actor-id", required=True)
-    authority_grant.add_argument("--scope", choices=APPROVAL_SCOPES, required=True)
+    authority_grant.add_argument("--scope", choices=AUTHORITY_SCOPES, required=True)
     authority_grant.add_argument("--effective-at")
     authority_grant.add_argument("--expires-at")
     _dry(authority_grant)
@@ -319,6 +331,59 @@ def build_parser() -> argparse.ArgumentParser:
     audit.add_argument("--format", choices=("markdown", "json"), default="markdown")
     audit.set_defaults(func=cmd_audit)
 
+    intake = sub.add_parser("intake", help="Govern business-context intake and effectiveness")
+    intake_sub = intake.add_subparsers(required=True)
+
+    intake_propose = intake_sub.add_parser("propose", help="Import a sanitized intake-control manifest")
+    _tenant(intake_propose)
+    intake_propose.add_argument("--manifest", required=True)
+    _dry(intake_propose)
+    intake_propose.set_defaults(func=cmd_intake_propose)
+
+    intake_bootstrap = intake_sub.add_parser("bootstrap", help="Import one exact pre-existing effective context")
+    _tenant(intake_bootstrap)
+    intake_bootstrap.add_argument("--manifest", required=True)
+    intake_bootstrap.add_argument("--actor-id", required=True)
+    intake_bootstrap.add_argument("--subject-hash", required=True)
+    intake_bootstrap.add_argument("--approval-receipt-ref", required=True)
+    intake_bootstrap.add_argument("--persistence-ref", required=True)
+    _dry(intake_bootstrap)
+    intake_bootstrap.set_defaults(func=cmd_intake_bootstrap)
+
+    intake_decide = intake_sub.add_parser("decide", help="Bind an owner decision to an exact proposal")
+    _tenant(intake_decide)
+    intake_decide.add_argument("--version", required=True)
+    intake_decide.add_argument("--actor-id", required=True)
+    intake_decide.add_argument("--decision", choices=("approved", "rejected", "changes_requested"), required=True)
+    intake_decide.add_argument("--subject-hash", required=True)
+    intake_decide.add_argument("--conditions", default="")
+    _dry(intake_decide)
+    intake_decide.set_defaults(func=cmd_intake_decide)
+
+    intake_persist = intake_sub.add_parser("persist", help="Confirm external preservation and make a context effective")
+    _tenant(intake_persist)
+    intake_persist.add_argument("--version", required=True)
+    intake_persist.add_argument("--actor-id", required=True)
+    intake_persist.add_argument("--subject-hash", required=True)
+    intake_persist.add_argument("--external-ref", required=True)
+    _dry(intake_persist)
+    intake_persist.set_defaults(func=cmd_intake_persist)
+
+    intake_authorize = intake_sub.add_parser("authorize-review", help="Separately authorize the first operating review")
+    _tenant(intake_authorize)
+    intake_authorize.add_argument("--version", required=True)
+    intake_authorize.add_argument("--actor-id", required=True)
+    intake_authorize.add_argument("--decision", choices=("approved", "declined"), required=True)
+    intake_authorize.add_argument("--subject-hash", required=True)
+    intake_authorize.add_argument("--conditions", default="")
+    _dry(intake_authorize)
+    intake_authorize.set_defaults(func=cmd_intake_authorize_review)
+
+    intake_status_parser = intake_sub.add_parser("status", help="Render the compact intake-state receipt")
+    _tenant(intake_status_parser)
+    _read_format(intake_status_parser)
+    intake_status_parser.set_defaults(func=cmd_intake_status)
+
     cadence = sub.add_parser("cadence", help="Measure cadence reconstruction performance")
     cadence_sub = cadence.add_subparsers(required=True)
     cadence_record = cadence_sub.add_parser("record", help="Record one completed or attempted cadence event")
@@ -462,6 +527,101 @@ def cmd_audit(args: argparse.Namespace) -> int:
         for issue in data["issues"]:
             print(f"- {issue['code']}: {issue['message']}")
     return 0 if data["ok"] else 1
+
+
+def cmd_intake_propose(args: argparse.Namespace) -> int:
+    manifest = load_manifest(args.manifest)
+    if args.dry_run:
+        return print_result(
+            {
+                "dry_run": True,
+                "action": "propose_context",
+                "tenant": args.tenant,
+                "version": manifest["version"],
+                "base_version": manifest.get("base_version"),
+                "content_hash": manifest_hash(manifest),
+                "evidence_bindings": len(manifest["evidence"]),
+            }
+        )
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        result = propose_context(connection, args.tenant, manifest)
+    return print_result(result.as_dict())
+
+
+def cmd_intake_bootstrap(args: argparse.Namespace) -> int:
+    manifest = load_manifest(args.manifest)
+    if args.dry_run:
+        return print_result(
+            {
+                "dry_run": True,
+                "action": "bootstrap_context",
+                "tenant": args.tenant,
+                "version": manifest["version"],
+                "content_hash": manifest_hash(manifest),
+                "supplied_subject_hash": args.subject_hash,
+                "actor_id": args.actor_id,
+                "approval_receipt_ref": args.approval_receipt_ref,
+                "persistence_ref": args.persistence_ref,
+            }
+        )
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        result = bootstrap_context(
+            connection,
+            args.tenant,
+            manifest,
+            args.actor_id,
+            args.subject_hash,
+            args.approval_receipt_ref,
+            args.persistence_ref,
+        )
+    return print_result(result.as_dict())
+
+
+def cmd_intake_decide(args: argparse.Namespace) -> int:
+    return mutate(
+        args,
+        decide_context,
+        args.tenant,
+        args.version,
+        args.actor_id,
+        args.decision,
+        args.subject_hash,
+        args.conditions,
+    )
+
+
+def cmd_intake_persist(args: argparse.Namespace) -> int:
+    return mutate(
+        args,
+        persist_context,
+        args.tenant,
+        args.version,
+        args.actor_id,
+        args.subject_hash,
+        args.external_ref,
+    )
+
+
+def cmd_intake_authorize_review(args: argparse.Namespace) -> int:
+    return mutate(
+        args,
+        authorize_review,
+        args.tenant,
+        args.version,
+        args.actor_id,
+        args.decision,
+        args.subject_hash,
+        args.conditions,
+    )
+
+
+def cmd_intake_status(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        data = intake_status(connection, args.tenant)
+    return _emit_read_output(args, data, render_intake_status)
 
 
 def cmd_cadence_record(args: argparse.Namespace) -> int:

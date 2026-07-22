@@ -1,0 +1,59 @@
+business_reference: grace-gems
+version: GG-CTX-2026-07-17-INTAKE-02
+base_version: Missing
+external_content_ref: pending-external://grace-gems/context/GG-CTX-2026-07-17-INTAKE-02
+authority_receipt_ref: operator-receipt://grace-gems/2026-07-17/business-intake
+readiness: hold
+created_by: Grace Gems owner/operator
+evidence:
+  - class: confirmed
+    kind: storefront
+    summary: "GraceGemsUS is a URL-backed storefront in the approved intake scope."
+    source_ref: https://www.etsy.com/shop/GraceGemsUS
+    confidence: high
+    sensitivity: public
+  - class: confirmed
+    kind: storefront
+    summary: "GioielloHandcrafted is a URL-backed storefront in the approved intake scope."
+    source_ref: https://www.etsy.com/shop/GioielloHandcrafted
+    confidence: high
+    sensitivity: public
+  - class: confirmed
+    kind: customer_support_pattern
+    summary: "Sanitized support findings identify recurring promise-control, custom-specification, fulfillment, product-education, and documentation friction."
+    source_ref: repo:projects/grace-gems/customer-support-findings-2026-07-17.md#sha256=f78bc0d242504c9ab0a4493ffc30cb97d343a55eb0ce0c857ddde95eda5f0610
+    confidence: medium
+    sensitivity: internal
+  - class: estimate
+    kind: capacity_proxy
+    summary: "Public sales history supports a low-confidence planning proxy of roughly 8 to 10 weekly sales-equivalent items for GraceGemsUS."
+    source_ref: https://www.etsy.com/shop/GraceGemsUS
+    confidence: low
+    sensitivity: public
+  - class: estimate
+    kind: capacity_proxy
+    summary: "Public sales history supports a low-confidence planning proxy of roughly 17 to 20 weekly sales-equivalent items for GioielloHandcrafted."
+    source_ref: https://www.etsy.com/shop/GioielloHandcrafted
+    confidence: low
+    sensitivity: public
+  - class: estimate
+    kind: capacity_proxy
+    summary: "The combined public-sales planning proxy is roughly 25 to 30 weekly sales-equivalent items and is not confirmed production capacity."
+    source_ref: public-storefront-estimate://grace-gems/2026-07-17
+    confidence: low
+    sensitivity: internal
+  - class: missing
+    kind: production_capacity
+    summary: "Actual sustainable production capacity, lead-time limits, staffing constraints, and pause conditions remain owner-unconfirmed."
+    source_ref: operator-intake://grace-gems/capacity
+    confidence: unknown
+    sensitivity: private
+  - class: missing
+    kind: private_economics_reference
+    summary: "An exact external tenant-private reference for the supplied economics has not been confirmed."
+    source_ref: operator-intake://grace-gems/economics
+    confidence: unknown
+    sensitivity: private
+unresolved_gates:
+  - "Confirm the exact currently effective business-context version, external reference, approval receipt, and content hash."
+  - "Bind this proposed change to that exact base version and rerender the complete resulting context for owner decision."

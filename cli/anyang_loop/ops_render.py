@@ -240,9 +240,89 @@ def audit_data(connection: sqlite3.Connection, tenant: str, as_of: str | None = 
             issues.append({"code": "epistemically-unusable-active-claim", "claim_id": claim["id"], "message": "Disconfirmed or retired claim remains operationally active."})
         if not _valid_transition_chain(connection, claim["id"]):
             issues.append({"code": "invalid-claim-transition-chain", "claim_id": claim["id"], "message": "Claim transition history is missing or fails hash-chain verification."})
+    if _table_exists(connection, "business_context_version"):
+        issues.extend(_business_context_issues(connection, tid))
     epistemic = _epistemic_entropy(connection, tid)
     issues.extend(epistemic["critical_gaps"])
     return {"tenant": tenant, "as_of": cutoff, "ok": not issues, "issues": issues, "epistemic": epistemic}
+
+
+def _business_context_issues(connection: sqlite3.Connection, tid: str) -> list[dict[str, str]]:
+    issues: list[dict[str, str]] = []
+    contexts = connection.execute(
+        "SELECT * FROM business_context_version WHERE tenant_id = ? ORDER BY created_at, id", (tid,)
+    ).fetchall()
+    if sum(1 for row in contexts if row["state"] == "effective") > 1:
+        issues.append(
+            {"code": "multiple-effective-contexts", "message": "Tenant has more than one effective business context."}
+        )
+    for context in contexts:
+        if context["base_context_id"]:
+            base = connection.execute(
+                "SELECT tenant_id FROM business_context_version WHERE id = ?", (context["base_context_id"],)
+            ).fetchone()
+            if not base or base["tenant_id"] != tid:
+                issues.append(
+                    {
+                        "code": "cross-tenant-context-base",
+                        "context_id": context["id"],
+                        "message": "Business context has a missing or cross-tenant base version.",
+                    }
+                )
+        evidence_mismatch = connection.execute(
+            """SELECT COUNT(*) FROM business_context_evidence
+            WHERE context_version_id = ? AND tenant_id != ?""",
+            (context["id"], tid),
+        ).fetchone()[0]
+        if evidence_mismatch:
+            issues.append(
+                {
+                    "code": "cross-tenant-context-evidence",
+                    "context_id": context["id"],
+                    "message": "Business-context evidence crosses the tenant boundary.",
+                }
+            )
+        decisions = connection.execute(
+            """SELECT * FROM business_context_decision
+            WHERE context_version_id = ? AND revoked_at IS NULL ORDER BY created_at, id""",
+            (context["id"],),
+        ).fetchall()
+        if any(row["tenant_id"] != tid or row["subject_hash"] != context["content_hash"] for row in decisions):
+            issues.append(
+                {
+                    "code": "invalid-context-decision-binding",
+                    "context_id": context["id"],
+                    "message": "Business-context decision has a tenant or subject-hash mismatch.",
+                }
+            )
+        approvals = [row for row in decisions if row["decision_type"] == "context_approval" and row["decision"] == "approved"]
+        persistence = [
+            row for row in decisions
+            if row["decision_type"] == "persistence_confirmation" and row["decision"] == "confirmed"
+        ]
+        if context["state"] == "awaiting_persistence" and not approvals:
+            issues.append(
+                {
+                    "code": "context-awaiting-without-approval",
+                    "context_id": context["id"],
+                    "message": "Context awaits persistence without exact owner approval.",
+                }
+            )
+        if context["state"] in {"effective", "superseded"} and (not approvals or not persistence):
+            issues.append(
+                {
+                    "code": "effective-context-receipt-gap",
+                    "context_id": context["id"],
+                    "message": "Effective context history lacks approval or persistence confirmation.",
+                }
+            )
+    return issues
+
+
+def _table_exists(connection: sqlite3.Connection, table: str) -> bool:
+    return connection.execute(
+        "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?", (table,)
+    ).fetchone() is not None
 
 
 def _epistemic_entropy(connection: sqlite3.Connection, tenant_id_value: str) -> dict[str, Any]:

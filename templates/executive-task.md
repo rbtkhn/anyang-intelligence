@@ -1,0 +1,21 @@
+# Executive Task
+
+- Message ID:
+- Timestamp:
+- Sender: `Executive`
+- Recipient: `Interface`
+- Message type: `task`
+- Purpose:
+- Client or lane:
+- Authority source:
+- Objective:
+- Context:
+- Specific questions:
+- Allowed actions: `Observe / Advise / Draft / Coordinate / Execute—approved / Escalate / Stop`
+- Prohibited actions:
+- Expected deliverable:
+- Priority: `FYI / Routine / Important / Urgent / Immediate stop`
+- Due:
+- Escalate if:
+- Memory instruction:
+- Status: `Received / Clarifying / In progress / Waiting / Ready for review / Approved / Complete / Blocked / Declined / Escalated / Superseded / Withdrawn`

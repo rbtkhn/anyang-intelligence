@@ -42,6 +42,7 @@ EPISTEMIC_TRANSITIONS = {
     "retired": set(),
 }
 APPROVAL_SCOPES = ("assign", "claim_use", "spend", "delivery", "publication")
+AUTHORITY_SCOPES = APPROVAL_SCOPES + ("business_context",)
 WORK_STATES = (
     "draft",
     "ready_to_assign",
@@ -161,7 +162,7 @@ def grant_authority(
     effective_at: str | None,
     expires_at: str | None,
 ) -> MutationResult:
-    if scope not in APPROVAL_SCOPES:
+    if scope not in AUTHORITY_SCOPES:
         raise OpsError(f"Invalid authority scope: {scope}")
     tid = tenant_id(connection, tenant)
     _require_actor(connection, tid, actor_id)

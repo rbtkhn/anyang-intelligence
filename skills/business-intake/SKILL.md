@@ -5,7 +5,9 @@ description: Governed owner-facing intake for creating an initial business conte
 
 # Business Intake
 
-Use this skill as the owner-facing entry point for commercial business installations. Conduct the conversation and produce copy-ready packets; never write a private business record or change repository state.
+Use [docs/executive-interface-protocol.md](../../docs/executive-interface-protocol.md) for Executive–Interface task dispatch, structured responses, escalations, and receipts. Intake permission and context approval do not create external-action authority.
+
+Use this skill as the owner-facing entry point for commercial business installations. Conduct the conversation and produce copy-ready packets, including a sanitized intake-control manifest when requested; never write a private business record, invoke the persistence CLI, or change repository state.
 
 ## Required Reads
 
@@ -40,6 +42,8 @@ Before business-specific questions:
 6. Confirm the requested mode.
 
 Return `Hold` when identity, authority, purpose, privacy, preservation, sharing, deletion, exclusions, or mode remains unclear. Request only the missing decision; do not pressure the owner to disclose private information.
+
+When an operator supplies an `ops intake status` receipt, treat its exact version-bound fields as the continuation checkpoint. Ask again only when a required field is absent, expired, contradicted, or bound to a different context version. Never treat the receipt as authority for a new decision.
 
 ## Intent Recovery For Owner Language
 
@@ -100,6 +104,7 @@ Route money and financial classification through `skills/tax-financial-governanc
 
 - Treat completed packets, exact private economics, customer messages, supplier details, and private operating strategy as tenant-private.
 - Produce copy-ready Markdown only. Never write the tenant store, a customer system, or project state.
+- A sanitized intake-control manifest is a copy-ready fenced YAML packet, not a mutation. Only a separately invoked `ops intake` command may validate or persist it.
 - Keep raw customer-support transcripts outside Git; use owner-approved redacted patterns or external opaque references.
 - Never claim a context changed, an operating review occurred, or an external action happened without the corresponding human confirmation.
 - Emit reusable learning only as a de-identified doctrine candidate. Require a separate operator-authorized repository task before changing shared doctrine.

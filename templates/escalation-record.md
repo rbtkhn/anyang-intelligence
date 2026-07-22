@@ -1,0 +1,21 @@
+# Escalation Record
+
+- Escalation ID:
+- Related message or task:
+- Date and reporter:
+- Message type: `escalation`
+- Trigger: `Authority / Deadline / Privacy / Legal / Reputation / Conflicting instruction / Tool failure / Other`
+- Situation:
+- Direct observations:
+- Explicit stakeholder statements:
+- AI interpretation:
+- Unverified reports:
+- Evidence and sources:
+- Consequence level: `Low / Medium / High / Irreversible`
+- Options:
+- Recommendation:
+- Decision owner:
+- Stop condition:
+- Approved action:
+- Recovery or follow-up:
+- Closed date:

@@ -19,7 +19,21 @@ $env:ANYANG_DATA_DIR = 'C:\path\outside\the\repository\grace-gems'
 
 Use `--dry-run` on every mutation command to inspect the intended operation. Use `.\tools\run.ps1 ops audit --tenant grace-gems` for ledger integrity and `.\tools\run.ps1 ops privacy-scan --repo .` before committing. Private evidence bodies and raw customer transcripts remain outside the database; use approved external references and redacted summaries.
 
-Schema v4 keeps epistemic state distinct from operational claim status. Human
+Business intake uses a separate governed control path. The conversational `$business-intake` skill may prepare a sanitized manifest, but only these explicit commands can change tenant state:
+
+```powershell
+.\tools\run.ps1 ops authority grant --tenant grace-gems --actor-id OWNER_ID --scope business_context --dry-run
+.\tools\run.ps1 ops intake bootstrap --tenant grace-gems --manifest EXACT_EXISTING_CONTEXT_MANIFEST --actor-id OWNER_ID --subject-hash EXACT_HASH --approval-receipt-ref EXACT_APPROVAL_RECEIPT --persistence-ref EXACT_PERSISTENCE_RECEIPT --dry-run
+.\tools\run.ps1 ops intake propose --tenant grace-gems --manifest projects/grace-gems/intake-control-manifest-2026-07-17.yaml --dry-run
+.\tools\run.ps1 ops intake decide --tenant grace-gems --version CONTEXT_VERSION --actor-id OWNER_ID --decision approved --subject-hash EXACT_HASH --dry-run
+.\tools\run.ps1 ops intake persist --tenant grace-gems --version CONTEXT_VERSION --actor-id OWNER_ID --subject-hash EXACT_HASH --external-ref tenant-private://approved/context --dry-run
+.\tools\run.ps1 ops intake authorize-review --tenant grace-gems --version CONTEXT_VERSION --actor-id OWNER_ID --decision approved --subject-hash EXACT_HASH --dry-run
+.\tools\run.ps1 ops intake status --tenant grace-gems --format markdown
+```
+
+The one-time `bootstrap` path requires an empty context ledger, a non-`hold` exact manifest, the matching manifest hash, current `business_context` authority, and separate pre-existing approval and persistence receipt references. The status receipt names the effective context, active proposal, evidence classes, separate owner/persistence/review decisions, and one next action. A `hold` manifest cannot be approved; resolve its gates and submit a new exact version instead.
+
+Schema v5 retains the v4 separation between epistemic state and operational claim status. Human
 operators can record a cause-bearing state change, bind downstream uses, and
 clear the resulting review queue:
 

@@ -1,0 +1,23 @@
+# Commitment Receipt
+
+- Commitment ID:
+- Receipt ID:
+- Related task:
+- Recorded date:
+- Message type: `receipt`
+- Source meeting, message, or observation:
+- Commitment:
+- Type: `Decision / Action / Promise / Follow-up`
+- Owner:
+- Due date:
+- Status: `Proposed / Approved / In progress / Blocked / Complete / Reversed / Superseded`
+- Evidence or source:
+- Confidence: `High / Medium / Low`
+- Next action:
+- Required approval:
+- Review date:
+- Reconciliation notes:
+- Exceptions:
+- Remaining obligations:
+- Outcome:
+- Reviewer:

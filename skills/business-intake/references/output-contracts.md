@@ -163,3 +163,28 @@ De-identified Doctrine Candidate
 ```
 
 Exclude customer identities, quotations, exact private economics, suppliers, proprietary strategy, distinctive chronology, and unapproved claims.
+
+## Sanitized Intake-Control Manifest
+
+Render this as fenced YAML only after the human-readable packet is complete. The manifest is an import candidate for the separately invoked external control plane; producing it does not authorize or perform persistence.
+
+```yaml
+business_reference: <stable tenant-safe reference>
+version: <exact proposed version>
+base_version: <exact effective version or null for a confirmed initial context>
+external_content_ref: <opaque external proposal reference>
+authority_receipt_ref: <opaque authority receipt reference>
+readiness: <ready | provisional | hold>
+created_by: <named operator>
+evidence:
+  - class: <confirmed | estimate | hypothesis | missing>
+    kind: <bounded evidence kind>
+    summary: <single-line redacted summary>
+    source_ref: <opaque, public, or sanitized repository reference>
+    confidence: <high | medium | low | unknown>
+    sensitivity: <public | internal | private | restricted>
+unresolved_gates:
+  - <required missing decision or evidence>
+```
+
+Do not include raw messages, customer identifiers, exact private economics, local absolute paths, database files, or private attachment filenames. `hold` requires at least one unresolved gate. A missing effective base version must remain `hold`; do not substitute a conversational or repository-inferred version.

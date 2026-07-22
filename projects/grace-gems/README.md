@@ -49,3 +49,9 @@ See [executive-os-install.md](executive-os-install.md) for the first Grace Gems 
 Before preparing the first operating review, explicitly invoke `$business-intake create` and use [business-intake-survey.md](business-intake-survey.md) as the project-specific question set. Intake readiness, exact owner approval, operator-confirmed external tenant-private persistence, and authorization of the first operating review are separate gates. Until they are satisfied, keep live business context and operating work on `Hold`; never store completed private intake packets in Git.
 
 Use [public-shop-signal-brief.md](public-shop-signal-brief.md) to understand the public GraceGemsUS Etsy storefront signals before preparing the first operating review or creative-support backlog.
+
+## Sanitized Internal Evidence
+
+- [Customer Support Findings and Recommendations — 2026-07-17](customer-support-findings-2026-07-17.md) preserves aggregate, redacted support patterns and proposed internal controls. The raw transcript export remains outside Git, and the report does not authorize an operating review, customer-facing language, or external action.
+- [Business Intake Control Manifest — 2026-07-17](intake-control-manifest-2026-07-17.yaml) prepares proposal `GG-CTX-2026-07-17-INTAKE-02` as sanitized import metadata. It remains `hold` until the exact effective base context is operator-confirmed; it is not an approval or persistence receipt.
+See [public-signal preflight receipt](public-signal-preflight-receipt.md) and [four-cycle proof tracker](four-cycle-proof-tracker.md) for the governed proof-program state. Public preflight is not commercial proof; counted cycles remain blocked pending owner-approved intake.
