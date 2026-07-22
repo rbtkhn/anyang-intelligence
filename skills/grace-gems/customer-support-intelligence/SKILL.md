@@ -5,6 +5,8 @@ description: Grace Gems customer support intelligence procedure. Use when review
 
 # Customer Support Intelligence Skill
 
+Use [docs/executive-interface-protocol.md](../../../docs/executive-interface-protocol.md) for task, response, escalation, and receipt communication. Preserve the Grace Gems Client boundary.
+
 Use this skill to turn Grace Gems buyer-message evidence into safer listings, clearer support, and reusable trust assets.
 
 This is a Grace Gems product-level skill, not a generic customer-service summary.

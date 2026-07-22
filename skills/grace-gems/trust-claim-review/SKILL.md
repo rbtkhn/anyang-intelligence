@@ -5,6 +5,8 @@ description: Grace Gems trust claim review procedure. Use when drafting or revie
 
 # Trust Claim Review Skill
 
+Use [docs/executive-interface-protocol.md](../../../docs/executive-interface-protocol.md) for claim-review tasks, escalations, and receipts. A response or receipt is not Client approval.
+
 Use this skill before Grace Gems product, policy, authenticity, certificate, shipping, repair, return, rush-order, or support claims are published, delivered, or sent to customers.
 
 This is a Grace Gems product-level guardrail skill, not legal advice.

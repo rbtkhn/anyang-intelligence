@@ -5,6 +5,8 @@ description: Grace Gems marketplace listing gate procedure. Use before publishin
 
 # Marketplace Listing Gate Skill
 
+Use [docs/executive-interface-protocol.md](../../../docs/executive-interface-protocol.md) for owner-review tasks, escalations, and completion receipts. The protocol does not authorize publication or listing changes.
+
 Use this skill before a Grace Gems listing is published, revised, promoted, or sent for owner review.
 
 This is a Grace Gems product-level skill, not a generic Etsy checklist.
