@@ -39,6 +39,10 @@ See [ambient-agency-use-case-map.md](ambient-agency-use-case-map.md) for a lane-
 
 See [useful-turn-evaluation-note.md](useful-turn-evaluation-note.md) for the evaluation lens that treats the useful turn, not the model in isolation, as the more practical unit of product value and governed delegation.
 
+See [research-to-improvement-receipt-template.md](research-to-improvement-receipt-template.md) for the governed receipt used when a source insight is promoted toward a tested primitive or operating-method change. The first pilot is [Moonshots #272 Learning-Loop Ownership Review](moonshots-272-learning-loop-ownership-review.md).
+
+See [Moonshots #272 research-to-improvement receipt](moonshots-272-research-to-improvement-receipt.md) and [cross-lane nested-loop comparison](cross-lane-nested-loop-comparison.md) for the current proof-program state.
+
 ## Boundary
 
 Singularity Science may produce:
