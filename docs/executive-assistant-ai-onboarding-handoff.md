@@ -128,6 +128,8 @@ The repository is the durable harness for approved governance, workflow rules, t
 
 The Executive’s current organization-level authority is governed by the [Anyang authority envelope](../authority-envelope.yaml). The Interface’s delegation is operational and reviewable; access does not create authority, and client work remains subject to each Client.
 
+Use the [Executive–Interface Communication Protocol](executive-interface-protocol.md) for task dispatch, structured responses, escalation, completion receipts, and shadow-mode review.
+
 ### Role routing
 
 | Role | Responsibility | Escalation boundary |

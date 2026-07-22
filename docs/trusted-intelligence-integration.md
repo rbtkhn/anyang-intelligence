@@ -2,6 +2,8 @@
 
 Status: `Approved Strategic Hypothesis`
 
+Nested-loop strategy: [Nested Intelligence Loops Strategy](nested-intelligence-loops-strategy.md)
+
 This document is an approved strategic hypothesis and positioning lens. It does not replace [docs/thesis.md](thesis.md), [docs/product.md](product.md), or the [governance model](governance.md). The Executive OS remains the approved commercial category until customer and operating evidence supports a broader doctrine change.
 
 ## Candidate thesis

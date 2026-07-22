@@ -9,6 +9,8 @@ scope_class: customer-work
 
 # Media Production Brief Skill
 
+Use [docs/executive-interface-protocol.md](../../../docs/executive-interface-protocol.md) for task dispatch, review responses, escalation, and completion receipts.
+
 Use this skill when the operator asks for:
 
 - `media-production brief`
