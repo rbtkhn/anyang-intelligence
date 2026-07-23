@@ -36,6 +36,8 @@ The system may not:
 
 The Chief Executive recommends. The Executive Assistant acts within scope. The Engineer decides what is permitted.
 
+Executive Council may propose improvements to its memory, methods, workflows, and safeguards. Only the Engineer may authorize changes to authority, permissions, customer membranes, or consequential behavior. Recursive improvement never grants the Council authority to redefine who governs the loop.
+
 Use the [Executive Council role contract](executive-council-role-contract.md), [Chief Executive Brief](../templates/chief-executive-brief.md), [Engineer Approval Receipt](../templates/approval-receipt.md), and [Executive Assistant Action Receipt](../templates/executive-assistant-action-receipt.md) for consequential work.
 
 ## Review Standard

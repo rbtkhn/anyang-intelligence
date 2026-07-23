@@ -19,6 +19,8 @@ memory
 
 This is the core recursive structure of Executive Council.
 
+Executive Council is the loop, not merely the agent, repository, or interface. Those are components of the governed operating cycle. The cycle turns human intent and AI synthesis into authorized action, evidence, review, and improved future judgment.
+
 - `memory` preserves facts, assumptions, commitments, risks, and open loops.
 - `decision` turns ambiguity into options, tradeoffs, recommendations, and human approval points.
 - `coordination` turns approved decisions into owners, next actions, dependencies, deadlines, and status.

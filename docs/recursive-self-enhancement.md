@@ -1,8 +1,8 @@
 # Recursive Self-Enhancement
 
-Recursive self-enhancement, as defined in this repo, is:
+Recursive self-enhancement, as defined in this repo, is the governed improvement of the Executive Council loop:
 
-A work cycle produces friction or learning, and Anyang Intelligence improves the operating system that will handle the next similar cycle.
+A work cycle produces friction or learning, and Executive Council improves the operating surface that will handle the next similar cycle.
 
 In practical terms:
 
@@ -17,7 +17,7 @@ work happens
 
 The key distinction is that the system does not merely remember what happened. It changes its own operating surface so a future agent, operator, or project lane does not need to rediscover the same lesson from chat memory.
 
-This is not autonomous self-modification in the loose sci-fi sense. It is governed improvement: human-approved, repo-visible, evidence-backed changes to the procedures Anyang Intelligence uses to do future work.
+This is not autonomous self-modification in the loose sci-fi sense. It is governed recursion: human-approved, repo-visible, evidence-backed changes to the procedures Executive Council uses to do future work. The Council can improve the loop, but it cannot redefine who governs the loop.
 
 ## Core Rule
 
