@@ -5,6 +5,8 @@ description: Repo-specific Singularity Science intake for already-available tran
 
 # Singularity Intake
 
+> **Freshness:** Effective 2026-07-24 · Owner: Engineer · Review cadence: quarterly and after any archive-lane or authority-boundary change.
+
 Use this skill for `projects/singularity-science/` when the operator has supplied source material and wants the complete governed archive intake. Preserve the core law:
 
 `project lane -> archive lane -> lane templates -> ledger`

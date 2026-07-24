@@ -1,5 +1,7 @@
 # Governance
 
+> **Freshness:** Effective 2026-07-24 · Owner: Engineer · Review cadence: quarterly and before consequential authority changes.
+
 ## Principle
 
 Executive Council is advisory product infrastructure developed by Anyang Intelligence. Humans remain accountable for decisions, commitments, approvals, and external claims.

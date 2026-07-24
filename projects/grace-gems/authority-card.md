@@ -1,5 +1,7 @@
 # Grace Gems Authority Card
 
+> **Freshness:** Effective 2026-07-24 · Owner: Grace Gems human CEO with Anyang Engineer oversight · Review cadence: quarterly and on any scope or authority change.
+
 ## Boundary
 
 - Anyang role: `Executive operating partner`

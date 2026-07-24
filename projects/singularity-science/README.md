@@ -1,5 +1,7 @@
 # Singularity Science
 
+> **Freshness:** Effective 2026-07-24 · Owner: Engineer · Review cadence: quarterly and after any research-lane or membrane change.
+
 Singularity Science is an ongoing Anyang Intelligence research project for tracking singularity-relevant source streams, interpreting their operating implications, and converting useful lessons into governed Executive OS primitives.
 
 It is not a customer installation in the same sense as Grace Gems, Learning Core, or Media Production. It lives beside them because it is an operating lane with its own source material, analyses, cadence, and membrane boundaries.

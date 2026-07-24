@@ -1,5 +1,7 @@
 # Anyang Authority Model
 
+> **Freshness:** Effective 2026-07-24 · Owner: Engineer · Review cadence: quarterly and on any authority-envelope change.
+
 Canonical hierarchy: `Engineer -> Executive -> Interface -> Client`.
 
 - **Engineer:** creates and maintains Anyang, governs the system, and retains final authority and veto power.

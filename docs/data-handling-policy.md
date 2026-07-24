@@ -1,5 +1,7 @@
 # Customer Data Handling Policy
 
+> **Freshness:** Effective 2026-07-24 · Owner: Engineer · Review cadence: quarterly and after any privacy or data-boundary incident.
+
 ## Purpose
 
 The product repository contains reusable code, schemas, synthetic fixtures, and doctrine. It is not a tenant data store. Identifiable customer, child, family, donor, contractor, support-message, financial, or security-sensitive records must remain outside Git.
