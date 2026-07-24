@@ -28,6 +28,16 @@ LINK_RE = re.compile(r"!?\[[^]]*\]\(([^)]+)\)")
 DATE_RE = re.compile(r"\b(?:20\d{2})[-/]\d{2}[-/]\d{2}\b")
 AUTH_TERMS = re.compile(r"\b(?:approval|authority|permission|publish|customer.?route|mutation|delete|spend|signing)\b", re.I)
 FRESH_TERMS = re.compile(r"\b(?:fresh|stale|review cadence|review date|effective date|as of|owner|superseded|provisional)\b", re.I)
+HISTORICAL_TERMS = re.compile(r"\b(?:historical|superseded|provisional|archived|exemplar|template|retired)\b", re.I)
+
+
+def _is_historical_document(path: Path, text: str) -> bool:
+    parts = {part.lower() for part in path.parts}
+    if {"archive", "templates"} & parts:
+        return True
+    if any(term in path.name.lower() for term in ("exemplar", "template", "historical", "superseded")):
+        return True
+    return bool(HISTORICAL_TERMS.search("\n".join(text.splitlines()[:24])))
 
 
 def _files(root: Path) -> list[Path]:
@@ -78,7 +88,7 @@ def audit_repository(repo: str | Path = ".") -> dict:
         text = "\n".join(lines)
         if AUTH_TERMS.search(text):
             authority_positions.append((path, text.lower()))
-        if AUTH_TERMS.search(text) and not DATE_RE.search(text) and not FRESH_TERMS.search(text):
+        if AUTH_TERMS.search(text) and not _is_historical_document(path, text) and not DATE_RE.search(text) and not FRESH_TERMS.search(text):
             add("warning", "freshness-metadata", path.relative_to(root), None, "authority-bearing document", "authority language has no visible date, owner, cadence, or freshness marker", "Add effective date, owner, review trigger, or explicit non-current status", True)
 
     granting = [path for path, text in authority_positions if re.search(r"\b(?:grants?|creates?)\s+(?:authority|permission)", text)]

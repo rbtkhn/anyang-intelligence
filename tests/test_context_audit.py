@@ -42,6 +42,17 @@ def test_authority_document_without_freshness_metadata_is_reported(tmp_path):
     assert any(item["category"] == "freshness-metadata" for item in report["findings"])
 
 
+def test_historical_and_template_authority_documents_are_not_freshness_findings(tmp_path):
+    archive = tmp_path / "archive"
+    templates = tmp_path / "templates"
+    archive.mkdir()
+    templates.mkdir()
+    (archive / "old-authority.md").write_text("# Archived authority\nAuthority never grants permission.\n", encoding="utf-8")
+    (templates / "authority-template.md").write_text("# Authority template\nApproval is required.\n", encoding="utf-8")
+    report = audit_repository(tmp_path)
+    assert not any(item["category"] == "freshness-metadata" for item in report["findings"])
+
+
 def test_markdown_and_json_views_share_findings(tmp_path):
     (tmp_path / "README.md").write_text("[missing](missing.md)\n", encoding="utf-8")
     report = audit_repository(tmp_path)
