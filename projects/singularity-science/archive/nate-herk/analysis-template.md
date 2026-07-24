@@ -2,6 +2,8 @@
 
 Use this template for seam-first extraction from Nate Herk's AI Automation sources.
 
+Title rationale: The title should identify the source mechanism or decision surface being evaluated.
+
 ## Lead Judgment
 
 State the strongest reusable mechanism and which benchmark, capability, or commercial claim remains provisional.
