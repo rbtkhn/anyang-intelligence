@@ -45,7 +45,7 @@ After the owner/operator responds, Anyang Intelligence should produce:
 
 These are proposed operating-review inputs, not completed decisions or authorization to act.
 
-## Later Intake
+## Phase 2: Deeper Intake
 
 After Phase 1, deeper intake can collect:
 
@@ -58,3 +58,8 @@ After Phase 1, deeper intake can collect:
 - Fulfillment workflow.
 - Product pipeline.
 - Weekly operating cadence.
+
+The July 23, 2026 CEO meeting marks the beginning of Grace Gems Phase 2
+business intake. Phase 2 opening does not mean the deeper intake is complete,
+make an owner-reviewable context effective, authorize the first operating
+review, or permit external action.

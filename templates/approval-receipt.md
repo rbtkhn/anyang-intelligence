@@ -1,5 +1,10 @@
 # Engineer Approval Receipt
 
+> Compatibility template: New pilot workflows may use the consolidated
+> [Executive Council Transaction
+> Record](executive-council-transaction-record.md) while preserving this
+> template's separately attributable function.
+
 Use this receipt to authorize a bounded action after reviewing a Chief Executive Brief.
 
 Brief ID:

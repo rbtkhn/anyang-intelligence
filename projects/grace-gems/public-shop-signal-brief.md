@@ -1,5 +1,10 @@
 # GraceGemsUS Public Shop Signal Brief
 
+**Historical scope note:** This is a pre-Phase-2 public-signal artifact for one
+storefront. The July 23 CEO meeting established a 13-shop business portfolio.
+Use this brief only as GraceGemsUS evidence; do not treat it as the current
+whole-business model or as the approved first-review scope.
+
 ## Source
 
 Public Etsy surfaces reviewed:

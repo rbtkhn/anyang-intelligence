@@ -45,6 +45,8 @@ def test_bounded_grant_and_boundary_in_one_document_are_not_conflict(tmp_path):
     assert not any(item["category"] == "authority-conflict" for item in report["findings"])
 
 
+
+
 def test_authority_document_without_freshness_metadata_is_reported(tmp_path):
     (tmp_path / "authority.md").write_text("Permission and approval rules for publication.\n", encoding="utf-8")
     report = audit_repository(tmp_path)

@@ -1,6 +1,6 @@
 ---
 name: business-intake
-description: Discoverable repository adapter for governed owner-facing business intake. Use only when the operator explicitly invokes $business-intake create or $business-intake change to establish or revise an approved business context.
+description: Discoverable repository adapter for governed owner-facing business intake. Use only when the operator explicitly invokes $business-intake create, $business-intake resume, or $business-intake change to establish, continue, or revise an approved business context.
 ---
 
 # Business Intake Discovery Adapter

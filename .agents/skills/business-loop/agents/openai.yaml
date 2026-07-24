@@ -1,0 +1,7 @@
+interface:
+  display_name: "Business Loop"
+  short_description: "Design governed repeatable business loops"
+  default_prompt: "Use $business-loop design to prepare one governed operating-loop specification from an approved priority."
+
+policy:
+  allow_implicit_invocation: false

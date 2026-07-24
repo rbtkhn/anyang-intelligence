@@ -27,6 +27,7 @@ def test_business_intake_is_cataloged_and_explicit_only():
     metadata = frontmatter(CANONICAL)
     assert metadata["name"] == "business-intake"
     assert "$business-intake create" in metadata["description"]
+    assert "$business-intake resume" in metadata["description"]
     assert "$business-intake change" in metadata["description"]
 
     catalog = read(ROOT / "skills/README.md")
@@ -60,6 +61,7 @@ def test_modes_states_and_persistence_are_fail_closed():
     combined = canonical + contracts
 
     assert "Support exactly these explicit modes" in canonical
+    assert "`$business-intake resume`" in canonical
     assert "`Ready`, `Provisional`, or `Hold`" in canonical
     for outcome in ("`No Change`", "`Open Question`", "`Context Change Proposal`", "`Hold`"):
         assert outcome in canonical
@@ -68,6 +70,31 @@ def test_modes_states_and_persistence_are_fail_closed():
     assert "partial approval" in combined
     assert "Do not reconstruct them from memory" in canonical
     assert "Use `Missing` instead of" in canonical
+
+
+def test_resume_is_checkpoint_bound_and_does_not_leak_approval():
+    canonical = read(CANONICAL)
+    strategy = read(QUESTION_STRATEGY)
+    contracts = read(OUTPUT_CONTRACTS)
+    adapter = read(ADAPTER)
+    combined = canonical + strategy + contracts
+
+    for phrase in (
+        "same business and intake case",
+        "Verified Meeting Capture",
+        "Intake Continuation Receipt",
+        "First Review Decision Receipt",
+        "Intake Handoff Packet",
+        "broad data dump",
+        "First-review brief required before execution: yes",
+        "External-action authorization: no",
+        "No action taken; intake remains proposed or held pending owner decision.",
+        "`Paused` or `Awaiting Owner Response`",
+    ):
+        assert phrase in combined
+
+    assert "$business-intake resume" in adapter
+    assert "meeting, handoff, phase transition, evidence access, or owner interest" in canonical
 
 
 def test_private_data_and_external_authority_remain_separate():

@@ -4,13 +4,22 @@ Status: proposed internal pilot
 Period: two to four weeks
 Boundary: internal Executive Council work only; no customer-facing or external action is authorized by this pilot.
 
-## Required receipt chain
+## Required logical receipt chain
 
-Each workflow must link:
+Each workflow must preserve three separately attributable functions:
 
-1. Chief Executive Brief
-2. Engineer Approval Receipt
-3. Executive Assistant Action Receipt, including No action taken when held or blocked
+1. Chief Executive recommendation;
+2. Engineer authority disposition;
+3. Executive Assistant execution and evidence return, when execution occurs.
+
+The three functions may be recorded as separate linked artifacts or as sections
+A-C of one [Executive Council Transaction
+Record](../templates/executive-council-transaction-record.md). Physical
+consolidation does not merge authorship or authority.
+
+For a held, rejected, or blocked item where no executor was invoked, record the
+recommendation, authority disposition, and `No action taken`. Do not require an
+otherwise empty action receipt.
 
 ## Five-workflow cohort
 
@@ -42,12 +51,20 @@ Each workflow must link:
 ## Success criteria
 
 - Every consequential workflow has the authority header.
-- Every approved action has a bounded Engineer Approval Receipt.
-- Every executed action has an Executive Assistant Action Receipt.
+- Every approved action has a bounded Engineer authority disposition, recorded
+  either in a separate receipt or section B of the transaction record.
+- Every executed action has an Executive Assistant execution-and-evidence
+  section, recorded either in a separate receipt or section C of the
+  transaction record.
 - Completed actions include returned evidence.
 - At least one real authority, scope, or evidence gap is caught before execution.
 - Rework and missed commitments are measurable against a baseline.
 - Added receipt burden is lower than the rework prevented.
+- Physical artifact count is not treated as evidence quality.
+- Receipt burden is measured in minutes.
+- Estimated savings remain estimates until observed.
+- Steward review is required only at a named gate, exception, or scheduled
+  assurance review.
 
 ## Pilot closeout
 

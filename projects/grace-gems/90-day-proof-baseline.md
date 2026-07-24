@@ -1,6 +1,6 @@
 # Grace Gems 90-Day Proof Baseline
 
-Status: `Blocked pending live owner intake`
+Status: `Phase 2 intake active; proof blocked pending effective context and operating-review authorization`
 
 This is the sanitized baseline for the governed Media Production proof. It records known operating constraints and names missing live evidence without embedding private customer records.
 
@@ -34,7 +34,10 @@ These public-signal candidates must not be loaded as active canonical work until
 
 ## Day-21 Rule
 
-If live owner inputs are not available by day 21, keep commercial proof marked `Blocked`. Synthetic fixtures may verify software but do not count as Grace Gems proof.
+If the required Phase 2 evidence, exact owner-approved context, external
+tenant-private persistence receipt, and operating-review authorization are not
+available by day 21, keep commercial proof marked `Blocked`. Synthetic fixtures
+may verify software but do not count as Grace Gems proof.
 
 ## Baseline Metrics
 
@@ -54,4 +57,4 @@ If live owner inputs are not available by day 21, keep commercial proof marked `
 
 The proof requires at least four consecutive live weekly cycles, exact-version approvals for claim-bearing delivered work, delivery receipts, honest pending outcomes, visible economics, and an evidence-backed day-90 decision.
 
-Any proposed workflow intervention should use the repository's [Automation Value Proof](../../templates/automation-value-proof.md) packet. Grace Gems-specific economics, customer evidence, and raw records remain outside Git; this template does not unblock the current live-owner-intake hold.
+Any proposed workflow intervention should use the repository's [Automation Value Proof](../../templates/automation-value-proof.md) packet. Grace Gems-specific economics, customer evidence, and raw records remain outside Git; this template does not satisfy the remaining effective-context, persistence, or operating-review gates.

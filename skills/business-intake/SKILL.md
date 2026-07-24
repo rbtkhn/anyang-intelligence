@@ -1,6 +1,6 @@
 ---
 name: business-intake
-description: Governed owner-facing intake for creating an initial business context or changing an existing approved context. Use only when the operator explicitly invokes $business-intake create or $business-intake change to gather business goals, operating evidence, economics, capacity constraints, owner authority, and data-handling boundaries before an operating review.
+description: Governed owner-facing intake for creating, resuming, or changing a business context. Use only when the operator explicitly invokes $business-intake create, $business-intake resume, or $business-intake change for initial intake, a verified meeting capture or handoff continuation, phased intake, owner-response capture, or review of new evidence against an effective context.
 ---
 
 # Business Intake
@@ -11,7 +11,7 @@ Use this skill as the owner-facing entry point for commercial business installat
 
 ## Required Reads
 
-Read before either mode:
+Read before any mode:
 
 1. `references/question-strategy.md`
 2. `references/output-contracts.md`
@@ -26,9 +26,10 @@ For Grace Gems, also read `projects/grace-gems/business-intake-survey.md`. For M
 Support exactly these explicit modes:
 
 - `$business-intake create`: establish an initial owner-approved business context.
+- `$business-intake resume`: continue an incomplete intake from a verified checkpoint, meeting capture, or handoff.
 - `$business-intake change`: review new evidence against the latest effective context and govern a possible revision.
 
-If the explicit invocation does not name one mode, ask whether the operator intends to establish the first context or reconsider an effective one. Do not begin private questions until the mode is clear.
+If the explicit invocation does not name one mode, ask whether the operator intends to establish the first context, continue an incomplete intake, or reconsider an effective one. Do not begin private questions until the mode is clear.
 
 ## Authority And Data Gate
 
@@ -44,6 +45,12 @@ Before business-specific questions:
 Return `Hold` when identity, authority, purpose, privacy, preservation, sharing, deletion, exclusions, or mode remains unclear. Request only the missing decision; do not pressure the owner to disclose private information.
 
 When an operator supplies an `ops intake status` receipt, treat its exact version-bound fields as the continuation checkpoint. Ask again only when a required field is absent, expired, contradicted, or bound to a different context version. Never treat the receipt as authority for a new decision.
+
+A supplied handoff may support read-only orientation before private questions.
+Treat it as a checkpoint only after matching the business reference, intake
+case, phase, status, authority boundary, and evidence boundary. Never infer
+approval from a meeting, interest, access, discussion, continuity, or the
+existence of a handoff.
 
 ## Intent Recovery For Owner Language
 
@@ -62,7 +69,42 @@ Skip recovery for factual receipts, exact economics, explicit approvals, clear a
 7. Show the complete proposed context and ask the named owner to approve, reject, or request changes.
 8. After exact approval, produce an Approved Business Context Packet in `Awaiting Persistence`.
 9. Mark the context `Effective` only after an authorized operator confirms external tenant-private preservation.
-10. Ask separately whether the owner authorizes preparation of the first operating review.
+10. Ask separately whether the owner authorizes one downstream preparation
+    route: the first operating review, business planning, or neither.
+11. For a business-planning route, produce an Intake Handoff Packet carrying
+    the exact context approval and persistence receipts, planning-preparation
+    authority, named decision owner, and evidence boundary. Do not infer plan
+    approval or execution authority.
+
+## Resume
+
+Require the operator-supplied business reference, latest intake checkpoint or
+handoff, current phase and status, named owner, authority and data boundaries,
+unresolved decision, and evidence added since the checkpoint. Do not
+reconstruct them from memory.
+
+Then:
+
+1. Verify that the checkpoint belongs to the same business and intake case.
+2. Reconfirm authority or data fields only when missing, expired,
+   contradicted, or changed.
+3. Separate confirmed owner statements from preparation hypotheses, public
+   observations, interpretations, and missing evidence.
+4. For a post-meeting continuation, produce a Verified Meeting Capture before
+   recommending work.
+5. Record the current intake phase without treating phase progression as
+   context approval, persistence, operating-review authority, or external
+   action authority.
+6. Request only evidence tied to the next approved intake or review question;
+   never request a broad data dump.
+7. Produce only the next required packet: an Intake Continuation Receipt,
+   Verified Meeting Capture, bounded evidence request, First Review Decision
+   Receipt, or Intake Handoff Packet.
+8. If a first review is authorized, complete its brief before execution and
+   route the evidence review to the appropriate domain skill or separate
+   authorized task.
+9. Return `Paused`, `Awaiting Owner Response`, or `Hold` when the next decision
+   belongs to the owner. Preserve the exact checkpoint and resume requirements.
 
 ## Change
 
@@ -93,9 +135,13 @@ Never use `Provisional` to route around a required condition. Use `Missing` inst
 Keep these decisions separate:
 
 - Intake permission authorizes only the bounded intake.
+- A meeting, handoff, phase transition, evidence access, or owner interest does
+  not authorize a review or action.
 - Context approval authorizes only the exact displayed context and approved preservation scope.
 - Context effectiveness requires separate operator-confirmed tenant-private persistence.
 - Context approval does not authorize an operating review.
+- Context approval does not authorize business-plan preparation, plan
+  approval, loop design, or execution.
 - Operating-review authorization does not authorize publication, pricing, spending, hiring, promotion, customer communication, source changes, or external claims.
 
 Route money and financial classification through `skills/tax-financial-governance/SKILL.md`. Route durable sanitized repository facts through `skills/project-state-update/SKILL.md` only in a separate, explicitly authorized repository task.
@@ -114,8 +160,13 @@ Route money and financial classification through `skills/tax-financial-governanc
 Complete only with one explicit state:
 
 - `Hold`, naming the missing decision and human authority;
+- `Paused` or `Awaiting Owner Response`, naming the checkpoint, open decision,
+  and evidence needed to resume;
 - `No Change`, `Open Question`, `Rejected`, or `Deferred`;
 - an approved packet in `Awaiting Persistence`;
 - one operator-confirmed `Effective` version.
 
-For `create`, record the separate operating-review decision. Never treat intake, context approval, persistence, operating-review authorization, or external-action approval as interchangeable.
+For `create` or `resume`, record the separate downstream preparation decision.
+Never treat intake, phase progression, meeting capture, context approval,
+persistence, operating-review authorization, planning-preparation authority,
+plan approval, or external-action approval as interchangeable.

@@ -1,5 +1,10 @@
 # Chief Executive Brief
 
+> Compatibility template: New pilot workflows may use the consolidated
+> [Executive Council Transaction
+> Record](executive-council-transaction-record.md) while preserving this
+> template's separately attributable function.
+
 Use this brief to prepare a recommendation for Engineer review. It does not approve, authorize, commit, publish, or execute work.
 
 Brief ID:

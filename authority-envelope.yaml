@@ -5,6 +5,10 @@ governance:
   ai_role: executive
   owner: engineer
   default_posture: prepare-then-require-approval
+  operating_character: engineer-governed-advisory-execution-and-assurance-system
+  membership_rule: Council membership conveys responsibility, not sovereign authority.
+  decision_rule: The Chief Executive prepares judgment, the Executive Assistant performs approved action, the Council Steward tests state support, and the Engineer decides what is permitted.
+  client_parallel_authority_rule: Client CEOs retain authority over their companies; Engineer authority and client authority do not substitute for one another.
   conflict_precedence: engineer
   review_cadence: quarterly
   expansion_rule: Add or widen a lane only after measured reliability and a new operator approval receipt.
@@ -17,6 +21,8 @@ roles:
     authority: bounded-anyang-operating-coordination
   interface:
     authority: human-world-interface-and-delegated-chief-of-staff
+  steward:
+    authority: bounded-council-state-reconciliation
   client:
     authority: client-company-business-authority
 
@@ -24,7 +30,11 @@ migration_aliases:
   engineer-operator-owner: engineer
   ai-ceo: executive
   hannah: interface
+  council-steward: steward
   client-human-ceo: client
+
+action_aliases:
+  assign-hannah-tasks: dispatch-executive-assistant-task
 
 protected_floors:
   - spending
@@ -58,6 +68,14 @@ domains:
     prohibited_actions: [external-commitment, spending, publication, access-expansion]
     required_evidence: [approved-mandate, current-authority-envelope]
     approval_threshold: explicit-operator-approval-before-mutation
+    read_only_discretion:
+      - choose-analysis-method
+      - organize-and-revise-internal-draft
+      - sequence-read-only-work-within-approved-objective
+      - request-clarification
+      - pause-or-narrow-on-authority-or-evidence-gap
+    executive_assistant_dispatch_rule: A dispatch requires a current Engineer approval or standing mandate naming scope, executor, evidence, exclusions, and expiry.
+    standing_mandate_rule: A standing mandate must name the task class, permitted actions, limits, evidence, expiry, revocation path, and recovery method.
     approver: engineer
     review_expiry: named-in-receipt
     audit_record: action-and-delta-receipt
@@ -74,6 +92,17 @@ domains:
     audit_record: git-diff-and-approval-receipt
     revocation_path: operator-receipt
     recovery: git-revert-or-reviewed-rollback
+  portfolio-reconciliation:
+    scope: Repository-visible operating state and artifact lineage across all projects/.
+    allowed_actions: [read-repository-project-state, identify-contradiction, propose-reconciliation, propose-supersession]
+    prohibited_actions: [write-project-state, access-private-system, transfer-private-context-across-projects, external-communication, approve-own-finding, substitute-business-strategy]
+    required_evidence: [current-authority-envelope, steward-role-contract, source-provenance, membrane-check]
+    approval_threshold: engineer-activation-receipt-before-runtime-access
+    approver: engineer
+    review_expiry: named-in-activation-receipt
+    audit_record: steward-reconciliation-receipt
+    revocation_path: engineer-receipt
+    recovery: stop-runtime-revoke-access-and-preserve-historical-findings
   resources-and-communications:
     scope: Anyang recommendations and drafts for resources and communications.
     allowed_actions: [recommend-resource-allocation, draft-internal-message, draft-external-message]
@@ -102,6 +131,9 @@ domains:
     prohibited_actions: [change-client-records, change-client-listings, change-client-prices, contact-client-stakeholders-without-approval, make-client-commitment]
     required_evidence: [client-approved-context, source-and-scope, client-authority-boundary]
     approval_threshold: client-human-ceo-for-business-action
+    required_approvers: [engineer, client]
+    dual_authority_rule: Consequential client execution requires both Anyang authority for the Council action and client authority for the client-company decision.
+    authority_non_substitution_rule: Engineer approval does not create client-company authority, and client approval does not create Anyang system authority.
     approver: client
     review_expiry: named-in-receipt
     audit_record: client-decision-brief

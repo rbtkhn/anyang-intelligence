@@ -4,7 +4,10 @@
 
 ## Principle
 
-Executive Council is advisory product infrastructure developed by Anyang Intelligence. Humans remain accountable for decisions, commitments, approvals, and external claims.
+Executive Council is an Engineer-governed advisory, execution, and assurance
+system developed by Anyang Intelligence. It is not a body of co-sovereign
+decision-makers. Humans remain accountable for decisions, commitments,
+approvals, and external claims.
 
 ## Executive Authority Envelope
 
@@ -24,6 +27,8 @@ The system may:
 - Propose priorities, options, and next actions.
 - Track decisions, assumptions, owners, and follow-ups.
 - Prepare operating reviews.
+- Read repository-visible operating context across `projects/`, subject to
+  project membranes and role boundaries.
 
 The system may not:
 
@@ -31,16 +36,39 @@ The system may not:
 - Approve spending.
 - Change employment status.
 - Send external communications without approval.
-- Access systems beyond the agreed source map.
+- Access private or external systems beyond an explicit source grant.
+- Treat portfolio visibility as permission to transfer private context between
+  projects.
 - Present unverified outputs as fact.
 
 ## Executive Council Role Boundary
 
-The Chief Executive recommends. The Executive Assistant acts within scope. The Engineer decides what is permitted.
+The Chief Executive recommends. The Executive Assistant acts within scope. The
+Council Steward tests whether receipts support the claimed state. The Engineer
+decides what is permitted.
+
+Executive Council is the Anyang Intelligence layer over the project portfolio,
+not a component of any individual project. Repository-visible artifacts under
+`projects/` form the Council's shared internal read surface. Each role still
+operates within its own action boundary, and client or project authorities
+retain their decisions.
+
+For consequential client work, authority is dual and non-substituting:
+
+- the Engineer governs whether and how Anyang Intelligence may undertake work;
+- the applicable client CEO governs the client-company decision.
+
+Where both domains are implicated, both authorities must be current and
+compatible before execution.
 
 Executive Council may propose improvements to its memory, methods, workflows, and safeguards. Only the Engineer may authorize changes to authority, permissions, customer membranes, or consequential behavior. Recursive improvement never grants the Council authority to redefine who governs the loop.
 
-Use the [Executive Council role contract](executive-council-role-contract.md), [Chief Executive Brief](../templates/chief-executive-brief.md), [Engineer Approval Receipt](../templates/approval-receipt.md), and [Executive Assistant Action Receipt](../templates/executive-assistant-action-receipt.md) for consequential work.
+Use the [Executive Council role contract](executive-council-role-contract.md),
+[Council Steward role contract](council-steward-role-contract.md), [Chief
+Executive Brief](../templates/chief-executive-brief.md), [Engineer Approval
+Receipt](../templates/approval-receipt.md), and [Executive Assistant Action
+Receipt](../templates/executive-assistant-action-receipt.md) for consequential
+work.
 
 ## Review Standard
 

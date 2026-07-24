@@ -4,12 +4,17 @@ This dashboard shows the current project portfolio as an operating system: reven
 
 It is a working control panel, not a final strategy document.
 
+Council authority, role definitions, and runtime activation are controlled by
+the [Executive Council role contract](../docs/executive-council-role-contract.md)
+and applicable Engineer receipts. This dashboard reports portfolio operating
+state; it does not redefine Council authority or runtime status.
+
 ## Portfolio Snapshot
 
 | Project | Current status | Revenue / asset status | Active obligation | Next decision | Confidence |
 | --- | --- | --- | --- | --- | --- |
 | [Media Production](media-production/README.md) | Active operating company | $1,000/month Grace Gems retainer; $500/month outsourced Creative Production Operator contractor allocation; $500/month remaining budget | Deliver Grace Gems monthly creative support; source/onboard the outsourced Creative Production Operator contractor; maintain Predictive History creative development lane | Confirm first Grace Gems product backlog and first-week deliverables | High |
-| [Grace Gems](grace-gems/README.md) | Active business client and internal proof case | Pays Media Production $1,000/month for creative support; business economics still pending owner intake | Provide customer transcripts, top listings, cost/pricing context, and owner decision boundaries | Convert intake response into first marketplace operating review | Medium-high |
+| [Grace Gems](grace-gems/README.md) | Phase 2 intake active; three bounded review scopes approved; evidence access, review execution, and implementation held | Pays Media Production $1,000/month for creative support; business economics and effective context remain unconfirmed | Complete the exact evidence-access, privacy, reviewer, persistence, and measurement gates for the approved scopes | Obtain exact evidence-access authority, private-location reference, reviewer access, and review date before executing any approved scope | Medium-high |
 | [Learning Core](learning-core/README.md) | Active high-trust education service | $1,000/month confirmed recurring revenue plus a separate $1,000 one-time retainer; scoped deliverable is a 30-day collaborative build of the family's `Learning Core`, including onboarding; Khan Academy Kids selected as free starter iPad app; reading basket adopted as first physical literacy tool; student portfolio adopted for physical work, digital work, proud work, milestones, and reports; monthly portfolio review adopted as first reporting layer; parent intake, lighter onboarding survey, adaptive Phase 2 follow-up, continuity pressure test, and Khan transition-readiness doctrine are now defined | Collaborate with real parents to build a usable `Learning Core`, classify readiness as Ready / Provisional / Hold, and draft only from parent-approved inputs while preserving parent authority, child safety, and evidence boundaries | Maintain agreed monthly continuity service while running the onboarding readiness checklist before drafting | Medium |
 | [Mountain Villa](mountain-villa/README.md) | Property governance prototype | 5 acres in Jefferson County, Colorado; owner-reported private well drawing from a clean aquifer and enclosure by national/state park lands; $200,000 operator-provided asset valuation pending verification; owner-set sale objective: $500,000; no revenue attached | Build risk-first property operating memory and seasonal readiness loop | Identify top property risks, systems, and first seasonal review gate | Medium-low |
 | [Book Club](book-club/README.md) | Free local community context with donor support | Free participation; $1,000 donor-funded retainer for shared supplemental materials/services; optional member donations may also support shared needs | Steward donor-funded support while preserving monthly cadence, selection memory, host coordination, and member experience without making participation transactional | Decide which shared materials or services should use donor funds without over-managing the club | Medium |
@@ -21,7 +26,7 @@ This view distinguishes the work type, relationship, intended result, and immedi
 | Project | Project type | Relationship status | Primary outcome | Current constraint | Next decision |
 | --- | --- | --- | --- | --- | --- |
 | [Media Production](media-production/README.md) | Client service / internal operating company | Paid recurring service | Reliably deliver Grace Gems creative support while building a reusable production system | Operator capacity is not yet staffed | Confirm the first Grace Gems backlog and contractor onboarding standard |
-| [Grace Gems](grace-gems/README.md) | Client service / commercial proof | Paid client of Media Production | Improve governed marketplace execution and create credible proof | Owner intake, product economics, and approval boundaries are incomplete | Convert the owner intake into the first operating review |
+| [Grace Gems](grace-gems/README.md) | Client service / commercial proof | Paid client of Media Production | Improve governed marketplace execution and create credible proof | Three review scopes are approved, but evidence access, execution, product economics, effective context, and implementation authority remain incomplete | Complete the evidence-access gates before executing any approved scope |
 | [Learning Core](learning-core/README.md) | Recurring high-trust education service | Paid recurring service | Deliver a parent-approved Learning Core and ongoing continuity support | Parent inputs, timing, safety boundaries, and approvals remain required before drafting | Maintain monthly continuity service and run intake before each plan draft |
 | [Mountain Villa](mountain-villa/README.md) | Asset stewardship project | Internal / no revenue | Establish risk-first property memory and seasonal readiness | Property risk inventory is incomplete | Capture the top risks and first seasonal review gate |
 | [Book Club](book-club/README.md) | Community stewardship project | Free participation with donor-funded support | Sustain an enjoyable, low-friction monthly community cadence | Permitted donor-fund use and organizer approval process are undefined | Choose the first shared support to fund without making participation transactional |
@@ -74,11 +79,14 @@ Unknown or pending:
 
 ### Grace Gems
 
-- Await owner/operator intake response.
-- Collect customer support chat transcripts.
-- Identify the first 5-10 listings to review.
-- Clarify pricing, cost, and margin assumptions.
-- Define owner approval boundaries for customer messages, product claims, and promotions.
+- Treat the July 23 CEO meeting as the start of Phase 2 business intake.
+- Use the CEO-provided 13-shop roster while distinguishing the full portfolio
+  from the initially named governed scope.
+- Complete only the bounded evidence assignments recorded in the meeting capture.
+- Clarify pricing, cost, margin, capacity, privacy, and approval boundaries
+  outside Git before proposing the effective context.
+- Obtain separate CEO authorization before preparing or executing the first
+  operating review.
 
 ### Learning Core
 
@@ -107,7 +115,8 @@ Unknown or pending:
 1. **Media Production:** What are the first Grace Gems deliverables for week one?
 2. **Creative Production Operator:** What contractor sourcing/onboarding standard will be used before assigning production work?
 3. **Learning Core:** What parent intake or onboarding-survey responses are needed to build a usable first-month `Learning Core` and classify the case as Ready, Provisional, or Hold?
-4. **Grace Gems:** What should happen when the owner/operator intake response arrives?
+4. **Grace Gems:** Which bounded Phase 2 review question, evidence membrane,
+   success metric, and approval boundary should the CEO confirm next?
 5. **Mountain Villa:** What are the top five property risks to capture first?
 6. **Book Club:** How should the $1,000 donor-funded retainer support shared materials or services without making the club feel over-managed or transactional?
 

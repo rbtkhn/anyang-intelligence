@@ -1,8 +1,14 @@
-# Grace Gems 30-Day Plan
+# Grace Gems Pre-Phase-2 Candidate 30-Day Plan
 
-This plan creates the first recurring operating support surfaces for Grace Gems.
+This plan was drafted before the July 23, 2026 Phase 2 intake meeting. It is a
+candidate planning surface, not the current approved first-review scope.
 
 Entry gate: complete explicit `$business-intake create`, obtain exact owner context approval, confirm external tenant-private persistence, and separately obtain authorization for the first operating review. Until then, this plan remains proposed and on `Hold`.
+
+Before activation, reconcile this plan with the CEO meeting capture, the
+[13-shop roster](storefront-roster-2026-07-24.md), and the approved Phase 2
+first-review brief. Do not assume that listing and margin review remains the
+first priority.
 
 ## Week 1: Control Surface Baseline
 

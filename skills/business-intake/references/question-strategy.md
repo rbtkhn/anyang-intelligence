@@ -38,6 +38,15 @@ Ask which decisions require owner approval, including publication, pricing, prom
 
 For `create`, establish the minimum useful context for the first operating review. Do not collect a complete business archive.
 
+For `resume`, begin with the verified checkpoint, current phase and status,
+unresolved decision, and evidence added since the checkpoint. Ask again only
+for missing, expired, contradicted, or changed authority and data fields.
+Separate confirmed owner statements from preparation hypotheses and public
+observations. For a meeting continuation, capture corrections, priority,
+constraint, costly friction, risky promise, approved review scope, evidence
+permission, privacy limit, approval authority, success metric, review date, and
+status before recommending work.
+
 For `change`, begin with the trigger, affected section, new evidence, counterevidence, and any changed authority or data boundary. Do not repeat unaffected intake sections.
 
 For Grace Gems, use `projects/grace-gems/business-intake-survey.md` as the canonical project-specific question set. Its six evidence groups satisfy the project route but do not replace the shared authority, approval, readiness, or persistence gates.
@@ -46,4 +55,8 @@ For Mountain Villa, use `projects/mountain-villa/business-intake-survey.md` as t
 
 ## Question Quality
 
-Prefer recent evidence, observable operating sequences, bounded estimates, and explicit missing values. Avoid exhaustive histories, raw private records, leading questions, duplicate questions, and requests for information that cannot change the next action.
+Prefer recent evidence, observable operating sequences, bounded estimates, and
+explicit missing values. Tie every evidence request to an approved question.
+Avoid exhaustive histories, broad data dumps, raw private records, leading
+questions, duplicate questions, and requests for information that cannot
+change the next action.

@@ -1,5 +1,10 @@
 # Executive Assistant Action Receipt
 
+> Compatibility template: New pilot workflows may use the consolidated
+> [Executive Council Transaction
+> Record](executive-council-transaction-record.md) while preserving this
+> template's separately attributable function.
+
 Use this receipt after the Executive Assistant acts on an approved objective. A draft, message, or handoff does not count as execution.
 
 Action ID:

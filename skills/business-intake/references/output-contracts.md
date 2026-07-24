@@ -8,7 +8,7 @@ Produce only the packets required by the selected mode. Use `Missing` instead of
 Owner Authority And Data Receipt
 - Business reference:
 - Named owner approver:
-- Requested mode: [create / change]
+- Requested mode: [create / resume / change]
 - Effective-context check: [none confirmed / existing context found / possible duplicate / not checked]
 - Check confirmed by operator: [yes / no]
 - Intake purpose:
@@ -22,6 +22,111 @@ Owner Authority And Data Receipt
 - Exclusions and reuse restrictions:
 - Pause conditions:
 - Receipt status: [Confirmed / Hold]
+```
+
+## Intake Continuation Receipt
+
+```text
+Intake Continuation Receipt
+- Business reference:
+- Intake case reference:
+- Requested mode: resume
+- Prior checkpoint reference:
+- Prior phase and status:
+- Checkpoint matches business and intake case: [yes / no]
+- Named owner:
+- Authority boundary current: [yes / no / Missing]
+- Data boundary current: [yes / no / Missing]
+- Evidence added since checkpoint:
+- Contradictions or corrections:
+- Unresolved owner decision:
+- Next bounded artifact:
+- Resulting phase and status:
+- Resume requirements:
+```
+
+## Verified Meeting Capture
+
+```text
+Verified Meeting Capture
+- Business reference:
+- Intake case reference:
+- Meeting date:
+- Source reference:
+- CEO-confirmed priority:
+- CEO correction to current understanding:
+- Primary constraint:
+- Highest-cost operational friction:
+- Highest-risk customer promise:
+- Approved first-review scope:
+- Evidence authorized for review:
+- Privacy and membrane limits:
+- Approval authority:
+- Success metric:
+- Review date:
+- Confirmed owner statements:
+- Preparation hypotheses kept separate:
+- Missing evidence:
+- Intake phase:
+- Context state:
+- Operating-review authorization: [not requested / approved / declined / pending]
+- External-action authorization: no
+- Status:
+```
+
+If the meeting did not authorize action, include:
+
+> **No action taken; intake remains proposed or held pending owner decision.**
+
+## First Review Decision Receipt
+
+```text
+First Review Decision Receipt
+- Business reference:
+- Decision the review should support:
+- Review scope:
+- Evidence allowed:
+- Evidence prohibited:
+- Privacy and storage boundary:
+- Actions permitted:
+- Actions prohibited:
+- Named approver:
+- Decision: [approved / declined / pending / revise]
+- Success metric:
+- Review date:
+- First-review brief required before execution: yes
+- Implementation authorization: no
+- Status:
+```
+
+## Intake Handoff Packet
+
+```text
+Intake Handoff Packet
+- Business reference:
+- Intake case reference:
+- Current phase:
+- Current status:
+- Effective context and version: [reference / none / Missing]
+- Context approval receipt: [reference / Missing]
+- Context persistence receipt: [reference / Missing]
+- Named owner:
+- Confirmed owner statements:
+- Preparation hypotheses:
+- Authority boundary:
+- Evidence and privacy boundary:
+- Requested downstream route: [first operating review / business plan / other / none]
+- Downstream preparation authority: [approved / declined / pending / Missing]
+- Named downstream decision owner:
+- Downstream evidence boundary:
+- Completed artifacts:
+- Open decisions:
+- Missing evidence:
+- Pause condition:
+- Exact next action:
+- Required human authority:
+- Resume requirements:
+- Downstream approval or execution authority: no
 ```
 
 ## Business Intake And Readiness Packet

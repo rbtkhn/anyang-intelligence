@@ -4,20 +4,30 @@
 
 ## Boundary
 
-- Anyang role: `Executive operating partner`
-- Interface role: `Human consultant and approved coordination interface`
+- Chief Executive role: `Active AI Executive Council agent; prepares judgment`
+- Executive Assistant role: `Executive Council interface with the real world`
+- Council Steward role: `Organization-wide Executive Council role; a
+  separately activated runtime tests state and receipt integrity across
+  projects/`
 - Client role: `Grace Gems human CEO and business authority`
 - Engineer role: `Anyang system authority and veto`
+
+Executive Council belongs to Anyang Intelligence and operates over the complete
+`projects/` portfolio. Grace Gems is one client engagement within that
+portfolio, not the Council's organizational container.
 
 ## Executive may
 
 - Prepare Grace Gems briefs and recommendations.
 - Identify risks, evidence gaps, and priorities.
-- Coordinate only explicitly approved client work.
+- Prepare coordination plans only for explicitly approved client work.
 
-## Interface may
+## Executive Assistant may
 
-- Review briefs, challenge assumptions, add labeled human context, recommend escalation, and perform named approved chief-of-staff work.
+- Review briefs, challenge assumptions, add labeled human context, communicate
+  with stakeholders, gather authorized private evidence, coordinate named
+  approved work, perform approved external action, report exceptions, and
+  return evidence.
 
 ## Client retains authority over
 

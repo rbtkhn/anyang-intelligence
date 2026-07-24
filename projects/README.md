@@ -2,6 +2,18 @@
 
 Projects are concrete operating contexts where Anyang Intelligence installs or operates Executive Council. A project may be client work, an internal build, research, community stewardship, asset stewardship, or a hypothesis.
 
+Executive Council is the Anyang Intelligence layer over this portfolio, not a
+member or subsystem of any one project. Council roles may read
+repository-visible artifacts across `projects/` to maintain an integrated
+operating picture. This shared visibility does not override client or project
+authority, permit private-system access, or allow private context to cross
+project membranes.
+
+Executive Council sits above projects for internal coordination and
+repository-visible portfolio judgment. This internal position does not place
+the Council above a client CEO within the client's company. Organizational
+position and business authority are separate dimensions.
+
 The goal is to prove the pattern across different kinds of complexity before turning repeated workflows into software.
 
 Each project should follow the shared [Executive Council installation method](../docs/install-method.md), then adapt the method to its domain.

@@ -1,5 +1,9 @@
 # Grace Gems CEO Follow-Up Message
 
+**Prepared by:** Chief Executive
+**Sender:** Executive Assistant
+**Routing:** All Grace Gems CEO communication goes through the Executive Assistant
+
 **Subject:** Grace Gems — conversation summary and proposed next step
 
 Hi [Name],
@@ -21,4 +25,4 @@ Please correct anything that does not reflect your understanding. No external ac
 If useful, we will prepare the bounded first-review brief for your approval before beginning the review.
 
 Best,  
-[Executive Assistant Name]
+Executive Assistant

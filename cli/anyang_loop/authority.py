@@ -73,7 +73,7 @@ def validate_authority_envelope(path: str | Path | None = None) -> list[Authorit
         if not isinstance(governance, dict) or not governance.get(field):
             diagnostics.append(AuthorityDiagnostic("authority-governance-incomplete", target, f"Governance requires '{field}'."))
     roles = data.get("roles")
-    for role in ("engineer", "executive", "interface", "client"):
+    for role in ("engineer", "executive", "interface", "steward", "client"):
         if not isinstance(roles, dict) or not isinstance(roles.get(role), dict) or not roles[role].get("authority"):
             diagnostics.append(AuthorityDiagnostic("authority-role-incomplete", target, f"Role '{role}' requires an authority declaration."))
     domains = data.get("domains")
@@ -89,6 +89,28 @@ def validate_authority_envelope(path: str | Path | None = None) -> list[Authorit
                 diagnostics.append(AuthorityDiagnostic("authority-field-missing", target, f"Domain '{name}' requires '{field}'."))
         if domain.get("approver") == "" or domain.get("review_expiry") == "":
             diagnostics.append(AuthorityDiagnostic("authority-approval-incomplete", target, f"Domain '{name}' needs approver and review expiry."))
+        required_approvers = domain.get("required_approvers")
+        if required_approvers is not None:
+            if (
+                not isinstance(required_approvers, list)
+                or len(required_approvers) < 2
+                or any(not isinstance(item, str) or not item for item in required_approvers)
+            ):
+                diagnostics.append(
+                    AuthorityDiagnostic(
+                        "authority-required-approvers-invalid",
+                        target,
+                        f"Domain '{name}' required_approvers must name at least two authorities.",
+                    )
+                )
+            elif domain.get("approver") not in required_approvers:
+                diagnostics.append(
+                    AuthorityDiagnostic(
+                        "authority-approver-not-required",
+                        target,
+                        f"Domain '{name}' primary approver must appear in required_approvers.",
+                    )
+                )
     rollout = data.get("rollout")
     if not isinstance(rollout, dict) or rollout.get("stages") != ["shadow", "bounded-operation", "measured-expansion"]:
         diagnostics.append(AuthorityDiagnostic("authority-rollout-invalid", target, "Rollout must define shadow, bounded-operation, and measured-expansion in order."))
@@ -109,11 +131,32 @@ def authority_preflight(domain: str, action: str, path: str | Path | None = None
         return AuthorityPreflight(domain, action, "blocked", "unknown", True, ("unknown-domain",))
     prohibited = set(selected.get("prohibited_actions", []))
     allowed = set(selected.get("allowed_actions", []))
+    required_approvers = selected.get("required_approvers")
+    if isinstance(required_approvers, list) and required_approvers:
+        authority = "+".join(str(item) for item in required_approvers)
+        approval_blocker = "dual-approval-required"
+    else:
+        authority = str(selected.get("approver"))
+        approval_blocker = "explicit-approval-required"
     if action in prohibited:
-        return AuthorityPreflight(domain, action, "blocked", str(selected.get("approver")), True, ("prohibited-action",))
+        return AuthorityPreflight(domain, action, "blocked", authority, True, ("prohibited-action",))
     if action not in allowed:
-        return AuthorityPreflight(domain, action, "approval-required", str(selected.get("approver")), True, ("action-not-declared",))
-    return AuthorityPreflight(domain, action, "approval-required", str(selected.get("approver")), True, ("explicit-approval-required",))
+        return AuthorityPreflight(
+            domain,
+            action,
+            "approval-required",
+            authority,
+            True,
+            ("action-not-declared", approval_blocker),
+        )
+    return AuthorityPreflight(
+        domain,
+        action,
+        "approval-required",
+        authority,
+        True,
+        (approval_blocker,),
+    )
 
 
 def approval_receipt_is_current(receipt: dict[str, Any], *, as_of: date | None = None) -> bool:

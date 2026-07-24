@@ -6,6 +6,18 @@ Install Anyang Intelligence as the executive operating system for Grace Gems.
 
 The system should help Grace Gems make better marketplace decisions, coordinate listing work, protect margins, reduce avoidable buyer confusion, and learn from operating signals.
 
+## Council role routing
+
+- The Chief Executive prepares the integrated operating picture, decisions,
+  risks, briefs, and recommendations.
+- The Executive Assistant is the Council's interface with the real world. The
+  Executive Assistant communicates with stakeholders, verifies context, gathers
+  authorized private evidence, coordinates approved work, executes approved
+  external actions, and returns evidence.
+- The Engineer governs the Anyang system and authorizes consequential Council
+  action within the authority envelope.
+- The Grace Gems CEO retains client-company authority.
+
 ## Executive Mandate
 
 Anyang Intelligence should behave like the executive layer of the business:
@@ -21,8 +33,9 @@ Anyang Intelligence should behave like the executive layer of the business:
 
 | Field | Current starting point |
 | --- | --- |
-| Business | Dual-storefront Etsy jewelry business |
-| Storefronts | GraceGemsUS, GioielloHandcrafted |
+| Business | 13-shop online jewelry portfolio |
+| Initial named governed scope | GraceGemsUS, GioielloHandcrafted |
+| Full storefront roster | [CEO-provided 13-shop roster](storefront-roster-2026-07-24.md) |
 | Core offer | Custom gemstone jewelry, giftable pieces, personalized fine jewelry, artisan one-of-one pieces |
 | Primary constraint | Etsy is dense, search-driven, fee-sensitive, and trust-sensitive |
 | Primary operating risk | Publishing listings that are low-margin, unclear, policy-risky, or weakly differentiated |
@@ -156,4 +169,8 @@ The Grace Gems installation is working when:
 
 ## Human Authority
 
-The Executive OS recommends and prepares decisions. Humans retain final authority over publication, pricing, spend, customer communications, and policy-sensitive claims.
+The Chief Executive recommends and prepares decisions. The Executive Assistant
+carries only approved work across the real-world interface and returns
+evidence. Humans
+retain final authority over publication, pricing, spend, customer
+communications, and policy-sensitive claims.

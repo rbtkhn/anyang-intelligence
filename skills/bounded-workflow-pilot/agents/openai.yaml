@@ -1,4 +1,4 @@
 interface:
   display_name: "Bounded Workflow Pilot"
   short_description: "Run a bounded workflow pilot with receipts"
-  default_prompt: "Run this approved bounded workflow pilot and produce sanitized receipts."
+  default_prompt: "Use $bounded-workflow-pilot to run one approved manual or automation workflow experiment and produce sanitized receipts."

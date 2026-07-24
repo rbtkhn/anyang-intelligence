@@ -1,0 +1,2416 @@
+{
+  "version": 1,
+  "manifest_id": "EC-STEWARD-SOURCE-2026-07-24-05",
+  "generated_at": "2026-07-24T21:59:15.632691+00:00",
+  "repository_head": "224121c8e4a1b12d7a3304ab6ffa12eff833ae48",
+  "working_tree": "dirty snapshot; each authorized file sealed individually",
+  "scope": {
+    "canonical_sources": [
+      "authority-envelope.yaml",
+      "docs/authority-model.md",
+      "docs/executive-council-identity.md",
+      "docs/executive-council-three-receipt-pilot.md",
+      "docs/executive-council-pilot-tracker.md",
+      "docs/executive-council-role-contract.md",
+      "docs/council-steward-role-contract.md",
+      "docs/governance.md",
+      "docs/membranes.md",
+      "docs/data-handling-policy.md",
+      "docs/executive-interface-protocol.md",
+      "docs/council-steward-reconciliation-decision-2026-07-24.md",
+      "templates/chief-executive-brief.md",
+      "templates/approval-receipt.md",
+      "templates/executive-assistant-action-receipt.md",
+      "templates/executive-council-transaction-record.md",
+      "templates/executive-council-pilot-receipt.md"
+    ],
+    "project_root": "projects/",
+    "project_visibility": "Git-tracked and untracked non-ignored regular files",
+    "private_or_external_systems": "excluded"
+  },
+  "file_count": 476,
+  "aggregate_sha256": "63B2793D292EB0B7DFF2A0AAE7D5021C595D8E0E9200AA49E31B8D322E27F82A",
+  "files": [
+    {
+      "path": "authority-envelope.yaml",
+      "sha256": "78EB00A57A2444E07F84E834D4DF62CDBF830E356BFC910DFF5DF8CA19A88F1E",
+      "bytes": 8071
+    },
+    {
+      "path": "docs/authority-model.md",
+      "sha256": "F74F717FDDFBC30636BACEB6BA964DB282CDF975A487547A3DF4D90E804A0300",
+      "bytes": 2660
+    },
+    {
+      "path": "docs/council-steward-reconciliation-decision-2026-07-24.md",
+      "sha256": "94AAD5ACFD6489271F29258176C4F7DADEF7EB8829E1716213A8832CA0B31AE5",
+      "bytes": 2870
+    },
+    {
+      "path": "docs/council-steward-role-contract.md",
+      "sha256": "D30F82C9CDE070C5AC05CD5D9AE097AFD5712432C0712323A2D34E001EDE3B19",
+      "bytes": 16590
+    },
+    {
+      "path": "docs/data-handling-policy.md",
+      "sha256": "324811F38CA407CA627E053AEBFC6E8B286C7E28D73E99B95BB6750172CE0FDF",
+      "bytes": 5015
+    },
+    {
+      "path": "docs/executive-council-identity.md",
+      "sha256": "FBFEC73BB59657BD063D859DBA86EC095F6550EB99E4C991266AFFFB3938057E",
+      "bytes": 1941
+    },
+    {
+      "path": "docs/executive-council-pilot-tracker.md",
+      "sha256": "091BB93B16F5CDA6942DAD15F635C49DD01E7C5F97A83E0FFD46E701C6F12266",
+      "bytes": 2413
+    },
+    {
+      "path": "docs/executive-council-role-contract.md",
+      "sha256": "B11D65A1D8C7F268CDDEF68529810139D6BC454977238D3F8F58B5BD99909E69",
+      "bytes": 7690
+    },
+    {
+      "path": "docs/executive-council-three-receipt-pilot.md",
+      "sha256": "1DC236F68E464411A1C24BD0F78C4DD39A2785B3D32FDE9C8401A97A70DD7508",
+      "bytes": 3462
+    },
+    {
+      "path": "docs/executive-interface-protocol.md",
+      "sha256": "0D9BE2857FAB67F2B947C22064BEE9B7BC94CB6FC79DB217422270DADF56E6DB",
+      "bytes": 4907
+    },
+    {
+      "path": "docs/governance.md",
+      "sha256": "C9C8D50CF966D8AB01769C0E5A0AE4EB54A77BAA615C5575988D769E447F7F10",
+      "bytes": 5290
+    },
+    {
+      "path": "docs/membranes.md",
+      "sha256": "CA82304FB2326A4EE8C6453EEF32485458860ADFF6AAA13DC2FFCB09216C5E30",
+      "bytes": 8080
+    },
+    {
+      "path": "projects/README.md",
+      "sha256": "2BD354FD638BBEEE0D09CF4B7603ACC95C19339AB760A9F8C29EDBB39C62CC02",
+      "bytes": 5395
+    },
+    {
+      "path": "projects/book-club/README.md",
+      "sha256": "A3CE62A70DB6E42BAC92A9437EA0CB856BBEF4EEFB4465167FF9A3F1D546677B",
+      "bytes": 2257
+    },
+    {
+      "path": "projects/book-club/executive-os-install.md",
+      "sha256": "59464233326C33CDDC749812D6D65716544E22059616D543AEA40F51EC9FB445",
+      "bytes": 5491
+    },
+    {
+      "path": "projects/commercial-hypotheses.md",
+      "sha256": "AF0F92AB40879630D8D3B1837F66E04CE07EDFACC7BC5B82D64C14C182CB517C",
+      "bytes": 5209
+    },
+    {
+      "path": "projects/comparison-matrix.md",
+      "sha256": "049D182A2CEC8E32B0A8D7B8F1C4FFA79F3DC5426B8E9C78307893F5DAF7F5B4",
+      "bytes": 6737
+    },
+    {
+      "path": "projects/grace-gems/30-day-plan.md",
+      "sha256": "D2EBFC5A82BD696D8DAAF480A078ADECA0CA2DF8C93CF1D0C3BE4F14575C51AA",
+      "bytes": 1732
+    },
+    {
+      "path": "projects/grace-gems/90-day-proof-baseline.md",
+      "sha256": "847623259976D7F1B347C2C0320D52FB07465AEBAE3D9925B83165655087EE60",
+      "bytes": 3093
+    },
+    {
+      "path": "projects/grace-gems/README.md",
+      "sha256": "BD2B0F4F85CFE2615AF3FBA1DEFE55AAE78DC4D0E1FF8821FC6870934034A40E",
+      "bytes": 6917
+    },
+    {
+      "path": "projects/grace-gems/approval-quality-exemplar.md",
+      "sha256": "ECB258F61FDB083AB63202F2F9B2DBBF788009C943747DAA46515E322259EE68",
+      "bytes": 2101
+    },
+    {
+      "path": "projects/grace-gems/authority-card.md",
+      "sha256": "C011710CE43AAE30F924599228F3259417C1991B784DF9F9E3BB0BE55D2CDC13",
+      "bytes": 2225
+    },
+    {
+      "path": "projects/grace-gems/business-intake-agent-handoff-2026-07-24.md",
+      "sha256": "BB9F4788097BC2A649B189E6D1097246D9CE3F3E4E14CE9B27EB102A5D090802",
+      "bytes": 4934
+    },
+    {
+      "path": "projects/grace-gems/business-intake-survey.md",
+      "sha256": "5E1CA993D241AF0BEEB3173E56570741DE79082AD2B60DE2CE501742F0861619",
+      "bytes": 4168
+    },
+    {
+      "path": "projects/grace-gems/ceo-custom-order-decision-memo-2026-07-24.md",
+      "sha256": "AEEE51FA1FC5A0730677744607AE90679D69E45A53D0E9CCC323A912C2856886",
+      "bytes": 3118
+    },
+    {
+      "path": "projects/grace-gems/ceo-follow-up-draft-2026-07-24.md",
+      "sha256": "8129DAFEFC98DBC73D5C46266A1A377CC6EFFF2351FEECF65F90544E79401202",
+      "bytes": 2490
+    },
+    {
+      "path": "projects/grace-gems/ceo-follow-up-message-template.md",
+      "sha256": "68B2A5339162387A59E2E06F0F1F980F550A5A42FE85BE558069FD1B18F4C47C",
+      "bytes": 1107
+    },
+    {
+      "path": "projects/grace-gems/ceo-independent-channel-plan-decision-request-2026-07-24.md",
+      "sha256": "2B82F065F5CCEE57B6D9C6B2A172546878E0C79A2A10770D6B80AB9FB082FD23",
+      "bytes": 3772
+    },
+    {
+      "path": "projects/grace-gems/ceo-independent-channel-strategic-decision-email-2026-07-24.md",
+      "sha256": "D33C84822534A5621DE221246B79C6EFA2C379E68E85B30218DE77C4C78D23F4",
+      "bytes": 2432
+    },
+    {
+      "path": "projects/grace-gems/ceo-independent-channel-strategic-decision-message-2026-07-24.md",
+      "sha256": "96B11B9099EF441333F22ADF116E1543DF2FED637B24ED7E5DA3148E99A6730E",
+      "bytes": 1750
+    },
+    {
+      "path": "projects/grace-gems/ceo-meeting-capture-2026-07-23.md",
+      "sha256": "1C96DC067C053931FA28854E243E81836F58A18EA12559DD91DE36ACD15C73CF",
+      "bytes": 15298
+    },
+    {
+      "path": "projects/grace-gems/ceo-meeting-preparation-bundle-2026-07-23.md",
+      "sha256": "DCDFF46D8F4FE8CF316031FC2CB3AF37CB2B7E100A512EEB2D516F55FF6C91C5",
+      "bytes": 7273
+    },
+    {
+      "path": "projects/grace-gems/council-steward-pilot-activation-receipt-2026-07-24.md",
+      "sha256": "F092D896398BE09B95AEE2BE81369ACC60F94CE4EF12A65B8D7C301C0737F680",
+      "bytes": 12971
+    },
+    {
+      "path": "projects/grace-gems/council-steward-pilot-engineer-approval-receipt-2026-07-24.md",
+      "sha256": "B836BCE19D7AC347F253C6799705C8FF460D8B5C1CA08E8858D959C9B18563A7",
+      "bytes": 9431
+    },
+    {
+      "path": "projects/grace-gems/custom-order-workflow-comparison-2026-07-24.md",
+      "sha256": "E7AB60792B62887165482A9C49383F6B2F98C0078B0EADF93E08B04FC80C913F",
+      "bytes": 11072
+    },
+    {
+      "path": "projects/grace-gems/customer-support-findings-2026-07-17.md",
+      "sha256": "F78BC0D242504C9AB0A4493FFC30CB97D343A55EB0CE0C857DDDE95EDA5F0610",
+      "bytes": 19170
+    },
+    {
+      "path": "projects/grace-gems/decision-log.md",
+      "sha256": "88F36EDDBAD751CFEA6227F2ECF8BEFB6D32BFA5E50C8C94C974F09A2D77E9BB",
+      "bytes": 3296
+    },
+    {
+      "path": "projects/grace-gems/executive-council-role-card.md",
+      "sha256": "6416DE99669D58690F2B87757E0A8337EB2AC5AAAA6AB303BD8523727879221D",
+      "bytes": 4400
+    },
+    {
+      "path": "projects/grace-gems/executive-council-three-role-receipt-reconstruction-2026-07-24.md",
+      "sha256": "99FB1BBD32C98F5A3DD398866A8213B486EEA8E62DDB0DA541A1EF408938F6E7",
+      "bytes": 13574
+    },
+    {
+      "path": "projects/grace-gems/executive-os-install.md",
+      "sha256": "DE1D7CB20DAF41E787BC01FFCC76EB12710424DED612C1CD3890824537ABFF23",
+      "bytes": 7858
+    },
+    {
+      "path": "projects/grace-gems/first-review-brief-2026-07-24.md",
+      "sha256": "F5BFB304CD4AF514ABB6FC1758408D5672B3075128C886009D66A196DAB724BE",
+      "bytes": 5715
+    },
+    {
+      "path": "projects/grace-gems/first-review-brief-personalization-intake-2026-07-24.md",
+      "sha256": "94AAB9DE313D002F6160C1A3478701898432F13D3426F94D2C14EF9651F6B34A",
+      "bytes": 5507
+    },
+    {
+      "path": "projects/grace-gems/first-review-brief-shipping-origin-2026-07-24.md",
+      "sha256": "ECA3350935B9B6919F862B40B061AB966CCE1964F11616AA288E232DDA3041C2",
+      "bytes": 4792
+    },
+    {
+      "path": "projects/grace-gems/first-review-brief-supplier-fulfillment-2026-07-24.md",
+      "sha256": "626C0AACE570156DAB79C0D0FFC43235FD1EB096FA2A4FB82BB297D908F7E847",
+      "bytes": 5098
+    },
+    {
+      "path": "projects/grace-gems/first-review-brief-template.md",
+      "sha256": "752AC7B2E3220E544CFC8C56F0068DF098AC26CF2A8075622FFCBBE837AB2812",
+      "bytes": 1236
+    },
+    {
+      "path": "projects/grace-gems/four-cycle-proof-tracker.md",
+      "sha256": "D2F65F0E3B2594A128216DDA30F6772D8C512936BE91AF8772BD6D09DF247857",
+      "bytes": 1624
+    },
+    {
+      "path": "projects/grace-gems/hannah-three-review-evidence-request-packet-2026-07-24.md",
+      "sha256": "2890CEE931725B864520C69553497BF217956C54256E1EC900FBB0C9F0BD951A",
+      "bytes": 7455
+    },
+    {
+      "path": "projects/grace-gems/hannah-three-review-evidence-routing-handoff-2026-07-24.md",
+      "sha256": "B9BB8467F42445F10793DDC9392C9203CDB85A23F37499E313DE763B56EA68FB",
+      "bytes": 3588
+    },
+    {
+      "path": "projects/grace-gems/independent-channel-growth-plan-2026-07-24.md",
+      "sha256": "8499391806AAE1583EAEAF571C0AE053588E7FBAF0EAA5A5ED725789E2D8BEF5",
+      "bytes": 10344
+    },
+    {
+      "path": "projects/grace-gems/intake-control-manifest-2026-07-17.yaml",
+      "sha256": "B66B5CAB47BAA3D4A7503FBF56CE0196EEBFDDD8BC93D8C22AF6547004E43EA8",
+      "bytes": 2932
+    },
+    {
+      "path": "projects/grace-gems/loop-examples/listing-gate.yaml",
+      "sha256": "B0A05BF12CBE2CBAC261FE0E3E60765341BE23F29E1751A9D62FCBC2B879DB17",
+      "bytes": 1321
+    },
+    {
+      "path": "projects/grace-gems/material-certification-claim-review-2026-07-24.md",
+      "sha256": "A38FD02FD35B3587C61A0D4CDA4FD1E70D5388A6588B0308496F51F415282F5D",
+      "bytes": 7581
+    },
+    {
+      "path": "projects/grace-gems/membrane-notes.md",
+      "sha256": "755BE4F28D0D1A6B6DC365C66E4A95D1950EE0861B62D2CACE46D7092780AA67",
+      "bytes": 957
+    },
+    {
+      "path": "projects/grace-gems/operating-review.md",
+      "sha256": "5FDACBE11D71277AF35A777BF6385ACD63FBA469E0A76CFCC9823B28E1A6E97E",
+      "bytes": 1564
+    },
+    {
+      "path": "projects/grace-gems/public-shop-signal-brief.md",
+      "sha256": "4B88713B787B11735DE465760BADC1A55A53F18DFFF812A75E35743177AA648B",
+      "bytes": 6668
+    },
+    {
+      "path": "projects/grace-gems/public-signal-preflight-receipt.md",
+      "sha256": "CD549DBB0ECE15819A1696015AE66FD91089FE7FD6AA3514D4390B6E28658739",
+      "bytes": 2104
+    },
+    {
+      "path": "projects/grace-gems/risk-register.md",
+      "sha256": "46A2BEA8CAF9BD26601C7D3DC27FCB484E9AAFDB7B2A84632E7881EE5C71C5B8",
+      "bytes": 1461
+    },
+    {
+      "path": "projects/grace-gems/shipping-origin-claim-review-2026-07-24.md",
+      "sha256": "0904BE927180C668D22280F1B3B7811C055F4655CF702E814E6583C45612B76C",
+      "bytes": 5915
+    },
+    {
+      "path": "projects/grace-gems/shipping-origin-owner-verification-request-2026-07-24.md",
+      "sha256": "4427DB03EE5F43C31E8141D544A6D05ED2BCF14CE632273BB1361956E327454F",
+      "bytes": 3057
+    },
+    {
+      "path": "projects/grace-gems/storefront-first-review-observation-matrix-2026-07-24.md",
+      "sha256": "AD30114C2FEBFE70C9C3EA1F231F8B94CE4CD5B559020CA62D5F4D06045382C5",
+      "bytes": 10297
+    },
+    {
+      "path": "projects/grace-gems/storefront-roster-2026-07-24.md",
+      "sha256": "758207BD96DE3400C76D9FD95C5A95B49B96B7DFE6A913E02997E993436B4677",
+      "bytes": 3064
+    },
+    {
+      "path": "projects/grace-gems/turn-usefulness-exemplar.md",
+      "sha256": "AEE62A728CACFDD644907FC37438392DDFD7EA0F35783C4A2022964CA14475FC",
+      "bytes": 4425
+    },
+    {
+      "path": "projects/learning-core/30-day-plan-inputs.md",
+      "sha256": "C12670F900C4898F3B8CFA3822F3246B54E54D5BDED21F54FDF352EC9836272B",
+      "bytes": 5450
+    },
+    {
+      "path": "projects/learning-core/30-day-plan-template.md",
+      "sha256": "16FAE78A8A550103AE8642AFB8C990485247702C1B56A5C70418C342CB230CA6",
+      "bytes": 10056
+    },
+    {
+      "path": "projects/learning-core/30-day-plan.md",
+      "sha256": "A3CB9D3B09717A581D518A4DCFD9D30C6F4C26CE654F11F6C77A479C0E1D719D",
+      "bytes": 5210
+    },
+    {
+      "path": "projects/learning-core/README.md",
+      "sha256": "E01946A3F882295DF72A7FA7FF19D87A1A417735BD4BD2A684048CE537F9A90D",
+      "bytes": 15973
+    },
+    {
+      "path_ref": "sha256:3B49418FE4F6BEAF6D5EAC251C734347EBF6BD8F3C2913A09868BD74F4F0FF58",
+      "sha256": "2FCA95DB95A6AD29721AD661189D1A05512EA1C9CAF68659AD1D0B161FE156AA",
+      "bytes": 1896,
+      "path_class": "restricted-project-path"
+    },
+    {
+      "path": "projects/learning-core/ai-interface-training/README.md",
+      "sha256": "F3BF88DB6EA3BA4BD7086F33E26C7553AB1B20116156EC129571654E67FEEB55",
+      "bytes": 2267
+    },
+    {
+      "path": "projects/learning-core/ai-interface-training/approved-with-changes-exemplar.md",
+      "sha256": "6C9A731B0AAD1EB0D2F0EBB5F560E443FFF052B97B0EAB8A686D25370931D61C",
+      "bytes": 6422
+    },
+    {
+      "path": "projects/learning-core/ai-interface-training/embodied-ai-hold-exemplar.md",
+      "sha256": "7D384C7114017DBDE5241B44320ACD8108C85FBA66808EFB293B8A6ACB9EDE0B",
+      "bytes": 5181
+    },
+    {
+      "path": "projects/learning-core/ai-interface-training/hold-after-review-exemplar.md",
+      "sha256": "088B5266EA5B7BB5454DFD6D6E8CEDDFD66DC73F8DF3C632EC295AE8501FD522",
+      "bytes": 6314
+    },
+    {
+      "path": "projects/learning-core/ai-interface-training/ready-plan-exemplar.md",
+      "sha256": "6C44100B32AF4FD95CC6E27F167FEF6278B5913791FCFCE3AD6519064A55A4B9",
+      "bytes": 15160
+    },
+    {
+      "path": "projects/learning-core/approval-quality-exemplar.md",
+      "sha256": "A73E71E9BC0338B1AC40B611B30A91CAAB0AEB002161CDE80355E6F82651F531",
+      "bytes": 2076
+    },
+    {
+      "path": "projects/learning-core/catalog-doctrine.md",
+      "sha256": "61BAAA040710CC1A0ECD14A819BB913815ABCD00D391242CA0C212AB9EC22633",
+      "bytes": 4701
+    },
+    {
+      "path": "projects/learning-core/catalog/catalog-recommendation-mapping.md",
+      "sha256": "B7982B079F439EECF142A74321028ABF41CD09CA4D56C483F33C774B9F91EBE2",
+      "bytes": 1753
+    },
+    {
+      "path": "projects/learning-core/catalog/catalog-schema.md",
+      "sha256": "99151189304045430CE39E8715D603A6E0401DEF18842175A515052FECFC7711",
+      "bytes": 1670
+    },
+    {
+      "path": "projects/learning-core/catalog/khan-catalog-manifest.sample.yaml",
+      "sha256": "D4EC2C287E47FC8E269794942A607B2213A4F396741CA9136ADEBFB9ED981B66",
+      "bytes": 2193
+    },
+    {
+      "path": "projects/learning-core/catalog/khan-kids-curated-catalog.yaml",
+      "sha256": "2168416471FBF23B67061600F903F442DA1B06ACA4DD736646CA9148D1790205",
+      "bytes": 8136
+    },
+    {
+      "path": "projects/learning-core/catalog/khan-kids-in-app-capture-spec.md",
+      "sha256": "558B6882A6DC8D177E78FCEBC03FEFE2F9AAAB6C6B1E696B08E876592854EA6B",
+      "bytes": 1429
+    },
+    {
+      "path": "projects/learning-core/continuity-invitation-template.md",
+      "sha256": "14740ADCFB0FE003AD88827DAC4E3C0F469042436FF0A0D6FFC03FA9BFE1818B",
+      "bytes": 5186
+    },
+    {
+      "path": "projects/learning-core/decision-log.md",
+      "sha256": "845BAC58C16F8191E683BEFD0CD7B210932E5ECF6D0AC92F308288050979CC09",
+      "bytes": 4943
+    },
+    {
+      "path": "projects/learning-core/embodied-ai-hold-policy.md",
+      "sha256": "7872AAEC4CF47E9C691B4E9A7879990F117B3D388D74E45433E5CCEB58BA6BFE",
+      "bytes": 5976
+    },
+    {
+      "path": "projects/learning-core/embodied-ai-parent-review-worksheet.md",
+      "sha256": "C6E875CD3905CDE22EA53128524478E32C59332278F8498090087E6CD3700DBC",
+      "bytes": 4269
+    },
+    {
+      "path": "projects/learning-core/executive-os-install.md",
+      "sha256": "E5B122D76ABF027D4B14D9B40D71EF826807477FED40D5DDB1C0AA6CCA967F5A",
+      "bytes": 18121
+    },
+    {
+      "path": "projects/learning-core/hold-response-template.md",
+      "sha256": "B1763F6DCFD3FB6BD4D1B3438E33D01A6043AF0DF33536DFAE6AF7C95B24D245",
+      "bytes": 2348
+    },
+    {
+      "path": "projects/learning-core/initial-learner-profile-template.md",
+      "sha256": "503878F8F7FAD55E9D5EFF09F4078DD0BFD417663116F0B120932C7CD44AE960",
+      "bytes": 3759
+    },
+    {
+      "path": "projects/learning-core/khan-academy-signal-pipeline.md",
+      "sha256": "1A4A99AEF5B588AC1FC52FDFF47B097107F5473B614C04F7B8B5186915021A68",
+      "bytes": 8012
+    },
+    {
+      "path": "projects/learning-core/khan-adapter-layer.md",
+      "sha256": "F75DF1CAD0019E0E1F4A689019BC80AE2C28A166C4CBB30188A3DF97766304EC",
+      "bytes": 5200
+    },
+    {
+      "path": "projects/learning-core/khan-transition-point.md",
+      "sha256": "B41FC00CA2F57D98F5233CA14B4B61A2DDA8DE208937DF8714A204A9C947B7A2",
+      "bytes": 6421
+    },
+    {
+      "path": "projects/learning-core/khan-transition-readiness-target.md",
+      "sha256": "9CDF433945FF9C6691F0EB495E1273E418D6A873CA575CD1CFF776C398C44EFE",
+      "bytes": 7153
+    },
+    {
+      "path": "projects/learning-core/learning-core-ob1-integration.md",
+      "sha256": "5DD69ACA91F53BACAD5911EBD1C60402DE74F2ACD0AC05FDBE3ECC3CC9046B00",
+      "bytes": 6521
+    },
+    {
+      "path": "projects/learning-core/loop-examples/learning-experience.yaml",
+      "sha256": "8664BF757A06CD8B6B79E1695DCEA2F50D6ED8B30EB9E86CEE048C8223736D9B",
+      "bytes": 1685
+    },
+    {
+      "path": "projects/learning-core/loop-examples/parent-intake-readiness.yaml",
+      "sha256": "4C471F35815733D4B3D8BB3B7CD9E427BF31D1A19A126D4C269DAEC3BBBC8E71",
+      "bytes": 2064
+    },
+    {
+      "path": "projects/learning-core/membrane-notes.md",
+      "sha256": "47E32ED4A880A7C31968365D19E7AE6D862742F0CED6D8DE296D9771F55ADDE3",
+      "bytes": 993
+    },
+    {
+      "path": "projects/learning-core/mock-intake-simulations.md",
+      "sha256": "BC2A0A3722E11E8B9200AAAB5F8DD648EC5490456DCFD7E000CD9D3F4A36BDB3",
+      "bytes": 10995
+    },
+    {
+      "path": "projects/learning-core/mock-ready-plan-evidence-map.md",
+      "sha256": "B4685BD7AD6416DDB97218A4105D153C62931BF4C7E59EFAF73BEE3D09A86DA7",
+      "bytes": 8660
+    },
+    {
+      "path": "projects/learning-core/monthly-portfolio-review.md",
+      "sha256": "D2D801420CCDAE777C349A111659F7CFF7F83B41DD0F8C95494A44083DF71332",
+      "bytes": 5839
+    },
+    {
+      "path": "projects/learning-core/naming-architecture.md",
+      "sha256": "F21402F5F7EF3F11185E19D3B296F3BA9E78EEB946D98AE6D68A948F827BBD6A",
+      "bytes": 5308
+    },
+    {
+      "path": "projects/learning-core/nested-loop-authority-review.md",
+      "sha256": "D61D9B016EB853A902C30B446B78649F74C9184E4CE359C77AFADF1FD643A01F",
+      "bytes": 1581
+    },
+    {
+      "path": "projects/learning-core/onboarding-readiness-checklist.md",
+      "sha256": "56661C96645024B2EEBD9B9A232756EFEE3ED10EB641F4358BF4B6FD9DD37CE0",
+      "bytes": 5401
+    },
+    {
+      "path": "projects/learning-core/one-time-retainer-scope.md",
+      "sha256": "9192A58672ACE38C83D9C62F2B876D62248B3FC8D70B3FEEC9925798E420C2B3",
+      "bytes": 9718
+    },
+    {
+      "path": "projects/learning-core/operating-review.md",
+      "sha256": "F6F73EEF5863B9B72E8C5DA33C899C3B7318AD79530DD0444F6435E99D66C50B",
+      "bytes": 3391
+    },
+    {
+      "path": "projects/learning-core/parent-approval-checklist.md",
+      "sha256": "F0AD4BE12FF369A5DE31598E936DA35A5567907DEA1AB174A6B55199E1305292",
+      "bytes": 2542
+    },
+    {
+      "path": "projects/learning-core/parent-approval-record.md",
+      "sha256": "00798B9302A411C66940233EE4F8A98BE561C0DA8107F29D9856017A551410CA",
+      "bytes": 4112
+    },
+    {
+      "path": "projects/learning-core/parent-guide-signals.md",
+      "sha256": "26E333D70C9103BAFEF75D90FF3C14F5ADD9173C6FA9039FA156C56DF6BE8027",
+      "bytes": 5673
+    },
+    {
+      "path": "projects/learning-core/parent-intake-message.md",
+      "sha256": "029AD6463207968067B0B25CD1DCD2CB57C6E2C995CFD8D281073331C5717158",
+      "bytes": 7294
+    },
+    {
+      "path": "projects/learning-core/parent-intake-summary-template.md",
+      "sha256": "CDCAA2459E843897BD525585C2B42E30285A1118E91A3732D811BA88CA605245",
+      "bytes": 3680
+    },
+    {
+      "path": "projects/learning-core/parent-intake-to-draft-runbook.md",
+      "sha256": "89BA1A11AC11F225DDEF79ACD7D79D40E4ED445E700ED7F78A9BA46CFF218D87",
+      "bytes": 7989
+    },
+    {
+      "path": "projects/learning-core/parent-journey-pressure-test.md",
+      "sha256": "A3DD473BABAC4AD05E9D9AE6E36B04CB4A4F29966F0CEB6BAAF4820359F25745",
+      "bytes": 8032
+    },
+    {
+      "path": "projects/learning-core/parent-onboarding-survey.md",
+      "sha256": "10E1898648217DD2B3ACF8A5593081BD5F4D7066E8BC52C7046ED3CE88D0A5AB",
+      "bytes": 2437
+    },
+    {
+      "path": "projects/learning-core/phase-2-survey-generation.md",
+      "sha256": "DD636741895756CBAD63490DAABC3025876927EB4D8848600216121B74925BB6",
+      "bytes": 3517
+    },
+    {
+      "path": "projects/learning-core/plan-draft-evidence-map.md",
+      "sha256": "CB88560CA259D868012378249F72D1E4CA3C70DB7E2840BD9F631E9CC03C92ED",
+      "bytes": 3986
+    },
+    {
+      "path": "projects/learning-core/plan-drafting-gate.md",
+      "sha256": "21DE5EDC15F1D4675EE9BCE574AA5D1791748543F09C089CD87EF27136E7E196",
+      "bytes": 6808
+    },
+    {
+      "path": "projects/learning-core/reading-basket.md",
+      "sha256": "8C3BBDABCE192C905DC142525A644567D86963F6480E26DB977B25BF475F5F19",
+      "bytes": 6592
+    },
+    {
+      "path": "projects/learning-core/recursive-self-enhancement.md",
+      "sha256": "23B96A71514F4649481E0FA24231650200FB17B2A2DDC05BCB93F8240E70C4F6",
+      "bytes": 2617
+    },
+    {
+      "path": "projects/learning-core/risk-register.md",
+      "sha256": "9D3CE55AD504BC5CCD0AF54BA097B18399F1DB19BDAB1C6FDBDC0381EF9C16EF",
+      "bytes": 3994
+    },
+    {
+      "path": "projects/learning-core/startup-bundle.md",
+      "sha256": "8681E9F18A6AF40EA19BD816ADE1FB1F4D725BFD7E54C8FCC46194F1D0A194B3",
+      "bytes": 9876
+    },
+    {
+      "path": "projects/learning-core/student-portfolio.md",
+      "sha256": "D7B3A362112762C0628F75BF8EE2AAE42D00564D546C1A5E35566891DE41B1FC",
+      "bytes": 5544
+    },
+    {
+      "path": "projects/learning-core/subscription-boundary.md",
+      "sha256": "B0AD6037619976176E05A6B32174104E5F289D8111B346B799ABC731DDF2ABDB",
+      "bytes": 6544
+    },
+    {
+      "path": "projects/learning-core/subscription-experience.md",
+      "sha256": "F8B7360842B86ACED0AA78FBFDE6557FC06C47BB43534CC0F9315EAE5EC8C888",
+      "bytes": 6878
+    },
+    {
+      "path": "projects/learning-core/success-friction-bridge-intake-report.md",
+      "sha256": "3B54CEC0BFF9BD67270979C0B7439536FA301A4311DBB5019B56E91B6EF389F4",
+      "bytes": 16385
+    },
+    {
+      "path": "projects/learning-core/turn-usefulness-exemplar.md",
+      "sha256": "CF7C4561A4006BD35D74C95A6B884F9831381C05797400F1DA7E28F7CE1BA205",
+      "bytes": 4716
+    },
+    {
+      "path": "projects/media-production/30-day-plan.md",
+      "sha256": "B111FD1BD2200A9F57917523CB23664C2D23BC2F049C428A1A4E989C8383308F",
+      "bytes": 1503
+    },
+    {
+      "path": "projects/media-production/README.md",
+      "sha256": "ABEEB58C2D4A75E6C785B8A278CFC540D87112435478806E0AA5C4E5CB9FFA2F",
+      "bytes": 6264
+    },
+    {
+      "path": "projects/media-production/abundance-principle.md",
+      "sha256": "407E9F3B4E17F3878E0A9FD329784BEEB8F242C0F289A682D1281149A04FB046",
+      "bytes": 2951
+    },
+    {
+      "path": "projects/media-production/creative-abundance-ledger-template.md",
+      "sha256": "CB20EBA6CB7167EBA5C0E3746ACE4D533CB95166F6409B5B9244952B6376B9E1",
+      "bytes": 1491
+    },
+    {
+      "path": "projects/media-production/creative-abundance-quality-gate.md",
+      "sha256": "C55994543EC90ED099600FF0132A46F0295BD9B3D7E7FFE9FCA482E6CA3975BC",
+      "bytes": 3111
+    },
+    {
+      "path": "projects/media-production/creative-production-operator-14-day-ramp.md",
+      "sha256": "4BED54B541175F9DC2562AFC6259F77F3437761642D59FA09BB024470886B06C",
+      "bytes": 1871
+    },
+    {
+      "path": "projects/media-production/creative-production-operator-assignment-gate.md",
+      "sha256": "A03804F40D8E5EB23E48388F29326B91A858BEB45830737BF67E8DA7AA5BE662",
+      "bytes": 5232
+    },
+    {
+      "path": "projects/media-production/creative-production-operator-assignment-template.md",
+      "sha256": "FEE7F6075E7112AE6BBDA84D02B257FE4C36CA5D30F7D69661EE9BE89AEE93CB",
+      "bytes": 4082
+    },
+    {
+      "path": "projects/media-production/creative-production-operator-onboarding.md",
+      "sha256": "B786CA71DF16AB22211E0A693659E2DFB5243576DA41DE27219E2DC3BEC06555",
+      "bytes": 16673
+    },
+    {
+      "path": "projects/media-production/creative-production-operator-prerequisite-skills-test.md",
+      "sha256": "15C18EB10D7CCA3AC8BDB39121510A7B557FE552175182EA9D44E936804777C1",
+      "bytes": 5897
+    },
+    {
+      "path": "projects/media-production/creative-production-operator-readiness-exercise.md",
+      "sha256": "BFA951D26526648C4A5776FCE5135D1FAE2D4DC9ACC9F6070A2EC89F0E0FF7FF",
+      "bytes": 3120
+    },
+    {
+      "path": "projects/media-production/creative-production-operator-readiness-sprint.md",
+      "sha256": "347678129E38104413B65779AA9493FCD38922DA2B2AE42AD1F6FE137775CE35",
+      "bytes": 8186
+    },
+    {
+      "path": "projects/media-production/creative-production-operator-training-review.md",
+      "sha256": "1A9BC20E6EDC44E5F043576C21A7F04253344C9322D072B82F9154F0A144DD8B",
+      "bytes": 2888
+    },
+    {
+      "path": "projects/media-production/decision-log.md",
+      "sha256": "6F096D709D0CEE9A7B83D4C243331578E4C0A8549FC9859E797A6839C1DB5F09",
+      "bytes": 2029
+    },
+    {
+      "path": "projects/media-production/executive-os-install.md",
+      "sha256": "9F55B35116878BA8AFB99D50B0A8455307505E579531500C1E5A66D4C7CFB285",
+      "bytes": 11390
+    },
+    {
+      "path": "projects/media-production/grace-gems-monthly-service-package.md",
+      "sha256": "96C7D2C32B686E98F9F3B9DAAF98C06EAB4DB32F998648A6375B23AC69BD9FAE",
+      "bytes": 5843
+    },
+    {
+      "path": "projects/media-production/grace-gems-trust-architecture-kit.md",
+      "sha256": "0D30941E355B3EB10821471A7464A432E7DC7B4253AD0A0CEF92EA0909666450",
+      "bytes": 5941
+    },
+    {
+      "path": "projects/media-production/harness-map.md",
+      "sha256": "2F4E6B9F24C4E47F196C3123C30C08BA6FB01A99D1C8819C9BC9E3AB278411B7",
+      "bytes": 7674
+    },
+    {
+      "path": "projects/media-production/loop-examples/creative-production-review.yaml",
+      "sha256": "FC1A37A7CD06B0E31147546AB79A004B5CBB1E6396D4130B4B55E7E36A72DEAF",
+      "bytes": 1691
+    },
+    {
+      "path": "projects/media-production/membrane-notes.md",
+      "sha256": "0A9DABC7EB721F0BFE6E31089E8C06A987DBC79F509A4B97C84297FB2E820331",
+      "bytes": 1012
+    },
+    {
+      "path": "projects/media-production/operating-review.md",
+      "sha256": "E39AAB0824F1EE4959019E37B74597894372856916FF2FA8B1821507F2AACB51",
+      "bytes": 1724
+    },
+    {
+      "path": "projects/media-production/permissions-and-authority-review.md",
+      "sha256": "BB82B04C7C1E70F7258488AEBE27BC852DAF67C95B76C8B510F2B6990FD32D28",
+      "bytes": 5928
+    },
+    {
+      "path": "projects/media-production/risk-register.md",
+      "sha256": "C690129045DCED88D57C38DDE6384923E348E10159076998A6F47F0B01531B07",
+      "bytes": 1573
+    },
+    {
+      "path": "projects/media-production/turn-usefulness-exemplar.md",
+      "sha256": "29532FD54883605AC330FBC1A83B1FC63D9017F18F0E912565DBC0835F97BB45",
+      "bytes": 4269
+    },
+    {
+      "path": "projects/mountain-villa/30-day-plan.md",
+      "sha256": "31D34B2FEF87608CDB9A7BC3C77B62BDB19428C7B22847422B2B8A7EE1820626",
+      "bytes": 1483
+    },
+    {
+      "path": "projects/mountain-villa/README.md",
+      "sha256": "5403CB23ADDA97A668752C8C8BF229AA677DCE63D44A2419E38155F62351D713",
+      "bytes": 3728
+    },
+    {
+      "path": "projects/mountain-villa/business-intake-survey.md",
+      "sha256": "F5C3583201C9B6DFFD8CB35454ED37695748705EE60CF840A0AFD21B5421E887",
+      "bytes": 3431
+    },
+    {
+      "path": "projects/mountain-villa/decision-log.md",
+      "sha256": "F4185FC02C6F3056B77BABC63600EA2F031BCDB1769B4C95E90CE57B81BF2CD9",
+      "bytes": 1694
+    },
+    {
+      "path": "projects/mountain-villa/executive-os-install.md",
+      "sha256": "518BD2EEE683C369C984A315B33C3CBA27D0F5F20800BC3645DA939070A01883",
+      "bytes": 8405
+    },
+    {
+      "path": "projects/mountain-villa/loop-examples/seasonal-readiness.yaml",
+      "sha256": "574056BBBF395F3DB4413D087FFB4775595F96CB6098B52A7C6707112BCB8863",
+      "bytes": 1806
+    },
+    {
+      "path": "projects/mountain-villa/membrane-notes.md",
+      "sha256": "D5B854575DD65C1AB22139F8D03FD22C86A4B11FB6704863783D76D409F61173",
+      "bytes": 1279
+    },
+    {
+      "path": "projects/mountain-villa/operating-review.md",
+      "sha256": "47F09011261C51523DC1EA14ED907B7B3FB6B8DA2098F4E6621224A4F0D02E02",
+      "bytes": 1969
+    },
+    {
+      "path": "projects/mountain-villa/risk-register.md",
+      "sha256": "4EAB99E8DA66B0DFB84865E1A0F5778AB406DD2D3AD084D7382296CC700386BF",
+      "bytes": 2022
+    },
+    {
+      "path": "projects/mountain-villa/turn-usefulness-exemplar.md",
+      "sha256": "F05EB7D678F4EAF34533F58BEF29A8931A6100EC8182D04C1C04E2FBCAEF131E",
+      "bytes": 4372
+    },
+    {
+      "path": "projects/operating-portfolio-dashboard.md",
+      "sha256": "78D59232E958730039C2D2EF0B6EEBDC59BD00F9D5BE30E379816E72C85A2458",
+      "bytes": 16772
+    },
+    {
+      "path": "projects/portfolio-knowledge-synergies.md",
+      "sha256": "A6E36997AD06BD3CE7F5B80CE976C49C5BB1841BBC35430274542B32B0DFEF82",
+      "bytes": 7055
+    },
+    {
+      "path": "projects/singularity-science/2026-q1-china-humanoid-market-watch.md",
+      "sha256": "D8794044FCFBD2B271A9AE48FBB2497D7A0324EF0A4B30B38BFECB938A520EAD",
+      "bytes": 7160
+    },
+    {
+      "path": "projects/singularity-science/2026-q2-china-humanoid-market-watch.md",
+      "sha256": "106CC2AC0D848078E6C454432A4048BB07880BBEF537321F0CB7347449A92049",
+      "bytes": 7483
+    },
+    {
+      "path": "projects/singularity-science/2026-q3-china-humanoid-market-watch.md",
+      "sha256": "E5A5164E0843379226986C05E3047AA7421294713D324A5CC76AB72670DC9401",
+      "bytes": 4488
+    },
+    {
+      "path": "projects/singularity-science/30-day-plan.md",
+      "sha256": "828BC9BAD4C8008FD8E31E804B6078846DC8CF2827753125AA9D1669A10A907C",
+      "bytes": 1307
+    },
+    {
+      "path": "projects/singularity-science/README.md",
+      "sha256": "E4D6AB92B46D8AD535F08B4CC4EF90557A018CBDBE4BB6A6EB388B4CBD72D8BB",
+      "bytes": 4009
+    },
+    {
+      "path": "projects/singularity-science/ambient-agency-use-case-map.md",
+      "sha256": "11B63D1215B413D9FAE4B83AADDCDB2FD970215026E580595A3841A841C1D4C5",
+      "bytes": 4858
+    },
+    {
+      "path": "projects/singularity-science/approval-quality-note.md",
+      "sha256": "DE2D2514CC680A9C769AD7E80E11EE728E9D88295A6BEE5E59356065CDBFCCAD",
+      "bytes": 2774
+    },
+    {
+      "path": "projects/singularity-science/approval-receipt-template.md",
+      "sha256": "B7E4CB4A7975374B2BAA9B0728997146AFC3C3723CF9BFC91289D53921C4EA67",
+      "bytes": 1714
+    },
+    {
+      "path": "projects/singularity-science/archive/README.md",
+      "sha256": "759B1050705837059523D1262E1D40289C0B758B2C82988C3ABE5C38D6C63DD9",
+      "bytes": 2965
+    },
+    {
+      "path": "projects/singularity-science/archive/external-interviews/README.md",
+      "sha256": "AAC3B5A485865C2CBDD503BD047892E9680463D9BE2F29C180069B72659E97CD",
+      "bytes": 2128
+    },
+    {
+      "path": "projects/singularity-science/archive/external-interviews/analyses/2026-07-09-emad-mostaque-ai-will-run-our-countries-soon.analysis.md",
+      "sha256": "3BCA044E77FBD7D2C8FC6970E42B32386F80784ACAF5372C1CF30D6447CCCAF4",
+      "bytes": 9197
+    },
+    {
+      "path": "projects/singularity-science/archive/external-interviews/analysis-template.md",
+      "sha256": "A28A9EA57DFD7F197DC779170B996279DED2A594ABDE77B2492772C696FDA99D",
+      "bytes": 3141
+    },
+    {
+      "path": "projects/singularity-science/archive/external-interviews/roi-ledger.md",
+      "sha256": "C20921D0163F6B9B2E190C3492934DB365DEEA2D3A0BFC34E86A2E4D07A78CAE",
+      "bytes": 4117
+    },
+    {
+      "path": "projects/singularity-science/archive/external-interviews/source-note-template.md",
+      "sha256": "E5ABEF5C3F1863CD77F5030242EA1AB0D3E04329E0BC05D62A15022FB669D535",
+      "bytes": 986
+    },
+    {
+      "path": "projects/singularity-science/archive/external-interviews/source-notes/2026-07-09-emad-mostaque-ai-will-run-our-countries-soon.source-note.md",
+      "sha256": "15D2A95EF91C085DB29E73FE18A0E49474C37054D23A45E41B4CD9557F6DB1C3",
+      "bytes": 5010
+    },
+    {
+      "path": "projects/singularity-science/archive/external-interviews/transcripts/2026-07-09-captured-emad-mostaque-ai-will-run-our-countries-soon.md",
+      "sha256": "D1EE59584D1635F5E4A0DE56E3B9AD5A3E19CED01A420BB17E6C0947F434892A",
+      "bytes": 95258
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/README.md",
+      "sha256": "D40C56EB2C6EEAB208D9C851680C066E00B438040C3076B3BE79B7D13428A0CF",
+      "bytes": 1162
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/analyses/.gitkeep",
+      "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B",
+      "bytes": 1
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/analyses/2026-07-08-july-5-to-july-8-innermost-loop-cluster.analysis.md",
+      "sha256": "464A401A3A2A38C5D3E3852C7434DF204BC828FEE7A96F4A401B6D6BA08B5FE2",
+      "bytes": 7077
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/analyses/2026-07-20-july-14-to-july-17-cluster.analysis.md",
+      "sha256": "B2E889F90331339F7EFF487340919CD35A0F1346C70EAE8CA0E9955E539B8EE5",
+      "bytes": 4189
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/analyses/2026-07-21-worldmonitor-gated-fixture-infrastructure-event.analysis.md",
+      "sha256": "05FF19943C69BA6B6333B0F128348D7778CC02F7550EB89871CB2D9F208631A7",
+      "bytes": 3446
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/analysis-template.md",
+      "sha256": "F5C5C37033F2E255B88EE85E517CADF5C32E7C450BCDFED3616CF745F8FA5360",
+      "bytes": 2502
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/research-ledger.md",
+      "sha256": "A03E82D68596D70A6309D1E36E7365566E21C08F43257AD66ED254A5E5C187AC",
+      "bytes": 2186
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/source-note-template.md",
+      "sha256": "C2EC21766854B97EDA9D4F244D2F10637C0D24FDFCD452BBD0BD87C29E467870",
+      "bytes": 705
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/source-notes/.gitkeep",
+      "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B",
+      "bytes": 1
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/source-notes/2026-07-08-july-5-to-july-8-innermost-loop-cluster.source-note.md",
+      "sha256": "073507200BC24A7DB0DF425A69F30D6CF3529DC9D229739BA330F5E9B4BC0E94",
+      "bytes": 4952
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/source-notes/2026-07-20-july-14-to-july-17-cluster.source-note.md",
+      "sha256": "D414A0AAC59DCA1E0A0F80B8D03B480E4BA02293453CB5A4C08B8E8494CCF1C5",
+      "bytes": 1700
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/source-notes/2026-07-21-worldmonitor-gated-fixture-infrastructure-event.source-note.md",
+      "sha256": "3FAE8537D77347B14F30D4F145A9C1B4F30968D317766AFB31891623AB86D3C6",
+      "bytes": 1581
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/.gitkeep",
+      "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B",
+      "bytes": 1
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-11-innermost-loop-2025-12-11.md",
+      "sha256": "2C6168D1A2896462884A26F40F59AFAD328014C3FCAE3493FF1231166B97E95F",
+      "bytes": 6342
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-12-innermost-loop-2025-12-12.md",
+      "sha256": "AEBA04BA12D575B4304B39F4ECF8C6D9D66B43D88A994CBD2FB9E1DA50D09D33",
+      "bytes": 6536
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-13-innermost-loop-2025-12-13.md",
+      "sha256": "31C48EA58FFB0CF7E6F593472E23051117CFD6B9D357D27881C22434972B7BB3",
+      "bytes": 6175
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-14-innermost-loop-2025-12-14.md",
+      "sha256": "1223F163E6A5956A137C0E2B1CC88B3C4DC3E626C4FF6296B0D56E34B98D3A56",
+      "bytes": 5499
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-15-innermost-loop-2025-12-15.md",
+      "sha256": "B018DAE007C28992DA0682C48BF8720F5C63E6C0E117A43B1BE4BE65C19476AC",
+      "bytes": 6494
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-16-innermost-loop-2025-12-16.md",
+      "sha256": "A9A9F2D943B41FCE162EEC5D0A04D1976E2A34AF2C41996EB26AD85E2C313D59",
+      "bytes": 6663
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-17-innermost-loop-2025-12-17.md",
+      "sha256": "AB8B30E5CCE169C23EE652F2F78DC562DD88315007FE2B43976EEBEA8A0C90EF",
+      "bytes": 5889
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-18-innermost-loop-2025-12-18.md",
+      "sha256": "C0C42E5D2C5659262AD0E846E1D1153B1884FDB54EBC2FBCFAD7C287DBD55027",
+      "bytes": 7600
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-19-innermost-loop-2025-12-19.md",
+      "sha256": "A7276705D7C60066D9A86892010013D5E2FC82D8DDDAC438D86923B015CB0C2B",
+      "bytes": 6575
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-20-innermost-loop-2025-12-20.md",
+      "sha256": "E91D5F3B991C3D76D5FA8BA1788AFECCC25A23F8B9529E29B8130B6206BB1045",
+      "bytes": 6825
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-21-innermost-loop-2025-12-21.md",
+      "sha256": "B40B3ACF9E07E6F19889268B59D580366B4D626627E84879630369FD92F2DA8E",
+      "bytes": 6534
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-22-innermost-loop-2025-12-22.md",
+      "sha256": "19E2E74BADD18419D115DA4CDC9FC4628094DDF51456884A5172FB09047E8E3E",
+      "bytes": 6472
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-23-innermost-loop-2025-12-23.md",
+      "sha256": "40B6FFF0323BE2502A2F0105E23729C421F0F42237BFFB857C443BADE58AC94C",
+      "bytes": 6771
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-24-innermost-loop-2025-12-24.md",
+      "sha256": "D8108EECA4CD0BBDE7D5E37C8D0F8DAC15A8C11FC09B68F4D1A7700A7CE4E3E6",
+      "bytes": 6365
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-25-innermost-loop-2025-12-25.md",
+      "sha256": "550036FC97B69DD93C88C774D1CE5B20E2FA4EAB1A5A0F902178D13DE05EB191",
+      "bytes": 7328
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-26-innermost-loop-2025-12-26.md",
+      "sha256": "CE1859E93BFA255226D3254D5C1FE979611E122456D4FE5812DA20F2874FA061",
+      "bytes": 6699
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-27-innermost-loop-2025-12-27.md",
+      "sha256": "2DA10BCA49AA230170DA242C64D46924C75942E6F244A9D111034C6D98836211",
+      "bytes": 7493
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-28-innermost-loop-2025-12-28.md",
+      "sha256": "F8F59A2B1C38BB8E8F54B0AC8300B0381460ED926CC8D5B5FF3B5CA940CE2EF6",
+      "bytes": 7123
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-29-innermost-loop-2025-12-29.md",
+      "sha256": "518480BE541AE784CE780289378405A823A151C8917949B33793402817C9F792",
+      "bytes": 7036
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-30-innermost-loop-2025-12-30.md",
+      "sha256": "986D01F74282EE09B4C0117D84CA0966FAE75B298AA77EA7985547B19657C9DA",
+      "bytes": 6281
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2025-12-31-innermost-loop-2025-12-31.md",
+      "sha256": "5D95C928E15E0F6824DBED92B218D805B1D4D33EFCFF4627853B3525C83DA2FC",
+      "bytes": 6158
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-01-innermost-loop-2026-01-01.md",
+      "sha256": "EB95229ABA45A140C6D2BD4A617C3A3DEABFA0654FB8EF011FBF2F5E0FE37F14",
+      "bytes": 5711
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-02-innermost-loop-2026-01-02.md",
+      "sha256": "C1487E5A544B48B411CE1269D3BC066D2908DDE8BBF4CD688982A544EEE66213",
+      "bytes": 6130
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-03-innermost-loop-2026-01-03.md",
+      "sha256": "680EC420DC191B1AC7350F70C79E4693984406DC8E7203240A3A60E5D671A839",
+      "bytes": 5583
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-04-innermost-loop-2026-01-04.md",
+      "sha256": "577BD8D8CBF1A78DE5F3B2082C129ED79F965F45FD3BFB339BCB8D6FB3E47CD9",
+      "bytes": 6603
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-05-innermost-loop-2026-01-05.md",
+      "sha256": "AACDED411761F8F74D02BD79F3BA6B141C10856D324355D803E41185778DB1DF",
+      "bytes": 6337
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-06-innermost-loop-2026-01-06.md",
+      "sha256": "057E899BE3A08702648FD34B61FE66323C8DA3E5D426CC062208F53986D666C8",
+      "bytes": 6020
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-07-innermost-loop-2026-01-07.md",
+      "sha256": "5E7FC58977F5B8323C9236E3831BCA93333CC78027E9697FDC599B7663B8E841",
+      "bytes": 5981
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-08-innermost-loop-2026-01-08.md",
+      "sha256": "CCDB9A02C4DD5FFA099B64C24F3AF1462E7C4792F491E7CC64F1945A98595785",
+      "bytes": 6189
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-09-innermost-loop-2026-01-09.md",
+      "sha256": "5FC4F33B50AC537DD68B928D819036C0B8EC3CE2950217286D8AC0AFC97D95EC",
+      "bytes": 5900
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-10-innermost-loop-2026-01-10.md",
+      "sha256": "DF73CDA3298BB49C0680FC5E86BFDC99BDB8C5BABCD737EC2F58AB4A5D47844B",
+      "bytes": 6801
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-11-innermost-loop-2026-01-11.md",
+      "sha256": "423BAE59B3A0101F0681248E969BC06F58B71F53D55218A6E96E5F1B9D38B622",
+      "bytes": 6324
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-12-innermost-loop-2026-01-12.md",
+      "sha256": "39A4F1A8C99D765E4AAB2B4A48FD435690C7BD5A1A73907D44BA69F9AA55F252",
+      "bytes": 6291
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-13-innermost-loop-2026-01-13.md",
+      "sha256": "8110B1F84EFE0B3D360BDEFCC31CCB3CDDB2CCB6A901F240FCBD64D71C98A0B3",
+      "bytes": 7097
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-14-innermost-loop-2026-01-14.md",
+      "sha256": "CCCDB3B940295C17AA7F5DDB0CA7441A3ECC06A702E27B5BA0E23A7A80F41800",
+      "bytes": 5964
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-15-innermost-loop-2026-01-15.md",
+      "sha256": "7CD9A3D81E857CAC26333DB9C173A8F968EB6A5C17489C2000B128BF4F2E7DF1",
+      "bytes": 6742
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-16-innermost-loop-2026-01-16.md",
+      "sha256": "188141F9581AE5C60009961D2FE1994D73ABC1E80837248A30FD0C7587A875B8",
+      "bytes": 1787
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-23-innermost-loop-2026-01-23.md",
+      "sha256": "B170E6868FBE22CE8C18B01C1E565091A492DF085D9EB646820BC033D339DEBC",
+      "bytes": 21111
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-24-innermost-loop-2026-01-24.md",
+      "sha256": "AEFB254FC405A0B5902EC5754B731F0B4C43AD6DA45E45A32F5F968F5181D19C",
+      "bytes": 7101
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-25-innermost-loop-2026-01-25.md",
+      "sha256": "DDE5526C6EABD62281BC9070171C2E0386661115E9316D746706AC6748FB8008",
+      "bytes": 6780
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-26-innermost-loop-2026-01-26.md",
+      "sha256": "D43AB31003BCD447F5E1D3626FE575E2399A260E089CDF4EB4CEF9B02BC6BAEC",
+      "bytes": 8428
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-27-innermost-loop-2026-01-27.md",
+      "sha256": "DB7EA0EDB6EE6BC84E270EEEF442E061A2BB9E24FA8DB9884D49AFC11487F5BC",
+      "bytes": 5995
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-28-innermost-loop-2026-01-28.md",
+      "sha256": "70BD04034E208A454848171E026365929733531C4F32803A9000E2B5C3A56200",
+      "bytes": 50940
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-29-innermost-loop-2026-01-29.md",
+      "sha256": "4F1F7BC041E9DE1C6D6267A363EDE6553F1BA039B27D54FC3B431D45050B8352",
+      "bytes": 6208
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-30-innermost-loop-2026-01-30.md",
+      "sha256": "7C407916649DD2B84DC7B7D18EB48DE64E54F3143836F63B34D3597572BDE647",
+      "bytes": 5752
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-01-31-innermost-loop-2026-01-31.md",
+      "sha256": "49BC0533E34C95023D5DAABDDAD9C66CD9C14E22E5A1B807B4329E9ADA3939BE",
+      "bytes": 6199
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-01-innermost-loop-2026-02-01.md",
+      "sha256": "C254995F98AD73D6446F5834B69F808A106A244B673FEF44B83E375788AC3CB4",
+      "bytes": 19320
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-02-innermost-loop-2026-02-02.md",
+      "sha256": "3483EA6D62824B319E083767B561B354258BDF5713F94D01F46EBEBB5F0A018E",
+      "bytes": 5831
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-03-innermost-loop-2026-02-03.md",
+      "sha256": "3C7410F9DB54B1068E5AAFF4B5394671163BD4A81F755E4503344A4341019B20",
+      "bytes": 5511
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-04-innermost-loop-2026-02-04.md",
+      "sha256": "D23F57D6AFEFBC281D349A2308047A3ED39A44D687B63D972D48931BAAB9B69D",
+      "bytes": 17664
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-05-innermost-loop-2026-02-05.md",
+      "sha256": "3E3880A1F974AB06E0AAF4FB99E766060E7F988E5FC61E7704F390D336BED7B2",
+      "bytes": 6107
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-06-innermost-loop-2026-02-06.md",
+      "sha256": "774E4503884F43D4442C888E1439BD375E82752AB8D9FB958CB757E25CF996F8",
+      "bytes": 7201
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-07-innermost-loop-2026-02-07.md",
+      "sha256": "585F79A23F57F4A6592E6462E958AAE6D06EFFC9492AD4BB074294D2AF255DD9",
+      "bytes": 6082
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-08-innermost-loop-2026-02-08.md",
+      "sha256": "605F85DB9B2152C351A92B2525960460645D5B57416685F73CE7500145901896",
+      "bytes": 6019
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-09-innermost-loop-2026-02-09.md",
+      "sha256": "5B95F66B906CB50169D4C7179A48C12719509E1C004143010D8EDAB7ECEB4D59",
+      "bytes": 5571
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-10-innermost-loop-2026-02-10.md",
+      "sha256": "0FAC10B703C1F500F662CB6C1F79B653E7D457FD7A90CCB739F0099EC0DA5768",
+      "bytes": 5318
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-11-innermost-loop-2026-02-11.md",
+      "sha256": "17CD4B655CC3FB2DFF4AFE46A57DF548D8A53D6834E52EF32839ADCF9DD89EC2",
+      "bytes": 5932
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-12-innermost-loop-2026-02-12.md",
+      "sha256": "31D143DDA2FD857E1307D2F1C6BA17BC50BA6323B7F7D9E7D8C6346347757576",
+      "bytes": 5980
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-13-innermost-loop-2026-02-13.md",
+      "sha256": "99C88E008CC6172E59B48B7600DBAEF8FD1237AB57DE809F943EA9C20DE99DF0",
+      "bytes": 7025
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-14-innermost-loop-2026-02-14.md",
+      "sha256": "F3C3DA1E1A278BED299D661146145482A0F113D348BF95CBD117D1CBDC0683C2",
+      "bytes": 6895
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-15-innermost-loop-2026-02-15.md",
+      "sha256": "37847C3C24EE6C93BDC2C968FD854976903F9F63FC1B8F4CA8E3D1730DA27A10",
+      "bytes": 4938
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-16-innermost-loop-2026-02-16.md",
+      "sha256": "A63A5723EE50A0E08837BEDCDE0163A3B64ED15BF0E71B838AFDA6F69E886D6D",
+      "bytes": 7058
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-17-innermost-loop-2026-02-17.md",
+      "sha256": "81C84D29A4DEC250A1CF8A54B7C91E8933E8A821B6A6BEEAB75235FFD7C41853",
+      "bytes": 6647
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-18-innermost-loop-2026-02-18.md",
+      "sha256": "BEFAD9A27923E6828212A58808E7CD9115A68AD7C67AAD5D04CE3F61E1A939EE",
+      "bytes": 6763
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-19-innermost-loop-2026-02-19.md",
+      "sha256": "A866DEB6112D679F4D6A305C1A2F05BA8C5911E843B3357D254A346740842EC0",
+      "bytes": 6690
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-20-innermost-loop-2026-02-20.md",
+      "sha256": "0921F6F4ED731D0A615EEE1E5FA987DAC3166205393E4763576F33F6F1796064",
+      "bytes": 6796
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-21-innermost-loop-2026-02-21.md",
+      "sha256": "CC90D066A6021644430F7E45FD1A12A047FC650A5C8D4062D18CB2231A34A53A",
+      "bytes": 7055
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-22-innermost-loop-2026-02-22.md",
+      "sha256": "2B34748DE171FEDE36619A87182C80E2EF36EDB778A1568884FD80EFFAFB062B",
+      "bytes": 11931
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-23-innermost-loop-2026-02-23.md",
+      "sha256": "23CE7F3F7314B9ED2FD97E2C94FBF9E328DD8D5CB5C28DE523AA4FA9FB41C92C",
+      "bytes": 6851
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-24-innermost-loop-2026-02-24.md",
+      "sha256": "B6D73391447DEEFCE0EA133433CFDDE40347EB038C773ADFB8D5C5EF63381672",
+      "bytes": 7033
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-25-innermost-loop-2026-02-25.md",
+      "sha256": "4A4C628AFFF44AF33FED733E626CC298BA591663E3702EA7998D43415E11826B",
+      "bytes": 6970
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-26-innermost-loop-2026-02-26.md",
+      "sha256": "A6695E5C925D46564ADAC2FD04B0A99676B5CB91F8A0E90C8F55DBC1260F2AD6",
+      "bytes": 6826
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-27-innermost-loop-2026-02-27.md",
+      "sha256": "74CB9E5A33480CC65ED2D36906A623A41E21022C18950AAA776B4DB1CB527455",
+      "bytes": 6958
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-02-28-innermost-loop-2026-02-28.md",
+      "sha256": "31E990340D77A576902B27E58366A6AF1C77C0CC4C76D2158536BF06299D0104",
+      "bytes": 6711
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-01-innermost-loop-2026-03-01.md",
+      "sha256": "80603F8A54284F75AF8D52E89689A622ACAAC2275FBF29395DF6760117234546",
+      "bytes": 9529
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-02-innermost-loop-2026-03-02.md",
+      "sha256": "6DB1310D7443A8788F1B9FD7984467FA1CF38ED7BE9B81493A17C86A1A3025EF",
+      "bytes": 6862
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-03-innermost-loop-2026-03-03.md",
+      "sha256": "7645995D087EBC3A165563115ECE8CE89DFE69FD672B929C0C48A68437D03DF9",
+      "bytes": 6888
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-04-innermost-loop-2026-03-04.md",
+      "sha256": "837BFA92056B1B9301AB8DB2E27E3CBBC38A5552C7DDC3EE211A57AFE1D258C3",
+      "bytes": 7641
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-05-innermost-loop-2026-03-05.md",
+      "sha256": "F72E8A7266008F3CA1E657EFAAE679E29AEBEFF28A186BFB1B0748F66240EF08",
+      "bytes": 6784
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-06-innermost-loop-2026-03-06.md",
+      "sha256": "20CB320ECFBD1B345B9BCF9FE5A29D6FC683A3478CEE6D51FDA84D472ACC0FD0",
+      "bytes": 6798
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-07-innermost-loop-2026-03-07.md",
+      "sha256": "41D920D4C56F42BB13F79772DAE38BE02AC63A9679BE6FF379BEFC8A2F8EA0C6",
+      "bytes": 5750
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-08-innermost-loop-2026-03-08.md",
+      "sha256": "39951FBF405DEED61A37332195ACE365A6B95C80A9916302F97B18A61701DFE7",
+      "bytes": 6742
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-09-innermost-loop-2026-03-09.md",
+      "sha256": "65A878093D27B8E8D2DB221449432B6FC5211A42774C2B25DFB3356DA5184390",
+      "bytes": 6655
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-10-innermost-loop-2026-03-10.md",
+      "sha256": "D21BEE8E218A4B5C2EC3B4F154A72E052C50525C0BE4D2475AD4A6571424904D",
+      "bytes": 6828
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-12-innermost-loop-2026-03-12.md",
+      "sha256": "2CB5C25334265CDE8BAB0EEED560E6F352318FE9D47EB6341FCA7549F212FC3F",
+      "bytes": 6820
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-13-innermost-loop-2026-03-13.md",
+      "sha256": "2C59BADB1EE95E1ACF751FFFAF3DD43B18F9B1BACF950BF1C317EF23B368EE79",
+      "bytes": 6910
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-14-innermost-loop-2026-03-14.md",
+      "sha256": "C2C8F8BD382BB69FD07AD95D23B41BD8ECBE016AA1735FEE26399EEBE30237B3",
+      "bytes": 23415
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-15-innermost-loop-2026-03-15.md",
+      "sha256": "FEAA361033B1FFA371298B24D08CB4524FCDD2A7F030EBD92FF0EBD1070EF053",
+      "bytes": 6653
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-16-innermost-loop-2026-03-16.md",
+      "sha256": "DEDBAB4A545D7F2567A638537C673065CC167EE3FC7967C61C3BEC2291C9521F",
+      "bytes": 6948
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-17-innermost-loop-2026-03-17.md",
+      "sha256": "8C15934024DA84DEAC88AEE20A06FC527801F5CC4CDF2D185C93C849FFB351A3",
+      "bytes": 6891
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-18-innermost-loop-2026-03-18.md",
+      "sha256": "6410C3AB8A9F1B86B8270450C192ED3F9CFB726591B9B249187C4FDFB91F6802",
+      "bytes": 6913
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-19-innermost-loop-2026-03-19.md",
+      "sha256": "E68FE32B225DF9F801165F37D43A314E3D375C338EBEED344C3156E67A1CD463",
+      "bytes": 6224
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-20-innermost-loop-2026-03-20.md",
+      "sha256": "4FE63DF1ED448ACD792BA0CA23B976F94D80A88FB6996732EDC0E1FBE168D78A",
+      "bytes": 6928
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-21-innermost-loop-2026-03-21.md",
+      "sha256": "D4F4838FEE36B9E4E7641196F06820B472BC414F53FF456B8614FD560D4D3DD8",
+      "bytes": 5736
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-22-innermost-loop-2026-03-22.md",
+      "sha256": "83F18908C76A7F1C90A6AADA8D408920741AB152760F58C54B50ED37FCF195D5",
+      "bytes": 6981
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-23-innermost-loop-2026-03-23.md",
+      "sha256": "2667DF9EF128EB0AD2641F29835B80EF5AC52B6A10C5ED2CFA86C5A35CDCB77D",
+      "bytes": 6933
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-24-innermost-loop-2026-03-24.md",
+      "sha256": "6D7D92553C367A74BEC802C24791123477BA496E179B0AB06B8677D5FFD53FD8",
+      "bytes": 6959
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-25-innermost-loop-2026-03-25.md",
+      "sha256": "1976471AF397A392D9DAF0B43439804C70420EC29F4A9631F3E80C621A42BAD8",
+      "bytes": 6950
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-26-innermost-loop-2026-03-26.md",
+      "sha256": "7D845A7E635752BD591E2EED8075E861BDC73ECC4F18B04115E8BECD4B9C6C7A",
+      "bytes": 7059
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-27-innermost-loop-2026-03-27.md",
+      "sha256": "5C613A1DF88E47FF64157149775E1ADE2FA796868D9D2F52B27CC37E59FB0731",
+      "bytes": 7048
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-28-innermost-loop-2026-03-28.md",
+      "sha256": "D2D55414AE2C9E72696EF445129CB5317D98DFBA682DDA9247AD3B5A6B8C9BAB",
+      "bytes": 6857
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-29-innermost-loop-2026-03-29.md",
+      "sha256": "C69E99B54BFD842B7183B0F013A5885018875389225DB8384E138773028D6A6F",
+      "bytes": 6675
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-03-31-innermost-loop-2026-03-31.md",
+      "sha256": "82DA5CE05DA4596B802B13E22696F4D18E2B295BC12ADF3920D3412BAD3C4E3E",
+      "bytes": 6856
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-01-innermost-loop-2026-04-01.md",
+      "sha256": "5FD5808FF76F3B66A8DE54BBAF573D425E7B2D9A0B8FDF229247342854C97876",
+      "bytes": 6798
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-02-innermost-loop-2026-04-02.md",
+      "sha256": "FAEE6B6321BF7A15202EEE86028654D7859F9A591C57F5FC088584B596AB9C9A",
+      "bytes": 6861
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-03-innermost-loop-2026-04-03.md",
+      "sha256": "F4DB96D3F8683AF36570C50D239F2E8C781D465D83E12ACA3F6FDD28BC80CFE7",
+      "bytes": 6897
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-05-innermost-loop-2026-04-05.md",
+      "sha256": "6BE204AEB5F7D7E9D0E9E63CF70FC2A6975B472412D2D9DC5207D527EC952F20",
+      "bytes": 6885
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-06-innermost-loop-2026-04-06.md",
+      "sha256": "BEEAF58B4947A1DE0C919EFE6B5E5CA1C7EA2D44FD45CE17E251981B7912F51D",
+      "bytes": 7110
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-07-innermost-loop-2026-04-07.md",
+      "sha256": "0AA548AA887D024F6E17E6A283B1E67FB9C3B54DA91A93162F0B168B7D05C628",
+      "bytes": 6498
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-08-innermost-loop-2026-04-08.md",
+      "sha256": "EC721F41493516FA929E08C16680273F0CD1D4FB37CE59B4E57F9CA81FA62630",
+      "bytes": 6774
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-09-innermost-loop-2026-04-09.md",
+      "sha256": "86851B090F0BAA589A7590F940B9E28D89668905A2ABFC6601C9F0BC6476EDC2",
+      "bytes": 6947
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-12-innermost-loop-2026-04-12.md",
+      "sha256": "2BEA7AA3F39CDF8FE6BBA5D3EB8E6DC23608B3769E449A24505F24C69FA46DAA",
+      "bytes": 6819
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-13-innermost-loop-2026-04-13.md",
+      "sha256": "4E2FBDC5702C6DE6472CDDE93D637B4BA13F4DB1EB392472330A1FE2501081D7",
+      "bytes": 7037
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-16-innermost-loop-2026-04-16.md",
+      "sha256": "F836A58BF4A7B629E9E1D26805E6C4F5FA41CD24A88D155AAE2913470896D503",
+      "bytes": 7234
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-17-innermost-loop-2026-04-17.md",
+      "sha256": "BCD00E50F282BB864B1F76D8C179C4A9E6C1C946FCF254797711842C271CB847",
+      "bytes": 6901
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-20-innermost-loop-2026-04-20.md",
+      "sha256": "37C2D366123754FF7AFB2BC406A986FCC1644479CF09DEC9170DF7804CDAB314",
+      "bytes": 6988
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-23-innermost-loop-2026-04-23.md",
+      "sha256": "57755D688BFF3C9A26A20ECB6D02FCEFF1160F4675C61F1360E6A9ACD5D7FAFC",
+      "bytes": 7404
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-26-innermost-loop-2026-04-26.md",
+      "sha256": "D8FAB8283F89299F3A7297C0D542B42156FA41988438417115F3F044712AAA39",
+      "bytes": 6797
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-27-innermost-loop-2026-04-27.md",
+      "sha256": "66333A582B9CB74EA7841A104E0BAC7BAD6C559ED4DF47275F8DAAE689B1DC94",
+      "bytes": 6852
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-29-innermost-loop-2026-04-29.md",
+      "sha256": "C230B56FA6E3D62FB69F59392E76D61F4537EAFB6A8DB046E897E8253075E659",
+      "bytes": 6821
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-04-30-innermost-loop-2026-04-30.md",
+      "sha256": "BDFAFBA5B3341FD021D6BDD3D72504E66EDF2DEED62B5893B69F87E18E44D92C",
+      "bytes": 6892
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-01-innermost-loop-2026-05-01.md",
+      "sha256": "FBB7F6A63BF04E3578755B00C5056F71061B16BC4CA5B98B1F60B4EBB582A014",
+      "bytes": 6835
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-03-innermost-loop-2026-05-03.md",
+      "sha256": "C8EA20BAA7E523B4EA0F4EA4FAFE223BB6E02CA2C7E8AE957940C0D5514E2ED9",
+      "bytes": 6960
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-04-innermost-loop-2026-05-04.md",
+      "sha256": "349BA91CC380CE89A1D1A2D866FD77BF9CD56F49126CEB0774327142E7349F97",
+      "bytes": 6802
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-05-innermost-loop-2026-05-05.md",
+      "sha256": "49EFEDF94B6987AAB8180B63A2F19016097D4D6179C32C7B16BC090641B4EC34",
+      "bytes": 6804
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-06-innermost-loop-2026-05-06.md",
+      "sha256": "8FAC0E78C0E4377211CBBCC97FB0E2B43EC82FBD59DB7A6DBE65F062815DF254",
+      "bytes": 6645
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-08-innermost-loop-2026-05-08.md",
+      "sha256": "F121EFFB0BB0D9F9DD667D81DDF552EE417359E14486F9AA71F9842BD1B0DECD",
+      "bytes": 7033
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-09-innermost-loop-2026-05-09.md",
+      "sha256": "9553CFDC59C44B449256BDE8CCCFD0B22C066ACF99BB7F0108CAE2E157A3F731",
+      "bytes": 6868
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-11-innermost-loop-2026-05-11.md",
+      "sha256": "03797E3883D578283DBCDCB010E0EC8781B3A491DFF600F98C7A9312D1606482",
+      "bytes": 6971
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-12-innermost-loop-2026-05-12.md",
+      "sha256": "161D1C250A8F58EA207B1F3FDA402C9AD7737EBE119AD1BF580369CD44CE3E7F",
+      "bytes": 6933
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-13-innermost-loop-2026-05-13.md",
+      "sha256": "5D07062E337D31CF0BEE18CA24017FA7E77A1144B2E034C818C9301069DFD6CA",
+      "bytes": 6862
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-14-innermost-loop-2026-05-14.md",
+      "sha256": "2B64A1FE1A08ED7492AB902BA10DA6B1113BDC307255E5C000234DB5ACAFFF6E",
+      "bytes": 6707
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-15-innermost-loop-2026-05-15.md",
+      "sha256": "E60DF3A954975FC22F1F232DCA8F1C41014BFD000A1171437AAFF5F5E156A997",
+      "bytes": 6954
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-16-innermost-loop-2026-05-16.md",
+      "sha256": "490109F67EEE0D991915361876407342BC37C7EEF24706AEFAC13B9C07565756",
+      "bytes": 6918
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-17-innermost-loop-2026-05-17.md",
+      "sha256": "D8A437F88BF6E0FF849A26D062ABEE1F65C90C6C3B422094F3ACFA5FE2AD76E1",
+      "bytes": 6968
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-18-innermost-loop-2026-05-18.md",
+      "sha256": "2B37304F845F490F39CB7DEF0807985EB3A436323FC5571DB3F02D00610CDE7B",
+      "bytes": 6933
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-19-innermost-loop-2026-05-19.md",
+      "sha256": "CD427DB3DE8361A459D17A69ED00519B70186AC6F615D7A9B0416CB5F4CE42B1",
+      "bytes": 6925
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-20-innermost-loop-2026-05-20.md",
+      "sha256": "184E465EC0CB64930841B8F635EC08AAE268BFE2AC3806803A999484C1C0D195",
+      "bytes": 6978
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-21-innermost-loop-2026-05-21.md",
+      "sha256": "65150CDAB3669749E4D931B7B9D43F62ECF62CBBBBF53CD3746D3AA856C53821",
+      "bytes": 7101
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-22-innermost-loop-2026-05-22.md",
+      "sha256": "0633E6FDE68C0AB9C81E4716F3BA01791A706D2F669D9DF3A07D78354DEC2E36",
+      "bytes": 6750
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-23-innermost-loop-2026-05-23.md",
+      "sha256": "3A12EE23D237F60F137F645A44A2812E663CCAC261E4AF4D51C8A4BBD5D90B47",
+      "bytes": 7128
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-24-innermost-loop-2026-05-24.md",
+      "sha256": "F407472DC09A2D66AFCFB6BAD44A14A87B571E06C4E56B3605D2741149E2CDDC",
+      "bytes": 6909
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-25-innermost-loop-2026-05-25.md",
+      "sha256": "D415EC970CE0D89F3E932AD23FACBC2E67D6C50F5388B98A9AB54BF5231F81A4",
+      "bytes": 6908
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-26-innermost-loop-2026-05-26.md",
+      "sha256": "B653817B7218F9B3417B7B6105AE44862CB16A909BAEAD176BAAA32060EAA520",
+      "bytes": 7908
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-28-innermost-loop-2026-05-28.md",
+      "sha256": "6D04EACC55E0BB95A730B9517877D07D400945B65EE865E080E91F07417D3492",
+      "bytes": 6938
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-05-29-innermost-loop-2026-05-29.md",
+      "sha256": "70B2001031146D4589864C5D44527F9F2C453BFFABA28D12F6B8D46D9FB1DE24",
+      "bytes": 6801
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-01-innermost-loop-2026-06-01.md",
+      "sha256": "70B97ACF773DCE5DC1454E7D8CE0B2BCD27934F7CD696E8603189EA1902513FF",
+      "bytes": 6937
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-02-innermost-loop-2026-06-02.md",
+      "sha256": "859684A777C127468C2EA9A7703E6DEFBD953F1535537A861967A6FFD519AC82",
+      "bytes": 6967
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-03-innermost-loop-2026-06-03.md",
+      "sha256": "0CF05229C829E0FB95FBCD0C57973B6509852DE4CEBBDF0EA46BB561A6DD9790",
+      "bytes": 7020
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-04-innermost-loop-2026-06-04.md",
+      "sha256": "8DE20B12BA49BEB84C436AEE406C0457BA1683636B6C51A15219F03A2156B4CA",
+      "bytes": 6681
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-05-innermost-loop-2026-06-05.md",
+      "sha256": "5EA29FB80B1B5D26063A75DAB570E4D72652D00825F077539E5BF6369895A858",
+      "bytes": 6957
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-07-innermost-loop-2026-06-07.md",
+      "sha256": "C62E72D0D339755BA9E21BD846E4755D3FFC88936E08A6DB86D23AE5A3635E58",
+      "bytes": 6978
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-08-innermost-loop-2026-06-08.md",
+      "sha256": "BF63F983B5797174ECBD768B65A7A4DEE05E3A646C6DD0D490857A0DB8F46139",
+      "bytes": 7136
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-09-innermost-loop-2026-06-09.md",
+      "sha256": "1C0B0D6A8F073AE028D01DDD50F76C5657E47AA66CD0E98061A3E8A604460A73",
+      "bytes": 7029
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-10-innermost-loop-2026-06-10.md",
+      "sha256": "3E5205529C4FD6B756E4099CCCF0A94E530664D6A5F555D04DA1769C0CA5D99E",
+      "bytes": 7115
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-12-innermost-loop-2026-06-12.md",
+      "sha256": "B23B16FF4AE466B7BB4F40CE52038C82E27E07E279170E6C4005EA740C8B09EB",
+      "bytes": 6929
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-13-innermost-loop-2026-06-13.md",
+      "sha256": "36D4A0EF837CE17F7F6978775484A61626D8EBFC9F5512790F84565ED8898B12",
+      "bytes": 2694
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-14-innermost-loop-2026-06-14.md",
+      "sha256": "B03047520949064AB589B0A48E424E44B46DA631848AB5CD777BA69707E700EC",
+      "bytes": 6980
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-15-innermost-loop-2026-06-15.md",
+      "sha256": "A02424F21ACB6D4799A043B470C06DC29FADFE74D26B62E945A7F3E5195EFB61",
+      "bytes": 7374
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-16-innermost-loop-2026-06-16.md",
+      "sha256": "8DD85C8C199D9AC8F5EF2F77DA9C984DF4010C8D49E0E355DB383C63E179309B",
+      "bytes": 7398
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-17-innermost-loop-2026-06-17.md",
+      "sha256": "AA7ACB0B0E2F1324CFFD3A42EC10EB95C4086535BD732C36D2CBCFAA6C2AB347",
+      "bytes": 7244
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-18-innermost-loop-2026-06-18.md",
+      "sha256": "9948A02698486CAFC5BB8ED71F12FBD918F7C4476D6B379489DD7735378E601A",
+      "bytes": 7129
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-19-innermost-loop-2026-06-19.md",
+      "sha256": "82B013FCCC177EF9C0DFF70C5CA88A14681D033ABEBB06A8938633B1E8500FF8",
+      "bytes": 6964
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-26-welcome-to-june-26-2026.md",
+      "sha256": "6B4AC054538A253CC2444121CE49D0C6A377ED55C04E3044D355A1804E7C78B9",
+      "bytes": 2054
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-27-welcome-to-june-27-2026.md",
+      "sha256": "5D9B622346E9386AFF0B37AE6DE722E88FFE11A0EA18070497EBF477906E280B",
+      "bytes": 2246
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-28-welcome-to-june-28-2026.md",
+      "sha256": "037B65192E49C351E98D2BFE89416A7CEDAE0FC4730E8817DA2AA253CEF305FC",
+      "bytes": 2447
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-29-welcome-to-june-29-2026.md",
+      "sha256": "B0CB25B902F06DE5F25F93F53A261709D2C89E2644CB309944BB16613A7AF31E",
+      "bytes": 2223
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-06-30-the-first-dyson-swarm-node.md",
+      "sha256": "1EB64DFF7170B76820E606A0D361185132908D944A615CE25F92E5B0FF606948",
+      "bytes": 2402
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-07-01-welcome-to-july-1-2026.md",
+      "sha256": "B4E1B1E46523437284F68420CA837BE1B1A2C30DE358114FD9E43626C0674651",
+      "bytes": 2096
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-07-02-welcome-to-july-2-2026.md",
+      "sha256": "5E0B8B6F937F010AAC3112618B418D92339FA92CB78002818EF9EA116A58193C",
+      "bytes": 2085
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-07-03-welcome-to-july-3-2026.md",
+      "sha256": "8D52DD180CDDEA1D5FE4F0113E7B388586DA0091F1F2719C472D2A6D26A607D0",
+      "bytes": 2031
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-07-04-welcome-to-july-4-2026.md",
+      "sha256": "0C5B47E4A5A12408007DC673AAE0542B9F12DB2DB298D9D3DD14A0DC27F37C75",
+      "bytes": 2012
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-07-05-welcome-to-july-5-2026.md",
+      "sha256": "F4448FC6FE7729EDFE3303FAB99A7212E6C7A7230EB08C924BA23933B0B70CCD",
+      "bytes": 1760
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-07-06-the-first-commercial-orbital-data.md",
+      "sha256": "F63430EFEFD1D3BC13D2C392628A43275A0CB09F6FC6F89DB5BC4750458D391F",
+      "bytes": 2155
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-07-07-welcome-to-july-7-2026.md",
+      "sha256": "8179D3873B60A68DBB0A131EEAE546941E21A7A691CBB22A2D4DBF75F66D24FE",
+      "bytes": 2197
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-07-20-july-14-to-july-17-cluster.md",
+      "sha256": "05D6D337FA7A67F876B7F6D1A4D321518143DBDE53D2992B451F19A5A8F32AD5",
+      "bytes": 1534
+    },
+    {
+      "path": "projects/singularity-science/archive/innermost-loop/transcripts/2026-07-21-worldmonitor-gated-fixture-infrastructure-event.md",
+      "sha256": "073616E2100CAF3D27FD958A2A136121F5F41A11E403892F6D897C0ACA255912",
+      "bytes": 1052
+    },
+    {
+      "path": "projects/singularity-science/archive/intake-diagnostic-ledger.md",
+      "sha256": "930728963E36032C0845E6250C190AC46DE1E84ABBED97846B1FB5F4BB638116",
+      "bytes": 1781
+    },
+    {
+      "path": "projects/singularity-science/archive/intake-performance-audit.md",
+      "sha256": "9EADA8F8A2B44219A46658E5DAD99C3EFEA409D7B08154D52FB1F3DCBD12F623",
+      "bytes": 1405
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/README.md",
+      "sha256": "55F7498BAA5B7806237E69181AC0E865459FCC1FF315BE1DD89CE973430F69C4",
+      "bytes": 2042
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/analyses/.gitkeep",
+      "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B",
+      "bytes": 1
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/analyses/2026-06-09-moonshots-emerging-anthropic-global-pause-recursive-self-improvement-ai-personhood.analysis.md",
+      "sha256": "182ABDED5C14400549323F08141490AF70145C081E85BB8F9182BB3914F07757",
+      "bytes": 8414
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/analyses/2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-openai-ipo-delay.analysis.md",
+      "sha256": "70019BD288214B72F4FD4FE296774A94C3DC17AD34CEAF00A47575D83F6959AF",
+      "bytes": 7362
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/analyses/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.analysis.md",
+      "sha256": "3F78E33C46F55510D894661AC9C1DEAAAF9FA7B4482B16F928D5A42CA69008D0",
+      "bytes": 6712
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/analyses/2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.analysis.md",
+      "sha256": "A8BF0A48C83E612BE5D56FC69FAF96E883F4FFC3F3F8CBFA6AF1975EFEC15B49",
+      "bytes": 7123
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/analyses/2026-07-19-kimi-k3-delivers-frontier-ai-at-1-percent-of-the-cost-ai-sputnik-moment-emad-mostaque.analysis.md",
+      "sha256": "C242EF9884D59B5908CF5A275DECDA1E7D5BC6A804E069153A529D3529624324",
+      "bytes": 8130
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/analysis-template.md",
+      "sha256": "A4D6A81DDAFFC0E61DDB0E89D7CE0175DE700B9FAB350A582BDCEA33E9F07700",
+      "bytes": 3243
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/roi-ledger.md",
+      "sha256": "DD08C7788812132C046D946A64A950D70AB1A632C325CB1965BD57C1E3CFFB41",
+      "bytes": 14435
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/source-note-template.md",
+      "sha256": "6BA7EB1DE8F3D1172A35209F96C51A23E65439A9E34846B7BFDB5C926B7BD3F7",
+      "bytes": 1185
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/source-notes/.gitkeep",
+      "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B",
+      "bytes": 1
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/source-notes/2026-06-09-moonshots-emerging-anthropic-global-pause-recursive-self-improvement-ai-personhood.source-note.md",
+      "sha256": "DC290A6BCE93F9E46623FCDD07CC3D44422DF41E59E43E169C9541CBF3FE280F",
+      "bytes": 4641
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/source-notes/2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-openai-ipo-delay.source-note.md",
+      "sha256": "1900B4DB4DBF2870A0A6B1605C401F0195C0A23EF1FA42F2965F5F0CC76773C9",
+      "bytes": 4566
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/source-notes/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.source-note.md",
+      "sha256": "B7AA87D0A90C68288F49806B512E4AE9934D2A2EB97CAE04CD1B9F908FF14A23",
+      "bytes": 4052
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/source-notes/2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.source-note.md",
+      "sha256": "641C32B7DC208FBBB332C4436C219BB022F64EC31631094AFF5796916A10F84D",
+      "bytes": 5077
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/source-notes/2026-07-19-kimi-k3-delivers-frontier-ai-at-1-percent-of-the-cost-ai-sputnik-moment-emad-mostaque.source-note.md",
+      "sha256": "82EAC3B6AD696F33483CDE52A7BF64C16150E0245B900932034A831AD5952C8A",
+      "bytes": 3692
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/transcripts/.gitkeep",
+      "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B",
+      "bytes": 1
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/transcripts/2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md",
+      "sha256": "C452E012B37FB299A7C9D3BF0A59805D5E7198EE63D324F1D3D857ACE0A58490",
+      "bytes": 69258
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/transcripts/2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-2026-06-19.md",
+      "sha256": "6ABE0FBF47B097F65F52A8275082E715957EF9ECFBCE60BD16BDFD1F92B49903",
+      "bytes": 119252
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md",
+      "sha256": "1E28E6C3D60837EB46D1F7C98B7398B76C7B7F810FFA0E960EABF1C138F4B10B",
+      "bytes": 4520
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md",
+      "sha256": "6DF7F1F71A392AC2C489D5542CB2A1C7F2ADEAC0B8CC0A436F914F26A06143FD",
+      "bytes": 104462
+    },
+    {
+      "path": "projects/singularity-science/archive/moonshots/transcripts/2026-07-19-kimi-k3-delivers-frontier-ai-at-1-percent-of-the-cost-ai-sputnik-moment-emad-mostaque.md",
+      "sha256": "9A49A2B0C364F8DA09A8696E6725D079AB57F3B6C8EC9B3EB66EF500CAFC1CAA",
+      "bytes": 128502
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/README.md",
+      "sha256": "901CF54AC4AA229F1B475EE8265992477D49C2F2CA6748857A2D21DA7F35C7B6",
+      "bytes": 2098
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/analyses/.gitkeep",
+      "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B",
+      "bytes": 1
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/analyses/2026-07-09-claude-fable-5-bossed-20-cheap-ai-agents-site-cost-8.analysis.md",
+      "sha256": "6733B64047A1555DA40BD17DDDF30F5280AF292A166A6F44464357BD59067273",
+      "bytes": 7748
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/analyses/2026-07-17-codex-vs-fable-which-ai-agent-picked-the-better-problem.analysis.md",
+      "sha256": "BC6E9F76C244670461C591858B9A1F7F79E4919170DEFED802D753D0E224DFFE",
+      "bytes": 9939
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/analyses/2026-07-17-fable-5-and-gpt-5-6-dont-need-better-prompts-they-need-a-clean-setup.analysis.md",
+      "sha256": "4AEDB4BCCFC9EAFFE4CBF40B205DE004E88AD9DC32583D0954F57A9BEFB8F68E",
+      "bytes": 10231
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/analyses/2026-07-17-your-roadmap-is-why-youre-losing-to-ai-native-teams.analysis.md",
+      "sha256": "7B4B2B13FA51CD86113300E4A464D19D6C56B3E415A5C9A23AC39AE11174F7C0",
+      "bytes": 10384
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/analysis-template.md",
+      "sha256": "AD28C7C4D3763D92D7D5094BADD617C7E22945172CB189EC11E6086EA7F45A98",
+      "bytes": 3385
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/roi-ledger.md",
+      "sha256": "7037CB8DA0930D14FC8AC1D9BAACE9E90453A3D8110A566AEFB81B4098052F5D",
+      "bytes": 17118
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/source-note-template.md",
+      "sha256": "3C1EEC36CF2E8EDCAC7AACBE0B6AB7B23DEFAE5C21B769B6B774423EE6B7521E",
+      "bytes": 1212
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/source-notes/.gitkeep",
+      "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B",
+      "bytes": 1
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/source-notes/2026-07-09-claude-fable-5-bossed-20-cheap-ai-agents-site-cost-8.source-note.md",
+      "sha256": "F1C83047950E16566667FFFB4706A8D382490B94965B1AE155AD50CA59859DAF",
+      "bytes": 4747
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/source-notes/2026-07-17-codex-vs-fable-which-ai-agent-picked-the-better-problem.source-note.md",
+      "sha256": "7B4E4A018F57543EDCC184F6043056AA3735DE4532906EEDF4772A0DC5F899DE",
+      "bytes": 5014
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/source-notes/2026-07-17-fable-5-and-gpt-5-6-dont-need-better-prompts-they-need-a-clean-setup.source-note.md",
+      "sha256": "AAC517F8736C49A35DC32A652C34CC4E985AE35765AC9EF86E8C605D2BAA60AD",
+      "bytes": 4543
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/source-notes/2026-07-17-your-roadmap-is-why-youre-losing-to-ai-native-teams.source-note.md",
+      "sha256": "775718A73D657B1917ACF654FCB6EBAE9F3629F883002A200AA5FB08A4C05DB8",
+      "bytes": 4581
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/transcripts/.gitkeep",
+      "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B",
+      "bytes": 1
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/transcripts/2026-07-09-claude-fable-5-bossed-20-cheap-ai-agents-site-cost-8.md",
+      "sha256": "5D7906C4A3A222792464F8D55060360CA2F27A566805A845127E226F0ECCECF9",
+      "bytes": 20726
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/transcripts/2026-07-17-captured-codex-vs-fable-which-ai-agent-picked-the-better-problem.md",
+      "sha256": "9265D60687437A9057001FB45158D16C52B7A7E270B7ABF949931F087BB4B2F2",
+      "bytes": 12740
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/transcripts/2026-07-17-captured-fable-5-and-gpt-5-6-dont-need-better-prompts-they-need-a-clean-setup.md",
+      "sha256": "A29FE407B3A99CAA25EC27FC73B89E5E8B46BE113A10847689A5DD91FA82A59A",
+      "bytes": 18429
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-b-jones/transcripts/2026-07-17-captured-your-roadmap-is-why-youre-losing-to-ai-native-teams.md",
+      "sha256": "4D7962B996CF42D10D7CCA6709519A9EF93348DD374E8E26AE79FBDC4A641FCD",
+      "bytes": 20010
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/README.md",
+      "sha256": "BCB87686AB689A6AEEDB7B8CD9CD3844696FE694D1CBD60432F10F2FC86CD3FF",
+      "bytes": 1070
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/analyses/2026-07-22-how-id-make-money-with-claude-if-my-life-depended-on-it.analysis.md",
+      "sha256": "E1761F606B934CCB6F3FB883EF59638AC0637EA537E668A4A7127A2903CC753D",
+      "bytes": 10097
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/analyses/2026-07-22-how-you-can-provide-the-most-ai-value-to-businesses.analysis.md",
+      "sha256": "D8D5F6E95424663155864CD317D24CD89A948C98CEE2B2697663869704EB7E71",
+      "bytes": 7443
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/analyses/2026-07-23-steal-my-exact-ai-os-setup-5-simple-tips.analysis.md",
+      "sha256": "3712A85555FEA8210A5A8B25E6420B9A776E8C4581F65ADED26E0C7F187D63B3",
+      "bytes": 10052
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/analysis-template.md",
+      "sha256": "A92FCAEB3BD4105D471767F7FAB861028BE7BD86C7B7585170F92E571AB65472",
+      "bytes": 3002
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/roi-ledger.md",
+      "sha256": "35F8EEFBCD0F77A0D06A8E4A2F47D6B3E2D8925A3503A1D44AF09F3EDA70ECC1",
+      "bytes": 8153
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/source-note-template.md",
+      "sha256": "E4D34DEF7C842E101FFF73B76F3285EECBACFFA13A4D725E265834AFAB910150",
+      "bytes": 566
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/source-notes/2026-07-22-how-id-make-money-with-claude-if-my-life-depended-on-it.source-note.md",
+      "sha256": "A2D9F66692E5E157231298D22C3A91D35561D859CA7B775E4DDA1801C1FF38DE",
+      "bytes": 3978
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/source-notes/2026-07-22-how-you-can-provide-the-most-ai-value-to-businesses.source-note.md",
+      "sha256": "A9D9B594E7AD29B3B4408899BF9F21D23758CAEAC0CD88CBA85D8CCBF2B02081",
+      "bytes": 3666
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/source-notes/2026-07-23-steal-my-exact-ai-os-setup-5-simple-tips.source-note.md",
+      "sha256": "C50816F4B79667632848A1EE9F0277371293594D7B93F31B55AE5E22302BA9F4",
+      "bytes": 4533
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/transcripts/2026-07-22-how-id-make-money-with-claude-if-my-life-depended-on-it.md",
+      "sha256": "180559A61F50C60304D162E564195ADB8506924D837422E1D37F02B339762152",
+      "bytes": 11989
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/transcripts/2026-07-22-how-you-can-provide-the-most-ai-value-to-businesses.md",
+      "sha256": "9FAE7826A026E26B4660F563307641AD3FA733D1743ECB59B5B407C854868A89",
+      "bytes": 59045
+    },
+    {
+      "path": "projects/singularity-science/archive/nate-herk/transcripts/2026-07-23-steal-my-exact-ai-os-setup-5-simple-tips.md",
+      "sha256": "FFD3D92063A20E7E4413DCEC042D60B74A5DB5215C69C5DC19E4F239BA309457",
+      "bytes": 32136
+    },
+    {
+      "path": "projects/singularity-science/archive/recurrence-reviews/2026-07-24-backfill-moonshots-verification-accountability.md",
+      "sha256": "3F3A0626CE51DDB9880564757AFA20F402F5683468E6E45FC42C8EF6248EF3DC",
+      "bytes": 2319
+    },
+    {
+      "path": "projects/singularity-science/archive/recurrence-reviews/2026-07-24-backfill-nate-b-jones-coordination-substrate.md",
+      "sha256": "BF23E9E34CF50A25FC0A4FC0CF225CF7678ADAFC7076AB211DF3507278087A8C",
+      "bytes": 2295
+    },
+    {
+      "path": "projects/singularity-science/archive/recurrence-reviews/2026-07-24-backfill-nate-b-jones-multi-agent-verification.md",
+      "sha256": "AEB5D725E3C2FB44D2A0FB2394A85F80EAB889C8E54081078667AACCA8A5943B",
+      "bytes": 1938
+    },
+    {
+      "path": "projects/singularity-science/archive/recurrence-reviews/2026-07-24-backfill-nate-b-jones-problem-selection.md",
+      "sha256": "F56FD127E7263473692E90B84CA02F1D06865D82EC71AD1892BC116D657065C8",
+      "bytes": 2242
+    },
+    {
+      "path": "projects/singularity-science/archive/recurrence-reviews/2026-07-24-backfill-nate-herk-context-harness.md",
+      "sha256": "8B9D8AAA622A44CCFC06DFB036A78E9A037D971FDE3EB2C3171BE91963173BCC",
+      "bytes": 2714
+    },
+    {
+      "path": "projects/singularity-science/archive/transcript-import-ledger.md",
+      "sha256": "2302387E0010FA486E90A874A4E140CAE0A98769E38B33AB224C92E5B4515FC3",
+      "bytes": 47272
+    },
+    {
+      "path": "projects/singularity-science/archive/transcript-intake-manifest.generated.json",
+      "sha256": "3A54DE6DB0ABBC915B185166369003F21DEC6E0F80373411CF8E480CA437619D",
+      "bytes": 137710
+    },
+    {
+      "path": "projects/singularity-science/archive/transcript-intake-manifest.json",
+      "sha256": "A204DD231D9A6D89B3439938486714C3192B10906D4DEEA5E0991A4039EDE5B9",
+      "bytes": 1574
+    },
+    {
+      "path": "projects/singularity-science/china-humanoid-market-watch.md",
+      "sha256": "F9A6CB6671DC2A7B1FD0AC355C0006E119047E1B0EB5E57AC3CF1FD181024E60",
+      "bytes": 3823
+    },
+    {
+      "path": "projects/singularity-science/cross-lane-nested-loop-comparison.md",
+      "sha256": "7C7693DA0C284BF528844E4F6971B975C297F2878D1DFAC90BE66919D6DAEF6D",
+      "bytes": 2246
+    },
+    {
+      "path": "projects/singularity-science/customer-impact-map.md",
+      "sha256": "40B7622A725A345BD6A4D707A2AF409C279E9E7633CD3805EA1A09F174CB2DBB",
+      "bytes": 10297
+    },
+    {
+      "path": "projects/singularity-science/decision-log.md",
+      "sha256": "71575F48114C286EA22501999B68258F6C3F2C5FE6AAC032CA171CB929B7FB33",
+      "bytes": 1966
+    },
+    {
+      "path": "projects/singularity-science/executive-os-install.md",
+      "sha256": "26A262D18C6CA68FF39CAA35DE877D0E4E7868E940F11812B06292AB21FDCC4B",
+      "bytes": 4737
+    },
+    {
+      "path": "projects/singularity-science/loop-examples/research-to-primitive-routing.yaml",
+      "sha256": "B331FFA0497DA8061A787E10141B087986923177C8DBC08F6C8881F8ABD0E6E1",
+      "bytes": 1914
+    },
+    {
+      "path": "projects/singularity-science/media-production-harness-baseline-receipt.md",
+      "sha256": "AB624D4534ADE41855D845399E22E07E80B50E2EDDE9EB9B41800107F2D8603C",
+      "bytes": 2385
+    },
+    {
+      "path": "projects/singularity-science/media-production-model-swap-evaluation-packet.md",
+      "sha256": "BBCFF70BB443E37597BDFA1969F92096E7EEB77DB8551757EB0971010583931C",
+      "bytes": 5176
+    },
+    {
+      "path": "projects/singularity-science/media-production-model-swap-readiness-review.md",
+      "sha256": "EA63803FF58EA637D4917D108A70F50E7C35382819C294A86580512E104F726D",
+      "bytes": 8078
+    },
+    {
+      "path": "projects/singularity-science/media-production-model-swap-run-a-output.md",
+      "sha256": "EB39863036E2C1171D966F5E1961C3E656AB7AFACA6A792E9C85F3A7A7AFC070",
+      "bytes": 3017
+    },
+    {
+      "path": "projects/singularity-science/membrane-notes.md",
+      "sha256": "51BCB30B4C2378EDB39EF6683C7233924FE01C337B533B4060C18723BEB83A18",
+      "bytes": 1066
+    },
+    {
+      "path": "projects/singularity-science/moonshots-272-learning-loop-ownership-review.md",
+      "sha256": "868CDB3B9F9E07614E3B078114B3B1D1ACDA2C3F264CFDCA42B4CD2A1DB7791E",
+      "bytes": 6472
+    },
+    {
+      "path": "projects/singularity-science/moonshots-272-recursive-self-improvement-deep-dive.md",
+      "sha256": "F612FE0BED23D3545BAF0C91A011A3B9CE2E63D31BB0E883EBDF87DBC9E3433C",
+      "bytes": 11822
+    },
+    {
+      "path": "projects/singularity-science/moonshots-272-research-to-improvement-receipt.md",
+      "sha256": "EA95BD61545A5451DF1DCB9F0774F4C188CC9CC9C2E734853DFF93C2D5302A91",
+      "bytes": 4340
+    },
+    {
+      "path": "projects/singularity-science/moonshots-272-singularity-implications-memo.md",
+      "sha256": "B1C876E8EB7F2B6B254D48162711DBFA5CC1C2CED8D3FD3D79A4281223AB35E7",
+      "bytes": 13843
+    },
+    {
+      "path": "projects/singularity-science/nate-b-jones-clean-setup-lane-implications-memo.md",
+      "sha256": "F736D3D3052547756406948FDA310DD9A968397053B823B0B89AFB6E13F1BF8B",
+      "bytes": 10297
+    },
+    {
+      "path": "projects/singularity-science/operating-review.md",
+      "sha256": "B8494B2A19E6C7B00928B9191B87C3C0604464B64ABB396E31A2467DA28DEE65",
+      "bytes": 1741
+    },
+    {
+      "path": "projects/singularity-science/orchestration-failure-mode-ledger.md",
+      "sha256": "23A18C04AA5F676F672B6B1A5CE3E7A8344A2534F5859AC30A580F11BEC00D6C",
+      "bytes": 4628
+    },
+    {
+      "path": "projects/singularity-science/orchestration-usefulness-exemplar.md",
+      "sha256": "287BE27687933EE1BBD812472835A56A4783D5EAC2E8A385D9FD941AFC3C4ECB",
+      "bytes": 4890
+    },
+    {
+      "path": "projects/singularity-science/primitives/README.md",
+      "sha256": "FF9BE1A77A801F7152FB661A591B548E992B1A419C0B31EE1A3458FCA5FCED00",
+      "bytes": 6572
+    },
+    {
+      "path": "projects/singularity-science/primitives/acceleration-source-verification-gate.md",
+      "sha256": "D3E7F92B58B10EB470752FF8EB2B78389AC28E80FD88323D6A57ED967D35F34B",
+      "bytes": 2862
+    },
+    {
+      "path": "projects/singularity-science/primitives/ambient-agency-review-gate.md",
+      "sha256": "0023FBC17907CAD431C0957D210B7BDB1B3D0D47582721E50CB53EA9E4ED09BF",
+      "bytes": 6019
+    },
+    {
+      "path": "projects/singularity-science/primitives/embodied-agency-adoption-gate.md",
+      "sha256": "49981F41710403C1DBC55C51629804844362F4B69C2DFE3E16FA3CED8884BCDA",
+      "bytes": 4244
+    },
+    {
+      "path": "projects/singularity-science/primitives/embodied-ai-exposure-scan.md",
+      "sha256": "6CF62736B253A830B86C0B27A1079C86B3B426A1900F5B841A2021EE727D57F7",
+      "bytes": 7611
+    },
+    {
+      "path": "projects/singularity-science/primitives/permissions-and-authority-review-gate.md",
+      "sha256": "57D6653E77078E2C12FBDBA9BCC700689D8E7876A1198B53C0899A56D8A6D547",
+      "bytes": 6817
+    },
+    {
+      "path": "projects/singularity-science/primitives/translation-integrity-review-gate.md",
+      "sha256": "4FFEE6B6F9BBF854FDE8F6E3560E281C35F53D23308D7A7C92038D8A071F4EAA",
+      "bytes": 2570
+    },
+    {
+      "path": "projects/singularity-science/repo-context-integrity-audit-2026-07-23.json",
+      "sha256": "1B97DAE16C5A77B15DF7B40BB603B6269088A393E86953608AC576605DDCEB44",
+      "bytes": 206984
+    },
+    {
+      "path": "projects/singularity-science/repo-context-integrity-audit-2026-07-23.md",
+      "sha256": "C22692F5C8743B71A3FF1A5520187A0486719E49D46F6BCB8C87EC3DB657C4E5",
+      "bytes": 72816
+    },
+    {
+      "path": "projects/singularity-science/research-operating-model.md",
+      "sha256": "8E33C4107ACC2639AEBAC2228E2C483BF3CC332EAD6B7F22D7BF4AAA2EDFBF5B",
+      "bytes": 5340
+    },
+    {
+      "path": "projects/singularity-science/research-to-improvement-receipt-template.md",
+      "sha256": "47CA1C504428B3EEFCCBB753599C66D4C8E028198FB6A0EAC4E1F97FFAEDB8CB",
+      "bytes": 2694
+    },
+    {
+      "path": "projects/singularity-science/risk-register.md",
+      "sha256": "3572AC8345AC2014B0FBB2DCD9DAD9778B41AEC847C05CE2CDA0CCDEBA26559F",
+      "bytes": 1716
+    },
+    {
+      "path": "projects/singularity-science/templates/china-humanoid-quarterly-watch-template.md",
+      "sha256": "172B0D62534677744CF6CA8F261EDCA458A558C2AA012E878C1DFCDF547FE7B7",
+      "bytes": 4603
+    },
+    {
+      "path": "projects/singularity-science/translation-integrity-audit-receipt-template.md",
+      "sha256": "13F09ABDA36E7298055490964D25656C7EB3BB912FADE2F85B3B3BFF7018D29B",
+      "bytes": 1278
+    },
+    {
+      "path": "projects/singularity-science/translation-integrity-ledger.md",
+      "sha256": "25D468D37EB4315D6FAFF31B11BE145E49151547141E2BC57F47E97682FF3F85",
+      "bytes": 1251
+    },
+    {
+      "path": "projects/singularity-science/translation-integrity-roi-audit-2026-07-22.md",
+      "sha256": "F9B3A464BDEB4D0762D6CE87EE02ABB7F8DA3511BC4983FCCFAC10B500B3AE3B",
+      "bytes": 4720
+    },
+    {
+      "path": "projects/singularity-science/translation-integrity-validation-2026-07-22.md",
+      "sha256": "1CC7F81BBC271FC8CC6A44E25741C583FC32EDA028AE9282A9F48E90B870BC47",
+      "bytes": 3627
+    },
+    {
+      "path": "projects/singularity-science/turn-receipt-template.md",
+      "sha256": "F9870D5A39470DC40284620B3F7326B80C8DB0B549CE43908558A0A9C58B45BE",
+      "bytes": 1609
+    },
+    {
+      "path": "projects/singularity-science/turn-usefulness-audit-matrix.md",
+      "sha256": "E09140CD2A2B1C91C2F626E6DC32D42A8C53D3EB70B648EC26B86CE77FAB8E1A",
+      "bytes": 9249
+    },
+    {
+      "path": "projects/singularity-science/turn-usefulness-audit-report.md",
+      "sha256": "34915CA5D41FD17475FDCE83FD7C7E79E9E600E66E3B1B99E95867871EAA1004",
+      "bytes": 10959
+    },
+    {
+      "path": "projects/singularity-science/turn-usefulness-scorecard.md",
+      "sha256": "745E19AAA2CD664AA5C167B79F5B7A86290F3D24B9C2F10ACD2F133E060C18B4",
+      "bytes": 4959
+    },
+    {
+      "path": "projects/singularity-science/useful-turn-evaluation-note.md",
+      "sha256": "B65DEB3EB70EFBD5403BEEDF6195DB77222F807C70691158B7CF22732791C2B4",
+      "bytes": 4412
+    },
+    {
+      "path": "projects/singularity-science/worldmonitor-signal-pilot-receipt.md",
+      "sha256": "E7A2CDF01FE597EACEF227A38F6E7DD1482BBDB912CB27D8A39F4B93B15B0607",
+      "bytes": 2699
+    },
+    {
+      "path": "projects/singularity-science/worldmonitor-signal-to-archive-promotion-gate.md",
+      "sha256": "DA10BDF7AE3333C1546D38B53DFFEFD186E7874F27E6A63795E9E97A8C986DFD",
+      "bytes": 1632
+    },
+    {
+      "path": "templates/approval-receipt.md",
+      "sha256": "CE8E48BDA5178AF4DA17C02FBE08F52ADE10BA2AF6866FBE62EB9A0BE12EF1E0",
+      "bytes": 906
+    },
+    {
+      "path": "templates/chief-executive-brief.md",
+      "sha256": "D4F413729A9B6E08B3FB56FCA95B2096D5B3C6DA6D78F73DD07FD12211FAF7BD",
+      "bytes": 1009
+    },
+    {
+      "path": "templates/executive-assistant-action-receipt.md",
+      "sha256": "A5B0B2539CF30917C84951353A73BEE46055D5D72BCF01FA7D947448A1BE39FC",
+      "bytes": 939
+    },
+    {
+      "path": "templates/executive-council-pilot-receipt.md",
+      "sha256": "7EFC7DA8AE52DC636235C3B0144767C7D6978E379F9971C61C29DB9426DD26E4",
+      "bytes": 682
+    },
+    {
+      "path": "templates/executive-council-transaction-record.md",
+      "sha256": "DF7C5556E17AD4E102A13DD396DBA5A8238716F08E972C231206CD8C090ACB12",
+      "bytes": 1947
+    }
+  ]
+}

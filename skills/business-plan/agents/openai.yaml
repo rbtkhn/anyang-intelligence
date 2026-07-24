@@ -1,0 +1,7 @@
+interface:
+  display_name: "Business Plan"
+  short_description: "Build owner-approved evidence-backed plans"
+  default_prompt: "Use $business-plan create to prepare an evidence-backed business plan from an effective context."
+
+policy:
+  allow_implicit_invocation: false

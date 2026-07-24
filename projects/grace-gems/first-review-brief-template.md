@@ -4,7 +4,8 @@
 **Date:**  
 **Related meeting capture:** [link]  
 **Prepared by:** Executive Council  
-**Review owner:**  
+**Judgment prepared by:** Chief Executive
+**Real-world evidence interface:** Executive Assistant
 **CEO approver:**  
 
 ## Review definition
@@ -21,7 +22,8 @@
 - Source locations:
 - Privacy or membrane limits:
 - Known evidence gaps:
-- Evidence reviewer:
+- Evidence route: [public research by Chief Executive / authorized evidence
+  gathered by the Executive Assistant and returned through a minimized receipt]
 
 ## Recommendation boundary
 
