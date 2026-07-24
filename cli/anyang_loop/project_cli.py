@@ -47,6 +47,7 @@ from .harness_review import HarnessReviewError, record_decisions, render_harness
 from .automation_value_proof import validate_value_proof
 from .context_audit import audit_repository, render_markdown, write_audit
 from .singularity_intake_validate import validate_lane
+from .recurrence_validate import validate_directory
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -223,6 +224,9 @@ def build_parser() -> argparse.ArgumentParser:
     intake_validate = subparsers.add_parser("validate-singularity-intake", help="Validate a Singularity Science intake lane")
     intake_validate.add_argument("--lane", required=True)
     intake_validate.set_defaults(func=cmd_validate_singularity_intake)
+    recurrence_validate = subparsers.add_parser("validate-recurrence-reviews", help="Validate derived Singularity recurrence packets")
+    recurrence_validate.add_argument("--path", required=True)
+    recurrence_validate.set_defaults(func=cmd_validate_recurrence_reviews)
     return parser
 
 
@@ -502,6 +506,16 @@ def cmd_validate_singularity_intake(args: argparse.Namespace) -> int:
     if diagnostics:
         return 1
     print(f"OK Singularity intake lane: {args.lane}")
+    return 0
+
+
+def cmd_validate_recurrence_reviews(args: argparse.Namespace) -> int:
+    diagnostics = validate_directory(args.path)
+    for diagnostic in diagnostics:
+        print(f"{diagnostic.severity.upper()} {diagnostic.code} {diagnostic.path}: {diagnostic.message}")
+    if diagnostics:
+        return 1
+    print(f"OK recurrence review packets: {args.path}")
     return 0
 
 
