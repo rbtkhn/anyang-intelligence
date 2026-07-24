@@ -68,12 +68,16 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     try:
-        python = resolve_validation_python(
-            REPO_ROOT,
-            cache_dir=args.cache_dir,
-            refresh=args.refresh,
-            reporter=lambda message: print(message, file=sys.stderr, flush=True),
-        )
+        local_python = REPO_ROOT / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+        if local_python.is_file() and not args.refresh and not args.cache_dir:
+            python = local_python
+        else:
+            python = resolve_validation_python(
+                REPO_ROOT,
+                cache_dir=args.cache_dir,
+                refresh=args.refresh,
+                reporter=lambda message: print(message, file=sys.stderr, flush=True),
+            )
     except (OSError, RuntimeBootstrapError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1

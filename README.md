@@ -127,6 +127,8 @@ Reusable maintenance procedures are tracked in [skills/](skills/README.md).
 
 Run the complete CI-equivalent validation from PowerShell without preinstalling PyYAML, pytest, or the package:
 
+For a persistent repository-local environment across agent sessions, bootstrap once with `.	oolsootstrap.ps1`. Subsequent `tools/run.ps1` and `tools/validate.ps1` commands prefer `.venv`; use `-Refresh` to rebuild it.
+
 ```powershell
 .\tools\validate.ps1
 ```

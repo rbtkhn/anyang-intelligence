@@ -7,9 +7,13 @@ function Resolve-AnyangPython {
     } elseif ($env:ANYANG_PYTHON) {
         $selected = $env:ANYANG_PYTHON
     } else {
-        # Prefer the bundled runtime so repository commands get the dependency
-        # set declared by the workspace rather than an arbitrary PATH Python.
-        if ($env:USERPROFILE) {
+        # Prefer the repository-local environment when bootstrapped. It persists
+        # across agent sessions and is isolated from ephemeral Codex runtimes.
+        $repoVenv = Join-Path $PSScriptRoot '..\.venv\Scripts\python.exe'
+        if (Test-Path -LiteralPath $repoVenv -PathType Leaf) {
+            $selected = $repoVenv
+        } elseif ($env:USERPROFILE) {
+            # Fall back to the bundled runtime for first-run commands.
             $codexPython = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
             if (Test-Path -LiteralPath $codexPython -PathType Leaf) {
                 $selected = $codexPython
