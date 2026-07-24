@@ -14,6 +14,11 @@ Skills are reusable operating procedures for maintaining the Anyang Intelligence
 | [elicitation](elicitation/SKILL.md) | Use when missing human judgment, preferences, authority, constraints, or context should be gathered through concise direct questions, multiple choice, or structured intake before safe execution. |
 | [intent-recovery](intent-recovery/SKILL.md) | Use `$intent-recovery` explicitly to recover and clearly restate meaning already latent in compressed or poorly articulated operator language without inventing facts or authority. |
 | [business-intake](business-intake/SKILL.md) | Use `$business-intake create` or `$business-intake change` explicitly to govern owner-approved business context intake without storing private records or authorizing external action. |
+| [automation-opportunity-review](automation-opportunity-review/SKILL.md) | Use after effective business intake to rank recurring, measurable, bounded automation opportunities without building or running them. |
+| [automation-value-proof](automation-value-proof/SKILL.md) | Use for exactly one approved automation opportunity to define baseline, target, evidence, ROI, review burden, and pilot stop conditions. |
+| [bounded-workflow-pilot](bounded-workflow-pilot/SKILL.md) | Use only after value-proof approval to run one low-risk workflow experiment with explicit limits, receipts, and human review. |
+| [singularity-recurrence-review](singularity-recurrence-review/SKILL.md) | Use after Singularity intake to detect independent recurring seams without promoting doctrine or creating primitives. |
+| [singularity-learning-update](singularity-learning-update/SKILL.md) | Use after recurrence review to record one evidence-linked, human-bounded learning transition. |
 | [tax-financial-governance](tax-financial-governance/SKILL.md) | Use when money, tax-sensitive classification, accounting evidence, or financial governance risk appears. |
 | [project-state-update](project-state-update/SKILL.md) | Use when a project fact, paid obligation, scope, status, relationship, or audience boundary changes and portfolio state must be reconciled. |
 | [review-ai-harness](review-ai-harness/SKILL.md) | Use only when explicitly invoked to map the tracked Codex setup, render a read-only AI harness report, or record numbered proposals without applying source changes. |

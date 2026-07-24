@@ -75,6 +75,8 @@ The curated manifest governs only named publication, decision, and reusable temp
 
 Automation may detect exactly-one-H1 failures, placeholders, administrative-only titles, absent or trivial title rationales, prohibited generic analytical headings, missing controlling objects, incomplete causal forecasts, nondiscriminating template questions, and uncertainty without named causes.
 
+For workflow proposals, use [`templates/automation-value-proof.md`](../templates/automation-value-proof.md) and `anyang-project validate-value-proof`. The check may reject missing baselines, target metrics, approval boundaries, test plans, exception plans, unsupported quantitative claims, and private-data paths. It must not decide whether an automation is valuable, creative, editorially correct, or ready for deployment.
+
 Automation must not judge beauty, metaphor, taste, importance, originality, or whether prose is genuinely insightful. Those are human editorial judgments.
 
 ## Review Ownership

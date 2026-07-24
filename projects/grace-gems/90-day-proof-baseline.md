@@ -53,3 +53,5 @@ If live owner inputs are not available by day 21, keep commercial proof marked `
 ## Exit Evidence
 
 The proof requires at least four consecutive live weekly cycles, exact-version approvals for claim-bearing delivered work, delivery receipts, honest pending outcomes, visible economics, and an evidence-backed day-90 decision.
+
+Any proposed workflow intervention should use the repository's [Automation Value Proof](../../templates/automation-value-proof.md) packet. Grace Gems-specific economics, customer evidence, and raw records remain outside Git; this template does not unblock the current live-owner-intake hold.
