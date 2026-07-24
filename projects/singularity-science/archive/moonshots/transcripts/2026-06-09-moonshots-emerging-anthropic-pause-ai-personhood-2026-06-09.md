@@ -53,7 +53,7 @@ panel: Peter Diamandis; Alex Wissner-Gross; Dave; Salem
 - URL: https://www.youtube.com/watch?v=P2HJEz3oqLs
 - Captured: 2026-06-09
 - Capture mode: operator-provided transcript paste (Codex session); verbatim below.
-- Workshop sheet: [moonshots-emerging-anthropic-pause-recursive-personhood.md](../../../singularity/workshop/sheets/moonshots-emerging-anthropic-pause-recursive-personhood.md)
+- Historical workshop sheet reference: not retained in this repository.
 
 ## Verbatim Transcript
 

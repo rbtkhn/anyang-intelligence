@@ -10,8 +10,8 @@
 ## Episode Rollup
 
 - Core acceleration thesis: recursive self-improvement is being framed as an immediate governance and institutional-design problem, but the episode’s practical value comes from the review questions it raises, not from taking its strongest forecasts at face value.
-- Highest-ROI next action: use the [Acceleration-Source Verification Gate](../../primitives/acceleration-source-verification-gate.md) before routing any slowdown, nationalization, or personhood implication into downstream doctrine, while translating the institutional and labor seams into lane-safe review questions.
-- Best candidate primitive: [Acceleration-Source Verification Gate](../../primitives/acceleration-source-verification-gate.md)
+- Highest-ROI next action: use the [Acceleration-Source Verification Gate](../../../primitives/acceleration-source-verification-gate.md) before routing any slowdown, nationalization, or personhood implication into downstream doctrine, while translating the institutional and labor seams into lane-safe review questions.
+- Best candidate primitive: [Acceleration-Source Verification Gate](../../../primitives/acceleration-source-verification-gate.md)
 - Best receiving lane: Non-Profit
 - What remains worldview-only: strongest singularity framing, broad state-realignment forecasts, and the most confident near-term claims about legal and economic rupture.
 

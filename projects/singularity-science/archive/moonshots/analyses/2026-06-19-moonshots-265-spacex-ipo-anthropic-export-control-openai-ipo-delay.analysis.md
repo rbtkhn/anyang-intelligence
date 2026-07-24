@@ -10,8 +10,8 @@
 ## Episode Rollup
 
 - Core acceleration thesis: frontier-model control, capital strategy, and compute infrastructure are being narrated as one combined strategic surface, but the episode is more useful as a governance-and-verification signal than as a direct fact base.
-- Highest-ROI next action: use the [Acceleration-Source Verification Gate](../../primitives/acceleration-source-verification-gate.md) before routing any export-control, IPO, or infrastructure implication into downstream doctrine.
-- Best candidate primitive: [Acceleration-Source Verification Gate](../../primitives/acceleration-source-verification-gate.md)
+- Highest-ROI next action: use the [Acceleration-Source Verification Gate](../../../primitives/acceleration-source-verification-gate.md) before routing any export-control, IPO, or infrastructure implication into downstream doctrine.
+- Best candidate primitive: [Acceleration-Source Verification Gate](../../../primitives/acceleration-source-verification-gate.md)
 - Best receiving lane: Non-Profit
 - What remains worldview-only: post-capital framing, strongest civilizational-abundance rhetoric, and the most aggressive orbital-compute inevitability claims.
 

@@ -10,8 +10,8 @@
 ## Episode Rollup
 
 - Core acceleration thesis: model access, cheap robotics, and compute-energy-launch infrastructure are being compressed into one acceleration story that sounds strategically useful before all of its claims are verified.
-- Highest-ROI next action: preserve the acceleration-source verification gate and use it before routing any Moonshots-derived infrastructure or governance seam into a lane artifact.
-- Best candidate primitive: [Acceleration-Source Verification Gate](../../primitives/acceleration-source-verification-gate.md)
+- Highest-ROI next action: preserve the [Acceleration-Source Verification Gate](../../../primitives/acceleration-source-verification-gate.md) and use it before routing any Moonshots-derived infrastructure or governance seam into a lane artifact.
+- Best candidate primitive: [Acceleration-Source Verification Gate](../../../primitives/acceleration-source-verification-gate.md)
 - Best receiving lane: Media Production
 - What remains worldview-only: generalized abundance framing, broad space-economy optimism, and expert-underestimation rhetoric that does not yet become a reusable operating artifact.
 

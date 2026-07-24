@@ -10,8 +10,8 @@
 ## Episode Rollup
 
 - Core acceleration thesis: frontier AI is becoming institutional infrastructure, and that shift increases the value of approval logic, evidence discipline, and claim verification more than it increases permission to trust rhetoric-heavy deployment stories.
-- Highest-ROI next action: use the acceleration-source verification gate before routing any consciousness-adjacent, government-duty, or legal-adaptation seam into downstream doctrine.
-- Best candidate primitive: [Acceleration-Source Verification Gate](../../primitives/acceleration-source-verification-gate.md)
+- Highest-ROI next action: use the [Acceleration-Source Verification Gate](../../../primitives/acceleration-source-verification-gate.md) before routing any consciousness-adjacent, government-duty, or legal-adaptation seam into downstream doctrine.
+- Best candidate primitive: [Acceleration-Source Verification Gate](../../../primitives/acceleration-source-verification-gate.md)
 - Best receiving lane: Non-Profit
 - What remains worldview-only: consciousness-adjacent framing, strong state-power legitimacy narratives, and the boldest legal-future speculation.
 

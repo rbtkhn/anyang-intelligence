@@ -45,7 +45,7 @@ slug: spacex-ipo-anthropic-export-control-openai-ipo-delay
 episode_number: 265
 episode_type: scheduled
 panel: Peter Diamandis; Alex Wiggins; Salim Ismail; Dave
-statecraft_crossover: ../../../statecraft/notes/june-19-2026-moonshots-export-control-sovereign-ai-crossover.md
+statecraft_crossover: historical reference not retained in this repository
 relocated_from: source-archive/statecraft/2026-06-19/source-moonshots-265-spacex-ipo-anthropic-export-control-openai-2026-06-19.md
 editorial_note: Operator-pasted transcript; ASR artifacts retained; not human-verified verbatim against audio. Spoken Fable 5 / Mythos 5 likely ASR for Anthropic frontier releases; near-future/speculative framing throughout.
 ---
@@ -58,9 +58,7 @@ editorial_note: Operator-pasted transcript; ASR artifacts retained; not human-ve
 - URL: https://www.youtube.com/watch?v=BX9ofqxmeYw
 - Captured: 2026-06-19
 - Capture mode: operator-provided transcript paste; verbatim below.
-- Workshop sheet: [moonshots-ep-265-spacex-export-control-rsi.md](../../../singularity/workshop/sheets/moonshots-ep-265-spacex-export-control-rsi.md)
-- Glossary: [MTP — Massive Transformative Purpose](../../../singularity/workshop/glossary/mtp-massive-transformative-purpose.md)
-- Statecraft crossover (export-control / sovereign-AI seam only): [june-19-2026-moonshots-export-control-sovereign-ai-crossover.md](../../../statecraft/notes/june-19-2026-moonshots-export-control-sovereign-ai-crossover.md)
+- Historical workshop sheet, glossary, and Statecraft crossover references are not retained in this repository.
 
 ## Verbatim Transcript
 On Friday, SpaceX pulled off the world's largest IPO ever. This makes Elon the world's first trillionaire by a large margin. >> Money becomes kind of irrelevant at this scale. >> SpaceX's IPO was the largest single day creation of millionaires in history. This is what abundance looks like. It's value created, not value extracted.
