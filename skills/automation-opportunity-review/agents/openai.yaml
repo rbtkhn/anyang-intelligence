@@ -1,0 +1,4 @@
+interface:
+  display_name: "Automation Opportunity Review"
+  short_description: "Rank bounded automation opportunities"
+  default_prompt: "Review this approved business context for bounded automation opportunities."

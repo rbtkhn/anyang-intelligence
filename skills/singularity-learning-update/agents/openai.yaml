@@ -1,0 +1,4 @@
+interface:
+  display_name: "Singularity Learning Update"
+  short_description: "Record evidence-linked recursive research learning"
+  default_prompt: "Turn this recurrence packet into an allowed, evidence-linked learning update."

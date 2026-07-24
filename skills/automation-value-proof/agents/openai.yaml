@@ -1,0 +1,4 @@
+interface:
+  display_name: "Automation Value Proof"
+  short_description: "Define measurable automation value and ROI"
+  default_prompt: "Create or audit a value-proof packet for this approved automation."

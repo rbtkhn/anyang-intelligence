@@ -1,0 +1,4 @@
+interface:
+  display_name: "Singularity Recurrence Review"
+  short_description: "Find independent recurring seams in archive sources"
+  default_prompt: "Review this completed Singularity intake for independent recurring seams and evidence gaps."
