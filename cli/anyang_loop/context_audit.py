@@ -91,8 +91,18 @@ def audit_repository(repo: str | Path = ".") -> dict:
         if AUTH_TERMS.search(text) and not _is_historical_document(path, text) and not DATE_RE.search(text) and not FRESH_TERMS.search(text):
             add("warning", "freshness-metadata", path.relative_to(root), None, "authority-bearing document", "authority language has no visible date, owner, cadence, or freshness marker", "Add effective date, owner, review trigger, or explicit non-current status", True)
 
-    granting = [path for path, text in authority_positions if re.search(r"\b(?:grants?|creates?)\s+(?:authority|permission)", text)]
-    limiting = [path for path, text in authority_positions if re.search(r"\b(?:never|does not|do not)\s+(?:grant|grants|create|creates)\s+(?:authority|permission)", text)]
+    granting = []
+    limiting = []
+    for path, text in authority_positions:
+        grants = re.search(r"\b(?:grants?|creates?)\s+(?:authority|permission)", text)
+        limits = re.search(r"\b(?:never|does not|do not)\s+(?:grant|grants|create|creates)\s+(?:authority|permission)", text)
+        # A policy document commonly states both the bounded grant and its
+        # non-granting boundary. That is clarification, not a cross-document
+        # contradiction.
+        if limits:
+            limiting.append(path)
+        elif grants:
+            granting.append(path)
     if granting and limiting:
         add("warning", "authority-conflict", root, None, "granting versus limiting authority language", f"{len(granting)} document(s) describe granting authority while {len(limiting)} describe withholding it", "Review scope, precedence, and whether the statements describe different phases", True)
 
