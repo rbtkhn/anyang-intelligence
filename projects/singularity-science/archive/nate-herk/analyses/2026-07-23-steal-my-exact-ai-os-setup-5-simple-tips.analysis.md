@@ -4,6 +4,14 @@
 
 The strongest reusable mechanism is a read-only context-integrity audit followed by human-approved correction. The episode’s claims that this setup makes an AIOS more accurate, faster, cheaper, or less prone to hallucination remain provisional because the transcript supplies demonstration and assertion rather than controlled comparative evidence.
 
+## Decision Compression
+
+- What changed: Context organization is presented as an operating control surface involving routing, freshness, segmentation, and retrieval repair.
+- Reusable mechanism: Classify durable versus situational context, audit before mutation, and record retrieval failures before correcting routes.
+- Decision implication: Test a context-integrity review gate against one approved workflow with seeded retrieval failures.
+- Evidence still missing: Retrieval accuracy, latency, cost, recurrence of errors, permission safety, and rollback results.
+- Recommended disposition: primitive-candidate
+
 ## Controlling Object
 
 Whether an AI operating system can keep context trustworthy as data, projects, and automations grow without letting routing drift, stale or conflicting facts, or retrieval mistakes become authority.
@@ -130,4 +138,3 @@ What stays inside Singularity Science: Nate Herk’s setup, performance claims, 
 ## Boundary
 
 Do not generalize Nate Herk’s worked setup, benchmarks, promotional claims, or tool recommendations into Anyang Intelligence doctrine without verification. Keep this source and its full transcript inside Singularity Science; only translated, membrane-safe review questions or primitives may move onward.
-

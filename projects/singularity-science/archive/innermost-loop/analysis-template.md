@@ -12,6 +12,14 @@ State what changed, why it matters to Anyang Intelligence, the mechanism that co
 
 Whether the observed signal changes a governed operating capability or only increases attention without decision-relevant evidence.
 
+## Decision Compression
+
+- What changed:
+- Reusable mechanism:
+- Decision implication:
+- Evidence still missing:
+- Recommended disposition:
+
 ## Translation Candidate
 
 If this analysis proposes a primitive, lane action, approval, publication, or authority change, complete the [Translation Integrity Review Gate](../../primitives/translation-integrity-review-gate.md).

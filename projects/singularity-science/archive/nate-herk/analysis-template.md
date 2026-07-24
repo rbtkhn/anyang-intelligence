@@ -10,6 +10,14 @@ State the strongest reusable mechanism and which benchmark, capability, or comme
 
 Whether the proposed automation mechanism is repeatable and governed enough to become a primitive rather than a source-specific success story.
 
+## Decision Compression
+
+- What changed:
+- Reusable mechanism:
+- Decision implication:
+- Evidence still missing:
+- Recommended disposition:
+
 ## Value Story
 
 State the source's value in terms an accountable operator can understand quickly.

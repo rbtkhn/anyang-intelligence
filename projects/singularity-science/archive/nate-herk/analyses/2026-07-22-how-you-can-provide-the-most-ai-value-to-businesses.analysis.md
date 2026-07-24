@@ -4,6 +4,14 @@
 
 The strongest reusable mechanism is an outcome-first AI transformation loop: define operational pain and intended result, build toward it, then verify correctness, security, sustainability, and exceptions. Claims about adoption, agent attention, company performance, and cited statistics remain provisional.
 
+## Decision Compression
+
+- What changed: AI value is framed as an accountable business transformation requiring intent verification.
+- Reusable mechanism: Connect operational pain, intended transformation, measurable evidence, exception handling, and human approval.
+- Decision implication: Test an AI transformation value-and-verification gate in one approved workflow.
+- Evidence still missing: Baselines, representative runs, quality comparison, exception logs, review burden, and independent corroboration.
+- Recommended disposition: primitive-candidate
+
 ## Controlling Object
 
 Whether an AI-enabled workflow is repeatable and governed enough to become a primitive rather than a persuasive story about a tool, builder, or customer.

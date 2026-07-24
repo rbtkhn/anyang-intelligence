@@ -46,6 +46,7 @@ from .repo_snapshot import collect_repo_snapshot
 from .harness_review import HarnessReviewError, record_decisions, render_harness, scan_harness
 from .automation_value_proof import validate_value_proof
 from .context_audit import audit_repository, render_markdown, write_audit
+from .singularity_intake_validate import validate_lane
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -219,6 +220,9 @@ def build_parser() -> argparse.ArgumentParser:
     context_audit.add_argument("--format", choices=("markdown", "json"), default="markdown")
     context_audit.add_argument("--output")
     context_audit.set_defaults(func=cmd_context_audit)
+    intake_validate = subparsers.add_parser("validate-singularity-intake", help="Validate a Singularity Science intake lane")
+    intake_validate.add_argument("--lane", required=True)
+    intake_validate.set_defaults(func=cmd_validate_singularity_intake)
     return parser
 
 
@@ -488,6 +492,16 @@ def cmd_context_audit(args: argparse.Namespace) -> int:
         print(f"Wrote context audit: {output}")
     else:
         print(rendered, end="" if rendered.endswith("\n") else "\n")
+    return 0
+
+
+def cmd_validate_singularity_intake(args: argparse.Namespace) -> int:
+    diagnostics = validate_lane(args.lane)
+    for diagnostic in diagnostics:
+        print(f"{diagnostic.severity.upper()} {diagnostic.code} {diagnostic.path}: {diagnostic.message}")
+    if diagnostics:
+        return 1
+    print(f"OK Singularity intake lane: {args.lane}")
     return 0
 
 

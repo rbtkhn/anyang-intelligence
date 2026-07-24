@@ -14,6 +14,14 @@ State the strongest reusable orchestration mechanism, why it matters, and which 
 
 Whether an orchestration seam is repeatable and governed enough to become a primitive rather than a source-specific worked example.
 
+## Decision Compression
+
+- What changed:
+- Reusable mechanism:
+- Decision implication:
+- Evidence still missing:
+- Recommended disposition:
+
 ## Translation Candidate
 
 If this analysis proposes a primitive, lane action, approval, publication, or authority change, complete the [Translation Integrity Review Gate](../../primitives/translation-integrity-review-gate.md).

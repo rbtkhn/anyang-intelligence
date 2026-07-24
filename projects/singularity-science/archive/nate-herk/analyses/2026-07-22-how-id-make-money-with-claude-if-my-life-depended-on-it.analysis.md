@@ -4,6 +4,14 @@
 
 The strongest transferable mechanism is to treat an AI workflow as a measured operating intervention: select one painful constraint, define the target number first, build against approved process evidence, test repeatability, and show the resulting change. This can inform internal workflow design, but the speaker's market, wage, adoption, and urgency claims remain attributed and unverified.
 
+## Decision Compression
+
+- What changed: AI workflow value is framed as a measurable operating intervention rather than a tool purchase.
+- Reusable mechanism: Select one painful constraint, define a target metric, build against approved process evidence, test repeatability, and compare before/after results.
+- Decision implication: Test a constraint-to-evidence review gate on one approved recurring workflow.
+- Evidence still missing: Representative runs, quality comparison, exception handling, review burden, and independent support for market claims.
+- Recommended disposition: primitive-candidate
+
 ## Controlling Object
 
 Whether an outcome-led AI workflow proof can be reused as a bounded review and validation instrument without turning a promotional consulting narrative into Anyang Intelligence doctrine.
