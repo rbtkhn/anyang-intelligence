@@ -66,6 +66,8 @@ def test_runner_prepends_current_source_and_propagates_exit_code(tmp_path: Path)
 
 def test_main_keeps_bootstrap_progress_off_stdout(monkeypatch, capsys):
     module = load_runner()
+    # Isolate the resolver-path contract from any repository-local .venv.
+    monkeypatch.setattr(module, "REPO_ROOT", Path("C:/nonexistent-anyang-repo"))
 
     def resolve(_root, **kwargs):
         kwargs["reporter"]("preparing external runtime")
