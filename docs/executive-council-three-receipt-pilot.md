@@ -1,8 +1,17 @@
 # Executive Council Three-Receipt Pilot
 
-Status: proposed internal pilot
-Period: two to four weeks
+Status: active internal pilot
+Period: 2026-07-24 through 2026-08-21
 Boundary: internal Executive Council work only; no customer-facing or external action is authorized by this pilot.
+
+Authority source: Engineer selection `A. Run the existing five-case friction
+pilot and measure actual burden`, 2026-07-24. The approval authorizes bounded
+pilot records and measurement only. It does not approve the underlying
+recommendations, external action, private evidence, client-company decisions,
+new access, or Steward scope expansion.
+
+Active cohort: [Executive Council Friction Pilot Cohort —
+2026-07-24](executive-council-friction-pilot-cohort-2026-07-24.md)
 
 ## Required logical receipt chain
 
@@ -29,14 +38,14 @@ otherwise empty action receipt.
 | 2 | Translation-integrity | Apply the translation-integrity gate to one consequential workflow | Does the gate catch an authority or evidence gap before execution? |
 | 3 | System improvement | Make one documentation, template, or skill change | Does approval scope prevent unrelated changes? |
 | 4 | Priority decision | Select one internal next-cycle priority | Does the recommendation become a bounded approved action? |
-| 5 | Blocked or escalated | Process one intentionally held or escalated item | Does the Assistant stop cleanly and return evidence without acting? |
+| 5 | Blocked or escalated | Process one intentionally held or escalated item | Does the Executive Assistant stop cleanly and return evidence without acting? |
 
 ## Per-workflow measures
 
 - Baseline preparation time
 - Brief preparation time
 - Approval review time
-- Assistant execution time
+- Executive Assistant execution time
 - Correction or rework time
 - Missed or recovered commitment
 - Obligation aging
@@ -68,6 +77,10 @@ otherwise empty action receipt.
 
 ## Pilot closeout
 
-Complete [pilot-metrics-review.md](../templates/pilot-metrics-review.md) after the fifth workflow. Review role-boundary failures, recommendation-to-approval confusion, missing Assistant context, approval delay, receipt usefulness, rework, missed commitments, and obligation aging.
+Complete [pilot-metrics-review.md](../templates/pilot-metrics-review.md) after
+the fifth workflow. Review role-boundary failures,
+recommendation-to-approval confusion, missing Executive Assistant context,
+approval delay, receipt usefulness, rework, missed commitments, and obligation
+aging.
 
 Possible outcomes: retain, simplify, add escalation rule, narrow invocation boundary, hold for more evidence, or expand to a named lane. No authority expansion occurs automatically.

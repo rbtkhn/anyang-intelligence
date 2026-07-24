@@ -1,9 +1,9 @@
-# Human-AI Executive Interface Pilot Metrics Review
+# Chief Executive–Executive Assistant Pilot Metrics Review
 
 - Pilot period:
 - Lane:
 - Owner/operator:
-- Assistant:
+- Executive Assistant:
 - Review date:
 
 ## Measures
@@ -12,13 +12,13 @@
 | --- | --- | --- | --- | --- | --- |
 | Missed commitments |  |  |  |  |  |
 | Recovered commitments |  |  |  |  |  |
-| Executive preparation time |  |  |  |  |  |
+| Chief Executive preparation time |  |  |  |  |  |
 | Unnecessary interruptions |  |  |  |  |  |
 | Open-obligation aging |  |  |  |  |  |
 | Briefing usefulness |  |  |  |  |  |
 | False-positive alerts |  |  |  |  |  |
 | Escalation precision |  |  |  |  |  |
-| Assistant review burden |  |  |  |  |  |
+| Executive Assistant review burden |  |  |  |  |  |
 | Corrections per workflow |  |  |  |  |  |
 | Decisions improved or accelerated |  |  |  |  |  |
 | Authority-explicit actions |  |  |  |  |  |

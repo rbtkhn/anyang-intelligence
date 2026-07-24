@@ -1,9 +1,9 @@
-# Executive Task
+# Chief Executive Task
 
 - Message ID:
 - Timestamp:
-- Sender: `Executive`
-- Recipient: `Interface`
+- Sender: `Chief Executive`
+- Recipient: `Executive Assistant`
 - Message type: `task`
 - Purpose:
 - Client or lane:

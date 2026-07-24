@@ -1,8 +1,11 @@
-# Executive–Interface Communication Protocol
+# Chief Executive–Executive Assistant Communication Protocol
 
 ## Purpose
 
-This protocol standardizes communication between the Executive and the Interface without creating a new messaging system. It makes delegation, human-world context, uncertainty, escalation, and completion recoverable.
+This protocol standardizes communication between the Chief Executive and the
+Executive Assistant without creating a new messaging system. It makes
+delegation, human-world context, uncertainty, escalation, and completion
+recoverable.
 
 It applies first to Anyang internal work and the Grace Gems advisory boundary. It does not authorize external communication or Client-company action.
 
@@ -21,7 +24,8 @@ Client CEO authority
 
 - The Chief Executive is the normal tasker of the Executive Assistant, but only
   within an exact Engineer approval or current standing mandate.
-- The Interface observes, advises, drafts, coordinates, escalates, and executes only under a named approval.
+- The Executive Assistant observes, advises, drafts, coordinates, escalates,
+  and executes only under a named approval.
 - The Engineer retains highest authority and veto power.
 - The Client retains authority over Client-company decisions.
 
@@ -54,7 +58,8 @@ Statuses: `Received`, `Clarifying`, `In progress`, `Waiting`, `Ready for review`
 
 Priorities: `FYI`, `Routine`, `Important`, `Urgent`, `Immediate stop`.
 
-Authority modes: `Observe`, `Advise`, `Draft`, `Coordinate`, `Execute—approved`, `Escalate`, `Stop`.
+Authority modes: `Observe`, `Advise`, `Draft`, `Coordinate`,
+`Execute—approved`, `Escalate`, `Stop`.
 
 ## Lifecycle
 
@@ -103,10 +108,17 @@ interface is created.
 
 ## Evidence discipline
 
-The Interface must distinguish direct observations, explicit stakeholder statements, practical constraints, interpretation, unknowns, and unverified reports. A response is not approval, and a receipt confirms completion without creating authority.
+The Executive Assistant must distinguish direct observations, explicit
+stakeholder statements, practical constraints, interpretation, unknowns, and
+unverified reports. A response is not approval, and a receipt confirms
+completion without creating authority.
 
 ## Pilot
 
-Run a 2–4 week shadow-mode pilot using task, response, escalation, and receipt templates only. Track clarification requests, missing-scope returns, ambiguous-delegation rework, dispatch-to-response time, Interface burden, recommendation-changing escalations, stale receipts, authority violations, and Executive/Interface usefulness ratings.
+Run a 2–4 week shadow-mode pilot using task, response, escalation, and receipt
+templates only. Track clarification requests, missing-scope returns,
+ambiguous-delegation rework, dispatch-to-response time, Executive Assistant
+burden, recommendation-changing escalations, stale receipts, authority
+violations, and Chief Executive/Executive Assistant usefulness ratings.
 
 Expand only after at least one success threshold is met: 25% less clarification or rework, 2+ hours/week saved, 90%+ receipt coverage, material escalation improvement, or zero authority/Client-boundary violations.

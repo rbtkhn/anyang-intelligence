@@ -12,7 +12,7 @@ Executive Assistant Action Receipt:
 Baseline preparation time:
 Brief preparation time:
 Approval review time:
-Assistant execution time:
+Executive Assistant execution time:
 Correction or rework time:
 Missed or recovered commitment:
 Obligation aging:

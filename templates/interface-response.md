@@ -1,9 +1,9 @@
-# Interface Response
+# Executive Assistant Response
 
 - Message ID:
 - Related task:
 - Timestamp:
-- Sender: `Interface`
+- Sender: `Executive Assistant`
 - Message type: `response`
 - Result:
 - Direct observations:
