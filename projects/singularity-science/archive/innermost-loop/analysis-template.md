@@ -12,6 +12,10 @@ State what changed, why it matters to Anyang Intelligence, the mechanism that co
 
 Whether the observed signal changes a governed operating capability or only increases attention without decision-relevant evidence.
 
+## Translation Candidate
+
+If this analysis proposes a primitive, lane action, approval, publication, or authority change, complete the [Translation Integrity Review Gate](../../primitives/translation-integrity-review-gate.md).
+
 ## Source
 
 - Title:

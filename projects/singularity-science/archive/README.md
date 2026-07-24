@@ -33,6 +33,7 @@ projects/singularity-science/archive/
   innermost-loop/
   moonshots/
   nate-b-jones/
+  nate-herk/
   external-interviews/
 ```
 

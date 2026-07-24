@@ -12,6 +12,10 @@ State the strongest transferable mechanism, why it matters, and which part must 
 
 Whether a source seam can survive verification and membrane review strongly enough to change a receiving lane's operating question.
 
+## Translation Candidate
+
+If this analysis proposes a primitive, lane action, approval, publication, or authority change, complete the [Translation Integrity Review Gate](../../primitives/translation-integrity-review-gate.md).
+
 ## Source
 
 - Title:

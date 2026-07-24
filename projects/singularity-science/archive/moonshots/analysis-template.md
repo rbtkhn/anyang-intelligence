@@ -14,6 +14,10 @@ State the highest-value durable mechanism, why it matters, and which timeline, b
 
 Whether a reported acceleration signal yields a governed reusable primitive or remains worldview-only until independent evidence appears.
 
+## Translation Candidate
+
+If this analysis proposes a primitive, lane action, approval, publication, or authority change, complete the [Translation Integrity Review Gate](../../primitives/translation-integrity-review-gate.md).
+
 ## Source
 
 - Title:
