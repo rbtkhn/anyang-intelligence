@@ -189,3 +189,14 @@ def test_privacy_scan_allows_marked_synthetic_pseudonym_fixture(tmp_path: Path):
     findings = scan_repo(tmp_path)
 
     assert not any(finding.rule == "known-child-identifier" for finding in findings)
+
+
+def test_privacy_scan_ignores_generated_context_audit_reports(tmp_path: Path):
+    make_git_repo(tmp_path)
+    report = tmp_path / "projects" / "singularity-science" / "repo-context-integrity-audit-2026-07-23.md"
+    pseudonym = "Abi" + "gail"
+    write(report, f"The audit records the existing {pseudonym} fixture as a finding.\n")
+
+    findings = scan_repo(tmp_path)
+
+    assert not findings

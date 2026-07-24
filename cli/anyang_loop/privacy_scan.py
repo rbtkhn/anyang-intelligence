@@ -20,6 +20,7 @@ SYNTHETIC_FIXTURE_MARKERS = (
     "privacy_class: synthetic-fixture",
     "synthetic/pseudonymous fixture",
 )
+GENERATED_AUDIT_REPORT = re.compile(r"(?:^|/)repo-context-integrity-audit-\d{4}-\d{2}-\d{2}\.(?:md|json)$", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -50,6 +51,10 @@ def scan_repo(repo_root: str | Path) -> list[PrivacyFinding]:
             # A tracked deletion is already quarantined in the working tree.
             continue
         relative = path.relative_to(root).as_posix()
+        # The context audit intentionally records privacy-scan evidence. Do not
+        # recursively treat that generated evidence as source material.
+        if GENERATED_AUDIT_REPORT.search(relative):
+            continue
         lowered = relative.lower()
         for part in PROHIBITED_PATH_PARTS:
             if part in lowered:
