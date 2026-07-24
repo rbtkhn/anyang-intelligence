@@ -44,6 +44,8 @@ from .phase_preflight import (
 )
 from .repo_snapshot import collect_repo_snapshot
 from .harness_review import HarnessReviewError, record_decisions, render_harness, scan_harness
+from .automation_value_proof import validate_value_proof
+from .context_audit import audit_repository, render_markdown, write_audit
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -134,6 +136,12 @@ def build_parser() -> argparse.ArgumentParser:
     interfaces.add_argument("--path")
     interfaces.set_defaults(func=cmd_validate_interfaces)
 
+    value_proof = subparsers.add_parser(
+        "validate-value-proof", help="Validate a governed automation value-proof packet"
+    )
+    value_proof.add_argument("--path", required=True)
+    value_proof.set_defaults(func=cmd_validate_value_proof)
+
     artifacts = subparsers.add_parser(
         "validate-artifacts", help="Validate curated artifact authority, provenance, mutability, and recovery contracts"
     )
@@ -206,6 +214,11 @@ def build_parser() -> argparse.ArgumentParser:
     harness_decide.add_argument("--approve", nargs="*", type=int, default=[])
     harness_decide.add_argument("--reject", nargs="*", type=int, default=[])
     harness_decide.set_defaults(func=cmd_harness_decide)
+    context_audit = subparsers.add_parser("context-audit", help="Run the read-only repository context-integrity audit")
+    context_audit.add_argument("--repo", default=".")
+    context_audit.add_argument("--format", choices=("markdown", "json"), default="markdown")
+    context_audit.add_argument("--output")
+    context_audit.set_defaults(func=cmd_context_audit)
     return parser
 
 
@@ -356,6 +369,17 @@ def cmd_validate_agency(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_validate_value_proof(args: argparse.Namespace) -> int:
+    diagnostics = validate_value_proof(args.path)
+    for diagnostic in diagnostics:
+        location = f":{diagnostic.line}" if diagnostic.line else ""
+        print(f"ERROR {diagnostic.code} {args.path}{location}: {diagnostic.message}")
+    if diagnostics:
+        return 1
+    print("OK automation value proof")
+    return 0
+
+
 def cmd_validate_authority(args: argparse.Namespace) -> int:
     diagnostics = validate_authority_envelope(args.manifest)
     for diagnostic in diagnostics:
@@ -451,6 +475,19 @@ def cmd_harness_decide(args: argparse.Namespace) -> int:
     review = record_decisions(args.packet, args.approve, args.reject)
     print(f"Recorded proposal decisions: {review}")
     print("No source changes were applied; v1 has no apply command.")
+    return 0
+
+
+def cmd_context_audit(args: argparse.Namespace) -> int:
+    report = audit_repository(args.repo)
+    rendered = json.dumps(report, indent=2, sort_keys=True) if args.format == "json" else render_markdown(report)
+    if args.output:
+        output = Path(args.output)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(rendered, encoding="utf-8")
+        print(f"Wrote context audit: {output}")
+    else:
+        print(rendered, end="" if rendered.endswith("\n") else "\n")
     return 0
 
 
