@@ -173,6 +173,20 @@ def test_authority_validator_requires_artistic_director_alias(tmp_path: Path):
     assert "authority-aliases-incomplete" in codes
 
 
+def test_authority_validator_requires_artistic_director_domain(tmp_path: Path):
+    source = ROOT / "authority-envelope.yaml"
+    data = yaml.safe_load(source.read_text(encoding="utf-8"))
+    del data["domains"]["creative-direction-and-production"]
+    path = tmp_path / "authority-envelope.yaml"
+    path.write_text(yaml.safe_dump(data, sort_keys=False), encoding="utf-8")
+    diagnostics = validate_authority_envelope(path)
+    assert any(
+        item.code == "authority-domain-required"
+        and "creative-direction-and-production" in item.message
+        for item in diagnostics
+    )
+
+
 def test_dual_authority_requires_valid_approver_set(tmp_path: Path):
     source = ROOT / "authority-envelope.yaml"
     data = yaml.safe_load(source.read_text(encoding="utf-8"))

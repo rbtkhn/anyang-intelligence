@@ -30,15 +30,18 @@ unclosed obligations, stale artifacts, and reconstruction burden.
 The Steward does not prepare business strategy, communicate with the real
 world, approve decisions, or execute work.
 
-## Four-role governing rule
+## Five-position governing rule
 
-> The Chief Executive prepares judgment. The Executive Assistant carries
-> approved work across the real-world interface and returns evidence. The
-> Council Steward tests whether the evidence supports the claimed state. The
-> System Engineer decides what is permitted and resolves authority conflicts.
+> The Chief Executive prepares judgment and objectives. The Artistic Director
+> develops creative direction and produces only within an approved brief. The
+> Executive Assistant carries approved work across the real-world interface and
+> returns evidence. The Council Steward tests whether the evidence supports the
+> claimed state. The System Engineer decides what is permitted and resolves
+> authority conflicts.
 
 Client-company authority remains with the applicable client owner. Adding the
-Steward does not transfer client authority to Executive Council.
+Artistic Director or Steward does not transfer client authority to Executive
+Council.
 
 ## Identity and independence
 

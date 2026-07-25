@@ -4,6 +4,25 @@
 
 **Approved by:** System Engineer
 
+**Approval source:** Explicit System Engineer implementation instruction in
+Codex source task `019f94c6-f8d6-73c1-aee3-81ad3ee168c9`
+
+**Decision timestamp:** `2026-07-24T23:02:10-06:00`
+
+**Effective timestamp:** `2026-07-24T23:02:10-06:00`
+
+**Executed by:** Chief Executive for the approved repository structural
+migration only
+
+**Implementation evidence:** Git commit
+`fc060bb4b6ed59f3bfa41a627a798df52a24b364` (`Add Artistic Director and
+Council operating controls`)
+
+**Review or expiry:** Review by `2026-08-23`, or earlier upon Artistic Director
+staffing or runtime-activation consideration. The durable structural decision
+does not expire automatically; it remains effective until amended or revoked
+by the System Engineer.
+
 **Decision:** Add Artistic Director as the fifth durable Executive Council
 position and migrate active Media Production direction and production
 responsibility from the unfilled Creative Production Operator position.
@@ -40,6 +59,14 @@ The Artistic Director may begin operating only after a separate activation
 receipt names the human holder, AI runtime, sources, tools, permissions,
 prohibited evidence, term, review date, persistence boundary, and revocation
 path.
+
+**Revocation and rollback path:** The System Engineer may revoke or amend this
+structural decision through a new dated receipt. On revocation, stop new
+Artistic Director activation or production, preserve all decision and
+production evidence, reconcile active routing and authority surfaces, and
+record the replacement state. Restoring the retired Creative Production
+Operator or transferring its former authority requires a separate explicit
+System Engineer decision; historical artifacts do not reactivate it.
 
 ## Lineage and retirement
 

@@ -93,14 +93,51 @@ def test_active_media_production_routes_to_artistic_director():
         PROJECT / "grace-gems-monthly-service-package.md",
         PROJECT / "harness-map.md",
         ROOT / "skills/media-production/media-production-brief/SKILL.md",
+        ROOT / "skills/media-production/media-production-ledger/SKILL.md",
+        ROOT / "skills/media-production/media-production-package/SKILL.md",
         ROOT / "skills/media-production/media-production-quality-gate/SKILL.md",
     )
 
     combined = "\n".join(read(path) for path in active_files)
     assert "Artistic Director" in combined
     assert "artistic-production-gate.md" in combined
+    assert "creative-production-operator-onboarding.md" not in combined
     assert "source/onboard the outsourced Creative Production Operator" not in combined
     assert "production brief for the Creative Production Operator" not in combined
+
+
+def test_steward_contract_uses_five_position_governing_rule():
+    contract = read(ROOT / "docs/council-steward-role-contract.md")
+    normalized_contract = " ".join(contract.split())
+
+    assert "## Five-position governing rule" in contract
+    assert "## Four-role governing rule" not in contract
+    for position in (
+        "System Engineer",
+        "Chief Executive",
+        "Artistic Director",
+        "Executive Assistant",
+        "Council Steward",
+    ):
+        assert position in normalized_contract
+
+
+def test_structural_migration_receipt_preserves_decision_lineage():
+    migration = read(
+        ROOT / "docs/executive-council-artistic-director-migration-2026-07-24.md"
+    )
+
+    for field in (
+        "**Approval source:**",
+        "**Decision timestamp:**",
+        "**Effective timestamp:**",
+        "**Executed by:**",
+        "**Implementation evidence:**",
+        "**Review or expiry:**",
+        "**Revocation and rollback path:**",
+    ):
+        assert field in migration
+    assert "fc060bb4b6ed59f3bfa41a627a798df52a24b364" in migration
 
 
 def test_compensation_is_planned_and_does_not_authorize_payment():

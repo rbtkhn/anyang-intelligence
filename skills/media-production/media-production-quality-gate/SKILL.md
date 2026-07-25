@@ -26,7 +26,7 @@ This skill reviews a draft or review-ready Media Production asset before it is t
 Read these first:
 
 1. `projects/media-production/creative-abundance-quality-gate.md`
-2. `projects/media-production/creative-production-operator-onboarding.md`
+2. `projects/media-production/artistic-production-gate.md`
 3. `projects/media-production/executive-os-install.md`
 4. `projects/media-production/README.md`
 

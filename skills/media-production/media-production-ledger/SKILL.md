@@ -30,7 +30,7 @@ Read these first:
 
 1. `projects/media-production/creative-abundance-ledger-template.md`
 2. `projects/media-production/executive-os-install.md`
-3. `projects/media-production/creative-production-operator-onboarding.md`
+3. `projects/media-production/artistic-production-gate.md`
 4. `projects/media-production/creative-abundance-quality-gate.md`
 5. `projects/media-production/README.md`
 

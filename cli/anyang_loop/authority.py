@@ -11,6 +11,7 @@ from .artifact_state import repository_root
 
 
 DEFAULT_ENVELOPE = "authority-envelope.yaml"
+REQUIRED_DOMAINS = ("creative-direction-and-production",)
 REQUIRED_DOMAIN_FIELDS = (
     "scope", "allowed_actions", "prohibited_actions", "required_evidence",
     "approval_threshold", "approver", "review_expiry", "audit_record",
@@ -79,6 +80,15 @@ def validate_authority_envelope(path: str | Path | None = None) -> list[Authorit
     domains = data.get("domains")
     if not isinstance(domains, dict) or not domains:
         return diagnostics + [AuthorityDiagnostic("authority-domains-empty", target, "Declare at least one authority domain.")]
+    for domain in REQUIRED_DOMAINS:
+        if domain not in domains:
+            diagnostics.append(
+                AuthorityDiagnostic(
+                    "authority-domain-required",
+                    target,
+                    f"Required authority domain '{domain}' is missing.",
+                )
+            )
     for name, domain in domains.items():
         if not isinstance(domain, dict):
             diagnostics.append(AuthorityDiagnostic("authority-domain-invalid", target, f"Domain '{name}' must be a mapping."))
