@@ -69,7 +69,8 @@ Pass condition: the asset is useful to someone outside the production process.
 
 ## 6. Capacity And Budget
 
-- Does this fit the Creative Production Operator's current workload?
+- Is the Artistic Director activated, and does this fit approved measured
+  capacity?
 - Does it require any paid tool, asset, contractor, or spend?
 - If spending is needed, is the required human approval recorded or is the item held?
 - Does this asset create enough value to justify the effort?

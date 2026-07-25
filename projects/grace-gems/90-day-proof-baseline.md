@@ -7,7 +7,8 @@ This is the sanitized baseline for the governed Media Production proof. It recor
 ## Known Commercial Frame
 
 - Monthly Media Production retainer: $1,000.
-- Protected contractor allocation: $500 per month.
+- Planned Artistic Director compensation: $500 per month, uncommitted and not
+  payment authority.
 - Remaining tools, support, experiment, or margin envelope: $500 per month.
 - Human authority remains final for product claims, assignments, spending, delivery, publication, pricing, promotions, policies, and customer commitments.
 
@@ -19,7 +20,8 @@ Before claim-bearing work enters production, obtain and store outside Git:
 - approved product and policy sources;
 - redacted customer-confusion patterns, with raw messages kept private;
 - named owner, reviewer, assignee, and approval scopes;
-- recent asset counts, average review time, revisions, delivery receipts, contractor hours, and tool spend;
+- recent asset counts, average review time, revisions, delivery receipts,
+  activated Artistic Director production hours, and tool spend;
 - current outcome signals and their limits.
 
 ## Candidate Backlog — Not Yet Approved
@@ -48,7 +50,7 @@ may verify software but do not count as Grace Gems proof.
 | Review and revision count | Unknown | Review receipts required |
 | Unsupported-claim or rights holds | Unknown | Gate records required |
 | Owner time required | Unknown | Weekly observation required |
-| Contractor capacity consumed | $500 allocation known; hours unknown | Contractor records required |
+| Artistic Director capacity consumed | Position inactive; `$500` planned compensation does not establish capacity | Activation and production records required |
 | Tool spend | Unknown within $500 envelope | Receipts required |
 | Reuse across channels | Unknown | Reuse evidence required |
 | Owner usefulness | Unknown | Weekly 1–5 rating required |

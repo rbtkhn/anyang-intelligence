@@ -73,7 +73,7 @@ def validate_authority_envelope(path: str | Path | None = None) -> list[Authorit
         if not isinstance(governance, dict) or not governance.get(field):
             diagnostics.append(AuthorityDiagnostic("authority-governance-incomplete", target, f"Governance requires '{field}'."))
     roles = data.get("roles")
-    for role in ("engineer", "executive", "interface", "steward", "client"):
+    for role in ("engineer", "executive", "artistic", "interface", "steward", "client"):
         if not isinstance(roles, dict) or not isinstance(roles.get(role), dict) or not roles[role].get("authority"):
             diagnostics.append(AuthorityDiagnostic("authority-role-incomplete", target, f"Role '{role}' requires an authority declaration."))
     domains = data.get("domains")
@@ -118,7 +118,12 @@ def validate_authority_envelope(path: str | Path | None = None) -> list[Authorit
     if not isinstance(floors, list) or not floors:
         diagnostics.append(AuthorityDiagnostic("authority-protected-floors-missing", target, "Declare non-delegable protected floors."))
     aliases = data.get("migration_aliases")
-    if not isinstance(aliases, dict) or aliases.get("ai-ceo") != "executive" or aliases.get("hannah") != "interface":
+    if (
+        not isinstance(aliases, dict)
+        or aliases.get("ai-ceo") != "executive"
+        or aliases.get("artistic-director") != "artistic"
+        or aliases.get("hannah") != "interface"
+    ):
         diagnostics.append(AuthorityDiagnostic("authority-aliases-incomplete", target, "Declare legacy role aliases for migration."))
     return diagnostics
 

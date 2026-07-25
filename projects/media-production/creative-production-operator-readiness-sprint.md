@@ -1,5 +1,10 @@
 # Creative Production Operator Readiness Sprint
 
+**Status:** `superseded — historical contractor design`
+
+This sprint is retained for lineage and is not an active Artistic Director
+qualification or activation gate.
+
 This seven-day sprint prepares a defensible decision about whether one Creative Production Operator candidate is ready for bounded onboarding.
 
 Preparation status: `Ready to run internally`
@@ -170,4 +175,3 @@ Record storage location (outside Git):
 ```
 
 After `Advance to bounded onboarding` or `Conditional advance`, use [creative-production-operator-onboarding.md](creative-production-operator-onboarding.md). Before any live assignment, use [creative-production-operator-assignment-gate.md](creative-production-operator-assignment-gate.md) and the [assignment template](creative-production-operator-assignment-template.md).
-

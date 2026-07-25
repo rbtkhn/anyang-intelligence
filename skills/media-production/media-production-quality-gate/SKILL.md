@@ -17,7 +17,7 @@ Use this skill when the operator asks for:
 - `review this asset`
 - `approve/revise/hold/reject`
 - a readiness review for a Grace Gems or Predictive History asset
-- a Creative Production Operator draft review
+- an Artistic Director concept or draft review
 
 This skill reviews a draft or review-ready Media Production asset before it is treated as ready for client review, publication, delivery, packaging, or ledger entry. It does **not** publish, deliver, package, append to the creative abundance ledger, assign contractor work, or approve spending by itself.
 
@@ -119,7 +119,8 @@ Pass condition: the asset is useful to someone outside the production process.
 
 Ask:
 
-- Does this fit the Creative Production Operator's current workload?
+- Is the Artistic Director activated, and does this fit approved measured
+  capacity?
 - Does it require paid tools, paid assets, contractor time, subscriptions, distribution spend, or other budget?
 - If spending is needed, has a human approved it?
 - Does this asset create enough value to justify the effort?

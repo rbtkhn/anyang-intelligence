@@ -18,7 +18,8 @@ Use this skill when the operator asks for:
 - `review package`
 - `asset package`
 - `package and repurpose`
-- a Creative Production Operator package for review, delivery, publishing prep, or archive handoff
+- an Artistic Director package for review, delivery preparation, publishing
+  preparation, or archive handoff
 
 This skill turns an approved or review-ready asset into an organized package that another human can review, deliver, publish, reuse, or archive. It does **not** publish, deliver to a client, mark work as shipped, append to the creative abundance ledger, approve spending, assign contractor work, or make final rights/claims decisions by itself.
 

@@ -71,7 +71,7 @@ These are workflow-completion decisions, not permission to publish, deliver, spe
 | Rights authority | Are licensing, attribution, likeness, music, image, or reuse questions actually resolved? | The packet looks finished, but the blocking rights judgment is still implicit |
 | Publish authority | Can the workflow move content to publication or client delivery? | Draft readiness is treated as shipping readiness |
 | Spend authority | Does the workflow imply paid tools, stock assets, contractors, or distribution without approval? | A smooth plan quietly assumes budget authority |
-| Contractor authority | Is the Creative Production Operator being asked to decide strategy rather than execute a bounded brief? | The contractor packet starts implying final creative direction |
+| Artistic Director authority | Is the Artistic Director being asked to set business priority, approve client direction, or cross an external boundary rather than execute a bounded brief? | A concept or polished asset starts implying adoption, delivery, publication, spend, or client approval |
 | Claim authority | Are product, historical, performance, or promotional claims still reviewable by a human? | The workflow locks in a message before source review |
 | Fallback clarity | If the workflow stalls, who decides the next move? | A polished packet hides unresolved responsibility |
 

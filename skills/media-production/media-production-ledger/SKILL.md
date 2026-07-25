@@ -18,7 +18,7 @@ Use this skill when the operator asks for:
 - `record what was learned`
 - `log creative abundance`
 - `update the media production ledger`
-- a Creative Production Operator shipped-work or reuse record
+- an Artistic Director produced-work or reuse record
 
 This skill turns shipped, reused, reviewed, or approved Media Production work into evidence-backed creative memory. It can prepare a ledger-ready entry by default. It only appends to `projects/media-production/creative-abundance-ledger-template.md` when the operator explicitly asks to update the file and the shipped/reused evidence is clear.
 

@@ -42,6 +42,7 @@ Approval receipt or standing mandate:
 
 Action ID:
 Executed by:
+Execution function: artistic ideation / artistic production / real-world communication / coordination / other approved action
 Execution date:
 Execution state: not invoked / executing / evidence returned / complete / blocked / escalated / corrected / superseded
 Action taken:
@@ -55,6 +56,11 @@ Deviation:
 Follow-up owner:
 Follow-up date:
 Outcome:
+
+When more than one executor acts, repeat this section as C1, C2, and so on.
+Each entry must preserve its own action ID, executor, function, authority scope,
+evidence, and state. Internal artistic completion does not establish external
+delivery.
 
 If execution did not occur:
 

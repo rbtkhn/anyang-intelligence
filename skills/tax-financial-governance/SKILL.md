@@ -182,8 +182,16 @@ Preserve these distinctions unless the operator gives a new confirmed fact:
 - Book Club participation is free; donor-funded support is not paid access.
 - Learning Core's `$1,000` retainer is payment from Learning Core to Anyang Intelligence for a scoped 30-Day Personalized Learning Plan for new students, including onboarding. Customer pricing has not been designed yet.
 - Mountain Villa has property stewardship implications but no current revenue.
-- Media Production's `$500/month` Creative Production Operator allocation is a planned outsourced contractor/service-expense allocation while the role is unfilled; any actual payment requires appropriate contract, invoice, payment, and tax/accounting review.
-- Contractor country matters for governance. Before paying an outsourced contractor, preserve the contractor's country/residency, where the work is physically performed, contract, invoice, payment record, and W-8/W-9 status as applicable. Do not make a final withholding, reporting, treaty, payroll, labor-law, VAT/GST, sanctions/export-control, or permanent-establishment conclusion without professional review.
+- Media Production's `$500/month` Artistic Director allocation is planned
+  compensation while the durable human-AI hybrid position is vacant and
+  inactive. It does not establish employment, contractor classification,
+  engagement, payment, or spending authority.
+- Before Artistic Director payment, preserve the engagement model,
+  country/residency, where the work is physically performed, agreement,
+  invoice or payroll basis, payment record, and applicable tax documentation.
+  Do not make a final withholding, reporting, treaty, payroll, labor-law,
+  VAT/GST, sanctions/export-control, or permanent-establishment conclusion
+  without professional review.
 
 ## Boundaries
 

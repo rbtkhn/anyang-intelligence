@@ -149,7 +149,7 @@ Design rule:
 
 - Badges should feel quiet and premium, not like loud coupon stickers.
 
-## First Production Sequence For The Creative Production Operator
+## First production sequence for the Artistic Director
 
 ### Step 1: Build A Claim Approval Sheet
 

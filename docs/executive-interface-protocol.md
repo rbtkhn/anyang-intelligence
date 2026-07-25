@@ -96,11 +96,42 @@ are safeguard actions. They do not create authority to originate new work.
 
 ## Queue and availability
 
-Maintain a recoverable Executive Assistant queue containing task ID, priority,
-authority state, owner, deadline, age, current status, and required evidence.
+Maintain the organization-level [Executive Assistant
+Queue](executive-assistant-queue.md) as a sanitized shadow-mode index. The
+Chief Executive updates it from dispatches, Executive Assistant responses, and
+receipts. The queue records state; it does not approve, dispatch, or execute
+work.
 
-Batch routine work. Define acknowledgment and escalation targets during the
-pilot. No task may silently move from `Waiting` to `Complete`.
+Create one row per logical workflow only after a dispatch reaches the Executive
+Assistant or the Executive Assistant returns a blocked, declined, or escalated
+response to an attempted dispatch. Do not queue recommendations,
+prepared-but-unsent drafts, or handoffs that have not reached the Executive
+Assistant.
+
+Each row records:
+
+- task ID and dispatch link;
+- sanitized lane and priority;
+- separate Anyang and client authority states;
+- current state, reason code, and next owner;
+- dispatch, acknowledgment, due, and last-state-change times; and
+- required evidence or receipt.
+
+Calculate age from timestamps rather than maintaining it manually. Record
+`Missing` when historical authority or timing evidence is unavailable. Use
+`capacity` only when Executive Assistant unavailability or deferral is
+explicitly reported; `Not sent` does not establish a capacity hold.
+
+Batch routine work. During the pilot, acknowledge `Urgent` tasks within four
+known working hours and `Important` or `Routine` tasks within one known working
+day. An `Immediate stop` is effective when issued and governed action holds
+immediately. Exclude `FYI` items unless a response or deliverable is requested.
+When working availability is unknown, record the interval without labeling it
+a threshold breach. These are measurement thresholds, not action authority or
+availability commitments.
+
+No task may silently move from `Waiting` to `Complete`, and `Complete` requires
+linked returned evidence.
 
 If the Executive Assistant is unavailable, external action holds. The System Engineer
 may authorize a named, time-bounded exception; no automatic substitute

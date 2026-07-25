@@ -34,12 +34,12 @@ Anyang Intelligence should govern Media Production as its parent organization:
 | Creative development need | Diverse supplementary artistic content for Predictive History videos |
 | Core work | Produce and distribute digital media and supplementary artistic assets |
 | Monthly budget | $1,000 |
-| Current contractor assignment | Unfilled |
-| Outsourced production role | Creative Production Operator |
-| Creative Production Operator contractor allocation | $500 per month |
+| Governing creative role | Artistic Director, durable Executive Council position |
+| Position state | Vacant and inactive pending separate activation |
+| Planned Artistic Director compensation | $500 per month; uncommitted |
 | Remaining monthly production budget | $500 |
 | Primary cadence | Editorial planning, production, publishing, review |
-| Primary constraint | Creative Production Operator capacity, Grace Gems client commitments, $500 discretionary monthly budget, quality control, publishing consistency, audience relevance |
+| Primary constraint | No activated Artistic Director capacity, Grace Gems client commitments, $500 discretionary monthly budget, quality control, publishing consistency, audience relevance |
 | Primary operating risk | Overcommitting a one-employee production operation or producing scattered assets without product/client fit, review, rights clarity, or learning |
 | Executive OS job | Convert Grace Gems sales needs, Predictive History creative needs, audience/customer signals, and production capacity into a coherent creative production pipeline |
 
@@ -55,8 +55,8 @@ Anyang Intelligence should govern Media Production as its parent organization:
 - Predictive History channel goals.
 - Monthly budget.
 - Monthly client revenue.
-- Contractor commitments.
-- Creative Production Operator capacity assumptions.
+- Staffing and compensation commitments.
+- Artistic Director activation and capacity assumptions.
 - Discretionary production budget.
 - Episode or topic backlog.
 - Audience segments.
@@ -80,7 +80,8 @@ Anyang Intelligence should govern Media Production as its parent organization:
 The Executive OS should prepare structured decisions for:
 
 - How to allocate the $1,000 monthly budget.
-- How to protect the Creative Production Operator's $500 monthly contractor allocation.
+- How to protect the Artistic Director's planned $500 monthly compensation
+  without treating it as engagement or payment authority.
 - How to use the remaining $500 monthly production budget.
 - Which Grace Gems products need creative support first.
 - Which Grace Gems customer questions should become FAQ or selling content.
@@ -151,7 +152,8 @@ The weekly review should answer:
 - What shipped?
 - What is in production?
 - What is blocked?
-- How much of the Creative Production Operator's capacity is committed?
+- Is the Artistic Director activated, and how much approved capacity is
+  committed?
 - How much of the $500 discretionary monthly budget remains?
 - Which Grace Gems deliverables are due this week?
 - Which Grace Gems products, customer questions, or promotions need creative support next?
@@ -182,9 +184,15 @@ The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and
 - Confirm the Grace Gems $1,000/month service package.
 - Create the first Grace Gems product and customer-support creative backlog.
 - Capture Predictive History channel context, audience, topics, and visual needs.
-- Source or assign the outsourced Creative Production Operator contractor, then confirm weekly availability, AI tool access, production strengths, and preferred workflow.
-- Create the first monthly budget view: $500 contractor allocation and $500 discretionary production budget.
-- Before any contractor payment, collect the contractor agreement, invoice, payment details, country/residency, work-location statement, and W-8/W-9 status as applicable; prepare a CPA/bookkeeper review question if the contractor is outside the United States or may perform work while traveling.
+- Preserve the Artistic Director position as vacant and inactive until a
+  separate activation receipt names the human holder, AI runtime, tools,
+  permissions, term, and revocation path.
+- Create the first monthly budget view: $500 planned Artistic Director
+  compensation and $500 discretionary production budget.
+- Before any Artistic Director engagement or payment, record the engagement
+  model, agreement, invoice or payroll basis, payment details,
+  country/residency and work-location statement, and applicable tax or
+  accountant instruction.
 - Map content pillars and audience segments.
 - Inventory active ideas and productions.
 - Create the first production board.
@@ -223,7 +231,8 @@ The Media Production installation is working when:
 - Publishing cadence becomes more reliable.
 - Grace Gems receives reliable monthly creative support for the $1,000 retainer.
 - Predictive History receives diverse supplementary artistic content on a reliable cadence.
-- The Creative Production Operator's capacity is visible before new work is accepted.
+- Artistic Director activation and measured capacity are visible before new
+  work is accepted.
 - Monthly spend stays within the $1,000 budget unless a human explicitly approves an exception.
 - Audience signals update future editorial decisions.
 - Strong pieces are repurposed instead of forgotten.
@@ -233,18 +242,11 @@ The Media Production installation is working when:
 
 The Executive OS recommends and prepares decisions. Humans retain final authority over creative direction, publication, client commitments, brand voice, rights decisions, spending, hiring, and external claims.
 
-## Contractor Tax Governance Note
+## Artistic Director compensation governance
 
-For the Creative Production Operator role, the country of outsourcing is a governance variable, not just a sourcing preference.
-
-Before the first payment, Media Production should preserve:
-
-- Contractor legal name and business status.
-- Country of tax residency.
-- Country where the services are physically performed.
-- Signed contractor agreement and scope.
-- Invoice and payment record.
-- W-8BEN, W-8BEN-E, W-9, or bookkeeper/CPA-requested alternative documentation.
-- Confirmation that no final tax, payroll, withholding, labor-law, sanctions, VAT/GST, or permanent-establishment conclusion has been made by Anyang Intelligence.
-
-If the contractor is outside the United States, works while traveling, is paid through an intermediary platform, or performs any work physically inside the United States, the safe action is to hold final classification and prepare a CPA/bookkeeper question before treating the payment as routine.
+The planned `$500/month` is a compensation plan, not permission to engage or
+pay a holder. Before payment, preserve the engagement model, legal identity and
+business status, country of tax residency, work location, human/AI
+responsibility split, agreement, invoice or payroll basis, payment trail, and
+applicable tax documentation. Hold final classification for accountant review
+when work crosses jurisdictions or the engagement model is unclear.

@@ -15,36 +15,47 @@ Media Production is a creative operating department:
 - Creative development client: Predictive History YouTube channel.
 - Predictive History need: create diverse supplementary artistic content that supports Predictive History videos.
 - Monthly operating budget: $1,000.
-- Outsourced production role: Creative Production Operator.
-- Current contractor assignment: unfilled.
-- Planned contractor allocation for the role: $500 per month.
-- Starting discretionary production budget after contractor allocation: $500 per month.
+- Governing creative role: Artistic Director, a durable Executive Council
+  position.
+- Position state: vacant and inactive pending a separate System Engineer
+  activation receipt.
+- Planned Artistic Director compensation: $500 per month; uncommitted and not
+  authority to engage or pay.
+- Starting discretionary production budget after the planned compensation
+  allocation: $500 per month.
 
-## Executive OS Role
+## Artistic Director operating role
 
 Anyang Intelligence owns the department's client relationships, budgets, approvals, operating system, and production decisions.
 
-In practical terms, the Executive OS helps:
+When separately activated and tasked, the Artistic Director:
 
 - Maintain the editorial strategy and content memory.
-- Prioritize ideas against audience, brand, revenue, and production capacity.
+- Converts Chief Executive priorities into three to five materially different
+  artistic directions.
 - Coordinate briefs, visual concepts, scripts, asset production, approvals, publishing support, and repurposing.
 - Gate quality before publication.
 - Track distribution experiments and audience signals.
 - Preserve what worked, what missed, and what should change next.
 
-The system does not replace creative judgment. It keeps the production company coherent enough for creative judgment to compound.
+The Artistic Director does not set business priorities, publish, deliver
+externally, spend, approve claims, approve client creative decisions, contact
+clients, or task the Executive Assistant. The Executive Assistant remains the
+sole normal real-world interface.
 
 ## Starting Operating Economics
 
 Media Production begins as a small-budget creative operator funded by a first paying client:
 
 - Monthly revenue: $1,000 from Grace Gems.
-- Planned contractor allocation: $500 per month for the outsourced Creative Production Operator contractor.
+- Planned Artistic Director compensation: $500 per month.
 - Remaining monthly budget: $500 for tools, subscriptions, contractors, asset purchases, distribution tests, or reserves.
-- First capacity assumption: the Creative Production Operator contractor is responsible for turning briefs into finished or review-ready production work, but the role is currently unfilled.
+- First capacity assumption: no Artistic Director production capacity exists
+  until a holder and runtime are separately activated.
 
-The Executive OS should protect this constraint. It should recommend a production cadence that fits the available budget and should not assume a filled role, large team, paid ad budget, or unlimited creative bandwidth.
+The planned compensation is not permission to contract, employ, pay, or spend.
+Media Production must not assume a filled position, large team, paid-ad budget,
+or unlimited creative bandwidth.
 
 ## Operating Thesis
 
@@ -90,21 +101,18 @@ See [grace-gems-monthly-service-package.md](grace-gems-monthly-service-package.m
 
 See [grace-gems-trust-architecture-kit.md](grace-gems-trust-architecture-kit.md) for the first Grace Gems visual trust production lane.
 
-## Contractor Onboarding
+## Artistic Director operating surfaces
 
-See [creative-production-operator-readiness-sprint.md](creative-production-operator-readiness-sprint.md) for the synthetic, pre-engagement readiness process. Preparing or running that sprint does not authorize candidate outreach, contracting, spending, or live client work.
+Use the [Artistic Production Gate](artistic-production-gate.md) before
+persisting ideation, beginning production, or consuming material capacity.
 
-See [creative-production-operator-readiness-exercise.md](creative-production-operator-readiness-exercise.md) for the fixed claim-neutral exercise used by an authorized sprint.
+Use the [Artistic Production Brief
+Template](artistic-production-brief-template.md) for the approved objective,
+source boundary, concept directions, production scope, and evidence return.
 
-See [creative-production-operator-onboarding.md](creative-production-operator-onboarding.md) for the Creative Production Operator onboarding guide.
-
-See [creative-production-operator-prerequisite-skills-test.md](creative-production-operator-prerequisite-skills-test.md) for the 90-minute prerequisite, including Google Drive team file sharing.
-
-See [creative-production-operator-14-day-ramp.md](creative-production-operator-14-day-ramp.md) and [creative-production-operator-training-review.md](creative-production-operator-training-review.md) for guided onboarding and trainer review.
-
-See [creative-production-operator-assignment-gate.md](creative-production-operator-assignment-gate.md) before assigning any work to the Creative Production Operator.
-
-See [creative-production-operator-assignment-template.md](creative-production-operator-assignment-template.md) for the task brief format used after an assignment passes the gate.
+The former Creative Production Operator onboarding, testing, readiness, ramp,
+training, assignment-gate, and assignment-template files are superseded
+historical contractor designs. They remain only for lineage.
 
 ## Abundance System
 

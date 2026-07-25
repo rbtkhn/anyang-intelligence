@@ -1,5 +1,10 @@
 # Creative Production Operator Synthetic Readiness Exercise
 
+**Status:** `superseded — historical contractor design`
+
+This exercise is retained for lineage and is not an active Artistic Director
+qualification or activation gate.
+
 Use this fixed, claim-neutral exercise only within an authorized [readiness sprint](creative-production-operator-readiness-sprint.md). Everything below is fictional and exists only for evaluation.
 
 Exercise status: `Synthetic — not for publication or sale`
@@ -55,4 +60,3 @@ File names should begin with `daymark-readiness-` and remain easy for another op
 This exercise tests source discipline, creative judgment, review readiness, and capacity reporting. It does not test access to paid tools, live publishing, customer communication, client knowledge, or willingness to work without compensation.
 
 The reviewer may request one bounded revision containing no more than three exact changes. No candidate output becomes a Media Production or client asset without separate human review, rights review, and explicit authorization.
-

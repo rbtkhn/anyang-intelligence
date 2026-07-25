@@ -7,12 +7,13 @@ Pilot category: research-to-primitive / translation-integrity / system-improveme
 Date:
 Chief Executive Brief:
 System Engineer Approval Receipt:
-Executive Assistant Action Receipt:
+Named Executor Action Receipt:
+Execution function:
 
 Baseline preparation time:
 Brief preparation time:
 Approval review time:
-Executive Assistant execution time:
+Named-executor execution time:
 Correction or rework time:
 Missed or recovered commitment:
 Obligation aging:

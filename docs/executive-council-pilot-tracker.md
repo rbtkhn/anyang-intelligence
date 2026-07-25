@@ -12,7 +12,7 @@ Pilot boundary: internal Executive Council work only. This tracker does not auth
 
 | # | Category | Workflow | Transaction record | Recommendation state | Authority state | Execution/evidence state | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | System improvement | Reconcile the published four-role Council controls | [record](executive-council-friction-pilot-cohort-2026-07-24.md#case-1--system-improvement-retrospective) | retrospectively supported | System Engineer accepted the explicit baseline gap | published SHA verified; Executive Assistant attribution and timing remain missing | baseline accepted |
+| 1 | System improvement | Reconcile the then-published four-role Council controls; historical baseline later superseded by the Artistic Director migration | [record](executive-council-friction-pilot-cohort-2026-07-24.md#case-1--system-improvement-retrospective) | retrospectively supported | System Engineer accepted the explicit baseline gap | published SHA verified; Executive Assistant attribution and timing remain missing | baseline accepted |
 | 2 | Research-to-primitive | Test a measurable friction-budget primitive | [record](executive-council-friction-pilot-cohort-2026-07-24.md#case-2--research-to-primitive) | recommended | approved for pilot use only | primitive under test; no governance control changed | active test |
 | 3 | Translation-integrity | Test canonical Council role names in live dispatch surfaces | [record](executive-council-friction-pilot-cohort-2026-07-24.md#case-3--translation-integrity) | correction recommended | System Engineer approved bounded correction | nine current operational surfaces corrected; compatibility and history preserved | corrected |
 | 4 | Priority decision | Measure the five-case cohort before expanding or simplifying controls | [record](executive-council-friction-pilot-cohort-2026-07-24.md#case-4--priority-decision) | recommended | System Engineer approved 2026-07-24 | pilot preparation in progress | active |
@@ -28,7 +28,7 @@ only as a compatibility metrics companion when needed:
 - baseline preparation time;
 - brief preparation time;
 - approval review time;
-- Executive Assistant execution time;
+- named-executor execution time;
 - correction or rework time;
 - missed or recovered commitment;
 - obligation aging;

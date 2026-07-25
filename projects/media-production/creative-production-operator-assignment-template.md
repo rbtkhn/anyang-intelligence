@@ -1,5 +1,13 @@
 # Creative Production Operator Assignment Template
 
+**Status:** `superseded — historical contractor design`
+
+**Controlling successor:** [Artistic Production Brief
+Template](artistic-production-brief-template.md)
+
+Do not use this template for current work. It is retained for migration
+lineage.
+
 Use this template to assign a bounded task to the Creative Production Operator after it passes [creative-production-operator-assignment-gate.md](creative-production-operator-assignment-gate.md).
 
 The assignment should be clear enough that the contractor can produce useful work without inventing facts, expanding scope, or guessing about authority.

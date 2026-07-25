@@ -15,9 +15,11 @@ Executive Council operates under the reviewed [authority envelope](../authority-
 
 The System Engineer retains final system and company authority. The Chief
 Executive may prepare, prioritize, coordinate, task the Executive Assistant
-within delegated scope, and propose reversible internal changes. Execution of
-consequential actions requires an explicit current approval receipt. Preflight
-reports the active envelope but never grants authority.
+within delegated scope, and route approved artistic briefs. The Artistic
+Director may generate concepts and perform internal production only within an
+approved objective, current activation, and exact authority boundary.
+Execution of consequential actions requires an explicit current approval
+receipt. Preflight reports the active envelope but never grants authority.
 
 Every grant names its lane, permitted actions, exclusions, evidence, approver, effective date, expiry or review date, audit record, revocation path, and recovery method. Grace Gems and other clients remain advisory boundaries; their human CEOs retain authority over their companies.
 
@@ -47,9 +49,11 @@ The system may not:
 
 ## Executive Council Role Boundary
 
-The Chief Executive recommends. The Executive Assistant acts within scope. The
-Council Steward tests whether receipts support the claimed state. The System Engineer
-decides what is permitted.
+The Chief Executive recommends. The Artistic Director develops artistic
+direction and approved internal production. The Executive Assistant performs
+approved real-world communication and action. The Council Steward tests whether
+receipts support the claimed state. The System Engineer decides what is
+permitted.
 
 Executive Council is the Anyang Intelligence layer over the project portfolio,
 not a component of any individual project. Repository-visible artifacts under
@@ -74,9 +78,11 @@ loop.
 Use the [Executive Council role contract](executive-council-role-contract.md),
 [Council Steward role contract](council-steward-role-contract.md), [Chief
 Executive Brief](../templates/chief-executive-brief.md), [System Engineer Approval
-Receipt](../templates/approval-receipt.md), and [Executive Assistant Action
-Receipt](../templates/executive-assistant-action-receipt.md) for consequential
-work.
+Receipt](../templates/approval-receipt.md), and the [Executive Council
+Transaction Record](../templates/executive-council-transaction-record.md) for
+consequential work. The transaction record names the actual executor; internal
+Artistic Director production and Executive Assistant external delivery remain
+separately attributable.
 
 ## Review Standard
 

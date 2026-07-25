@@ -20,7 +20,14 @@ Each workflow must preserve three separately attributable functions:
 
 1. Chief Executive recommendation;
 2. System Engineer authority disposition;
-3. Executive Assistant execution and evidence return, when execution occurs.
+3. named-executor action and evidence return, when execution occurs.
+
+The Artistic Director is the named executor for approved internal artistic
+ideation or production. The Executive Assistant is the named executor for
+approved real-world communication or delivery. When both functions occur,
+record separately attributable C1 and C2 execution entries in the consolidated
+transaction record or linked action receipts. Do not infer external delivery
+from internal artistic completion.
 
 The three functions may be recorded as separate linked artifacts or as sections
 A-C of one [Executive Council Transaction
@@ -46,7 +53,7 @@ otherwise empty action receipt.
 - Baseline preparation time
 - Brief preparation time
 - Approval review time
-- Executive Assistant execution time
+- Named-executor execution time
 - Correction or rework time
 - Missed or recovered commitment
 - Obligation aging
@@ -63,9 +70,9 @@ otherwise empty action receipt.
 - Every consequential workflow has the authority header.
 - Every approved action has a bounded System Engineer authority disposition, recorded
   either in a separate receipt or section B of the transaction record.
-- Every executed action has an Executive Assistant execution-and-evidence
-  section, recorded either in a separate receipt or section C of the
-  transaction record.
+- Every executed action has a named-executor execution-and-evidence section,
+  recorded either in a separate receipt or section C of the transaction
+  record.
 - Completed actions include returned evidence.
 - At least one real authority, scope, or evidence gap is caught before execution.
 - Rework and missed commitments are measurable against a baseline.

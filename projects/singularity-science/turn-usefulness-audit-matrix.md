@@ -1,5 +1,9 @@
 # Turn Usefulness Audit Matrix
 
+**Migration note:** The Media Production Creative Production Operator row below
+records the audited historical surface. The 2026-07-24 Artistic Director
+migration superseded that active routing; the row is retained as audit lineage.
+
 This matrix scores the cross-repo core audit surfaces using the Singularity Science turn usefulness framework.
 
 Scoring method:

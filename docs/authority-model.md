@@ -17,6 +17,7 @@ Anyang Intelligence
        -> governs Executive Council authority and operating substrate
   -> Executive Council
        -> Chief Executive: judgment and recommendation
+       -> Artistic Director: approved artistic ideation and internal production
        -> Executive Assistant: approved real-world communication and execution
        -> Council Steward: independently activated assurance
   -> projects/
@@ -29,6 +30,9 @@ Anyang Intelligence
   `Engineer` remains a historical compatibility title.
 - **Chief Executive:** directs Anyang priorities and bounded operations under
   the authority envelope.
+- **Artistic Director:** a durable human-AI hybrid position that develops
+  artistic direction and performs approved internal production. The position
+  is vacant and inactive until separately staffed and activated.
 - **Executive Assistant:** supplies human-world context and performs only
   approved consulting or chief-of-staff work.
 - **Council Steward:** independently tests portfolio state, receipts, and artifact

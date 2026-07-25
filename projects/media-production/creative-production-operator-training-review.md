@@ -1,5 +1,10 @@
 # Creative Production Operator Training Review
 
+**Status:** `superseded — historical contractor design`
+
+This review is retained for lineage and is not an active Artistic Director
+review gate.
+
 Use this checklist for the prerequisite test, one remediation attempt, and the 14-day ramp.
 
 ```text

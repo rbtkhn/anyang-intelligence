@@ -1,5 +1,10 @@
 # Creative Production Operator 14-Day Guided Ramp
 
+**Status:** `superseded — historical contractor design`
+
+This ramp is retained for lineage and is not an active Artistic Director
+activation path.
+
 Entry: prerequisite skills test `Pass` and authorized onboarding entry condition satisfied.
 
 This ramp uses synthetic exercises and approved public sources only. It does not authorize client access, spending, publication, delivery, customer contact, or live assignment. Use the assignment gate before later Grace Gems or Predictive History work.

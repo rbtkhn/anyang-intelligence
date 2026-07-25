@@ -6,19 +6,24 @@ This plan creates the first recurring review surfaces for Media Production as an
 
 - Create the first risk register and decision log entries.
 - Review current Grace Gems and Predictive History priorities.
-- Confirm the production board, assignment gate, and quality gate are the active workflow front doors.
-- Prepare the Creative Production Operator readiness sprint and synthetic exercise; keep candidate contact and live client work behind separate authorization.
+- Confirm the artistic-production gate, artistic-production brief, and quality
+  gate are the active workflow front doors.
+- Keep Artistic Director staffing, runtime activation, production, and live
+  client work behind separate authorization.
 
-## Week 2: Assignment Discipline
+## Week 2: Brief Discipline
 
-- If candidate interaction has been separately authorized, run the readiness sprint and record an evidence-backed decision outside Git.
-- Run all active or upcoming contractor-facing tasks through the assignment gate.
+- Prepare only synthetic or source-approved briefs while the Artistic Director
+  position remains vacant and inactive.
+- Run all proposed persistent ideation or production through the artistic
+  production gate.
 - Normalize review packet expectations for every production handoff.
-- Identify the top recurring reasons assignments need revision.
+- Identify the top recurring reasons briefs need revision or hold.
 
 ## Week 3: Budget and Throughput Review
 
-- Compare planned contractor allocation against actual assignment load.
+- Preserve the planned Artistic Director compensation as uncommitted and
+  compare any separately activated capacity against approved workload.
 - Review discretionary spend against abundance and reuse value.
 - Identify which asset types produce the strongest reviewable output for the least churn.
 

@@ -14,6 +14,11 @@ is System Engineer.
 communication, private evidence, client-company action, new access, or Steward
 scope expansion is authorized.
 
+**Later structural change:** The System Engineer subsequently approved
+Artistic Director as a fifth durable Council position. References below to the
+published four-role controls describe the measured historical baseline and do
+not override the current role contract.
+
 ## Measurement rule
 
 Record observed time and evidence only. Use `Missing` when a baseline, timestamp,
@@ -235,6 +240,35 @@ cohort's change scope.
 - **Unexpected fact:** Historical case 1 cannot establish full actor or timing
   attribution from repository evidence alone.
 
+#### Executive Assistant availability sample
+
+A read-only classification of six repository-visible draft or unsent artifacts
+found four logical workflows, not six queued tasks:
+
+| Workflow | Artifact state | Operational classification |
+| --- | --- | --- |
+| Phase 2 meeting confirmation | One unsent follow-up draft | Superseded by later recorded CEO confirmations; not queued |
+| Independent-channel decision | Two unsent variants and one separately recorded sent message | Dispatched through the Executive Assistant; CEO response pending; the formal email is an unused variant and the six-question request is a deferred follow-on |
+| Three-review evidence authorization | One control packet and one routing handoff | One governance-held workflow; no evidence accessed |
+| Shipping-origin verification | One unsent verification instrument | Prepared but no dispatch authority was found; not capacity-held |
+
+No workflow was evidenced as held because of Executive Assistant availability
+or capacity. One external message is operator-confirmed as sent through the
+Executive Assistant, but its technical channel, exact delivery timestamp,
+receipt, and response latency are not recorded.
+
+The System Engineer subsequently approved a minimal shadow-mode [Executive
+Assistant queue](executive-assistant-queue.md). It indexes only actual
+dispatches, separates Anyang and client authority, distinguishes capacity from
+other hold reasons, and introduces pilot acknowledgment thresholds without
+creating action authority or availability commitments. Only the sent
+independent-channel decision qualifies for initial population.
+
+The evidence-authorization packet and handoff record routing approval, while
+the later friction-pilot disposition holds transmission. Until the source state
+is reconciled, the pilot hold controls and the earlier source status is stale.
+This is artifact-state friction, not evidence of an Executive Assistant outage.
+
 ### D. Reconciliation
 
 - **Chief Executive reconciliation:** The pilot is active but not complete.
@@ -248,6 +282,12 @@ cohort's change scope.
 | --- | --- |
 | Decision selected | Run five-case pilot |
 | Approval review time | `Missing — conversational choice timestamp not persisted` |
+| Candidate unsent artifacts inspected | 6 |
+| Distinct logical workflows | 4 |
+| Executive Assistant capacity-held workflows | 0 observed |
+| Confirmed Executive Assistant dispatches in the classified workflows | 1; delivery timestamp and receipt `Missing` |
+| Queue implementation and service targets | Implemented in shadow mode; thresholds are measurement-only |
+| Availability, acknowledgment latency, and workload | `Missing` |
 | Scope deviations | 0 observed |
 | Unauthorized commitments | 0 |
 | Final outcome | Approved and in progress |

@@ -7,7 +7,7 @@ governance:
   default_posture: prepare-then-require-approval
   operating_character: engineer-governed-advisory-execution-and-assurance-system
   membership_rule: Council membership conveys responsibility, not sovereign authority.
-  decision_rule: The Chief Executive prepares judgment, the Executive Assistant performs approved action, the Council Steward tests state support, and the System Engineer decides what is permitted.
+  decision_rule: The Chief Executive prepares integrated judgment, the Artistic Director performs approved artistic ideation and production, the Executive Assistant performs approved real-world communication and action, the Council Steward tests state support, and the System Engineer decides what is permitted.
   client_parallel_authority_rule: Client CEOs retain authority over their companies; System Engineer authority and client authority do not substitute for one another.
   conflict_precedence: engineer
   review_cadence: quarterly
@@ -21,6 +21,9 @@ roles:
   executive:
     display_title: Chief Executive
     authority: bounded-anyang-operating-coordination
+  artistic:
+    display_title: Artistic Director
+    authority: bounded-creative-direction-and-production
   interface:
     display_title: Executive Assistant
     authority: human-world-interface-and-delegated-chief-of-staff
@@ -34,6 +37,7 @@ migration_aliases:
   engineer-operator-owner: engineer
   system-engineer: engineer
   ai-ceo: executive
+  artistic-director: artistic
   hannah: interface
   council-steward: steward
   client-human-ceo: client
@@ -86,6 +90,17 @@ domains:
     audit_record: action-and-delta-receipt
     revocation_path: operator-receipt
     recovery: bounded-rollback-and-reconcile
+  creative-direction-and-production:
+    scope: Approved Anyang artistic ideation, creative direction, internal draft production, revision, and sanitized creative memory.
+    allowed_actions: [generate-creative-concepts, prepare-artistic-direction, create-approved-draft-assets, revise-approved-draft-assets, maintain-sanitized-creative-memory, mark-artistically-review-ready]
+    prohibited_actions: [set-business-priority, publish, deliver-externally, spend, hire, contract, clear-rights, approve-claims, approve-client-creative-decision, contact-client, task-executive-assistant, access-private-system, transfer-protected-context]
+    required_evidence: [approved-objective, source-and-lane-boundary, current-authority-envelope, rights-and-claims-review]
+    approval_threshold: explicit-engineer-approval-before-persistence-production-or-material-capacity-use
+    approver: engineer
+    review_expiry: named-in-receipt
+    audit_record: executive-council-transaction-record
+    revocation_path: engineer-receipt
+    recovery: stop-production-preserve-evidence-and-reconcile-artifacts
   repository-governance:
     scope: Approved Anyang governance documents, templates, playbooks, and reusable contracts.
     allowed_actions: [draft-changes, propose-retirement, maintain-derived-views]

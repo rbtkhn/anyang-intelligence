@@ -48,11 +48,12 @@ def test_council_steward_has_bounded_portfolio_reconciliation_lane():
     assert "prohibited-action" in blocked.blockers
 
 
-def test_council_contract_places_four_role_council_over_project_portfolio():
+def test_council_contract_places_five_role_council_over_project_portfolio():
     contract = (ROOT / "docs/executive-council-role-contract.md").read_text(
         encoding="utf-8"
     )
-    assert "4. Council Steward." in contract
+    assert "3. Artistic Director;" in contract
+    assert "5. Council Steward." in contract
     assert "It is not a component of Grace Gems" in contract
     assert "shared read surface across repository-visible artifacts under" in contract
 
@@ -66,9 +67,49 @@ def test_council_is_engineer_governed_advisory_execution_and_assurance_system():
     assert "client_parallel_authority_rule" in data["governance"]
     assert data["roles"]["engineer"]["display_title"] == "System Engineer"
     assert data["roles"]["executive"]["display_title"] == "Chief Executive"
+    assert data["roles"]["artistic"]["display_title"] == "Artistic Director"
     assert data["roles"]["interface"]["display_title"] == "Executive Assistant"
     assert data["roles"]["steward"]["display_title"] == "Council Steward"
     assert data["migration_aliases"]["system-engineer"] == "engineer"
+    assert data["migration_aliases"]["artistic-director"] == "artistic"
+
+
+def test_artistic_director_has_bounded_creative_domain():
+    data = yaml.safe_load((ROOT / "authority-envelope.yaml").read_text(encoding="utf-8"))
+    assert (
+        data["roles"]["artistic"]["authority"]
+        == "bounded-creative-direction-and-production"
+    )
+
+    domain = data["domains"]["creative-direction-and-production"]
+    assert "generate-creative-concepts" in domain["allowed_actions"]
+    assert "create-approved-draft-assets" in domain["allowed_actions"]
+    for prohibited in (
+        "set-business-priority",
+        "publish",
+        "deliver-externally",
+        "spend",
+        "hire",
+        "contract",
+        "clear-rights",
+        "approve-client-creative-decision",
+        "contact-client",
+        "task-executive-assistant",
+        "access-private-system",
+        "transfer-protected-context",
+    ):
+        assert prohibited in domain["prohibited_actions"]
+
+    ideation = authority_preflight(
+        "creative-direction-and-production", "generate-creative-concepts"
+    )
+    assert ideation.status == "approval-required"
+    assert ideation.authority == "engineer"
+
+    publication = authority_preflight(
+        "creative-direction-and-production", "publish"
+    )
+    assert publication.status == "blocked"
 
 
 def test_internal_coordination_defines_read_only_executive_discretion():
@@ -109,6 +150,29 @@ def test_authority_validator_requires_steward_role(tmp_path: Path):
     )
 
 
+def test_authority_validator_requires_artistic_director_role(tmp_path: Path):
+    source = ROOT / "authority-envelope.yaml"
+    data = yaml.safe_load(source.read_text(encoding="utf-8"))
+    del data["roles"]["artistic"]
+    path = tmp_path / "authority-envelope.yaml"
+    path.write_text(yaml.safe_dump(data, sort_keys=False), encoding="utf-8")
+    diagnostics = validate_authority_envelope(path)
+    assert any(
+        item.code == "authority-role-incomplete" and "artistic" in item.message
+        for item in diagnostics
+    )
+
+
+def test_authority_validator_requires_artistic_director_alias(tmp_path: Path):
+    source = ROOT / "authority-envelope.yaml"
+    data = yaml.safe_load(source.read_text(encoding="utf-8"))
+    del data["migration_aliases"]["artistic-director"]
+    path = tmp_path / "authority-envelope.yaml"
+    path.write_text(yaml.safe_dump(data, sort_keys=False), encoding="utf-8")
+    codes = {item.code for item in validate_authority_envelope(path)}
+    assert "authority-aliases-incomplete" in codes
+
+
 def test_dual_authority_requires_valid_approver_set(tmp_path: Path):
     source = ROOT / "authority-envelope.yaml"
     data = yaml.safe_load(source.read_text(encoding="utf-8"))
@@ -128,6 +192,8 @@ def test_council_contract_distinguishes_role_runtime_and_client_authority():
     assert "Durable membership and runtime activation" in normalized
     assert "System Engineer approval does not create client-company authority" in normalized
     assert "The Chief Executive is the normal tasker of the Executive Assistant" in normalized
+    assert "The Artistic Director cannot task the Executive Assistant directly" in normalized
+    assert "vacant and inactive" in normalized
 
 
 def test_invalid_domains_require_all_authority_fields(tmp_path: Path):

@@ -16,11 +16,11 @@ The primitive should move across the portfolio; the project-specific facts, prom
 
 | Knowledge lane | First visible source | Applies to | Reusable pattern |
 | --- | --- | --- | --- |
-| Tax and financial governance | Media Production contractor allocation; Book Club donor-funded retainer; retired Non-Profit project real estate asset | All customers with money, assets, donations, retainers, or contractor payments | Classify cash movement conservatively, preserve evidence, and prepare professional-review questions before final positions |
+| Tax and financial governance | Media Production planned Artistic Director compensation; Book Club donor-funded retainer; retired Non-Profit project real estate asset | All customers with money, assets, donations, retainers, compensation, or contractor payments | Classify cash movement conservatively, preserve evidence, and prepare professional-review questions before final positions |
 | Evidence discipline | Grace Gems claims; Mountain Villa property proof; Learning Core portfolio artifacts | All customers | Do not trust memory alone; tie decisions to receipts, approvals, source notes, photos, exports, or artifacts |
 | Cadence | Book Club monthly rhythm; Media Production weekly production review; Learning Core daily/weekly review; Mountain Villa seasonal gates | All customers | Match review rhythm to the natural operating cycle instead of forcing one cadence everywhere |
 | Trust architecture | Grace Gems storefront signals and owner-approved claims | Media Production, retired Non-Profit project, Learning Core, Book Club | Make trust visible without inventing promises; separate draft language from approved external claims |
-| Capacity governance | Creative Production Operator allocation and workload | Media Production, Grace Gems, Book Club, retired Non-Profit project | Keep obligations smaller than capacity; do not sell or promise output before the operator loop can deliver |
+| Capacity governance | Artistic Director activation and measured workload | Media Production, Grace Gems, Book Club, retired Non-Profit project | Keep obligations smaller than activated capacity; do not sell or promise output before the production loop can deliver |
 | Donor and community stewardship | Book Club free participation with donor-funded support | retired Non-Profit project, Book Club, Learning Core community versions | Preserve the difference between optional support, donor-funded materials, paid access, and service revenue |
 | Asset stewardship | retired Non-Profit project real estate portfolio; Mountain Villa five-acre property | Mountain Villa, retired Non-Profit project, Grace Gems inventory-adjacent work | Treat asset values, maintenance, insurance, valuation, and capital improvements as evidence-heavy governance domains |
 | Child and family safety | Learning Core personalized homeschool experience | Learning Core, future family/community products | Parent/guardian authority, privacy, review, and escalation must be stricter than normal creative or business workflows |
@@ -28,9 +28,11 @@ The primitive should move across the portfolio; the project-specific facts, prom
 | Marketplace learning | Grace Gems Etsy evaluation and customer support transcripts | Grace Gems, Media Production, future small businesses | Convert buyer questions, objections, and listing performance into better creative, FAQs, and decision gates |
 | Embodied agency | Governed digital workflows; Mountain Villa monitoring and stewardship context; Singularity Science robotics research | Mountain Villa, Media Production, future relevant projects | Expand from advice to bounded action only when a task is useful, human authority is explicit, outcomes are evidenced, and safety, privacy, maintenance, security, insurance, and override needs are satisfied |
 
-## Contractor Country And Tax Synergy
+## Compensation and contractor tax synergy
 
-The Creative Production Operator sourcing decision teaches a reusable guardrail for all outsourced work.
+The planned Artistic Director compensation teaches a reusable guardrail:
+position design and budget classification do not establish an engagement model,
+payment authority, or tax treatment.
 
 When a customer wants to pay a contractor, Anyang Intelligence should ask:
 

@@ -9,6 +9,11 @@ The Council is unified as an operating system, not as a single sovereign actor.
 The System Engineer retains Anyang authority, client CEOs retain their business
 authority, and each Council role remains bounded by its own function.
 
+The durable Council positions are System Engineer, Chief Executive, Artistic
+Director, Executive Assistant, and Council Steward. Artistic Director is a
+vacant, inactive human-AI hybrid position until separately staffed and
+activated; its existence does not imply creative production capacity.
+
 The operating substrate is the repository infrastructure beneath Executive Council. A Council agent is the runtime presence that speaks with the operator and uses that substrate.
 
 ## Operating Identity

@@ -107,7 +107,8 @@ By default, the Steward may read:
 - authority envelopes and approved delegation receipts;
 - Chief Executive briefs;
 - System Engineer approval receipts;
-- Executive Assistant action and evidence receipts;
+- Artistic Director internal ideation or production receipts;
+- Executive Assistant real-world action and evidence receipts;
 - client decision receipts supplied through the Executive Assistant;
 - decision logs, commitment registers, artifact indexes, and state manifests;
 - repository status and version lineage;

@@ -8,6 +8,19 @@ Status: compatibility migration in progress
 - Product and active intelligence: Executive Council
 - Repository infrastructure: Operating Substrate
 - Runtime conversational presence: Council agent
+- Durable creative position: Artistic Director
+- Creative service line: Media Production
+
+## Artistic Director migration
+
+The System Engineer approved Artistic Director as the fifth durable Executive
+Council position on 2026-07-24. Media Production remains the commercial service
+line beneath the position. The former unfilled Creative Production Operator
+artifact family is retained as superseded historical lineage. The position is
+vacant and inactive pending a separate holder and runtime activation.
+
+See [Executive Council Artistic Director Migration —
+2026-07-24](executive-council-artistic-director-migration-2026-07-24.md).
 
 ## Compatibility retained
 

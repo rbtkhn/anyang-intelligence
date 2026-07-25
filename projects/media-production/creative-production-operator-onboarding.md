@@ -1,5 +1,11 @@
 # Creative Production Operator Onboarding
 
+**Status:** `superseded — historical contractor design`
+
+This unfilled position was retired by the
+[Artistic Director migration](../../docs/executive-council-artistic-director-migration-2026-07-24.md).
+Do not invoke this onboarding for current work.
+
 Position: Creative Production Operator, Media Production
 
 Audience: Creative Production Operator

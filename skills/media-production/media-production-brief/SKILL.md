@@ -18,7 +18,7 @@ Use this skill when the operator asks for:
 - `creative brief`
 - a Grace Gems creative support brief
 - a Predictive History art, visual, thumbnail, companion graphic, or topic-support brief
-- a production brief for the Creative Production Operator
+- an ideation or production brief for the Artistic Director
 
 This skill turns a source signal into a review-ready creative production brief. It does **not** publish, package, approve, deliver, append to the creative abundance ledger, or assign contractor work by itself.
 
@@ -28,8 +28,9 @@ Read these first:
 
 1. `projects/media-production/README.md`
 2. `projects/media-production/executive-os-install.md`
-3. `projects/media-production/creative-production-operator-onboarding.md`
-4. `projects/media-production/creative-abundance-quality-gate.md`
+3. `docs/executive-council-role-contract.md`
+4. `projects/media-production/artistic-production-gate.md`
+5. `projects/media-production/creative-abundance-quality-gate.md`
 
 Then read the relevant source for the requested lane:
 
@@ -143,9 +144,11 @@ Use these as options, not defaults:
 
 Every brief must ask:
 
-- Does this fit current Creative Production Operator capacity?
+- Is the Artistic Director activated, and does this fit approved measured
+  capacity?
 - Does it require paid tools, paid assets, contractor time, or additional spend?
-- Is the $500 contractor allocation or remaining $500 monthly budget implicated?
+- Is the planned `$500` Artistic Director compensation or remaining `$500`
+  monthly production budget implicated?
 - Has a human approved any spend or commitment?
 
 If capacity or spend is uncertain, mark the brief **Hold for capacity/budget review** rather than recommending production.
@@ -160,4 +163,5 @@ The operator has a review-ready production brief that:
 - Preserves Grace Gems claim discipline or Predictive History evidence/judgment discipline.
 - Identifies rights, claims, source, budget, and approval risks.
 - Recommends exactly one first asset.
-- Stops before publication, delivery, packaging, ledger update, or contractor assignment.
+- Stops before production unless separately approved, and before publication,
+  delivery, packaging, ledger update, staffing, or payment.

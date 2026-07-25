@@ -1,5 +1,12 @@
 # Creative Production Operator Assignment Gate
 
+**Status:** `superseded — historical contractor design`
+
+**Controlling successor:** [Artistic Production
+Gate](artistic-production-gate.md)
+
+Do not use this gate for current work. It is retained for migration lineage.
+
 Use this gate before assigning work to the outsourced Creative Production Operator.
 
 The goal is to protect capacity, source truth, rights, client approval, and budget before a production task leaves the operator's hands.

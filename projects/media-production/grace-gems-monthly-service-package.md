@@ -6,7 +6,8 @@ Grace Gems is the first paying client served by Anyang Intelligence through its 
 
 Grace Gems pays Anyang Intelligence $1,000 per month for recurring creative production support delivered through Media Production. This retainer funds the first Media Production operating model:
 
-- $500 per month for the outsourced Creative Production Operator contractor allocation.
+- $500 per month in planned Artistic Director compensation, uncommitted until
+  separate engagement and payment approval.
 - $500 per month for tools, light asset costs, production support, experiments, or retained margin.
 
 The service should improve Grace Gems' ability to present products clearly, support customers, run promotions, and learn which product messages create buyer trust.
@@ -53,7 +54,8 @@ Included service areas:
 
 ## Monthly Deliverables
 
-The first service package should stay small enough for one outsourced production operator to deliver reliably.
+The first service package should stay small enough for one activated Artistic
+Director to direct and produce reliably.
 
 Each month, Media Production should deliver:
 
@@ -72,7 +74,7 @@ Each week should answer:
 
 - Which Grace Gems products need creative support first?
 - Which listings or customer questions are blocking sales?
-- What should the Creative Production Operator produce this week?
+- What approved brief, if any, should the Artistic Director produce this week?
 - What is ready for owner review?
 - What has shipped or been sent to customers?
 - What customer response should change next week's work?
@@ -99,11 +101,12 @@ For Grace Gems, every review should ask:
 - What trust does this build?
 - How can this asset be reused in listings, WeChat/social posts, customer support, or future promotions?
 
-## Creative Production Operator Role
+## Artistic Director role
 
-The Creative Production Operator is the primary outsourced production operator for this service package.
+When separately activated, the Artistic Director is the accountable creative
+director and internal producer for this service package.
 
-Her work includes:
+The approved role may:
 
 - Turning product or customer needs into short briefs.
 - Drafting product graphics, listing refreshes, posts, and short videos.
@@ -112,11 +115,15 @@ Her work includes:
 - Keeping shipped work organized.
 - Recording what was produced and what changed.
 
-The Creative Production Operator should not make final claims about product authenticity, price changes, refunds, shipping promises, or customer commitments without owner approval. AI-generated claims, captions, visuals, or product language require the same owner-review discipline as human-drafted work.
+The Artistic Director does not approve product authenticity, price changes,
+refunds, shipping promises, customer commitments, or client creative adoption.
+AI-generated claims, captions, visuals, or product language require the same
+Grace Gems CEO review discipline as human-drafted work.
 
 ## Budget Rule
 
-The $1,000 retainer must first protect the Creative Production Operator's $500 monthly contractor allocation.
+The $1,000 retainer preserves `$500/month` as planned Artistic Director
+compensation, but the allocation does not authorize engagement or payment.
 
 The remaining $500 may be used for:
 
@@ -135,7 +142,9 @@ This service package is working when:
 - Grace Gems receives useful creative support every week.
 - Product listings and selling messages become clearer.
 - Customer questions turn into better FAQ and content assets.
-- The Creative Production Operator's workload is visible and sustainable.
-- The $1,000 retainer covers the contractor allocation and operating needs.
+- Artistic Director activation, workload, and capacity are visible and
+  sustainable.
+- The $1,000 retainer covers planned Artistic Director compensation and
+  operating needs without implying payment authority.
 - The monthly review produces better priorities for the next month.
 - The [creative abundance ledger](creative-abundance-ledger-template.md) shows product knowledge and customer questions turning into reusable assets.

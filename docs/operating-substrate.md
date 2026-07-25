@@ -180,7 +180,8 @@ The next valuable improvements are likely:
 
 - A Media Production weekly operating review that uses brief, gate, package, and ledger outputs.
 - A Grace Gems first-week deliverables plan tied to owner approval boundaries.
-- A Creative Production Operator onboarding/sourcing gate before contractor work begins.
+- An Artistic Director activation and artistic-production gate before
+  persistent ideation or production begins.
 - Real Learning Core parent intake responses run through the readiness loop before any 30-day plan draft.
 - A cross-project primitive map that turns lessons into templates without leaking private context.
 

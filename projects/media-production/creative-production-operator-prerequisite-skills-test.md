@@ -1,5 +1,10 @@
 # Creative Production Operator Prerequisite Skills Test
 
+**Status:** `superseded — historical contractor design`
+
+This test is retained for lineage and is not an active Artistic Director
+qualification or activation gate.
+
 Status: `Use only after an authorized readiness decision`
 
 This is a friendly 90-minute prerequisite orientation and skills check built around the services Media Production intends to offer. It helps you show how you turn an approved brief into clear, organized, source-aware creative work. You do not need to produce portfolio-perfect work. You do need to leave a reviewer with an honest, understandable, and usable packet.
