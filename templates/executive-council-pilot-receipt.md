@@ -6,7 +6,7 @@ Workflow:
 Pilot category: research-to-primitive / translation-integrity / system-improvement / priority-decision / blocked-or-escalated
 Date:
 Chief Executive Brief:
-Engineer Approval Receipt:
+System Engineer Approval Receipt:
 Executive Assistant Action Receipt:
 
 Baseline preparation time:

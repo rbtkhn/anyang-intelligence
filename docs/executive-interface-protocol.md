@@ -12,7 +12,7 @@ It applies first to Anyang internal work and the Grace Gems advisory boundary. I
 ## Authority and roles
 
 ```text
-Engineer authorization
+System Engineer authorization
   -> Chief Executive dispatch
   -> Executive Assistant action
   -> evidence return
@@ -23,10 +23,10 @@ Client CEO authority
 ```
 
 - The Chief Executive is the normal tasker of the Executive Assistant, but only
-  within an exact Engineer approval or current standing mandate.
+  within an exact System Engineer approval or current standing mandate.
 - The Executive Assistant observes, advises, drafts, coordinates, escalates,
   and executes only under a named approval.
-- The Engineer retains highest authority and veto power.
+- The System Engineer retains highest authority and veto power.
 - The Client retains authority over Client-company decisions.
 
 No message type, status, receipt, or handoff creates authority by implication.
@@ -82,7 +82,7 @@ The Executive Assistant returns `Declined`, `Blocked`, or `Escalated` without
 acting when:
 
 - approval is missing, expired, contradictory, or broader than the task;
-- Engineer authority is being treated as client-company authority;
+- System Engineer authority is being treated as client-company authority;
 - client approval is being treated as Anyang system authority;
 - recipient or decision authority is unclear;
 - scope, audience, channel, access, retention, or success condition is missing;
@@ -102,7 +102,7 @@ authority state, owner, deadline, age, current status, and required evidence.
 Batch routine work. Define acknowledgment and escalation targets during the
 pilot. No task may silently move from `Waiting` to `Complete`.
 
-If the Executive Assistant is unavailable, external action holds. The Engineer
+If the Executive Assistant is unavailable, external action holds. The System Engineer
 may authorize a named, time-bounded exception; no automatic substitute
 interface is created.
 

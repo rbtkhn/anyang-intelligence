@@ -64,6 +64,8 @@ def test_council_is_engineer_governed_advisory_execution_and_assurance_system():
         == "engineer-governed-advisory-execution-and-assurance-system"
     )
     assert "client_parallel_authority_rule" in data["governance"]
+    assert data["roles"]["engineer"]["display_title"] == "System Engineer"
+    assert data["migration_aliases"]["system-engineer"] == "engineer"
 
 
 def test_internal_coordination_defines_read_only_executive_discretion():
@@ -121,7 +123,7 @@ def test_council_contract_distinguishes_role_runtime_and_client_authority():
     normalized = " ".join(contract.split())
     assert "Council membership conveys responsibility, not sovereign authority" in normalized
     assert "Durable membership and runtime activation" in normalized
-    assert "Engineer approval does not create client-company authority" in normalized
+    assert "System Engineer approval does not create client-company authority" in normalized
     assert "The Chief Executive is the normal tasker of the Executive Assistant" in normalized
 
 

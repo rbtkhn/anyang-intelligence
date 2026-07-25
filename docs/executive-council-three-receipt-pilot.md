@@ -5,7 +5,8 @@ Period: 2026-07-24 through 2026-08-21
 Boundary: internal Executive Council work only; no customer-facing or external action is authorized by this pilot.
 
 Authority source: Engineer selection `A. Run the existing five-case friction
-pilot and measure actual burden`, 2026-07-24. The approval authorizes bounded
+pilot and measure actual burden`, 2026-07-24; the role's current display title
+is System Engineer. The approval authorizes bounded
 pilot records and measurement only. It does not approve the underlying
 recommendations, external action, private evidence, client-company decisions,
 new access, or Steward scope expansion.
@@ -18,7 +19,7 @@ Active cohort: [Executive Council Friction Pilot Cohort —
 Each workflow must preserve three separately attributable functions:
 
 1. Chief Executive recommendation;
-2. Engineer authority disposition;
+2. System Engineer authority disposition;
 3. Executive Assistant execution and evidence return, when execution occurs.
 
 The three functions may be recorded as separate linked artifacts or as sections
@@ -60,7 +61,7 @@ otherwise empty action receipt.
 ## Success criteria
 
 - Every consequential workflow has the authority header.
-- Every approved action has a bounded Engineer authority disposition, recorded
+- Every approved action has a bounded System Engineer authority disposition, recorded
   either in a separate receipt or section B of the transaction record.
 - Every executed action has an Executive Assistant execution-and-evidence
   section, recorded either in a separate receipt or section C of the

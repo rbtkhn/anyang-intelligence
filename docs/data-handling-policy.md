@@ -1,6 +1,6 @@
 # Customer Data Handling Policy
 
-> **Freshness:** Effective 2026-07-24 · Owner: Engineer · Review cadence: quarterly and after any privacy or data-boundary incident.
+> **Freshness:** Effective 2026-07-24 · Owner: System Engineer · Review cadence: quarterly and after any privacy or data-boundary incident.
 
 ## Purpose
 

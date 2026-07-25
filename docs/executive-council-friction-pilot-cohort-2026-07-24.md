@@ -7,7 +7,8 @@
 **Pilot period:** 2026-07-24 through 2026-08-21
 
 **Authority source:** Engineer selection `A. Run the existing five-case friction
-pilot and measure actual burden`, 2026-07-24
+pilot and measure actual burden`, 2026-07-24. The role's current display title
+is System Engineer.
 
 **Boundary:** Internal repository-visible Council work only. No external
 communication, private evidence, client-company action, new access, or Steward
@@ -119,7 +120,7 @@ cohort's change scope.
 - **Approved scope:** Use the friction-budget primitive as a measurement and
   interpretation rule within this cohort.
 - **Exclusion:** The primitive is not controlling governance and may not expand,
-  retire, or weaken a control without a separate Engineer decision.
+  retire, or weaken a control without a separate System Engineer decision.
 
 ### C. Execution and evidence
 
@@ -235,7 +236,7 @@ cohort's change scope.
 ### D. Reconciliation
 
 - **Chief Executive reconciliation:** The pilot is active but not complete.
-- **Steward review required:** No, unless the Engineer names a gate or exception.
+- **Steward review required:** No, unless the System Engineer names a gate or exception.
 - **Final supported state:** Measurement priority approved; evidence collection
   in progress.
 

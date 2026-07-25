@@ -83,7 +83,7 @@ for Grace Gems.
 
 - The Chief Executive prepares judgment, recommendations, and exact draft
   language.
-- The Engineer authorizes consequential communication within a bounded scope.
+- The System Engineer authorizes consequential communication within a bounded scope.
 - The Executive Assistant handles stakeholder communication, receives CEO
   responses, verifies human-world context, coordinates approved work, gathers
   or retrieves authorized private evidence, reports exceptions, and returns

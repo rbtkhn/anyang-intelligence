@@ -7,8 +7,8 @@ governance:
   default_posture: prepare-then-require-approval
   operating_character: engineer-governed-advisory-execution-and-assurance-system
   membership_rule: Council membership conveys responsibility, not sovereign authority.
-  decision_rule: The Chief Executive prepares judgment, the Executive Assistant performs approved action, the Council Steward tests state support, and the Engineer decides what is permitted.
-  client_parallel_authority_rule: Client CEOs retain authority over their companies; Engineer authority and client authority do not substitute for one another.
+  decision_rule: The Chief Executive prepares judgment, the Executive Assistant performs approved action, the Council Steward tests state support, and the System Engineer decides what is permitted.
+  client_parallel_authority_rule: Client CEOs retain authority over their companies; System Engineer authority and client authority do not substitute for one another.
   conflict_precedence: engineer
   review_cadence: quarterly
   expansion_rule: Add or widen a lane only after measured reliability and a new operator approval receipt.
@@ -16,6 +16,7 @@ governance:
 
 roles:
   engineer:
+    display_title: System Engineer
     authority: final-system-and-company-authority
   executive:
     authority: bounded-anyang-operating-coordination
@@ -28,6 +29,7 @@ roles:
 
 migration_aliases:
   engineer-operator-owner: engineer
+  system-engineer: engineer
   ai-ceo: executive
   hannah: interface
   council-steward: steward
@@ -74,7 +76,7 @@ domains:
       - sequence-read-only-work-within-approved-objective
       - request-clarification
       - pause-or-narrow-on-authority-or-evidence-gap
-    executive_assistant_dispatch_rule: A dispatch requires a current Engineer approval or standing mandate naming scope, executor, evidence, exclusions, and expiry.
+    executive_assistant_dispatch_rule: A dispatch requires a current System Engineer approval or standing mandate naming scope, executor, evidence, exclusions, and expiry.
     standing_mandate_rule: A standing mandate must name the task class, permitted actions, limits, evidence, expiry, revocation path, and recovery method.
     approver: engineer
     review_expiry: named-in-receipt
@@ -133,7 +135,7 @@ domains:
     approval_threshold: client-human-ceo-for-business-action
     required_approvers: [engineer, client]
     dual_authority_rule: Consequential client execution requires both Anyang authority for the Council action and client authority for the client-company decision.
-    authority_non_substitution_rule: Engineer approval does not create client-company authority, and client approval does not create Anyang system authority.
+    authority_non_substitution_rule: System Engineer approval does not create client-company authority, and client approval does not create Anyang system authority.
     approver: client
     review_expiry: named-in-receipt
     audit_record: client-decision-brief

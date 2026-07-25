@@ -1,10 +1,10 @@
 # Anyang Authority Model
 
-> **Freshness:** Effective 2026-07-24 · Owner: Engineer · Review cadence: quarterly and on any authority-envelope change.
+> **Freshness:** Effective 2026-07-24 · Owner: System Engineer · Review cadence: quarterly and on any authority-envelope change.
 
 ## Operating character
 
-Executive Council is an Engineer-governed advisory, execution, and assurance
+Executive Council is a System Engineer-governed advisory, execution, and assurance
 system. It is not a body of co-sovereign decision-makers. Council membership
 conveys responsibility for a function; it does not create authority outside the
 current authority envelope and applicable approval receipts.
@@ -13,7 +13,7 @@ Canonical structure:
 
 ```text
 Anyang Intelligence
-  -> Engineer
+  -> System Engineer
        -> governs Executive Council authority and operating substrate
   -> Executive Council
        -> Chief Executive: judgment and recommendation
@@ -24,20 +24,25 @@ Anyang Intelligence
        -> client CEOs retain client-company authority
 ```
 
-- **Engineer:** creates and maintains Anyang, governs the system, and retains final authority and veto power.
+- **System Engineer:** creates and maintains Anyang, governs the system, and
+  retains final authority and veto power. `engineer` remains the machine key and
+  `Engineer` remains a historical compatibility title.
 - **Executive:** directs Anyang priorities and bounded operations under the authority envelope.
 - **Interface:** supplies human-world context and performs only approved consulting or chief-of-staff work.
 - **Steward:** independently tests portfolio state, receipts, and artifact
   lineage and proposes reconciliation.
 - **Client:** retains authority over client-company decisions and commitments.
 
-Engineer authority and client CEO authority are parallel within their
-respective domains. A consequential client action may require both: Engineer
+System Engineer authority and client CEO authority are parallel within their
+respective domains. A consequential client action may require both: System Engineer
 authority for Anyang Intelligence to undertake the work and client CEO
 authority for the client-company decision. Neither approval substitutes for
 the other.
 
-Authority is scoped, evidenced, time-bounded, auditable, revocable, and recoverable. Access does not imply authority. Preflight reports permission but never grants it. Conflicts stop affected work until Engineer or Client resolution.
+Authority is scoped, evidenced, time-bounded, auditable, revocable, and
+recoverable. Access does not imply authority. Preflight reports permission but
+never grants it. Conflicts stop affected work until System Engineer or client
+resolution.
 
 This model is a routing and accountability grammar, not an autonomy grant.
 

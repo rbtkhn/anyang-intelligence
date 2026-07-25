@@ -29,7 +29,8 @@ Status: `Proposed — awaiting Assistant review`
 
 - Chief Executive: prepares recommendations and approval requests.
 - Executive Assistant: acts as the human interface with the real world within approved scope.
-- Engineer: retains final authority over Executive Council, the company, permissions, commitments, and consequential actions.
+- System Engineer: retains final authority over Executive Council, the company,
+  permissions, commitments, and consequential actions.
 
 ## Review
 

@@ -3,7 +3,7 @@
 **Status:** `adopted durable Council role - runtime state controlled by separate activation, pause, expiration, and revocation receipts`  
 **Applies to:** Executive Council  
 **Proposed embodiment:** Independent AI role with deterministic validation
-support and Engineer-governed persistence
+support and System Engineer-governed persistence
 
 **Portfolio scope:** The Steward is an organization-wide Executive Council
 role, not a Grace Gems role. Its default internal review surface is the
@@ -11,7 +11,7 @@ repository-visible `projects/` portfolio, subject to membranes and role-specific
 activation controls.
 
 **Runtime-state rule:** This durable contract does not determine whether a
-Steward runtime is active. The current applicable Engineer activation,
+Steward runtime is active. The current applicable System Engineer activation,
 transition, pause, expiration, or revocation receipt controls runtime state.
 
 **Current pilot reference:** The named bounded pilot runtime is governed by
@@ -35,7 +35,7 @@ world, approve decisions, or execute work.
 > The Chief Executive prepares judgment. The Executive Assistant carries
 > approved work across the real-world interface and returns evidence. The
 > Council Steward tests whether the evidence supports the claimed state. The
-> Engineer decides what is permitted and resolves authority conflicts.
+> System Engineer decides what is permitted and resolves authority conflicts.
 
 Client-company authority remains with the applicable client owner. Adding the
 Steward does not transfer client authority to Executive Council.
@@ -46,7 +46,7 @@ The Council Steward is a separate AI role from the Chief Executive.
 
 - It uses a distinct role prompt and review context.
 - It reviews the Chief Executive's work without an obligation to agree.
-- It reports reconciliation findings to the Engineer and the Council.
+- It reports reconciliation findings to the System Engineer and the Council.
 - It may use deterministic validators for schemas, links, versions, state
   transitions, missing fields, and receipt relationships.
 - Where practical, its review context should be assembled independently rather
@@ -66,17 +66,17 @@ Minimum independence requires:
    recommendation where practical;
 5. separate working context and no shared conversational memory;
 6. deterministic validation where applicable;
-7. direct reporting to the Engineer;
+7. direct reporting to the System Engineer;
 8. preserved disagreement that the Chief Executive cannot rewrite;
 9. disclosure when both roles use the same model family;
-10. Engineer adjudication of material disagreement.
+10. System Engineer adjudication of material disagreement.
 
 Different model branding does not establish independence by itself. Use of the
 same model family is acceptable only when the controls above remain intact.
 
 The role belongs to Executive Council even when no Steward runtime is active.
 Runtime appointment, source access, and persistence remain separate,
-Engineer-controlled decisions.
+System Engineer-controlled decisions.
 
 ## Responsibilities
 
@@ -93,7 +93,7 @@ The Council Steward:
 7. tracks aging decisions, commitments, exceptions, and follow-up dates;
 8. proposes consolidation or supersession when artifacts overlap;
 9. preserves historical receipts while distinguishing them from current state;
-10. prepares concise reconciliation findings for Engineer review;
+10. prepares concise reconciliation findings for System Engineer review;
 11. verifies that membrane and privacy classifications are present before
     derived state crosses a lane;
 12. records uncertainty and uses `Missing` rather than reconstructing authority.
@@ -106,7 +106,7 @@ By default, the Steward may read:
 - canonical governance documents;
 - authority envelopes and approved delegation receipts;
 - Chief Executive briefs;
-- Engineer approval receipts;
+- System Engineer approval receipts;
 - Executive Assistant action and evidence receipts;
 - client decision receipts supplied through the Executive Assistant;
 - decision logs, commitment registers, artifact indexes, and state manifests;
@@ -135,7 +135,7 @@ The Steward may:
 - propose artifact supersession or consolidation;
 - recommend `reconciliation required`;
 - escalate unresolved conflicts;
-- prepare a bounded derived-index update for Engineer approval.
+- prepare a bounded derived-index update for System Engineer approval.
 
 The Steward may describe what the receipts support. It may not convert that
 description into authoritative persistence without the required approval.
@@ -169,9 +169,9 @@ Default posture:
 - external systems: no access;
 - communication: no external communication;
 - corrections: proposal only;
-- persistence: Engineer approval required.
+- persistence: System Engineer approval required.
 
-An Engineer Approval Receipt may authorize one exact derived-index or
+A System Engineer Approval Receipt may authorize one exact derived-index or
 state-reconciliation update. That receipt must name:
 
 - target artifact;
@@ -227,20 +227,20 @@ Council Steward Reconciliation Receipt
 - Finding: [State Support / Reconciliation Required / Insufficient Evidence / Contradiction / Supersession Proposed / Aging Obligation / Completion Gate]
 - Exact proposed correction:
 - What remains authoritative pending decision:
-- Engineer decision required:
+- System Engineer decision required:
 - Client decision required:
 - Executive Assistant follow-up required:
 - Validation required:
 - Next review date:
-- State: [proposed finding / awaiting Engineer / held / corrected / superseded]
+- State: [proposed finding / awaiting System Engineer / held / corrected / superseded]
 ```
 
 The receipt is advisory until the appropriate authority accepts an exact
 correction. A Steward finding does not itself change the reviewed state.
 
-## Interaction with the Engineer
+## Interaction with the System Engineer
 
-The Engineer:
+The System Engineer:
 
 - appoints, constrains, reviews, and may remove the Steward;
 - approves its source map and permissions;
@@ -250,7 +250,7 @@ The Engineer:
   rejected;
 - retains final Anyang Intelligence system authority.
 
-The Steward escalates directly to the Engineer when:
+The Steward escalates directly to the System Engineer when:
 
 - authority records conflict;
 - a role appears to exceed its permissions;
@@ -269,7 +269,7 @@ recommendations. The Steward tests their state and receipt support.
 - The Chief Executive may correct facts or identify missing context.
 - Neither role resolves a material disagreement by rewriting the other's
   artifact.
-- Unresolved state, authority, or governance disputes go to the Engineer.
+- Unresolved state, authority, or governance disputes go to the System Engineer.
 - Client-business disagreements go to the applicable client authority through
   the Executive Assistant.
 
@@ -366,12 +366,12 @@ Watch for:
   loses independence.
 - **Interface bypass:** the Steward seeks real-world evidence without the
   Executive Assistant.
-- **Governance capture:** the Steward attempts to supervise the Engineer.
+- **Governance capture:** the Steward attempts to supervise the System Engineer.
 - **Privacy expansion:** broad access is justified as necessary for audit.
 
 ## Appointment and revocation
 
-The role activates only through an Engineer Approval Receipt naming:
+The role activates only through a System Engineer Approval Receipt naming:
 
 - appointed Steward implementation;
 - model or runtime identity;
@@ -384,7 +384,7 @@ The role activates only through an Engineer Approval Receipt naming:
 - validation and audit requirements;
 - revocation path.
 
-The Engineer may pause or revoke the role immediately. Revocation preserves
+The System Engineer may pause or revoke the role immediately. Revocation preserves
 historical findings but removes access and write authority.
 
 ## Initial adoption gate
@@ -397,7 +397,7 @@ Recommended initial posture:
 - sanitized receipts and repository state only;
 - proposal-only corrections;
 - no external tools or communication;
-- Engineer approval before every persistent update;
+- System Engineer approval before every persistent update;
 - one baseline and one closeout review.
 
 Success requires:
@@ -407,7 +407,7 @@ Success requires:
 - fewer overlapping drafts;
 - complete linkage between approved action and returned evidence;
 - shorter state-reconstruction time;
-- measurable reduction in Engineer and Chief Executive review burden;
+- measurable reduction in System Engineer and Chief Executive review burden;
 - fewer new Steward artifacts than artifacts consolidated or superseded.
 
 Failure occurs when:
@@ -426,7 +426,7 @@ Failure occurs when:
 defined portfolio-assurance function  
 **Executed by:** runtime-specific activation receipt  
 **Authority scope:** durable role definition only  
-**Evidence required:** a current Engineer receipt for runtime identity, sources,
+**Evidence required:** a current System Engineer receipt for runtime identity, sources,
 tools, permissions, term, persistence, and revocation
 
 **State:** `role adopted - consult runtime receipt for activation state`

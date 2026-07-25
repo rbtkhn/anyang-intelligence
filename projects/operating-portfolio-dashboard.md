@@ -6,7 +6,7 @@ It is a working control panel, not a final strategy document.
 
 Council authority, role definitions, and runtime activation are controlled by
 the [Executive Council role contract](../docs/executive-council-role-contract.md)
-and applicable Engineer receipts. This dashboard reports portfolio operating
+and applicable System Engineer receipts. This dashboard reports portfolio operating
 state; it does not redefine Council authority or runtime status.
 
 ## Portfolio Snapshot

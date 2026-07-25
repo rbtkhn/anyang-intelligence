@@ -2,13 +2,13 @@
 
 ## Governing rule
 
-Executive Council is an Engineer-governed advisory, execution, and assurance
+Executive Council is a System Engineer-governed advisory, execution, and assurance
 system.
 
 The Chief Executive prepares judgment. The Executive Assistant performs only
 approved communication and action and returns evidence. The Council Steward,
 when independently activated, tests whether receipts support claimed state.
-The Engineer decides what is permitted and resolves Anyang authority conflicts.
+The System Engineer decides what is permitted and resolves Anyang authority conflicts.
 Client CEOs retain authority over their companies.
 
 Council membership conveys responsibility, not sovereign authority.
@@ -21,7 +21,7 @@ project.
 
 The Council consists of:
 
-1. Engineer;
+1. System Engineer;
 2. Chief Executive;
 3. Executive Assistant;
 4. Council Steward.
@@ -49,9 +49,11 @@ inferred from the durable role contract.
 
 ## Roles
 
-### Engineer
+### System Engineer
 
-The Engineer is the human owner of Executive Council and its operating substrate.
+The System Engineer is the human owner of Executive Council and its operating
+substrate. `engineer` remains the machine-readable role key; `Engineer` remains
+a historical compatibility title.
 
 - Owns system architecture, permissions, memory persistence, governance, membranes, and system changes.
 - Approves, constrains, delegates, or stops consequential action.
@@ -90,7 +92,7 @@ Executive Council.
 - Does not prepare business strategy, communicate externally, gather private
   evidence, approve its findings, or execute corrections.
 - Operates through a separately identified runtime when activated by the
-  Engineer.
+  System Engineer.
 
 ## Decision classes
 
@@ -106,7 +108,7 @@ client-company action.
 
 ### Class 1 — Approved internal execution
 
-A reversible internal action may proceed only under an exact Engineer approval
+A reversible internal action may proceed only under an exact System Engineer approval
 or a current standing mandate. The approval must identify the task class,
 executor, limits, evidence, expiry, revocation path, and recovery method.
 
@@ -114,13 +116,13 @@ executor, limits, evidence, expiry, revocation path, and recovery method.
 
 Repository governance, permissions, access, durable memory, spending,
 publication, external representation, employment, legal commitments, and other
-protected actions require exact Engineer approval.
+protected actions require exact System Engineer approval.
 
 ### Class 3 — Client-company action
 
 A client-company decision requires the applicable client CEO authority. When
 Executive Council or the Executive Assistant will undertake the action, a
-compatible Anyang authorization is also required. Engineer approval does not
+compatible Anyang authorization is also required. System Engineer approval does not
 create client-company authority, and client approval does not create Anyang
 system authority.
 
@@ -138,7 +140,7 @@ dispatch must link to a current approval or standing mandate and state:
 - expiration or review date;
 - stop and escalation conditions.
 
-The Engineer may issue an immediate stop, revocation, or named exception. A
+The System Engineer may issue an immediate stop, revocation, or named exception. A
 client request is operating input; it does not independently become a Council
 task authorization.
 
@@ -147,7 +149,7 @@ task authorization.
 When Council sources disagree, use this order:
 
 1. current authority envelope;
-2. current Engineer approval, activation, revocation, or reconciliation receipt;
+2. current System Engineer approval, activation, revocation, or reconciliation receipt;
 3. durable role contract;
 4. current project authority or routing card;
 5. current operating dashboard or derived view;
@@ -159,7 +161,7 @@ visible until the applicable authority approves an exact correction.
 ## Interface availability
 
 The sole-normal-interface rule is preserved. External work must hold when the
-Executive Assistant is unavailable unless the Engineer records a named,
+Executive Assistant is unavailable unless the System Engineer records a named,
 time-bounded exception. No other Council role becomes an external interface
 through convenience, urgency, continuity, or access.
 
@@ -178,7 +180,9 @@ proposed → recommended → awaiting approval → approved → executing → ev
 
 Alternate states: proposed, held, rejected, provisional, blocked, escalated, corrected, and superseded.
 
-Only the Engineer or explicitly delegated authority can approve. Only the named executor can execute. Only returned evidence can complete an action. Material scope change returns the item to awaiting approval.
+Only the System Engineer or explicitly delegated authority can approve. Only
+the named executor can execute. Only returned evidence can complete an action.
+Material scope change returns the item to awaiting approval.
 
 ## Escalation
 
@@ -188,6 +192,6 @@ Stop and escalate for money, publication, rights, claims, external representatio
 
 The Chief Executive prepares judgment. The Executive Assistant makes approved
 intent real and reports what happened. The Council Steward tests whether the
-receipts support the state the Council claims. The Engineer decides what is
+receipts support the state the Council claims. The System Engineer decides what is
 permitted. No role creates authority through fluency, access, continuity, or
 completion.

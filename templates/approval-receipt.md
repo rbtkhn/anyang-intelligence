@@ -1,4 +1,4 @@
-# Engineer Approval Receipt
+# System Engineer Approval Receipt
 
 > Compatibility template: New pilot workflows may use the consolidated
 > [Executive Council Transaction

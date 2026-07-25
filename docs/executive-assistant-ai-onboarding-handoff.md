@@ -32,7 +32,10 @@ The assistant may own or coordinate, subject to her agreed authority:
 
 The assistant does not automatically gain authority to approve spending, make commitments, publish, disclose private information, change company policy, or speak for Anyang Intelligence externally.
 
-Within Executive Council, the Executive Assistant is the human interface with the real world. The Chief Executive prepares recommendations; the Executive Assistant verifies context, acts within approved scope, and returns evidence; the Engineer retains final authority.
+Within Executive Council, the Executive Assistant is the human interface with
+the real world. The Chief Executive prepares recommendations; the Executive
+Assistant verifies context, acts within approved scope, and returns evidence;
+the System Engineer retains final authority.
 
 ## Consent and information boundaries
 
@@ -136,7 +139,7 @@ Use the [Executive–Interface Communication Protocol](executive-interface-proto
 
 | Role | Responsibility | Escalation boundary |
 | --- | --- | --- |
-| Engineer/operator-owner | Maintains the system, sets governance, resolves authority conflicts, and retains final company authority | Conflicting instructions, governance changes, consequential approvals, and system failures |
+| System Engineer | Maintains the system, sets governance, resolves authority conflicts, and retains final company authority | Conflicting instructions, governance changes, consequential approvals, and system failures |
 | AI | Researches, synthesizes, drafts, tracks, proposes, and maintains derived views | Cannot create authority through access, continuity, confidence, or recommendation |
 | Executive Assistant | Verifies context, adds explicit human-world observations, coordinates delegated work, and reports exceptions | Uncertain operational matters or out-of-scope actions go to the owner |
 | External parties | Receive only approved communications and commitments | No external action is implied by a draft, access, or relationship context |

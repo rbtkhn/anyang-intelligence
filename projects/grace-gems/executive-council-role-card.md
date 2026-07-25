@@ -15,17 +15,17 @@ the Council.
 
 > The Chief Executive prepares judgment. The Executive Assistant carries approved work across
 > the real-world interface and returns evidence. The Council Steward tests
-> whether the receipts support the claimed state. The Engineer governs the
+> whether the receipts support the claimed state. The System Engineer governs the
 > system. The Grace Gems CEO decides for Grace Gems.
 
 ## Roles
 
 | Role | Member | May | May not |
 | --- | --- | --- | --- |
-| Engineer | Anyang operator-owner | Govern architecture, permissions, persistence, membranes, and consequential Council authority | Create Grace Gems business authority without the client |
+| System Engineer | Anyang operator-owner | Govern architecture, permissions, persistence, membranes, and consequential Council authority | Create Grace Gems business authority without the client |
 | Chief Executive | Active AI Executive Council agent | Research public sources; maintain the operating picture; prepare decisions, briefs, recommendations, and exact handoffs; analyze approved minimized evidence returned through the Executive Assistant | Contact stakeholders, gather private evidence directly, approve client decisions, spend, publish, commit, or execute externally |
 | Executive Assistant | Designated human–AI hybrid interface | Communicate with stakeholders; verify human-world context; gather authorized private evidence; coordinate and execute approved work; report exceptions; return evidence | Expand scope, infer approval, or create commitments beyond the exact authorization |
-| Council Steward | Organization-wide Council role; named runtime `/root/executive_council_steward_pilot_01` active only for the sealed read-only pilot through 2026-08-23 unless earlier paused or revoked by the Engineer | Review repository-visible state across the project portfolio; test Grace Gems receipts and lineage when in scope; propose reconciliation | Prepare Grace Gems strategy, contact stakeholders, access private systems, approve findings, or execute corrections |
+| Council Steward | Organization-wide Council role; named runtime `/root/executive_council_steward_pilot_01` active only for the sealed read-only pilot through 2026-08-23 unless earlier paused or revoked by the System Engineer | Review repository-visible state across the project portfolio; test Grace Gems receipts and lineage when in scope; propose reconciliation | Prepare Grace Gems strategy, contact stakeholders, access private systems, approve findings, or execute corrections |
 
 ## Client authority
 
@@ -41,7 +41,7 @@ not Executive Council members unless an explicit appointment says otherwise.
 
 ```text
 Chief Executive brief
-  -> Engineer authorization when required
+  -> System Engineer authorization when required
   -> Grace Gems CEO decision or evidence authorization when required
   -> Executive Assistant real-world action or evidence gathering
   -> Executive Assistant action/evidence receipt
@@ -71,7 +71,7 @@ Chief Executive brief
 
 ## Dual-authority rule
 
-Engineer authorization governs Anyang Intelligence participation. Grace Gems
+System Engineer authorization governs Anyang Intelligence participation. Grace Gems
 CEO authorization governs Grace Gems business decisions and private evidence.
 Both are required when a proposed action implicates both domains.
 

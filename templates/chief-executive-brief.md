@@ -5,7 +5,8 @@
 > Record](executive-council-transaction-record.md) while preserving this
 > template's separately attributable function.
 
-Use this brief to prepare a recommendation for Engineer review. It does not approve, authorize, commit, publish, or execute work.
+Use this brief to prepare a recommendation for System Engineer review. It does
+not approve, authorize, commit, publish, or execute work.
 
 Brief ID:
 Date:
@@ -25,7 +26,7 @@ Success condition:
 
 Proposed by:
 Recommended by:
-Approved by: pending Engineer review
+Approved by: pending System Engineer review
 Executed by: not assigned
 Authority scope: none until approval
 Evidence required:
@@ -34,4 +35,6 @@ State: proposed / recommended / awaiting approval / held / rejected
 
 ## Language boundary
 
-Use recommendation language only. Do not describe a proposal as approved, committed, authorized, or published unless the linked Engineer Approval Receipt records that decision.
+Use recommendation language only. Do not describe a proposal as approved,
+committed, authorized, or published unless the linked System Engineer Approval
+Receipt records that decision.

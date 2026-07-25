@@ -14,7 +14,7 @@ The system should help Grace Gems make better marketplace decisions, coordinate 
   Executive Assistant communicates with stakeholders, verifies context, gathers
   authorized private evidence, coordinates approved work, executes approved
   external actions, and returns evidence.
-- The Engineer governs the Anyang system and authorizes consequential Council
+- The System Engineer governs the Anyang system and authorizes consequential Council
   action within the authority envelope.
 - The Grace Gems CEO retains client-company authority.
 

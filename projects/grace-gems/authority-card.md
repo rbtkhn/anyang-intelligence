@@ -1,6 +1,6 @@
 # Grace Gems Authority Card
 
-> **Freshness:** Effective 2026-07-24 · Owner: Grace Gems human CEO with Anyang Engineer oversight · Review cadence: quarterly and on any scope or authority change.
+> **Freshness:** Effective 2026-07-24 · Owner: Grace Gems human CEO with Anyang System Engineer oversight · Review cadence: quarterly and on any scope or authority change.
 
 ## Boundary
 
@@ -10,7 +10,7 @@
   separately activated runtime tests state and receipt integrity across
   projects/`
 - Client role: `Grace Gems human CEO and business authority`
-- Engineer role: `Anyang system authority and veto`
+- System Engineer role: `Anyang system authority and veto`
 
 Executive Council belongs to Anyang Intelligence and operates over the complete
 `projects/` portfolio. Grace Gems is one client engagement within that
