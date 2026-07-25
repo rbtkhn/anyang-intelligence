@@ -158,7 +158,7 @@ When Council sources disagree, use this order:
 A lower source may not silently override a higher source. Contradictions remain
 visible until the applicable authority approves an exact correction.
 
-## Interface availability
+## Executive Assistant availability
 
 The sole-normal-interface rule is preserved. External work must hold when the
 Executive Assistant is unavailable unless the System Engineer records a named,

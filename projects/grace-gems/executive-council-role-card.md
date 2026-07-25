@@ -61,8 +61,7 @@ Chief Executive brief
 
 ## Communication rule
 
-- All Grace Gems stakeholder communication routes through the Executive
-  Assistant.
+- All Grace Gems stakeholder communication routes through the Executive Assistant.
 - Chief Executive drafts are not sent messages.
 - Executive Assistant transmission does not by itself prove delivery, receipt,
   approval, or completion.

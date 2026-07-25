@@ -19,10 +19,13 @@ roles:
     display_title: System Engineer
     authority: final-system-and-company-authority
   executive:
+    display_title: Chief Executive
     authority: bounded-anyang-operating-coordination
   interface:
+    display_title: Executive Assistant
     authority: human-world-interface-and-delegated-chief-of-staff
   steward:
+    display_title: Council Steward
     authority: bounded-council-state-reconciliation
   client:
     authority: client-company-business-authority

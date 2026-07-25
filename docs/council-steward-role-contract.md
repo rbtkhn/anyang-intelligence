@@ -278,11 +278,12 @@ recommendations. The Steward tests their state and receipt support.
 The Executive Assistant remains the human–AI hybrid interface with the real
 world.
 
-- The Assistant gathers authorized human-world evidence and returns receipts.
+- The Executive Assistant gathers authorized human-world evidence and returns receipts.
 - The Steward checks receipt completeness and state support.
-- The Steward does not contact, direct, or replace the Assistant.
+- The Council Steward does not contact, direct, or replace the Executive Assistant.
 - Missing or contradictory real-world evidence is routed back through the
-  Assistant only after the applicable authority approves the follow-up.
+  Executive Assistant only after the applicable authority approves the
+  follow-up.
 
 ## Interaction with client authority
 
@@ -364,7 +365,7 @@ Watch for:
   trustworthy.
 - **Context capture:** the Steward absorbs the Chief Executive's framing and
   loses independence.
-- **Interface bypass:** the Steward seeks real-world evidence without the
+- **Executive Assistant bypass:** the Council Steward seeks real-world evidence without the
   Executive Assistant.
 - **Governance capture:** the Steward attempts to supervise the System Engineer.
 - **Privacy expansion:** broad access is justified as necessary for audit.

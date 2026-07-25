@@ -65,6 +65,9 @@ def test_council_is_engineer_governed_advisory_execution_and_assurance_system():
     )
     assert "client_parallel_authority_rule" in data["governance"]
     assert data["roles"]["engineer"]["display_title"] == "System Engineer"
+    assert data["roles"]["executive"]["display_title"] == "Chief Executive"
+    assert data["roles"]["interface"]["display_title"] == "Executive Assistant"
+    assert data["roles"]["steward"]["display_title"] == "Council Steward"
     assert data["migration_aliases"]["system-engineer"] == "engineer"
 
 

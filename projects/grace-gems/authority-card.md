@@ -43,4 +43,9 @@ Private customer messages, identities, order details, costs, supplier facts, and
 
 ## Communication Protocol
 
-Use [Executive–Interface Communication Protocol](../../docs/executive-interface-protocol.md) for Grace Gems advisory tasks. The Interface may review briefs, challenge assumptions, add labeled context, recommend escalation, and perform named approved chief-of-staff work. No message, response, or receipt authorizes listings, pricing, claims, customer communications, spending, or policy changes.
+Use the [Chief Executive–Executive Assistant Communication
+Protocol](../../docs/executive-interface-protocol.md) for Grace Gems advisory
+tasks. The Executive Assistant may review briefs, challenge assumptions, add
+labeled context, recommend escalation, and perform named approved
+chief-of-staff work. No message, response, or receipt authorizes listings,
+pricing, claims, customer communications, spending, or policy changes.

@@ -194,7 +194,9 @@ cohort's change scope.
 | False-positive escalation | 0 observed |
 | Scope deviation | 0 |
 | Correction time | 1.23 observed minutes from focused rescan through bounded correction and first verification scan |
+| Follow-up vocabulary correction | 2.24 observed minutes to separate role title, hybrid embodiment, interface function, and machine key across current operational surfaces |
 | Post-correction validation | 61.71 seconds; 288 passed, 2 skipped |
+| Follow-up vocabulary validation | 76.90 seconds; 288 passed, 2 skipped |
 | Final outcome | Gap caught before mutation; bounded correction applied |
 
 ## Case 4 — Priority decision

@@ -18,7 +18,7 @@ The AI functions as a strategic and operating intelligence layer. It can help pr
 
 ## Executive Assistant role
 
-The assistant may own or coordinate, subject to her agreed authority:
+The Executive Assistant may own or coordinate, subject to her agreed authority:
 
 - calendar and follow-up discipline;
 - meeting preparation and receipts;
@@ -30,12 +30,14 @@ The assistant may own or coordinate, subject to her agreed authority:
 - protection of executive attention;
 - communication between the owner, AI, and approved collaborators.
 
-The assistant does not automatically gain authority to approve spending, make commitments, publish, disclose private information, change company policy, or speak for Anyang Intelligence externally.
+The Executive Assistant does not automatically gain authority to approve
+spending, make commitments, publish, disclose private information, change
+company policy, or speak for Anyang Intelligence externally.
 
 Within Executive Council, the Executive Assistant is the human interface with
-the real world. The Chief Executive prepares recommendations; the Executive
-Assistant verifies context, acts within approved scope, and returns evidence;
-the System Engineer retains final authority.
+the real world. The Chief Executive prepares recommendations; the Executive Assistant
+verifies context, acts within approved scope, and returns evidence; the System
+Engineer retains final authority.
 
 ## Consent and information boundaries
 
@@ -117,13 +119,13 @@ assistant defines preferences and boundaries
 
 The AI should optimize for her usefulness, clarity, agency, and confidence—not for dependence on the AI.
 
-## Human-AI Interface Operating Model
+## Executive Assistant Human–AI Operating Model
 
 This onboarding is also the orientation for a staged production operating interface:
 
 ```text
 AI prepares and proposes
-  -> Assistant verifies context and adds human-world observations
+  -> Executive Assistant verifies context and adds human-world observations
   -> authorized human reviews or acts
   -> outcome is recorded with provenance
   -> approved learning improves the workflow
@@ -131,16 +133,21 @@ AI prepares and proposes
 
 The repository is the durable harness for approved governance, workflow rules, templates, and institutional memory. It is not a substitute for live authority, private operating data, or human accountability.
 
-The Executive’s current organization-level authority is governed by the [Anyang authority envelope](../authority-envelope.yaml). The Interface’s delegation is operational and reviewable; access does not create authority, and client work remains subject to each Client.
+The Chief Executive's current organization-level authority is governed by the
+[Anyang authority envelope](../authority-envelope.yaml). The Executive Assistant's
+delegation is operational and reviewable; access does not create authority, and
+client work remains subject to each client.
 
-Use the [Executive–Interface Communication Protocol](executive-interface-protocol.md) for task dispatch, structured responses, escalation, completion receipts, and shadow-mode review.
+Use the [Chief Executive–Executive Assistant Communication
+Protocol](executive-interface-protocol.md) for task dispatch, structured
+responses, escalation, completion receipts, and shadow-mode review.
 
 ### Role routing
 
 | Role | Responsibility | Escalation boundary |
 | --- | --- | --- |
 | System Engineer | Maintains the system, sets governance, resolves authority conflicts, and retains final company authority | Conflicting instructions, governance changes, consequential approvals, and system failures |
-| AI | Researches, synthesizes, drafts, tracks, proposes, and maintains derived views | Cannot create authority through access, continuity, confidence, or recommendation |
+| Chief Executive | Researches, synthesizes, drafts, tracks, proposes, and maintains derived views | Cannot create authority through access, continuity, confidence, or recommendation |
 | Executive Assistant | Verifies context, adds explicit human-world observations, coordinates delegated work, and reports exceptions | Uncertain operational matters or out-of-scope actions go to the owner |
 | External parties | Receive only approved communications and commitments | No external action is implied by a draft, access, or relationship context |
 
@@ -149,8 +156,11 @@ Use the [Executive Council role contract](executive-council-role-contract.md) an
 ### Staged rollout
 
 1. **Orientation:** Review roles, authority, privacy, memory, provenance, and correction.
-2. **Shadow mode:** AI prepares briefs, meeting packets, commitment records, and escalation suggestions; the Assistant reviews without external execution.
-3. **Bounded operation:** The Assistant coordinates approved internal workflows while consequential actions remain approval-gated.
+2. **Shadow mode:** The Chief Executive prepares briefs, meeting packets,
+   commitment records, and escalation suggestions; the Executive Assistant
+   reviews without external execution.
+3. **Bounded operation:** The Executive Assistant coordinates approved internal
+   workflows while consequential actions remain approval-gated.
 4. **Progressive autonomy:** Expand authority only for named lanes that demonstrate reliable records, auditability, and reduced executive load.
 
 No stage grants authority by implication. Each expansion requires an owner-approved receipt naming the lane, actions, limits, evidence, and review date.
@@ -173,7 +183,7 @@ The AI must not infer sensitive traits, hidden motives, health, protected charac
 ### Learning and correction loop
 
 ```text
-mistake or friction -> proposed correction -> Assistant review
+mistake or friction -> proposed correction -> Executive Assistant review
   -> owner/operator approval when governance changes
   -> versioned workflow update -> validation in the next bounded cycle
 ```
@@ -182,21 +192,36 @@ Raw onboarding conversation is not durable memory by default. Approved preferenc
 
 ### Capacity protection
 
-The interface must reduce net cognitive load. Use alert budgets, batching, duplicate suppression, priority thresholds, and “no action needed” filtering. Review whether each automation saves more attention than it consumes, and track Assistant review burden alongside executive time saved.
+The real-world interface function must reduce net cognitive load. Use alert
+budgets, batching, duplicate suppression, priority thresholds, and “no action
+needed” filtering. Review whether each automation saves more attention than it
+consumes, and track Executive Assistant review burden alongside Chief Executive
+time saved.
 
 ### Pilot and measurement
 
-Begin with a 2–4 week bounded pilot covering daily briefs, meeting preparation and receipts, commitment tracking, deadline/conflict monitoring, and escalation quality. Track missed and recovered commitments, preparation time, unnecessary interruptions, obligation aging, briefing usefulness, false-positive alerts, escalation precision, Assistant review burden, corrections per workflow, and decisions improved or accelerated.
+Begin with a 2–4 week bounded pilot covering daily briefs, meeting preparation
+and receipts, commitment tracking, deadline/conflict monitoring, and escalation
+quality. Track missed and recovered commitments, preparation time, unnecessary
+interruptions, obligation aging, briefing usefulness, false-positive alerts,
+escalation precision, Executive Assistant review burden, corrections per
+workflow, and decisions improved or accelerated.
 
 Expand authority only when the pilot demonstrates lower cognitive load, reliable records, acceptable false-positive rates, and clear human trust. Use [pilot-metrics-review.md](../templates/pilot-metrics-review.md) for the review.
 
 ### Separate operating artifacts
 
-Keep these surfaces distinct: onboarding curriculum; approved Assistant preferences and boundaries; authority and access register; live commitment and decision ledgers; company governance and policies; and AI workflow/playbook definitions. The repository tracks reusable, sanitized contracts and templates. Private operational records belong in their approved external store. Derived views must point to their source and as-of time and must not become competing authorities.
+Keep these surfaces distinct: onboarding curriculum; approved Executive Assistant
+preferences and boundaries; authority and access register; live commitment and
+decision ledgers; company governance and policies; and AI workflow/playbook
+definitions. The repository tracks reusable, sanitized contracts and templates.
+Private operational records belong in their approved external store. Derived
+views must point to their source and as-of time and must not become competing
+authorities.
 
 ## First Production Templates
 
-- [Assistant approval receipt](../templates/assistant-approval-receipt.md)
+- [Executive Assistant approval receipt](../templates/assistant-approval-receipt.md)
 - [Authority and access register](../templates/authority-access-register.md)
 - [Commitment receipt](../templates/commitment-receipt.md)
 - [Meeting-to-execution packet](../templates/meeting-to-execution-packet.md)

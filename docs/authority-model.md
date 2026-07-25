@@ -27,9 +27,11 @@ Anyang Intelligence
 - **System Engineer:** creates and maintains Anyang, governs the system, and
   retains final authority and veto power. `engineer` remains the machine key and
   `Engineer` remains a historical compatibility title.
-- **Executive:** directs Anyang priorities and bounded operations under the authority envelope.
-- **Interface:** supplies human-world context and performs only approved consulting or chief-of-staff work.
-- **Steward:** independently tests portfolio state, receipts, and artifact
+- **Chief Executive:** directs Anyang priorities and bounded operations under
+  the authority envelope.
+- **Executive Assistant:** supplies human-world context and performs only
+  approved consulting or chief-of-staff work.
+- **Council Steward:** independently tests portfolio state, receipts, and artifact
   lineage and proposes reconciliation.
 - **Client:** retains authority over client-company decisions and commitments.
 

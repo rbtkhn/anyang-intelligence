@@ -1,12 +1,12 @@
-# Assistant Approval Receipt
+# Executive Assistant Approval Receipt
 
 This receipt records the Executive Assistant's approved role preferences and delegated operating scope. It does not grant company-level authority.
 
-Status: `Proposed — awaiting Assistant review`
+Status: `Proposed — awaiting Executive Assistant review`
 
 ## Approved Scope
 
-- Assistant:
+- Executive Assistant:
 - Effective date:
 - Review date:
 - Responsibilities:
@@ -34,9 +34,9 @@ Status: `Proposed — awaiting Assistant review`
 
 ## Review
 
-- Assistant corrections:
+- Executive Assistant corrections:
 - Owner/operator approval required for governance changes: `Yes / No`
-- Assistant approval: `Pending / Approved / Rejected`
+- Executive Assistant approval: `Pending / Approved / Rejected`
 - Approved by:
 - Approval date:
 
