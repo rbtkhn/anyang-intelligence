@@ -144,6 +144,35 @@ stakeholder statements, practical constraints, interpretation, unknowns, and
 unverified reports. A response is not approval, and a receipt confirms
 completion without creating authority.
 
+## External request-state control
+
+Use one request-state block on the controlling handoff or Executive Council
+transaction record for each logical external request. Do not create a separate
+receipt family merely to track request status.
+
+The four cumulative states are:
+
+| State | Minimum evidence | What it does not prove |
+| --- | --- | --- |
+| `Prepared` | Exact request content, request ID, preparer, intended recipient authority, and preparation date | Authority to transmit, delivery, response, or action |
+| `Authorized to send` | Current System Engineer authority source naming the request, sender, recipient, scope, channel boundary, and expiry or review condition | Transmission, client approval, evidence access, or business action |
+| `Sent` | Separately attributable Executive Assistant communication receipt with request ID, sender, recipient authority, channel, sent time, and delivery status | Delivery when unconfirmed, response, agreement, or evidence access |
+| `Answered` | Response receipt or opaque response reference, received time, responding authority, and a field-by-field mapping of decisions, omissions, and contradictions | Complete authorization, evidence access, adoption, implementation, or business change |
+
+Advance only one evidenced state at a time. Never infer a later state from an
+earlier one: a prepared request is not authorized, authorization is not
+transmission, transmission is not delivery or response, and a response is not
+necessarily approval.
+
+Record `Held`, `Superseded`, or `Withdrawn` as an alternate disposition without
+rewriting the last supported cumulative state. Missing evidence remains
+`Missing`; do not reconstruct it from conversation or elapsed time.
+
+Prepared-but-unsent requests remain on their controlling handoff and outside
+the Executive Assistant queue. Add the logical workflow to the queue only
+after it reaches the Executive Assistant or produces a blocked, declined, or
+escalated response under the queue rules.
+
 ## Pilot
 
 Run a 2–4 week shadow-mode pilot using task, response, escalation, and receipt

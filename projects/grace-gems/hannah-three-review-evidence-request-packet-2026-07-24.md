@@ -1,12 +1,18 @@
 # Executive Assistant Three-Review Evidence Authorization Packet
 
 **Packet ID:** GG-EA-EVIDENCE-REQUEST-2026-07-24-01  
-**Status:** `Engineer approved routing through the Executive Assistant - not sent; evidence access not authorized`  
+**Status:** `Authorized to send through the Executive Assistant - not sent; evidence access not authorized`
+
 **Prepared by:** Chief Executive  
 **Sender and real-world interface:** Executive Assistant  
 **Decision authority:** Grace Gems CEO  
 **Scope:** Shipping-origin accuracy, personalization intake, and
 supplier-dependent fulfillment
+
+**Controlling request state:** [Executive Assistant Routing
+Handoff](hannah-three-review-evidence-routing-handoff-2026-07-24.md#controlling-request-state-record).
+This packet defines the evidence boundary; it does not independently advance
+the request from prepared to authorized, sent, or answered.
 
 **Related briefs:**
 
@@ -205,8 +211,10 @@ production-ready design files.
 
 - Review scopes: `approved`.
 - Evidence access: `not authorized`.
-- Engineer routing decision: `approved for transmission through the Executive Assistant`.
+- Request state: `Authorized to send`.
+- System Engineer routing decision: `approved for transmission through the Executive Assistant`.
 - Packet delivery: `not sent; delivery receipt required`.
+- CEO response: `not received; response receipt or opaque reference required`.
 - Executive Assistant evidence action: `not started`.
 - Chief Executive analysis: `not started`.
 - Implementation: `not authorized`.

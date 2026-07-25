@@ -3,10 +3,14 @@
 **Handoff ID:** GG-EA-EVIDENCE-ROUTE-2026-07-24-01  
 **Date:** 2026-07-24  
 **Prepared by:** Chief Executive  
-**Routing approved by:** Engineer  
+**Routing approved by:** System Engineer
+
+**Authorization review condition:** Revalidate immediately before transmission;
+hold if the request content, recipient authority, scope, or boundaries changed
+
 **Sender:** Executive Assistant  
 **Recipient and decision authority:** Grace Gems CEO  
-**Status:** `ready for Executive Assistant transmission - not sent; no evidence accessed`
+**Status:** `Authorized to send - not sent; no evidence accessed`
 
 ## Objective
 
@@ -22,6 +26,30 @@ contract remain in [Executive Assistant Three-Review Evidence Authorization
 Packet](hannah-three-review-evidence-request-packet-2026-07-24.md). They are
 controls on the Executive Assistant's action, not a request for a broad data
 export.
+
+## Controlling request-state record
+
+This is the controlling status record for the logical external request. It
+uses the [Executive Council external request-state
+control](../../docs/executive-interface-protocol.md#external-request-state-control)
+and does not create a separate receipt family.
+
+| State | Support | Evidence | Recorded date |
+| --- | --- | --- | --- |
+| `Prepared` | `supported` | Exact three-question message below; Handoff ID `GG-EA-EVIDENCE-ROUTE-2026-07-24-01`; prepared by Chief Executive for the Grace Gems CEO | 2026-07-24 |
+| `Authorized to send` | `supported` | System Engineer routing approval and pre-transmission review condition recorded in this handoff; sender, recipient authority, scope, and boundaries are named | 2026-07-24 |
+| `Sent` | `not supported` | Executive Assistant Communication Receipt is missing | `Missing` |
+| `Answered` | `not supported` | No CEO response receipt or opaque response reference exists | `Missing` |
+
+**Current supported request state:** `Authorized to send`
+
+**Next permitted transition:** `Sent`, only after the Executive Assistant
+returns a separately attributable communication receipt containing the Handoff
+ID, sender, recipient authority, channel, sent time, and delivery status.
+
+This record does not enter the Executive Assistant queue while it remains
+prepared and unsent. It does not authorize evidence access, Chief Executive
+analysis, implementation, or any business change.
 
 ## Message for Executive Assistant to send
 
