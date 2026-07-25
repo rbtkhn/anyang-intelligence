@@ -77,7 +77,8 @@ rights, or budget is missing, choose `Hold`.
 
 - Confirm that the position is activated and the exact task is approved.
 - Size the first production action to the smallest useful output.
-- Treat planned Artistic Director compensation as uncommitted.
+- Treat the `$1,000/month` Artistic Director operating envelope as a ceiling,
+  not compensation, allocation, or spend authority.
 - Flag paid tools, assets, contractors, distribution, or rush work before use.
 - Require separate System Engineer approval before spend or commitment.
 

@@ -7,9 +7,10 @@ This is the sanitized baseline for the governed Media Production proof. It recor
 ## Known Commercial Frame
 
 - Monthly Media Production retainer: $1,000.
-- Planned Artistic Director compensation: $500 per month, uncommitted and not
-  payment authority.
-- Remaining tools, support, experiment, or margin envelope: $500 per month.
+- Artistic Director operating ceiling: $1,000 per month as an internal Anyang
+  Intelligence operating-cost line supporting the included Grace Gems service.
+- Compensation, tools, support, experiment, and margin allocation: not
+  approved; current spend authority is `$0`.
 - Human authority remains final for product claims, assignments, spending, delivery, publication, pricing, promotions, policies, and customer commitments.
 
 ## Baseline Inputs Required
@@ -50,8 +51,8 @@ may verify software but do not count as Grace Gems proof.
 | Review and revision count | Unknown | Review receipts required |
 | Unsupported-claim or rights holds | Unknown | Gate records required |
 | Owner time required | Unknown | Weekly observation required |
-| Artistic Director capacity consumed | Position inactive; `$500` planned compensation does not establish capacity | Activation and production records required |
-| Tool spend | Unknown within $500 envelope | Receipts required |
+| Artistic Director capacity consumed | Position inactive; the `$1,000` operating ceiling does not establish capacity | Activation and production records required |
+| Approved spend | `$0`; internal allocation missing | Separate approval and receipts required |
 | Reuse across channels | Unknown | Reuse evidence required |
 | Owner usefulness | Unknown | Weekly 1–5 rating required |
 

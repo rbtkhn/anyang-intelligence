@@ -6,9 +6,16 @@ Grace Gems is the first paying client served by Anyang Intelligence through its 
 
 Grace Gems pays Anyang Intelligence $1,000 per month for recurring creative production support delivered through Media Production. This retainer funds the first Media Production operating model:
 
-- $500 per month in planned Artistic Director compensation, uncommitted until
-  separate engagement and payment approval.
-- $500 per month for tools, light asset costs, production support, experiments, or retained margin.
+- up to `$1,000/month` as the Artistic Director operating envelope;
+- no amount pre-allocated to compensation, tools, assets, production support,
+  experiments, or retained margin; and
+- `$0` current spend authority until a separate approval names the exact
+  category, amount, evidence, and limits.
+
+The Artistic Director is the internal Anyang Intelligence delivery function
+included in this package when separately activated and tasked. Grace Gems is
+not purchasing or employing the position, and the position is not a separately
+billed add-on.
 
 The service should improve Grace Gems' ability to present products clearly, support customers, run promotions, and learn which product messages create buyer trust.
 
@@ -106,6 +113,12 @@ For Grace Gems, every review should ask:
 When separately activated, the Artistic Director is the accountable creative
 director and internal producer for this service package.
 
+Grace Gems CEO decisions govern client direction, claims, adoption, and use,
+but do not create direct tasking authority over the Artistic Director. Client
+input routes through the Executive Assistant; the Chief Executive converts
+approved direction into a bounded internal brief under System Engineer
+authority.
+
 The approved role may:
 
 - Turning product or customer needs into short briefs.
@@ -122,10 +135,11 @@ Grace Gems CEO review discipline as human-drafted work.
 
 ## Budget Rule
 
-The $1,000 retainer preserves `$500/month` as planned Artistic Director
-compensation, but the allocation does not authorize engagement or payment.
+The `$1,000/month` retainer is the ceiling for the Artistic Director operating
+envelope. The ceiling does not authorize engagement, payment, purchase, or
+spend, and it does not pre-classify any portion as compensation.
 
-The remaining $500 may be used for:
+Separately approved allocations may include:
 
 - Tool subscriptions.
 - Light asset purchases.
@@ -133,7 +147,9 @@ The remaining $500 may be used for:
 - Small distribution tests.
 - Margin or reserve.
 
-No recurring paid tool should be added unless it clearly improves Grace Gems output and fits inside the remaining monthly budget.
+No recurring paid tool or other cost should be added unless a separate System
+Engineer approval names the amount and it clearly improves Grace Gems output
+within the monthly ceiling.
 
 ## Success Criteria
 
@@ -144,7 +160,7 @@ This service package is working when:
 - Customer questions turn into better FAQ and content assets.
 - Artistic Director activation, workload, and capacity are visible and
   sustainable.
-- The $1,000 retainer covers planned Artistic Director compensation and
-  operating needs without implying payment authority.
+- Approved Artistic Director costs remain within the `$1,000/month` operating
+  ceiling without implying payment or spending authority.
 - The monthly review produces better priorities for the next month.
 - The [creative abundance ledger](creative-abundance-ledger-template.md) shows product knowledge and customer questions turning into reusable assets.

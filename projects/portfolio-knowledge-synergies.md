@@ -16,7 +16,7 @@ The primitive should move across the portfolio; the project-specific facts, prom
 
 | Knowledge lane | First visible source | Applies to | Reusable pattern |
 | --- | --- | --- | --- |
-| Tax and financial governance | Media Production planned Artistic Director compensation; Book Club donor-funded retainer; retired Non-Profit project real estate asset | All customers with money, assets, donations, retainers, compensation, or contractor payments | Classify cash movement conservatively, preserve evidence, and prepare professional-review questions before final positions |
+| Tax and financial governance | Media Production Artistic Director operating ceiling; Book Club donor-funded retainer; retired Non-Profit project real estate asset | All customers with money, assets, donations, retainers, compensation, or contractor payments | Classify cash movement conservatively, preserve evidence, and prepare professional-review questions before final positions |
 | Evidence discipline | Grace Gems claims; Mountain Villa property proof; Learning Core portfolio artifacts | All customers | Do not trust memory alone; tie decisions to receipts, approvals, source notes, photos, exports, or artifacts |
 | Cadence | Book Club monthly rhythm; Media Production weekly production review; Learning Core daily/weekly review; Mountain Villa seasonal gates | All customers | Match review rhythm to the natural operating cycle instead of forcing one cadence everywhere |
 | Trust architecture | Grace Gems storefront signals and owner-approved claims | Media Production, retired Non-Profit project, Learning Core, Book Club | Make trust visible without inventing promises; separate draft language from approved external claims |
@@ -30,8 +30,8 @@ The primitive should move across the portfolio; the project-specific facts, prom
 
 ## Compensation and contractor tax synergy
 
-The planned Artistic Director compensation teaches a reusable guardrail:
-position design and budget classification do not establish an engagement model,
+The Artistic Director operating ceiling teaches a reusable guardrail: position
+design and a budget ceiling do not establish an allocation, engagement model,
 payment authority, or tax treatment.
 
 When a customer wants to pay a contractor, Anyang Intelligence should ask:

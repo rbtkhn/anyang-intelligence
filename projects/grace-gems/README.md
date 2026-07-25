@@ -76,6 +76,12 @@ The system does not replace human ownership. The Chief Executive prepares
 decisions and coordination; the Executive Assistant carries approved work
 across the real-world interface and returns evidence so the business can learn.
 
+When separately activated, the Artistic Director is an internal Anyang
+Intelligence delivery function included in the Grace Gems Media Production
+service package. Grace Gems receives approved creative outputs; it does not
+employ, own, activate, or directly task the Council position. The Grace Gems
+CEO retains authority over client creative direction and adoption.
+
 ## Real-world interface routing
 
 The Executive Assistant is Executive Council's interface with the real world

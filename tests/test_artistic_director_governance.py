@@ -30,9 +30,12 @@ def test_media_production_remains_service_line_under_vacant_artistic_director():
     assert "internal department and service line of Anyang Intelligence" in readme
     assert "Governing creative role: Artistic Director" in readme
     assert "vacant and inactive" in readme
-    assert "Planned Artistic Director compensation: $500 per month" in readme
-    assert "does not authorize engagement or payment" in dashboard
-    assert "$1,000/month Grace Gems retainer" in dashboard
+    assert "Artistic Director monthly operating envelope: $1,000" in readme
+    assert "included in the Media Production package" in readme
+    assert "not a separately billed or client-owned position" in readme
+    assert "Current spend authority: $0" in readme
+    assert "current spend authority `$0`" in dashboard
+    assert "$1,000/month Grace Gems service-package retainer" in dashboard
 
 
 def test_artistic_production_gate_requires_activation_authority_and_evidence():
@@ -45,7 +48,7 @@ def test_artistic_production_gate_requires_activation_authority_and_evidence():
         "Lane and source boundary",
         "Three to five materially different directions",
         "Applicable client authority",
-        "planned Artistic Director compensation as uncommitted",
+        "`$1,000/month` Artistic Director operating envelope as a ceiling",
         "transaction-record action ID",
         "Artistically review-ready",
     ):
@@ -104,6 +107,7 @@ def test_active_media_production_routes_to_artistic_director():
     assert "creative-production-operator-onboarding.md" not in combined
     assert "source/onboard the outsourced Creative Production Operator" not in combined
     assert "production brief for the Creative Production Operator" not in combined
+    assert "Planned Artistic Director compensation: $500" not in combined
 
 
 def test_steward_contract_uses_five_position_governing_rule():
@@ -140,15 +144,71 @@ def test_structural_migration_receipt_preserves_decision_lineage():
     assert "fc060bb4b6ed59f3bfa41a627a798df52a24b364" in migration
 
 
-def test_compensation_is_planned_and_does_not_authorize_payment():
+def test_operating_ceiling_does_not_authorize_allocation_or_payment():
     install = read(PROJECT / "executive-os-install.md")
     service = read(PROJECT / "grace-gems-monthly-service-package.md")
     tax_skill = read(ROOT / "skills/tax-financial-governance/SKILL.md")
+    tax_skill_normalized = " ".join(tax_skill.split())
 
-    assert "$500 per month; uncommitted" in install
-    assert "compensation plan, not permission to engage or" in install
-    assert "does not authorize engagement or payment" in service
-    assert "does not establish employment, contractor classification" in tax_skill
+    assert "`$1,000/month` amount is a total operating ceiling" in install
+    assert "No portion is pre-classified as compensation" in install
+    assert "does not pre-classify any portion as compensation" in service
+    assert "No portion is pre-allocated to compensation" in tax_skill_normalized
+    assert (
+        "does not establish employment, contractor classification"
+        in tax_skill_normalized
+    )
+
+
+def test_grace_gems_activation_proposal_remains_inactive_and_unfunded():
+    proposal = read(
+        ROOT
+        / "docs/"
+        "executive-council-artistic-director-grace-gems-activation-proposal-2026-07-25.md"
+    )
+    brief = read(PROJECT / "grace-gems-owned-channel-visual-design-brief-2026-07-25.md")
+
+    assert "**State:** `prepared — not activated`" in proposal
+    assert "Human holder: `Missing`" in proposal
+    assert "AI runtime: `Missing`" in proposal
+    assert "Spend authorized by this proposal: `$0`" in proposal
+    assert "Separate Artistic Director charge to Grace Gems: none" in proposal
+    assert "internal Anyang Intelligence delivery function" in proposal
+    assert "not allocated specifically" in proposal
+    assert "does not task the Artistic Director directly" in proposal
+    assert "Any unchecked item keeps the Artistic Director inactive" in proposal
+    assert "does not staff or activate" in proposal
+
+    assert "held pending Artistic Director activation" in brief
+    assert "Artistic Director monthly operating ceiling: `$1,000`" in brief
+    assert "Task-level tool, asset, or production allocation: `$0" in brief
+    assert "No ideation, production, delivery, publication, spend" in brief
+
+
+def test_anyang_operating_cost_baseline_preserves_planning_and_spend_boundaries():
+    baseline = read(
+        ROOT
+        / "docs/"
+        "anyang-intelligence-monthly-operating-cost-baseline-2026-07-25.md"
+    )
+    dashboard = read(ROOT / "projects/operating-portfolio-dashboard.md")
+
+    for line in (
+        "| Office rent | `$5,000` |",
+        "| Utilities | `$1,000` |",
+        "| Transportation | `$1,000` |",
+        "| Artistic Director | `$1,000` |",
+        "| Executive Assistant | `$5,000` |",
+        "| Chief Executive | `$1,000` |",
+        "| **Total** | **`$14,000`** |",
+        "baseline is `$168,000`",
+        "Current spend authorized by this record: `$0`",
+        "not separately billed to Grace Gems",
+    ):
+        assert line in baseline
+
+    assert "planning baseline of `$14,000`" in dashboard
+    assert "funding source and allocation remain unapproved" in dashboard
 
 
 def test_artistic_director_does_not_replace_external_interface_or_client():

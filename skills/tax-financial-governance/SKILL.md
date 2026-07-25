@@ -179,13 +179,27 @@ Use one:
 Preserve these distinctions unless the operator gives a new confirmed fact:
 
 - Grace Gems paying Media Production is service revenue to Media Production, but Grace Gems business economics remain unknown.
+- Anyang Intelligence's current recurring-revenue planning baseline is
+  `$1,000/month`, entirely from the Grace Gems Media Production service
+  package. Approved invoices, payment records, service periods, and accounting
+  evidence remain required before reporting collected or recognized revenue.
 - Book Club participation is free; donor-funded support is not paid access.
 - Learning Core's `$1,000` retainer is payment from Learning Core to Anyang Intelligence for a scoped 30-Day Personalized Learning Plan for new students, including onboarding. Customer pricing has not been designed yet.
+- Learning Core contributes `$0` to current MRR. Its monthly continuity
+  subscription is an unvalidated offer hypothesis, and its `$1,000` retainer
+  record is one-time rather than recurring.
 - Mountain Villa has property stewardship implications but no current revenue.
-- Media Production's `$500/month` Artistic Director allocation is planned
-  compensation while the durable human-AI hybrid position is vacant and
-  inactive. It does not establish employment, contractor classification,
-  engagement, payment, or spending authority.
+- Media Production's Artistic Director has a `$1,000/month` total operating
+  ceiling in Anyang Intelligence's organization-level monthly operating-cost
+  baseline for the proposed Grace Gems activation while the durable human-AI
+  hybrid position remains vacant and inactive. It supports the included
+  service function but is not allocated specifically from the Grace Gems
+  retainer. No portion is pre-allocated to compensation, tools, assets, or
+  production support. The ceiling does not establish employment, contractor
+  classification, engagement, payment, or spending authority.
+- Artistic Director delivery is included in Anyang Intelligence's Grace Gems
+  Media Production service package. It is not a separate charge or a Grace
+  Gems employment, contractor, ownership, or direct-tasking relationship.
 - Before Artistic Director payment, preserve the engagement model,
   country/residency, where the work is physically performed, agreement,
   invoice or payroll basis, payment record, and applicable tax documentation.

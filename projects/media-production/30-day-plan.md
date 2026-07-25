@@ -22,9 +22,10 @@ This plan creates the first recurring review surfaces for Media Production as an
 
 ## Week 3: Budget and Throughput Review
 
-- Preserve the planned Artistic Director compensation as uncommitted and
-  compare any separately activated capacity against approved workload.
-- Review discretionary spend against abundance and reuse value.
+- Preserve the `$1,000/month` Artistic Director operating ceiling as
+  unallocated and compare any separately activated capacity against approved
+  workload.
+- Review only separately approved spend against abundance and reuse value.
 - Identify which asset types produce the strongest reviewable output for the least churn.
 
 ## Week 4: Operating Review and Next Cycle

@@ -13,9 +13,9 @@ state; it does not redefine Council authority or runtime status.
 
 | Project | Current status | Revenue / asset status | Active obligation | Next decision | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| [Media Production](media-production/README.md) | Active service line; Artistic Director position vacant and inactive | $1,000/month Grace Gems retainer; $500/month planned Artistic Director compensation, uncommitted; $500/month remaining budget | Preserve Grace Gems service obligations without assuming production capacity; maintain Predictive History creative development lane | Approve an Artistic Director activation before production, then confirm the first bounded brief | High |
+| [Media Production](media-production/README.md) | Active service line; Grace Gems activation proposal prepared; Artistic Director is an included internal delivery function but remains vacant and inactive | $1,000/month Grace Gems service-package retainer; `$1,000/month` Artistic Director operating ceiling; no separate client charge; allocation unapproved; current spend authority `$0` | Prepare the bounded Grace Gems owned-channel visual-design cohort without transferring Council-position or tasking authority to the client | Complete the holder, runtime, source, tool, capacity, allocation, term, and client-input fields before an activation decision | High |
 | [Grace Gems](grace-gems/README.md) | Phase 2 intake active; three bounded review scopes approved; evidence access, review execution, and implementation held | Pays Media Production $1,000/month for creative support; business economics and effective context remain unconfirmed | Complete the exact evidence-access, privacy, reviewer, persistence, and measurement gates for the approved scopes | Obtain exact evidence-access authority, private-location reference, reviewer access, and review date before executing any approved scope | Medium-high |
-| [Learning Core](learning-core/README.md) | Active high-trust education service | $1,000/month confirmed recurring revenue plus a separate $1,000 one-time retainer; scoped deliverable is a 30-day collaborative build of the family's `Learning Core`, including onboarding; Khan Academy Kids selected as free starter iPad app; reading basket adopted as first physical literacy tool; student portfolio adopted for physical work, digital work, proud work, milestones, and reports; monthly portfolio review adopted as first reporting layer; parent intake, lighter onboarding survey, adaptive Phase 2 follow-up, continuity pressure test, and Khan transition-readiness doctrine are now defined | Collaborate with real parents to build a usable `Learning Core`, classify readiness as Ready / Provisional / Hold, and draft only from parent-approved inputs while preserving parent authority, child safety, and evidence boundaries | Maintain agreed monthly continuity service while running the onboarding readiness checklist before drafting | Medium |
+| [Learning Core](learning-core/README.md) | Active high-trust education service | `$0` current MRR; separate `$1,000` one-time retainer record remains pending approved accounting evidence; monthly continuity subscription is an unvalidated offer hypothesis; scoped deliverable is a 30-day collaborative build of the family's `Learning Core`, including onboarding; Khan Academy Kids selected as free starter iPad app; reading basket adopted as first physical literacy tool; student portfolio adopted for physical work, digital work, proud work, milestones, and reports; monthly portfolio review adopted as first reporting layer; parent intake, lighter onboarding survey, adaptive Phase 2 follow-up, continuity pressure test, and Khan transition-readiness doctrine are now defined | Collaborate with real parents to build a usable `Learning Core`, classify readiness as Ready / Provisional / Hold, and draft only from parent-approved inputs while preserving parent authority, child safety, and evidence boundaries | Validate the entry service and recurring continuity offer before counting subscription revenue | Medium |
 | [Mountain Villa](mountain-villa/README.md) | Property governance prototype | 5 acres in Jefferson County, Colorado; owner-reported private well drawing from a clean aquifer and enclosure by national/state park lands; $200,000 operator-provided asset valuation pending verification; owner-set sale objective: $500,000; no revenue attached | Build risk-first property operating memory and seasonal readiness loop | Identify top property risks, systems, and first seasonal review gate | Medium-low |
 | [Book Club](book-club/README.md) | Free local community context with donor support | Free participation; $1,000 donor-funded retainer for shared supplemental materials/services; optional member donations may also support shared needs | Steward donor-funded support while preserving monthly cadence, selection memory, host coordination, and member experience without making participation transactional | Decide which shared materials or services should use donor funds without over-managing the club | Medium |
 
@@ -35,12 +35,29 @@ This view distinguishes the work type, relationship, intended result, and immedi
 
 Known cash events and allocations:
 
+- The System Engineer has set an Anyang Intelligence monthly operating-cost
+  planning baseline of `$14,000`: office rent `$5,000`, utilities `$1,000`,
+  transportation `$1,000`, Artistic Director `$1,000`, Executive Assistant
+  `$5,000`, and Chief Executive `$1,000`. The amounts are planning envelopes,
+  not evidence of incurred or paid expenses; current spend authority created
+  by the baseline is `$0`.
+- Current Anyang Intelligence MRR is `$1,000/month`, entirely from the Grace
+  Gems Media Production service package. Against the `$14,000/month`
+  operating-cost baseline, this is `7.1%` coverage and leaves a
+  `$13,000/month` uncovered planning requirement before non-recurring or
+  unrecorded funding.
 - Media Production receives $1,000/month from Grace Gems.
-- Media Production has `$500/month` in planned Artistic Director compensation;
-  it is uncommitted and does not authorize engagement or payment.
-- Media Production has $500/month remaining for tools, light asset costs, experiments, support, or margin.
+- Media Production has a `$1,000/month` Artistic Director operating ceiling
+  as an organization-level cost line supporting the included service; the
+  funding source and allocation remain unapproved.
+- The Artistic Director is included as Anyang Intelligence's internal delivery
+  function, not a separately billed Grace Gems role.
+- No amount is allocated to compensation, tools, assets, production support,
+  experiments, or margin; current spend authority is `$0`.
 - Learning Core has paid Anyang Intelligence a $1,000 one-time retainer for a scoped 30-day collaborative build of the family's `Learning Core`, including onboarding.
-- Learning Core provides $1,000/month in confirmed recurring continuity-service revenue to Anyang Intelligence, separate from the one-time retainer.
+- Learning Core contributes `$0` to current MRR. Its monthly continuity
+  subscription is an unvalidated offer hypothesis, and its separate `$1,000`
+  one-time retainer record remains pending approved accounting evidence.
 - Student Operating System Startup Bundle includes Khan Academy Kids as the free starter iPad app.
 - Student Operating System Startup Bundle includes a reading basket as the first physical literacy tool.
 - Student Operating System Startup Bundle includes a student portfolio for physical work, digital work, proud work, milestones, and reports.
@@ -55,6 +72,13 @@ Known cash events and allocations:
 
 Unknown or pending:
 
+- Anyang Intelligence office lease, utility, transportation, role-engagement,
+  allocation, payroll or invoice, and payment evidence for the
+  [monthly operating-cost
+  baseline](../docs/anyang-intelligence-monthly-operating-cost-baseline-2026-07-25.md).
+- Grace Gems invoice, payment, service-period, renewal, and accounting evidence
+  supporting the `$1,000/month` [recurring-revenue
+  baseline](../docs/anyang-intelligence-recurring-revenue-baseline-2026-07-25.md).
 - Grace Gems business revenue, margins, product economics, and customer-support patterns.
 - Learning Core parent intake responses, timeline, safety rules, and parent approval decisions.
 - Learning Core parent observations from initial Khan Academy Kids use.
@@ -73,10 +97,13 @@ Unknown or pending:
 ### Media Production
 
 - Operate the Grace Gems $1,000/month service package.
-- Protect `$500/month` as planned Artistic Director compensation without
-  treating it as engagement or payment authority.
+- Keep the `$1,000/month` Artistic Director operating ceiling unallocated until
+  exact compensation or operating costs receive separate approval.
 - Treat Artistic Director production capacity as zero until a holder and
   runtime are separately activated.
+- Complete the [Grace Gems activation
+  proposal](../docs/executive-council-artistic-director-grace-gems-activation-proposal-2026-07-25.md)
+  and first owned-channel visual-design mandate before production.
 - Use the artistic production gate and approved brief before persistent
   ideation or production.
 - Maintain Predictive History as a creative development lane without letting it displace paid Grace Gems obligations.
@@ -97,7 +124,9 @@ Unknown or pending:
 - Treat the $1,000 retainer as payment from Learning Core to Anyang Intelligence for the scoped 30-day collaborative build of the family's `Learning Core`, including onboarding.
 - Use the parent intake message or lighter onboarding survey, then the onboarding readiness checklist, before drafting the plan.
 - Do not draft the plan until parent intake responses, timeline, safety boundaries, and parent approval rules are explicit enough to classify the case as Ready or Provisional.
-- Treat the one-time retainer as separate from the confirmed $1,000/month continuity-service revenue.
+- Treat the one-time retainer as separate from the unvalidated monthly
+  continuity offer; count `$0` Learning Core MRR until enrollment, payment,
+  retention, and support-load evidence is approved.
 - Use Khan Academy Kids only as a parent-supervised starter resource, not as the full curriculum or proof of mastery.
 - Treat the Khan Academy Kids -> main Khan Academy threshold as a capability-readiness doctrine, not as course-completion authority.
 
@@ -117,8 +146,9 @@ Unknown or pending:
 ## Immediate Decision Queue
 
 1. **Media Production:** What are the first Grace Gems deliverables for week one?
-2. **Artistic Director:** Who will hold the human-AI hybrid position, and what
-   bounded activation should precede production work?
+2. **Artistic Director:** Who will hold the human-AI hybrid position, which AI
+   runtime and tools will be approved, and what material capacity and allocation
+   fit inside the `$1,000/month` operating ceiling?
 3. **Learning Core:** What parent intake or onboarding-survey responses are needed to build a usable first-month `Learning Core` and classify the case as Ready, Provisional, or Hold?
 4. **Grace Gems:** Which bounded Phase 2 review question, evidence membrane,
    success metric, and approval boundary should the CEO confirm next?

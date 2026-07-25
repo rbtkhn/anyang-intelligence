@@ -11,18 +11,21 @@ Media Production is a creative operating department:
 - Operating challenge: turn ideas into finished media and supplementary artistic assets consistently without losing creative quality, strategic focus, or audience learning.
 - First paying client: Grace Gems.
 - Grace Gems monthly retainer: $1,000.
+- Service relationship: the Artistic Director is an internal Anyang
+  Intelligence delivery function included in the Media Production package,
+  not a separately billed or client-owned position.
 - Grace Gems need: marketplace listing, product, social, and customer-support creative support.
 - Creative development client: Predictive History YouTube channel.
 - Predictive History need: create diverse supplementary artistic content that supports Predictive History videos.
-- Monthly operating budget: $1,000.
+- Artistic Director monthly operating envelope: $1,000, encompassing any
+  separately approved compensation, tools, assets, or production support.
 - Governing creative role: Artistic Director, a durable Executive Council
   position.
 - Position state: vacant and inactive pending a separate System Engineer
   activation receipt.
-- Planned Artistic Director compensation: $500 per month; uncommitted and not
-  authority to engage or pay.
-- Starting discretionary production budget after the planned compensation
-  allocation: $500 per month.
+- Compensation, tools, assets, and production-support allocation: not yet
+  approved.
+- Current spend authority: $0.
 
 ## Artistic Director operating role
 
@@ -38,6 +41,10 @@ When separately activated and tasked, the Artistic Director:
 - Track distribution experiments and audience signals.
 - Preserve what worked, what missed, and what should change next.
 
+Grace Gems receives approved creative service outputs, not authority over the
+Council position or runtime. Grace Gems CEO direction enters through the
+Executive Assistant; the Chief Executive prepares the bounded internal brief.
+
 The Artistic Director does not set business priorities, publish, deliver
 externally, spend, approve claims, approve client creative decisions, contact
 clients, or task the Executive Assistant. The Executive Assistant remains the
@@ -48,12 +55,15 @@ sole normal real-world interface.
 Media Production begins as a small-budget creative operator funded by a first paying client:
 
 - Monthly revenue: $1,000 from Grace Gems.
-- Planned Artistic Director compensation: $500 per month.
-- Remaining monthly budget: $500 for tools, subscriptions, contractors, asset purchases, distribution tests, or reserves.
+- Artistic Director operating envelope: up to $1,000 per month against the
+  existing Grace Gems service revenue.
+- Internal allocation: uncommitted; no amount is yet assigned to compensation,
+  tools, assets, contractors, distribution, or reserves.
 - First capacity assumption: no Artistic Director production capacity exists
   until a holder and runtime are separately activated.
 
-The planned compensation is not permission to contract, employ, pay, or spend.
+The operating envelope is not permission to contract, employ, pay, purchase,
+subscribe, reimburse, or otherwise spend.
 Media Production must not assume a filled position, large team, paid-ad budget,
 or unlimited creative bandwidth.
 
@@ -109,6 +119,13 @@ persisting ideation, beginning production, or consuming material capacity.
 Use the [Artistic Production Brief
 Template](artistic-production-brief-template.md) for the approved objective,
 source boundary, concept directions, production scope, and evidence return.
+
+Use the [Grace Gems activation
+proposal](../../docs/executive-council-artistic-director-grace-gems-activation-proposal-2026-07-25.md)
+and [owned-channel visual-design
+brief](grace-gems-owned-channel-visual-design-brief-2026-07-25.md) to prepare
+the first bounded cohort. Both remain inactive or held until their missing
+authority fields are complete.
 
 The former Creative Production Operator onboarding, testing, readiness, ramp,
 training, assignment-gate, and assignment-template files are superseded

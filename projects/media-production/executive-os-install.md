@@ -30,16 +30,16 @@ Anyang Intelligence should govern Media Production as its parent organization:
 | First paying client | Grace Gems |
 | First paying client need | Marketplace listing, product, social, and customer-support creative support |
 | Monthly client revenue | $1,000 from Grace Gems |
+| Artistic Director service relationship | Internal Anyang Intelligence delivery function included in the Media Production package; not separately billed or transferred to Grace Gems |
 | Creative development client | Predictive History YouTube channel |
 | Creative development need | Diverse supplementary artistic content for Predictive History videos |
 | Core work | Produce and distribute digital media and supplementary artistic assets |
-| Monthly budget | $1,000 |
+| Artistic Director monthly operating envelope | $1,000; no spend authority |
 | Governing creative role | Artistic Director, durable Executive Council position |
 | Position state | Vacant and inactive pending separate activation |
-| Planned Artistic Director compensation | $500 per month; uncommitted |
-| Remaining monthly production budget | $500 |
+| Compensation and operating-cost allocation | Missing; no category is pre-approved |
 | Primary cadence | Editorial planning, production, publishing, review |
-| Primary constraint | No activated Artistic Director capacity, Grace Gems client commitments, $500 discretionary monthly budget, quality control, publishing consistency, audience relevance |
+| Primary constraint | No activated Artistic Director capacity, Grace Gems client commitments, unallocated $1,000 monthly ceiling, quality control, publishing consistency, audience relevance |
 | Primary operating risk | Overcommitting a one-employee production operation or producing scattered assets without product/client fit, review, rights clarity, or learning |
 | Executive OS job | Convert Grace Gems sales needs, Predictive History creative needs, audience/customer signals, and production capacity into a coherent creative production pipeline |
 
@@ -50,6 +50,8 @@ Anyang Intelligence should govern Media Production as its parent organization:
 - Creative abundance ledger.
 - Client profile.
 - Grace Gems service package.
+- Internal-service relationship between Anyang Intelligence, the Artistic
+  Director function, and Grace Gems client authority.
 - Grace Gems product and promotion backlog.
 - Grace Gems customer questions and objection patterns.
 - Predictive History channel goals.
@@ -79,10 +81,9 @@ Anyang Intelligence should govern Media Production as its parent organization:
 
 The Executive OS should prepare structured decisions for:
 
-- How to allocate the $1,000 monthly budget.
-- How to protect the Artistic Director's planned $500 monthly compensation
-  without treating it as engagement or payment authority.
-- How to use the remaining $500 monthly production budget.
+- Whether and how to allocate the `$1,000/month` Artistic Director operating
+  ceiling among compensation, tools, assets, production support, or retained
+  margin without treating the ceiling as spending authority.
 - Which Grace Gems products need creative support first.
 - Which Grace Gems customer questions should become FAQ or selling content.
 - Which Grace Gems promotional concepts should enter production.
@@ -154,7 +155,7 @@ The weekly review should answer:
 - What is blocked?
 - Is the Artistic Director activated, and how much approved capacity is
   committed?
-- How much of the $500 discretionary monthly budget remains?
+- How much of the approved task-level and `$1,000` monthly ceilings remains?
 - Which Grace Gems deliverables are due this week?
 - Which Grace Gems products, customer questions, or promotions need creative support next?
 - Which ideas should be promoted, paused, or killed?
@@ -187,8 +188,9 @@ The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and
 - Preserve the Artistic Director position as vacant and inactive until a
   separate activation receipt names the human holder, AI runtime, tools,
   permissions, term, and revocation path.
-- Create the first monthly budget view: $500 planned Artistic Director
-  compensation and $500 discretionary production budget.
+- Create the first monthly budget view under a `$1,000` Artistic Director
+  operating ceiling, leaving compensation and operating-cost categories
+  unallocated until separately approved.
 - Before any Artistic Director engagement or payment, record the engagement
   model, agreement, invoice or payroll basis, payment details,
   country/residency and work-location statement, and applicable tax or
@@ -242,11 +244,13 @@ The Media Production installation is working when:
 
 The Executive OS recommends and prepares decisions. Humans retain final authority over creative direction, publication, client commitments, brand voice, rights decisions, spending, hiring, and external claims.
 
-## Artistic Director compensation governance
+## Artistic Director financial governance
 
-The planned `$500/month` is a compensation plan, not permission to engage or
-pay a holder. Before payment, preserve the engagement model, legal identity and
-business status, country of tax residency, work location, human/AI
-responsibility split, agreement, invoice or payroll basis, payment trail, and
-applicable tax documentation. Hold final classification for accountant review
-when work crosses jurisdictions or the engagement model is unclear.
+The `$1,000/month` amount is a total operating ceiling, not permission to
+engage or pay a holder or to purchase tools, assets, services, or distribution.
+No portion is pre-classified as compensation. Before any payment, preserve the
+engagement model, legal identity and business status, country of tax residency,
+work location, human/AI responsibility split, agreement, invoice or payroll
+basis, payment trail, and applicable tax documentation. Hold final
+classification for accountant review when work crosses jurisdictions or the
+engagement model is unclear.

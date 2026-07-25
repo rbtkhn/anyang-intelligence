@@ -27,8 +27,9 @@ Cadence: weekly, plus event-driven review before large assignments, unusual spen
 
 ### Capacity and Budget
 
-- How much contractor capacity is already committed?
-- How much of the discretionary monthly budget remains?
+- How much activated Artistic Director capacity is already committed?
+- What task-level allocation is approved, and how much of the
+  `$1,000/month` operating ceiling remains unallocated?
 - Which work created reusable abundance and which work was one-off?
 
 ### Learning
