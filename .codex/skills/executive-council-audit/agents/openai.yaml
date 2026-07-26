@@ -1,0 +1,4 @@
+interface:
+  display_name: "Executive Council Audit"
+  short_description: "Run bounded, evidence-led repository audits"
+  default_prompt: "Use $executive-council-audit to prepare a bounded, read-only audit of this repository."
