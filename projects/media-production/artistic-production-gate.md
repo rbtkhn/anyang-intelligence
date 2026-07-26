@@ -3,8 +3,9 @@
 Use this gate before the Artistic Director persists an ideation output, begins
 production, or consumes material capacity.
 
-**Position state:** `vacant and inactive — no production may begin until a
-separate activation and task approval are current`
+**Position state:** `interim holder appointed; acceptance and runtime
+activation pending — no production may begin until a separate activation and
+task approval are current`
 
 This gate protects source truth, project membranes, rights, claims, capacity,
 client authority, and budget. It does not approve publication, external

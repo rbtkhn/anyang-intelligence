@@ -46,6 +46,7 @@ from .repo_snapshot import collect_repo_snapshot
 from .harness_review import HarnessReviewError, record_decisions, render_harness, scan_harness
 from .automation_value_proof import validate_value_proof
 from .context_audit import audit_repository, render_markdown, write_audit
+from .cross_repo_audit import CrossRepoAuditError, collect_cross_repo_audit
 from .singularity_intake_validate import validate_lane
 from .recurrence_validate import validate_directory
 
@@ -74,6 +75,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERROR: {exc}")
         return 1
     except HarnessReviewError as exc:
+        print(f"ERROR: {exc}")
+        return 1
+    except CrossRepoAuditError as exc:
         print(f"ERROR: {exc}")
         return 1
 
@@ -216,6 +220,13 @@ def build_parser() -> argparse.ArgumentParser:
     harness_decide.add_argument("--approve", nargs="*", type=int, default=[])
     harness_decide.add_argument("--reject", nargs="*", type=int, default=[])
     harness_decide.set_defaults(func=cmd_harness_decide)
+    cross_repo = subparsers.add_parser(
+        "cross-repo-audit", help="Collect a sealed cross-repository audit receipt using an isolated snapshot"
+    )
+    cross_repo.add_argument("--repo", required=True)
+    cross_repo.add_argument("--config", required=True)
+    cross_repo.add_argument("--output", required=True)
+    cross_repo.set_defaults(func=cmd_cross_repo_audit)
     context_audit = subparsers.add_parser("context-audit", help="Run the read-only repository context-integrity audit")
     context_audit.add_argument("--repo", default=".")
     context_audit.add_argument("--format", choices=("markdown", "json"), default="markdown")
@@ -483,6 +494,14 @@ def cmd_harness_decide(args: argparse.Namespace) -> int:
     review = record_decisions(args.packet, args.approve, args.reject)
     print(f"Recorded proposal decisions: {review}")
     print("No source changes were applied; v1 has no apply command.")
+    return 0
+
+
+def cmd_cross_repo_audit(args: argparse.Namespace) -> int:
+    receipt = collect_cross_repo_audit(args.repo, args.config, args.output)
+    print(f"Created cross-repository audit receipt: {Path(args.output).resolve()}")
+    print(f"Sealed target: {receipt['head']}")
+    print("Commands ran in a disposable snapshot; target tracked content and Git status were observed unchanged.")
     return 0
 
 

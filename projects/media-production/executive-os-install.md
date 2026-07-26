@@ -185,9 +185,10 @@ The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and
 - Confirm the Grace Gems $1,000/month service package.
 - Create the first Grace Gems product and customer-support creative backlog.
 - Capture Predictive History channel context, audience, topics, and visual needs.
-- Preserve the Artistic Director position as vacant and inactive until a
-  separate activation receipt names the human holder, AI runtime, tools,
-  permissions, term, and revocation path.
+- Preserve the Artistic Director position as inactive after the Executive
+  Assistant's interim appointment until holder acceptance and a separate
+  activation receipt name the AI runtime, tools, permissions, term, and
+  revocation path.
 - Create the first monthly budget view under a `$1,000` Artistic Director
   operating ceiling, leaving compensation and operating-cost categories
   unallocated until separately approved.

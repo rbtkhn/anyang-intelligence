@@ -143,7 +143,7 @@ The Artistic Director returns:
 
 Missing:
 
-- named Artistic Director holder and runtime;
+- Executive Assistant acceptance and named Artistic Director runtime;
 - activation receipt;
 - Grace Gems CEO brand, collection, audience, and source selections;
 - exact task approval and material-capacity limit;

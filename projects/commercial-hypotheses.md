@@ -11,6 +11,7 @@ The goal is not to declare final products. The goal is to identify which install
 | [Learning Core](learning-core/README.md) | Homeschooling parents / microschool parents | Student Operating System for new-student onboarding, collaborative `Learning Core` build, parent review, portfolio evidence, and continuity support | Free 30-day collaborative build of the family's `Learning Core`, then monthly subscription for chat group, premium newsletters, personalized consultation, and early upgrades; current builder-side fact is a $1,000 one-time retainer paid from Learning Core to Anyang Intelligence | Build-led proof first, then parent-retention and continuity conversion proof | Safe new-student onboarding, parent trust, usable independent handoff after 30 days, portfolio value, and retention into ongoing support | Very high | High if trust can be earned |
 | [Media Production](media-production/README.md) | Small media teams, creators, agencies; first paying client is Grace Gems; Predictive History is creative development lane | Creative-production service with Artistic Director as Anyang Intelligence's included internal delivery function for ideation, editorial planning, marketplace creative support, supplementary artistic content, production QA, distribution support, abundance ledger, and learning | First proof: $1,000/month Grace Gems service package includes Artistic Director delivery when activated; `$1,000/month` internal operating ceiling has no pre-approved allocation or spend; external hypothesis: $200-$1,000/month per team or install-first package | Founder-led outbound, creator network, Grace Gems cash-flow case study, Predictive History creative portfolio | Activated Artistic Director capacity, reliable Grace Gems deliverables, reusable asset cadence, quality gate adoption, abundance ledger evidence, audience/customer learning loop | Medium | High |
 | [Grace Gems](grace-gems/README.md) | Etsy sellers / small marketplace businesses | Marketplace operations OS for listing gates, margin, SEO, customer promise, and feedback loops | $50-$200/month or service-led shop audit | Internal proof first, then seller communities / marketplace consultants | Improved listing quality score, margin visibility, reduced buyer confusion | Medium | Medium |
+| AI repository operators | Founders, technical operators, research directors, editorial directors, and AI operations leads | [AI Repository Assurance Review](../docs/analysis/ai-repository-assurance-commercial-offer-2026-07-25.md): a sealed, read-only review of declared operating state, controls, and evidence lineage | Founding-pilot hypothesis: `$3,000` fixed; standard-review hypothesis: `$5,000` after proof; neither is approved for sale | Complete a third owner-authorized benchmark and customer-safe delivery rehearsal before any named outreach | Kernel disposition improves from `revise` to `adopt` or commercially bounded `narrow`; accepted-finding precision `>=80%`; trace reconstruction `>=90%`; total delivery `<=8` Anyang hours; approved private-data and commercial-use controls | Medium-high | High if the proof gate passes |
 | [Mountain Villa](mountain-villa/README.md) | Rural property owners / family property managers | Property risk and continuity OS for maintenance, wildfire, utilities, access, and readiness | $20-$100/month or seasonal readiness install | Niche content, local services, insurance/contractor adjacency | Clearer risk ranking, completed mitigation proof, readiness reviews | High | Medium-low |
 | [Book Club](book-club/README.md) | Local book club organizers / donor-supported community groups | Lightweight community cadence and memory assistant with optional shared-material support | Free participation; optional donations; current proof has $1,000 donor-funded shared-material retainer | Community-led demo, local organizer network, donor-supported materials/services | Reduced organizer burden, better book selection and discussion memory, donor funds stewarded without making participation transactional | Low-medium | Low as standalone; useful as community-abundance proof |
 
@@ -19,18 +20,25 @@ The goal is not to declare final products. The goal is to identify which install
 1. **Media Production** has the cleanest near-term B2B shape: clear buyer,
    active `$1,000/month` Grace Gems retainer, defined Artistic Director
    position, lower safety burden than education, and measurable outputs. The
-   position is vacant and inactive, so current production capacity is zero.
-2. **Learning Core** has a strong product-building path, but the trust, safety, accountability, and product quality bar is much higher, so the free-entry and continuity-subscription model now needs real proof.
+   Executive Assistant is appointed as interim human holder, but acceptance
+   and runtime activation remain pending, so current production capacity is
+   zero.
+2. **AI Repository Assurance Review** has a strong fixed-fee B2B shape and a
+   functioning two-repository kernel, but it remains pre-commercial while the
+   kernel disposition is `revise`, review cost is unmeasured, and private-data
+   and commercial-use controls remain unapproved.
+3. **Learning Core** has a strong product-building path, but the trust, safety, accountability, and product quality bar is much higher, so the free-entry and continuity-subscription model now needs real proof.
 4. **Grace Gems** is the best internal proof case, but should prove value internally before becoming an external marketplace-seller offer.
 5. **Mountain Villa** is useful product evidence but likely niche commercially unless paired with local services, insurance, or seasonal readiness content.
 6. **Book Club** is best treated as a lightweight community-abundance proof: free participation, donor-supported materials, and social cadence without turning the club transactional.
 
 ## Product Implications
 
-The commercial opportunities split into three motions:
+The commercial opportunities split into four motions:
 
 - **Free-entry continuity model:** Learning Core.
-- **Team SaaS / install-led B2B:** Media Production.
+- **Team service / install-led B2B:** Media Production.
+- **Fixed-fee assurance:** AI Repository Assurance Review.
 - **Demo / donor-supported community:** Book Club.
 
 The strongest next product work is to deepen one offer until it has:
@@ -49,5 +57,16 @@ Deepen **Media Production** first if the goal is fastest credible commercial pro
 Deepen **Learning Core** first if the goal is the boldest child/family product build.
 
 Deepen **Grace Gems** first if the goal is safest internal proof before external sales.
+
+Complete the **AI Repository Assurance Review** proof gate first if the goal is
+a higher-ticket, low-marginal-tool-cost B2B service. Do not sell it while the
+kernel remains at `revise`.
+
+The [AI Repository and Website Assurance
+Review](../docs/analysis/ai-repository-and-website-assurance-offer-2026-07-25.md)
+is a held higher-value extension for customers whose AI repository and website
+shape the same customer experience. Its founding-price hypothesis is `$4,500`,
+but it is not a separate active offer and cannot be tested or sold until the
+parent repository kernel clears its proof gate.
 
 Scope **Learning Core** and **Book Club** retainers/support next if the goal is reducing paid-obligation uncertainty.

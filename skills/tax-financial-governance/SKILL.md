@@ -191,8 +191,9 @@ Preserve these distinctions unless the operator gives a new confirmed fact:
 - Mountain Villa has property stewardship implications but no current revenue.
 - Media Production's Artistic Director has a `$1,000/month` total operating
   ceiling in Anyang Intelligence's organization-level monthly operating-cost
-  baseline for the proposed Grace Gems activation while the durable human-AI
-  hybrid position remains vacant and inactive. It supports the included
+  baseline for the proposed Grace Gems activation while the Executive
+  Assistant's interim-holder appointment remains unaccepted and the runtime
+  inactive. It supports the included
   service function but is not allocated specifically from the Grace Gems
   retainer. No portion is pre-allocated to compensation, tools, assets, or
   production support. The ceiling does not establish employment, contractor

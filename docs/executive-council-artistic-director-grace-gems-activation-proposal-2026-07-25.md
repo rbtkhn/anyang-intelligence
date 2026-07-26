@@ -2,7 +2,7 @@
 
 **Proposal ID:** `EC-ARTISTIC-ACTIVATION-PROP-2026-07-25-01`
 
-**State:** `prepared — not activated`
+**State:** `interim holder appointed — acceptance and activation pending`
 
 **Prepared by:** Chief Executive
 
@@ -115,11 +115,18 @@ trail, and applicable professional instruction.
 
 ### Tool state
 
-- AI runtime: `Missing`.
-- Human holder: `Missing`.
+- AI runtime: `Proposed — dedicated Codex Artistic Director task; exact task
+  and model identity missing; inactive`.
+- Human holder: `Executive Assistant — appointed by the System Engineer as
+  interim holder; acceptance not evidenced`.
 - Design tools: `Missing — no paid tool approved`.
 - Storage and persistence location: `Missing`.
 - External delivery channel: `not applicable to Artistic Director`.
+
+The appointment is controlled by the [interim-holder appointment
+receipt](executive-council-artistic-director-interim-holder-appointment-2026-07-25.md).
+Dual-role actions must declare either `Artistic Director` or `Executive
+Assistant` mode and use separately attributed execution and delivery evidence.
 
 ## Proposed term and cadence
 
@@ -197,7 +204,9 @@ transaction to `held` or `escalated`.
 - [x] Grace Gems purpose and lane are bounded.
 - [x] `$1,000/month` operating ceiling is recorded without spend authority.
 - [x] First proposed mandate is identified.
-- [ ] Human holder is named and has accepted the role boundary.
+- [x] Interim human holder is appointed.
+- [ ] Executive Assistant has accepted the role boundary and dual-role
+      controls.
 - [ ] AI runtime and model identity are named.
 - [ ] Exact tools, storage, and persistence locations are approved.
 - [ ] Exact permitted sources and any client evidence receipts are current.
@@ -222,6 +231,7 @@ Choose only after the missing fields are complete:
 - `Reject`; or
 - `Return for completion`.
 
-> This proposal prepares an activation decision. It does not staff or activate
-> the Artistic Director, authorize production, allocate compensation, approve
-> spend, or create Grace Gems client authority.
+> This proposal records the interim appointment and prepares an activation
+> decision. It does not prove holder acceptance, activate the Artistic
+> Director, authorize production, allocate compensation, approve spend, or
+> create Grace Gems client authority.

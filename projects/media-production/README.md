@@ -21,8 +21,9 @@ Media Production is a creative operating department:
   separately approved compensation, tools, assets, or production support.
 - Governing creative role: Artistic Director, a durable Executive Council
   position.
-- Position state: vacant and inactive pending a separate System Engineer
-  activation receipt.
+- Position state: Executive Assistant appointed as interim human holder;
+  acceptance and runtime activation pending; current production capacity is
+  zero.
 - Compensation, tools, assets, and production-support allocation: not yet
   approved.
 - Current spend authority: $0.
@@ -55,12 +56,13 @@ sole normal real-world interface.
 Media Production begins as a small-budget creative operator funded by a first paying client:
 
 - Monthly revenue: $1,000 from Grace Gems.
-- Artistic Director operating envelope: up to $1,000 per month against the
-  existing Grace Gems service revenue.
+- Artistic Director operating envelope: up to $1,000 per month as an Anyang
+  Intelligence organization-level cost line; funding-source allocation is
+  unapproved.
 - Internal allocation: uncommitted; no amount is yet assigned to compensation,
   tools, assets, contractors, distribution, or reserves.
 - First capacity assumption: no Artistic Director production capacity exists
-  until a holder and runtime are separately activated.
+  until the interim holder accepts and the runtime is separately activated.
 
 The operating envelope is not permission to contract, employ, pay, purchase,
 subscribe, reimburse, or otherwise spend.
