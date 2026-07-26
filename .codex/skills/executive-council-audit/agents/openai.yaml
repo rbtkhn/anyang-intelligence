@@ -1,4 +1,4 @@
 interface:
   display_name: "Executive Council Audit"
-  short_description: "Run bounded, evidence-led repository audits"
-  default_prompt: "Use $executive-council-audit to prepare a bounded, read-only audit of this repository."
+  short_description: "Run and reconcile bounded repository audits"
+  default_prompt: "Use $executive-council-audit to prepare or reconcile a bounded, read-only repository audit."

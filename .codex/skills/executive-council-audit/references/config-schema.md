@@ -52,6 +52,10 @@ The configuration records mechanical collection; it does not grant authority.
 - `commands[].id`: use a unique stable identifier.
 - `commands[].argv`: avoid shell interpolation, redirection, pipelines, and
   compound command strings.
+- schema v1 has no `commands[].env` field. If a native command requires an
+  environment override, hold execution and request a separately reviewed
+  collector/schema revision. Do not encode environment setup in a shell
+  wrapper or depend on an undeclared ambient value.
 - `commands[].depends_on`: list exact repository-relative controls whose
   failure may explain the command result. Do not declare speculative
   dependencies.
@@ -72,6 +76,7 @@ Before execution, verify:
 7. the configuration contains no credentials, private paths, or shell-expanded
    secrets;
 8. the collector source identity will be recorded in the receipt.
+9. no command depends on an undeclared environment override.
 
 ## Collector guarantees and limits
 
@@ -94,6 +99,11 @@ It does not:
 - assign semantic severity;
 - establish Council Steward independence;
 - authorize persistence, remediation, or publication.
+
+The receipt preserves raw objective diagnostics. Reconciliation must report
+raw observations, exact-unique observations, cross-category overlaps, and
+supported root-cause groups separately; those classifications are not a
+license to discard the raw evidence.
 
 Treat any command capable of network or absolute-path action as requiring an
 explicit boundary and separate risk review even though its working directory
