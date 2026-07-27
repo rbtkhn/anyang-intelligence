@@ -1,9 +1,9 @@
 ---
-name: executive-council-audit
+name: executive-audit
 description: "Prepare, run, reconcile, compare, or follow up on bounded Executive Council repository audits using the Anyang cross-repository collector and Council assurance protocol. Use when the System Engineer asks for an operability audit, evidence-lineage review, cross-repository benchmark, audit-kernel evaluation, remediation plan, delta review, customer-safe rehearsal, or a proposal for one. Treat invocation as a request, never as audit authorization, Council Steward activation, private access, remediation, publication, customer delivery, or external action."
 ---
 
-# Executive Council Audit
+# Executive Audit
 
 Use this repo-scoped pilot skill to produce decision-useful repository assurance
 without turning mechanical diagnostics into semantic findings or silently
