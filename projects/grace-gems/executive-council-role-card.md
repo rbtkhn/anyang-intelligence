@@ -13,10 +13,12 @@ the Council.
 
 ## Governing rule
 
-> The Chief Executive prepares judgment. The Executive Assistant carries approved work across
-> the real-world interface and returns evidence. The Council Steward tests
-> whether the receipts support the claimed state. The System Engineer governs the
-> system. The Grace Gems CEO decides for Grace Gems.
+> The Chief Executive prepares judgment. The Artistic Director performs only
+> approved internal artistic ideation and production. The Executive Assistant
+> carries approved work across the real-world interface and returns evidence.
+> The Council Steward tests whether receipts support the claimed state. The
+> System Engineer governs the system. The Grace Gems CEO decides for Grace
+> Gems.
 
 ## Roles
 
@@ -24,6 +26,7 @@ the Council.
 | --- | --- | --- | --- |
 | System Engineer | Anyang operator-owner | Govern architecture, permissions, persistence, membranes, and consequential Council authority | Create Grace Gems business authority without the client |
 | Chief Executive | Active AI Executive Council agent | Research public sources; maintain the operating picture; prepare decisions, briefs, recommendations, and exact handoffs; analyze approved minimized evidence returned through the Executive Assistant | Contact stakeholders, gather private evidence directly, approve client decisions, spend, publish, commit, or execute externally |
+| Artistic Director | Durable Council position; Executive Assistant appointed as interim human holder; acceptance and runtime activation pending; current capacity zero | When separately activated, perform approved internal Grace Gems ideation and production under a bounded brief; return review-ready work and evidence | Contact Grace Gems, choose client direction, approve claims, publish, deliver externally, spend, access private systems, or task the Executive Assistant |
 | Executive Assistant | Designated human–AI hybrid interface | Communicate with stakeholders; verify human-world context; gather authorized private evidence; coordinate and execute approved work; report exceptions; return evidence | Expand scope, infer approval, or create commitments beyond the exact authorization |
 | Council Steward | Organization-wide Council role; named runtime `/root/executive_council_steward_pilot_01` active only for the sealed read-only pilot through 2026-08-23 unless earlier paused or revoked by the System Engineer | Review repository-visible state across the project portfolio; test Grace Gems receipts and lineage when in scope; propose reconciliation | Prepare Grace Gems strategy, contact stakeholders, access private systems, approve findings, or execute corrections |
 
@@ -49,6 +52,25 @@ Chief Executive brief
   -> Council Steward review at a named assurance gate
 ```
 
+### Creative chain when the Artistic Director is invoked
+
+```text
+Chief Executive prepares a bounded objective
+  -> System Engineer authorizes internal ideation
+  -> Artistic Director generates a concept set
+  -> Chief Executive tests strategic fit
+  -> System Engineer selects an internal direction
+  -> Grace Gems CEO selects the client direction
+  -> Artistic Director produces under an approved brief
+  -> Executive Assistant delivers only under separate authority
+  -> evidence returns
+  -> Council Steward reviews at a named assurance gate
+```
+
+The creative chain applies only when the Artistic Director is separately
+activated and tasked. It does not replace the general operating chain or
+create client, production, delivery, spending, or publication authority.
+
 ## Evidence rule
 
 - Public research may be performed by the Chief Executive.
@@ -62,6 +84,7 @@ Chief Executive brief
 ## Communication rule
 
 - All Grace Gems stakeholder communication routes through the Executive Assistant.
+- The Artistic Director does not contact Grace Gems or deliver work externally.
 - Chief Executive drafts are not sent messages.
 - Executive Assistant transmission does not by itself prove delivery, receipt,
   approval, or completion.

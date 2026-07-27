@@ -10,9 +10,11 @@ The System Engineer retains Anyang authority, client CEOs retain their business
 authority, and each Council role remains bounded by its own function.
 
 The durable Council positions are System Engineer, Chief Executive, Artistic
-Director, Executive Assistant, and Council Steward. Artistic Director is a
-vacant, inactive human-AI hybrid position until separately staffed and
-activated; its existence does not imply creative production capacity.
+Director, Executive Assistant, and Council Steward. The Executive Assistant is
+the System Engineer-appointed interim human holder of the Artistic Director
+position for the bounded Grace Gems cohort. Holder acceptance is not yet
+evidenced, no Artistic Director runtime is active, and current creative
+production capacity remains zero.
 
 The operating substrate is the repository infrastructure beneath Executive Council. A Council agent is the runtime presence that speaks with the operator and uses that substrate.
 
