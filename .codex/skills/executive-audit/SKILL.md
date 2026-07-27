@@ -1,6 +1,6 @@
 ---
 name: executive-audit
-description: "Prepare, run, reconcile, compare, or follow up on bounded Executive Council repository audits using the Anyang cross-repository collector and Council assurance protocol. Use when the System Engineer asks for an operability audit, evidence-lineage review, cross-repository benchmark, audit-kernel evaluation, remediation plan, delta review, customer-safe rehearsal, or a proposal for one. Treat invocation as a request, never as audit authorization, Council Steward activation, private access, remediation, publication, customer delivery, or external action."
+description: "Prepare, select, run, reconcile, compare, or follow up on bounded Executive Council repository audits using the Anyang cross-repository collector and Council assurance protocol. Use when the System Engineer asks for metadata-only benchmark discovery, an operability audit, evidence-lineage review, cross-repository benchmark, audit-kernel evaluation, remediation plan, delta review, customer-safe rehearsal, public-safe derivative, or a proposal for one. Treat invocation as a request, never as audit authorization, Council Steward activation, content access, private access, remediation, publication, customer delivery, or external action."
 ---
 
 # Executive Audit
@@ -10,6 +10,9 @@ without turning mechanical diagnostics into semantic findings or silently
 expanding Council authority.
 
 ## Controlling status
+
+Use procedural revision `v1.2`. Do not interpret the revision label as kernel
+adoption.
 
 Treat the portable kernel as `pilot — revise`, not adopted. Narrative Systems
 and Predictive History are completed technical benchmarks after the
@@ -41,16 +44,66 @@ Before taking audit action, read the current versions of:
 Use current controlling sources over examples in this skill. Stop and expose
 contradictions; do not silently reconcile them.
 
-## Gate 1: classify the request
+## Gate 1: classify authority depth
 
-Classify the request before inspecting a new repository.
+Classify the request before inspecting a new repository. Treat these as three
+separate authority gates:
+
+1. metadata-only candidate discovery;
+2. selected-target preflight;
+3. exact-commit audit execution.
+
+Approval at one gate never authorizes the next.
+
+### Metadata-only candidate discovery
+
+Proceed only when the System Engineer names the provider or owner boundary,
+candidate limit, and decision use. Retrieve only whitelisted repository
+metadata: owner, name, visibility, fork/template/archive state, primary
+language, size, timestamps, default branch, and current branch-head identity.
+Do not inspect descriptions, topics, README files, trees, blobs, releases,
+issues, pull requests, or other repository contents.
+
+Use a connected repository metadata surface first. If it is unavailable or
+returns no usable result, use the provider's official public metadata API with
+the same field whitelist. Do not substitute generic web search or broaden
+access. Record the fallback and any authentication or coverage limitation
+without recording credentials.
+
+Before shortlisting, test:
+
+- ownership and permission fit;
+- non-fork, non-template, and active/archive status;
+- independence from prior benchmarks in code, domain, source, and operating
+  lineage;
+- likely structural richness based only on permitted metadata;
+- whether the candidate tests `legacy resilience`, `commercial
+  representativeness`, or another declared benchmark purpose.
+
+Metadata supports screening, not outcome proof. Return no more than the
+authorized candidate count, disclose uncertainty, and request a separate
+selected-target preflight decision.
+
+### Selected-target preflight
+
+Proceed only when the System Engineer names one repository and a bounded
+content, command, and time boundary. Use the preflight to:
+
+- resolve target identity and proposed exact commit;
+- identify the repository's declared outcome and likely controlling surfaces;
+- test whether native commands are available without bypasses;
+- propose sampling, exclusions, measurements, output paths, and stop rules;
+- classify the benchmark purpose and remaining representativeness limits.
+
+Do not run the full collector, complete semantic review, activate a Council
+Steward runtime, or treat a discovered defect as a completed audit finding.
+Return an exact audit-execution decision request.
 
 ### Proposal only
 
-Use proposal mode when exact audit authority is absent. Read only already
-authorized local Council sources. Metadata-only candidate discovery may occur
-only when the System Engineer explicitly authorizes that discovery boundary;
-do not inspect candidate contents. Prepare:
+Use proposal mode whenever the requested gate lacks exact authority. Read only
+already authorized Council sources and evidence permitted by an earlier gate.
+Prepare:
 
 - objective and decision use;
 - candidate repository and commit boundary;
@@ -64,7 +117,7 @@ do not inspect candidate contents. Prepare:
 Do not inspect the target, run the collector, activate a runtime, or persist an
 audit packet merely because the skill was invoked.
 
-### Authorized execution
+### Exact-commit audit execution
 
 Proceed only when a current System Engineer receipt or explicit in-session
 decision names:
@@ -251,6 +304,33 @@ plan, delta review, or customer-safe rehearsal is a separately authorized,
 explicitly linked follow-up artifact; it does not modify or silently extend the
 sealed audit chain.
 
+Before sealing, validate every prospective artifact by its explicit path,
+including new and untracked files. Do not claim prospective files are clean
+from `git diff --check` alone because it does not inspect untracked content.
+Normalize accidental whitespace and formatting before sealing. After sealing,
+preserve the ledger bytes; document harmless formatting exceptions rather than
+rewriting the seal.
+
+### Public-repository egress
+
+Treat persistence inside a public repository, commit, push, publication, and
+customer delivery as distinct actions. Before any public-repository commit or
+push, classify:
+
+- machine-local paths and usernames;
+- runtime identities and internal infrastructure;
+- internal deliberation and detailed evidence bodies;
+- credentials and private-system indicators;
+- client or unrelated portfolio context;
+- information that is technically public but not approved for Anyang
+  publication.
+
+An internal audit artifact is not automatically public-safe. If egress review
+occurs after sealing, either retain the sealed artifact internally or create a
+separately linked, explicitly labeled public-safe derivative. Never silently
+redact or rewrite the sealed Steward ledger. Public visibility of the target
+does not authorize publication of Council artifacts.
+
 ## Gate 7: reconcile and stop
 
 The Chief Executive may classify operating implications as:
@@ -275,6 +355,18 @@ At reconciliation, record:
   inference;
 - raw, exact-unique, overlap, root-cause-group, and adjudicated-finding counts;
 - reviewed-candidate precision and coverage against the declared outcome.
+
+Use this five-stage timing ledger in the transaction record:
+
+| Stage | Started | Ended | Active duration | Evidence |
+| --- | --- | --- | --- | --- |
+| Proposal/preflight | value or `Missing` | value or `Missing` | value or `Missing` | source |
+| Collector | value or `Missing` | value or `Missing` | value or `Missing` | source |
+| Council Steward | value or `Missing` | value or `Missing` | value or `Missing` | source |
+| Chief Executive | value or `Missing` | value or `Missing` | value or `Missing` | source |
+| System Engineer | value or `Missing` | value or `Missing` | value or `Missing` | source |
+
+Do not derive elapsed or active time without defensible timestamps.
 
 End with:
 
@@ -301,6 +393,9 @@ Treat every follow-up as a new authority gate.
   Preserve finding meaning and evidence class while removing internal paths,
   runtime identifiers, credentials, and unrelated portfolio context. It does
   not authorize customer delivery, commercial claims, or publication.
+- **Public-safe derivative:** requires a named source artifact, explicit egress
+  review, preserved lineage, and separate publication authority. It is not a
+  replacement for the sealed internal artifact.
 
 Append later System Engineer dispositions with attribution and time. Never
 rewrite a sealed Steward finding to match the disposition.
@@ -315,6 +410,8 @@ For changes inside `operating-substrate`, run only its canonical validator:
 
 Also verify:
 
+- every prospective new or untracked artifact was checked directly before
+  persistence or sealing;
 - the target Git-visible state is unchanged;
 - collector output is outside the target;
 - the receipt identifies collector source and effective configuration;
@@ -323,6 +420,7 @@ Also verify:
 - diagnostic and timing accounting uses the required categories without
   invented values;
 - privacy validation passes;
+- public-repository egress is classified before any commit or push;
 - the sealed Steward ledger remains byte-preserved after executive
   interpretation;
 - no external action or protected-context transfer occurred.
@@ -340,6 +438,8 @@ Stop and escalate rather than improvise when:
 - a native command requires undeclared environment manipulation;
 - diagnostic deduplication would discard raw evidence or lacks a supported
   dependency;
+- a public-repository commit or push is requested without a completed egress
+  classification and explicit authority;
 - remediation, publication, outreach, spending, or client adoption is
   requested without separate approval;
 - the collector or skill is being treated as self-authorizing.

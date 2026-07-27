@@ -1,4 +1,4 @@
 interface:
   display_name: "Executive Audit"
-  short_description: "Run and reconcile bounded repository audits"
-  default_prompt: "Use $executive-audit to prepare or reconcile a bounded, read-only repository audit."
+  short_description: "Select, run, and reconcile bounded repository audits"
+  default_prompt: "Use $executive-audit to select, prepare, or reconcile a bounded, read-only repository audit."
