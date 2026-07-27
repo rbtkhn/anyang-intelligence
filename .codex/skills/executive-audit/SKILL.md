@@ -183,6 +183,20 @@ Declare each command's exact repository-relative `depends_on` controls. Root
 cause grouping may use declared dependencies or path-specific command output;
 never use generic error text alone.
 
+Use repository-rooted sample globs and declare exclusions where a derived or
+mirrored tree could otherwise enter a canonical evidence class. Treat `*` as
+one path segment and `**` as recursive. For each decision-critical command,
+declare literal-prefix `summary_rules` for the result or total lines the audit
+must preserve. Review include, exclusion, final eligible, and selected counts
+before accepting sample coverage.
+
+Do not confuse native outcome with collection completion. A command that
+terminates with a nonzero exit code produced completed evidence. A timeout,
+launch failure, unavailable required sample, or missing required summary makes
+collection partial. Never describe a red native validator as an
+environment-only or incomplete collection merely because its exit code is
+nonzero.
+
 Account for diagnostics at four levels: raw observations, exact-unique
 observations, cross-category overlaps, and supported root-cause groups. Keep
 the raw evidence intact while preventing one controlling defect from being
@@ -197,6 +211,10 @@ ambient environment.
 The collector returns objective candidates and execution evidence. It does not
 assign semantic severity, establish claim truth, or recommend strategy. Its
 disposable execution surface is not an operating-system security sandbox.
+Command previews are bounded head/tail views. Use their capture metadata,
+complete minimized-output hashes, summary counts, and collection status when
+assessing whether evidence was preserved; do not mistake a preview for the
+complete output.
 
 ## Gate 4: preserve independent review
 

@@ -11,6 +11,8 @@ import tempfile
 import time
 from contextlib import contextmanager
 from datetime import datetime, timezone
+from fnmatch import fnmatchcase
+from functools import lru_cache
 from pathlib import Path, PurePosixPath
 from typing import Any
 from urllib.parse import urlsplit, urlunsplit
@@ -24,8 +26,10 @@ except ModuleNotFoundError:  # pragma: no cover - Python 3.10 compatibility
 
 
 SCHEMA_VERSION = 1
-COLLECTOR_VERSION = "1.1.0"
+COLLECTOR_VERSION = "1.2.0"
 MAX_CAPTURE_CHARS = 20_000
+MAX_SUMMARY_EXAMPLES = 20
+MAX_SUMMARY_EXAMPLE_CHARS = 2_000
 MAX_TEXT_SCAN_BYTES = 2 * 1024 * 1024
 TEXT_SUFFIXES = {
     ".json",
@@ -84,11 +88,19 @@ def collect_cross_repo_audit(
     tracked_fingerprint_before = _tracked_fingerprint(tracked)
     diagnostics = _objective_diagnostics(root, tracked, config)
     with _disposable_snapshot(root, expected) as execution_root:
-        commands = [
+        command_runs = [
             _run_command(execution_root, item, config["timeout_seconds"])
             for item in config["commands"]
         ]
-    root_cause_groups = _root_cause_groups(diagnostics, commands)
+    commands = [item["receipt"] for item in command_runs]
+    command_outputs = {
+        item["receipt"]["id"]: {
+            "stdout": item["stdout_complete"],
+            "stderr": item["stderr_complete"],
+        }
+        for item in command_runs
+    }
+    root_cause_groups = _root_cause_groups(diagnostics, commands, command_outputs)
 
     tracked_after = _tracked_inventory(root)
     status_after = _git_bytes(root, "status", "--porcelain=v1", "-z")
@@ -105,6 +117,7 @@ def collect_cross_repo_audit(
         raise CrossRepoAuditError("Target repository changed during collection; no receipt was written.")
 
     samples = _select_samples(tracked, config["sample_groups"], expected)
+    collection_status = _collection_status(commands, samples)
     inventory = {
         "tracked_file_count": len(tracked),
         "tracked_bytes": sum(item["bytes"] for item in tracked),
@@ -127,17 +140,20 @@ def collect_cross_repo_audit(
                     "id": item["id"],
                     "argv": item["argv"],
                     "depends_on": item["depends_on"],
+                    "summary_rules": item["summary_rules"],
                 }
                 for item in config["commands"]
             ],
             "timeout_seconds": config["timeout_seconds"],
             "execution_surface": "disposable-git-archive",
+            "sample_match_semantics": "repository-rooted-segment-glob-v1",
         },
         "inventory": inventory,
         "samples": samples,
         "diagnostics": diagnostics,
         "root_cause_groups": root_cause_groups,
         "coverage_gaps": _coverage_gaps(tracked, diagnostics, commands, samples),
+        "collection_status": collection_status,
     }
     receipt = {
         **stable,
@@ -158,8 +174,10 @@ def collect_cross_repo_audit(
             "operating_system_security_sandbox_claimed": False,
         },
     }
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(receipt, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
+    _write_receipt_atomic(
+        output,
+        (json.dumps(receipt, indent=2, sort_keys=True, ensure_ascii=False) + "\n").encode("utf-8"),
+    )
     return receipt
 
 
@@ -200,6 +218,45 @@ def _read_config(path: Path) -> dict[str, Any]:
             f"commands.{command['id']}.depends_on",
         )
         command["depends_on"] = [_portable_path(item) for item in dependencies]
+        rules = command.get("summary_rules", [])
+        if not isinstance(rules, list):
+            raise CrossRepoAuditError(f"commands.{command['id']}.summary_rules must be a list.")
+        rule_ids: set[str] = set()
+        for rule in rules:
+            if not isinstance(rule, dict) or not isinstance(rule.get("id"), str) or not rule["id"].strip():
+                raise CrossRepoAuditError(f"Each summary rule for command {command['id']} requires a string id.")
+            if rule["id"] in rule_ids:
+                raise CrossRepoAuditError(f"Duplicate summary rule id for command {command['id']}: {rule['id']}")
+            rule_ids.add(rule["id"])
+            stream = rule.get("stream", "stdout")
+            if stream not in {"stdout", "stderr", "both"}:
+                raise CrossRepoAuditError(
+                    f"Summary rule {command['id']}.{rule['id']} stream must be stdout, stderr, or both."
+                )
+            prefix = rule.get("line_prefix")
+            if not isinstance(prefix, str) or not prefix or "\n" in prefix or "\r" in prefix:
+                raise CrossRepoAuditError(
+                    f"Summary rule {command['id']}.{rule['id']} requires a single-line literal line_prefix."
+                )
+            minimum = rule.get("minimum_matches", 1)
+            if not isinstance(minimum, int) or isinstance(minimum, bool) or minimum < 0:
+                raise CrossRepoAuditError(
+                    f"Summary rule {command['id']}.{rule['id']} minimum_matches must be a non-negative integer."
+                )
+            maximum = rule.get("max_examples", 5)
+            if (
+                not isinstance(maximum, int)
+                or isinstance(maximum, bool)
+                or maximum < 1
+                or maximum > MAX_SUMMARY_EXAMPLES
+            ):
+                raise CrossRepoAuditError(
+                    f"Summary rule {command['id']}.{rule['id']} max_examples must be from 1 to {MAX_SUMMARY_EXAMPLES}."
+                )
+            rule["stream"] = stream
+            rule["minimum_matches"] = minimum
+            rule["max_examples"] = maximum
+        command["summary_rules"] = rules
     groups = value.get("sample_groups")
     if not isinstance(groups, list) or not groups:
         raise CrossRepoAuditError("sample_groups must be a non-empty list.")
@@ -210,7 +267,21 @@ def _read_config(path: Path) -> dict[str, Any]:
         if group["id"] in group_ids:
             raise CrossRepoAuditError(f"Duplicate sample group id: {group['id']}")
         group_ids.add(group["id"])
-        group["globs"] = _string_list(group.get("globs"), f"sample_groups.{group['id']}.globs")
+        group["globs"] = [
+            _portable_glob(item)
+            for item in _string_list(group.get("globs"), f"sample_groups.{group['id']}.globs")
+        ]
+        group["exclude_globs"] = [
+            _portable_glob(item)
+            for item in _string_list(
+                group.get("exclude_globs", []),
+                f"sample_groups.{group['id']}.exclude_globs",
+            )
+        ]
+        required = group.get("required", True)
+        if not isinstance(required, bool):
+            raise CrossRepoAuditError(f"Sample group {group['id']} required must be a boolean.")
+        group["required"] = required
         if not isinstance(group.get("count"), int) or group["count"] < 1:
             raise CrossRepoAuditError(f"Sample group {group['id']} requires a positive count.")
     return value
@@ -304,7 +375,9 @@ def _broken_links(root: Path, relative: str, text: str) -> list[dict[str, Any]]:
 
 
 def _root_cause_groups(
-    diagnostics: list[dict[str, Any]], commands: list[dict[str, Any]]
+    diagnostics: list[dict[str, Any]],
+    commands: list[dict[str, Any]],
+    command_outputs: dict[str, dict[str, str]] | None = None,
 ) -> list[dict[str, Any]]:
     groups: list[dict[str, Any]] = []
     for diagnostic in diagnostics:
@@ -314,7 +387,12 @@ def _root_cause_groups(
         path = diagnostic["path"]
         affected: list[str] = []
         for command in commands:
-            output = command["stdout"] + "\n" + command["stderr"]
+            complete = (command_outputs or {}).get(command["id"])
+            output = (
+                complete["stdout"] + "\n" + complete["stderr"]
+                if complete is not None
+                else command["stdout"] + "\n" + command["stderr"]
+            )
             if path in command["declared_dependencies"] or path in output:
                 affected.append(command["id"])
         groups.append(
@@ -335,13 +413,36 @@ def _select_samples(
     paths = [item["path"] for item in tracked if item["kind"] == "file"]
     result: list[dict[str, Any]] = []
     for group in groups:
-        matches = sorted({path for path in paths if any(PurePosixPath(path).match(glob) for glob in group["globs"])})
+        include_counts = {
+            pattern: sum(1 for path in paths if _rooted_glob_match(path, pattern))
+            for pattern in group["globs"]
+        }
+        included = {
+            path
+            for path in paths
+            if any(_rooted_glob_match(path, pattern) for pattern in group["globs"])
+        }
+        exclude_counts = {
+            pattern: sum(1 for path in included if _rooted_glob_match(path, pattern))
+            for pattern in group["exclude_globs"]
+        }
+        excluded = {
+            path
+            for path in included
+            if any(_rooted_glob_match(path, pattern) for pattern in group["exclude_globs"])
+        }
+        matches = sorted(included - excluded)
         ranked = sorted(matches, key=lambda path: (_sha256(f"{seed}:{group['id']}:{path}".encode("utf-8")), path))
         selected = sorted(ranked[: group["count"]])
         result.append(
             {
                 "id": group["id"],
+                "required": group["required"],
                 "requested": group["count"],
+                "include_match_counts": include_counts,
+                "exclude_match_counts": exclude_counts,
+                "included_before_exclusions": len(included),
+                "excluded": len(excluded),
                 "eligible": len(matches),
                 "selected": selected,
                 "selection_complete": len(selected) == group["count"],
@@ -362,24 +463,15 @@ def _run_command(root: Path, command: dict[str, Any], timeout: int) -> dict[str,
             stderr=subprocess.PIPE,
             timeout=timeout,
         )
-        stdout, stdout_redactions = _minimize_output(result.stdout.decode("utf-8", errors="replace"))
-        stderr, stderr_redactions = _minimize_output(result.stderr.decode("utf-8", errors="replace"))
-        stdout = _bounded(stdout)
-        stderr = _bounded(stderr)
-        return {
-            "id": command["id"],
-            "argv": command["argv"],
-            "declared_dependencies": command["depends_on"],
-            "exit_code": result.returncode,
-            "timed_out": False,
-            "duration_ms": round((time.monotonic() - started) * 1000),
-            "stdout": stdout,
-            "stderr": stderr,
-            "stdout_sha256": _sha256(stdout.encode("utf-8")),
-            "stderr_sha256": _sha256(stderr.encode("utf-8")),
-            "stdout_redaction_count": stdout_redactions,
-            "stderr_redaction_count": stderr_redactions,
-        }
+        return _command_run_result(
+            command,
+            stdout_raw=result.stdout,
+            stderr_raw=result.stderr,
+            exit_code=result.returncode,
+            execution_status="completed",
+            timed_out=False,
+            duration_ms=round((time.monotonic() - started) * 1000),
+        )
     except subprocess.TimeoutExpired as exc:
         stdout_raw = exc.stdout or b""
         stderr_raw = exc.stderr or b""
@@ -387,40 +479,66 @@ def _run_command(root: Path, command: dict[str, Any], timeout: int) -> dict[str,
             stdout_raw = stdout_raw.encode("utf-8")
         if isinstance(stderr_raw, str):
             stderr_raw = stderr_raw.encode("utf-8")
-        stdout, stdout_redactions = _minimize_output(stdout_raw.decode("utf-8", errors="replace"))
-        stderr, stderr_redactions = _minimize_output(stderr_raw.decode("utf-8", errors="replace"))
-        stdout = _bounded(stdout)
-        stderr = _bounded(stderr)
-        return {
-            "id": command["id"],
-            "argv": command["argv"],
-            "declared_dependencies": command["depends_on"],
-            "exit_code": None,
-            "timed_out": True,
-            "duration_ms": round((time.monotonic() - started) * 1000),
-            "stdout": stdout,
-            "stderr": stderr,
-            "stdout_sha256": _sha256(stdout.encode("utf-8")),
-            "stderr_sha256": _sha256(stderr.encode("utf-8")),
-            "stdout_redaction_count": stdout_redactions,
-            "stderr_redaction_count": stderr_redactions,
-        }
+        return _command_run_result(
+            command,
+            stdout_raw=stdout_raw,
+            stderr_raw=stderr_raw,
+            exit_code=None,
+            execution_status="timed_out",
+            timed_out=True,
+            duration_ms=round((time.monotonic() - started) * 1000),
+        )
     except OSError as exc:
-        stderr, stderr_redactions = _minimize_output(str(exc))
-        return {
-            "id": command["id"],
-            "argv": command["argv"],
-            "declared_dependencies": command["depends_on"],
-            "exit_code": None,
-            "timed_out": False,
-            "duration_ms": round((time.monotonic() - started) * 1000),
-            "stdout": "",
-            "stderr": stderr,
-            "stdout_sha256": _sha256(b""),
-            "stderr_sha256": _sha256(stderr.encode("utf-8")),
-            "stdout_redaction_count": 0,
-            "stderr_redaction_count": stderr_redactions,
-        }
+        return _command_run_result(
+            command,
+            stdout_raw=b"",
+            stderr_raw=str(exc).encode("utf-8"),
+            exit_code=None,
+            execution_status="launch_failed",
+            timed_out=False,
+            duration_ms=round((time.monotonic() - started) * 1000),
+        )
+
+
+def _command_run_result(
+    command: dict[str, Any],
+    *,
+    stdout_raw: bytes,
+    stderr_raw: bytes,
+    exit_code: int | None,
+    execution_status: str,
+    timed_out: bool,
+    duration_ms: int,
+) -> dict[str, Any]:
+    stdout = _capture_output(stdout_raw)
+    stderr = _capture_output(stderr_raw)
+    summaries = _command_summaries(command["summary_rules"], stdout["complete"], stderr["complete"])
+    receipt = {
+        "id": command["id"],
+        "argv": command["argv"],
+        "declared_dependencies": command["depends_on"],
+        "exit_code": exit_code,
+        "timed_out": timed_out,
+        "execution_status": execution_status,
+        "duration_ms": duration_ms,
+        "stdout": stdout["preview"],
+        "stderr": stderr["preview"],
+        "stdout_sha256": stdout["preview_sha256"],
+        "stderr_sha256": stderr["preview_sha256"],
+        "stdout_complete_minimized_sha256": stdout["complete_minimized_sha256"],
+        "stderr_complete_minimized_sha256": stderr["complete_minimized_sha256"],
+        "stdout_redaction_count": stdout["redaction_count"],
+        "stderr_redaction_count": stderr["redaction_count"],
+        "stdout_capture": stdout["metadata"],
+        "stderr_capture": stderr["metadata"],
+        "summaries": summaries,
+        "summary_coverage_complete": all(item["coverage_complete"] for item in summaries),
+    }
+    return {
+        "receipt": receipt,
+        "stdout_complete": stdout["complete"],
+        "stderr_complete": stderr["complete"],
+    }
 
 
 def _coverage_gaps(
@@ -436,10 +554,13 @@ def _coverage_gaps(
     oversized = sum(1 for item in tracked if item["kind"] == "file" and item["bytes"] > MAX_TEXT_SCAN_BYTES)
     if oversized:
         gaps.append(f"{oversized} tracked file(s) exceeded the structured/text diagnostic size ceiling.")
-    failed = [item["id"] for item in commands if item["exit_code"] != 0 or item["timed_out"]]
-    if failed:
-        gaps.append(f"Native command completion was not established for: {', '.join(failed)}.")
-    incomplete = [item["id"] for item in samples if not item["selection_complete"]]
+    incomplete_commands = [item["id"] for item in commands if item["execution_status"] != "completed"]
+    if incomplete_commands:
+        gaps.append(f"Native command completion was not established for: {', '.join(incomplete_commands)}.")
+    incomplete_summaries = [item["id"] for item in commands if not item["summary_coverage_complete"]]
+    if incomplete_summaries:
+        gaps.append(f"Required command summaries were unavailable for: {', '.join(incomplete_summaries)}.")
+    incomplete = [item["id"] for item in samples if item["required"] and not item["selection_complete"]]
     if incomplete:
         gaps.append(f"Requested sample size was unavailable for: {', '.join(incomplete)}.")
     if any(item["category"].startswith("invalid-") for item in diagnostics):
@@ -516,6 +637,7 @@ def _minimize_output(value: str) -> tuple[str, int]:
         redactions += 1
         return "[REDACTED]"
 
+    value = value.replace("\r\n", "\n").replace("\r", "\n")
     value = SECRET_ASSIGNMENT.sub(replace_assignment, value)
     value = SECRET_TOKEN.sub(replace_value, value)
     value = MACHINE_PATH_VALUE.sub(replace_value, value)
@@ -604,6 +726,38 @@ def _portable_path(path: str) -> str:
     return pure.as_posix()
 
 
+def _portable_glob(pattern: str) -> str:
+    normalized = pattern.replace("\\", "/")
+    if re.match(r"^[A-Za-z]:/", normalized):
+        raise CrossRepoAuditError(f"Unsafe sample glob: {pattern}")
+    pure = PurePosixPath(normalized)
+    if pure.is_absolute() or not pure.parts or any(part in {"", ".", ".."} for part in pure.parts):
+        raise CrossRepoAuditError(f"Unsafe sample glob: {pattern}")
+    return pure.as_posix()
+
+
+def _rooted_glob_match(path: str, pattern: str) -> bool:
+    path_parts = tuple(PurePosixPath(path).parts)
+    pattern_parts = tuple(PurePosixPath(pattern).parts)
+
+    @lru_cache(maxsize=None)
+    def match(path_index: int, pattern_index: int) -> bool:
+        if pattern_index == len(pattern_parts):
+            return path_index == len(path_parts)
+        part = pattern_parts[pattern_index]
+        if part == "**":
+            return match(path_index, pattern_index + 1) or (
+                path_index < len(path_parts) and match(path_index + 1, pattern_index)
+            )
+        return (
+            path_index < len(path_parts)
+            and fnmatchcase(path_parts[path_index], part)
+            and match(path_index + 1, pattern_index + 1)
+        )
+
+    return match(0, 0)
+
+
 def _ensure_within(path: Path, root: Path) -> None:
     try:
         common = os.path.commonpath((str(path), str(root)))
@@ -628,8 +782,143 @@ def _string_list(value: Any, field: str) -> list[str]:
     return value
 
 
-def _bounded(value: str) -> str:
-    return value if len(value) <= MAX_CAPTURE_CHARS else value[:MAX_CAPTURE_CHARS] + "\n[truncated]\n"
+def _capture_output(raw: bytes) -> dict[str, Any]:
+    decoded = raw.decode("utf-8", errors="replace")
+    minimized, redactions = _minimize_output(decoded)
+    preview, omitted = _head_tail_preview(minimized)
+    return {
+        "complete": minimized,
+        "preview": preview,
+        "preview_sha256": _sha256(preview.encode("utf-8")),
+        "complete_minimized_sha256": _sha256(minimized.encode("utf-8")),
+        "redaction_count": redactions,
+        "metadata": {
+            "original_chars": len(decoded),
+            "minimized_chars": len(minimized),
+            "captured_chars": len(preview),
+            "omitted_chars": omitted,
+            "truncated": omitted > 0,
+        },
+    }
+
+
+def _head_tail_preview(value: str) -> tuple[str, int]:
+    return _bounded_head_tail_preview(value, MAX_CAPTURE_CHARS)
+
+
+def _bounded_head_tail_preview(value: str, limit: int) -> tuple[str, int]:
+    if len(value) <= limit:
+        return value, 0
+    marker = "\n[truncated]\n"
+    content_budget = limit - len(marker)
+    head_budget = content_budget // 2
+    tail_budget = content_budget - head_budget
+    head_end = value.rfind("\n", 0, head_budget + 1)
+    if head_end < 1:
+        head_end = head_budget
+    else:
+        head_end += 1
+    tail_start = value.find("\n", len(value) - tail_budget)
+    if tail_start < 0 or tail_start >= len(value) - 1:
+        tail_start = len(value) - tail_budget
+    else:
+        tail_start += 1
+    head = value[:head_end]
+    tail = value[tail_start:]
+    omitted = max(0, len(value) - len(head) - len(tail))
+    return head + marker + tail, omitted
+
+
+def _command_summaries(
+    rules: list[dict[str, Any]],
+    stdout: str,
+    stderr: str,
+) -> list[dict[str, Any]]:
+    streams = {"stdout": stdout, "stderr": stderr}
+    summaries: list[dict[str, Any]] = []
+    for rule in rules:
+        selected_streams = (
+            ("stdout", "stderr")
+            if rule["stream"] == "both"
+            else (rule["stream"],)
+        )
+        match_count = 0
+        examples: list[dict[str, Any]] = []
+        truncated_example_count = 0
+        for stream in selected_streams:
+            for raw_line in io.StringIO(streams[stream]):
+                line = raw_line.rstrip("\n")
+                if not line.startswith(rule["line_prefix"]):
+                    continue
+                match_count += 1
+                if len(examples) >= rule["max_examples"]:
+                    continue
+                preview, omitted = _bounded_head_tail_preview(
+                    line,
+                    MAX_SUMMARY_EXAMPLE_CHARS,
+                )
+                if omitted:
+                    truncated_example_count += 1
+                examples.append(
+                    {
+                        "stream": stream,
+                        "line": preview,
+                        "line_truncated": omitted > 0,
+                        "original_chars": len(line),
+                        "omitted_chars": omitted,
+                        "complete_minimized_line_sha256": _sha256(line.encode("utf-8")),
+                    }
+                )
+        summaries.append(
+            {
+                "id": rule["id"],
+                "stream": rule["stream"],
+                "line_prefix": rule["line_prefix"],
+                "minimum_matches": rule["minimum_matches"],
+                "match_count": match_count,
+                "examples": examples,
+                "examples_truncated": match_count > rule["max_examples"],
+                "truncated_example_count": truncated_example_count,
+                "coverage_complete": match_count >= rule["minimum_matches"],
+            }
+        )
+    return summaries
+
+
+def _collection_status(commands: list[dict[str, Any]], samples: list[dict[str, Any]]) -> str:
+    commands_complete = all(
+        item["execution_status"] == "completed" and item["summary_coverage_complete"]
+        for item in commands
+    )
+    samples_complete = all(
+        not item["required"] or item["selection_complete"]
+        for item in samples
+    )
+    return "complete" if commands_complete and samples_complete else "partial"
+
+
+def _write_receipt_atomic(output: Path, payload: bytes) -> None:
+    output.parent.mkdir(parents=True, exist_ok=True)
+    temporary: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="wb",
+            dir=output.parent,
+            prefix=f".{output.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as handle:
+            temporary = Path(handle.name)
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        try:
+            os.link(temporary, output)
+        except FileExistsError as exc:
+            raise CrossRepoAuditError(f"Refusing to overwrite existing collector receipt: {output}") from exc
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
 
 
 def _canonical_bytes(value: Any) -> bytes:
