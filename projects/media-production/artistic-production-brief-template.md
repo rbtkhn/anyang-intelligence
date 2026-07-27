@@ -10,6 +10,8 @@ the work passes the [Artistic Production Gate](artistic-production-gate.md).
 - Approved by:
 - Approval or standing-mandate link:
 - Artistic Director activation receipt:
+- Creative decision receipt, when a direction is selected or rejected:
+- Reference log entries, when visual references materially shape the work:
 - Client authority: `approved / pending / held / not applicable`
 - Expiration or review date:
 - Stop conditions:

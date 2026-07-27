@@ -66,6 +66,8 @@ Anyang Intelligence should govern Media Production as its parent organization:
 - Content pillars.
 - Idea backlog.
 - Artistic direction options.
+- [Creative decision receipts](artistic-director-creative-decision-receipt-template.md).
+- [Accepted/rejected reference log](artistic-director-reference-log-template.md).
 - Active productions.
 - Scripts and outlines.
 - Production assets.
