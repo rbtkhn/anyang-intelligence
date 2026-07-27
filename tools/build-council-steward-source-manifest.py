@@ -25,6 +25,7 @@ CANONICAL_SOURCES = [
     "docs/data-handling-policy.md",
     "docs/executive-interface-protocol.md",
     "docs/council-steward-reconciliation-decision-2026-07-24.md",
+    "docs/council-steward-source-transition-2026-07-26.md",
     "templates/chief-executive-brief.md",
     "templates/approval-receipt.md",
     "templates/executive-assistant-action-receipt.md",
