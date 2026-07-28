@@ -3,6 +3,15 @@
 Use this reference only after the audit has exact System Engineer authority.
 The configuration records mechanical collection; it does not grant authority.
 
+> **Current execution hold:** Collector `1.4.0` is a Git-aware
+> execution-surface candidate. Collector 1.3.1 qualified its bounded Windows
+> containment paths, but archive-only execution caused Anyang's Git-dependent
+> privacy scan to return a native failure. Version 1.4.0 attaches verified,
+> detached, depth-one Git metadata for only the sealed commit before releasing
+> native execution. It has not been approved for another audit. Do not start
+> another exact-commit audit without accepted delta and qualification reviews
+> plus a new System Engineer execution decision.
+
 ## Schema
 
 ```json
@@ -113,7 +122,25 @@ Before execution, verify:
 The current collector:
 
 - inventories the sealed tracked snapshot;
-- executes configured commands in a disposable Git archive;
+- executes configured commands in a disposable, detached, depth-one Git
+  snapshot containing only the sealed commit;
+- retains safe archive extraction for worktree materialization, then attaches
+  a clean index without performing a checkout or invoking smudge filters;
+- verifies exact HEAD and tree, clean index, one reachable commit, and absence
+  of remotes, refs, alternates, `FETCH_HEAD`, hooks, reflogs, and persisted
+  source paths before native command release;
+- records the preparation result in top-level `execution_snapshot`; preparation
+  failure prevents native start and seals `launch_failed` command evidence plus
+  a partial receipt;
+- captures stdout and stderr through temporary files so descendant-held pipe
+  handles cannot block receipt sealing;
+- starts a gated command worker, establishes a managed Windows Job Object or
+  POSIX session, and only then releases native execution so descendants cannot
+  predate the collector's isolation boundary;
+- applies bounded process-tree termination after timeout and records the
+  result in `commands[].process_tree`; Windows pre-captures the descendant set,
+  attempts `taskkill /T /F` while the gated root still exists, then terminates
+  the managed Job and verifies that the pre-captured processes ended;
 - records version, source hash, timeout, dependencies, and coverage gaps;
 - records rooted sample accounting, command execution state, structured
   summary coverage, and complete-versus-partial collection status;
@@ -126,10 +153,29 @@ The current collector:
 - refuses to overwrite an existing receipt;
 - verifies the target's Git-visible state before and after collection.
 
+`commands[].process_tree` records `isolation_strategy`,
+`isolation_ready_before_command`, `start_gate_status`,
+`termination_attempted`, `termination_status`, `termination_duration_ms`,
+`termination_sequence`, and `descendant_cleanup_status`. Termination status is
+`not-required`, `terminated`, or `failed`; descendant cleanup is
+`not-required`, `verified`, or `unverified`. A Windows isolation failure keeps
+the gate closed and prevents the native command from starting. Timeout or
+launch failure makes collection partial. Failed or unverified process-tree
+cleanup adds a coverage gap but does not suppress a partial receipt after the
+bounded worker returns.
+
+`execution_snapshot` records strategy, readiness, HEAD/tree/index checks,
+detached state, reachable commit count, remote and ref counts, and bounded
+booleans for alternates, `FETCH_HEAD`, hooks, reflogs, and source-path
+persistence. Do not accept command evidence when its snapshot status is not
+`ready`.
+
 It does not:
 
 - provide an operating-system security sandbox;
 - inspect ignored or untracked files;
+- expose target remotes, local Git configuration, refs, reflogs, hooks,
+  worktrees, stashes, or history before the sealed commit;
 - prove external source truth;
 - access private systems;
 - assign semantic severity;

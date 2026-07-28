@@ -11,8 +11,19 @@ expanding Council authority.
 
 ## Controlling status
 
-Use procedural revision `v1.2`. Do not interpret the revision label as kernel
-adoption.
+Procedural revision `v1.4` is a Git-aware execution-surface candidate, not an
+executable audit procedure. Revision v1.3.1 qualified the gated Windows
+containment and partial-receipt paths, but its archive-only command surface
+could not run Git-dependent validators. Revision v1.4 retains safe archive
+extraction and attaches detached, depth-one Git metadata containing only the
+sealed commit. Native execution remains gated until exact HEAD/tree, clean
+index, one-commit history, and absence of remotes, alternates, reflogs, hooks,
+and persisted source paths are verified. Preparation failure prevents command
+start and seals a bounded partial receipt. Lifecycle IPC and another audit
+rerun remain outside this revision. Do not use v1.4 for a new exact-commit
+audit until its delta and qualification receipts are accepted and the System
+Engineer separately authorizes execution. Do not interpret any revision label
+as kernel adoption.
 
 Treat the portable kernel as `pilot — revise`, not adopted. Narrative Systems
 and Predictive History are completed technical benchmarks after the
@@ -211,10 +222,23 @@ ambient environment.
 The collector returns objective candidates and execution evidence. It does not
 assign semantic severity, establish claim truth, or recommend strategy. Its
 disposable execution surface is not an operating-system security sandbox.
-Command previews are bounded head/tail views. Use their capture metadata,
-complete minimized-output hashes, summary counts, and collection status when
-assessing whether evidence was preserved; do not mistake a preview for the
-complete output.
+Commands see the exact sealed tree plus a detached, depth-one Git repository;
+they do not see target remotes, refs, reflogs, hooks, configuration, ignored
+files, untracked files, or broader history. Exact-commit authority must include
+the sealed commit object's author, committer, message, parent hashes, and
+signature metadata because native Git commands can inspect them.
+
+Command output is captured through temporary files so descendant-held pipe
+handles cannot block receipt sealing. Commands run in a managed Windows job
+and process group or a POSIX session; after a timeout, tree termination is
+bounded and reported in `commands[].process_tree`. Windows falls back to
+`taskkill /T /F` and then root-process termination when job containment is
+unavailable. A failed or uncertain cleanup remains visible as a coverage gap
+and does not suppress the partial receipt. Command previews are bounded
+head/tail views. Use `execution_snapshot`, capture metadata, complete
+minimized-output hashes, summary counts, process-tree status, and collection
+status when assessing whether evidence was preserved; do not mistake a preview
+for the complete output.
 
 ## Gate 4: preserve independent review
 

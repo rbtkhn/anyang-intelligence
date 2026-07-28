@@ -5,7 +5,9 @@ import io
 import json
 import os
 import re
+import signal
 import subprocess
+import sys
 import tarfile
 import tempfile
 import time
@@ -26,7 +28,12 @@ except ModuleNotFoundError:  # pragma: no cover - Python 3.10 compatibility
 
 
 SCHEMA_VERSION = 1
-COLLECTOR_VERSION = "1.2.0"
+COLLECTOR_VERSION = "1.4.0"
+PROCESS_TREE_CLEANUP_SECONDS = 5.0
+PROCESS_TREE_GRACE_SECONDS = 1.0
+COMMAND_WORKER_ARG = "--internal-command-worker"
+COMMAND_SPEC_ENV = "ANYANG_AUDIT_COMMAND_SPEC"
+COMMAND_STATUS_ENV = "ANYANG_AUDIT_COMMAND_STATUS"
 MAX_CAPTURE_CHARS = 20_000
 MAX_SUMMARY_EXAMPLES = 20
 MAX_SUMMARY_EXAMPLE_CHARS = 2_000
@@ -82,16 +89,26 @@ def collect_cross_repo_audit(
     expected = config["expected_head"]
     if head != expected:
         raise CrossRepoAuditError(f"Target HEAD {head} does not match sealed commit {expected}.")
+    tree = _git(root, "rev-parse", "HEAD^{tree}")
 
     status_before = _git_bytes(root, "status", "--porcelain=v1", "-z")
     tracked = _tracked_inventory(root)
     tracked_fingerprint_before = _tracked_fingerprint(tracked)
     diagnostics = _objective_diagnostics(root, tracked, config)
-    with _disposable_snapshot(root, expected) as execution_root:
-        command_runs = [
-            _run_command(execution_root, item, config["timeout_seconds"])
-            for item in config["commands"]
-        ]
+    with _disposable_snapshot(root, expected, tree) as (
+        execution_root,
+        execution_snapshot,
+    ):
+        if execution_root is None:
+            command_runs = [
+                _snapshot_preparation_failure_result(item)
+                for item in config["commands"]
+            ]
+        else:
+            command_runs = [
+                _run_command(execution_root, item, config["timeout_seconds"])
+                for item in config["commands"]
+            ]
     commands = [item["receipt"] for item in command_runs]
     command_outputs = {
         item["receipt"]["id"]: {
@@ -117,7 +134,11 @@ def collect_cross_repo_audit(
         raise CrossRepoAuditError("Target repository changed during collection; no receipt was written.")
 
     samples = _select_samples(tracked, config["sample_groups"], expected)
-    collection_status = _collection_status(commands, samples)
+    collection_status = _collection_status(
+        commands,
+        samples,
+        execution_snapshot,
+    )
     inventory = {
         "tracked_file_count": len(tracked),
         "tracked_bytes": sum(item["bytes"] for item in tracked),
@@ -131,7 +152,7 @@ def collect_cross_repo_audit(
         "audit_id": config["audit_id"],
         "repository": _repository_identity(root),
         "head": head,
-        "tree": _git(root, "rev-parse", "HEAD^{tree}"),
+        "tree": tree,
         "adapter": {
             "controlling_paths": config["controlling_paths"],
             "sample_groups": config["sample_groups"],
@@ -145,14 +166,21 @@ def collect_cross_repo_audit(
                 for item in config["commands"]
             ],
             "timeout_seconds": config["timeout_seconds"],
-            "execution_surface": "disposable-git-archive",
+            "execution_surface": "disposable-depth-one-git-snapshot-v1",
             "sample_match_semantics": "repository-rooted-segment-glob-v1",
         },
+        "execution_snapshot": execution_snapshot,
         "inventory": inventory,
         "samples": samples,
         "diagnostics": diagnostics,
         "root_cause_groups": root_cause_groups,
-        "coverage_gaps": _coverage_gaps(tracked, diagnostics, commands, samples),
+        "coverage_gaps": _coverage_gaps(
+            tracked,
+            diagnostics,
+            commands,
+            samples,
+            execution_snapshot,
+        ),
         "collection_status": collection_status,
     }
     receipt = {
@@ -453,51 +481,540 @@ def _select_samples(
 
 def _run_command(root: Path, command: dict[str, Any], timeout: int) -> dict[str, Any]:
     started = time.monotonic()
-    try:
-        result = subprocess.run(
+    with (
+        tempfile.TemporaryFile() as stdout_file,
+        tempfile.TemporaryFile() as stderr_file,
+        tempfile.TemporaryDirectory(prefix="anyang-command-status-") as status_directory,
+    ):
+        isolation_strategy, isolation_options = _process_isolation()
+        status_path = Path(status_directory) / "status.json"
+        environment = os.environ.copy()
+        environment[COMMAND_SPEC_ENV] = json.dumps(
             command["argv"],
-            cwd=root,
-            check=False,
-            text=False,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            timeout=timeout,
+            separators=(",", ":"),
         )
-        return _command_run_result(
-            command,
-            stdout_raw=result.stdout,
-            stderr_raw=result.stderr,
-            exit_code=result.returncode,
-            execution_status="completed",
-            timed_out=False,
-            duration_ms=round((time.monotonic() - started) * 1000),
-        )
-    except subprocess.TimeoutExpired as exc:
-        stdout_raw = exc.stdout or b""
-        stderr_raw = exc.stderr or b""
-        if isinstance(stdout_raw, str):
-            stdout_raw = stdout_raw.encode("utf-8")
-        if isinstance(stderr_raw, str):
-            stderr_raw = stderr_raw.encode("utf-8")
+        environment[COMMAND_STATUS_ENV] = str(status_path)
+        try:
+            process = subprocess.Popen(
+                [sys.executable, str(Path(__file__).resolve()), COMMAND_WORKER_ARG],
+                cwd=root,
+                env=environment,
+                stdin=subprocess.PIPE,
+                stdout=stdout_file,
+                stderr=stderr_file,
+                **isolation_options,
+            )
+        except OSError as exc:
+            return _command_run_result(
+                command,
+                stdout_raw=b"",
+                stderr_raw=str(exc).encode("utf-8"),
+                exit_code=None,
+                execution_status="launch_failed",
+                timed_out=False,
+                duration_ms=round((time.monotonic() - started) * 1000),
+                process_tree=_process_tree_receipt(
+                    "not-started",
+                    isolation_ready=False,
+                    gate_status="not-released",
+                ),
+            )
+
+        job_handle = _create_windows_job(process) if os.name == "nt" else None
+        isolation_ready = os.name != "nt" or job_handle is not None
+        try:
+            gate_status = _release_command_start_gate(
+                process,
+                allowed=isolation_ready,
+            )
+            try:
+                exit_code = process.wait(timeout=timeout)
+                native_status = _read_command_worker_status(status_path)
+                execution_status = native_status["execution_status"]
+                exit_code = native_status["exit_code"]
+                timed_out = False
+                process_tree = _process_tree_receipt(
+                    isolation_strategy,
+                    isolation_ready=isolation_ready,
+                    gate_status=gate_status,
+                )
+            except subprocess.TimeoutExpired:
+                exit_code = None
+                execution_status = "timed_out"
+                timed_out = True
+                process_tree = _terminate_process_tree(
+                    process,
+                    isolation_strategy,
+                    job_handle=job_handle,
+                    isolation_ready=isolation_ready,
+                    gate_status=gate_status,
+                )
+        finally:
+            _close_windows_job(job_handle)
+
+        stdout_raw = _read_capture_file(stdout_file)
+        stderr_raw = _read_capture_file(stderr_file)
         return _command_run_result(
             command,
             stdout_raw=stdout_raw,
             stderr_raw=stderr_raw,
-            exit_code=None,
-            execution_status="timed_out",
-            timed_out=True,
+            exit_code=exit_code,
+            execution_status=execution_status,
+            timed_out=timed_out,
             duration_ms=round((time.monotonic() - started) * 1000),
+            process_tree=process_tree,
+        )
+
+
+def _snapshot_preparation_failure_result(command: dict[str, Any]) -> dict[str, Any]:
+    return _command_run_result(
+        command,
+        stdout_raw=b"",
+        stderr_raw=(
+            b"Execution snapshot preparation failed before native command launch."
+        ),
+        exit_code=None,
+        execution_status="launch_failed",
+        timed_out=False,
+        duration_ms=0,
+        process_tree=_process_tree_receipt(
+            "not-started",
+            isolation_ready=False,
+            gate_status="not-released",
+        ),
+    )
+
+
+def _release_command_start_gate(
+    process: subprocess.Popen[bytes],
+    *,
+    allowed: bool,
+) -> str:
+    if process.stdin is None:
+        return "not-released"
+    try:
+        if not allowed:
+            return "not-released"
+        process.stdin.write(b"G")
+        process.stdin.flush()
+        return "released-after-isolation"
+    except (BrokenPipeError, OSError):
+        return "not-released"
+    finally:
+        process.stdin.close()
+
+
+def _read_command_worker_status(path: Path) -> dict[str, Any]:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {"execution_status": "launch_failed", "exit_code": None}
+    if value.get("execution_status") == "completed" and isinstance(
+        value.get("exit_code"),
+        int,
+    ):
+        return {
+            "execution_status": "completed",
+            "exit_code": value["exit_code"],
+        }
+    return {"execution_status": "launch_failed", "exit_code": None}
+
+
+def _command_worker_main() -> int:
+    raw_spec = os.environ.pop(COMMAND_SPEC_ENV, "")
+    raw_status = os.environ.pop(COMMAND_STATUS_ENV, "")
+    if not raw_spec or not raw_status or sys.stdin.buffer.read(1) != b"G":
+        return 125
+    try:
+        argv = json.loads(raw_spec)
+    except json.JSONDecodeError:
+        return 125
+    if (
+        not isinstance(argv, list)
+        or not argv
+        or not all(isinstance(item, str) and item for item in argv)
+    ):
+        return 125
+    status_path = Path(raw_status)
+    try:
+        native = subprocess.Popen(
+            argv,
+            stdin=subprocess.DEVNULL,
         )
     except OSError as exc:
-        return _command_run_result(
-            command,
-            stdout_raw=b"",
-            stderr_raw=str(exc).encode("utf-8"),
-            exit_code=None,
-            execution_status="launch_failed",
-            timed_out=False,
-            duration_ms=round((time.monotonic() - started) * 1000),
+        print(str(exc), file=sys.stderr, flush=True)
+        _write_command_worker_status(
+            status_path,
+            {"execution_status": "launch_failed", "exit_code": None},
         )
+        return 127
+    exit_code = native.wait()
+    _write_command_worker_status(
+        status_path,
+        {"execution_status": "completed", "exit_code": exit_code},
+    )
+    return exit_code
+
+
+def _write_command_worker_status(path: Path, value: dict[str, Any]) -> None:
+    encoded = json.dumps(value, sort_keys=True, separators=(",", ":"))
+    with path.open("x", encoding="utf-8", newline="\n") as stream:
+        stream.write(encoded)
+        stream.write("\n")
+        stream.flush()
+        os.fsync(stream.fileno())
+
+
+def _process_isolation() -> tuple[str, dict[str, Any]]:
+    if os.name == "nt":
+        return (
+            "windows-process-group",
+            {"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP},
+        )
+    return ("posix-session", {"start_new_session": True})
+
+
+def _process_tree_receipt(
+    isolation_strategy: str,
+    *,
+    attempted: bool = False,
+    status: str = "not-required",
+    duration_ms: int = 0,
+    isolation_ready: bool = True,
+    gate_status: str = "released-after-isolation",
+    termination_sequence: str = "not-required",
+    descendant_cleanup_status: str = "not-required",
+) -> dict[str, Any]:
+    return {
+        "isolation_strategy": isolation_strategy,
+        "isolation_ready_before_command": isolation_ready,
+        "start_gate_status": gate_status,
+        "termination_attempted": attempted,
+        "termination_status": status,
+        "termination_duration_ms": duration_ms,
+        "termination_sequence": termination_sequence,
+        "descendant_cleanup_status": descendant_cleanup_status,
+    }
+
+
+def _terminate_process_tree(
+    process: subprocess.Popen[bytes],
+    isolation_strategy: str,
+    *,
+    job_handle: int | None = None,
+    isolation_ready: bool = True,
+    gate_status: str = "released-after-isolation",
+) -> dict[str, Any]:
+    started = time.monotonic()
+    deadline = started + PROCESS_TREE_CLEANUP_SECONDS
+    if os.name == "nt":
+        terminated, descendant_cleanup = _terminate_windows_process_tree(
+            process,
+            deadline,
+            job_handle=job_handle,
+        )
+        termination_sequence = "taskkill-then-job"
+    else:
+        terminated = _terminate_posix_process_tree(process, deadline)
+        descendant_cleanup = "verified" if terminated else "unverified"
+        termination_sequence = "process-group"
+    return _process_tree_receipt(
+        isolation_strategy,
+        attempted=True,
+        status="terminated" if terminated else "failed",
+        duration_ms=round((time.monotonic() - started) * 1000),
+        isolation_ready=isolation_ready,
+        gate_status=gate_status,
+        termination_sequence=termination_sequence,
+        descendant_cleanup_status=descendant_cleanup,
+    )
+
+
+def _terminate_windows_process_tree(
+    process: subprocess.Popen[bytes],
+    deadline: float,
+    *,
+    job_handle: int | None,
+) -> tuple[bool, str]:
+    descendants = _windows_descendant_pids(process.pid)
+    taskkill_succeeded = False
+    try:
+        taskkill_succeeded = _taskkill_process_tree(process, deadline)
+    except (OSError, subprocess.SubprocessError):
+        taskkill_succeeded = False
+
+    job_terminated = (
+        job_handle is not None
+        and _remaining_cleanup_time(deadline) > 0
+        and _terminate_windows_job(job_handle)
+    )
+    try:
+        process.wait(timeout=_remaining_cleanup_time(deadline))
+    except subprocess.TimeoutExpired:
+        try:
+            process.kill()
+            process.wait(timeout=_remaining_cleanup_time(deadline))
+        except (OSError, subprocess.SubprocessError):
+            pass
+
+    root_terminated = process.poll() is not None
+    descendants_verified = (
+        descendants is not None
+        and _wait_for_windows_processes_gone(descendants, deadline)
+    )
+    cleanup_status = "verified" if root_terminated and descendants_verified else "unverified"
+    tree_termination_attempted = taskkill_succeeded or job_terminated
+    return root_terminated and tree_termination_attempted, cleanup_status
+
+
+def _windows_descendant_pids(root_pid: int) -> set[int] | None:
+    import ctypes
+    from ctypes import wintypes
+
+    th32cs_snapprocess = 0x00000002
+    max_path = 260
+
+    class ProcessEntry32W(ctypes.Structure):
+        _fields_ = [
+            ("dwSize", wintypes.DWORD),
+            ("cntUsage", wintypes.DWORD),
+            ("th32ProcessID", wintypes.DWORD),
+            ("th32DefaultHeapID", ctypes.c_size_t),
+            ("th32ModuleID", wintypes.DWORD),
+            ("cntThreads", wintypes.DWORD),
+            ("th32ParentProcessID", wintypes.DWORD),
+            ("pcPriClassBase", wintypes.LONG),
+            ("dwFlags", wintypes.DWORD),
+            ("szExeFile", wintypes.WCHAR * max_path),
+        ]
+
+    kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    kernel32.CreateToolhelp32Snapshot.argtypes = [wintypes.DWORD, wintypes.DWORD]
+    kernel32.CreateToolhelp32Snapshot.restype = wintypes.HANDLE
+    kernel32.Process32FirstW.argtypes = [
+        wintypes.HANDLE,
+        ctypes.POINTER(ProcessEntry32W),
+    ]
+    kernel32.Process32NextW.argtypes = [
+        wintypes.HANDLE,
+        ctypes.POINTER(ProcessEntry32W),
+    ]
+    snapshot = kernel32.CreateToolhelp32Snapshot(th32cs_snapprocess, 0)
+    if snapshot == wintypes.HANDLE(-1).value:
+        return None
+    parents: dict[int, int] = {}
+    try:
+        entry = ProcessEntry32W()
+        entry.dwSize = ctypes.sizeof(entry)
+        available = kernel32.Process32FirstW(snapshot, ctypes.byref(entry))
+        while available:
+            parents[int(entry.th32ProcessID)] = int(entry.th32ParentProcessID)
+            available = kernel32.Process32NextW(snapshot, ctypes.byref(entry))
+    finally:
+        kernel32.CloseHandle(snapshot)
+
+    descendants: set[int] = set()
+    frontier = {root_pid}
+    while frontier:
+        children = {
+            pid
+            for pid, parent_pid in parents.items()
+            if parent_pid in frontier and pid not in descendants
+        }
+        descendants.update(children)
+        frontier = children
+    return descendants
+
+
+def _windows_processes_gone(process_ids: set[int]) -> bool:
+    import ctypes
+    from ctypes import wintypes
+
+    synchronize = 0x00100000
+    wait_object_0 = 0x00000000
+    error_invalid_parameter = 87
+    kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    kernel32.OpenProcess.argtypes = [
+        wintypes.DWORD,
+        wintypes.BOOL,
+        wintypes.DWORD,
+    ]
+    kernel32.OpenProcess.restype = wintypes.HANDLE
+    kernel32.WaitForSingleObject.argtypes = [wintypes.HANDLE, wintypes.DWORD]
+    for process_id in process_ids:
+        handle = kernel32.OpenProcess(synchronize, False, process_id)
+        if not handle:
+            if ctypes.get_last_error() == error_invalid_parameter:
+                continue
+            return False
+        try:
+            if kernel32.WaitForSingleObject(handle, 0) != wait_object_0:
+                return False
+        finally:
+            kernel32.CloseHandle(handle)
+    return True
+
+
+def _wait_for_windows_processes_gone(
+    process_ids: set[int],
+    deadline: float,
+) -> bool:
+    while True:
+        if _windows_processes_gone(process_ids):
+            return True
+        if time.monotonic() >= deadline:
+            return False
+        time.sleep(min(0.02, _remaining_cleanup_time(deadline)))
+
+
+def _create_windows_job(process: subprocess.Popen[bytes]) -> int | None:
+    import ctypes
+    from ctypes import wintypes
+
+    job_object_extended_limit_information = 9
+    job_object_limit_kill_on_job_close = 0x00002000
+
+    class IoCounters(ctypes.Structure):
+        _fields_ = [
+            ("ReadOperationCount", ctypes.c_uint64),
+            ("WriteOperationCount", ctypes.c_uint64),
+            ("OtherOperationCount", ctypes.c_uint64),
+            ("ReadTransferCount", ctypes.c_uint64),
+            ("WriteTransferCount", ctypes.c_uint64),
+            ("OtherTransferCount", ctypes.c_uint64),
+        ]
+
+    class BasicLimitInformation(ctypes.Structure):
+        _fields_ = [
+            ("PerProcessUserTimeLimit", ctypes.c_int64),
+            ("PerJobUserTimeLimit", ctypes.c_int64),
+            ("LimitFlags", wintypes.DWORD),
+            ("MinimumWorkingSetSize", ctypes.c_size_t),
+            ("MaximumWorkingSetSize", ctypes.c_size_t),
+            ("ActiveProcessLimit", wintypes.DWORD),
+            ("Affinity", ctypes.c_size_t),
+            ("PriorityClass", wintypes.DWORD),
+            ("SchedulingClass", wintypes.DWORD),
+        ]
+
+    class ExtendedLimitInformation(ctypes.Structure):
+        _fields_ = [
+            ("BasicLimitInformation", BasicLimitInformation),
+            ("IoInfo", IoCounters),
+            ("ProcessMemoryLimit", ctypes.c_size_t),
+            ("JobMemoryLimit", ctypes.c_size_t),
+            ("PeakProcessMemoryUsed", ctypes.c_size_t),
+            ("PeakJobMemoryUsed", ctypes.c_size_t),
+        ]
+
+    kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    kernel32.CreateJobObjectW.restype = wintypes.HANDLE
+    kernel32.SetInformationJobObject.argtypes = [
+        wintypes.HANDLE,
+        ctypes.c_int,
+        ctypes.c_void_p,
+        wintypes.DWORD,
+    ]
+    kernel32.AssignProcessToJobObject.argtypes = [wintypes.HANDLE, wintypes.HANDLE]
+
+    job = kernel32.CreateJobObjectW(None, None)
+    if not job:
+        return None
+    information = ExtendedLimitInformation()
+    information.BasicLimitInformation.LimitFlags = (
+        job_object_limit_kill_on_job_close
+    )
+    configured = kernel32.SetInformationJobObject(
+        job,
+        job_object_extended_limit_information,
+        ctypes.byref(information),
+        ctypes.sizeof(information),
+    )
+    assigned = configured and kernel32.AssignProcessToJobObject(
+        job,
+        wintypes.HANDLE(process._handle),
+    )
+    if not assigned:
+        kernel32.CloseHandle(job)
+        return None
+    return int(job)
+
+
+def _terminate_windows_job(job_handle: int) -> bool:
+    import ctypes
+    from ctypes import wintypes
+
+    kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    kernel32.TerminateJobObject.argtypes = [wintypes.HANDLE, wintypes.UINT]
+    return bool(kernel32.TerminateJobObject(wintypes.HANDLE(job_handle), 1))
+
+
+def _close_windows_job(job_handle: int | None) -> None:
+    if job_handle is None or os.name != "nt":
+        return
+    import ctypes
+    from ctypes import wintypes
+
+    kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    kernel32.CloseHandle(wintypes.HANDLE(job_handle))
+
+
+def _taskkill_process_tree(
+    process: subprocess.Popen[bytes],
+    deadline: float,
+) -> bool:
+    result = subprocess.run(
+        ["taskkill", "/PID", str(process.pid), "/T", "/F"],
+        check=False,
+        stdin=subprocess.DEVNULL,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        timeout=_remaining_cleanup_time(deadline),
+        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+    )
+    return result.returncode == 0
+
+
+def _terminate_posix_process_tree(
+    process: subprocess.Popen[bytes],
+    deadline: float,
+) -> bool:
+    try:
+        os.killpg(process.pid, signal.SIGTERM)
+    except ProcessLookupError:
+        return True
+    except OSError:
+        return False
+
+    try:
+        process.wait(
+            timeout=min(PROCESS_TREE_GRACE_SECONDS, _remaining_cleanup_time(deadline))
+        )
+    except subprocess.TimeoutExpired:
+        pass
+
+    try:
+        os.killpg(process.pid, signal.SIGKILL)
+    except ProcessLookupError:
+        return True
+    except OSError:
+        return False
+
+    try:
+        process.wait(timeout=_remaining_cleanup_time(deadline))
+    except subprocess.TimeoutExpired:
+        return False
+    return process.poll() is not None
+
+
+def _remaining_cleanup_time(deadline: float) -> float:
+    return max(0.01, deadline - time.monotonic())
+
+
+def _read_capture_file(stream: Any) -> bytes:
+    stream.flush()
+    stream.seek(0)
+    return stream.read()
 
 
 def _command_run_result(
@@ -509,6 +1026,7 @@ def _command_run_result(
     execution_status: str,
     timed_out: bool,
     duration_ms: int,
+    process_tree: dict[str, Any],
 ) -> dict[str, Any]:
     stdout = _capture_output(stdout_raw)
     stderr = _capture_output(stderr_raw)
@@ -521,6 +1039,7 @@ def _command_run_result(
         "timed_out": timed_out,
         "execution_status": execution_status,
         "duration_ms": duration_ms,
+        "process_tree": process_tree,
         "stdout": stdout["preview"],
         "stderr": stderr["preview"],
         "stdout_sha256": stdout["preview_sha256"],
@@ -546,6 +1065,7 @@ def _coverage_gaps(
     diagnostics: list[dict[str, Any]],
     commands: list[dict[str, Any]],
     samples: list[dict[str, Any]],
+    execution_snapshot: dict[str, Any],
 ) -> list[str]:
     gaps = [
         "Collector reports objective repository evidence only; semantic support, consequence, and severity require independent review.",
@@ -554,9 +1074,36 @@ def _coverage_gaps(
     oversized = sum(1 for item in tracked if item["kind"] == "file" and item["bytes"] > MAX_TEXT_SCAN_BYTES)
     if oversized:
         gaps.append(f"{oversized} tracked file(s) exceeded the structured/text diagnostic size ceiling.")
+    if execution_snapshot["status"] != "ready":
+        gaps.append(
+            "Git-aware execution snapshot preparation failed; native commands "
+            "were not started."
+        )
     incomplete_commands = [item["id"] for item in commands if item["execution_status"] != "completed"]
     if incomplete_commands:
         gaps.append(f"Native command completion was not established for: {', '.join(incomplete_commands)}.")
+    incomplete_containment = [
+        item["id"]
+        for item in commands
+        if item["process_tree"]["termination_status"] == "failed"
+    ]
+    if incomplete_containment:
+        gaps.append(
+            "Process-tree termination was not established for: "
+            + ", ".join(incomplete_containment)
+            + "."
+        )
+    unverified_descendants = [
+        item["id"]
+        for item in commands
+        if item["process_tree"]["descendant_cleanup_status"] == "unverified"
+    ]
+    if unverified_descendants:
+        gaps.append(
+            "Pre-captured descendant cleanup was not verified for: "
+            + ", ".join(unverified_descendants)
+            + "."
+        )
     incomplete_summaries = [item["id"] for item in commands if not item["summary_coverage_complete"]]
     if incomplete_summaries:
         gaps.append(f"Required command summaries were unavailable for: {', '.join(incomplete_summaries)}.")
@@ -569,26 +1116,204 @@ def _coverage_gaps(
 
 
 @contextmanager
-def _disposable_snapshot(root: Path, commit: str):
-    archive = _git_bytes(root, "archive", "--format=tar", commit)
+def _disposable_snapshot(root: Path, commit: str, tree: str):
     with tempfile.TemporaryDirectory(prefix="anyang-cross-repo-audit-") as temporary:
         snapshot = Path(temporary) / "snapshot"
         snapshot.mkdir()
-        with tarfile.open(fileobj=io.BytesIO(archive), mode="r:") as bundle:
-            members = bundle.getmembers()
-            for member in members:
-                path = PurePosixPath(member.name)
-                if path.is_absolute() or any(part in {"", ".", ".."} for part in path.parts):
-                    raise CrossRepoAuditError(f"Unsafe path in Git archive: {member.name}")
-            try:
-                bundle.extractall(snapshot, members=members, filter="data")
-            except TypeError:
-                if any(member.issym() or member.islnk() for member in members):
-                    raise CrossRepoAuditError(
-                        "This Python runtime cannot safely materialize archived symbolic links."
-                    )
-                bundle.extractall(snapshot, members=members)
-        yield snapshot
+        try:
+            archive = _git_bytes(root, "archive", "--format=tar", commit)
+            _extract_git_archive(snapshot, archive)
+            execution_snapshot = _attach_sealed_git_metadata(
+                snapshot,
+                root,
+                commit,
+                tree,
+            )
+        except (CrossRepoAuditError, OSError, tarfile.TarError, ValueError):
+            yield None, _execution_snapshot_receipt(status="preparation_failed")
+            return
+        yield snapshot, execution_snapshot
+
+
+def _extract_git_archive(snapshot: Path, archive: bytes) -> None:
+    with tarfile.open(fileobj=io.BytesIO(archive), mode="r:") as bundle:
+        members = bundle.getmembers()
+        for member in members:
+            path = PurePosixPath(member.name)
+            if path.is_absolute() or any(
+                part in {"", ".", ".."} for part in path.parts
+            ):
+                raise CrossRepoAuditError(
+                    f"Unsafe path in Git archive: {member.name}"
+                )
+        try:
+            bundle.extractall(snapshot, members=members, filter="data")
+        except TypeError:
+            if any(member.issym() or member.islnk() for member in members):
+                raise CrossRepoAuditError(
+                    "This Python runtime cannot safely materialize archived "
+                    "symbolic links."
+                )
+            bundle.extractall(snapshot, members=members)
+
+
+def _attach_sealed_git_metadata(
+    snapshot: Path,
+    source: Path,
+    commit: str,
+    tree: str,
+) -> dict[str, Any]:
+    _git(snapshot, "init", "--quiet", "--template=")
+    _git(
+        snapshot,
+        "-c",
+        "protocol.file.allow=always",
+        "fetch",
+        "--no-write-fetch-head",
+        "--no-tags",
+        "--depth=1",
+        source.resolve().as_uri(),
+        commit,
+    )
+    _git(
+        snapshot,
+        "-c",
+        "core.logAllRefUpdates=false",
+        "update-ref",
+        "--no-deref",
+        "HEAD",
+        commit,
+    )
+    _git(snapshot, "read-tree", commit)
+
+    head_verified = _git(snapshot, "rev-parse", "HEAD") == commit
+    tree_verified = _git(snapshot, "rev-parse", "HEAD^{tree}") == tree
+    index_clean = not _git_bytes(snapshot, "status", "--porcelain=v1", "-z")
+    reachable_commit_count = int(_git(snapshot, "rev-list", "--count", "HEAD"))
+    remote_count = len(
+        [item for item in _git(snapshot, "remote").splitlines() if item]
+    )
+    ref_count = len(
+        [
+            item
+            for item in _git(
+                snapshot,
+                "for-each-ref",
+                "--format=%(refname)",
+            ).splitlines()
+            if item
+        ]
+    )
+    detached_head = not bool(
+        _git(
+            snapshot,
+            "symbolic-ref",
+            "--quiet",
+            "HEAD",
+            allow_failure=True,
+        )
+    )
+    alternates_present = (
+        snapshot / ".git" / "objects" / "info" / "alternates"
+    ).exists()
+    fetch_head_present = (snapshot / ".git" / "FETCH_HEAD").exists()
+    hooks_present = any((snapshot / ".git" / "hooks").glob("*"))
+    reflogs_present = (snapshot / ".git" / "logs").exists()
+    source_path_persisted = _git_metadata_contains_source_path(
+        snapshot / ".git",
+        source,
+    )
+
+    ready = (
+        head_verified
+        and tree_verified
+        and index_clean
+        and reachable_commit_count == 1
+        and remote_count == 0
+        and ref_count == 0
+        and detached_head
+        and not alternates_present
+        and not fetch_head_present
+        and not hooks_present
+        and not reflogs_present
+        and not source_path_persisted
+    )
+    if not ready:
+        raise CrossRepoAuditError(
+            "Disposable Git snapshot failed a sealed execution invariant."
+        )
+    return _execution_snapshot_receipt(
+        status="ready",
+        head_verified=head_verified,
+        tree_verified=tree_verified,
+        index_clean=index_clean,
+        detached_head=detached_head,
+        reachable_commit_count=reachable_commit_count,
+        remote_count=remote_count,
+        ref_count=ref_count,
+        alternates_present=alternates_present,
+        fetch_head_present=fetch_head_present,
+        hooks_present=hooks_present,
+        reflogs_present=reflogs_present,
+        source_path_persisted=source_path_persisted,
+    )
+
+
+def _git_metadata_contains_source_path(git_directory: Path, source: Path) -> bool:
+    source_values = {
+        str(source.resolve()),
+        source.resolve().as_posix(),
+        source.resolve().as_uri(),
+    }
+    needles = {
+        variant.encode("utf-8")
+        for value in source_values
+        for variant in {value, value.replace("\\", "/")}
+    }
+    for path in git_directory.rglob("*"):
+        relative = path.relative_to(git_directory)
+        if not path.is_file() or relative.parts[0] == "objects":
+            continue
+        if path.name == "index" or path.stat().st_size > MAX_TEXT_SCAN_BYTES:
+            continue
+        raw = path.read_bytes()
+        if any(needle in raw for needle in needles):
+            return True
+    return False
+
+
+def _execution_snapshot_receipt(
+    *,
+    status: str,
+    head_verified: bool | None = None,
+    tree_verified: bool | None = None,
+    index_clean: bool | None = None,
+    detached_head: bool | None = None,
+    reachable_commit_count: int | None = None,
+    remote_count: int | None = None,
+    ref_count: int | None = None,
+    alternates_present: bool | None = None,
+    fetch_head_present: bool | None = None,
+    hooks_present: bool | None = None,
+    reflogs_present: bool | None = None,
+    source_path_persisted: bool | None = None,
+) -> dict[str, Any]:
+    return {
+        "strategy": "archive-plus-depth-one-git-metadata-v1",
+        "status": status,
+        "head_verified": head_verified,
+        "tree_verified": tree_verified,
+        "index_clean": index_clean,
+        "detached_head": detached_head,
+        "reachable_commit_count": reachable_commit_count,
+        "remote_count": remote_count,
+        "ref_count": ref_count,
+        "alternates_present": alternates_present,
+        "fetch_head_present": fetch_head_present,
+        "hooks_present": hooks_present,
+        "reflogs_present": reflogs_present,
+        "source_path_persisted": source_path_persisted,
+    }
 
 
 def _collector_identity() -> dict[str, str]:
@@ -885,7 +1610,11 @@ def _command_summaries(
     return summaries
 
 
-def _collection_status(commands: list[dict[str, Any]], samples: list[dict[str, Any]]) -> str:
+def _collection_status(
+    commands: list[dict[str, Any]],
+    samples: list[dict[str, Any]],
+    execution_snapshot: dict[str, Any],
+) -> str:
     commands_complete = all(
         item["execution_status"] == "completed" and item["summary_coverage_complete"]
         for item in commands
@@ -894,7 +1623,12 @@ def _collection_status(commands: list[dict[str, Any]], samples: list[dict[str, A
         not item["required"] or item["selection_complete"]
         for item in samples
     )
-    return "complete" if commands_complete and samples_complete else "partial"
+    snapshot_complete = execution_snapshot["status"] == "ready"
+    return (
+        "complete"
+        if commands_complete and samples_complete and snapshot_complete
+        else "partial"
+    )
 
 
 def _write_receipt_atomic(output: Path, payload: bytes) -> None:
@@ -927,3 +1661,11 @@ def _canonical_bytes(value: Any) -> bytes:
 
 def _sha256(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
+
+
+if __name__ == "__main__":
+    raise SystemExit(
+        _command_worker_main()
+        if sys.argv[1:] == [COMMAND_WORKER_ARG]
+        else 2
+    )

@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
+import time
 from pathlib import Path
 
 import pytest
 
+import anyang_loop.cross_repo_audit as cross_repo_audit
 from anyang_loop.cross_repo_audit import (
     MAX_SUMMARY_EXAMPLE_CHARS,
     CrossRepoAuditError,
@@ -70,14 +73,45 @@ def test_collector_reports_objective_diagnostics_and_preserves_target(tmp_path: 
     assert receipt["collector_boundary"]["assigns_semantic_severity"] is False
     assert receipt["collector_boundary"]["commands_execute_in_target_checkout"] is False
     assert receipt["collector_boundary"]["commands_execute_in_disposable_snapshot"] is True
-    assert receipt["adapter"]["execution_surface"] == "disposable-git-archive"
+    assert (
+        receipt["adapter"]["execution_surface"]
+        == "disposable-depth-one-git-snapshot-v1"
+    )
     assert receipt["adapter"]["timeout_seconds"] == 10
     assert receipt["adapter"]["sample_match_semantics"] == "repository-rooted-segment-glob-v1"
     assert receipt["collector"]["version"]
-    assert receipt["collector"]["version"] == "1.2.0"
+    assert receipt["collector"]["version"] == "1.4.0"
     assert len(receipt["collector"]["source_sha256"]) == 64
+    assert receipt["execution_snapshot"] == {
+        "strategy": "archive-plus-depth-one-git-metadata-v1",
+        "status": "ready",
+        "head_verified": True,
+        "tree_verified": True,
+        "index_clean": True,
+        "detached_head": True,
+        "reachable_commit_count": 1,
+        "remote_count": 0,
+        "ref_count": 0,
+        "alternates_present": False,
+        "fetch_head_present": False,
+        "hooks_present": False,
+        "reflogs_present": False,
+        "source_path_persisted": False,
+    }
     assert receipt["collection_status"] == "complete"
     assert receipt["commands"][0]["execution_status"] == "completed"
+    assert receipt["commands"][0]["process_tree"] == {
+        "isolation_strategy": (
+            "windows-process-group" if os.name == "nt" else "posix-session"
+        ),
+        "isolation_ready_before_command": True,
+        "start_gate_status": "released-after-isolation",
+        "termination_attempted": False,
+        "termination_status": "not-required",
+        "termination_duration_ms": 0,
+        "termination_sequence": "not-required",
+        "descendant_cleanup_status": "not-required",
+    }
     assert all(item["semantic_severity"] is None for item in receipt["diagnostics"])
     assert run(repo, "git", "status", "--short") == ""
 
@@ -93,6 +127,157 @@ def test_sampling_and_stable_fingerprint_are_deterministic(tmp_path: Path):
 
     assert first["samples"] == second["samples"]
     assert first["deterministic_fingerprint"] == second["deterministic_fingerprint"]
+
+
+def test_git_aware_snapshot_exposes_only_the_sealed_commit(tmp_path: Path):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    head = build_repo(repo)
+    tree = run(repo, "git", "rev-parse", "HEAD^{tree}")
+    tracked = sorted(run(repo, "git", "ls-files").splitlines())
+    probe = (
+        "import json,subprocess;"
+        "from pathlib import Path;"
+        "g=lambda *a:subprocess.check_output(['git',*a],text=True).strip();"
+        "print(json.dumps({"
+        "'head':g('rev-parse','HEAD'),"
+        "'tree':g('rev-parse','HEAD^{tree}'),"
+        "'status':g('status','--porcelain'),"
+        "'tracked':sorted(g('ls-files').splitlines()),"
+        "'commits':int(g('rev-list','--count','HEAD')),"
+        "'remotes':g('remote'),"
+        "'refs':g('for-each-ref','--format=%(refname)'),"
+        "'alternates':Path('.git/objects/info/alternates').exists(),"
+        "'fetch_head':Path('.git/FETCH_HEAD').exists(),"
+        "'hooks':Path('.git/hooks').exists(),"
+        "'reflogs':Path('.git/logs').exists()"
+        "}))"
+    )
+
+    receipt = collect_cross_repo_audit(
+        repo,
+        config(
+            tmp_path / "config.json",
+            head,
+            [sys.executable, "-c", probe],
+        ),
+        tmp_path / "receipt.json",
+    )
+    observed = json.loads(receipt["commands"][0]["stdout"])
+
+    assert observed == {
+        "head": head,
+        "tree": tree,
+        "status": "",
+        "tracked": tracked,
+        "commits": 1,
+        "remotes": "",
+        "refs": "",
+        "alternates": False,
+        "fetch_head": False,
+        "hooks": False,
+        "reflogs": False,
+    }
+    assert receipt["execution_snapshot"]["source_path_persisted"] is False
+    assert receipt["collection_status"] == "complete"
+
+
+def test_snapshot_preparation_failure_seals_partial_without_command_start(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    head = build_repo(repo)
+    sentinel = tmp_path / "native-started.txt"
+    command = [
+        sys.executable,
+        "-c",
+        (
+            "from pathlib import Path;"
+            f"Path({str(sentinel)!r}).write_text('started', encoding='utf-8')"
+        ),
+    ]
+
+    def fail_snapshot(*_args, **_kwargs):
+        raise CrossRepoAuditError("injected snapshot preparation failure")
+
+    monkeypatch.setattr(
+        cross_repo_audit,
+        "_attach_sealed_git_metadata",
+        fail_snapshot,
+    )
+    output = tmp_path / "receipt.json"
+    receipt = collect_cross_repo_audit(
+        repo,
+        config(tmp_path / "config.json", head, command),
+        output,
+    )
+
+    assert output.is_file()
+    assert not sentinel.exists()
+    assert receipt["execution_snapshot"]["status"] == "preparation_failed"
+    assert receipt["commands"][0]["execution_status"] == "launch_failed"
+    assert (
+        receipt["commands"][0]["process_tree"]["isolation_strategy"]
+        == "not-started"
+    )
+    assert receipt["collection_status"] == "partial"
+    assert any(
+        "execution snapshot preparation failed" in gap.lower()
+        for gap in receipt["coverage_gaps"]
+    )
+
+
+@pytest.mark.parametrize("failed_step", ["fetch", "update-ref", "read-tree"])
+def test_each_git_snapshot_step_failure_seals_partial_receipt(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    failed_step: str,
+):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    head = build_repo(repo)
+    original_git = cross_repo_audit._git
+
+    def injected_git(root, *args, **kwargs):
+        if root.name == "snapshot" and failed_step in args:
+            raise CrossRepoAuditError(f"injected {failed_step} failure")
+        return original_git(root, *args, **kwargs)
+
+    monkeypatch.setattr(cross_repo_audit, "_git", injected_git)
+    output = tmp_path / f"{failed_step}-receipt.json"
+    receipt = collect_cross_repo_audit(
+        repo,
+        config(tmp_path / f"{failed_step}.json", head),
+        output,
+    )
+
+    assert output.is_file()
+    assert receipt["execution_snapshot"]["status"] == "preparation_failed"
+    assert receipt["commands"][0]["execution_status"] == "launch_failed"
+    assert receipt["collection_status"] == "partial"
+
+
+def test_archive_index_mismatch_fails_closed_and_seals_partial(tmp_path: Path):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    head = build_repo(repo)
+    write(repo / ".gitattributes", "README.md export-subst\n")
+    write(repo / "README.md", "# Fixture $Format:%H$\n")
+    run(repo, "git", "add", ".")
+    run(repo, "git", "commit", "-m", "export substitution")
+    head = run(repo, "git", "rev-parse", "HEAD")
+
+    receipt = collect_cross_repo_audit(
+        repo,
+        config(tmp_path / "config.json", head),
+        tmp_path / "receipt.json",
+    )
+
+    assert receipt["execution_snapshot"]["status"] == "preparation_failed"
+    assert receipt["commands"][0]["execution_status"] == "launch_failed"
+    assert receipt["collection_status"] == "partial"
 
 
 def test_sampling_is_repository_rooted_recursive_and_excludable(tmp_path: Path):
@@ -241,12 +426,271 @@ def test_nonzero_missing_and_timeout_commands_are_receipted(tmp_path: Path):
         assert result["exit_code"] != 0 or result["timed_out"] or result["stderr"]
         if name == "nonzero":
             assert result["execution_status"] == "completed"
+            assert result["process_tree"]["termination_status"] == "not-required"
             assert receipt["collection_status"] == "complete"
             assert not any("command completion" in gap for gap in receipt["coverage_gaps"])
         else:
             assert result["execution_status"] in {"launch_failed", "timed_out"}
             assert receipt["collection_status"] == "partial"
             assert any("command completion" in gap for gap in receipt["coverage_gaps"])
+            if name == "timeout":
+                assert result["process_tree"]["termination_attempted"] is True
+                assert result["process_tree"]["termination_status"] == "terminated"
+                cleanup = result["process_tree"]["descendant_cleanup_status"]
+                assert cleanup in {"verified", "unverified"}
+                if cleanup == "unverified":
+                    assert any(
+                        "Pre-captured descendant cleanup was not verified" in gap
+                        for gap in receipt["coverage_gaps"]
+                    )
+            else:
+                assert result["process_tree"]["isolation_ready_before_command"] is True
+                assert result["process_tree"]["start_gate_status"] == "released-after-isolation"
+
+
+def test_timeout_terminates_nested_tree_and_seals_partial_output(tmp_path: Path):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    head = build_repo(repo)
+    sentinel = tmp_path / "escaped-child.txt"
+    child = (
+        "import time;"
+        "from pathlib import Path;"
+        "time.sleep(2);"
+        f"Path({str(sentinel)!r}).write_text('escaped', encoding='utf-8')"
+    )
+    parent = (
+        "import subprocess,sys,time;"
+        "print('OPENING', flush=True);"
+        "print('ENDING', file=sys.stderr, flush=True);"
+        f"subprocess.Popen([sys.executable, '-c', {child!r}]);"
+        "time.sleep(30)"
+    )
+    value = json.loads(
+        config(
+            tmp_path / "config.json",
+            head,
+            [sys.executable, "-c", parent],
+        ).read_text(encoding="utf-8")
+    )
+    value["timeout_seconds"] = 1
+    (tmp_path / "config.json").write_text(json.dumps(value), encoding="utf-8")
+
+    started = time.monotonic()
+    receipt = collect_cross_repo_audit(
+        repo,
+        tmp_path / "config.json",
+        tmp_path / "receipt.json",
+    )
+    elapsed = time.monotonic() - started
+    result = receipt["commands"][0]
+
+    assert elapsed < 8
+    assert result["execution_status"] == "timed_out"
+    assert result["process_tree"]["termination_attempted"] is True
+    assert result["process_tree"]["termination_status"] == "terminated"
+    assert result["process_tree"]["termination_duration_ms"] < 5000
+    assert result["process_tree"]["isolation_ready_before_command"] is True
+    assert result["process_tree"]["start_gate_status"] == "released-after-isolation"
+    assert result["process_tree"]["descendant_cleanup_status"] == "verified"
+    assert result["process_tree"]["termination_sequence"] == (
+        "taskkill-then-job" if os.name == "nt" else "process-group"
+    )
+    assert result["stdout"] == "OPENING\n"
+    assert result["stderr"] == "ENDING\n"
+    assert len(result["stdout_complete_minimized_sha256"]) == 64
+    assert len(result["stderr_complete_minimized_sha256"]) == 64
+    assert receipt["collection_status"] == "partial"
+    assert (tmp_path / "receipt.json").is_file()
+    time.sleep(1.5)
+    assert not sentinel.exists()
+
+
+@pytest.mark.skipif(os.name != "nt", reason="Windows job assignment gate")
+def test_windows_job_assignment_failure_does_not_release_native_command(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    head = build_repo(repo)
+    sentinel = tmp_path / "native-started.txt"
+    value = json.loads(
+        config(
+            tmp_path / "config.json",
+            head,
+            [
+                sys.executable,
+                "-c",
+                (
+                    "from pathlib import Path;"
+                    f"Path({str(sentinel)!r}).write_text('started', encoding='utf-8')"
+                ),
+            ],
+        ).read_text(encoding="utf-8")
+    )
+    (tmp_path / "config.json").write_text(json.dumps(value), encoding="utf-8")
+    monkeypatch.setattr(
+        cross_repo_audit,
+        "_create_windows_job",
+        lambda _process: None,
+    )
+
+    receipt = collect_cross_repo_audit(
+        repo,
+        tmp_path / "config.json",
+        tmp_path / "receipt.json",
+    )
+    result = receipt["commands"][0]
+
+    assert result["execution_status"] == "launch_failed"
+    assert result["process_tree"]["isolation_ready_before_command"] is False
+    assert result["process_tree"]["start_gate_status"] == "not-released"
+    assert receipt["collection_status"] == "partial"
+    assert not sentinel.exists()
+    assert (tmp_path / "receipt.json").is_file()
+
+
+@pytest.mark.skipif(os.name != "nt", reason="Windows job assignment gate")
+def test_windows_native_command_waits_for_job_assignment(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    head = build_repo(repo)
+    sentinel = tmp_path / "native-started.txt"
+    command = [
+        sys.executable,
+        "-c",
+        (
+            "from pathlib import Path;"
+            f"Path({str(sentinel)!r}).write_text('started', encoding='utf-8')"
+        ),
+    ]
+    original_create_job = cross_repo_audit._create_windows_job
+
+    def delayed_assignment(process):
+        time.sleep(0.5)
+        assert not sentinel.exists()
+        return original_create_job(process)
+
+    monkeypatch.setattr(
+        cross_repo_audit,
+        "_create_windows_job",
+        delayed_assignment,
+    )
+
+    receipt = collect_cross_repo_audit(
+        repo,
+        config(tmp_path / "config.json", head, command),
+        tmp_path / "receipt.json",
+    )
+
+    assert sentinel.read_text(encoding="utf-8") == "started"
+    assert receipt["commands"][0]["process_tree"]["isolation_ready_before_command"] is True
+    assert receipt["commands"][0]["process_tree"]["start_gate_status"] == "released-after-isolation"
+
+
+@pytest.mark.skipif(os.name != "nt", reason="Windows termination ordering")
+def test_windows_timeout_uses_taskkill_before_job_and_reports_unverified_descendants(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    head = build_repo(repo)
+    value = json.loads(
+        config(
+            tmp_path / "config.json",
+            head,
+            [sys.executable, "-c", "import time; time.sleep(30)"],
+        ).read_text(encoding="utf-8")
+    )
+    value["timeout_seconds"] = 1
+    (tmp_path / "config.json").write_text(json.dumps(value), encoding="utf-8")
+    order: list[str] = []
+    original_taskkill = cross_repo_audit._taskkill_process_tree
+    original_terminate_job = cross_repo_audit._terminate_windows_job
+
+    def taskkill(process, deadline):
+        order.append("taskkill")
+        return original_taskkill(process, deadline)
+
+    def terminate_job(job_handle):
+        order.append("job")
+        return original_terminate_job(job_handle)
+
+    monkeypatch.setattr(cross_repo_audit, "_taskkill_process_tree", taskkill)
+    monkeypatch.setattr(cross_repo_audit, "_terminate_windows_job", terminate_job)
+    monkeypatch.setattr(
+        cross_repo_audit,
+        "_windows_descendant_pids",
+        lambda _root_pid: None,
+    )
+
+    receipt = collect_cross_repo_audit(
+        repo,
+        tmp_path / "config.json",
+        tmp_path / "receipt.json",
+    )
+    result = receipt["commands"][0]
+
+    assert order[:2] == ["taskkill", "job"]
+    assert result["execution_status"] == "timed_out"
+    assert result["process_tree"]["termination_status"] == "terminated"
+    assert result["process_tree"]["descendant_cleanup_status"] == "unverified"
+    assert any(
+        "Pre-captured descendant cleanup was not verified" in gap
+        for gap in receipt["coverage_gaps"]
+    )
+    assert (tmp_path / "receipt.json").is_file()
+
+
+@pytest.mark.skipif(os.name == "nt", reason="POSIX process-group behavior")
+def test_posix_timeout_uses_process_group_containment(tmp_path: Path):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    head = build_repo(repo)
+    value = json.loads(
+        config(
+            tmp_path / "config.json",
+            head,
+            [sys.executable, "-c", "import time; time.sleep(30)"],
+        ).read_text(encoding="utf-8")
+    )
+    value["timeout_seconds"] = 1
+    (tmp_path / "config.json").write_text(json.dumps(value), encoding="utf-8")
+
+    receipt = collect_cross_repo_audit(
+        repo,
+        tmp_path / "config.json",
+        tmp_path / "receipt.json",
+    )
+
+    process_tree = receipt["commands"][0]["process_tree"]
+    assert process_tree["isolation_strategy"] == "posix-session"
+    assert process_tree["termination_attempted"] is True
+    assert process_tree["termination_status"] == "terminated"
+
+
+def test_collector_and_executive_audit_docs_report_v140_git_snapshot():
+    root = Path(__file__).resolve().parents[1]
+    skill = (root / ".codex/skills/executive-audit/SKILL.md").read_text(
+        encoding="utf-8"
+    )
+    reference = (
+        root / ".codex/skills/executive-audit/references/config-schema.md"
+    ).read_text(encoding="utf-8")
+
+    assert "Procedural revision `v1.4` is a Git-aware" in skill
+    assert "detached, depth-one Git metadata" in skill
+    assert "Lifecycle IPC and another audit" in skill
+    assert "Collector `1.4.0` is a Git-aware" in reference
+    assert "only the sealed commit" in reference
+    assert "`execution_snapshot`" in reference
+    assert "descendant_cleanup_status" in reference
+    assert "partial receipt" in reference
 
 
 def test_collector_fails_closed_on_head_mismatch_output_inside_target_and_mutating_token(tmp_path: Path):
@@ -272,10 +716,21 @@ def test_mutating_command_changes_only_disposable_snapshot(tmp_path: Path):
     repo = tmp_path / "repo"
     repo.mkdir()
     head = build_repo(repo)
+    refs_before = run(repo, "git", "show-ref")
+    config_before = run(repo, "git", "config", "--local", "--list")
+    objects_before = run(repo, "git", "count-objects", "-v")
     command = [
         sys.executable,
         "-c",
-        "from pathlib import Path; Path('README.md').write_text('changed', encoding='utf-8')",
+        (
+            "import subprocess;"
+            "from pathlib import Path;"
+            "Path('README.md').write_text('changed', encoding='utf-8');"
+            "subprocess.run(['git','config','user.name','Snapshot Test'],check=True);"
+            "subprocess.run(['git','config','user.email','snapshot-fixture'],check=True);"
+            "subprocess.run(['git','add','README.md'],check=True);"
+            "subprocess.run(['git','commit','-m','snapshot-only'],check=True)"
+        ),
     ]
     cfg = config(tmp_path / "config.json", head, command)
     output = tmp_path / "receipt.json"
@@ -285,6 +740,9 @@ def test_mutating_command_changes_only_disposable_snapshot(tmp_path: Path):
     assert output.exists()
     assert (repo / "README.md").read_text(encoding="utf-8").startswith("# Fixture")
     assert run(repo, "git", "status", "--short") == ""
+    assert run(repo, "git", "show-ref") == refs_before
+    assert run(repo, "git", "config", "--local", "--list") == config_before
+    assert run(repo, "git", "count-objects", "-v") == objects_before
     assert receipt["collector_boundary"]["commands_execute_in_disposable_snapshot"] is True
 
 
