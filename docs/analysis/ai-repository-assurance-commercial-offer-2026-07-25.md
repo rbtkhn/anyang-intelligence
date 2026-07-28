@@ -2,10 +2,14 @@
 
 **Offer ID:** `AI-REPOSITORY-ASSURANCE-REVIEW-01`  
 **Prepared by:** Chief Executive  
-**Decision source:** System Engineer selection `B. Design the repository assurance audit as a commercial offer`  
+**Decision source:** System Engineer selections `B. Design the repository
+assurance audit as a commercial offer` and `B. Develop the audit into a
+commercial service offer`
 **State:** `internal offer design; not approved for sale, outreach, contracting, delivery, spending, or kernel adoption`  
-**Evidence base:** two-repository Council Steward pilot, including the
-[Narrative Systems audit packet](cross-repo-audits/narrative-systems-2026-07-25/audit-packet.md)  
+**Evidence base:** three technical benchmarks, including the [Narrative Systems
+audit packet](cross-repo-audits/narrative-systems-2026-07-25/audit-packet.md)
+and the [Predictive History audit
+packet](cross-repo-audits/predictive-history-2026-07-25/audit-packet.md)
 **Current kernel disposition:** `revise`
 
 ## Structural conclusion
@@ -27,6 +31,33 @@ not a large diagnostic count or an automatic cleanup.
 The offer remains pre-commercial until the proof gate in this design passes.
 No client solicitation, proposal, price quotation, contract, private access,
 or delivery is authorized by this document.
+
+## Development status after the third benchmark
+
+Predictive History completed the previously required third technical
+benchmark. It materially strengthened the commercial case:
+
+- all 1,332 tracked files were inventoried without changing the target;
+- the repository's 91 native tests passed, yet independent review identified
+  eight accepted material finding groups;
+- 1,123 mechanical candidates were consolidated into nine findings and seven
+  root causes;
+- required trace reconstruction reached 39/40, or 97.5%;
+- the deterministic broken-link precision sample reached 40/40;
+- the System Engineer accepted `PH-STW-01` through `PH-STW-08`;
+- the audit produced a bounded remediation plan without allowing findings to
+  become repair authority.
+
+This proves a commercially legible customer problem: native tests can pass
+while publication paths, source-of-truth inventories, generated navigation,
+schemas, and portability controls remain unreliable.
+
+The offer is still not ready for sale. Predictive History is technically
+different from Narrative Systems but shares owner and conceptual lineage.
+Narrative Systems findings remain unadjudicated, complete labor time is not
+instrumented, customer-safe delivery has not been rehearsed, private-repository
+handling is unapproved, and an unrelated owner-controlled benchmark remains
+required before broad portability claims.
 
 ## Why a buyer would purchase it
 
@@ -262,7 +293,7 @@ separately proven recurring assurance revenue.
 Do not market or sell the standard offer until:
 
 - the System Engineer adjudicates each Narrative Systems material finding;
-- one additional owner-authorized repository benchmark is completed;
+- one unrelated owner-authorized repository benchmark is completed;
 - the kernel outcome is `adopt` or a commercially sufficient bounded
   `narrow`, not `revise`;
 - total preparation, collection, Steward review, Chief Executive review, and
@@ -283,31 +314,35 @@ authority, contract, price, payment terms, data boundary, deletion date,
 liability boundary, evidence-return requirements, and stop conditions. This
 design supplies none of those approvals.
 
-## First 30-day validation cohort
+## Remaining internal productization cohort
 
-### Week 1 — productize the proof
+### Phase 1 — close benchmark evidence gaps
 
 - Adjudicate the Narrative Systems findings.
-- Measure the actual review burden already incurred where reconstructible.
+- Record or conservatively reconstruct preparation, Steward, Chief Executive,
+  and System Engineer review minutes for all three benchmarks.
 - Freeze a versioned founding scope and exclusion list.
-- Create a customer-safe sample packet from synthetic or public evidence.
+- Confirm collector ownership and permitted commercial use.
 
-### Week 2 — third benchmark
+### Phase 2 — unrelated portability benchmark
 
-- Select one owner-controlled repository structurally different from the first
-  two.
+- Select one owner-controlled repository that is structurally and
+  conceptually unrelated to Narrative Systems and Predictive History.
 - Run the kernel read-only under an exact System Engineer authorization.
 - Measure all labor, tool, review, and reconciliation minutes.
 
-### Week 3 — delivery rehearsal
+### Phase 3 — customer-safe delivery rehearsal
 
-- Redact the packet as if it were customer-facing.
+- Use the [founding-pilot offer
+  sheet](ai-repository-assurance-founding-pilot-offer-sheet-2026-07-25.md) as
+  the proposed commercial boundary.
+- Redact one public-evidence packet as if it were customer-facing.
 - Test whether a technically informed owner can identify the first three
   decisions in under 15 minutes.
 - Have the Council Steward confirm that redaction did not change finding
   meaning.
 
-### Week 4 — commercial adjudication
+### Phase 4 — commercial adjudication
 
 - Compare observed cost with the `$3,000` founding price.
 - Decide `sell / revise / narrow / retire`.
@@ -393,11 +428,10 @@ Do not lead with:
 
 ## Exact next System Engineer decision
 
-- **A. Approve the 30-day internal proof cohort:** adjudicate the current
-  findings, run one additional owner-controlled benchmark, and rehearse a
-  customer-safe packet; no outreach or sale.
+- **A. Approve the remaining internal proof cohort:** adjudicate the Narrative
+  Systems findings, run one unrelated owner-controlled benchmark, measure
+  delivery burden, and rehearse a customer-safe packet; no outreach or sale.
 - **B. Revise the offer design:** change buyer, scope, pricing, proof gate, or
   positioning before any cohort.
 - **C. Hold commercialization:** preserve the design without further kernel
   work, outreach, or sale.
-
