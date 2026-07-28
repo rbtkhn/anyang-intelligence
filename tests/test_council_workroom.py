@@ -1,0 +1,576 @@
+from __future__ import annotations
+
+import json
+import sqlite3
+from pathlib import Path
+
+import pytest
+import yaml
+
+from anyang_loop.council_workroom import (
+    backfill_friction_pilot,
+    council_inbox,
+    council_pilot_review,
+    council_projection,
+    council_subject_hash,
+    create_council_transaction,
+    record_council_event,
+    render_council_markdown,
+    verify_council_transaction,
+)
+from anyang_loop.ops_cli import main
+from anyang_loop.ops_db import SCHEMA_VERSION, connect, migrate, schema_version
+from anyang_loop.ops_service import OpsError, add_actor, init_tenant, tenant_id
+
+
+NOW = "2026-07-28T12:00:00Z"
+ROOT = Path(__file__).resolve().parents[1]
+COHORT = ROOT / "docs" / "executive-council-friction-pilot-cohort-2026-07-24.md"
+TRACKER = ROOT / "docs" / "executive-council-pilot-tracker.md"
+
+
+@pytest.fixture()
+def ledger(tmp_path):
+    connection = connect(tmp_path / "council.db", create_parent=True)
+    migrate(connection, NOW)
+    init_tenant(
+        connection,
+        slug="synthetic",
+        name="Synthetic Council",
+        policy_profile="test-only",
+        retainer_cents=0,
+        contractor_budget_cents=0,
+        tool_budget_cents=0,
+        timestamp=NOW,
+    )
+    actors = {
+        role: add_actor(connection, "synthetic", name, role).id
+        for role, name in (
+            ("engineer", "System Engineer"),
+            ("executive", "Chief Executive"),
+            ("interface", "Executive Assistant"),
+        )
+    }
+    try:
+        yield connection, actors
+    finally:
+        connection.close()
+
+
+def _create(connection, identifier="TX-1", decision_class="Class 1"):
+    return create_council_transaction(
+        connection,
+        "synthetic",
+        {
+            "id": identifier,
+            "title": f"Synthetic {identifier}",
+            "council_scope": "Synthetic internal decision",
+            "decision_class": decision_class,
+            "pilot_category": "test",
+            "source_ref": "fictional://council/source",
+        },
+    )
+
+
+def _recommend(connection, actor_id, identifier="TX-1", key="recommendation"):
+    return record_council_event(
+        connection,
+        identifier,
+        "recommendation_recorded",
+        {
+            "event_key": key,
+            "actor_id": actor_id,
+            "council_role": "executive",
+            "action_summary": "Recommend bounded synthetic work",
+            "payload": {
+                "decision": "Choose the bounded option",
+                "evidence": "fictional://evidence",
+                "recommendation": "Proceed only inside the synthetic scope",
+                "success_condition": "A synthetic receipt returns",
+            },
+        },
+    )
+
+
+def _approve(
+    connection,
+    actor_id,
+    identifier="TX-1",
+    *,
+    key="authority",
+    expires_at=None,
+    client_ref="",
+):
+    return record_council_event(
+        connection,
+        identifier,
+        "authority_disposition_recorded",
+        {
+            "event_key": key,
+            "actor_id": actor_id,
+            "council_role": "engineer",
+            "action_summary": "Approve the exact synthetic subject",
+            "payload": {
+                "decision": "approved",
+                "approved_scope": "Bounded synthetic work",
+                "limits_exclusions": "No external action",
+                "required_evidence": "A synthetic receipt",
+                "anyang_authority_ref": "fictional://authority/anyang",
+                "client_authority_ref": client_ref,
+                "subject_hash": council_subject_hash(connection, identifier),
+                "expires_at": expires_at,
+            },
+        },
+    )
+
+
+def test_schema_v7_migration_preserves_existing_data_and_is_idempotent(tmp_path):
+    path = tmp_path / "migration.db"
+    with connect(path, create_parent=True) as connection:
+        migrate(connection, "2026-07-01T00:00:00Z")
+        init_tenant(
+            connection,
+            slug="preserved",
+            name="Preserved",
+            policy_profile="v6",
+            retainer_cents=0,
+            contractor_budget_cents=0,
+            tool_budget_cents=0,
+            timestamp="2026-07-01T00:00:00Z",
+        )
+        connection.executescript(
+            """
+            DROP TRIGGER council_transaction_immutable_update;
+            DROP TRIGGER council_transaction_immutable_delete;
+            DROP TRIGGER council_event_append_only_update;
+            DROP TRIGGER council_event_append_only_delete;
+            DROP TABLE council_event;
+            DROP TABLE council_transaction;
+            DELETE FROM schema_migration WHERE version = 7;
+            INSERT OR IGNORE INTO schema_migration(version, applied_at)
+            VALUES (6, '2026-07-01T00:00:00Z');
+            """
+        )
+        migrate(connection, NOW)
+        migrate(connection, NOW)
+        assert schema_version(connection) == SCHEMA_VERSION == 7
+        assert connection.execute(
+            "SELECT name FROM tenant WHERE slug = 'preserved'"
+        ).fetchone()[0] == "Preserved"
+        assert connection.execute(
+            "SELECT COUNT(*) FROM schema_migration WHERE version = 7"
+        ).fetchone()[0] == 1
+
+
+def test_live_sequence_binds_authority_requires_executor_and_evidence(ledger):
+    connection, actors = ledger
+    _create(connection)
+    _recommend(connection, actors["executive"])
+    first_subject = council_subject_hash(connection, "TX-1")
+    _approve(connection, actors["engineer"])
+
+    _recommend(connection, actors["executive"], key="recommendation-change")
+    assert council_subject_hash(connection, "TX-1") != first_subject
+    with pytest.raises(OpsError, match="current authority"):
+        record_council_event(
+            connection,
+            "TX-1",
+            "execution_recorded",
+            {
+                "actor_id": actors["interface"],
+                "action_summary": "Attempt stale-authority execution",
+                "payload": {
+                    "executor_invoked": True,
+                    "named_executor": "Executive Assistant",
+                    "execution_state": "executing",
+                    "action_taken": "Synthetic step",
+                },
+            },
+        )
+
+    _approve(connection, actors["engineer"], key="authority-2")
+    with pytest.raises(OpsError, match="named_executor|named executor"):
+        record_council_event(
+            connection,
+            "TX-1",
+            "execution_recorded",
+            {
+                "actor_id": actors["interface"],
+                "action_summary": "Attempt anonymous execution",
+                "payload": {
+                    "executor_invoked": True,
+                    "named_executor": "",
+                    "execution_state": "executing",
+                    "action_taken": "Synthetic step",
+                },
+            },
+        )
+    record_council_event(
+        connection,
+        "TX-1",
+        "execution_recorded",
+        {
+            "event_key": "execution",
+            "actor_id": actors["interface"],
+            "action_summary": "Execute the bounded synthetic step",
+            "evidence_ref": "fictional://execution",
+            "payload": {
+                "executor_invoked": True,
+                "named_executor": "Executive Assistant",
+                "execution_state": "executing",
+                "action_taken": "Produced a synthetic artifact",
+            },
+        },
+    )
+    with pytest.raises(OpsError, match="returned evidence"):
+        record_council_event(
+            connection,
+            "TX-1",
+            "reconciliation_recorded",
+            {
+                "actor_id": actors["executive"],
+                "action_summary": "Attempt premature close",
+                "payload": {
+                    "reconciliation_state": "supported",
+                    "final_supported_state": "Complete",
+                    "terminal_state": "complete",
+                },
+            },
+        )
+    record_council_event(
+        connection,
+        "TX-1",
+        "evidence_returned",
+        {
+            "event_key": "evidence",
+            "actor_id": actors["interface"],
+            "action_summary": "Return execution evidence",
+            "evidence_ref": "fictional://receipt",
+            "payload": {"evidence": "fictional://receipt"},
+        },
+    )
+    record_council_event(
+        connection,
+        "TX-1",
+        "reconciliation_recorded",
+        {
+            "event_key": "reconciliation",
+            "actor_id": actors["executive"],
+            "action_summary": "Reconcile the supported outcome",
+            "payload": {
+                "reconciliation_state": "supported",
+                "final_supported_state": "Synthetic receipt verified",
+                "terminal_state": "complete",
+            },
+        },
+    )
+    projection = council_projection(connection, "TX-1")
+    assert projection["current_state"] == "complete"
+    assert {key for key in projection["sections"]} == {"A", "B", "C", "D"}
+    assert projection["lineage"]["chain_verified"] is True
+    assert "# Synthetic TX-1" in render_council_markdown(projection)
+
+
+def test_class3_dual_authority_expiry_privacy_and_live_attribution(ledger):
+    connection, actors = ledger
+    _create(connection, "TX-3", "Class 3")
+    _recommend(connection, actors["executive"], "TX-3")
+    with pytest.raises(OpsError, match="client authority"):
+        _approve(connection, actors["engineer"], "TX-3")
+    _approve(
+        connection,
+        actors["engineer"],
+        "TX-3",
+        client_ref="fictional://authority/client",
+        expires_at="2026-07-27T00:00:00Z",
+    )
+    projection = council_projection(connection, "TX-3", as_of=NOW)
+    assert "authority-expired" in {
+        flag["code"] for flag in projection["attention_flags"]
+    }
+    with pytest.raises(OpsError, match="historical-missing"):
+        record_council_event(
+            connection,
+            "TX-3",
+            "blocked",
+            {
+                "attribution_status": "historical-missing",
+                "actor_label": "Missing",
+                "action_summary": "Invalid live missing attribution",
+                "payload": {"reason": "Synthetic"},
+            },
+        )
+
+    init_tenant(
+        connection,
+        slug="anyang-internal",
+        name="Internal",
+        policy_profile="pilot",
+        retainer_cents=0,
+        contractor_budget_cents=0,
+        tool_budget_cents=0,
+        timestamp=NOW,
+    )
+    internal_actor = add_actor(
+        connection, "anyang-internal", "Chief Executive", "executive"
+    ).id
+    create_council_transaction(
+        connection,
+        "anyang-internal",
+        {
+            "id": "PRIVATE-1",
+            "title": "Privacy boundary",
+            "council_scope": "Internal only",
+            "decision_class": "Class 0",
+        },
+    )
+    with pytest.raises(OpsError, match="private evidence bodies"):
+        record_council_event(
+            connection,
+            "PRIVATE-1",
+            "recommendation_recorded",
+            {
+                "actor_id": internal_actor,
+                "action_summary": "Attempt private body storage",
+                "payload": {
+                    "decision": "Hold",
+                    "evidence": "linked elsewhere",
+                    "recommendation": "Do not store the body",
+                    "success_condition": "Privacy preserved",
+                    "evidence_body": "synthetic forbidden body",
+                },
+            },
+        )
+
+
+def test_event_stream_is_append_only_and_verification_detects_tampering(ledger):
+    connection, actors = ledger
+    _create(connection)
+    _recommend(connection, actors["executive"])
+    event_id = connection.execute(
+        "SELECT id FROM council_event WHERE transaction_id = 'TX-1'"
+    ).fetchone()[0]
+    with pytest.raises(sqlite3.IntegrityError, match="append-only"):
+        connection.execute(
+            "UPDATE council_event SET action_summary = 'tampered' WHERE id = ?",
+            (event_id,),
+        )
+    with pytest.raises(sqlite3.IntegrityError, match="append-only"):
+        connection.execute("DELETE FROM council_event WHERE id = ?", (event_id,))
+
+    connection.execute("DROP TRIGGER council_event_append_only_update")
+    connection.execute(
+        "UPDATE council_event SET action_summary = 'tampered' WHERE id = ?",
+        (event_id,),
+    )
+    verification = verify_council_transaction(connection, "TX-1")
+    assert verification["ok"] is False
+    assert "event-hash-mismatch" in {
+        issue["code"] for issue in verification["issues"]
+    }
+
+
+def test_full_friction_backfill_is_deterministic_idempotent_and_preserves_missing(tmp_path):
+    with connect(tmp_path / "backfill.db", create_parent=True) as connection:
+        migrate(connection, NOW)
+        first = backfill_friction_pilot(
+            connection, "anyang-internal", COHORT, TRACKER
+        )
+        ids_before = [
+            row[0]
+            for row in connection.execute(
+                "SELECT id FROM council_event ORDER BY transaction_id, sequence"
+            )
+        ]
+        second = backfill_friction_pilot(
+            connection, "anyang-internal", COHORT, TRACKER
+        )
+        ids_after = [
+            row[0]
+            for row in connection.execute(
+                "SELECT id FROM council_event ORDER BY transaction_id, sequence"
+            )
+        ]
+        assert first.details == second.details
+        assert ids_before == ids_after
+        assert connection.execute(
+            "SELECT COUNT(*) FROM council_transaction"
+        ).fetchone()[0] == 5
+        assert {
+            identifier: council_projection(connection, identifier)["current_state"]
+            for identifier in (
+                "EC-FRICTION-01",
+                "EC-FRICTION-02",
+                "EC-FRICTION-03",
+                "EC-FRICTION-04",
+                "EC-FRICTION-05",
+            )
+        } == {
+            "EC-FRICTION-01": "complete",
+            "EC-FRICTION-02": "approved",
+            "EC-FRICTION-03": "complete",
+            "EC-FRICTION-04": "executing",
+            "EC-FRICTION-05": "held",
+        }
+        case_one = council_projection(connection, "EC-FRICTION-01")
+        assert all(event["occurred_at"] == "Missing" for event in case_one["events"])
+        assert any(
+            event["payload"].get("observed_value", "").startswith("Missing")
+            for event in case_one["metrics"]
+        )
+        assert "source_markdown" in case_one["sections"]["A"][0]["payload"]
+        assert all(
+            verify_council_transaction(connection, identifier)["ok"]
+            for identifier in (
+                "EC-FRICTION-01",
+                "EC-FRICTION-02",
+                "EC-FRICTION-03",
+                "EC-FRICTION-04",
+                "EC-FRICTION-05",
+            )
+        )
+        review = council_pilot_review(
+            connection, "anyang-internal", "2026-08-21T23:59:59Z"
+        )
+        assert review["receipt_coverage"]["percent"] == 100.0
+        assert review["unauthorized_progression"]["count"] == 0
+        assert review["operator_burden_measurements"]
+
+
+def test_conflicting_rerun_fails_and_inbox_prioritizes_authority_conflict(tmp_path):
+    cohort_copy = tmp_path / "cohort.md"
+    cohort_copy.write_text(COHORT.read_text(encoding="utf-8"), encoding="utf-8")
+    tracker_copy = tmp_path / "tracker.md"
+    tracker_copy.write_text(
+        TRACKER.read_text(encoding="utf-8").replace(
+            "executive-council-friction-pilot-cohort-2026-07-24.md",
+            "cohort.md",
+        ),
+        encoding="utf-8",
+    )
+    with connect(tmp_path / "conflict.db", create_parent=True) as connection:
+        migrate(connection, NOW)
+        backfill_friction_pilot(
+            connection, "anyang-internal", cohort_copy, tracker_copy
+        )
+        changed = cohort_copy.read_text(encoding="utf-8").replace(
+            "System improvement retrospective",
+            "Changed retrospective",
+            1,
+        )
+        cohort_copy.write_text(changed, encoding="utf-8")
+        with pytest.raises(OpsError, match="conflicts with existing"):
+            backfill_friction_pilot(
+                connection, "anyang-internal", cohort_copy, tracker_copy
+            )
+
+        tid = tenant_id(connection, "anyang-internal")
+        connection.execute(
+            """INSERT INTO authority_conflict(
+                id, tenant_id, target, instructions_json, resolution_owner,
+                status, resolution, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+            (
+                "conflict-1",
+                tid,
+                "EC-FRICTION-04",
+                "[]",
+                "engineer",
+                "open",
+                "",
+                NOW,
+            ),
+        )
+        inbox = council_inbox(connection, "anyang-internal", NOW)
+        assert inbox["entries"][0]["transaction_id"] == "EC-FRICTION-04"
+        assert inbox["entries"][0]["priority"] == "P0"
+
+
+def test_council_cli_dry_run_and_projection_json(tmp_path, capsys):
+    db = tmp_path / "cli.db"
+    with connect(db, create_parent=True) as connection:
+        migrate(connection, NOW)
+        init_tenant(
+            connection,
+            slug="synthetic",
+            name="Synthetic",
+            policy_profile="test",
+            retainer_cents=0,
+            contractor_budget_cents=0,
+            tool_budget_cents=0,
+            timestamp=NOW,
+        )
+    packet = tmp_path / "transaction.yaml"
+    packet.write_text(
+        yaml.safe_dump(
+            {
+                "id": "CLI-1",
+                "title": "CLI transaction",
+                "council_scope": "Synthetic CLI test",
+                "decision_class": "Class 0",
+            }
+        ),
+        encoding="utf-8",
+    )
+    assert (
+        main(
+            [
+                "--db",
+                str(db),
+                "council",
+                "create",
+                "--tenant",
+                "synthetic",
+                "--packet",
+                str(packet),
+                "--dry-run",
+            ]
+        )
+        == 0
+    )
+    assert json.loads(capsys.readouterr().out)["dry_run"] is True
+    assert (
+        main(
+            [
+                "--db",
+                str(db),
+                "council",
+                "create",
+                "--tenant",
+                "synthetic",
+                "--packet",
+                str(packet),
+            ]
+        )
+        == 0
+    )
+    capsys.readouterr()
+    assert (
+        main(
+            [
+                "--db",
+                str(db),
+                "council",
+                "show",
+                "CLI-1",
+                "--format",
+                "json",
+            ]
+        )
+        == 0
+    )
+    projection = json.loads(capsys.readouterr().out)
+    assert projection["transaction"]["id"] == "CLI-1"
+    assert set(
+        (
+            "transaction",
+            "current_state",
+            "sections",
+            "events",
+            "authority_bindings",
+            "evidence",
+            "metrics",
+            "attention_flags",
+            "lineage",
+        )
+    ).issubset(projection)

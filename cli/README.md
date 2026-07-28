@@ -33,7 +33,7 @@ Business intake uses a separate governed control path. The conversational `$busi
 
 The one-time `bootstrap` path requires an empty context ledger, a non-`hold` exact manifest, the matching manifest hash, current `business_context` authority, and separate pre-existing approval and persistence receipt references. The status receipt names the effective context, active proposal, evidence classes, separate owner/persistence/review decisions, and one next action. A `hold` manifest cannot be approved; resolve its gates and submit a new exact version instead.
 
-Schema v5 retains the v4 separation between epistemic state and operational claim status. Human
+Schema v7 retains the separation between epistemic state and operational claim status. Human
 operators can record a cause-bearing state change, bind downstream uses, and
 clear the resulting review queue:
 
@@ -60,6 +60,51 @@ The review queue orders open critical forecast/publication impacts as P0, other
 open actionable impacts as P1, and acknowledged or conditional impacts as P2.
 Resolved and `no-action` records remain in ledger history but are excluded from
 actionable totals. Weekly reviews include the same prioritized model.
+
+### Executive Council ledger workroom
+
+Schema v7 also provides an internal, local-first Council workroom. A transaction
+is immutable metadata plus one append-only, per-transaction hash chain. Its
+current state and A–D view are derived from recommendation, authority,
+execution/evidence, reconciliation, and metric events; rendered Markdown is
+never a second writable record.
+
+Use YAML packets for transaction and event bodies:
+
+```powershell
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db council create --tenant anyang-internal --packet transaction.yaml --dry-run
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db council record --transaction-id TX_ID --event recommendation_recorded --packet event.yaml --dry-run
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db council show TX_ID --format markdown
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db council inbox --tenant anyang-internal --as-of 2026-07-28T12:00:00Z --format json
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db council pilot-review --tenant anyang-internal --as-of 2026-08-21T23:59:59Z --format markdown
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db council verify TX_ID
+```
+
+Initialize and reconstruct the bounded five-case pilot in one idempotent
+operation:
+
+```powershell
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db council backfill-friction-pilot `
+  --tenant anyang-internal `
+  --cohort docs/executive-council-friction-pilot-cohort-2026-07-24.md `
+  --tracker docs/executive-council-pilot-tracker.md `
+  --dry-run
+```
+
+Remove `--dry-run` only after reviewing the plan. The backfill creates the
+sanitized internal tenant and five Council actors when absent, preserves every
+source section and measure in event lineage, and retains unavailable actor,
+time, and metric values as `Missing`. Repeating an identical backfill is a
+no-op; a changed transaction or event under the same stable identity fails.
+
+For live records, event packets require a known tenant actor. Approved Class 1
+or Class 2 work requires an exact Anyang authority reference; Class 3 also
+requires a separate client-authority reference. Approval binds to the current
+recommendation subject hash, so a later recommendation invalidates it.
+Completion requires named execution and returned evidence. Private evidence
+bodies are prohibited in `anyang-internal`; store approved references instead.
+An approval event documents authority but never grants tool access, permission,
+or execution capability.
 
 ### Cadence reconstruction baseline
 

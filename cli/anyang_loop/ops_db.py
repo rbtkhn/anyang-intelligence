@@ -6,7 +6,7 @@ import sqlite3
 from pathlib import Path
 
 
-SCHEMA_VERSION = 6
+SCHEMA_VERSION = 7
 
 
 SCHEMA = """
@@ -232,6 +232,46 @@ CREATE TABLE IF NOT EXISTS event (
     created_at TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS council_transaction (
+    id TEXT PRIMARY KEY,
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    title TEXT NOT NULL,
+    council_scope TEXT NOT NULL,
+    decision_class TEXT NOT NULL,
+    pilot_category TEXT NOT NULL DEFAULT '',
+    work_id TEXT REFERENCES work_item(id),
+    source_ref TEXT NOT NULL DEFAULT '',
+    created_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS council_event (
+    id TEXT PRIMARY KEY,
+    transaction_id TEXT NOT NULL REFERENCES council_transaction(id),
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    event_key TEXT NOT NULL,
+    sequence INTEGER NOT NULL CHECK (sequence > 0),
+    event_type TEXT NOT NULL CHECK (event_type IN (
+        'recommendation_recorded', 'authority_disposition_recorded',
+        'execution_recorded', 'evidence_returned', 'reconciliation_recorded',
+        'metric_recorded', 'held', 'blocked', 'corrected', 'superseded'
+    )),
+    actor_id TEXT REFERENCES actor(id),
+    actor_label TEXT NOT NULL,
+    council_role TEXT NOT NULL,
+    action_summary TEXT NOT NULL,
+    occurred_at TEXT,
+    recorded_at TEXT NOT NULL,
+    evidence_ref TEXT NOT NULL DEFAULT '',
+    attribution_status TEXT NOT NULL CHECK (
+        attribution_status IN ('attributed', 'historical-missing')
+    ),
+    payload_json TEXT NOT NULL,
+    prior_hash TEXT NOT NULL DEFAULT '',
+    event_hash TEXT NOT NULL UNIQUE,
+    UNIQUE (transaction_id, event_key),
+    UNIQUE (transaction_id, sequence)
+);
+
 CREATE TABLE IF NOT EXISTS authority_receipt (
     id TEXT PRIMARY KEY,
     tenant_id TEXT NOT NULL REFERENCES tenant(id),
@@ -394,6 +434,8 @@ CREATE TABLE IF NOT EXISTS cadence_measurement (
 
 CREATE INDEX IF NOT EXISTS idx_work_tenant_state ON work_item(tenant_id, state);
 CREATE INDEX IF NOT EXISTS idx_event_tenant_created ON event(tenant_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_council_transaction_tenant ON council_transaction(tenant_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_council_event_transaction_sequence ON council_event(transaction_id, sequence);
 CREATE INDEX IF NOT EXISTS idx_approval_work_scope ON approval(work_id, scope);
 CREATE INDEX IF NOT EXISTS idx_cadence_repo_recorded ON cadence_handoff(repo_id, recorded_at DESC);
 CREATE INDEX IF NOT EXISTS idx_cadence_measurement_repo_occurred ON cadence_measurement(repo_id, occurred_at DESC);
@@ -449,6 +491,30 @@ CREATE TRIGGER IF NOT EXISTS claim_transition_append_only_delete
 BEFORE DELETE ON claim_transition
 BEGIN
     SELECT RAISE(ABORT, 'claim_transition is append-only');
+END;
+
+CREATE TRIGGER IF NOT EXISTS council_transaction_immutable_update
+BEFORE UPDATE ON council_transaction
+BEGIN
+    SELECT RAISE(ABORT, 'council_transaction is immutable');
+END;
+
+CREATE TRIGGER IF NOT EXISTS council_transaction_immutable_delete
+BEFORE DELETE ON council_transaction
+BEGIN
+    SELECT RAISE(ABORT, 'council_transaction is immutable');
+END;
+
+CREATE TRIGGER IF NOT EXISTS council_event_append_only_update
+BEFORE UPDATE ON council_event
+BEGIN
+    SELECT RAISE(ABORT, 'council_event is append-only');
+END;
+
+CREATE TRIGGER IF NOT EXISTS council_event_append_only_delete
+BEFORE DELETE ON council_event
+BEGIN
+    SELECT RAISE(ABORT, 'council_event is append-only');
 END;
 """
 

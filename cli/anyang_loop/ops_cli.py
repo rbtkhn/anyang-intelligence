@@ -60,10 +60,25 @@ from .intake_control import (
 from .privacy_scan import render_findings, scan_repo
 from .cadence_metrics import (
     COMPLETION_STATUSES,
-    EVENT_TYPES,
+    EVENT_TYPES as CADENCE_EVENT_TYPES,
     STATE_SOURCES,
     measurement_report,
     record_measurement,
+)
+from .council_workroom import (
+    EVENT_TYPES as COUNCIL_EVENT_TYPES,
+    backfill_friction_pilot,
+    council_inbox,
+    council_pilot_review,
+    council_projection,
+    create_council_transaction,
+    friction_backfill_plan,
+    load_packet,
+    record_council_event,
+    render_council_inbox_markdown,
+    render_council_markdown,
+    render_council_pilot_review_markdown,
+    verify_council_transaction,
 )
 
 
@@ -388,7 +403,7 @@ def build_parser() -> argparse.ArgumentParser:
     cadence_sub = cadence.add_subparsers(required=True)
     cadence_record = cadence_sub.add_parser("record", help="Record one completed or attempted cadence event")
     cadence_record.add_argument("--repo-id", required=True)
-    cadence_record.add_argument("--event-type", choices=EVENT_TYPES, required=True)
+    cadence_record.add_argument("--event-type", choices=CADENCE_EVENT_TYPES, required=True)
     cadence_record.add_argument("--scheduled", action=argparse.BooleanOptionalAction, required=True)
     cadence_record.add_argument("--completion-status", choices=COMPLETION_STATUSES, required=True)
     cadence_record.add_argument("--state-source", choices=STATE_SOURCES, required=True)
@@ -405,6 +420,56 @@ def build_parser() -> argparse.ArgumentParser:
     cadence_report.add_argument("--repo-id", required=True)
     cadence_report.add_argument("--limit", type=int, default=10)
     cadence_report.set_defaults(func=cmd_cadence_report)
+
+    council = sub.add_parser("council", help="Operate the local Executive Council workroom")
+    council_sub = council.add_subparsers(required=True)
+
+    council_create = council_sub.add_parser("create", help="Create an immutable Council transaction")
+    _tenant(council_create)
+    council_create.add_argument("--packet", required=True)
+    _dry(council_create)
+    council_create.set_defaults(func=cmd_council_create)
+
+    council_record = council_sub.add_parser("record", help="Append one Council event")
+    council_record.add_argument("--transaction-id", required=True)
+    council_record.add_argument("--event", choices=COUNCIL_EVENT_TYPES, required=True)
+    council_record.add_argument("--packet", required=True)
+    _dry(council_record)
+    council_record.set_defaults(func=cmd_council_record)
+
+    council_show = council_sub.add_parser("show", help="Render one transaction projection")
+    council_show.add_argument("transaction_id")
+    _read_format(council_show)
+    council_show.set_defaults(func=cmd_council_show)
+
+    council_inbox_parser = council_sub.add_parser(
+        "inbox", help="Render the prioritized Council attention inbox"
+    )
+    _tenant(council_inbox_parser)
+    council_inbox_parser.add_argument("--as-of")
+    _read_format(council_inbox_parser)
+    council_inbox_parser.set_defaults(func=cmd_council_inbox)
+
+    council_review = council_sub.add_parser(
+        "pilot-review", help="Generate the ledger-derived 30-day pilot metrics review"
+    )
+    _tenant(council_review)
+    council_review.add_argument("--as-of")
+    _read_format(council_review)
+    council_review.set_defaults(func=cmd_council_pilot_review)
+
+    council_verify = council_sub.add_parser("verify", help="Verify one event hash chain")
+    council_verify.add_argument("transaction_id")
+    council_verify.set_defaults(func=cmd_council_verify)
+
+    council_backfill = council_sub.add_parser(
+        "backfill-friction-pilot", help="Reconstruct the five-case friction cohort"
+    )
+    _tenant(council_backfill)
+    council_backfill.add_argument("--cohort", required=True)
+    council_backfill.add_argument("--tracker", required=True)
+    _dry(council_backfill)
+    council_backfill.set_defaults(func=cmd_council_backfill)
 
     privacy = sub.add_parser("privacy-scan")
     privacy.add_argument("--repo", default=".")
@@ -643,6 +708,91 @@ def cmd_cadence_report(args: argparse.Namespace) -> int:
         migrate(connection, now_utc())
         report = measurement_report(connection, args.repo_id, args.limit)
     return print_result(report)
+
+
+def cmd_council_create(args: argparse.Namespace) -> int:
+    packet = load_packet(args.packet)
+    if args.dry_run:
+        return print_result(
+            {
+                "dry_run": True,
+                "action": "create_council_transaction",
+                "tenant": args.tenant,
+                "packet": packet,
+            }
+        )
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        result = create_council_transaction(connection, args.tenant, packet)
+    return print_result(result.as_dict())
+
+
+def cmd_council_record(args: argparse.Namespace) -> int:
+    packet = load_packet(args.packet)
+    if args.dry_run:
+        return print_result(
+            {
+                "dry_run": True,
+                "action": "record_council_event",
+                "transaction_id": args.transaction_id,
+                "event": args.event,
+                "packet": packet,
+            }
+        )
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        result = record_council_event(
+            connection, args.transaction_id, args.event, packet, historical=False
+        )
+    return print_result(result.as_dict())
+
+
+def cmd_council_show(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        data = council_projection(connection, args.transaction_id)
+    return _emit_read_output(args, data, render_council_markdown)
+
+
+def cmd_council_inbox(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        data = council_inbox(connection, args.tenant, args.as_of)
+    return _emit_read_output(args, data, render_council_inbox_markdown)
+
+
+def cmd_council_pilot_review(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        data = council_pilot_review(connection, args.tenant, args.as_of)
+    return _emit_read_output(args, data, render_council_pilot_review_markdown)
+
+
+def cmd_council_verify(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        result = verify_council_transaction(connection, args.transaction_id)
+    print(render_json(result), end="")
+    return 0 if result["ok"] else 1
+
+
+def cmd_council_backfill(args: argparse.Namespace) -> int:
+    plan = friction_backfill_plan(args.cohort, args.tracker)
+    if args.dry_run:
+        return print_result(
+            {
+                "dry_run": True,
+                "action": "backfill_friction_pilot",
+                "tenant": args.tenant,
+                **plan,
+            }
+        )
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        result = backfill_friction_pilot(
+            connection, args.tenant, args.cohort, args.tracker
+        )
+    return print_result(result.as_dict())
 
 
 def cmd_privacy_scan(args: argparse.Namespace) -> int:
