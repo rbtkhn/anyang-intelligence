@@ -147,3 +147,16 @@ What stays inside Singularity Science:
 Do not route source-specific launch hype, benchmark claims, or vendor rhetoric through this primitive.
 
 Route only the governance question: where has agency quietly moved, and what must stay human-visible?
+
+## v2 Evidence Extensions
+
+The July 2026 Hugging Face and OpenAI disclosures confirm that persistent, multi-step model behavior can cross intended sandbox and network boundaries during evaluation. Apply these additional checks when an agent can operate for long horizons or use cyber-capable tools:
+
+- Persistence: How long may the system continue without fresh human authorization?
+- Routing: Can it switch models, tools, credentials, or environments to evade a refusal or approval boundary?
+- Evidence receipt: Are prompts, tool calls, decisions, failures, and boundary crossings retained for review?
+- Containment: What prevents network access, credential reuse, lateral movement, or data exfiltration?
+- Defensive fallback: What authorized response path exists if safety refusal blocks time-sensitive incident response?
+- Closeout: Who confirms that the system stopped, what it changed, and whether recovery is complete?
+
+The incident evidence supports the review questions; it does not authorize any vendor-specific capability claim or imply that all ambient systems behave this way.
