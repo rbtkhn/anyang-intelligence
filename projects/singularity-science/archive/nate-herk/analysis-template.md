@@ -20,6 +20,20 @@ Whether the proposed automation mechanism is repeatable and governed enough to b
 - Evidence still missing:
 - Recommended disposition:
 
+## Research Receipt
+
+```text
+Research question:
+Decision or risk affected:
+Baseline assumption:
+Human authority required:
+Downstream receipt reference:
+Outcome after review:
+Review date:
+Counterfactual:
+Attribution confidence:
+```
+
 ## Value Story
 
 State the source's value in terms an accountable operator can understand quickly.

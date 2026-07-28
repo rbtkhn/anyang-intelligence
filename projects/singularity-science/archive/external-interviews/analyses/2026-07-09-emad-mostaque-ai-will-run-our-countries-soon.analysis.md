@@ -1,5 +1,13 @@
 # External Interview Analysis
 
+## Decision Compression
+
+- What changed: The interview presents abundance and agency as a governance problem involving authority, persuasion, labor, and cognitive control.
+- Reusable mechanism: Review cognitive-liberty and authority effects before translating speculative capability claims.
+- Decision implication: Retain the interview as a scenario-pressure source and compare recurrence before drafting a gate.
+- Evidence still missing: Independent corroboration, operational examples, and bounded governance tests.
+- Recommended disposition: `worldview-only` for timelines and `primitive-candidate` for a future review question.
+
 ## Source
 
 - Title: EMAD MOSTAQUE: AI Will RUN Our Countries Soon! We Aren't Ready!

@@ -20,6 +20,20 @@ Whether the observed signal changes a governed operating capability or only incr
 - Evidence still missing:
 - Recommended disposition:
 
+## Research Receipt
+
+```text
+Research question:
+Decision or risk affected:
+Baseline assumption:
+Human authority required:
+Downstream receipt reference:
+Outcome after review:
+Review date:
+Counterfactual:
+Attribution confidence:
+```
+
 ## Translation Candidate
 
 If this analysis proposes a primitive, lane action, approval, publication, or authority change, complete the [Translation Integrity Review Gate](../../primitives/translation-integrity-review-gate.md).
@@ -77,6 +91,8 @@ Status:
 ```text
 watch / candidate / tested / preserved / rejected
 ```
+
+For retained material, use `watch`, `needs-verification`, or `worldview-only` and complete the retention review fields in the source note.
 
 ## Next Watch Item
 

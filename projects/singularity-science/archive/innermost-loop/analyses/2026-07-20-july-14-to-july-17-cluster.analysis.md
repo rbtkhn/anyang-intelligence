@@ -8,6 +8,14 @@ The cluster strengthens a watch-level hypothesis that frontier AI advantage is i
 
 Whether the source describes a governed capability that changes how organizations coordinate intelligence, or merely uses high-velocity language to attract attention. The current capture cannot adjudicate that distinction.
 
+## Decision Compression
+
+- What changed: The cluster frames frontier advantage as a coordination, access, and participation problem in addition to a capability problem.
+- Reusable mechanism: Review intelligence systems through permissions, evidence, participation, and coordination surfaces.
+- Decision implication: Keep this as an internal watch signal until independent recurrence supports a reusable coordination gate.
+- Evidence still missing: Full source bodies, independent corroboration, and a bounded operating test.
+- Recommended disposition: `watch` and `needs-verification`; retain source-specific framing inside Singularity Science.
+
 ## Source
 
 - Title: Innermost Loop — July 14–17, 2026 cluster

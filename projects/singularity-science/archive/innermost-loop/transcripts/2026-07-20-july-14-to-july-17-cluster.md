@@ -6,7 +6,7 @@ Related publication: https://theinnermostloop.substack.com/
 Date published: 2026-07-14 through 2026-07-17
 Date captured: 2026-07-20
 Capture method: Publicly indexed Spotify episode metadata and descriptions
-Rights status: Metadata/description capture only; no full transcript rights determination
+Rights status: public web capture; metadata/description capture only; do not republish source text
 Attribution: Dr. Alex Wissner-Gross
 
 ## Captured source descriptions

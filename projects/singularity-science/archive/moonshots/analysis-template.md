@@ -22,6 +22,20 @@ Whether a reported acceleration signal yields a governed reusable primitive or r
 - Evidence still missing:
 - Recommended disposition:
 
+## Research Receipt
+
+```text
+Research question:
+Decision or risk affected:
+Baseline assumption:
+Human authority required:
+Downstream receipt reference:
+Outcome after review:
+Review date:
+Counterfactual:
+Attribution confidence:
+```
+
 ## Translation Candidate
 
 If this analysis proposes a primitive, lane action, approval, publication, or authority change, complete the [Translation Integrity Review Gate](../../primitives/translation-integrity-review-gate.md).

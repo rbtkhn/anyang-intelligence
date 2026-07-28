@@ -1,5 +1,13 @@
 # Nate B. Jones Analysis
 
+## Decision Compression
+
+- What changed: The example emphasizes orchestration and verification topology as the operating unit around a model.
+- Reusable mechanism: Route specialized work through explicit standards, checks, and role boundaries.
+- Decision implication: Retain a verification-topology review gate while holding cost and mainstreaming claims for verification.
+- Evidence still missing: Reproducible artifacts, matched cost evidence, and independent transfer cases.
+- Recommended disposition: `primitive-candidate` for the gate and `needs-verification` for outcome claims.
+
 ## Source
 
 - Title: Claude Fable 5 Bossed 20 Cheap AI Agents. The Whole Site Cost $8.

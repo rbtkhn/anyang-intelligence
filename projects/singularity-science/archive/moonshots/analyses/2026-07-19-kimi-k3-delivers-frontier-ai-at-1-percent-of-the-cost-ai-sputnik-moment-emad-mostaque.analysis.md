@@ -8,6 +8,14 @@ The strongest reusable mechanism is a model-agnostic harness with verification a
 
 Whether a fast-moving model market makes the surrounding harness—interfaces, tests, security scanning, permissions, and proprietary-data boundaries—the durable operating asset.
 
+## Decision Compression
+
+- What changed: The episode makes the model-independent harness a more important evaluation surface than any single model claim.
+- Reusable mechanism: Test model substitution through interfaces, verification, permissions, security, and data-boundary controls.
+- Decision implication: Retain a model-swap review question without treating the episode’s cost or benchmark claims as verified.
+- Evidence still missing: Matched evaluations, model documentation, cost-per-task evidence, and independent technical review.
+- Recommended disposition: `needs-verification` for claims and `primitive-candidate` for the review mechanism.
+
 ## Source
 
 - Title: Kimi K3 Delivers Frontier AI at 1% of the Cost: AI Sputnik Moment w/ Emad Mostaque | Ep. 272

@@ -1,5 +1,13 @@
 # Nate B. Jones Analysis
 
+## Decision Compression
+
+- What changed: The source treats problem selection and artifact standards as part of the useful turn, before execution begins.
+- Reusable mechanism: Evaluate opportunity selection, boundaries, and expected artifact before automating execution.
+- Decision implication: Retain an automation-opportunity discovery gate as an internal research candidate.
+- Evidence still missing: Repeated operator comparisons and evidence that the method improves problem selection rather than only presentation.
+- Recommended disposition: `primitive-candidate` with source-specific performance claims `needs-verification`.
+
 ## Source
 
 - Title: Codex vs Fable: Which AI Agent Picked the Better Problem?

@@ -18,7 +18,7 @@ Whether a fast-moving acceleration story yields a governed reusable review gate 
 
 ## Translation Candidate
 
-The [Model Substitution Readiness Gate](../../primitives/model-substitution-readiness-gate.md) is now preserved as an internal candidate. It operationalizes this episode's design insight without asserting that any specific model is safe, superior, or ready for deployment.
+The [Model Substitution Readiness Gate](../../../primitives/model-substitution-readiness-gate.md) is now preserved as an internal candidate. It operationalizes this episode's design insight without asserting that any specific model is safe, superior, or ready for deployment.
 
 ## Source
 

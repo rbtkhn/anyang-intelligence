@@ -1,5 +1,13 @@
 # Nate B. Jones Analysis
 
+## Decision Compression
+
+- What changed: The source frames coordination substrate and durable work context as a stronger operating lever than roadmap ceremony alone.
+- Reusable mechanism: Review whether recurring coordination knowledge is explicit, accessible, and governed near the work.
+- Decision implication: Retain a code-centered coordination review question; do not generalize the source’s speed claims.
+- Evidence still missing: Independent cases, measurable workflow outcomes, and transfer tests across lanes.
+- Recommended disposition: `primitive-candidate` for the review gate and `worldview-only` for broad speed claims.
+
 ## Source
 
 - Title: Your Roadmap Is Why You're Losing to AI-Native Teams.

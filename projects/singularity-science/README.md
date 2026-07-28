@@ -27,6 +27,7 @@ Current source lanes:
 - [Innermost Loop](archive/innermost-loop/README.md)
 - [Moonshots](archive/moonshots/README.md)
 - [Nate B. Jones](archive/nate-b-jones/README.md)
+- [Nate Herk](archive/nate-herk/README.md)
 - [External Interviews](archive/external-interviews/README.md)
 
 The archive is for internal analysis. Do not treat transcripts as public content, customer-facing copy, or reusable doctrine without source discipline, rights review, and membrane translation.
@@ -44,6 +45,8 @@ See [useful-turn-evaluation-note.md](useful-turn-evaluation-note.md) for the eva
 See [visual-training-technical-brief.md](visual-training-technical-brief.md) for the evidence-backed review of screen-video training, computer-use agents, latent state prediction, failure modes, and the bounded visual state-transition evaluation.
 
 See [research-to-improvement-receipt-template.md](research-to-improvement-receipt-template.md) for the governed receipt used when a source insight is promoted toward a tested primitive or operating-method change. The first pilot is [Moonshots #272 Learning-Loop Ownership Review](moonshots-272-learning-loop-ownership-review.md).
+
+See [signal-registry.md](signal-registry.md) for source-cluster, recurring-signal, mechanism, and primitive identifiers. See [downstream-feedback-ledger.md](downstream-feedback-ledger.md) for outcomes after approved translation or primitive testing.
 
 See [Moonshots #272 research-to-improvement receipt](moonshots-272-research-to-improvement-receipt.md) and [cross-lane nested-loop comparison](cross-lane-nested-loop-comparison.md) for the current proof-program state.
 

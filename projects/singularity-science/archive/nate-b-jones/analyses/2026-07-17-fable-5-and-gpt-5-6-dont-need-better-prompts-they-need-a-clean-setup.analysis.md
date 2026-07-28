@@ -1,5 +1,13 @@
 # Nate B. Jones Analysis
 
+## Decision Compression
+
+- What changed: The source shifts attention from prompt quality toward the harness, setup, and enforcement surface around a model.
+- Reusable mechanism: Separate advisory instruction from configuration, checks, permissions, and hard failure controls.
+- Decision implication: Use harness hygiene as an internal review question before attributing failures to model capability.
+- Evidence still missing: Repeated workflow evidence and independent comparison of prompt-only versus harness changes.
+- Recommended disposition: `primitive-candidate` for the review gate and `needs-verification` for generality claims.
+
 ## Source
 
 - Title: Fable 5 And GPT-5.6 Don't Need Better Prompts. They Need A Clean Setup.

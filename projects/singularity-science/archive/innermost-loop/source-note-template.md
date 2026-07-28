@@ -11,6 +11,9 @@ Date captured:
 Transcript location:
 Rights status:
 Capture method:
+Source ID:
+Source cluster ID:
+Intake tier: standard
 Why it matters:
 Relevant lanes:
   - Media Production:
@@ -23,6 +26,18 @@ Usable claims:
 Open questions:
 Rights or attribution concerns:
 Do not use for:
+```
+
+## Retention and Review (when retained)
+
+```text
+Retention reason:
+Current status:
+Evidence missing:
+Revisit trigger:
+Review owner:
+Next review date:
+Potential receiving lane:
 ```
 
 ## Source Discipline
