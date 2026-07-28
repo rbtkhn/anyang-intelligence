@@ -108,6 +108,18 @@ Every durable improvement should be expressible as a loop update:
 
 If the loop cannot name its learning update, the system noticed friction but did not yet enhance itself.
 
+## Relation To The Recursive Learning Ledger
+
+The canonical cross-cycle index is the
+[Recursive Learning Ledger](../os/recursive-learning-ledger.md).
+
+Use it for material lessons that need a reconstructable path from signal through
+human decision, durable change, validation, and later outcome evidence. Link to
+the authoritative audit, decision, commit, project ledger, or operating review
+rather than duplicating that evidence. Implementation and validation establish
+structural change; they do not establish behavioral or economic improvement
+without later observation.
+
 ## Relation To Coffee
 
 Native [coffee](../skills/coffee/SKILL.md) is the lightweight cadence that notices recursive self-enhancement opportunities.
