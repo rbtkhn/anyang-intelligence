@@ -58,6 +58,15 @@ one complete instruction containing:
 - Budget limit, if any:
 - Claims, rights, privacy, and representation cautions:
 - Required questions for the human Artistic Director:
+- Creative-intent context, if applicable:
+- Known interpretation or unresolved creative ambiguity:
+- State before transmission: `proposed / internal exploration / draft /
+  review-ready / awaiting approval / approved for external delivery`;
+- Intended state after receipt:
+- Audience and external-status boundary: `internal / client review /
+  public / other`;
+- Authority permitting any state transition:
+- Evidence gate for the transition:
 - Evidence to return:
 - Expiry or response date:
 - Stop conditions:
@@ -113,6 +122,46 @@ The human Artistic Director should return:
 The human Artistic Director's output is not automatically approved for client
 use, delivery, publication, spending, claims, or external representation.
 
+## Intent-recovery fields
+
+When a relay includes creative feedback, an aesthetic reaction, a reference
+choice, or a revision request, preserve the following fields separately from
+the ordinary task and output fields:
+
+- **Human's exact words:** the original reaction or request;
+- **Recovered creative intent:** the likely distinction beneath the words;
+- **Clearer articulation:** a first-person statement the human could adopt or
+  correct;
+- **Creative implication:** what should change in the work if the articulation
+  is correct;
+- **Alternative interpretation:** another plausible reading when it would lead
+  to a materially different revision;
+- **What remains unestablished:** facts, rights, claims, budget, approval,
+  publication, or client direction not supplied by the response; and
+- **Lesson state:** `accepted / corrected / rejected / held / project-specific`.
+
+For every material relay, also preserve the state-transition fields:
+
+- **State before transmission:** what status the work or request currently has;
+- **Intended state after receipt:** what status the instruction is meant to
+  create, if any;
+- **Audience and external-status boundary:** who may see or receive the work;
+- **Authority permitting the transition:** the approval or standing mandate;
+- **Evidence gate:** what must be verified before the transition is complete;
+- **Transition result:** whether the state changed, remained unchanged, or is
+  held; and
+- **Next decision owner:** the person or authority who must decide the next
+  state.
+
+The Executive Assistant must hold the relay when the requested transition is
+not explicit, when the authority is absent or incompatible, or when the
+evidence gate is not satisfied.
+
+The Executive Assistant may transmit these fields when they are already
+explicitly supplied, but should not invent or finalize the recovered intent.
+When the interpretation is newly inferred, the human Artistic Director must
+confirm, correct, reject, or hold it before it becomes a reusable lesson.
+
 ## Executive Assistant return template
 
 ```text
@@ -138,11 +187,27 @@ Evidence received:
 - [rights/claims/privacy uncertainties]
 - [open questions]
 
+Intent recovery, when applicable:
+- Human's exact words:
+- Recovered creative intent:
+- Clearer articulation:
+- Creative implication:
+- Alternative interpretation:
+- What remains unestablished:
+- Lesson state: [accepted / corrected / rejected / held / project-specific]
+
 Executive Assistant observation, kept separate from the Artistic Director's
 response:
 - Transmission or receipt issue:
 - New fact:
 - Scope change:
+- State before transmission:
+- Intended state after receipt:
+- Audience and external-status boundary:
+- Authority permitting transition:
+- Evidence gate:
+- Transition result: [changed / unchanged / held / escalated]
+- Next decision owner:
 - Escalation required: yes / no
 ```
 
@@ -192,4 +257,3 @@ with a live client campaign. The first receipt should prove that:
 - the Artistic Director returned the requested evidence; and
 - the Executive Assistant preserved the distinction between transmission,
   creative output, and evaluation.
-

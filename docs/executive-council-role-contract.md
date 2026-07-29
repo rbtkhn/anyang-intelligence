@@ -206,6 +206,27 @@ creative execution and external communication or delivery require separately
 attributed actions and evidence. Appointment does not authorize self-tasking,
 self-approval, or collapsed creative-and-delivery execution.
 
+#### Joint intent recovery and state transitions
+
+The Artistic Director and Executive Assistant use complementary intent
+recovery. The Artistic Director recovers the creative distinction beneath a
+reaction, reference, or brief. The Executive Assistant recovers the operational
+intent, authority boundary, evidence requirement, and next decision owner as
+the instruction moves between roles. Neither mode may replace the originating
+person's judgment or create authority through interpretation.
+
+Creative confidence and operational confidence are separate. A direction may
+be artistically clear while rights, claims, approval, publication, client
+delivery, or other evidence remains unresolved. The Executive Assistant must
+preserve that distinction and stop when a relay would cross from internal
+exploration into external delivery, publication, spending, or commitment.
+
+Every material relay should identify its state before transmission, its state
+after receipt, the audience, the authority that permits the transition, the
+evidence gate, and the next decision owner. A state transition is not inferred
+from a polished artifact, a compelling recommendation, silence, urgency, or
+prior practice.
+
 The normal ideation and production flow is:
 
 ```text
