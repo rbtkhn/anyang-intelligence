@@ -6,10 +6,12 @@ import sqlite3
 import pytest
 import yaml
 
+import anyang_loop.choice_learning as choice_learning_module
 from anyang_loop.choice_learning import (
     choice_context,
     choice_projection,
     choice_review,
+    load_choice_packet,
     record_choice_event,
     record_choice_selection,
     render_choice_review_markdown,
@@ -133,6 +135,24 @@ def outcome(
             "membrane_issue": False,
         },
     }
+
+
+def rehash_choice_events(connection: sqlite3.Connection, choice_id: str) -> None:
+    prior_hash = ""
+    rows = connection.execute(
+        "SELECT * FROM choice_event WHERE choice_id = ? ORDER BY sequence",
+        (choice_id,),
+    ).fetchall()
+    for row in rows:
+        values = dict(row)
+        values["prior_hash"] = prior_hash
+        event_hash = choice_learning_module._event_hash(values)
+        connection.execute(
+            """UPDATE choice_event SET prior_hash = ?, event_hash = ?
+            WHERE id = ?""",
+            (prior_hash, event_hash, row["id"]),
+        )
+        prior_hash = event_hash
 
 
 def test_schema_v7_to_v8_migration_is_idempotent_and_preserves_data(tmp_path):
@@ -273,6 +293,240 @@ def test_validation_privacy_tenant_and_hash_tampering(ledger):
         "WHERE choice_id = 'CHOICE-TAMPER'"
     )
     assert verify_choice(connection, "CHOICE-TAMPER")["ok"] is False
+
+
+def test_hash_consistent_semantic_tampering_fails_verification(ledger):
+    connection, actor = ledger
+    record_choice_selection(
+        connection, "anyang-internal", selection("SEMANTIC-ROLE", actor)
+    )
+    connection.execute("DROP TRIGGER choice_event_append_only_update")
+    selection_event = connection.execute(
+        "SELECT payload_json FROM choice_event WHERE choice_id = 'SEMANTIC-ROLE'"
+    ).fetchone()
+    payload = json.loads(selection_event["payload_json"])
+    payload["selected_option_role"] = "alternative"
+    connection.execute(
+        """UPDATE choice_event SET payload_json = ?
+        WHERE choice_id = 'SEMANTIC-ROLE'""",
+        (
+            json.dumps(
+                payload,
+                sort_keys=True,
+                separators=(",", ":"),
+                ensure_ascii=False,
+            ),
+        ),
+    )
+    rehash_choice_events(connection, "SEMANTIC-ROLE")
+    verification = verify_choice(connection, "SEMANTIC-ROLE")
+    assert verification["integrity_ok"] is True
+    assert verification["semantics_ok"] is False
+    assert {issue["code"] for issue in verification["issues"]} == {
+        "selection-role-mismatch"
+    }
+
+    record_choice_selection(
+        connection, "anyang-internal", selection("SEMANTIC-OPTIONS", actor)
+    )
+    connection.execute("DROP TRIGGER choice_prompt_immutable_update")
+    options = json.loads(
+        connection.execute(
+            "SELECT options_json FROM choice_prompt WHERE id = 'SEMANTIC-OPTIONS'"
+        ).fetchone()["options_json"]
+    )
+    options[0]["label"] = "Changed after selection"
+    connection.execute(
+        "UPDATE choice_prompt SET options_json = ? WHERE id = 'SEMANTIC-OPTIONS'",
+        (
+            json.dumps(
+                options,
+                sort_keys=True,
+                separators=(",", ":"),
+                ensure_ascii=False,
+            ),
+        ),
+    )
+    verification = verify_choice(connection, "SEMANTIC-OPTIONS")
+    assert verification["integrity_ok"] is True
+    assert verification["semantics_ok"] is False
+    assert "option-set-hash-mismatch" in {
+        issue["code"] for issue in verification["issues"]
+    }
+
+    record_choice_selection(
+        connection, "anyang-internal", selection("SEMANTIC-DUPLICATE", actor)
+    )
+    first = connection.execute(
+        "SELECT * FROM choice_event WHERE choice_id = 'SEMANTIC-DUPLICATE'"
+    ).fetchone()
+    duplicate = dict(first)
+    duplicate.update(
+        {
+            "id": "semantic-duplicate-selection",
+            "event_key": "selection-duplicate",
+            "sequence": 2,
+            "prior_hash": first["event_hash"],
+            "recorded_at": "2026-07-29T12:00:01Z",
+        }
+    )
+    duplicate["event_hash"] = choice_learning_module._event_hash(duplicate)
+    connection.execute(
+        """INSERT INTO choice_event(
+            id, choice_id, tenant_id, event_key, sequence, event_type,
+            actor_id, actor_label, action_summary, occurred_at, recorded_at,
+            evidence_ref, payload_json, prior_hash, event_hash
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+        tuple(
+            duplicate[key]
+            for key in (
+                "id",
+                "choice_id",
+                "tenant_id",
+                "event_key",
+                "sequence",
+                "event_type",
+                "actor_id",
+                "actor_label",
+                "action_summary",
+                "occurred_at",
+                "recorded_at",
+                "evidence_ref",
+                "payload_json",
+                "prior_hash",
+                "event_hash",
+            )
+        ),
+    )
+    verification = verify_choice(connection, "SEMANTIC-DUPLICATE")
+    assert verification["integrity_ok"] is True
+    assert verification["semantics_ok"] is False
+    assert "selection-count-invalid" in {
+        issue["code"] for issue in verification["issues"]
+    }
+
+
+def test_supersession_requires_existing_same_scope_acyclic_choice(ledger):
+    connection, actor = ledger
+    for identifier in ("SUPER-A", "SUPER-B", "SUPER-MISSING", "SUPER-SELF"):
+        record_choice_selection(
+            connection, "anyang-internal", selection(identifier, actor)
+        )
+
+    record_choice_event(
+        connection,
+        "SUPER-A",
+        {
+            "event_key": "superseded",
+            "event_type": "superseded",
+            "recorded_by": "Council Steward",
+            "action_summary": "Supersede with a valid same-scope choice",
+            "payload": {
+                "reason": "A newer bounded choice exists",
+                "superseding_choice_id": "SUPER-B",
+            },
+        },
+    )
+    assert verify_choice(connection, "SUPER-A")["ok"] is True
+
+    record_choice_event(
+        connection,
+        "SUPER-MISSING",
+        {
+            "event_key": "superseded",
+            "event_type": "superseded",
+            "recorded_by": "Council Steward",
+            "action_summary": "Reference a missing choice",
+            "payload": {
+                "reason": "Synthetic invalid lineage",
+                "superseding_choice_id": "DOES-NOT-EXIST",
+            },
+        },
+    )
+    assert "superseding-choice-missing" in {
+        issue["code"]
+        for issue in verify_choice(connection, "SUPER-MISSING")["issues"]
+    }
+
+    record_choice_event(
+        connection,
+        "SUPER-SELF",
+        {
+            "event_key": "superseded",
+            "event_type": "superseded",
+            "recorded_by": "Council Steward",
+            "action_summary": "Reference the same choice",
+            "payload": {
+                "reason": "Synthetic cycle",
+                "superseding_choice_id": "SUPER-SELF",
+            },
+        },
+    )
+    assert "supersession-cycle" in {
+        issue["code"] for issue in verify_choice(connection, "SUPER-SELF")["issues"]
+    }
+
+    init_tenant(
+        connection,
+        slug="other",
+        name="Other",
+        policy_profile="test",
+        retainer_cents=0,
+        contractor_budget_cents=0,
+        tool_budget_cents=0,
+        timestamp=NOW,
+    )
+    other_actor = add_actor(connection, "other", "Other Steward", "operator").id
+    record_choice_selection(
+        connection, "other", selection("SUPER-OTHER", other_actor)
+    )
+    record_choice_selection(
+        connection, "anyang-internal", selection("SUPER-CROSS", actor)
+    )
+    record_choice_event(
+        connection,
+        "SUPER-CROSS",
+        {
+            "event_key": "superseded",
+            "event_type": "superseded",
+            "recorded_by": "Council Steward",
+            "action_summary": "Reference another tenant",
+            "payload": {
+                "reason": "Synthetic cross-scope lineage",
+                "superseding_choice_id": "SUPER-OTHER",
+            },
+        },
+    )
+    assert "superseding-choice-scope-mismatch" in {
+        issue["code"] for issue in verify_choice(connection, "SUPER-CROSS")["issues"]
+    }
+
+    for identifier in ("SUPER-CYCLE-A", "SUPER-CYCLE-B"):
+        record_choice_selection(
+            connection, "anyang-internal", selection(identifier, actor)
+        )
+    for origin, target in (
+        ("SUPER-CYCLE-A", "SUPER-CYCLE-B"),
+        ("SUPER-CYCLE-B", "SUPER-CYCLE-A"),
+    ):
+        record_choice_event(
+            connection,
+            origin,
+            {
+                "event_key": "superseded",
+                "event_type": "superseded",
+                "recorded_by": "Council Steward",
+                "action_summary": "Create a synthetic supersession cycle",
+                "payload": {
+                    "reason": "Synthetic cyclic lineage",
+                    "superseding_choice_id": target,
+                },
+            },
+        )
+    assert "supersession-cycle" in {
+        issue["code"]
+        for issue in verify_choice(connection, "SUPER-CYCLE-A")["issues"]
+    }
 
 
 def test_outcome_learning_thresholds_guardrails_and_review_order(ledger):
@@ -463,6 +717,9 @@ def test_not_observable_correction_and_supersession(ledger):
     assert choice_projection(connection, "CHOICE-CORRECT")["outcome"]["payload"][
         "result"
     ] == "mixed"
+    record_choice_selection(
+        connection, "anyang-internal", selection("CHOICE-NEXT", actor)
+    )
     record_choice_event(
         connection,
         "CHOICE-CORRECT",
@@ -480,6 +737,48 @@ def test_not_observable_correction_and_supersession(ledger):
     assert choice_projection(connection, "CHOICE-CORRECT")["current_state"] == "superseded"
 
 
+def test_choice_dry_run_normalizes_unquoted_yaml_dates(tmp_path, capsys):
+    packet_path = tmp_path / "unquoted-dates.yaml"
+    packet_path.write_text(
+        """id: DATE-DRY-RUN
+presented_at: 2026-07-29T18:08:00Z
+calendar_day: 2026-07-29
+enabled: true
+count: 2
+nested:
+  - occurred_at: 2026-07-30T12:00:00Z
+""",
+        encoding="utf-8",
+    )
+    loaded = load_choice_packet(packet_path)
+    assert loaded == {
+        "id": "DATE-DRY-RUN",
+        "presented_at": "2026-07-29T18:08:00Z",
+        "calendar_day": "2026-07-29",
+        "enabled": True,
+        "count": 2,
+        "nested": [{"occurred_at": "2026-07-30T12:00:00Z"}],
+    }
+    assert (
+        main(
+            [
+                "--db",
+                str(tmp_path / "unused.db"),
+                "choice",
+                "select",
+                "--tenant",
+                "synthetic",
+                "--packet",
+                str(packet_path),
+                "--dry-run",
+            ]
+        )
+        == 0
+    )
+    preview = json.loads(capsys.readouterr().out)
+    assert preview["packet"] == loaded
+
+
 def test_choice_cli_dry_run_show_context_review_and_verify(tmp_path, capsys):
     db = tmp_path / "cli.db"
     with connect(db, create_parent=True) as connection:
@@ -495,6 +794,16 @@ def test_choice_cli_dry_run_show_context_review_and_verify(tmp_path, capsys):
             timestamp=NOW,
         )
         actor = add_actor(connection, "anyang-internal", "Steward", "operator").id
+        init_tenant(
+            connection,
+            slug="other",
+            name="Other",
+            policy_profile="test",
+            retainer_cents=0,
+            contractor_budget_cents=0,
+            tool_budget_cents=0,
+            timestamp=NOW,
+        )
     packet_path = tmp_path / "selection.yaml"
     packet_path.write_text(
         yaml.safe_dump(selection("CLI-CHOICE", actor), sort_keys=False),
@@ -505,11 +814,58 @@ def test_choice_cli_dry_run_show_context_review_and_verify(tmp_path, capsys):
     assert json.loads(capsys.readouterr().out)["dry_run"] is True
     assert main(base + ["select", "--tenant", "anyang-internal", "--packet", str(packet_path)]) == 0
     capsys.readouterr()
-    assert main(base + ["show", "CLI-CHOICE", "--format", "json"]) == 0
+    scope = [
+        "--tenant",
+        "anyang-internal",
+        "--workspace",
+        "anyang-intelligence",
+        "--lane",
+        "repository",
+    ]
+    assert main(base + ["show", "CLI-CHOICE", *scope, "--format", "json"]) == 0
     shown = json.loads(capsys.readouterr().out)
     assert shown["choice"]["id"] == "CLI-CHOICE"
-    assert main(base + ["verify", "CLI-CHOICE"]) == 0
-    assert json.loads(capsys.readouterr().out)["ok"] is True
+    assert main(base + ["verify", "CLI-CHOICE", *scope]) == 0
+    verified = json.loads(capsys.readouterr().out)
+    assert verified["ok"] is True
+    assert verified["integrity_ok"] is True
+    assert verified["semantics_ok"] is True
+    assert verified["verification_profile"] == "choice-semantic-v2"
+    for mismatched_scope in (
+        [
+            "--tenant",
+            "other",
+            "--workspace",
+            "anyang-intelligence",
+            "--lane",
+            "repository",
+        ],
+        [
+            "--tenant",
+            "anyang-internal",
+            "--workspace",
+            "another-workspace",
+            "--lane",
+            "repository",
+        ],
+        [
+            "--tenant",
+            "anyang-internal",
+            "--workspace",
+            "anyang-intelligence",
+            "--lane",
+            "customer",
+        ],
+    ):
+        assert main(base + ["show", "CLI-CHOICE", *mismatched_scope]) == 1
+        captured = capsys.readouterr()
+        assert captured.out == ""
+        assert captured.err.strip() == (
+            "ERROR: Choice was not found in the requested scope."
+        )
+    with pytest.raises(SystemExit):
+        main(base + ["verify", "CLI-CHOICE"])
+    capsys.readouterr()
     assert main(base + ["context", "--tenant", "anyang-internal", "--workspace", "anyang-intelligence", "--lane", "repository", "--kind", "next-action", "--format", "json"]) == 0
     assert json.loads(capsys.readouterr().out)["recommendation_guidance"][
         "selection_frequency_used"

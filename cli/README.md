@@ -119,9 +119,16 @@ execution authority.
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db choice select --tenant anyang-internal --packet selection.yaml --dry-run
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db choice outcome CHOICE_ID --packet outcome.yaml --dry-run
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db choice review --tenant anyang-internal --workspace anyang-intelligence --as-of 2026-07-29T12:00:00Z
-.\tools\run.ps1 ops --db C:\private\anyang-ops.db choice show CHOICE_ID --format json
-.\tools\run.ps1 ops --db C:\private\anyang-ops.db choice verify CHOICE_ID
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db choice show CHOICE_ID --tenant anyang-internal --workspace anyang-intelligence --lane repository --format json
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db choice verify CHOICE_ID --tenant anyang-internal --workspace anyang-intelligence --lane repository
 ```
+
+Direct `show` and `verify` reads require the expected tenant, workspace, and
+lane. A mismatch returns a generic not-found error without disclosing the
+record's actual scope. Verification checks both the hash chain and semantic
+identity: immutable options and recommendation, exactly one initial selection,
+selection role and no-authority binding, canonical event payloads, and
+same-scope acyclic choice supersession.
 
 Recommendation guidance uses observed usefulness, burden, momentum, discovery,
 and outcomes. Selection frequency is explicitly excluded. One or two outcomes

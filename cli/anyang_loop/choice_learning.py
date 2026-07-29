@@ -4,7 +4,7 @@ import hashlib
 import json
 import sqlite3
 import uuid
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from statistics import median
 from typing import Any
@@ -48,7 +48,7 @@ def load_choice_packet(path: str | Path) -> dict[str, Any]:
     value = yaml.safe_load(source.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
         raise OpsError(f"Choice packet must be a YAML mapping: {source}")
-    return value
+    return _normalize_yaml_dates(value)
 
 
 def record_choice_selection(
@@ -247,26 +247,68 @@ def verify_choice(connection: sqlite3.Connection, choice_id: str) -> dict[str, A
     events = connection.execute(
         "SELECT * FROM choice_event WHERE choice_id = ? ORDER BY sequence", (choice_id,)
     ).fetchall()
-    issues: list[dict[str, str]] = []
+    semantic_issues = _semantic_choice_issues(connection, prompt, events)
+    integrity_issues: list[dict[str, str]] = []
     prior_hash = ""
     for expected, event in enumerate(events, start=1):
         if event["sequence"] != expected:
-            issues.append({"code": "sequence-gap", "message": f"Expected event {expected}."})
+            integrity_issues.append(
+                {"code": "sequence-gap", "message": f"Expected event {expected}."}
+            )
         if event["tenant_id"] != prompt["tenant_id"]:
-            issues.append({"code": "tenant-mismatch", "message": f"Event {event['id']} crosses tenant."})
+            integrity_issues.append(
+                {
+                    "code": "tenant-mismatch",
+                    "message": f"Event {event['id']} crosses tenant.",
+                }
+            )
         if event["prior_hash"] != prior_hash:
-            issues.append({"code": "prior-hash-mismatch", "message": f"Event {event['id']} has a broken link."})
+            integrity_issues.append(
+                {
+                    "code": "prior-hash-mismatch",
+                    "message": f"Event {event['id']} has a broken link.",
+                }
+            )
         values = {key: event[key] for key in _event_hash_fields()}
         if _event_hash(values) != event["event_hash"]:
-            issues.append({"code": "event-hash-mismatch", "message": f"Event {event['id']} failed hashing."})
+            integrity_issues.append(
+                {
+                    "code": "event-hash-mismatch",
+                    "message": f"Event {event['id']} failed hashing.",
+                }
+            )
         prior_hash = event["event_hash"]
+    issues = [*semantic_issues, *integrity_issues]
     return {
         "choice_id": choice_id,
+        "verification_profile": "choice-semantic-v2",
+        "integrity_ok": not integrity_issues,
+        "semantics_ok": not semantic_issues,
         "ok": not issues,
         "event_count": len(events),
         "head_hash": prior_hash,
         "issues": issues,
     }
+
+
+def assert_choice_scope(
+    connection: sqlite3.Connection,
+    choice_id: str,
+    tenant: str,
+    workspace_id: str,
+    lane: str,
+) -> None:
+    try:
+        tid = tenant_id(connection, tenant)
+    except OpsError as exc:
+        raise OpsError("Choice was not found in the requested scope.") from exc
+    row = connection.execute(
+        """SELECT 1 FROM choice_prompt
+        WHERE id = ? AND tenant_id = ? AND workspace_id = ? AND lane = ?""",
+        (choice_id, tid, workspace_id, lane),
+    ).fetchone()
+    if not row:
+        raise OpsError("Choice was not found in the requested scope.")
 
 
 def choice_projection(connection: sqlite3.Connection, choice_id: str) -> dict[str, Any]:
@@ -932,6 +974,299 @@ def _validate_event_payload(event_type: str, payload: dict[str, Any]) -> dict[st
     return value
 
 
+def _semantic_choice_issues(
+    connection: sqlite3.Connection,
+    prompt: sqlite3.Row,
+    events: list[sqlite3.Row],
+) -> list[dict[str, str]]:
+    issues: list[dict[str, str]] = []
+    options: list[dict[str, Any]] = []
+    option_by_key: dict[str, dict[str, Any]] = {}
+    try:
+        decoded_options = json.loads(prompt["options_json"])
+    except (TypeError, json.JSONDecodeError):
+        decoded_options = None
+    if not isinstance(decoded_options, list) or not 3 <= len(decoded_options) <= 4:
+        issues.append(
+            {
+                "code": "option-set-invalid",
+                "message": "Immutable option set is not a three- or four-option list.",
+            }
+        )
+    else:
+        options = decoded_options
+        keys: set[str] = set()
+        roles: set[str] = set()
+        for option in options:
+            if not isinstance(option, dict):
+                issues.append(
+                    {
+                        "code": "option-invalid",
+                        "message": "Immutable option set contains a non-mapping option.",
+                    }
+                )
+                continue
+            key = option.get("key")
+            role = option.get("role")
+            if not isinstance(key, str) or not key or key in keys:
+                issues.append(
+                    {
+                        "code": "option-key-invalid",
+                        "message": "Immutable option keys must be present and unique.",
+                    }
+                )
+            else:
+                keys.add(key)
+                option_by_key[key] = option
+            if role not in CHOICE_ROLES or role in roles:
+                issues.append(
+                    {
+                        "code": "option-role-invalid",
+                        "message": "Immutable option roles must be supported and unique.",
+                    }
+                )
+            else:
+                roles.add(role)
+        if not {"recommended", "alternative"}.issubset(roles) or not (
+            {"overlooked", "pause-or-deepen"} & roles
+        ):
+            issues.append(
+                {
+                    "code": "option-role-shape-invalid",
+                    "message": (
+                        "Immutable options must retain recommended and alternative "
+                        "roles plus an overlooked or pause-or-deepen possibility."
+                    ),
+                }
+            )
+        if _hash(options) != prompt["option_set_hash"]:
+            issues.append(
+                {
+                    "code": "option-set-hash-mismatch",
+                    "message": "Immutable option set differs from its recorded identity.",
+                }
+            )
+        recommended = option_by_key.get(prompt["recommendation_key"])
+        if not recommended:
+            issues.append(
+                {
+                    "code": "recommendation-key-invalid",
+                    "message": "Recommendation key does not name an immutable option.",
+                }
+            )
+        elif recommended.get("role") != "recommended":
+            issues.append(
+                {
+                    "code": "recommendation-role-mismatch",
+                    "message": "Recommendation key does not bind the recommended role.",
+                }
+            )
+
+    selection_events = [
+        event for event in events if event["event_type"] == "branch_selected"
+    ]
+    if len(selection_events) != 1:
+        issues.append(
+            {
+                "code": "selection-count-invalid",
+                "message": f"Expected exactly one branch selection; found {len(selection_events)}.",
+            }
+        )
+    if events and events[0]["event_type"] != "branch_selected":
+        issues.append(
+            {
+                "code": "selection-not-first",
+                "message": "Branch selection is not the first choice event.",
+            }
+        )
+    if selection_events:
+        selection = selection_events[0]
+        if selection["sequence"] != 1:
+            issues.append(
+                {
+                    "code": "selection-sequence-invalid",
+                    "message": "Branch selection must have sequence 1.",
+                }
+            )
+        if selection["event_key"] != "selection":
+            issues.append(
+                {
+                    "code": "selection-event-key-invalid",
+                    "message": "Branch selection must use the stable selection event key.",
+                }
+            )
+        try:
+            payload = json.loads(selection["payload_json"])
+        except (TypeError, json.JSONDecodeError):
+            payload = None
+        if not isinstance(payload, dict):
+            issues.append(
+                {
+                    "code": "selection-payload-invalid",
+                    "message": "Branch selection payload is not a mapping.",
+                }
+            )
+        else:
+            selected_key = payload.get("selected_option_key")
+            selected = option_by_key.get(selected_key)
+            if not selected:
+                issues.append(
+                    {
+                        "code": "selection-key-invalid",
+                        "message": "Selected key does not name an immutable option.",
+                    }
+                )
+            elif payload.get("selected_option_role") != selected.get("role"):
+                issues.append(
+                    {
+                        "code": "selection-role-mismatch",
+                        "message": "Selection role differs from the immutable option set.",
+                    }
+                )
+            if payload.get("authority_effect") != "none":
+                issues.append(
+                    {
+                        "code": "selection-authority-invalid",
+                        "message": "Choice selection must not grant execution authority.",
+                    }
+                )
+            review_after = payload.get("review_after")
+            try:
+                _timestamp(review_after)
+            except (OpsError, TypeError):
+                issues.append(
+                    {
+                        "code": "selection-review-time-invalid",
+                        "message": "Choice selection has an invalid review timestamp.",
+                    }
+                )
+
+    supersession_events: list[sqlite3.Row] = []
+    for event in events:
+        if event["event_type"] == "branch_selected":
+            continue
+        if event["event_type"] not in EVENT_TYPES:
+            issues.append(
+                {
+                    "code": "event-type-invalid",
+                    "message": f"Event {event['id']} has an unsupported type.",
+                }
+            )
+            continue
+        try:
+            payload = json.loads(event["payload_json"])
+            if not isinstance(payload, dict):
+                raise OpsError("payload must be a mapping")
+            normalized = _validate_event_payload(event["event_type"], payload)
+        except (OpsError, TypeError, ValueError, json.JSONDecodeError):
+            issues.append(
+                {
+                    "code": "event-payload-invalid",
+                    "message": f"Event {event['id']} has an invalid semantic payload.",
+                }
+            )
+            continue
+        if _canonical_json(normalized) != event["payload_json"]:
+            issues.append(
+                {
+                    "code": "event-payload-noncanonical",
+                    "message": f"Event {event['id']} differs from its canonical payload.",
+                }
+            )
+        if event["event_type"] == "superseded":
+            supersession_events.append(event)
+
+    if len(supersession_events) > 1:
+        issues.append(
+            {
+                "code": "supersession-count-invalid",
+                "message": "A choice may have at most one supersession disposition.",
+            }
+        )
+    for event in supersession_events:
+        payload = json.loads(event["payload_json"])
+        issues.extend(
+            _supersession_issues(
+                connection,
+                prompt,
+                str(prompt["id"]),
+                payload["superseding_choice_id"],
+            )
+        )
+    return issues
+
+
+def _supersession_issues(
+    connection: sqlite3.Connection,
+    origin: sqlite3.Row,
+    choice_id: str,
+    superseding_choice_id: str,
+) -> list[dict[str, str]]:
+    issues: list[dict[str, str]] = []
+    seen = {choice_id}
+    current_id = superseding_choice_id
+    while current_id:
+        if current_id in seen:
+            issues.append(
+                {
+                    "code": "supersession-cycle",
+                    "message": "Choice supersession lineage contains a cycle.",
+                }
+            )
+            return issues
+        seen.add(current_id)
+        current = connection.execute(
+            "SELECT * FROM choice_prompt WHERE id = ?", (current_id,)
+        ).fetchone()
+        if not current:
+            issues.append(
+                {
+                    "code": "superseding-choice-missing",
+                    "message": "Superseding choice does not exist.",
+                }
+            )
+            return issues
+        if any(
+            current[field] != origin[field]
+            for field in ("tenant_id", "workspace_id", "lane")
+        ):
+            issues.append(
+                {
+                    "code": "superseding-choice-scope-mismatch",
+                    "message": "Superseding choice crosses tenant, workspace, or lane.",
+                }
+            )
+            return issues
+        rows = connection.execute(
+            """SELECT payload_json FROM choice_event
+            WHERE choice_id = ? AND event_type = 'superseded'
+            ORDER BY sequence""",
+            (current_id,),
+        ).fetchall()
+        if not rows:
+            return issues
+        if len(rows) > 1:
+            issues.append(
+                {
+                    "code": "supersession-lineage-ambiguous",
+                    "message": "Superseding choice has multiple supersession dispositions.",
+                }
+            )
+            return issues
+        try:
+            payload = json.loads(rows[0]["payload_json"])
+            current_id = str(payload["superseding_choice_id"])
+        except (KeyError, TypeError, json.JSONDecodeError):
+            issues.append(
+                {
+                    "code": "supersession-lineage-invalid",
+                    "message": "Superseding choice has an invalid lineage reference.",
+                }
+            )
+            return issues
+    return issues
+
+
 def _attention_flags(
     prompt: sqlite3.Row,
     state: str,
@@ -1106,6 +1441,18 @@ def _timestamp(value: str) -> datetime:
 
 def _canonical_json(value: Any) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+
+
+def _normalize_yaml_dates(value: Any) -> Any:
+    if isinstance(value, datetime):
+        return value.isoformat().replace("+00:00", "Z")
+    if isinstance(value, date):
+        return value.isoformat()
+    if isinstance(value, dict):
+        return {key: _normalize_yaml_dates(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_normalize_yaml_dates(item) for item in value]
+    return value
 
 
 def _hash(value: Any) -> str:

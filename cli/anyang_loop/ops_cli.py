@@ -81,6 +81,7 @@ from .council_workroom import (
     verify_council_transaction,
 )
 from .choice_learning import (
+    assert_choice_scope,
     choice_context,
     choice_projection,
     choice_review,
@@ -524,11 +525,17 @@ def build_parser() -> argparse.ArgumentParser:
 
     choice_show = choice_sub.add_parser("show", help="Render one selected possibility set")
     choice_show.add_argument("choice_id")
+    _tenant(choice_show)
+    choice_show.add_argument("--workspace", required=True)
+    choice_show.add_argument("--lane", required=True)
     _read_format(choice_show)
     choice_show.set_defaults(func=cmd_choice_show)
 
     choice_verify = choice_sub.add_parser("verify", help="Verify one choice event chain")
     choice_verify.add_argument("choice_id")
+    _tenant(choice_verify)
+    choice_verify.add_argument("--workspace", required=True)
+    choice_verify.add_argument("--lane", required=True)
     choice_verify.set_defaults(func=cmd_choice_verify)
 
     privacy = sub.add_parser("privacy-scan")
@@ -914,6 +921,13 @@ def cmd_choice_review(args: argparse.Namespace) -> int:
 def cmd_choice_show(args: argparse.Namespace) -> int:
     with connect(resolve_db(args)) as connection:
         migrate(connection, now_utc())
+        assert_choice_scope(
+            connection,
+            args.choice_id,
+            args.tenant,
+            args.workspace,
+            args.lane,
+        )
         data = choice_projection(connection, args.choice_id)
     return _emit_read_output(args, data, render_choice_markdown)
 
@@ -921,6 +935,13 @@ def cmd_choice_show(args: argparse.Namespace) -> int:
 def cmd_choice_verify(args: argparse.Namespace) -> int:
     with connect(resolve_db(args)) as connection:
         migrate(connection, now_utc())
+        assert_choice_scope(
+            connection,
+            args.choice_id,
+            args.tenant,
+            args.workspace,
+            args.lane,
+        )
         data = verify_choice(connection, args.choice_id)
     print(render_json(data), end="")
     return 0 if data["ok"] else 1
