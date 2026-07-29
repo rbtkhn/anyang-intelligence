@@ -12,6 +12,7 @@ from anyang_loop.choice_learning import (
     choice_review,
     record_choice_event,
     record_choice_selection,
+    render_choice_review_markdown,
     verify_choice,
 )
 from anyang_loop.ops_cli import main
@@ -318,6 +319,119 @@ def test_outcome_learning_thresholds_guardrails_and_review_order(ledger):
     )
     assert review["choices"][0]["choice_id"] == "PENDING-SENSITIVE"
     assert review["coffee_limit"] == 1
+    assert review["five_selection_review"]["assessment"] == "pending"
+
+
+def test_five_selection_scorecard_continues_without_using_frequency(ledger):
+    connection, actor = ledger
+    for index in range(1, 6):
+        identifier = f"COHORT-CONTINUE-{index}"
+        record_choice_selection(
+            connection, "anyang-internal", selection(identifier, actor)
+        )
+        record_choice_event(
+            connection, identifier, outcome(f"cohort-continue-{index}")
+        )
+    review = choice_review(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "2026-08-01T12:00:00Z",
+    )
+    scorecard = review["five_selection_review"]
+    assert scorecard["sample_ready"] is True
+    assert scorecard["assessment"] == "continue"
+    assert scorecard["primary_metrics"]["lower_cognitive_load"] == {
+        "favorable_value": "lower",
+        "favorable": 5,
+        "observed": 5,
+        "rate_percent": 100.0,
+        "pilot_target": 3,
+        "signal_met": True,
+    }
+    assert scorecard["primary_metrics"]["new_useful_path"]["pilot_target"] == 1
+    assert scorecard["selection_frequency_used"] is False
+    assert scorecard["guardrails"]["selection_frequency_used"] is False
+    assert scorecard["supporting_evidence"]["rework_minutes"]["median"] == 2.0
+    markdown = render_choice_review_markdown(review)
+    assert "## Five-Selection Navigation Review" in markdown
+    assert "Assessment: `continue`" in markdown
+
+
+def test_five_selection_scorecard_extends_when_observations_are_missing(ledger):
+    connection, actor = ledger
+    for index in range(1, 6):
+        identifier = f"COHORT-MISSING-{index}"
+        record_choice_selection(
+            connection, "anyang-internal", selection(identifier, actor)
+        )
+        packet = outcome(f"cohort-missing-{index}")
+        packet["payload"]["cognitive_load"] = "Missing"
+        packet["payload"]["momentum"] = "Missing"
+        packet["payload"]["discovery_value"] = "Missing"
+        record_choice_event(connection, identifier, packet)
+    scorecard = choice_review(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "2026-08-01T12:00:00Z",
+    )["five_selection_review"]
+    assert scorecard["assessment"] == "extend-to-ten"
+    assert scorecard["primary_metrics"]["lower_cognitive_load"]["observed"] == 0
+    assert scorecard["primary_metrics"]["lower_cognitive_load"]["rate_percent"] is None
+
+
+def test_five_selection_scorecard_adjusts_for_repeated_negative_experience(ledger):
+    connection, actor = ledger
+    for index in range(1, 6):
+        identifier = f"COHORT-ADJUST-{index}"
+        record_choice_selection(
+            connection, "anyang-internal", selection(identifier, actor)
+        )
+        packet = outcome(f"cohort-adjust-{index}")
+        if index <= 2:
+            packet["payload"]["cognitive_load"] = "higher"
+            packet["payload"]["momentum"] = "stalled"
+            packet["payload"]["discovery_value"] = "not-useful"
+        record_choice_event(connection, identifier, packet)
+    scorecard = choice_review(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "2026-08-01T12:00:00Z",
+    )["five_selection_review"]
+    assert scorecard["assessment"] == "adjust"
+    assert scorecard["supporting_evidence"]["negative_experience_count"] == 2
+    assert scorecard["supporting_evidence"]["negative_experience_choice_ids"] == [
+        "COHORT-ADJUST-1",
+        "COHORT-ADJUST-2",
+    ]
+
+
+def test_five_selection_scorecard_holds_on_boundary_incident(ledger):
+    connection, actor = ledger
+    for index in range(1, 6):
+        identifier = f"COHORT-HOLD-{index}"
+        record_choice_selection(
+            connection, "anyang-internal", selection(identifier, actor)
+        )
+        record_choice_event(
+            connection,
+            identifier,
+            outcome(
+                f"cohort-hold-{index}",
+                authority_issue=index == 3,
+            ),
+        )
+    scorecard = choice_review(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "2026-08-01T12:00:00Z",
+    )["five_selection_review"]
+    assert scorecard["assessment"] == "hold"
+    assert scorecard["guardrails"]["authority_or_membrane_incidents"] == 1
+    assert scorecard["guardrails"]["incident_choice_ids"] == ["COHORT-HOLD-3"]
 
 
 def test_not_observable_correction_and_supersession(ledger):

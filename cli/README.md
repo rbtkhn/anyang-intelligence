@@ -131,6 +131,15 @@ Authority or membrane incidents surface immediately. If the ledger is
 unavailable, navigation continues without retention and only operator-approved
 `RL-*` learning may enter Git.
 
+After five resolved, non-superseded selections, `choice review` also renders a
+stable initial-cohort scorecard. It reports lower cognitive load, advanced
+momentum, new-useful-path discovery, result distribution, optional rework, and
+authority or membrane incidents. Missing dimensions stay out of denominators.
+The assessment is `continue`, `adjust`, `extend-to-ten`, or `hold`; an authority
+or membrane incident always produces `hold`. This descriptive checkpoint never
+uses selection frequency and does not replace the separate comparable-outcome
+threshold for changing recommendations.
+
 ### Cadence reconstruction baseline
 
 Record each real cadence event immediately after it completes or stops. Do not backfill simulated successes:

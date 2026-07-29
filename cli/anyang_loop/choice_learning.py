@@ -6,6 +6,7 @@ import sqlite3
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+from statistics import median
 from typing import Any
 
 import yaml
@@ -443,14 +444,14 @@ def choice_review(
         (tid, workspace_id),
     ).fetchall()
     due: list[dict[str, Any]] = []
-    resolved_count = 0
+    resolved: list[dict[str, Any]] = []
     for row in rows:
         projection = choice_projection(connection, row["id"])
+        if projection["current_state"] == "superseded":
+            continue
         outcome = projection["outcome"]
         if outcome and outcome["payload"].get("result") in TERMINAL_RESULTS:
-            resolved_count += 1
-            continue
-        if projection["current_state"] == "superseded":
+            resolved.append(projection)
             continue
         review_after = projection["review_after"]
         if review_after and _timestamp(review_after) > _timestamp(reference):
@@ -483,8 +484,9 @@ def choice_review(
         "as_of": reference,
         "due_count": len(due),
         "choices": due,
-        "resolved_count": resolved_count,
-        "reflection_sample_ready": resolved_count >= 5,
+        "resolved_count": len(resolved),
+        "reflection_sample_ready": len(resolved) >= 5,
+        "five_selection_review": _five_selection_scorecard(resolved),
         "coffee_limit": 1,
         "human_authority": "Outcome review informs future navigation and grants no action authority.",
     }
@@ -562,6 +564,7 @@ def render_choice_context_markdown(data: dict[str, Any]) -> str:
 
 
 def render_choice_review_markdown(data: dict[str, Any]) -> str:
+    scorecard = data["five_selection_review"]
     lines = [
         "# Choice Outcome Review",
         "",
@@ -576,8 +579,189 @@ def render_choice_review_markdown(data: dict[str, Any]) -> str:
         )
     if not data["choices"]:
         lines.append("- No outcome review is due.")
+    lines.extend(
+        [
+            "",
+            "## Five-Selection Navigation Review",
+            "",
+            f"Cohort: {scorecard['cohort_size']} / {scorecard['required_size']} resolved selections",
+        ]
+    )
+    if not scorecard["sample_ready"]:
+        lines.append(
+            f"- Pending: {scorecard['remaining']} more resolved selection(s) required."
+        )
+    else:
+        metrics = scorecard["primary_metrics"]
+        lines.extend(
+            [
+                (
+                    f"- Lower cognitive load: "
+                    f"{metrics['lower_cognitive_load']['favorable']} / "
+                    f"{metrics['lower_cognitive_load']['observed']} observed"
+                ),
+                (
+                    f"- Advanced momentum: "
+                    f"{metrics['advanced_momentum']['favorable']} / "
+                    f"{metrics['advanced_momentum']['observed']} observed"
+                ),
+                (
+                    f"- New useful paths: "
+                    f"{metrics['new_useful_path']['favorable']} / "
+                    f"{metrics['new_useful_path']['observed']} observed"
+                ),
+                (
+                    "- Authority or membrane incidents: "
+                    f"{scorecard['guardrails']['authority_or_membrane_incidents']}"
+                ),
+                "- Selection frequency used: no",
+                f"- Assessment: `{scorecard['assessment']}`",
+                f"- Rationale: {scorecard['rationale']}",
+            ]
+        )
     lines.extend(["", f"Authority boundary: {data['human_authority']}", ""])
     return "\n".join(lines)
+
+
+def _five_selection_scorecard(
+    resolved: list[dict[str, Any]],
+) -> dict[str, Any]:
+    required_size = 5
+    cohort = resolved[:required_size]
+    base = {
+        "cohort_rule": "earliest-five-resolved-non-superseded",
+        "required_size": required_size,
+        "cohort_size": len(cohort),
+        "remaining": max(0, required_size - len(cohort)),
+        "sample_ready": len(cohort) == required_size,
+        "choice_ids": [item["choice"]["id"] for item in cohort],
+        "selection_frequency_used": False,
+        "recommendation_effect": (
+            "Descriptive pilot evidence only; comparable-outcome thresholds remain controlling."
+        ),
+    }
+    if len(cohort) < required_size:
+        return {
+            **base,
+            "primary_metrics": {},
+            "supporting_evidence": {},
+            "guardrails": {
+                "authority_or_membrane_incidents": 0,
+                "incident_choice_ids": [],
+                "selection_frequency_used": False,
+            },
+            "assessment": "pending",
+            "rationale": "Five resolved, non-superseded selections are required.",
+        }
+
+    payloads = [item["outcome"]["payload"] for item in cohort]
+    cognitive = _pilot_metric(
+        payloads,
+        field="cognitive_load",
+        favorable="lower",
+        target=3,
+    )
+    momentum = _pilot_metric(
+        payloads,
+        field="momentum",
+        favorable="advanced",
+        target=3,
+    )
+    discovery = _pilot_metric(
+        payloads,
+        field="discovery_value",
+        favorable="new-useful-path",
+        target=1,
+    )
+    primary = {
+        "lower_cognitive_load": cognitive,
+        "advanced_momentum": momentum,
+        "new_useful_path": discovery,
+    }
+    incidents = [
+        item["choice"]["id"]
+        for item in cohort
+        if item["outcome"]["payload"].get("authority_issue")
+        or item["outcome"]["payload"].get("membrane_issue")
+    ]
+    negative_choices = [
+        item["choice"]["id"]
+        for item in cohort
+        if item["outcome"]["payload"].get("cognitive_load") == "higher"
+        or item["outcome"]["payload"].get("momentum") == "stalled"
+        or item["outcome"]["payload"].get("discovery_value") == "not-useful"
+    ]
+    result_counts = {result: 0 for result in OUTCOME_RESULTS}
+    for payload in payloads:
+        result_counts[payload["result"]] += 1
+    rework_values = [
+        float(payload["rework_minutes"])
+        for payload in payloads
+        if payload.get("rework_minutes") is not None
+    ]
+    observed_dimensions = [metric["observed"] for metric in primary.values()]
+    positive_signals = sum(metric["signal_met"] for metric in primary.values())
+
+    if incidents:
+        assessment = "hold"
+        rationale = "An authority or membrane incident overrides positive outcome signals."
+    elif any(observed < 3 for observed in observed_dimensions):
+        assessment = "extend-to-ten"
+        rationale = "At least one primary dimension has fewer than three observations."
+    elif len(negative_choices) >= 2:
+        assessment = "adjust"
+        rationale = "At least two selections recorded higher load, stalled momentum, or not-useful discovery."
+    elif positive_signals >= 2:
+        assessment = "continue"
+        rationale = "At least two primary measures met their pilot signal with no guardrail incident."
+    else:
+        assessment = "adjust"
+        rationale = "Observable evidence did not meet the two-measure continuation threshold."
+
+    return {
+        **base,
+        "primary_metrics": primary,
+        "supporting_evidence": {
+            "result_counts": result_counts,
+            "negative_experience_count": len(negative_choices),
+            "negative_experience_choice_ids": negative_choices,
+            "rework_minutes": {
+                "observed": len(rework_values),
+                "total": round(sum(rework_values), 2),
+                "median": round(float(median(rework_values)), 2)
+                if rework_values
+                else None,
+            },
+        },
+        "guardrails": {
+            "authority_or_membrane_incidents": len(incidents),
+            "incident_choice_ids": incidents,
+            "selection_frequency_used": False,
+        },
+        "assessment": assessment,
+        "rationale": rationale,
+    }
+
+
+def _pilot_metric(
+    payloads: list[dict[str, Any]],
+    *,
+    field: str,
+    favorable: str,
+    target: int,
+) -> dict[str, Any]:
+    observed = [payload[field] for payload in payloads if payload[field] != "Missing"]
+    favorable_count = sum(value == favorable for value in observed)
+    return {
+        "favorable_value": favorable,
+        "favorable": favorable_count,
+        "observed": len(observed),
+        "rate_percent": (
+            round(favorable_count * 100 / len(observed), 1) if observed else None
+        ),
+        "pilot_target": target,
+        "signal_met": favorable_count >= target,
+    }
 
 
 def _validate_selection_packet(packet: dict[str, Any]) -> dict[str, Any]:
