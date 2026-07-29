@@ -1,6 +1,6 @@
 ---
 name: intent-recovery
-description: Recover the likely underlying operator intent from compressed, incomplete, or poorly articulated language and restate it clearly without inventing facts or authority. Use when the operator explicitly invokes $intent-recovery; the canonical elicitation, bravo, friction, product-doctrine, and business-intake workflows may also load it as their bounded automatic subroutine.
+description: Recover the likely underlying operator intent from compressed, incomplete, or poorly articulated language and restate it clearly without inventing facts or authority. Use when the operator explicitly invokes $intent-recovery; for creative-direction ambiguity, Artistic Director critique, human-AI calibration, or relay-mediated creative feedback; or when the canonical elicitation, bravo, friction, product-doctrine, and business-intake workflows load it as a bounded subroutine.
 ---
 
 # Intent Recovery
@@ -34,6 +34,7 @@ Use the full output below for medium confidence, competing interpretations, prod
 - **Friction:** Name the inferred desired correction before classifying the miss. Dissatisfaction alone never authorizes mutation.
 - **Product doctrine:** Produce an operator-voiced articulation and classify it as `Vision`, `Product Hypothesis`, `Doctrine Candidate`, or `Approved Direction`. Never assign `Approved Direction` from interpretation alone; require explicit operator approval before repository edits.
 - **Business intake:** Reflect the likely goal or constraint and require owner confirmation before placing it in a proposed context. Never infer economics, capacity, private facts, or approval; use `Missing` instead.
+- **Artistic Director:** Recover the creative distinction beneath a human reaction, brief, reference choice, or revision request. Separate aesthetic intent from project facts, client authority, rights, claims, and publication decisions. Require the human Artistic Director to accept, correct, reject, or hold the articulation before treating it as a reusable creative lesson.
 
 ## Procedure
 
@@ -43,6 +44,51 @@ Use the full output below for medium confidence, competing interpretations, prod
 4. Name the practical implication only when it follows from the interpretation.
 5. Calibrate confidence. Preserve a meaningful alternative when more than one interpretation remains plausible.
 6. Continue without a question when the interpretation is safe and the next step is reversible. Route consequential ambiguity to [elicitation](../elicitation/SKILL.md) before action.
+
+### Artistic Director mode
+
+Use this mode when the input is creative feedback, an aesthetic reaction, an
+incomplete brief, a reference acceptance or rejection, or a human Artistic
+Director's revision request.
+
+1. Preserve the human's literal words before interpreting them.
+2. Identify the likely creative distinction underneath the words, such as
+   warmth versus sterility, atmosphere versus polish, intimacy versus scale,
+   or originality versus recognizability.
+3. Separate the creative interpretation from unsupported project facts,
+   customer claims, product details, rights status, budget, or authority.
+4. State what would change in the work if the interpretation is correct.
+5. Preserve one alternative interpretation whenever the revision path would
+   materially differ.
+6. Ask the human Artistic Director to accept, correct, reject, or hold the
+   interpretation when confidence is not high.
+7. Treat an accepted interpretation as a candidate lesson, not permanent role
+   memory, until the human deliberately records it as reusable.
+
+Use this compact receipt:
+
+```text
+What you said:
+<literal feedback>
+
+What I think you may mean:
+<likely creative distinction>
+
+Clearer creative articulation:
+<first-person statement the human could adopt or correct>
+
+Creative implication:
+<what should change in the work if this is right>
+
+What this does not establish:
+<facts, rights, claims, approval, budget, or publication status not supplied>
+
+Uncertainty:
+<confidence and one alternative when material>
+
+Lesson state:
+<accepted / corrected / rejected / held / project-specific>
+```
 
 Do not search unrelated project or private context merely to make an interpretation sound deeper. When the message refers to a repository fact, inspect the smallest relevant surface before treating that fact as part of the recovered intent.
 
@@ -87,6 +133,12 @@ Intent recovery is interpretive preparation. It is never approval to execute.
 - Do not overwrite an explicit statement merely because another interpretation sounds more elegant.
 - Do not infer publication, spending, hiring, customer-contact, persistence, or source-change authority.
 - Do not convert private or project-local context into a general operator identity.
+- Do not convert a human's taste into a universal style rule merely because it
+  improved one draft.
+- Do not use Artistic Director intent recovery to decide client direction,
+  product truth, rights clearance, publication, spending, or external delivery.
+- Do not let an Executive Assistant relay summary replace the human Artistic
+  Director's original critique or response.
 - Let the operator correct the restatement without defending the inference.
 - Use `Missing` or ask a bounded question when the needed meaning is not actually present.
 

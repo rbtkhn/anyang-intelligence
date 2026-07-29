@@ -136,3 +136,36 @@ And `lessons.md` contains one Keep, one Avoid, and one Still unclear lesson.
 The goal is not a finished brand or beautiful final artifact. The goal is to
 make the human's judgment visible enough that the AI can begin learning it.
 
+## Optional intent-recovery practice
+
+After the revision, test whether the AI can recover meaning from compressed
+creative feedback. Use one reaction at a time and ask it to separate your
+literal words, its interpretation, the creative implication, and what remains
+uncertain.
+
+### Reaction 1 — “This feels too polished.”
+
+Possible interpretation:
+
+> The work has surface refinement but lacks warmth, texture, or human
+> irregularity.
+
+Possible clearer articulation:
+
+> I want it to feel carefully made, but visibly touched by a human hand.
+
+The AI must keep this as a hypothesis until the human accepts, corrects,
+rejects, or holds it.
+
+### Reaction 2 — “It feels generic.”
+
+Possible interpretations:
+
+- The work relies on familiar visual signals without a distinctive point of
+  view.
+- The execution is generic even though the underlying idea is strong.
+- The underlying idea itself is too familiar.
+
+These interpretations lead to different revisions. The AI should preserve the
+uncertainty rather than choosing silently. Any accepted lesson remains a
+candidate lesson until it is deliberately recorded for reuse.
