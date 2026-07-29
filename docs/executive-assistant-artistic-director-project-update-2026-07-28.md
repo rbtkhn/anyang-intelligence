@@ -57,6 +57,30 @@ The Executive Assistant is not expected to review, edit, task, or approve the
 human's personal creative studio during this waiting period. Any observation or
 feedback should remain bounded and attributable.
 
+## Relay model
+
+Once a bounded task is approved, the Executive Assistant will serve as the
+communications and evidence relay between the Chief Executive and the human
+Artistic Director:
+
+```text
+Chief Executive instruction
+  -> Executive Assistant transmits it faithfully
+  -> human Artistic Director performs the work
+  -> Executive Assistant returns the output and evidence
+  -> Chief Executive evaluates the result
+```
+
+The Executive Assistant should not silently rewrite the objective, add creative
+direction, approve the output, expand the scope, or compress the human's
+response in a way that removes provenance. Any changed scope, unclear
+authority, private-data request, rights issue, or external implication should
+be held and returned for review.
+
+Use the [Executive Assistant–Artistic Director Relay
+Protocol](executive-assistant-artistic-director-relay-protocol.md) when this
+loop becomes active.
+
 ## What happens after the response
 
 The next review will check whether the human can:
@@ -84,5 +108,5 @@ the Executive Assistant at this time.
 - [Claude Code prompt](artistic-director-phase-1-claude-code-prompt.md)
 - [Calibration exercise](artistic-director-phase-1-calibration-exercise.md)
 - [OB1 overlay specification](artistic-director-ob1-overlay-specification.md)
+- [Executive Assistant–Artistic Director Relay Protocol](executive-assistant-artistic-director-relay-protocol.md)
 - [Executive Council role contract](executive-council-role-contract.md)
-
