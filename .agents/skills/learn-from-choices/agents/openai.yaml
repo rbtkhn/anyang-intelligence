@@ -1,0 +1,6 @@
+interface:
+  display_name: "Learn From Choices"
+  short_description: "Navigate better possibilities with outcome-aware learning"
+  default_prompt: "Read and follow the canonical learn-from-choices skill."
+policy:
+  allow_implicit_invocation: true

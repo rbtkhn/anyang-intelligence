@@ -71,6 +71,12 @@ Skip recovery when the operator already names the valued property, gives an exac
 4. Name where the pattern might repeat.
 5. Name the boundary: what should not be generalized, especially private customer facts, project-specific authority decisions, child-safety context, legal/tax conclusions, spending approval, rights decisions, or publication authority.
 6. If preservation is not already explicitly requested, do not edit files. Offer the smallest useful next action.
+7. When a private choice ledger is explicitly configured and the praised object
+   is demonstrably the latest selected branch, Bravo may prepare an
+   `outcome_recorded` event with `successful` or `mixed`. Record only dimensions
+   supported by the operator's signal or evidence; use `Missing` for cognitive
+   load, momentum, or discovery value that was not observed. Review a dry run
+   before mutation.
 
 ## Output Shape
 
@@ -123,6 +129,8 @@ coffee inherits
 ## Guardrails
 
 - Do not treat praise as permission to change files.
+- Do not infer that praise grants authority or proves unobserved outcome
+  dimensions.
 - Do not convert every compliment into doctrine.
 - Do not overgeneralize from one beautiful artifact.
 - Do not preserve a pattern that depends on private, sensitive, or customer-local context.

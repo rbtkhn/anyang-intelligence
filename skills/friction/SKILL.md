@@ -76,6 +76,11 @@ Skip recovery when the operator already states the miss, gives an exact choice o
 5. Name the reusable lesson, if one exists.
 6. Name the boundary: what should not be generalized, automated, or overcorrected from this single miss.
 7. Do not edit files unless the operator asks to preserve the lesson or the requested repair clearly requires implementation.
+8. When a private choice ledger is explicitly configured and the miss is
+   demonstrably tied to the latest selected branch, Friction may prepare an
+   `outcome_recorded` event with `mixed` or `unsuccessful`. Record only observed
+   dimensions and leave cognitive load, momentum, or discovery value as
+   `Missing` when unsupported. Review a dry run before mutation.
 
 ## Failure Mode Taxonomy
 
@@ -148,6 +153,7 @@ coffee inherits
 - Do not ask the operator to explain what is obvious from context.
 - Do not convert every complaint into doctrine.
 - Do not overcorrect from one miss.
+- Do not infer that dissatisfaction proves unobserved outcome dimensions.
 - Do not weaken human authority or membrane boundaries to satisfy the moment.
 - Do not preserve private, sensitive, or customer-local context as shared product doctrine.
 - Prefer one precise repair over a broad rewrite.

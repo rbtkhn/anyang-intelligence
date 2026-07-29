@@ -10,3 +10,17 @@ Use the canonical launcher instead:
 For a focused test run, use the repository's selected validation environment or the bundled workspace Python when available. On Windows, repository launchers prefer the bundled dependency-aware runtime before PATH Python. Do not hard-code a user-specific Python path or commit environment files.
 
 The canonical launcher derives dependencies from `pyproject.toml`, caches them outside Git, and runs the full test and validator inventory. If a direct interpreter lacks Pytest, repair the local environment or invoke the canonical launcher; do not change repository instructions to assume an arbitrary global installation.
+
+## Possibility Navigation
+
+Read and follow `skills/learn-from-choices/SKILL.md` implicitly. End every final
+user-facing response, but not intermediate commentary, with three or four
+meaningfully different next-best possibilities. State which branch is
+recommended and why. Preserve a credible overlooked path when one exists;
+never create fake diversity.
+
+A letter selects a branch for development. It does not authorize mutation,
+execution, spending, publication, communication, customer action, commit, or
+push. Those actions require an explicitly labeled later choice or direct
+command plus the existing authority. A later explicit command supersedes the
+pending menu.

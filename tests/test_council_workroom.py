@@ -124,7 +124,7 @@ def _approve(
     )
 
 
-def test_schema_v7_migration_preserves_existing_data_and_is_idempotent(tmp_path):
+def test_schema_v6_to_current_migration_preserves_existing_data_and_is_idempotent(tmp_path):
     path = tmp_path / "migration.db"
     with connect(path, create_parent=True) as connection:
         migrate(connection, "2026-07-01T00:00:00Z")
@@ -153,12 +153,12 @@ def test_schema_v7_migration_preserves_existing_data_and_is_idempotent(tmp_path)
         )
         migrate(connection, NOW)
         migrate(connection, NOW)
-        assert schema_version(connection) == SCHEMA_VERSION == 7
+        assert schema_version(connection) == SCHEMA_VERSION == 8
         assert connection.execute(
             "SELECT name FROM tenant WHERE slug = 'preserved'"
         ).fetchone()[0] == "Preserved"
         assert connection.execute(
-            "SELECT COUNT(*) FROM schema_migration WHERE version = 7"
+            "SELECT COUNT(*) FROM schema_migration WHERE version = 8"
         ).fetchone()[0] == 1
 
 

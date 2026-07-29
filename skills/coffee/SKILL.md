@@ -13,6 +13,10 @@ scope_class: repo-governed
 
 `coffee` is the native Anyang Intelligence re-entry ritual and recursive self-improvement pulse. It should feel like a short sip of coherence: enough orientation to restore momentum, notice what the last cycle taught us, and improve the next move without becoming a heavy maintenance pass.
 
+Read and follow the complete
+[`learn-from-choices`](../learn-from-choices/SKILL.md) contract. Coffee owns
+follow-up for unresolved choice outcomes and keeps exactly four options.
+
 The operator may type only `coffee`. Do not require them to say `anyang-coffee`, `native coffee`, or a repo qualifier.
 
 When working inside `anyang-intelligence/operating-substrate`, this skill is authoritative. Do not route `coffee` through strategy-codex scripts, cadence files, conductor menus, or external operator rituals unless the operator explicitly leaves the Anyang Intelligence repo. Anyang Intelligence coffee reads this repo, its project folders, its loop/install tooling, and its skills.
@@ -90,8 +94,11 @@ Do not require unavailable strategy-codex-only files such as `scripts/operator_c
 7. Detect entropy: identify what is becoming stale, contradictory, overbuilt, under-scoped, unsupported by evidence, or too dependent on chat memory.
 8. Extract one supported learning from the last recorded dream or durable repo change. If no supported learning exists, say so rather than inventing one.
 9. Choose one possible system improvement that would make the next cycle smarter: a skill, template, CLI check, customer doc update, quality gate, loop example, or priority decision.
-10. Produce a concise re-entry brief with the sections below.
-11. Do not edit, stage, commit, or push by default. `coffee` is read-only unless the operator chooses an action and asks to proceed.
+10. If a private ledger is explicitly configured, inspect `choice review` and
+    include at most one lightweight outcome-review branch. Offer it only through
+    Coffee; after five resolved selections it may become a system-level pulse.
+11. Produce a concise re-entry brief with the sections below.
+12. Do not edit, stage, commit, or push by default. `coffee` is read-only unless the operator explicitly authorizes the named action.
 
 ## Native Verification Hooks
 
@@ -158,23 +165,29 @@ One learning:
 Improvement candidate:
 - <one durable system improvement that could make the next cycle smarter>
 
-Coffee menu - reply A-D:
-A. Confirm - <specific repo-grounded validation, status, or consistency check>
-B. Scope - <specific paid/customer obligation, authority boundary, or next deliverable to define>
-C. Deepen - <specific customer, loop, membrane, or skill context to enrich>
-D. Ship - <specific implementation, documentation, or commit-ready move to execute>
+Next best possibilities — reply A-D:
+A. Recommended - <best-supported next branch and expected outcome>
+B. Alternative - <different objective or tradeoff>
+C. Overlooked - <credible non-obvious branch, or an honest deepen branch when none exists>
+D. Pause or deepen - <preserve optionality, review one due outcome, or stop>
 ```
 
 ## Menu Rules
 
 - Always offer exactly four options: A through D.
 - Each option must be a concrete action, not a bare label.
+- Use the stable semantic roles `recommended`, `alternative`, `overlooked`, and
+  `pause-or-deepen`, independent of the displayed letters.
 - Prefer actions that reduce uncertainty, clarify obligations, or convert a paid commitment into a defined operating plan.
 - At least one option should usually preserve or test the improvement candidate when the learning is durable.
-- If one option is clearly best, mark it with `(recommended)`.
+- Explain why A is recommended using current evidence or observed outcomes.
+- Never create fake diversity. Keep a credible overlooked path when one exists.
 - Stop on the menu unless the operator already gave permission to proceed.
-- If the operator replies `a`, `b`, `c`, or `d`, execute the matching Anyang Intelligence menu item rather than reopening the coffee ritual.
-- If the operator says `make it so`, execute the recommended menu item unless a safer interpretation is obvious from the previous turn.
+- If the operator replies `a`, `b`, `c`, or `d`, enter and develop that branch
+  rather than reopening Coffee. A bare letter does not authorize mutation.
+- Label a later action `Execute`, `Commit`, `Push`, or `Send` before treating a
+  selection as a request for that action; existing authority remains required.
+- A later explicit command supersedes the pending menu.
 
 ## Guardrails
 

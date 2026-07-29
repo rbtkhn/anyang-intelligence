@@ -6,7 +6,7 @@ import sqlite3
 from pathlib import Path
 
 
-SCHEMA_VERSION = 7
+SCHEMA_VERSION = 8
 
 
 SCHEMA = """
@@ -272,6 +272,51 @@ CREATE TABLE IF NOT EXISTS council_event (
     UNIQUE (transaction_id, sequence)
 );
 
+CREATE TABLE IF NOT EXISTS choice_prompt (
+    id TEXT PRIMARY KEY,
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    workspace_id TEXT NOT NULL,
+    lane TEXT NOT NULL,
+    choice_kind TEXT NOT NULL,
+    consequence_level TEXT NOT NULL CHECK (
+        consequence_level IN ('ordinary', 'consequential', 'authority-sensitive')
+    ),
+    decision_summary TEXT NOT NULL,
+    options_json TEXT NOT NULL,
+    recommendation_key TEXT NOT NULL,
+    learning_refs_json TEXT NOT NULL DEFAULT '[]',
+    success_signal TEXT NOT NULL,
+    risk_signal TEXT NOT NULL,
+    source_ref TEXT NOT NULL DEFAULT '',
+    presented_at TEXT,
+    option_set_hash TEXT NOT NULL,
+    learning_context_hash TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS choice_event (
+    id TEXT PRIMARY KEY,
+    choice_id TEXT NOT NULL REFERENCES choice_prompt(id),
+    tenant_id TEXT NOT NULL REFERENCES tenant(id),
+    event_key TEXT NOT NULL,
+    sequence INTEGER NOT NULL CHECK (sequence > 0),
+    event_type TEXT NOT NULL CHECK (event_type IN (
+        'branch_selected', 'outcome_recorded', 'review_deferred',
+        'corrected', 'superseded'
+    )),
+    actor_id TEXT REFERENCES actor(id),
+    actor_label TEXT NOT NULL,
+    action_summary TEXT NOT NULL,
+    occurred_at TEXT,
+    recorded_at TEXT NOT NULL,
+    evidence_ref TEXT NOT NULL DEFAULT '',
+    payload_json TEXT NOT NULL,
+    prior_hash TEXT NOT NULL DEFAULT '',
+    event_hash TEXT NOT NULL UNIQUE,
+    UNIQUE (choice_id, event_key),
+    UNIQUE (choice_id, sequence)
+);
+
 CREATE TABLE IF NOT EXISTS authority_receipt (
     id TEXT PRIMARY KEY,
     tenant_id TEXT NOT NULL REFERENCES tenant(id),
@@ -436,6 +481,8 @@ CREATE INDEX IF NOT EXISTS idx_work_tenant_state ON work_item(tenant_id, state);
 CREATE INDEX IF NOT EXISTS idx_event_tenant_created ON event(tenant_id, created_at);
 CREATE INDEX IF NOT EXISTS idx_council_transaction_tenant ON council_transaction(tenant_id, created_at);
 CREATE INDEX IF NOT EXISTS idx_council_event_transaction_sequence ON council_event(transaction_id, sequence);
+CREATE INDEX IF NOT EXISTS idx_choice_prompt_context ON choice_prompt(tenant_id, workspace_id, lane, choice_kind, created_at);
+CREATE INDEX IF NOT EXISTS idx_choice_event_choice_sequence ON choice_event(choice_id, sequence);
 CREATE INDEX IF NOT EXISTS idx_approval_work_scope ON approval(work_id, scope);
 CREATE INDEX IF NOT EXISTS idx_cadence_repo_recorded ON cadence_handoff(repo_id, recorded_at DESC);
 CREATE INDEX IF NOT EXISTS idx_cadence_measurement_repo_occurred ON cadence_measurement(repo_id, occurred_at DESC);
@@ -515,6 +562,30 @@ CREATE TRIGGER IF NOT EXISTS council_event_append_only_delete
 BEFORE DELETE ON council_event
 BEGIN
     SELECT RAISE(ABORT, 'council_event is append-only');
+END;
+
+CREATE TRIGGER IF NOT EXISTS choice_prompt_immutable_update
+BEFORE UPDATE ON choice_prompt
+BEGIN
+    SELECT RAISE(ABORT, 'choice_prompt is immutable');
+END;
+
+CREATE TRIGGER IF NOT EXISTS choice_prompt_immutable_delete
+BEFORE DELETE ON choice_prompt
+BEGIN
+    SELECT RAISE(ABORT, 'choice_prompt is immutable');
+END;
+
+CREATE TRIGGER IF NOT EXISTS choice_event_append_only_update
+BEFORE UPDATE ON choice_event
+BEGIN
+    SELECT RAISE(ABORT, 'choice_event is append-only');
+END;
+
+CREATE TRIGGER IF NOT EXISTS choice_event_append_only_delete
+BEFORE DELETE ON choice_event
+BEGIN
+    SELECT RAISE(ABORT, 'choice_event is append-only');
 END;
 """
 

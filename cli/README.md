@@ -33,7 +33,7 @@ Business intake uses a separate governed control path. The conversational `$busi
 
 The one-time `bootstrap` path requires an empty context ledger, a non-`hold` exact manifest, the matching manifest hash, current `business_context` authority, and separate pre-existing approval and persistence receipt references. The status receipt names the effective context, active proposal, evidence classes, separate owner/persistence/review decisions, and one next action. A `hold` manifest cannot be approved; resolve its gates and submit a new exact version instead.
 
-Schema v7 retains the separation between epistemic state and operational claim status. Human
+Schema v8 retains the separation between epistemic state and operational claim status. Human
 operators can record a cause-bearing state change, bind downstream uses, and
 clear the resulting review queue:
 
@@ -105,6 +105,31 @@ Completion requires named execution and returned evidence. Private evidence
 bodies are prohibited in `anyang-internal`; store approved references instead.
 An approval event documents authority but never grants tool access, permission,
 or execution capability.
+
+### Learn-from-choices private memory
+
+Schema v8 adds immutable selected-choice prompts and append-only, hash-chained
+choice events. An unselected response footer creates no record. Selecting a
+letter records the exact sanitized possibility set only when a private ledger is
+configured; the receipt means “navigate into this branch” and grants no
+execution authority.
+
+```powershell
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db choice context --tenant anyang-internal --workspace anyang-intelligence --lane repository --kind next-action --format json
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db choice select --tenant anyang-internal --packet selection.yaml --dry-run
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db choice outcome CHOICE_ID --packet outcome.yaml --dry-run
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db choice review --tenant anyang-internal --workspace anyang-intelligence --as-of 2026-07-29T12:00:00Z
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db choice show CHOICE_ID --format json
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db choice verify CHOICE_ID
+```
+
+Recommendation guidance uses observed usefulness, burden, momentum, discovery,
+and outcomes. Selection frequency is explicitly excluded. One or two outcomes
+remain thin evidence; at least three comparable outcomes with two consistent
+results and no material contradiction may influence the recommended branch.
+Authority or membrane incidents surface immediately. If the ledger is
+unavailable, navigation continues without retention and only operator-approved
+`RL-*` learning may enter Git.
 
 ### Cadence reconstruction baseline
 

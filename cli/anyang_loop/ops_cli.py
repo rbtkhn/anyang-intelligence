@@ -80,6 +80,18 @@ from .council_workroom import (
     render_council_pilot_review_markdown,
     verify_council_transaction,
 )
+from .choice_learning import (
+    choice_context,
+    choice_projection,
+    choice_review,
+    load_choice_packet,
+    record_choice_event,
+    record_choice_selection,
+    render_choice_context_markdown,
+    render_choice_markdown,
+    render_choice_review_markdown,
+    verify_choice,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -471,6 +483,54 @@ def build_parser() -> argparse.ArgumentParser:
     _dry(council_backfill)
     council_backfill.set_defaults(func=cmd_council_backfill)
 
+    choice = sub.add_parser("choice", help="Operate outcome-aware possibility navigation")
+    choice_sub = choice.add_subparsers(required=True)
+
+    choice_context_parser = choice_sub.add_parser(
+        "context", help="Read comparable outcomes without using selection frequency"
+    )
+    _tenant(choice_context_parser)
+    choice_context_parser.add_argument("--workspace", required=True)
+    choice_context_parser.add_argument("--lane", required=True)
+    choice_context_parser.add_argument("--kind", required=True)
+    choice_context_parser.add_argument("--as-of")
+    _read_format(choice_context_parser)
+    choice_context_parser.set_defaults(func=cmd_choice_context)
+
+    choice_select = choice_sub.add_parser(
+        "select", help="Atomically retain a presented possibility set and selected branch"
+    )
+    _tenant(choice_select)
+    choice_select.add_argument("--packet", required=True)
+    _dry(choice_select)
+    choice_select.set_defaults(func=cmd_choice_select)
+
+    choice_outcome = choice_sub.add_parser(
+        "outcome", help="Append an outcome, deferral, correction, or supersession"
+    )
+    choice_outcome.add_argument("choice_id")
+    choice_outcome.add_argument("--packet", required=True)
+    _dry(choice_outcome)
+    choice_outcome.set_defaults(func=cmd_choice_outcome)
+
+    choice_review_parser = choice_sub.add_parser(
+        "review", help="Read the prioritized unresolved-outcome queue"
+    )
+    _tenant(choice_review_parser)
+    choice_review_parser.add_argument("--workspace", required=True)
+    choice_review_parser.add_argument("--as-of")
+    _read_format(choice_review_parser)
+    choice_review_parser.set_defaults(func=cmd_choice_review)
+
+    choice_show = choice_sub.add_parser("show", help="Render one selected possibility set")
+    choice_show.add_argument("choice_id")
+    _read_format(choice_show)
+    choice_show.set_defaults(func=cmd_choice_show)
+
+    choice_verify = choice_sub.add_parser("verify", help="Verify one choice event chain")
+    choice_verify.add_argument("choice_id")
+    choice_verify.set_defaults(func=cmd_choice_verify)
+
     privacy = sub.add_parser("privacy-scan")
     privacy.add_argument("--repo", default=".")
     privacy.set_defaults(func=cmd_privacy_scan)
@@ -793,6 +853,77 @@ def cmd_council_backfill(args: argparse.Namespace) -> int:
             connection, args.tenant, args.cohort, args.tracker
         )
     return print_result(result.as_dict())
+
+
+def cmd_choice_context(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        data = choice_context(
+            connection,
+            args.tenant,
+            args.workspace,
+            args.lane,
+            args.kind,
+            args.as_of,
+        )
+    return _emit_read_output(args, data, render_choice_context_markdown)
+
+
+def cmd_choice_select(args: argparse.Namespace) -> int:
+    packet = load_choice_packet(args.packet)
+    if args.dry_run:
+        return print_result(
+            {
+                "dry_run": True,
+                "action": "record_choice_selection",
+                "tenant": args.tenant,
+                "packet": packet,
+                "authority_effect": "none",
+            }
+        )
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        result = record_choice_selection(connection, args.tenant, packet)
+    return print_result(result.as_dict())
+
+
+def cmd_choice_outcome(args: argparse.Namespace) -> int:
+    packet = load_choice_packet(args.packet)
+    if args.dry_run:
+        return print_result(
+            {
+                "dry_run": True,
+                "action": "record_choice_event",
+                "choice_id": args.choice_id,
+                "packet": packet,
+            }
+        )
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        result = record_choice_event(connection, args.choice_id, packet)
+    return print_result(result.as_dict())
+
+
+def cmd_choice_review(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        data = choice_review(connection, args.tenant, args.workspace, args.as_of)
+    return _emit_read_output(args, data, render_choice_review_markdown)
+
+
+def cmd_choice_show(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        data = choice_projection(connection, args.choice_id)
+    return _emit_read_output(args, data, render_choice_markdown)
+
+
+def cmd_choice_verify(args: argparse.Namespace) -> int:
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        data = verify_choice(connection, args.choice_id)
+    print(render_json(data), end="")
+    return 0 if data["ok"] else 1
 
 
 def cmd_privacy_scan(args: argparse.Namespace) -> int:

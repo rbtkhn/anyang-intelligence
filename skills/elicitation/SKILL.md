@@ -11,6 +11,9 @@ Elicitation is not interrogation. It is a structured way to help the operator or
 
 When meaning is likely already present but compressed or poorly articulated, automatically read and follow the complete canonical [intent recovery](../intent-recovery/SKILL.md) contract before asking. Use its `Elicitation` mode and adaptive receipt. Use elicitation only when human input, authority, preference, evidence, or a consequential distinction is genuinely missing.
 
+For every multiple-choice surface and final response, read and follow the
+complete [`learn-from-choices`](../learn-from-choices/SKILL.md) contract.
+
 ## Purpose
 
 Use elicitation to:
@@ -78,8 +81,18 @@ Each question should:
 - Make tradeoffs visible.
 - Avoid leading the operator toward the answer the agent wants.
 - Include "not sure yet" only when uncertainty is itself a useful state.
+- Map options to stable semantic roles: `recommended`, `alternative`,
+  `overlooked`, and `pause-or-deepen`.
+- Explain the recommendation from current evidence without making the question
+  leading.
+- Preserve a credible overlooked path, but never fabricate one.
 
 Use labels like `A`, `B`, `C`, `D` when the operator may answer compactly.
+
+A letter enters and develops the selected branch. It does not authorize
+mutation, spending, publication, communication, customer action, commit, or
+push. Name any later execution choice explicitly and retain existing authority
+checks.
 
 Good option text:
 
