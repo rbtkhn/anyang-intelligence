@@ -35,6 +35,7 @@ Use the full output below for medium confidence, competing interpretations, prod
 - **Product doctrine:** Produce an operator-voiced articulation and classify it as `Vision`, `Product Hypothesis`, `Doctrine Candidate`, or `Approved Direction`. Never assign `Approved Direction` from interpretation alone; require explicit operator approval before repository edits.
 - **Business intake:** Reflect the likely goal or constraint and require owner confirmation before placing it in a proposed context. Never infer economics, capacity, private facts, or approval; use `Missing` instead.
 - **Artistic Director:** Recover the creative distinction beneath a human reaction, brief, reference choice, or revision request. Separate aesthetic intent from project facts, client authority, rights, claims, and publication decisions. Require the human Artistic Director to accept, correct, reject, or hold the articulation before treating it as a reusable creative lesson.
+- **Executive Assistant / Relay Integrity:** Recover and preserve the operational intent of an instruction or response as it moves between authorized roles. Keep literal source, interpretation, scope, authority, evidence, uncertainty, and next decision owner distinct. Never use interpretation to create approval, spending, publication, client-contact, rights-clearance, or final-decision authority. Hold or escalate when ambiguity could change external commitment, scope, or risk.
 
 ## Procedure
 
@@ -139,6 +140,13 @@ Intent recovery is interpretive preparation. It is never approval to execute.
   product truth, rights clearance, publication, spending, or external delivery.
 - Do not let an Executive Assistant relay summary replace the human Artistic
   Director's original critique or response.
+- Do not let Executive Assistant intent recovery replace the Chief Executive's
+  decision, the System Engineer's authority, or the Artistic Director's own
+  creative judgment.
+- Do not silently merge later instructions when they change audience, scope,
+  deadline, budget, publication status, or client commitment.
+- Preserve the difference between a proposal, observation, recommendation,
+  approval, and verified fact.
 - Let the operator correct the restatement without defending the inference.
 - Use `Missing` or ask a bounded question when the needed meaning is not actually present.
 
@@ -147,3 +155,11 @@ Intent recovery is interpretive preparation. It is never approval to execute.
 The operator can recognize, reject, or refine a clearer articulation of what they were trying to express, and any resulting action remains inside its existing authority boundary.
 
 Initial ROI appears as fewer unnecessary clarification questions, fewer wrong-layer repairs, clearer doctrine candidates, and zero authority-boundary violations. Treat these as human outcome signals, not claims proved by contract tests alone.
+
+## Executive Assistant evaluation references
+
+Use the following workspace artifacts for relay role-play and scoring:
+
+- [Executive Assistant intent-recovery tests](../docs/executive-assistant-intent-recovery-tests.md)
+- [Executive Assistant live relay simulation](../docs/executive-assistant-live-relay-simulation.md)
+- [Executive Assistant evaluation checklist](../docs/executive-assistant-intent-recovery-checklist.md)
