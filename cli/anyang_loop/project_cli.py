@@ -49,6 +49,13 @@ from .context_audit import audit_repository, render_markdown, write_audit
 from .cross_repo_audit import CrossRepoAuditError, collect_cross_repo_audit
 from .singularity_intake_validate import validate_lane
 from .recurrence_validate import validate_directory
+from .contradiction_preflight import (
+    ContradictionPacketError,
+    evaluate_contradictions,
+    load_contradiction_packet,
+    render_contradiction_json,
+    render_contradiction_markdown,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -78,6 +85,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERROR: {exc}")
         return 1
     except CrossRepoAuditError as exc:
+        print(f"ERROR: {exc}")
+        return 1
+    except ContradictionPacketError as exc:
         print(f"ERROR: {exc}")
         return 1
 
@@ -168,6 +178,16 @@ def build_parser() -> argparse.ArgumentParser:
     authority_preflight_cmd.add_argument("--manifest")
     authority_preflight_cmd.add_argument("--format", choices=("text", "json"), default="text")
     authority_preflight_cmd.set_defaults(func=cmd_authority_preflight)
+
+    contradiction = subparsers.add_parser(
+        "contradiction-check",
+        help="Compare normalized request assertions with explicit controlling facts",
+    )
+    contradiction.add_argument("--packet", required=True)
+    contradiction.add_argument(
+        "--format", choices=("markdown", "json"), default="markdown"
+    )
+    contradiction.set_defaults(func=cmd_contradiction_check)
 
     inventory = subparsers.add_parser("authority-inventory", help="Inventory role and authority drift without mutation")
     inventory.add_argument("--repo", default=".")
@@ -426,6 +446,17 @@ def cmd_authority_preflight(args: argparse.Namespace) -> int:
 def cmd_authority_inventory(args: argparse.Namespace) -> int:
     print(render_inventory(inventory_authority(args.repo), args.format), end="")
     return 0
+
+
+def cmd_contradiction_check(args: argparse.Namespace) -> int:
+    result = evaluate_contradictions(load_contradiction_packet(args.packet))
+    rendered = (
+        render_contradiction_json(result)
+        if args.format == "json"
+        else render_contradiction_markdown(result)
+    )
+    print(rendered, end="")
+    return 0 if result["disposition"] in {"continue", "continue-provisional"} else 1
 
 
 def cmd_validate_epistemics(args: argparse.Namespace) -> int:

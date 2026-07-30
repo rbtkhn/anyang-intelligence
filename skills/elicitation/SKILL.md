@@ -11,6 +11,32 @@ or immaterial.
 
 When meaning is likely present but compressed, automatically read and follow the complete canonical [intent recovery](../intent-recovery/SKILL.md) contract before asking. Use elicitation only when the missing input remains genuinely missing and materially consequential.
 
+## Run Contradiction Preflight When Needed
+
+After intent recovery and before asking, run the read-only contradiction
+preflight when a material factual assertion conflicts with, or may supersede,
+repository state. Inspect the smallest relevant controlling surface and create
+a sanitized structured packet; never ask the checker to search prose or decide
+which source governs.
+
+Use:
+
+```text
+.\tools\run.ps1 project contradiction-check --packet <packet.yaml> --format markdown
+```
+
+- Continue when material assertions align.
+- Keep an ordinary unsupported assertion provisional only when it is visibly
+  marked provisional.
+- Route missing or stale facts to neutral evidence intake.
+- Route one request-versus-control conflict to decision navigation.
+- Hold conflicting controlling sources for named authority resolution.
+
+The preflight is inspectable guidance with `authority_effect: none`. It never
+changes a repository fact, transitions a ledger claim, or becomes a reusable
+capability token. Skip it for exact menu selections, clear commands without a
+factual conflict, and ordinary missing preferences.
+
 For decision menus and final-response possibility maps, read and follow the
 complete canonical
 [`learn-from-choices`](../learn-from-choices/SKILL.md) contract.

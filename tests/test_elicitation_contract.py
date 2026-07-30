@@ -313,3 +313,29 @@ def test_contract_removes_high_burden_and_authority_contradictions():
         assert phrase.lower() in skill.lower()
     assert "Offer 3-5 distinct options" not in skill
     assert "10-Question Intake" not in skill
+
+
+def test_contradiction_preflight_routes_before_consequential_questions():
+    skill = read(ROOT / "skills/elicitation/SKILL.md")
+    agents = read(ROOT / "AGENTS.md")
+    cli = read(ROOT / "cli/README.md")
+    normalized = " ".join(skill.split())
+
+    assert normalized.index("After intent recovery and before asking") < normalized.index(
+        "For decision menus and final-response possibility maps"
+    )
+    for phrase in (
+        "smallest relevant controlling surface",
+        "never ask the checker to search prose or decide which source governs",
+        "Route missing or stale facts to neutral evidence intake",
+        "Route one request-versus-control conflict to decision navigation",
+        "Hold conflicting controlling sources for named authority resolution",
+        "`authority_effect: none`",
+        "never changes a repository fact",
+        "exact menu selections",
+        "ordinary missing preferences",
+    ):
+        assert phrase.lower() in normalized.lower()
+    assert "structured contradiction preflight" in agents
+    assert "project contradiction-check --packet" in cli
+    assert "does not search prose, open SQLite, write files" in cli

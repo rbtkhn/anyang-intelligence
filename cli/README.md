@@ -514,6 +514,55 @@ Extract membrane-aware pattern candidates:
 
 Pattern extraction is review-only. It never updates templates or project folders automatically.
 
+## Elicitation Contradiction Preflight
+
+Compare normalized request assertions with explicitly supplied controlling
+facts before asking a consequential clarification question:
+
+```powershell
+.\tools\run.ps1 project contradiction-check --packet contradiction-packet.yaml --format markdown
+.\tools\run.ps1 project contradiction-check --packet contradiction-packet.yaml --format json
+```
+
+Packet schema v1 requires `request_ref`, `scope`, `consequence_level`, `as_of`,
+one or more `request_assertions`, and a `controlling_facts` list. Assertions and
+facts use normalized lowercase field keys and scalar string, number, or boolean
+values. Each fact names its authority role, provenance, as-of time, and optional
+freshness deadline. Set `provisional: true` only for an ordinary request
+assertion that may safely continue without current control.
+
+```yaml
+schema_version: 1
+request_ref: thread:current-request
+scope: repository
+consequence_level: consequential
+as_of: 2026-07-30T18:00:00Z
+request_assertions:
+  - id: requested-branch
+    field: git.branch
+    value: main
+    scope: repository
+    source_ref: thread:current-request#branch
+    provisional: false
+controlling_facts:
+  - id: current-branch
+    field: git.branch
+    value: main
+    scope: repository
+    authority_role: canonical
+    source_ref: repo:git-preflight
+    as_of: 2026-07-30T17:59:00Z
+    fresh_until: 2026-07-30T18:05:00Z
+```
+
+The command performs exact field, scope, type, value, authority-role, and
+freshness comparisons. It does not search prose, open SQLite, write files,
+transition claims, or decide which source governs. Markdown and JSON output do
+not echo compared values. Exit `0` means `continue` or
+`continue-provisional`; exit `1` means the packet is invalid or its disposition
+is `clarify` or `hold`. Every result has `authority_effect: none` and is
+inspectable guidance, not a reusable capability token.
+
 ## Transcript Intake
 
 Singularity Science transcript intake is archive-only infrastructure. It normalizes internal transcript files into:

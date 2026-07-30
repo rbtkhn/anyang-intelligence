@@ -30,3 +30,8 @@ Comma-separated letters select displayed branches in order. Ranked letters
 express preference only and execute nothing. Neutral factual elicitation follows
 the canonical `skills/elicitation/SKILL.md` exception rather than recommendation
 roles.
+
+When a consequential request assertion may conflict with repository state,
+follow Elicitation's structured contradiction preflight before asking or
+acting. The preflight compares only explicitly supplied controlling facts,
+never grants authority, and never changes durable claim state.
