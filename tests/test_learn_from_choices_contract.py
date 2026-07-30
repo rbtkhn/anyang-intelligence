@@ -9,6 +9,7 @@ ROUTE = ROOT / "skills/learn-from-choices/agents/openai.yaml"
 ADAPTER = ROOT / ".agents/skills/learn-from-choices/SKILL.md"
 ADAPTER_ROUTE = ROOT / ".agents/skills/learn-from-choices/agents/openai.yaml"
 CALIBRATION = ROOT / "docs/learn-from-choices-calibration-pilot-2026-07-30.md"
+CONTINUITY = ROOT / "docs/learn-from-choices-continuity-contract-v0.2.md"
 
 
 def read(path: Path) -> str:
@@ -37,8 +38,9 @@ def test_universal_contract_separates_navigation_from_execution():
         "every final user-facing response",
         "three or four",
         "credible overlooked path",
-        "does not authorize mutation",
-        "A later explicit command supersedes",
+        "A letter selects the displayed option",
+        "authorizes only that named bounded action",
+        "no broader or hidden authority",
     ):
         assert phrase.lower() in (agents + skill).lower()
     assert "Do not store an unselected footer" in skill
@@ -59,7 +61,10 @@ def test_composition_and_coffee_only_followup_contract():
     assert "outcome_recorded" in friction
     assert "at most one lightweight outcome-review branch" in coffee
     assert "unresolved choice" not in dream.lower()
-    assert "A bare letter does not authorize mutation" in coffee
+    assert "select the displayed option" in coffee
+    assert "binds its selected letter to that named bounded action" in " ".join(
+        coffee.split()
+    )
 
 
 def test_active_calibration_freezes_outcome_informed_reordering():
@@ -86,3 +91,32 @@ def test_active_calibration_freezes_outcome_informed_reordering():
         assert phrase.lower() in calibration.lower()
     assert "LFC-CAL-2026-07-30-01` in `learning_refs" in skill
     assert "`diagnostic-only` guidance" in skill
+
+
+def test_continuity_v02_contract_is_explicit_and_canonical():
+    skill = read(CANONICAL)
+    contract = read(CONTINUITY)
+    cli = read(ROOT / "cli/README.md")
+    assert "../../docs/learn-from-choices-continuity-contract-v0.2.md" in skill
+    for phrase in (
+        "SQLite remains schema v8",
+        "projection and context documents use schema v2",
+        "classification_version",
+        "pattern_key",
+        "action_boundary",
+        "comparability_key",
+        "repository-authorized-push-v1",
+        "diagnostic-only",
+        "authority_effect: none",
+        "Repeated option keys",
+        "selection frequency",
+        "append-only",
+        "prior_value",
+        "No active production comparability policy",
+        "No classification is promoted",
+    ):
+        assert phrase.lower() in contract.lower()
+    assert "patterns are diagnostic" in skill.lower()
+    assert "only valid explicit comparability policy keys create" in skill.lower()
+    assert "SQLite remains schema v8" in cli
+    assert "Selection dry runs validate structure" in cli

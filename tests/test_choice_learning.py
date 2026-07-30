@@ -14,7 +14,11 @@ from anyang_loop.choice_learning import (
     load_choice_packet,
     record_choice_event,
     record_choice_selection,
+    render_choice_context_markdown,
+    render_choice_markdown,
     render_choice_review_markdown,
+    validate_choice_event_packet,
+    validate_choice_selection_packet,
     verify_choice,
 )
 from anyang_loop.ops_cli import main
@@ -110,6 +114,27 @@ def selection(identifier: str, actor: str, selected: str = "small-proof") -> dic
     }
 
 
+def classified_selection(
+    identifier: str,
+    actor: str,
+    *,
+    selected_key: str,
+    comparability_key: str | None = "repository-authorized-push-v1",
+) -> dict:
+    packet = selection(identifier, actor)
+    selected = packet["options"][0]
+    selected["key"] = selected_key
+    selected["label"] = f"Push authorized change {selected_key}"
+    selected["classification_version"] = "LFC-CONTINUITY-v0.2"
+    selected["pattern_key"] = "execute-bounded"
+    selected["action_boundary"] = "external-action"
+    if comparability_key:
+        selected["comparability_key"] = comparability_key
+    packet["recommendation_key"] = selected_key
+    packet["selected_option_key"] = selected_key
+    return packet
+
+
 def outcome(
     key: str,
     result: str = "successful",
@@ -202,9 +227,17 @@ def test_selection_is_atomic_immutable_idempotent_and_exact(ledger):
     assert first.details["idempotent"] is False
     assert second.details["idempotent"] is True
     projection = choice_projection(connection, "CHOICE-1")
+    assert projection["schema_version"] == 2
     assert projection["options"] == packet["options"]
     assert projection["selection"]["payload"]["selected_option_key"] == "small-proof"
     assert projection["lineage"]["authority_effect"] == "none"
+    assert projection["effective_classification"] == {
+        "classification_version": "legacy-unclassified",
+        "pattern_key": "unclassified",
+        "action_boundary": "unclassified",
+        "comparability_key": "Missing",
+    }
+    assert projection["learning_eligibility"]["eligible"] is False
     assert verify_choice(connection, "CHOICE-1")["ok"] is True
     with pytest.raises(sqlite3.IntegrityError, match="immutable"):
         connection.execute(
@@ -555,14 +588,17 @@ def test_outcome_learning_thresholds_guardrails_and_review_order(ledger):
     )
     pattern = context["outcome_patterns"][0]
     assert pattern["resolved"] == 3
-    assert pattern["evidence_tier"] == "pattern"
+    assert pattern["evidence_tier"] == "descriptive-only"
+    assert pattern["recommendation_effect"] == "none"
+    assert context["comparability_cohorts"] == []
     assert context["guidance_policy"]["id"] == "LFC-CAL-2026-07-30-01"
     assert context["guidance_policy"]["phase"] == "calibration"
     assert context["recommendation_guidance"]["ordering_frozen"] is True
     assert context["recommendation_guidance"]["favored_option_keys"] == []
     assert context["recommendation_guidance"][
-        "diagnostic_favored_option_keys"
-    ] == ["small-proof"]
+        "diagnostic_favored_comparability_keys"
+    ] == []
+    assert context["recommendation_guidance"]["option_key_learning_used"] is False
     assert context["recommendation_guidance"]["selection_frequency_used"] is False
     assert context["recommendation_guidance"]["preserve_overlooked_possibility"] is True
     assert context["guardrails"][0]["choice_id"] == "CHOICE-1"
@@ -593,6 +629,489 @@ def test_outcome_learning_thresholds_guardrails_and_review_order(ledger):
     assert review["choices"][0]["choice_id"] == "PENDING-SENSITIVE"
     assert review["coffee_limit"] == 1
     assert review["five_selection_review"]["assessment"] == "pending"
+
+
+def test_classification_validation_scope_and_legacy_hash_compatibility(
+    ledger, monkeypatch
+):
+    connection, actor = ledger
+    legacy = selection("LEGACY-COMPAT", actor)
+    record_choice_selection(connection, "anyang-internal", legacy)
+    assert record_choice_selection(
+        connection, "anyang-internal", legacy
+    ).details["idempotent"] is True
+    stored = json.loads(
+        connection.execute(
+            "SELECT options_json FROM choice_prompt WHERE id = 'LEGACY-COMPAT'"
+        ).fetchone()["options_json"]
+    )
+    assert stored == legacy["options"]
+    assert all("pattern_key" not in option for option in stored)
+
+    valid = classified_selection(
+        "CLASSIFIED-VALID", actor, selected_key="push-classified-valid"
+    )
+    normalized = validate_choice_selection_packet(valid, "anyang-internal")
+    assert normalized["options"][0]["pattern_key"] == "execute-bounded"
+    record_choice_selection(connection, "anyang-internal", valid)
+    projection = choice_projection(connection, "CLASSIFIED-VALID")
+    assert projection["original_classification"]["action_boundary"] == "external-action"
+    assert projection["comparability_policy"]["status"] == "diagnostic-only"
+
+    partial = classified_selection(
+        "CLASSIFIED-PARTIAL", actor, selected_key="push-partial"
+    )
+    del partial["options"][0]["action_boundary"]
+    with pytest.raises(OpsError, match="missing required fields"):
+        validate_choice_selection_packet(partial, "anyang-internal")
+
+    invalid_pattern = classified_selection(
+        "CLASSIFIED-PATTERN", actor, selected_key="push-pattern"
+    )
+    invalid_pattern["options"][0]["pattern_key"] = "always-do-this"
+    with pytest.raises(OpsError, match="pattern_key"):
+        validate_choice_selection_packet(invalid_pattern, "anyang-internal")
+
+    invalid_boundary = classified_selection(
+        "CLASSIFIED-BOUNDARY", actor, selected_key="push-boundary"
+    )
+    invalid_boundary["options"][0]["action_boundary"] = "silent-execution"
+    with pytest.raises(OpsError, match="action_boundary"):
+        validate_choice_selection_packet(invalid_boundary, "anyang-internal")
+
+    unknown_policy = classified_selection(
+        "CLASSIFIED-POLICY", actor, selected_key="push-policy"
+    )
+    unknown_policy["options"][0]["comparability_key"] = "model-invented-v1"
+    with pytest.raises(OpsError, match="Unknown choice comparability policy"):
+        validate_choice_selection_packet(unknown_policy, "anyang-internal")
+
+    wrong_workspace = classified_selection(
+        "CLASSIFIED-WORKSPACE", actor, selected_key="push-workspace"
+    )
+    wrong_workspace["workspace_id"] = "another-workspace"
+    with pytest.raises(OpsError, match="scope mismatch"):
+        validate_choice_selection_packet(wrong_workspace, "anyang-internal")
+    with pytest.raises(OpsError, match="scope mismatch"):
+        validate_choice_selection_packet(valid, "other")
+
+    oversized = classified_selection(
+        "CLASSIFIED-OVERSIZED", actor, selected_key="push-oversized"
+    )
+    oversized["options"][0]["comparability_key"] = "x" * 121
+    with pytest.raises(OpsError, match="exceeds"):
+        validate_choice_selection_packet(oversized, "anyang-internal")
+
+    private = classified_selection(
+        "CLASSIFIED-PRIVATE", actor, selected_key="push-private"
+    )
+    private["options"][0]["classification_version"] = "operator" + "@" + "example.com"
+    with pytest.raises(OpsError, match="privacy"):
+        validate_choice_selection_packet(private, "anyang-internal")
+
+    disabled_policy = {
+        **choice_learning_module.CHOICE_COMPARABILITY_POLICIES[0],
+        "status": "disabled",
+    }
+    monkeypatch.setattr(
+        choice_learning_module,
+        "CHOICE_COMPARABILITY_POLICIES",
+        (disabled_policy,),
+    )
+    with pytest.raises(OpsError, match="disabled"):
+        validate_choice_selection_packet(valid, "anyang-internal")
+
+
+def test_explicit_comparability_cohort_is_diagnostic_and_ignores_option_keys(
+    ledger,
+):
+    connection, actor = ledger
+    for index, result in enumerate(("successful", "successful", "mixed"), start=1):
+        identifier = f"EXPLICIT-COHORT-{index}"
+        packet = classified_selection(
+            identifier,
+            actor,
+            selected_key=f"unique-authorized-push-{index}",
+        )
+        record_choice_selection(connection, "anyang-internal", packet)
+        record_choice_event(connection, identifier, outcome(f"explicit-{index}", result))
+    missing_evidence = classified_selection(
+        "EXPLICIT-MISSING-EVIDENCE",
+        actor,
+        selected_key="unique-authorized-push-missing-evidence",
+    )
+    record_choice_selection(
+        connection, "anyang-internal", missing_evidence
+    )
+    missing_outcome = outcome("explicit-missing-evidence")
+    missing_outcome["evidence_ref"] = ""
+    record_choice_event(
+        connection, "EXPLICIT-MISSING-EVIDENCE", missing_outcome
+    )
+    superseded = classified_selection(
+        "EXPLICIT-SUPERSEDED",
+        actor,
+        selected_key="unique-authorized-push-superseded",
+    )
+    record_choice_selection(connection, "anyang-internal", superseded)
+    record_choice_event(
+        connection, "EXPLICIT-SUPERSEDED", outcome("explicit-superseded")
+    )
+    record_choice_selection(
+        connection,
+        "anyang-internal",
+        selection("EXPLICIT-SUPERSEDING", actor),
+    )
+    record_choice_event(
+        connection,
+        "EXPLICIT-SUPERSEDED",
+        {
+            "event_key": "superseded",
+            "event_type": "superseded",
+            "recorded_by": "Council Steward",
+            "action_summary": "Supersede the synthetic push choice",
+            "payload": {
+                "reason": "A replacement choice exists",
+                "superseding_choice_id": "EXPLICIT-SUPERSEDING",
+            },
+        },
+    )
+    context = choice_context(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "repository",
+        "next-action",
+        "2026-08-01T12:00:00Z",
+    )
+    assert len(context["outcome_patterns"]) == 5
+    assert all(
+        item["recommendation_effect"] == "none"
+        for item in context["outcome_patterns"]
+    )
+    cohort = context["comparability_cohorts"][0]
+    assert cohort["comparability_key"] == "repository-authorized-push-v1"
+    assert cohort["resolved"] == 3
+    assert cohort["evidence_tier"] == "pattern"
+    assert cohort["diagnostic_direction"] == "favored"
+    assert cohort["recommendation_effect"] == "none"
+    guidance = context["recommendation_guidance"]
+    assert guidance["favored_option_keys"] == []
+    assert guidance["favored_comparability_keys"] == []
+    assert guidance["diagnostic_favored_comparability_keys"] == [
+        "repository-authorized-push-v1"
+    ]
+    assert guidance["selection_frequency_used"] is False
+    assert guidance["option_key_learning_used"] is False
+    assert context["diversity_diagnostics"]["pattern_counts"][
+        "execute-bounded"
+    ] == 5
+    excluded = choice_projection(connection, "EXPLICIT-MISSING-EVIDENCE")
+    assert excluded["learning_eligibility"]["eligible"] is False
+    assert "outcome-evidence-missing" in excluded["learning_eligibility"][
+        "exclusion_reasons"
+    ]
+    superseded_projection = choice_projection(
+        connection, "EXPLICIT-SUPERSEDED"
+    )
+    assert "choice-superseded" in superseded_projection[
+        "learning_eligibility"
+    ]["exclusion_reasons"]
+
+
+def test_active_comparability_policy_threshold_contradiction_and_freeze(
+    ledger, monkeypatch
+):
+    connection, actor = ledger
+    active_policy = {
+        **choice_learning_module.CHOICE_COMPARABILITY_POLICIES[0],
+        "status": "active",
+    }
+    monkeypatch.setattr(
+        choice_learning_module,
+        "CHOICE_COMPARABILITY_POLICIES",
+        (active_policy,),
+    )
+    for index, result in enumerate(("successful", "successful", "mixed"), start=1):
+        identifier = f"ACTIVE-COHORT-{index}"
+        record_choice_selection(
+            connection,
+            "anyang-internal",
+            classified_selection(
+                identifier,
+                actor,
+                selected_key=f"active-authorized-push-{index}",
+            ),
+        )
+        record_choice_event(connection, identifier, outcome(f"active-{index}", result))
+    before_calibration = choice_context(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "repository",
+        "next-action",
+        "2026-07-29T12:00:00Z",
+    )
+    assert before_calibration["recommendation_guidance"][
+        "favored_comparability_keys"
+    ] == ["repository-authorized-push-v1"]
+    during_calibration = choice_context(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "repository",
+        "next-action",
+        "2026-08-01T12:00:00Z",
+    )
+    assert during_calibration["recommendation_guidance"][
+        "favored_comparability_keys"
+    ] == []
+    assert during_calibration["recommendation_guidance"][
+        "diagnostic_favored_comparability_keys"
+    ] == ["repository-authorized-push-v1"]
+
+    record_choice_selection(
+        connection,
+        "anyang-internal",
+        classified_selection(
+            "ACTIVE-CONTRADICTION",
+            actor,
+            selected_key="active-authorized-push-contradiction",
+        ),
+    )
+    record_choice_event(
+        connection,
+        "ACTIVE-CONTRADICTION",
+        outcome("active-contradiction", "unsuccessful"),
+    )
+    contradicted = choice_context(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "repository",
+        "next-action",
+        "2026-07-29T12:00:00Z",
+    )
+    assert contradicted["recommendation_guidance"][
+        "favored_comparability_keys"
+    ] == []
+    assert contradicted["recommendation_guidance"][
+        "demoted_comparability_keys"
+    ] == []
+
+
+def test_append_only_classification_corrections_and_learning_eligibility(ledger):
+    connection, actor = ledger
+    packet = classified_selection(
+        "CLASSIFICATION-CORRECT",
+        actor,
+        selected_key="corrected-authorized-push",
+        comparability_key=None,
+    )
+    record_choice_selection(connection, "anyang-internal", packet)
+    record_choice_event(
+        connection,
+        "CLASSIFICATION-CORRECT",
+        outcome("classification-result"),
+    )
+    record_choice_event(
+        connection,
+        "CLASSIFICATION-CORRECT",
+        {
+            "event_key": "classification-correction",
+            "event_type": "corrected",
+            "recorded_by": "Council Steward",
+            "action_summary": "Attach the governed comparability policy",
+            "payload": {
+                "reason": "The exact push policy now applies",
+                "classification_correction": {
+                    "option_key": "corrected-authorized-push",
+                    "field": "comparability_key",
+                    "prior_value": "Missing",
+                    "replacement_value": "repository-authorized-push-v1",
+                    "policy_ref": "repository-authorized-push-v1",
+                },
+            },
+        },
+    )
+    projection = choice_projection(connection, "CLASSIFICATION-CORRECT")
+    assert projection["current_state"] == "outcome_observed"
+    assert projection["original_classification"]["comparability_key"] == "Missing"
+    assert (
+        projection["effective_classification"]["comparability_key"]
+        == "repository-authorized-push-v1"
+    )
+    assert projection["classification_corrections"][0]["valid"] is True
+    assert projection["classification_verified"] is True
+    assert projection["learning_eligibility"]["eligible"] is True
+    assert verify_choice(connection, "CLASSIFICATION-CORRECT")["ok"] is True
+
+    stale = {
+        "event_key": "classification-stale",
+        "event_type": "corrected",
+        "recorded_by": "Council Steward",
+        "action_summary": "Attempt a stale classification correction",
+        "payload": {
+            "reason": "Synthetic stale prior value",
+            "classification_correction": {
+                "option_key": "corrected-authorized-push",
+                "field": "comparability_key",
+                "prior_value": "Missing",
+                "replacement_value": "repository-authorized-push-v1",
+                "policy_ref": "repository-authorized-push-v1",
+            },
+        },
+    }
+    with pytest.raises(OpsError, match="prior_value is stale"):
+        record_choice_event(connection, "CLASSIFICATION-CORRECT", stale)
+
+    invalid_target = {
+        **stale,
+        "event_key": "classification-invalid-target",
+        "payload": {
+            **stale["payload"],
+            "classification_correction": {
+                **stale["payload"]["classification_correction"],
+                "option_key": "missing-option",
+            },
+        },
+    }
+    with pytest.raises(OpsError, match="unknown option"):
+        record_choice_event(
+            connection, "CLASSIFICATION-CORRECT", invalid_target
+        )
+
+    record_choice_event(
+        connection,
+        "CLASSIFICATION-CORRECT",
+        {
+            "event_key": "classification-policy-removed",
+            "event_type": "corrected",
+            "recorded_by": "Council Steward",
+            "action_summary": "Remove the comparability policy",
+            "payload": {
+                "reason": "The cohort no longer applies",
+                "classification_correction": {
+                    "option_key": "corrected-authorized-push",
+                    "field": "comparability_key",
+                    "prior_value": "repository-authorized-push-v1",
+                    "replacement_value": "Missing",
+                    "policy_ref": "repository-authorized-push-v1",
+                },
+            },
+        },
+    )
+    removed = choice_projection(connection, "CLASSIFICATION-CORRECT")
+    assert removed["effective_classification"]["comparability_key"] == "Missing"
+    assert removed["learning_eligibility"]["eligible"] is False
+    assert len(removed["classification_corrections"]) == 2
+
+    invalid_removal_policy = {
+        "event_type": "corrected",
+        "payload": {
+            "reason": "Invalid removal policy reference",
+            "classification_correction": {
+                "option_key": "corrected-authorized-push",
+                "field": "comparability_key",
+                "prior_value": "repository-authorized-push-v1",
+                "replacement_value": "Missing",
+                "policy_ref": "LFC-CONTINUITY-v0.2",
+            },
+        },
+    }
+    with pytest.raises(OpsError, match="Unknown choice comparability policy"):
+        validate_choice_event_packet(invalid_removal_policy)
+
+    no_change = {
+        "event_type": "corrected",
+        "payload": {
+            "reason": "Invalid no-op correction",
+            "classification_correction": {
+                "option_key": "corrected-authorized-push",
+                "field": "comparability_key",
+                "prior_value": "Missing",
+                "replacement_value": "Missing",
+                "policy_ref": "repository-authorized-push-v1",
+            },
+        },
+    }
+    with pytest.raises(OpsError, match="must change"):
+        validate_choice_event_packet(no_change)
+
+    combined = {
+        "event_type": "corrected",
+        "payload": {
+            "reason": "Invalid combined correction",
+            "replacement_outcome": {
+                "result": "mixed",
+                "observation": "Synthetic replacement",
+            },
+            "classification_correction": {
+                "option_key": "corrected-authorized-push",
+                "field": "comparability_key",
+                "prior_value": "repository-authorized-push-v1",
+                "replacement_value": "Missing",
+                "policy_ref": "LFC-CONTINUITY-v0.2",
+            },
+        },
+    }
+    with pytest.raises(OpsError, match="cannot replace"):
+        validate_choice_event_packet(combined)
+
+
+def test_pattern_correction_updates_effective_diversity_without_rewriting_options(
+    ledger,
+):
+    connection, actor = ledger
+    packet = classified_selection(
+        "CLASSIFICATION-DIVERSITY",
+        actor,
+        selected_key="diversity-authorized-push",
+        comparability_key=None,
+    )
+    record_choice_selection(connection, "anyang-internal", packet)
+    original_options = connection.execute(
+        "SELECT options_json FROM choice_prompt WHERE id = ?",
+        ("CLASSIFICATION-DIVERSITY",),
+    ).fetchone()["options_json"]
+    record_choice_event(
+        connection,
+        "CLASSIFICATION-DIVERSITY",
+        {
+            "event_key": "pattern-correction",
+            "event_type": "corrected",
+            "recorded_by": "Council Steward",
+            "action_summary": "Correct the selected strategy pattern",
+            "payload": {
+                "reason": "The branch gathered evidence rather than executing",
+                "classification_correction": {
+                    "option_key": "diversity-authorized-push",
+                    "field": "pattern_key",
+                    "prior_value": "execute-bounded",
+                    "replacement_value": "gather-evidence",
+                    "policy_ref": "LFC-CONTINUITY-v0.2",
+                },
+            },
+        },
+    )
+    context = choice_context(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "repository",
+        "next-action",
+        "2026-08-01T12:00:00Z",
+    )
+    assert context["diversity_diagnostics"]["pattern_counts"]["execute-bounded"] == 0
+    assert context["diversity_diagnostics"]["pattern_counts"]["gather-evidence"] == 1
+    projection = choice_projection(connection, "CLASSIFICATION-DIVERSITY")
+    assert projection["original_classification"]["pattern_key"] == "execute-bounded"
+    assert projection["effective_classification"]["pattern_key"] == "gather-evidence"
+    stored_options = connection.execute(
+        "SELECT options_json FROM choice_prompt WHERE id = ?",
+        ("CLASSIFICATION-DIVERSITY",),
+    ).fetchone()["options_json"]
+    assert stored_options == original_options
 
 
 def test_five_selection_scorecard_continues_without_using_frequency(ledger):
@@ -756,7 +1275,7 @@ def test_not_observable_correction_and_supersession(ledger):
     assert choice_projection(connection, "CHOICE-CORRECT")["current_state"] == "superseded"
 
 
-def test_choice_dry_run_normalizes_unquoted_yaml_dates(tmp_path, capsys):
+def test_choice_packet_normalizes_unquoted_yaml_dates(tmp_path):
     packet_path = tmp_path / "unquoted-dates.yaml"
     packet_path.write_text(
         """id: DATE-DRY-RUN
@@ -778,15 +1297,40 @@ nested:
         "count": 2,
         "nested": [{"occurred_at": "2026-07-30T12:00:00Z"}],
     }
+
+
+def test_choice_outcome_dry_run_validates_correction_shape(tmp_path, capsys):
+    packet_path = tmp_path / "correction.yaml"
+    packet_path.write_text(
+        yaml.safe_dump(
+            {
+                "event_key": "classification-correction",
+                "event_type": "corrected",
+                "recorded_by": "Council Steward",
+                "action_summary": "Correct the classification",
+                "payload": {
+                    "reason": "Synthetic correction",
+                    "classification_correction": {
+                        "option_key": "small-proof",
+                        "field": "action_boundary",
+                        "prior_value": "read-only",
+                        "replacement_value": "workspace-mutation",
+                        "policy_ref": "LFC-CONTINUITY-v0.2",
+                    },
+                },
+            },
+            sort_keys=False,
+        ),
+        encoding="utf-8",
+    )
     assert (
         main(
             [
                 "--db",
                 str(tmp_path / "unused.db"),
                 "choice",
-                "select",
-                "--tenant",
-                "synthetic",
+                "outcome",
+                "MISSING-BY-DESIGN",
                 "--packet",
                 str(packet_path),
                 "--dry-run",
@@ -795,7 +1339,10 @@ nested:
         == 0
     )
     preview = json.loads(capsys.readouterr().out)
-    assert preview["packet"] == loaded
+    assert preview["packet"]["payload"]["classification_correction"]["field"] == (
+        "action_boundary"
+    )
+    assert "classification-prior-value" in preview["deferred_checks"]
 
 
 def test_choice_cli_dry_run_show_context_review_and_verify(tmp_path, capsys):
@@ -830,7 +1377,12 @@ def test_choice_cli_dry_run_show_context_review_and_verify(tmp_path, capsys):
     )
     base = ["--db", str(db), "choice"]
     assert main(base + ["select", "--tenant", "anyang-internal", "--packet", str(packet_path), "--dry-run"]) == 0
-    assert json.loads(capsys.readouterr().out)["dry_run"] is True
+    dry_run = json.loads(capsys.readouterr().out)
+    assert dry_run["dry_run"] is True
+    assert dry_run["deferred_checks"] == [
+        "actor-exists-in-tenant",
+        "idempotency-conflict",
+    ]
     assert main(base + ["select", "--tenant", "anyang-internal", "--packet", str(packet_path)]) == 0
     capsys.readouterr()
     scope = [
@@ -844,6 +1396,9 @@ def test_choice_cli_dry_run_show_context_review_and_verify(tmp_path, capsys):
     assert main(base + ["show", "CLI-CHOICE", *scope, "--format", "json"]) == 0
     shown = json.loads(capsys.readouterr().out)
     assert shown["choice"]["id"] == "CLI-CHOICE"
+    assert shown["schema_version"] == 2
+    assert shown["effective_classification"]["pattern_key"] == "unclassified"
+    assert "## Continuity Classification" in render_choice_markdown(shown)
     assert main(base + ["verify", "CLI-CHOICE", *scope]) == 0
     verified = json.loads(capsys.readouterr().out)
     assert verified["ok"] is True
@@ -886,8 +1441,10 @@ def test_choice_cli_dry_run_show_context_review_and_verify(tmp_path, capsys):
         main(base + ["verify", "CLI-CHOICE"])
     capsys.readouterr()
     assert main(base + ["context", "--tenant", "anyang-internal", "--workspace", "anyang-intelligence", "--lane", "repository", "--kind", "next-action", "--format", "json"]) == 0
-    assert json.loads(capsys.readouterr().out)["recommendation_guidance"][
-        "selection_frequency_used"
-    ] is False
+    context = json.loads(capsys.readouterr().out)
+    assert context["schema_version"] == 2
+    assert context["recommendation_guidance"]["selection_frequency_used"] is False
+    assert context["recommendation_guidance"]["option_key_learning_used"] is False
+    assert "## Diversity Diagnostics" in render_choice_context_markdown(context)
     assert main(base + ["review", "--tenant", "anyang-internal", "--workspace", "anyang-intelligence", "--as-of", "2026-08-01T00:00:00Z", "--format", "json"]) == 0
     assert json.loads(capsys.readouterr().out)["due_count"] == 1

@@ -130,6 +130,41 @@ identity: immutable options and recommendation, exactly one initial selection,
 selection role and no-authority binding, canonical event payloads, and
 same-scope acyclic choice supersession.
 
+Choice continuity classification is optional for legacy packet compatibility.
+When supplied, it is all-or-nothing:
+
+```yaml
+options:
+  - key: recommended
+    role: recommended
+    label: Push the authorized repository change
+    description: Publish the already-authorized commit.
+    classification_version: LFC-CONTINUITY-v0.2
+    pattern_key: execute-bounded
+    action_boundary: external-action
+    comparability_key: repository-authorized-push-v1
+```
+
+SQLite remains schema v8; choice projections and contexts are schema v2.
+Patterns and option-key outcome counts are diagnostic only. Comparability
+cohorts form only through a registered explicit policy. The initial
+`repository-authorized-push-v1` policy is diagnostic-only and cannot reorder
+recommendations. Action boundaries expose permission seams and always retain
+`authority_effect: none`.
+
+A `corrected` event may append one `classification_correction` targeting
+`pattern_key`, `action_boundary`, or `comparability_key`. Its `prior_value`
+must match the effective value at that sequence; it never rewrites the
+original option. Classification-only correction does not change operational
+state and cannot be combined with outcome replacement.
+
+Selection dry runs validate structure, classification, privacy, and policy
+scope while deferring actor and database idempotency checks. Outcome dry runs
+validate correction shape while deferring choice-specific actor, prior-value,
+and idempotency checks. See
+`docs/learn-from-choices-continuity-contract-v0.2.md` for the versioned
+contract.
+
 Recommendation guidance uses observed usefulness, burden, momentum, discovery,
 and outcomes. Selection frequency is explicitly excluded. One or two outcomes
 remain thin evidence; at least three comparable outcomes with two consistent

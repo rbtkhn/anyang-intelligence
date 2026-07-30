@@ -91,6 +91,8 @@ from .choice_learning import (
     render_choice_context_markdown,
     render_choice_markdown,
     render_choice_review_markdown,
+    validate_choice_event_packet,
+    validate_choice_selection_packet,
     verify_choice,
 )
 
@@ -879,13 +881,15 @@ def cmd_choice_context(args: argparse.Namespace) -> int:
 def cmd_choice_select(args: argparse.Namespace) -> int:
     packet = load_choice_packet(args.packet)
     if args.dry_run:
+        normalized = validate_choice_selection_packet(packet, args.tenant)
         return print_result(
             {
                 "dry_run": True,
                 "action": "record_choice_selection",
                 "tenant": args.tenant,
-                "packet": packet,
+                "packet": normalized,
                 "authority_effect": "none",
+                "deferred_checks": ["actor-exists-in-tenant", "idempotency-conflict"],
             }
         )
     with connect(resolve_db(args)) as connection:
@@ -897,12 +901,19 @@ def cmd_choice_select(args: argparse.Namespace) -> int:
 def cmd_choice_outcome(args: argparse.Namespace) -> int:
     packet = load_choice_packet(args.packet)
     if args.dry_run:
+        normalized = validate_choice_event_packet(packet)
         return print_result(
             {
                 "dry_run": True,
                 "action": "record_choice_event",
                 "choice_id": args.choice_id,
-                "packet": packet,
+                "packet": normalized,
+                "deferred_checks": [
+                    "choice-exists",
+                    "actor-exists-in-tenant",
+                    "classification-prior-value",
+                    "idempotency-conflict",
+                ],
             }
         )
     with connect(resolve_db(args)) as connection:

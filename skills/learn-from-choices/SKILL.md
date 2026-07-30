@@ -1,6 +1,6 @@
 ---
 name: learn-from-choices
-description: Outcome-aware possibility navigation for every final response. Use implicitly to offer 3-4 meaningful adjacent paths, interpret a letter as navigation rather than execution authority, and learn from observed usefulness without creating a preference bubble.
+description: Outcome-aware possibility navigation for every final response. Use implicitly to offer 3-4 meaningful adjacent paths, bind a letter to the displayed option and its explicit action boundary, and learn from observed usefulness without creating a preference bubble.
 ---
 
 # Learn From Choices
@@ -38,15 +38,15 @@ novelty merely to fill a slot.
 
 ## Navigation And Authority
 
-A letter means “enter and develop this branch.” It authorizes read-only
-investigation that is already in scope. It does not authorize mutation,
-execution, spending, publication, communication, customer action, commit, or
-push.
+A letter selects the displayed option. For an exploratory option, it means
+“enter and develop this branch” and authorizes only read-only investigation
+already in scope.
 
-When a branch reaches an action boundary, offer an explicitly labeled later
-option such as `Execute`, `Commit`, `Push`, or `Send`. Existing authority and
-approval rules remain controlling. A later explicit command supersedes any
-pending menu.
+When a displayed option is explicitly action-labeled `Execute`, `Commit`,
+`Push`, or `Send`, selecting its letter authorizes only that named bounded
+action. Existing authority and approval rules remain controlling, and the
+selection grants no broader or hidden authority. A later direct command
+supersedes any pending menu.
 
 ## Private Choice Memory
 
@@ -78,6 +78,16 @@ selection was not retained when retention would otherwise be expected, and use
 only operator-approved repository `RL-*` learning. Never promote a repository learning automatically.
 
 ## Recursive Learning
+
+Follow the versioned
+[Continuity Contract v0.2](../../docs/learn-from-choices-continuity-contract-v0.2.md)
+for option strategy classification, visible action boundaries, explicit
+comparability cohorts, and append-only classification correction. Patterns are diagnostic;
+action boundaries identify authority seams but retain
+`authority_effect: none`. Only valid explicit comparability policy keys create
+cohorts. Legacy options remain unclassified without backfill, and the initial
+repository push policy is diagnostic-only, so it cannot reorder
+recommendations.
 
 Learn from observed outcomes, burden, momentum, and discovery—not selection
 frequency.

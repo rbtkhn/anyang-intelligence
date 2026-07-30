@@ -183,10 +183,11 @@ D. Pause or deepen - <preserve optionality, review one due outcome, or stop>
 - Explain why A is recommended using current evidence or observed outcomes.
 - Never create fake diversity. Keep a credible overlooked path when one exists.
 - Stop on the menu unless the operator already gave permission to proceed.
-- If the operator replies `a`, `b`, `c`, or `d`, enter and develop that branch
-  rather than reopening Coffee. A bare letter does not authorize mutation.
-- Label a later action `Execute`, `Commit`, `Push`, or `Send` before treating a
-  selection as a request for that action; existing authority remains required.
+- If the operator replies `a`, `b`, `c`, or `d`, select the displayed option
+  rather than reopening Coffee. Exploratory options enter read-only development.
+- An option explicitly labeled `Execute`, `Commit`, `Push`, or `Send` binds its
+  selected letter to that named bounded action; existing authority remains
+  required and no broader authority is implied.
 - A later explicit command supersedes the pending menu.
 
 ## Guardrails

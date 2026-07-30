@@ -17,6 +17,28 @@ from .privacy_scan import scan_text
 
 CHOICE_ROLES = ("recommended", "alternative", "overlooked", "pause-or-deepen")
 CONSEQUENCE_LEVELS = ("ordinary", "consequential", "authority-sensitive")
+CHOICE_CLASSIFICATION_VERSION = "LFC-CONTINUITY-v0.2"
+CHOICE_PATTERN_KEYS = (
+    "gather-evidence",
+    "design-next-move",
+    "execute-bounded",
+    "explore-adjacent",
+    "seek-authority",
+    "pause-preserve",
+)
+CHOICE_ACTION_BOUNDARIES = (
+    "read-only",
+    "workspace-mutation",
+    "external-action",
+    "authority-decision",
+    "stop",
+)
+CLASSIFICATION_FIELDS = (
+    "classification_version",
+    "pattern_key",
+    "action_boundary",
+    "comparability_key",
+)
 EVENT_TYPES = (
     "outcome_recorded",
     "review_deferred",
@@ -57,6 +79,24 @@ CHOICE_GUIDANCE_POLICIES = (
         ),
     },
 )
+CHOICE_COMPARABILITY_POLICIES = (
+    {
+        "id": "repository-authorized-push-v1",
+        "status": "diagnostic-only",
+        "tenant": "anyang-internal",
+        "workspace_id": "anyang-intelligence",
+        "lane": "repository",
+        "choice_kind": "next-action",
+        "consequence_levels": ("ordinary", "consequential"),
+        "pattern_key": "execute-bounded",
+        "action_boundary": "external-action",
+        "minimum_resolved": 3,
+        "minimum_consistent": 2,
+        "source_ref": (
+            "repo:docs/learn-from-choices-continuity-contract-v0.2.md"
+        ),
+    },
+)
 
 
 def load_choice_packet(path: str | Path) -> dict[str, Any]:
@@ -67,12 +107,34 @@ def load_choice_packet(path: str | Path) -> dict[str, Any]:
     return _normalize_yaml_dates(value)
 
 
+def validate_choice_selection_packet(
+    packet: dict[str, Any], tenant: str
+) -> dict[str, Any]:
+    normalized = _validate_selection_packet(packet)
+    _validate_selection_classification_scope(normalized, tenant)
+    return {key: value for key, value in normalized.items() if key != "option_by_key"}
+
+
+def validate_choice_event_packet(packet: dict[str, Any]) -> dict[str, Any]:
+    event_type = _text(packet.get("event_type"))
+    if event_type not in EVENT_TYPES:
+        raise OpsError(f"Unsupported choice event type: {event_type}")
+    payload = packet.get("payload")
+    if not isinstance(payload, dict):
+        raise OpsError("Choice event payload must be a mapping")
+    normalized = dict(packet)
+    normalized["payload"] = _validate_event_payload(event_type, payload)
+    _privacy_safe(normalized["payload"], "choice event payload")
+    return normalized
+
+
 def record_choice_selection(
     connection: sqlite3.Connection,
     tenant: str,
     packet: dict[str, Any],
 ) -> MutationResult:
     normalized = _validate_selection_packet(packet)
+    _validate_selection_classification_scope(normalized, tenant)
     tid = tenant_id(connection, tenant)
     _validate_actor(connection, tid, normalized["actor_id"])
     prompt_values = {
@@ -197,6 +259,8 @@ def record_choice_event(
         raise OpsError("Choice event payload must be a mapping")
     payload = _validate_event_payload(event_type, payload)
     _privacy_safe(payload, "choice event payload")
+    if event_type == "corrected" and payload.get("classification_correction"):
+        _validate_new_classification_correction(connection, prompt, payload)
     payload_json = _canonical_json(payload)
 
     existing = connection.execute(
@@ -351,15 +415,59 @@ def choice_projection(connection: sqlite3.Connection, choice_id: str) -> dict[st
             review_after = event["payload"]["review_after"]
             state = "review_deferred"
         elif event["event_type"] == "corrected":
-            state = "corrected"
             if isinstance(event["payload"].get("replacement_outcome"), dict):
+                state = "corrected"
                 outcome = {**event, "payload": event["payload"]["replacement_outcome"]}
+            elif not event["payload"].get("classification_correction"):
+                state = "corrected"
         elif event["event_type"] == "superseded":
             state = "superseded"
     verification = verify_choice(connection, choice_id)
     options = json.loads(prompt["options_json"])
+    classifications = _derive_classifications(connection, prompt, list(rows))
+    selected_key = (
+        selected["payload"]["selected_option_key"] if selected else ""
+    )
+    original_classification = classifications["original"].get(
+        selected_key,
+        _project_option_classification({}),
+    )
+    effective_classification = classifications["effective"].get(
+        selected_key,
+        dict(original_classification),
+    )
+    comparability_key = effective_classification["comparability_key"]
+    comparability_policy = (
+        _comparability_policy(comparability_key)
+        if comparability_key != "Missing"
+        else None
+    )
+    exclusions: list[str] = []
+    if effective_classification["pattern_key"] == "unclassified":
+        exclusions.append("unclassified-option")
+    if comparability_key == "Missing":
+        exclusions.append("missing-comparability-policy")
+    if classifications["issues"]:
+        exclusions.append("invalid-classification")
+    if not verification["ok"]:
+        exclusions.append("choice-verification-failed")
+    if not outcome or outcome["payload"].get("result") not in TERMINAL_RESULTS:
+        exclusions.append("outcome-unresolved")
+    elif not outcome.get("evidence_ref"):
+        exclusions.append("outcome-evidence-missing")
+    if state == "superseded":
+        exclusions.append("choice-superseded")
+    learning_eligibility = {
+        "eligible": not exclusions,
+        "exclusion_reasons": exclusions,
+        "recommendation_effect": (
+            comparability_policy["status"]
+            if comparability_policy and not exclusions
+            else "none"
+        ),
+    }
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "choice": {
             key: prompt[key]
             for key in (
@@ -384,6 +492,12 @@ def choice_projection(connection: sqlite3.Connection, choice_id: str) -> dict[st
         "outcome": outcome,
         "current_state": state,
         "review_after": review_after,
+        "original_classification": original_classification,
+        "effective_classification": effective_classification,
+        "classification_corrections": classifications["corrections"],
+        "classification_verified": not classifications["issues"],
+        "learning_eligibility": learning_eligibility,
+        "comparability_policy": comparability_policy,
         "attention_flags": _attention_flags(prompt, state, outcome, verification),
         "events": events,
         "lineage": {
@@ -420,10 +534,24 @@ def choice_context(
         and projection["outcome"]["payload"].get("result") in TERMINAL_RESULTS
     ]
     patterns: dict[str, dict[str, Any]] = {}
+    cohort_buckets: dict[str, dict[str, Any]] = {}
+    diversity_counts = {key: 0 for key in CHOICE_PATTERN_KEYS}
+    unclassified_count = 0
+    classified_count = 0
     guardrails: list[dict[str, str]] = []
     learning_refs: set[str] = set()
     for projection in projections:
         learning_refs.update(projection["learning_refs"])
+        effective_classifications = _projection_effective_classifications(
+            projection
+        )
+        for classification in effective_classifications.values():
+            pattern_key = classification["pattern_key"]
+            if pattern_key == "unclassified":
+                unclassified_count += 1
+            else:
+                classified_count += 1
+                diversity_counts[pattern_key] += 1
     for projection in resolved:
         selected_key = projection["selection"]["payload"]["selected_option_key"]
         result = projection["outcome"]["payload"]["result"]
@@ -436,10 +564,38 @@ def choice_context(
                 "mixed": 0,
                 "unsuccessful": 0,
                 "no_action": 0,
+                "not_observable": 0,
+                "evidence_tier": "descriptive-only",
+                "recommendation_effect": "none",
             },
         )
         bucket["resolved"] += 1
         bucket[result] += 1
+        eligibility = projection["learning_eligibility"]
+        if eligibility["eligible"]:
+            comparability_key = projection["effective_classification"][
+                "comparability_key"
+            ]
+            policy = projection["comparability_policy"]
+            cohort = cohort_buckets.setdefault(
+                comparability_key,
+                {
+                    "comparability_key": comparability_key,
+                    "policy_status": policy["status"],
+                    "resolved": 0,
+                    "successful": 0,
+                    "mixed": 0,
+                    "unsuccessful": 0,
+                    "no_action": 0,
+                    "not_observable": 0,
+                    "choice_ids": [],
+                    "evidence_tier": "thin",
+                    "recommendation_effect": "none",
+                },
+            )
+            cohort["resolved"] += 1
+            cohort[result] += 1
+            cohort["choice_ids"].append(projection["choice"]["id"])
         payload = projection["outcome"]["payload"]
         if payload.get("authority_issue") or payload.get("membrane_issue"):
             guardrails.append(
@@ -451,30 +607,56 @@ def choice_context(
                 }
             )
     pattern_rows = []
-    favored: list[str] = []
-    demoted: list[str] = []
     for key in sorted(patterns):
         bucket = patterns[key]
-        bucket["evidence_tier"] = "thin"
-        if bucket["resolved"] >= 3:
-            if bucket["successful"] >= 2 and bucket["unsuccessful"] == 0:
-                bucket["evidence_tier"] = "pattern"
-                favored.append(key)
-            elif bucket["unsuccessful"] >= 2 and bucket["successful"] == 0:
-                bucket["evidence_tier"] = "pattern"
-                demoted.append(key)
         pattern_rows.append(bucket)
+    comparability_cohorts = []
+    diagnostic_favored: list[str] = []
+    diagnostic_demoted: list[str] = []
+    active_favored: list[str] = []
+    active_demoted: list[str] = []
+    for key in sorted(cohort_buckets):
+        cohort = cohort_buckets[key]
+        policy = _comparability_policy(key)
+        minimum_resolved = int(policy["minimum_resolved"])
+        minimum_consistent = int(policy["minimum_consistent"])
+        direction = ""
+        if cohort["resolved"] >= minimum_resolved:
+            if (
+                cohort["successful"] >= minimum_consistent
+                and cohort["unsuccessful"] == 0
+            ):
+                direction = "favored"
+            elif (
+                cohort["unsuccessful"] >= minimum_consistent
+                and cohort["successful"] == 0
+            ):
+                direction = "demoted"
+        if direction:
+            cohort["evidence_tier"] = "pattern"
+            cohort["diagnostic_direction"] = direction
+            if direction == "favored":
+                diagnostic_favored.append(key)
+            else:
+                diagnostic_demoted.append(key)
+            if policy["status"] == "active":
+                cohort["recommendation_effect"] = direction
+                if direction == "favored":
+                    active_favored.append(key)
+                else:
+                    active_demoted.append(key)
+        comparability_cohorts.append(cohort)
     policy = _choice_guidance_policy(
         tenant,
         workspace_id,
         lane,
         as_of or now_utc(),
     )
-    diagnostic_favored = list(favored)
-    diagnostic_demoted = list(demoted)
     if policy and policy["ordering_frozen"]:
-        favored = []
-        demoted = []
+        active_favored = []
+        active_demoted = []
+        for cohort in comparability_cohorts:
+            cohort["recommendation_effect"] = "none"
     due_review = choice_review(connection, tenant, workspace_id, as_of)
     rationale = _guidance_rationale(
         len(resolved), guardrails, diagnostic_favored, diagnostic_demoted
@@ -485,7 +667,7 @@ def choice_context(
             "recommendation ordering is frozen pending explicit disposition."
         )
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "tenant": tenant,
         "workspace_id": workspace_id,
         "lane": lane,
@@ -493,16 +675,28 @@ def choice_context(
         "as_of": as_of or now_utc(),
         "resolved_outcome_count": len(resolved),
         "outcome_patterns": pattern_rows,
+        "diversity_diagnostics": {
+            "classified_option_count": classified_count,
+            "unclassified_option_count": unclassified_count,
+            "pattern_counts": diversity_counts,
+            "selection_frequency_used": False,
+            "recommendation_effect": "none",
+        },
+        "comparability_cohorts": comparability_cohorts,
         "guardrails": guardrails,
         "learning_refs": sorted(learning_refs),
         "guidance_policy": policy,
         "recommendation_guidance": {
-            "favored_option_keys": favored,
-            "demoted_option_keys": demoted,
-            "diagnostic_favored_option_keys": diagnostic_favored,
-            "diagnostic_demoted_option_keys": diagnostic_demoted,
+            "favored_option_keys": [],
+            "demoted_option_keys": [],
+            "option_key_guidance_deprecated": True,
+            "favored_comparability_keys": active_favored,
+            "demoted_comparability_keys": active_demoted,
+            "diagnostic_favored_comparability_keys": diagnostic_favored,
+            "diagnostic_demoted_comparability_keys": diagnostic_demoted,
             "ordering_frozen": bool(policy and policy["ordering_frozen"]),
             "selection_frequency_used": False,
+            "option_key_learning_used": False,
             "preserve_overlooked_possibility": True,
             "rationale": rationale,
         },
@@ -592,6 +786,27 @@ def render_choice_markdown(data: dict[str, Any]) -> str:
         lines.append(
             f"- **{option['label']}** (`{option['role']}`){marker}: {option['tradeoff']}"
         )
+    classification = data["effective_classification"]
+    eligibility = data["learning_eligibility"]
+    lines.extend(
+        [
+            "",
+            "## Continuity Classification",
+            "",
+            f"- Pattern: `{classification['pattern_key']}`",
+            f"- Action boundary: `{classification['action_boundary']}`",
+            f"- Comparability key: `{classification['comparability_key']}`",
+            f"- Classification verified: {data['classification_verified']}",
+            f"- Learning eligible: {eligibility['eligible']}",
+        ]
+    )
+    if eligibility["exclusion_reasons"]:
+        lines.append(
+            "- Eligibility exclusions: "
+            + ", ".join(
+                f"`{item}`" for item in eligibility["exclusion_reasons"]
+            )
+        )
     lines.extend(["", "## Outcome", ""])
     if data["outcome"]:
         payload = data["outcome"]["payload"]
@@ -629,11 +844,35 @@ def render_choice_context_markdown(data: dict[str, Any]) -> str:
         "",
     ]
     if not data["outcome_patterns"]:
-        lines.append("- No comparable resolved outcomes.")
+        lines.append("- No resolved option-key outcomes.")
     for pattern in data["outcome_patterns"]:
         lines.append(
-            f"- `{pattern['option_key']}`: {pattern['evidence_tier']} evidence "
-            f"across {pattern['resolved']} outcome(s)."
+            f"- `{pattern['option_key']}`: descriptive only across "
+            f"{pattern['resolved']} outcome(s)."
+        )
+    diversity = data["diversity_diagnostics"]
+    lines.extend(
+        [
+            "",
+            "## Diversity Diagnostics",
+            "",
+            (
+                f"- Classified options: {diversity['classified_option_count']}; "
+                f"unclassified options: {diversity['unclassified_option_count']}."
+            ),
+        ]
+    )
+    for key, count in diversity["pattern_counts"].items():
+        if count:
+            lines.append(f"- `{key}`: {count}")
+    lines.extend(["", "## Comparability Cohorts", ""])
+    if not data["comparability_cohorts"]:
+        lines.append("- No eligible explicit comparability cohorts.")
+    for cohort in data["comparability_cohorts"]:
+        lines.append(
+            f"- `{cohort['comparability_key']}`: {cohort['evidence_tier']} "
+            f"across {cohort['resolved']} outcome(s); recommendation effect "
+            f"`{cohort['recommendation_effect']}`."
         )
     lines.extend(["", "## Guardrails", ""])
     if not data["guardrails"]:
@@ -888,6 +1127,68 @@ def _validate_selection_packet(packet: dict[str, Any]) -> dict[str, Any]:
                 option.get("learning_refs", []), f"option {index} learning_refs"
             ),
         }
+        supplied_classification = {
+            field for field in CLASSIFICATION_FIELDS if field in option
+        }
+        if supplied_classification:
+            missing_classification = [
+                field
+                for field in (
+                    "classification_version",
+                    "pattern_key",
+                    "action_boundary",
+                )
+                if field not in option
+            ]
+            if missing_classification:
+                raise OpsError(
+                    f"Choice option {index} classification is missing required fields: "
+                    + ", ".join(missing_classification)
+                )
+            classification_version = _bounded(
+                option.get("classification_version"),
+                f"option {index} classification_version",
+                required=True,
+                maximum=80,
+            )
+            if classification_version != CHOICE_CLASSIFICATION_VERSION:
+                raise OpsError(
+                    f"Invalid option {index} classification_version: "
+                    f"{classification_version}"
+                )
+            pattern_key = _bounded(
+                option.get("pattern_key"),
+                f"option {index} pattern_key",
+                required=True,
+                maximum=80,
+            )
+            if pattern_key not in CHOICE_PATTERN_KEYS:
+                raise OpsError(f"Invalid option {index} pattern_key: {pattern_key}")
+            action_boundary = _bounded(
+                option.get("action_boundary"),
+                f"option {index} action_boundary",
+                required=True,
+                maximum=80,
+            )
+            if action_boundary not in CHOICE_ACTION_BOUNDARIES:
+                raise OpsError(
+                    f"Invalid option {index} action_boundary: {action_boundary}"
+                )
+            normalized.update(
+                {
+                    "classification_version": classification_version,
+                    "pattern_key": pattern_key,
+                    "action_boundary": action_boundary,
+                }
+            )
+            if "comparability_key" in option:
+                comparability_key = _bounded(
+                    option.get("comparability_key"),
+                    f"option {index} comparability_key",
+                    required=True,
+                    maximum=120,
+                )
+                normalized["comparability_key"] = comparability_key
         if normalized["key"] in seen_keys:
             raise OpsError(f"Duplicate choice option key: {normalized['key']}")
         if normalized["role"] not in CHOICE_ROLES:
@@ -958,6 +1259,69 @@ def _validate_selection_packet(packet: dict[str, Any]) -> dict[str, Any]:
     return normalized
 
 
+def _validate_selection_classification_scope(
+    normalized: dict[str, Any], tenant: str
+) -> None:
+    for option in normalized["options"]:
+        key = option.get("comparability_key")
+        if not key or key == "Missing":
+            continue
+        _validate_comparability_policy(
+            key,
+            tenant=tenant,
+            workspace_id=normalized["workspace_id"],
+            lane=normalized["lane"],
+            choice_kind=normalized["choice_kind"],
+            consequence_level=normalized["consequence_level"],
+            pattern_key=option.get("pattern_key", "unclassified"),
+            action_boundary=option.get("action_boundary", "unclassified"),
+        )
+
+
+def _comparability_policy(key: str) -> dict[str, Any] | None:
+    return next(
+        (policy for policy in CHOICE_COMPARABILITY_POLICIES if policy["id"] == key),
+        None,
+    )
+
+
+def _validate_comparability_policy(
+    key: str,
+    *,
+    tenant: str,
+    workspace_id: str,
+    lane: str,
+    choice_kind: str,
+    consequence_level: str,
+    pattern_key: str,
+    action_boundary: str,
+) -> dict[str, Any]:
+    policy = _comparability_policy(key)
+    if not policy:
+        raise OpsError(f"Unknown choice comparability policy: {key}")
+    if policy["status"] == "disabled":
+        raise OpsError(f"Choice comparability policy is disabled: {key}")
+    expected = {
+        "tenant": tenant,
+        "workspace_id": workspace_id,
+        "lane": lane,
+        "choice_kind": choice_kind,
+        "pattern_key": pattern_key,
+        "action_boundary": action_boundary,
+    }
+    mismatched = [
+        field for field, value in expected.items() if policy[field] != value
+    ]
+    if consequence_level not in policy["consequence_levels"]:
+        mismatched.append("consequence_level")
+    if mismatched:
+        raise OpsError(
+            f"Choice comparability policy scope mismatch for {key}: "
+            + ", ".join(sorted(set(mismatched)))
+        )
+    return policy
+
+
 def _validate_event_payload(event_type: str, payload: dict[str, Any]) -> dict[str, Any]:
     value = dict(payload)
     if event_type == "outcome_recorded":
@@ -994,12 +1358,73 @@ def _validate_event_payload(event_type: str, payload: dict[str, Any]) -> dict[st
     elif event_type == "corrected":
         value["reason"] = _bounded(value.get("reason"), "reason", required=True)
         replacement = value.get("replacement_outcome")
+        correction = value.get("classification_correction")
+        if replacement is not None and correction is not None:
+            raise OpsError(
+                "A corrected event cannot replace an outcome and classification together"
+            )
         if replacement is not None:
             if not isinstance(replacement, dict):
                 raise OpsError("replacement_outcome must be a mapping")
             value["replacement_outcome"] = _validate_event_payload(
                 "outcome_recorded", replacement
             )
+        if correction is not None:
+            if not isinstance(correction, dict):
+                raise OpsError("classification_correction must be a mapping")
+            field = _text(correction.get("field"))
+            if field not in {
+                "pattern_key",
+                "action_boundary",
+                "comparability_key",
+            }:
+                raise OpsError(f"Invalid classification correction field: {field}")
+            prior_value = _bounded(
+                correction.get("prior_value"),
+                "classification correction prior_value",
+                required=True,
+                maximum=120,
+            )
+            replacement_value = _bounded(
+                correction.get("replacement_value"),
+                "classification correction replacement_value",
+                required=True,
+                maximum=120,
+            )
+            if field == "pattern_key" and replacement_value not in CHOICE_PATTERN_KEYS:
+                raise OpsError(
+                    f"Invalid classification correction pattern_key: {replacement_value}"
+                )
+            if (
+                field == "action_boundary"
+                and replacement_value not in CHOICE_ACTION_BOUNDARIES
+            ):
+                raise OpsError(
+                    "Invalid classification correction action_boundary: "
+                    f"{replacement_value}"
+                )
+            value["classification_correction"] = {
+                "option_key": _bounded(
+                    correction.get("option_key"),
+                    "classification correction option_key",
+                    required=True,
+                    maximum=120,
+                ),
+                "field": field,
+                "prior_value": prior_value,
+                "replacement_value": replacement_value,
+                "policy_ref": _bounded(
+                    correction.get("policy_ref"),
+                    "classification correction policy_ref",
+                    required=True,
+                    maximum=200,
+                ),
+            }
+            policy_issue = _comparability_correction_policy_issue(
+                value["classification_correction"]
+            )
+            if policy_issue:
+                raise OpsError(policy_issue)
     elif event_type == "superseded":
         value = {
             "reason": _bounded(value.get("reason"), "reason", required=True),
@@ -1011,6 +1436,219 @@ def _validate_event_payload(event_type: str, payload: dict[str, Any]) -> dict[st
             ),
         }
     return value
+
+
+def _tenant_slug(connection: sqlite3.Connection, tenant_identifier: str) -> str:
+    row = connection.execute(
+        "SELECT slug FROM tenant WHERE id = ?", (tenant_identifier,)
+    ).fetchone()
+    if not row:
+        raise OpsError("Choice tenant is unavailable")
+    return str(row["slug"])
+
+
+def _project_option_classification(option: dict[str, Any]) -> dict[str, str]:
+    return {
+        "classification_version": option.get(
+            "classification_version", "legacy-unclassified"
+        ),
+        "pattern_key": option.get("pattern_key", "unclassified"),
+        "action_boundary": option.get("action_boundary", "unclassified"),
+        "comparability_key": option.get("comparability_key", "Missing"),
+    }
+
+
+def _projection_effective_classifications(
+    projection: dict[str, Any],
+) -> dict[str, dict[str, str]]:
+    effective = {
+        option["key"]: _project_option_classification(option)
+        for option in projection["options"]
+    }
+    for correction in projection["classification_corrections"]:
+        if not correction.get("valid"):
+            continue
+        option = effective.get(correction["option_key"])
+        if option is not None:
+            option[correction["field"]] = correction["replacement_value"]
+    return effective
+
+
+def _comparability_correction_policy_issue(
+    correction: dict[str, Any],
+) -> str | None:
+    if correction.get("field") != "comparability_key":
+        return None
+    prior_value = str(correction.get("prior_value", ""))
+    replacement_value = str(correction.get("replacement_value", ""))
+    policy_ref = str(correction.get("policy_ref", ""))
+    if prior_value == replacement_value:
+        return "Comparability correction must change the effective value"
+    expected_ref = (
+        replacement_value if replacement_value != "Missing" else prior_value
+    )
+    policy = _comparability_policy(policy_ref)
+    if not policy:
+        return f"Unknown choice comparability policy: {policy_ref}"
+    if policy["status"] == "disabled":
+        return f"Choice comparability policy is disabled: {policy_ref}"
+    if policy_ref != expected_ref:
+        expected_source = (
+            "replacement_value"
+            if replacement_value != "Missing"
+            else "prior_value when removing a policy"
+        )
+        return (
+            "Comparability correction policy_ref must match "
+            f"{expected_source}"
+        )
+    return None
+
+
+def _classification_policy_issue(
+    prompt: sqlite3.Row,
+    tenant: str,
+    classification: dict[str, str],
+) -> str | None:
+    key = classification["comparability_key"]
+    if key == "Missing":
+        return None
+    try:
+        _validate_comparability_policy(
+            key,
+            tenant=tenant,
+            workspace_id=str(prompt["workspace_id"]),
+            lane=str(prompt["lane"]),
+            choice_kind=str(prompt["choice_kind"]),
+            consequence_level=str(prompt["consequence_level"]),
+            pattern_key=classification["pattern_key"],
+            action_boundary=classification["action_boundary"],
+        )
+    except OpsError as exc:
+        return str(exc)
+    return None
+
+
+def _derive_classifications(
+    connection: sqlite3.Connection,
+    prompt: sqlite3.Row,
+    events: list[sqlite3.Row] | list[dict[str, Any]],
+) -> dict[str, Any]:
+    options = json.loads(prompt["options_json"])
+    original = {
+        option["key"]: _project_option_classification(option)
+        for option in options
+        if isinstance(option, dict) and isinstance(option.get("key"), str)
+    }
+    effective = {key: dict(value) for key, value in original.items()}
+    corrections: list[dict[str, Any]] = []
+    issues: list[dict[str, str]] = []
+    tenant = _tenant_slug(connection, str(prompt["tenant_id"]))
+    for event in events:
+        event_type = event["event_type"]
+        if event_type != "corrected":
+            continue
+        payload = (
+            event["payload"]
+            if isinstance(event, dict) and "payload" in event
+            else json.loads(event["payload_json"])
+        )
+        correction = payload.get("classification_correction")
+        if not isinstance(correction, dict):
+            continue
+        option_key = str(correction.get("option_key", ""))
+        field = str(correction.get("field", ""))
+        current = effective.get(option_key)
+        issue: str | None = None
+        if current is None:
+            issue = f"Classification correction names an unknown option: {option_key}"
+        elif current.get(field) != correction.get("prior_value"):
+            issue = (
+                f"Classification correction prior_value is stale for "
+                f"{option_key}/{field}"
+            )
+        else:
+            candidate = dict(current)
+            candidate[field] = str(correction.get("replacement_value"))
+            correction_policy_issue = _comparability_correction_policy_issue(
+                correction
+            )
+            if correction_policy_issue:
+                issue = correction_policy_issue
+            else:
+                policy_issue = _classification_policy_issue(prompt, tenant, candidate)
+                if policy_issue:
+                    issue = policy_issue
+                else:
+                    effective[option_key] = candidate
+        recorded = {
+            "event_key": event["event_key"],
+            "sequence": event["sequence"],
+            **correction,
+            "valid": issue is None,
+        }
+        if issue:
+            recorded["issue"] = issue
+            issues.append(
+                {
+                    "code": "classification-correction-invalid",
+                    "message": issue,
+                }
+            )
+        corrections.append(recorded)
+    for option_key, classification in effective.items():
+        issue = _classification_policy_issue(prompt, tenant, classification)
+        if issue:
+            issues.append(
+                {
+                    "code": "classification-policy-invalid",
+                    "message": f"{option_key}: {issue}",
+                }
+            )
+    return {
+        "original": original,
+        "effective": effective,
+        "corrections": corrections,
+        "issues": issues,
+    }
+
+
+def _validate_new_classification_correction(
+    connection: sqlite3.Connection,
+    prompt: sqlite3.Row,
+    payload: dict[str, Any],
+) -> None:
+    rows = connection.execute(
+        "SELECT * FROM choice_event WHERE choice_id = ? ORDER BY sequence",
+        (prompt["id"],),
+    ).fetchall()
+    derived = _derive_classifications(connection, prompt, list(rows))
+    if derived["issues"]:
+        raise OpsError("Existing choice classification is invalid")
+    correction = payload["classification_correction"]
+    option_key = correction["option_key"]
+    current = derived["effective"].get(option_key)
+    if not current:
+        raise OpsError(
+            f"Classification correction names an unknown option: {option_key}"
+        )
+    field = correction["field"]
+    if current[field] != correction["prior_value"]:
+        raise OpsError(
+            f"Classification correction prior_value is stale for {option_key}/{field}"
+        )
+    candidate = dict(current)
+    candidate[field] = correction["replacement_value"]
+    correction_policy_issue = _comparability_correction_policy_issue(correction)
+    if correction_policy_issue:
+        raise OpsError(correction_policy_issue)
+    issue = _classification_policy_issue(
+        prompt,
+        _tenant_slug(connection, str(prompt["tenant_id"])),
+        candidate,
+    )
+    if issue:
+        raise OpsError(issue)
 
 
 def _semantic_choice_issues(
@@ -1066,6 +1704,38 @@ def _semantic_choice_issues(
                 )
             else:
                 roles.add(role)
+            supplied = {
+                field for field in CLASSIFICATION_FIELDS if field in option
+            }
+            if supplied:
+                required_classification = {
+                    "classification_version",
+                    "pattern_key",
+                    "action_boundary",
+                }
+                if not required_classification.issubset(option):
+                    issues.append(
+                        {
+                            "code": "option-classification-incomplete",
+                            "message": (
+                                "Classified immutable options require version, "
+                                "pattern, and action boundary."
+                            ),
+                        }
+                    )
+                elif (
+                    option.get("classification_version")
+                    != CHOICE_CLASSIFICATION_VERSION
+                    or option.get("pattern_key") not in CHOICE_PATTERN_KEYS
+                    or option.get("action_boundary")
+                    not in CHOICE_ACTION_BOUNDARIES
+                ):
+                    issues.append(
+                        {
+                            "code": "option-classification-invalid",
+                            "message": "Immutable option classification is unsupported.",
+                        }
+                    )
         if not {"recommended", "alternative"}.issubset(roles) or not (
             {"overlooked", "pause-or-deepen"} & roles
         ):
@@ -1214,6 +1884,11 @@ def _semantic_choice_issues(
             )
         if event["event_type"] == "superseded":
             supersession_events.append(event)
+
+    if isinstance(decoded_options, list):
+        issues.extend(
+            _derive_classifications(connection, prompt, list(events))["issues"]
+        )
 
     if len(supersession_events) > 1:
         issues.append(
@@ -1407,9 +2082,9 @@ def _guidance_rationale(
     if guardrails:
         return "Prior outcomes contain an authority or membrane guardrail; surface it immediately."
     if favored or demoted:
-        return "At least one comparable option has pattern-level outcome evidence; preserve an overlooked path while using it."
+        return "At least one explicit comparability cohort has outcome evidence; preserve an overlooked path while applying its policy."
     if resolved_count:
-        return "Comparable outcomes remain thin; cite them without changing option order."
+        return "Explicit comparability cohorts remain thin or unavailable; cite outcomes without changing option order."
     return "No comparable outcome evidence is available; use current evidence and repository learning."
 
 

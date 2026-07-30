@@ -19,8 +19,9 @@ meaningfully different next-best possibilities. State which branch is
 recommended and why. Preserve a credible overlooked path when one exists;
 never create fake diversity.
 
-A letter selects a branch for development. It does not authorize mutation,
-execution, spending, publication, communication, customer action, commit, or
-push. Those actions require an explicitly labeled later choice or direct
-command plus the existing authority. A later explicit command supersedes the
+A letter selects the displayed option. An exploratory option enters a branch
+for read-only development. When the displayed option is explicitly
+action-labeled `Execute`, `Commit`, `Push`, or `Send`, selecting its letter
+authorizes only that named bounded action, subject to the existing authority.
+It grants no broader or hidden authority. A later direct command supersedes the
 pending menu.
