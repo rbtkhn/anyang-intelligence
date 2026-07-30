@@ -25,3 +25,8 @@ action-labeled `Execute`, `Commit`, `Push`, or `Send`, selecting its letter
 authorizes only that named bounded action, subject to the existing authority.
 It grants no broader or hidden authority. A later direct command supersedes the
 pending menu.
+
+Comma-separated letters select displayed branches in order. Ranked letters
+express preference only and execute nothing. Neutral factual elicitation follows
+the canonical `skills/elicitation/SKILL.md` exception rather than recommendation
+roles.

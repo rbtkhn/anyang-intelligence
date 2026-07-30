@@ -48,6 +48,18 @@ action. Existing authority and approval rules remain controlling, and the
 selection grants no broader or hidden authority. A later direct command
 supersedes any pending menu.
 
+Comma-separated letters select multiple branches in order. Retain each selected
+branch as a separate schema-v8 receipt with the same option-set identity and
+stop before later branches if an authorized action fails. A ranked response
+such as `A>C>B` is preference evidence only: execute nothing, create no
+branch-selection receipt, and use the first-ranked branch to shape the next
+read-only exploration or menu. Reject duplicates, unknown letters, mixed
+comma/ranking syntax, and a compound selection containing `pause-or-deepen`.
+
+Elicitation may separately present 2-4 mutually exclusive neutral factual
+answers. Do not force those answers into recommendation roles or treat them as
+choice-memory selections.
+
 ## Private Choice Memory
 
 Do not store an unselected footer. After the operator selects a branch, and

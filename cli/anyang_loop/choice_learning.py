@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import sqlite3
 import uuid
 from datetime import date, datetime, timezone
@@ -16,6 +17,8 @@ from .privacy_scan import scan_text
 
 
 CHOICE_ROLES = ("recommended", "alternative", "overlooked", "pause-or-deepen")
+ELICITATION_INTERACTION_TYPES = ("decision-navigation", "neutral-evidence")
+ELICITATION_ACTION_VERBS = ("Execute", "Commit", "Push", "Send")
 CONSEQUENCE_LEVELS = ("ordinary", "consequential", "authority-sensitive")
 CHOICE_CLASSIFICATION_VERSION = "LFC-CONTINUITY-v0.2"
 CHOICE_PATTERN_KEYS = (
@@ -97,6 +100,195 @@ CHOICE_COMPARABILITY_POLICIES = (
         ),
     },
 )
+
+
+def validate_elicitation_surface(surface: dict[str, Any]) -> dict[str, Any]:
+    """Validate a low-load decision menu or neutral evidence question."""
+    if not isinstance(surface, dict):
+        raise OpsError("Elicitation surface must be a mapping")
+    interaction_type = _text(surface.get("interaction_type"))
+    if interaction_type not in ELICITATION_INTERACTION_TYPES:
+        raise OpsError(f"Unsupported elicitation interaction type: {interaction_type}")
+    question = _bounded(surface.get("question"), "elicitation question", required=True)
+    options = surface.get("options")
+    minimum = 3 if interaction_type == "decision-navigation" else 2
+    if not isinstance(options, list) or not minimum <= len(options) <= 4:
+        expected = "3-4" if interaction_type == "decision-navigation" else "2-4"
+        raise OpsError(f"{interaction_type} elicitation requires {expected} options")
+
+    normalized_options: list[dict[str, str]] = []
+    seen_keys: set[str] = set()
+    seen_labels: set[str] = set()
+    seen_roles: set[str] = set()
+    for index, option in enumerate(options, start=1):
+        if not isinstance(option, dict):
+            raise OpsError(f"Elicitation option {index} must be a mapping")
+        key = _bounded(
+            option.get("key"), f"elicitation option {index} key", required=True, maximum=120
+        )
+        label = _bounded(
+            option.get("label"), f"elicitation option {index} label", required=True
+        )
+        if key in seen_keys:
+            raise OpsError(f"Duplicate elicitation option key: {key}")
+        if label.casefold() in seen_labels:
+            raise OpsError(f"Duplicate elicitation option label: {label}")
+        seen_keys.add(key)
+        seen_labels.add(label.casefold())
+
+        normalized = {"key": key, "label": label}
+        if interaction_type == "decision-navigation":
+            role = _bounded(
+                option.get("role"),
+                f"elicitation option {index} role",
+                required=True,
+                maximum=40,
+            )
+            if role not in CHOICE_ROLES:
+                raise OpsError(f"Invalid elicitation option role: {role}")
+            if role in seen_roles:
+                raise OpsError(f"Duplicate elicitation option role: {role}")
+            seen_roles.add(role)
+            normalized["role"] = role
+        else:
+            if "role" in option or "recommendation_key" in surface:
+                raise OpsError(
+                    "Neutral evidence intake cannot assign recommendation roles"
+                )
+            if _elicitation_action(label):
+                raise OpsError(
+                    "Neutral evidence intake cannot present an action-authorizing label"
+                )
+        normalized_options.append(normalized)
+
+    if interaction_type == "decision-navigation":
+        for role in ("recommended", "alternative"):
+            if role not in seen_roles:
+                raise OpsError(f"Decision menu requires the {role} role")
+        if not ({"overlooked", "pause-or-deepen"} & seen_roles):
+            raise OpsError(
+                "Decision menu requires an overlooked or pause-or-deepen possibility"
+            )
+
+    return {
+        "interaction_type": interaction_type,
+        "question": question,
+        "options": normalized_options,
+        "authority_effect": "none",
+    }
+
+
+def interpret_elicitation_response(
+    options: list[dict[str, Any]], response: str
+) -> dict[str, Any]:
+    """Interpret a single, compound, or ranked decision-menu response.
+
+    This function does not execute work or write a choice receipt. It returns
+    the exact ordered branch and action semantics an orchestration layer must
+    honor when it performs those separate operations.
+    """
+    surface = validate_elicitation_surface(
+        {
+            "interaction_type": "decision-navigation",
+            "question": "Interpret the presented decision menu",
+            "options": options,
+        }
+    )
+    raw_response = _bounded(
+        response, "elicitation response", required=True, maximum=80
+    )
+    has_compound = "," in raw_response
+    has_ranking = ">" in raw_response
+    if has_compound and has_ranking:
+        raise OpsError("Elicitation response cannot mix compound and ranking syntax")
+
+    delimiter = ">" if has_ranking else "," if has_compound else None
+    tokens = (
+        [token.strip().upper() for token in raw_response.split(delimiter)]
+        if delimiter
+        else [raw_response.strip().upper()]
+    )
+    if any(not token for token in tokens):
+        raise OpsError("Elicitation response contains an empty selection")
+    if len(set(tokens)) != len(tokens):
+        raise OpsError("Elicitation response contains duplicate selections")
+
+    option_by_letter = {
+        chr(ord("A") + index): option
+        for index, option in enumerate(surface["options"])
+    }
+    unknown = [token for token in tokens if token not in option_by_letter]
+    if unknown:
+        raise OpsError(
+            "Unknown elicitation selection: " + ", ".join(unknown)
+        )
+    if has_ranking and len(tokens) < 2:
+        raise OpsError("A ranked elicitation response requires at least two options")
+
+    branches = [
+        _elicitation_branch(token, option_by_letter[token]) for token in tokens
+    ]
+    if has_compound and len(branches) < 2:
+        raise OpsError("A compound elicitation response requires at least two options")
+    if has_compound and any(
+        branch["role"] == "pause-or-deepen" for branch in branches
+    ):
+        raise OpsError(
+            "pause-or-deepen cannot be combined with another selected branch"
+        )
+
+    if has_ranking:
+        return {
+            "schema_version": 1,
+            "mode": "ranked",
+            "authority_effect": "none",
+            "selected_branches": [],
+            "preference_order": branches,
+            "top_preference": branches[0],
+            "receipt_count": 0,
+            "execute_nothing": True,
+            "next_step": "Use the top preference to shape read-only exploration or the next menu",
+        }
+
+    return {
+        "schema_version": 1,
+        "mode": "compound" if has_compound else "single",
+        "authority_effect": "none",
+        "selected_branches": branches,
+        "preference_order": [],
+        "receipt_count": len(branches),
+        "shared_option_set_identity": len(branches) > 1,
+        "execute_in_order": True,
+        "stop_on_failure": True,
+    }
+
+
+def _elicitation_branch(letter: str, option: dict[str, str]) -> dict[str, Any]:
+    action = _elicitation_action(option["label"])
+    return {
+        "letter": letter,
+        "option_key": option["key"],
+        "role": option["role"],
+        "label": option["label"],
+        "action_authorization": {
+            "authorized": action is not None,
+            "verb": action,
+            "bounded_action": option["label"] if action else None,
+        },
+    }
+
+
+def _elicitation_action(label: str) -> str | None:
+    match = re.match(
+        r"^(Execute|Commit|Push|Send)(?=$|[\s:—–-])",
+        label.strip(),
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        return None
+    return next(
+        verb for verb in ELICITATION_ACTION_VERBS if verb.casefold() == match.group(1).casefold()
+    )
 
 
 def load_choice_packet(path: str | Path) -> dict[str, Any]:

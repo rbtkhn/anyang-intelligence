@@ -1,206 +1,133 @@
 ---
 name: elicitation
-description: Native Anyang Intelligence elicitation procedure. Use when the operator asks for elicitation, multiple-choice questions, intake questions, discovery questions, clarification, decision support, requirements gathering, or when a customer/skill/doc task depends on missing human judgment, authority, preferences, constraints, or context before safe execution.
+description: Low-load Anyang Intelligence elicitation for genuinely missing, materially consequential human input. Use implicitly only when safe execution is blocked by missing judgment, authority, preferences, constraints, or evidence; also use when the operator explicitly asks for elicitation, clarification, discovery questions, requirements gathering, structured intake, or multiple-choice decision support.
 ---
 
-# Elicitation Skill
+# Elicitation
 
-Use this skill to draw out the minimum human input needed for high-quality Anyang Intelligence work.
+Draw out the minimum human input needed to continue safely. Do not use
+elicitation to delay work whose answer is already available, safely inferable,
+or immaterial.
 
-Elicitation is not interrogation. It is a structured way to help the operator or customer make hidden context explicit so the Executive OS can act safely and usefully.
+When meaning is likely present but compressed, automatically read and follow the complete canonical [intent recovery](../intent-recovery/SKILL.md) contract before asking. Use elicitation only when the missing input remains genuinely missing and materially consequential.
 
-When meaning is likely already present but compressed or poorly articulated, automatically read and follow the complete canonical [intent recovery](../intent-recovery/SKILL.md) contract before asking. Use its `Elicitation` mode and adaptive receipt. Use elicitation only when human input, authority, preference, evidence, or a consequential distinction is genuinely missing.
+For decision menus and final-response possibility maps, read and follow the
+complete canonical
+[`learn-from-choices`](../learn-from-choices/SKILL.md) contract.
 
-For every multiple-choice surface and final response, read and follow the
-complete [`learn-from-choices`](../learn-from-choices/SKILL.md) contract.
+## Choose The Interaction Type
 
-## Purpose
+Keep these surfaces distinct:
 
-Use elicitation to:
+### Decision Or Navigation Menu
 
-- Clarify goals, constraints, preferences, and authority.
-- Convert fuzzy intent into usable operating inputs.
-- Surface risks before execution.
-- Preserve human judgment where the system lacks authority.
-- Avoid invented facts.
-- Make future work faster by turning answers into a clear next artifact or action.
+Use when the human must choose a path. Present 3-4 genuinely different
+possibilities with stable semantic roles:
 
-## When To Ask
+- `recommended`
+- `alternative`
+- `overlooked`
+- `pause-or-deepen`
 
-Ask questions when missing information materially affects:
+Explain the recommendation from current evidence without making the choice
+leading. Preserve a credible overlooked path and do not manufacture diversity.
 
-- paid scope
-- customer commitments
-- parent, owner, board, or operator authority
-- child-safety, legal, tax, financial, property, nonprofit, or health-sensitive boundaries
-- public claims, publication, delivery, spending, hiring, or external communications
-- personal preferences that cannot be inferred from repo state
-- product direction where several plausible paths have different consequences
+### Neutral Evidence Intake
 
-Do not ask when the answer is already in the repo, can be safely inferred, or the cost of delay is higher than the risk of a reasonable assumption.
+Use when the human is reporting a fact rather than choosing a direction.
+Present 2-4 mutually exclusive factual answers. Do not assign recommendation
+roles, recommend an answer, or use an action-authorizing label. A neutral
+answer is evidence, not action authority and not a Learn From Choices branch
+selection.
 
-## Procedure
+Allow free-form answers whenever the factual choices do not fit. Do not display
+a fifth option merely to permit free-form input.
 
-### 0. Recover Before Asking
+## Interpret Compact Responses
 
-If the input qualifies for bounded automatic recovery, restate the high-confidence intent and continue without a question when the next step is already authorized and reversible. For medium confidence, show the full recovery output and ask only when the competing interpretations change the next action. Skip recovery for exact choices, clear commands, factual receipts, explicit approvals, and missing evidence.
+Map letters to the displayed options in presentation order.
 
-### 1. Name The Unknowns
+- `A` selects one branch.
+- `A,C` selects both branches and processes them left-to-right.
+- `A>C>B` records preference order only. Execute nothing, create no
+  branch-selection receipt, and use the first-ranked branch to shape the next
+  read-only exploration or menu.
 
-Before asking, identify what is actually missing:
+Reject duplicate or unknown letters, mixed comma/ranking syntax, and a compound
+selection that combines `pause-or-deepen` with another option.
 
-- Goal: What outcome is wanted?
-- Authority: Who can approve?
-- Scope: What is included or excluded?
-- Evidence: What facts or receipts exist?
-- Constraints: Time, budget, capacity, tone, tools, safety, privacy.
-- Preference: Which tradeoff should be optimized?
-- Risk: What could go wrong if the system guesses?
+For a compound selection, retain each branch as a separate schema-v8 choice
+receipt with the same immutable option set, presentation timestamp, and
+option-set hash. Record outcomes independently. If an authorized action fails,
+stop before later selections and report which branches remain unexecuted.
 
-Ask only for information that changes the next action.
+Selection frequency remains excluded from recommendation learning, and the
+current Learn From Choices calibration freeze remains controlling.
 
-### 2. Choose The Elicitation Shape
+## Apply Visible Action Boundaries
 
-Use the lightest shape that works:
+Exploratory selections authorize only read-only navigation already in scope.
 
-- **Single direct question:** when one answer blocks progress.
-- **Multiple choice:** when the operator is choosing among known paths.
-- **Ranked options:** when priority order matters.
-- **10-question intake:** when building a new scope, offer, skill, customer intake, or strategy from sparse context.
-- **Hold questions:** when authority, privacy, safety, or basic context is missing.
+A selected decision option authorizes a bounded action only when its visible
+label begins with one of these reserved verbs:
 
-Prefer multiple choice when it lowers effort, but include an optional free-form escape hatch when nuance matters.
+- `Execute`
+- `Commit`
+- `Push`
+- `Send`
 
-### 3. Write Good Multiple Choice Questions
+Match reserved verbs case-insensitively as the label's first token. For example,
+`Push the focused commit` authorizes exactly that push, while
+`Review and push the focused commit` remains exploratory. Existing authority,
+approval, privacy, and safety controls still apply.
 
-Each question should:
+Every ledger receipt retains `authority_effect: none`: it records the
+operator's instruction but grants no tool access, different action, or broader
+authority.
 
-- Ask one decision.
-- Use plain language.
-- Offer 3-5 distinct options.
-- Make tradeoffs visible.
-- Avoid leading the operator toward the answer the agent wants.
-- Include "not sure yet" only when uncertainty is itself a useful state.
-- Map options to stable semantic roles: `recommended`, `alternative`,
-  `overlooked`, and `pause-or-deepen`.
-- Explain the recommendation from current evidence without making the question
-  leading.
-- Preserve a credible overlooked path, but never fabricate one.
+## Ask In Low-Load Batches
 
-Use labels like `A`, `B`, `C`, `D` when the operator may answer compactly.
+Use the lightest shape that resolves the blocker:
 
-A letter enters and develops the selected branch. It does not authorize
-mutation, spending, publication, communication, customer action, commit, or
-push. Name any later execution choice explicitly and retain existing authority
-checks.
+- Ask one direct question when one answer blocks progress.
+- Deliver structured intake in batches of 1-3 questions through native
+  controls, with at most ten questions total.
+- In text fallback, ask one blocking question at a time.
+- Stop the current and remaining batches immediately when a controlling
+  `Hold` is selected or stated.
 
-Good option text:
+Do not present a monolithic ten-question form. Ask only questions whose answers
+change the next action.
 
-```text
-A. Fast proof - prioritize the smallest artifact that can test demand this week.
-B. Trust proof - prioritize safety, authority, and review boundaries before any outward motion.
-C. Product proof - prioritize reusable templates and primitives even if delivery is slower.
-D. Not sure yet - ask a narrower follow-up.
-```
+## Preserve Authority
 
-Avoid:
+Ask who approves, what may be retained or shared, what must not be assumed, and
+what should trigger a hold when those facts materially affect the work.
 
-- fake choices
-- overlapping options
-- more questions than needed
-- asking the user to restate context already in the repo
-- asking open-ended questions when a structured choice would work
+Operator answers remain bounded to their lane. Parent or guardian authority
+controls child-facing Learning Core decisions. The owner controls Grace Gems
+commercial claims and customer messages. Human approval controls Media
+Production direction, publication, commitments, rights, spending, and hiring.
 
-### 4. Preserve Authority
+Do not convert a preference into a customer fact, transfer answers across
+project membranes without review, or treat an answer as professional legal,
+tax, clinical, educational, accounting, or compliance advice.
 
-If the elicitation involves a high-trust lane, include authority checks:
+## Continue After The Answer
 
-- Who approves this?
-- What may be saved or shared?
-- What should not be assumed?
-- What would require professional review?
-- What should trigger a pause?
+After receiving the required input:
 
-For Learning Core, parent or guardian authority controls child-facing decisions, saved/shared information, outside-support escalation, and plan use.
+1. Summarize the answer and its authority boundary.
+2. Name remaining assumptions or unknowns.
+3. Continue the authorized next branch or hold.
+4. Update durable repository memory only when the answer changes an approved
+   fact, scope, contract, template, checklist, skill, loop, or project state.
 
-For Grace Gems, owner approval controls product, pricing, policy, authenticity, shipping, return, certificate, rush-order, promotion, and customer-message claims.
-
-For Media Production, human approval controls creative direction, publication, client commitments, rights, spending, hiring, and external claims.
-
-### 5. Turn Answers Into Action
-
-After answers arrive:
-
-1. Summarize the choice in plain language.
-2. Name assumptions and unresolved unknowns.
-3. Identify the next artifact or action.
-4. Update repo memory only when the answer changes a durable fact, scope, template, skill, checklist, loop, or project state.
-5. If the answers reveal a recurring pattern, consider [../../docs/recursive-self-enhancement-checklist.md](../../docs/recursive-self-enhancement-checklist.md).
-
-Do not treat an answer as authority beyond the lane it belongs to.
-
-## Output Templates
-
-### Short Elicitation
-
-```text
-I need one choice before I can do this safely:
-
-A. <option and tradeoff>
-B. <option and tradeoff>
-C. <option and tradeoff>
-D. Not sure yet - I will narrow the question.
-```
-
-### 10-Question Intake
-
-```text
-Answer with the letter for each question, like `1A 2C 3B`.
-
-1. <question>
-A. <option>
-B. <option>
-C. <option>
-D. <option>
-
-...
-
-10. <question>
-A. <option>
-B. <option>
-C. <option>
-D. <option>
-```
-
-### Answer Synthesis
-
-```text
-Elicitation summary:
-- Direction chosen:
-- Authority boundary:
-- Constraints:
-- Open unknowns:
-- Next artifact/action:
-- Repo update needed: yes/no
-```
-
-## Guardrails
-
-Do not:
-
-- Use elicitation to delay obvious work.
-- Ask for private facts that are not needed.
-- Convert preferences into customer facts without confirmation.
-- Transfer answers across project lanes without membrane review.
-- Treat operator answers as legal, tax, clinical, educational, accounting, or compliance conclusions.
-- Ask children directly unless a parent-approved Student Operating System skill explicitly governs the interaction.
-- Store sensitive answers in durable docs unless the authority and privacy boundary allow it.
+Do not store sensitive answers unless the governing authority and privacy
+boundary allow it.
 
 ## Done When
 
-Elicitation is done when the missing human input has been converted into:
-
-- a clear next action,
-- a safe hold,
-- a scoped artifact,
-- or a durable repo update with authority boundaries intact.
+The minimum missing input has become a clear read-only branch, an exactly
+authorized bounded action, a safe hold, a scoped artifact, or an approved
+durable update.
