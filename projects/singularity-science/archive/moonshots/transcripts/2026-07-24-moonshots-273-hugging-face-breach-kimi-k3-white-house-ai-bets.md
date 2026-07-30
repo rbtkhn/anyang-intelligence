@@ -8,7 +8,10 @@ Capture method: operator-supplied pasted transcript
 
 ---
 
-Source body is preserved in the operator-supplied attachment at:
-C:\Users\rober\.codex\attachments\51ea3a30-b217-4ae3-a684-e3ed9cfd75f7\pasted-text.txt
+Source body is preserved in the original operator-supplied Codex task
+attachment and is not tracked in this repository.
+
+Attachment ID: `51ea3a30-b217-4ae3-a684-e3ed9cfd75f7`
+Attachment filename: `pasted-text.txt`
 
 The attachment contains the supplied transcript for this episode. This archive wrapper preserves its attribution, URL, capture date, and rights status without reproducing the full source body into a reusable or customer-facing artifact.

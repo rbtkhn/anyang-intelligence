@@ -11,9 +11,11 @@ Capture method: operator-supplied transcript attachment, `pasted-text.txt`; no e
 
 ## Transcript body
 
-The complete supplied transcript is retained at:
+The complete supplied transcript is retained in the original Codex task
+attachment and is not tracked in this repository.
 
-`C:\Users\rober\.codex\attachments\d7c4fe1f-e148-4c51-967c-444c762bfa64\pasted-text.txt`
+Attachment ID: `d7c4fe1f-e148-4c51-967c-444c762bfa64`
+Attachment filename: `pasted-text.txt`
 
 The episode covers, as source-attributed discussion: Jensen Huang's proposed Open Secure AI Alliance and the open/closed model debate; Anthropic's position on open-weight models and biological risk; reported Anthropic/OpenAI coordination in Washington; Claude 5 and Kimi K3; a Starship launch; abundance and longevity claims; synthetic data and model quality; proprietary data and partnerships; AI in education; and pre-IPO startup investing.
 
