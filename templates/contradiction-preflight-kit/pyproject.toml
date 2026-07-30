@@ -1,0 +1,9 @@
+[project]
+name = "contradiction-preflight"
+version = "1.0.0"
+description = "Deterministic, read-only contradiction preflight"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0"]
+
+[project.scripts]
+contradiction-check = "contradiction_check:main"

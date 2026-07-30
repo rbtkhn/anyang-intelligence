@@ -1,0 +1,21 @@
+schema_version: 1
+request_ref: thread:current-request
+scope: repository
+consequence_level: consequential
+as_of: 2026-07-30T18:00:00Z
+request_assertions:
+  - id: requested-branch
+    field: git.branch
+    value: main
+    scope: repository
+    source_ref: thread:current-request#branch
+    provisional: false
+controlling_facts:
+  - id: current-branch
+    field: git.branch
+    value: main
+    scope: repository
+    authority_role: canonical
+    source_ref: repo:git-preflight
+    as_of: 2026-07-30T17:59:00Z
+    fresh_until: 2026-07-30T18:05:00Z

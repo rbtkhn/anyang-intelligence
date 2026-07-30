@@ -1,0 +1,61 @@
+{
+  "aggregate_sha256": "39684013af39cc28d5a8184672efa502bd5effae0e039afea1732dc739f3c5d8",
+  "authority_effect": "none",
+  "file_count": 9,
+  "files": [
+    {
+      "bytes": 1052,
+      "path": "AGENT_CONTRACT.md",
+      "sha256": "b3f8c98383b6fb6225c5651131173d0f1248690b33bbccc9d404cec1b90baef7"
+    },
+    {
+      "bytes": 1919,
+      "path": "README.md",
+      "sha256": "e39f10007c81d67fb8b09b96c604424481686d7d71778ef9aeae4d09346a3343"
+    },
+    {
+      "bytes": 544,
+      "path": "contradiction-packet.example.yaml",
+      "sha256": "1cd70cd07dda24b419fe21c15aec2dfc59926a9d6f8f1aee9b8af75a8b4585e0"
+    },
+    {
+      "bytes": 1297,
+      "path": "contradiction_check.py",
+      "sha256": "d732499cb2e419db3dbbc489941f18c6ee3bb68d496b00e289e6033435ec8844"
+    },
+    {
+      "bytes": 474,
+      "generated_from": "cli/anyang_loop/contradiction_kernel/__init__.py",
+      "path": "contradiction_kernel/__init__.py",
+      "sha256": "378fb5547042b29511392050034fdf9ee49cc1028718412f889f935aa6480db2"
+    },
+    {
+      "bytes": 21038,
+      "generated_from": "cli/anyang_loop/contradiction_kernel/core.py",
+      "path": "contradiction_kernel/core.py",
+      "sha256": "1dd7cd648ccea8bdedd40cd2bce2e693b9e75e3eb5a40339ec02ec56c3669922"
+    },
+    {
+      "bytes": 1127,
+      "path": "host_policy.py",
+      "sha256": "ce2de1e21bfe4711c1722d992aa81baf4e0d52c23d9e5d136ba21a57603610e6"
+    },
+    {
+      "bytes": 252,
+      "path": "pyproject.toml",
+      "sha256": "f739bef6f1385da9c5131da831021cbd53b548ff5de93866c396906ec0c5c2e3"
+    },
+    {
+      "bytes": 2472,
+      "path": "tests/test_smoke.py",
+      "sha256": "1bba13c8e2f934c603b2f80624ccd3204fa5bc8bc6cb5ee5fa7599cbea1b0847"
+    }
+  ],
+  "generated_files": [
+    "contradiction_kernel/__init__.py",
+    "contradiction_kernel/core.py"
+  ],
+  "kit_id": "contradiction-preflight-transplant-v1",
+  "schema_version": 1,
+  "source_contract_commit": "2b454118aa05aee003124cd9d21c78de364bf4ab"
+}
