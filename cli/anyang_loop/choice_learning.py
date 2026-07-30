@@ -41,6 +41,22 @@ DISCOVERY_VALUE = (
 TERMINAL_RESULTS = set(OUTCOME_RESULTS)
 MAX_TEXT = 500
 MAX_JSON = 24000
+CHOICE_GUIDANCE_POLICIES = (
+    {
+        "id": "LFC-CAL-2026-07-30-01",
+        "tenant": "anyang-internal",
+        "workspace_id": "anyang-intelligence",
+        "lane": "repository",
+        "guidance_mode": "diagnostic-only",
+        "cohort_learning_ref": "LFC-CAL-2026-07-30-01",
+        "effective_at": "2026-07-30T06:00:00Z",
+        "observation_ends_at": "2026-08-06T06:00:00Z",
+        "freeze_until_explicit_disposition": True,
+        "source_ref": (
+            "repo:docs/learn-from-choices-calibration-pilot-2026-07-30.md"
+        ),
+    },
+)
 
 
 def load_choice_packet(path: str | Path) -> dict[str, Any]:
@@ -448,7 +464,26 @@ def choice_context(
                 bucket["evidence_tier"] = "pattern"
                 demoted.append(key)
         pattern_rows.append(bucket)
+    policy = _choice_guidance_policy(
+        tenant,
+        workspace_id,
+        lane,
+        as_of or now_utc(),
+    )
+    diagnostic_favored = list(favored)
+    diagnostic_demoted = list(demoted)
+    if policy and policy["ordering_frozen"]:
+        favored = []
+        demoted = []
     due_review = choice_review(connection, tenant, workspace_id, as_of)
+    rationale = _guidance_rationale(
+        len(resolved), guardrails, diagnostic_favored, diagnostic_demoted
+    )
+    if policy and policy["ordering_frozen"] and not guardrails:
+        rationale = (
+            f"Outcome patterns are diagnostic only under {policy['id']}; "
+            "recommendation ordering is frozen pending explicit disposition."
+        )
     return {
         "schema_version": 1,
         "tenant": tenant,
@@ -460,12 +495,16 @@ def choice_context(
         "outcome_patterns": pattern_rows,
         "guardrails": guardrails,
         "learning_refs": sorted(learning_refs),
+        "guidance_policy": policy,
         "recommendation_guidance": {
             "favored_option_keys": favored,
             "demoted_option_keys": demoted,
+            "diagnostic_favored_option_keys": diagnostic_favored,
+            "diagnostic_demoted_option_keys": diagnostic_demoted,
+            "ordering_frozen": bool(policy and policy["ordering_frozen"]),
             "selection_frequency_used": False,
             "preserve_overlooked_possibility": True,
-            "rationale": _guidance_rationale(len(resolved), guardrails, favored, demoted),
+            "rationale": rationale,
         },
         "due_outcome_review": due_review["choices"][:1],
         "ledger_fallback": False,
@@ -1372,6 +1411,39 @@ def _guidance_rationale(
     if resolved_count:
         return "Comparable outcomes remain thin; cite them without changing option order."
     return "No comparable outcome evidence is available; use current evidence and repository learning."
+
+
+def _choice_guidance_policy(
+    tenant: str,
+    workspace_id: str,
+    lane: str,
+    as_of: str,
+) -> dict[str, Any] | None:
+    reference = _timestamp(as_of)
+    for configured in CHOICE_GUIDANCE_POLICIES:
+        if (
+            configured["tenant"] != tenant
+            or configured["workspace_id"] != workspace_id
+            or configured["lane"] != lane
+        ):
+            continue
+        effective = _timestamp(configured["effective_at"])
+        observation_end = _timestamp(configured["observation_ends_at"])
+        if reference < effective:
+            phase = "scheduled"
+            frozen = False
+        elif reference < observation_end:
+            phase = "calibration"
+            frozen = configured["guidance_mode"] == "diagnostic-only"
+        else:
+            phase = "awaiting-disposition"
+            frozen = bool(configured["freeze_until_explicit_disposition"])
+        return {
+            **configured,
+            "phase": phase,
+            "ordering_frozen": frozen,
+        }
+    return None
 
 
 def _bounded(

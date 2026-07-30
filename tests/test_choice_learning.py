@@ -556,9 +556,28 @@ def test_outcome_learning_thresholds_guardrails_and_review_order(ledger):
     pattern = context["outcome_patterns"][0]
     assert pattern["resolved"] == 3
     assert pattern["evidence_tier"] == "pattern"
+    assert context["guidance_policy"]["id"] == "LFC-CAL-2026-07-30-01"
+    assert context["guidance_policy"]["phase"] == "calibration"
+    assert context["recommendation_guidance"]["ordering_frozen"] is True
+    assert context["recommendation_guidance"]["favored_option_keys"] == []
+    assert context["recommendation_guidance"][
+        "diagnostic_favored_option_keys"
+    ] == ["small-proof"]
     assert context["recommendation_guidance"]["selection_frequency_used"] is False
     assert context["recommendation_guidance"]["preserve_overlooked_possibility"] is True
     assert context["guardrails"][0]["choice_id"] == "CHOICE-1"
+
+    after_window = choice_context(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "repository",
+        "next-action",
+        "2026-08-07T12:00:00Z",
+    )
+    assert after_window["guidance_policy"]["phase"] == "awaiting-disposition"
+    assert after_window["recommendation_guidance"]["ordering_frozen"] is True
+    assert after_window["recommendation_guidance"]["favored_option_keys"] == []
 
     pending = selection("PENDING-ORDINARY", actor)
     record_choice_selection(connection, "anyang-internal", pending)

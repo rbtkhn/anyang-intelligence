@@ -97,6 +97,26 @@ frequency.
 After five resolved selections, `coffee` may offer one lightweight review
 branch to assess cognitive load, momentum, and discovery value.
 
+## Active Calibration Pilot
+
+For `anyang-internal / anyang-intelligence / repository`, follow the versioned
+[Learn From Choices Calibration Pilot](../../docs/learn-from-choices-calibration-pilot-2026-07-30.md)
+from 2026-07-30 through 2026-08-05, America/Denver.
+
+During this calibration window, recommendation ordering remains frozen against
+pilot outcomes even if a three-outcome pattern appears. Treat outcome patterns
+as diagnostic, continue to surface immediate authority or membrane guardrails,
+and never infer missing subjective measurements. At expiry, do not silently
+extend the pilot; outcome-informed reordering remains frozen until an explicit
+review disposition authorizes a later state.
+
+For every selection presented during the observation window in this exact
+scope, include `LFC-CAL-2026-07-30-01` in `learning_refs`. If the tag cannot be
+retained, disclose the gap and exclude that selection from the pilot cohort.
+The `choice context` policy is controlling for machine-readable
+`diagnostic-only` guidance; its favored and demoted patterns are evidence
+diagnostics, not permission to reorder options.
+
 ## Composition
 
 - `coffee` owns unresolved-outcome follow-up and retains its four-option ritual.

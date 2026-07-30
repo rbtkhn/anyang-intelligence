@@ -8,6 +8,7 @@ CANONICAL = ROOT / "skills/learn-from-choices/SKILL.md"
 ROUTE = ROOT / "skills/learn-from-choices/agents/openai.yaml"
 ADAPTER = ROOT / ".agents/skills/learn-from-choices/SKILL.md"
 ADAPTER_ROUTE = ROOT / ".agents/skills/learn-from-choices/agents/openai.yaml"
+CALIBRATION = ROOT / "docs/learn-from-choices-calibration-pilot-2026-07-30.md"
 
 
 def read(path: Path) -> str:
@@ -59,3 +60,29 @@ def test_composition_and_coffee_only_followup_contract():
     assert "at most one lightweight outcome-review branch" in coffee
     assert "unresolved choice" not in dream.lower()
     assert "A bare letter does not authorize mutation" in coffee
+
+
+def test_active_calibration_freezes_outcome_informed_reordering():
+    skill = read(CANONICAL)
+    calibration = read(CALIBRATION)
+    assert "../../docs/learn-from-choices-calibration-pilot-2026-07-30.md" in skill
+    assert "recommendation ordering remains frozen" in skill
+    assert "2026-07-30 through 2026-08-05" in skill
+    for phrase in (
+        "Status: `Conditional lifecycle — see Activation state`",
+        "Hold — repository persistence",
+        "Approved for pilot — activation scheduled",
+        "Active — Phase 1",
+        "Pilot route: `manual workflow`",
+        "Automation involved: `no`",
+        "Activation confirmed: `yes` only after repository persistence",
+        "Authority effect of every selection: `none`",
+        "Do not reorder, favor, or demote options using pilot outcomes",
+        "LFC-CAL-2026-07-30-01` to `learning_refs",
+        "Exclude an untagged selection from the pilot cohort",
+        "At most 1 per 5 resolved choices",
+        "Do not silently extend it",
+    ):
+        assert phrase.lower() in calibration.lower()
+    assert "LFC-CAL-2026-07-30-01` in `learning_refs" in skill
+    assert "`diagnostic-only` guidance" in skill
