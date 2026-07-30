@@ -563,6 +563,21 @@ not echo compared values. Exit `0` means `continue` or
 is `clarify` or `hold`. Every result has `authority_effect: none` and is
 inspectable guidance, not a reusable capability token.
 
+### Portable kernel
+
+The comparison engine is isolated in
+`cli/anyang_loop/contradiction_kernel/`. It has no Anyang privacy import and
+accepts an explicit `ContradictionPolicy` plus a host-supplied privacy scanner.
+The policy names the three consequence semantics, allowed authority roles,
+controlling roles, and packet bounds.
+
+`cli/anyang_loop/contradiction_policy.py` is the Anyang host adapter.
+`cli/anyang_loop/contradiction_preflight.py` is the compatibility facade used
+by the existing CLI and callers. A repository port should copy the kernel,
+define its own host policy and privacy scanner, and keep authority declarations
+outside the kernel. The kernel compares supplied facts; it does not discover
+or rank controlling sources.
+
 ## Transcript Intake
 
 Singularity Science transcript intake is archive-only infrastructure. It normalizes internal transcript files into:
