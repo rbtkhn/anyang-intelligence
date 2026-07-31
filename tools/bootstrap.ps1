@@ -14,5 +14,5 @@ if ($Refresh -and (Test-Path -LiteralPath $venv)) {
 if (-not (Test-Path -LiteralPath $venvPython -PathType Leaf)) {
     & $base -m venv $venv
 }
-& $venvPython -m pip install --disable-pip-version-check PyYAML pytest
+& $venvPython -m pip install --disable-pip-version-check -e "${root}[dev]"
 Write-Host "Persistent repository environment ready: $venvPython"

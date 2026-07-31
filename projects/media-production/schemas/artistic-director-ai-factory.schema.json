@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anyang-intelligence.local/schemas/artistic-director-ai-factory.schema.json",
+  "title": "Artistic Director AI Factory Records",
+  "description": "Validation-only schemas for the prepare-only Artistic Director AI Factory. These records grant no publication, spend, rights, client, or execution authority.",
+  "oneOf": [
+    { "$ref": "#/$defs/dashboard" },
+    { "$ref": "#/$defs/thesis" },
+    { "$ref": "#/$defs/batch" },
+    { "$ref": "#/$defs/canonEntry" },
+    { "$ref": "#/$defs/decision" },
+    { "$ref": "#/$defs/reference" },
+    { "$ref": "#/$defs/experiment" },
+    { "$ref": "#/$defs/review" },
+    { "$ref": "#/$defs/compounding" }
+  ],
+  "$defs": {
+    "id": { "type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$" },
+    "dateTime": { "type": "string", "format": "date-time" },
+    "status": { "type": "string", "enum": ["draft", "active", "held", "archived"] },
+    "holdReason": { "type": "string", "minLength": 1 },
+    "reviewer": { "type": "string", "minLength": 1 },
+    "dashboard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_type", "dashboard_id", "project_id", "lane", "canon_version", "status", "owner", "activation_state", "capacity_state", "spend_state"],
+      "properties": {
+        "record_type": { "const": "dashboard" },
+        "dashboard_id": { "$ref": "#/$defs/id" },
+        "project_id": { "$ref": "#/$defs/id" },
+        "lane": { "const": "media-production" },
+        "canon_version": { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/$defs/status" },
+        "owner": { "type": "string", "minLength": 1 },
+        "activation_state": { "type": "string", "enum": ["inactive", "pending", "active", "suspended"] },
+        "capacity_state": { "type": "string", "enum": ["unknown", "available", "constrained", "held"] },
+        "spend_state": { "type": "string", "enum": ["none", "pending", "approved", "held"] },
+        "last_reviewed_at": { "$ref": "#/$defs/dateTime" },
+        "next_review_at": { "$ref": "#/$defs/dateTime" }
+      }
+    },
+    "thesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_type", "thesis_id", "thesis_text", "intended_viewer_effect", "source_boundary", "do_not_invent", "do_not_copy", "status"],
+      "properties": {
+        "record_type": { "const": "thesis" },
+        "thesis_id": { "$ref": "#/$defs/id" },
+        "thesis_text": { "type": "string", "minLength": 1 },
+        "intended_viewer_effect": { "type": "string", "minLength": 1 },
+        "audience": { "type": "string" },
+        "source_boundary": { "type": "string", "minLength": 1 },
+        "active_constraints": { "type": "array", "items": { "type": "string" } },
+        "do_not_invent": { "type": "array", "items": { "type": "string" } },
+        "do_not_copy": { "type": "array", "items": { "type": "string" } },
+        "status": { "type": "string", "enum": ["draft", "active", "expired", "superseded", "held"] },
+        "brief_id": { "$ref": "#/$defs/id" },
+        "decision_receipt_id": { "$ref": "#/$defs/id" },
+        "created_at": { "$ref": "#/$defs/dateTime" },
+        "expires_at": { "$ref": "#/$defs/dateTime" }
+      },
+      "allOf": [
+        { "if": { "properties": { "status": { "const": "active" } } }, "then": { "anyOf": [{ "required": ["brief_id"] }, { "required": ["decision_receipt_id"] }] } }
+      ]
+    },
+    "batch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_type", "batch_id", "task_id", "brief_id", "thesis_id", "stage", "disposition", "reviewer", "stop_condition"],
+      "properties": {
+        "record_type": { "const": "batch" },
+        "batch_id": { "$ref": "#/$defs/id" },
+        "task_id": { "$ref": "#/$defs/id" },
+        "brief_id": { "$ref": "#/$defs/id" },
+        "thesis_id": { "$ref": "#/$defs/id" },
+        "stage": { "type": "string", "enum": ["draft", "prepared", "review", "selected", "held", "rejected", "canon_candidate", "closed"] },
+        "disposition": { "type": "string", "enum": ["explore", "shortlist", "brief", "hold", "reject"] },
+        "reviewer": { "$ref": "#/$defs/reviewer" },
+        "stop_condition": { "type": "string", "minLength": 1 },
+        "hold_reason": { "$ref": "#/$defs/holdReason" },
+        "decision_receipt_id": { "$ref": "#/$defs/id" },
+        "canon_entry_id": { "$ref": "#/$defs/id" },
+        "authority_reference": { "type": "string", "minLength": 1 },
+        "missing_asset_count": { "type": "integer", "minimum": 0 },
+        "rights_hold_count": { "type": "integer", "minimum": 0 },
+        "authority_hold_count": { "type": "integer", "minimum": 0 },
+        "estimated_review_minutes": { "type": "number", "minimum": 0 },
+        "budget_impact": { "type": "number", "minimum": 0 }
+      },
+      "allOf": [
+        { "if": { "properties": { "stage": { "const": "held" } } }, "then": { "required": ["hold_reason"] } },
+        { "if": { "properties": { "stage": { "const": "selected" } } }, "then": { "required": ["decision_receipt_id"] } },
+        { "if": { "properties": { "stage": { "const": "canon_candidate" } } }, "then": { "required": ["decision_receipt_id", "canon_entry_id"] } },
+        { "if": { "required": ["budget_impact"], "properties": { "budget_impact": { "exclusiveMinimum": 0 } } }, "then": { "required": ["authority_reference"] } }
+      ]
+    },
+    "canonEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_type", "canon_entry_id", "asset_type", "asset_name", "asset_version", "provenance", "owner", "review_status", "reuse_boundary", "decision_receipt_id"],
+      "properties": {
+        "record_type": { "const": "canon_entry" },
+        "canon_entry_id": { "$ref": "#/$defs/id" },
+        "asset_type": { "type": "string", "minLength": 1 },
+        "asset_name": { "type": "string", "minLength": 1 },
+        "asset_version": { "type": "string", "minLength": 1 },
+        "provenance": { "type": "string", "minLength": 1 },
+        "owner": { "type": "string", "minLength": 1 },
+        "review_status": { "type": "string", "enum": ["candidate", "accepted", "canon", "superseded", "held", "rejected"] },
+        "reuse_boundary": { "type": "string", "minLength": 1 },
+        "decision_receipt_id": { "$ref": "#/$defs/id" },
+        "supersedes_id": { "$ref": "#/$defs/id" },
+        "rights_status": { "type": "string", "enum": ["unknown", "internal", "licensed", "public_domain", "approved_for_use"] }
+      },
+      "allOf": [
+        { "if": { "properties": { "review_status": { "const": "canon" } } }, "then": { "required": ["rights_status"], "properties": { "rights_status": { "enum": ["internal", "licensed", "public_domain", "approved_for_use"] } } } },
+        { "if": { "properties": { "review_status": { "const": "superseded" } } }, "then": { "required": ["supersedes_id"] } }
+      ]
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_type", "decision_receipt_id", "decision_date", "decision_type", "alternatives_considered", "reasoning", "reviewer", "next_permitted_action", "stop_condition"],
+      "properties": {
+        "record_type": { "const": "decision" },
+        "decision_receipt_id": { "$ref": "#/$defs/id" },
+        "decision_date": { "$ref": "#/$defs/dateTime" },
+        "decision_type": { "type": "string", "enum": ["explore", "shortlist", "selected", "revised", "held", "rejected", "reversed"] },
+        "alternatives_considered": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "selected_option": { "type": "string" },
+        "rejected_options": { "type": "array", "items": { "type": "string" } },
+        "reasoning": { "type": "string", "minLength": 1 },
+        "reviewer": { "$ref": "#/$defs/reviewer" },
+        "next_permitted_action": { "type": "string", "minLength": 1 },
+        "stop_condition": { "type": "string", "minLength": 1 },
+        "prior_decision_id": { "$ref": "#/$defs/id" },
+        "canon_entry_id": { "$ref": "#/$defs/id" },
+        "authority_reference": { "type": "string", "minLength": 1 },
+        "publication_state": { "type": "string", "enum": ["not_approved", "approved", "held"] },
+        "spend_state": { "type": "string", "enum": ["none", "possible", "required", "held"] }
+      },
+      "allOf": [
+        { "if": { "properties": { "decision_type": { "const": "selected" } } }, "then": { "required": ["selected_option"] } },
+        { "if": { "properties": { "decision_type": { "const": "rejected" } } }, "then": { "required": ["rejected_options"] } },
+        { "if": { "properties": { "decision_type": { "const": "reversed" } } }, "then": { "required": ["prior_decision_id"] } },
+        { "if": { "required": ["publication_state"], "properties": { "publication_state": { "const": "approved" } } }, "then": { "required": ["authority_reference"] } }
+      ]
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_type", "reference_id", "source_location", "rights_status", "decision", "reviewer"],
+      "properties": {
+        "record_type": { "const": "reference" },
+        "reference_id": { "$ref": "#/$defs/id" },
+        "source_location": { "type": "string", "minLength": 1 },
+        "rights_status": { "type": "string", "enum": ["unknown", "internal", "licensed", "public_domain", "approved_for_use"] },
+        "decision": { "type": "string", "enum": ["accepted", "rejected", "held", "reference_only"] },
+        "reviewer": { "$ref": "#/$defs/reviewer" },
+        "what_works": { "type": "string" },
+        "what_fails": { "type": "string" },
+        "generic_lesson": { "type": "string" },
+        "copying_prohibition": { "type": "string" },
+        "decision_receipt_id": { "$ref": "#/$defs/id" }
+      },
+      "allOf": [
+        { "if": { "properties": { "rights_status": { "const": "unknown" } } }, "then": { "properties": { "decision": { "enum": ["held", "reference_only"] } } } },
+        { "if": { "properties": { "decision": { "const": "rejected" } } }, "then": { "required": ["what_fails"] } },
+        { "if": { "properties": { "decision": { "const": "reference_only" } } }, "then": { "required": ["copying_prohibition"] } }
+      ]
+    },
+    "experiment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_type", "experiment_id", "hypothesis", "canon_rule_challenged", "expected_effect", "result", "review_status", "next_action"],
+      "properties": {
+        "record_type": { "const": "experiment" },
+        "experiment_id": { "$ref": "#/$defs/id" },
+        "hypothesis": { "type": "string", "minLength": 1 },
+        "canon_rule_challenged": { "type": "string", "minLength": 1 },
+        "expected_effect": { "type": "string", "minLength": 1 },
+        "result": { "type": "string", "minLength": 1 },
+        "review_status": { "type": "string", "enum": ["draft", "review", "held", "closed"] },
+        "next_action": { "type": "string", "minLength": 1 },
+        "promotion_decision": { "type": "string", "enum": ["keep_experimental", "revise", "promote_to_canon", "archive", "reject"] },
+        "decision_receipt_id": { "$ref": "#/$defs/id" },
+        "canon_entry_id": { "$ref": "#/$defs/id" }
+      },
+      "allOf": [
+        { "if": { "required": ["promotion_decision"], "properties": { "promotion_decision": { "const": "promote_to_canon" } } }, "then": { "required": ["decision_receipt_id", "canon_entry_id"] } }
+      ]
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_type", "review_id", "artifact_id", "quality_status", "rights_status", "client_authority_status", "publication_status", "spend_status"],
+      "properties": {
+        "record_type": { "const": "review" },
+        "review_id": { "$ref": "#/$defs/id" },
+        "artifact_id": { "$ref": "#/$defs/id" },
+        "quality_status": { "type": "string", "enum": ["unknown", "pass", "revise", "hold", "reject"] },
+        "rights_status": { "type": "string", "enum": ["unknown", "pass", "hold", "reject"] },
+        "client_authority_status": { "type": "string", "enum": ["not_applicable", "pending", "approved", "held"] },
+        "publication_status": { "type": "string", "enum": ["not_approved", "approved", "held"] },
+        "spend_status": { "type": "string", "enum": ["none", "pending", "approved", "held"] },
+        "reviewer": { "$ref": "#/$defs/reviewer" },
+        "authority_reference": { "type": "string", "minLength": 1 },
+        "evidence_location": { "type": "string", "minLength": 1 },
+        "hold_reason": { "$ref": "#/$defs/holdReason" },
+        "next_review_trigger": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        { "if": { "properties": { "publication_status": { "const": "approved" } } }, "then": { "required": ["authority_reference"] } },
+        { "if": { "properties": { "rights_status": { "const": "pass" } } }, "then": { "required": ["evidence_location"] } },
+        { "if": { "properties": { "quality_status": { "const": "hold" } } }, "then": { "required": ["hold_reason", "next_review_trigger"] } }
+      ]
+    },
+    "compounding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_type", "ledger_entry_id", "source_signal", "assets_created", "reused_where", "outcome_signal", "evidence_location", "review_date"],
+      "properties": {
+        "record_type": { "const": "compounding" },
+        "ledger_entry_id": { "$ref": "#/$defs/id" },
+        "source_signal": { "type": "string", "minLength": 1 },
+        "assets_created": { "type": "array", "items": { "type": "string" } },
+        "reused_where": { "type": "array", "items": { "type": "string" } },
+        "reuse_count": { "type": "integer", "minimum": 0 },
+        "outcome_signal": { "type": "string", "minLength": 1 },
+        "preparation_minutes": { "type": ["number", "null"], "minimum": 0 },
+        "review_minutes": { "type": ["number", "null"], "minimum": 0 },
+        "cleanup_minutes": { "type": ["number", "null"], "minimum": 0 },
+        "new_burden": { "type": "string" },
+        "evidence_location": { "type": "string", "minLength": 1 },
+        "confidence": { "type": "string", "enum": ["unknown", "low", "medium", "high"] },
+        "review_date": { "type": "string", "format": "date" }
+      }
+    }
+  }
+}

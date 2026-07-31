@@ -12,5 +12,5 @@ if [ ! -x "$VENV/bin/python" ]; then
   python3 -m venv "$VENV"
 fi
 
-"$VENV/bin/python" -m pip install --disable-pip-version-check PyYAML pytest
+"$VENV/bin/python" -m pip install --disable-pip-version-check -e "$ROOT[dev]"
 printf 'Persistent repository environment ready: %s\n' "$VENV/bin/python"

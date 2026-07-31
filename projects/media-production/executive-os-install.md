@@ -36,7 +36,7 @@ Anyang Intelligence should govern Media Production as its parent organization:
 | Core work | Produce and distribute digital media and supplementary artistic assets |
 | Artistic Director monthly operating envelope | $1,000; no spend authority |
 | Governing creative role | Artistic Director, durable Executive Council position |
-| Position state | Vacant and inactive pending separate activation |
+| Position state | Interim human holder appointed; acceptance and runtime activation pending |
 | Compensation and operating-cost allocation | Missing; no category is pre-approved |
 | Primary cadence | Editorial planning, production, publishing, review |
 | Primary constraint | No activated Artistic Director capacity, Grace Gems client commitments, unallocated $1,000 monthly ceiling, quality control, publishing consistency, audience relevance |
@@ -68,6 +68,8 @@ Anyang Intelligence should govern Media Production as its parent organization:
 - Artistic direction options.
 - [Creative decision receipts](artistic-director-creative-decision-receipt-template.md).
 - [Accepted/rejected reference log](artistic-director-reference-log-template.md).
+- [Artistic Director–AI Factory Operating Contract](artistic-director-ai-factory-operating-contract.md).
+- [Artistic Director–AI Factory First Bounded Batch Brief](artistic-director-ai-factory-first-batch-brief.md).
 - Active productions.
 - Scripts and outlines.
 - Production assets.

@@ -54,3 +54,13 @@ def test_agent_runtime_contract_routes_validation_through_canonical_launcher() -
     assert ".\\tools\\validate.ps1" in contract
     assert "python3 tools/validate_repo.py" in contract
     assert "do not invoke pytest directly" in contract
+
+
+def test_persistent_bootstraps_install_declared_dev_dependencies() -> None:
+    powershell = (ROOT / "tools" / "bootstrap.ps1").read_text(encoding="utf-8")
+    shell = (ROOT / "tools" / "bootstrap.sh").read_text(encoding="utf-8")
+
+    assert '${root}[dev]' in powershell
+    assert '$ROOT[dev]' in shell
+    for text in (powershell, shell):
+        assert "PyYAML pytest" not in text

@@ -12,6 +12,8 @@ Purpose: identify where Media Production rules live, when they should load, how 
 | `executive-os-install.md` | Anyang Intelligence operator | System setup and periodic review | Operating model and review prompts | Medium | Keep department model, authority boundaries, cadence, and risk posture; avoid repeating task instructions |
 | `artistic-production-gate.md` | System Engineer and Chief Executive | Briefing and pre-production | Required decision gate | Low | Own activation, scope, source, capacity, budget, rights, claims, client authority, and evidence checks before persistent ideation or production |
 | `artistic-production-brief-template.md` | Chief Executive | Briefing and production handoff | Required structured record | Low | Own the objective, source boundary, concept directions, selected production scope, risks, evidence, and disposition |
+| `artistic-director-ai-factory-operating-contract.md` | System Engineer and Artistic Director | Prepare-only batch infrastructure after activation and task approval | Bounded operating contract | Medium | Own AI-factory preparation, creative-memory hierarchy, and stop conditions; defer authority and execution state to governing gates and the Council ledger |
+| `schemas/artistic-director-ai-factory.schema.json` | System Engineer | Structured-record validation | Validation-only schema | Medium | Validate record shape without treating a valid record as authority, source-of-truth state, or permission to progress |
 | `creative-abundance-quality-gate.md` | Human reviewer | Production review and pre-delivery | Required quality checklist | Low | Make this the owner for source fidelity, usefulness, readability, review readiness, and revision disposition; route unresolved authority questions onward |
 | `permissions-and-authority-review.md` | Anyang Intelligence operator | Whenever authority is ambiguous | Explicit hold/escalation review | Medium | Make this the sole owner for publication, delivery, rights clearance, spend, client commitment, claim approval, and contractor-authority boundaries |
 | `creative-production-operator-*.md` | Historical migration lineage | Never load for current work | Superseded contractor design | Low | Preserve explicit superseded status; do not use as Artistic Director activation, briefing, production, or review controls |
@@ -46,6 +48,10 @@ superseded contractor materials.
 Load the approved artistic-production brief, its source notes, and only the
 production guidance needed for the asset type. Do not treat orientation
 documents as a substitute for the approved brief.
+
+Load the AI-factory operating contract only when a current Artistic Director
+activation and exact task approval permit the named prepare-only batch. The
+first bounded batch brief remains a held preparation artifact until then.
 
 ### Review and pre-delivery
 

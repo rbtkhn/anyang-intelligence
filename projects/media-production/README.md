@@ -122,6 +122,12 @@ Use the [Artistic Production Brief
 Template](artistic-production-brief-template.md) for the approved objective,
 source boundary, concept directions, production scope, and evidence return.
 
+Use the [Artistic Director–AI Factory Operating
+Contract](artistic-director-ai-factory-operating-contract.md) only for
+prepare-only, batch-oriented internal infrastructure. Its [first bounded batch
+brief](artistic-director-ai-factory-first-batch-brief.md) remains held until
+Artistic Director activation and an exact task approval are current.
+
 Use the [Grace Gems activation
 proposal](../../docs/executive-council-artistic-director-grace-gems-activation-proposal-2026-07-25.md)
 and [owned-channel visual-design
