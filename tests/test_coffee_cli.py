@@ -86,3 +86,12 @@ def test_coffee_explicit_missing_db_fails_but_implicit_missing_db_falls_back(tmp
     monkeypatch.setenv("ANYANG_DATA_DIR", str(tmp_path / "empty-data-dir"))
     data = build_coffee_data(tmp_path)
     assert "git-only fallback" in data["current_picture"]
+
+
+def test_coffee_explicit_unreadable_db_fails_visibly(tmp_path: Path, capsys):
+    make_git_repo(tmp_path, DASHBOARD)
+    database = tmp_path / "unreadable.db"
+    database.write_text("not sqlite", encoding="utf-8")
+
+    assert main(["--repo", str(tmp_path), "--db", str(database)]) == 1
+    assert "unreadable" in capsys.readouterr().err.lower()

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import sys
 from pathlib import Path
 from typing import Callable
@@ -95,6 +94,16 @@ from .choice_learning import (
     validate_choice_selection_packet,
     verify_choice,
 )
+from .choice_continuity import (
+    choice_status,
+    clear_choice_continuity,
+    configure_choice_continuity,
+    render_choice_status_markdown,
+)
+from .external_ledger import resolve_ledger
+
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -489,6 +498,21 @@ def build_parser() -> argparse.ArgumentParser:
     choice = sub.add_parser("choice", help="Operate outcome-aware possibility navigation")
     choice_sub = choice.add_subparsers(required=True)
 
+    choice_configure = choice_sub.add_parser(
+        "configure", help="Explicitly configure external private choice continuity"
+    )
+    choice_configuration = choice_configure.add_mutually_exclusive_group(required=True)
+    choice_configuration.add_argument("--data-dir")
+    choice_configuration.add_argument("--clear", action="store_true")
+    _dry(choice_configure)
+    choice_configure.set_defaults(func=cmd_choice_configure)
+
+    choice_status_parser = choice_sub.add_parser(
+        "status", help="Inspect choice continuity without opening the ledger for writes"
+    )
+    _read_format(choice_status_parser)
+    choice_status_parser.set_defaults(func=cmd_choice_status)
+
     choice_context_parser = choice_sub.add_parser(
         "context", help="Read comparable outcomes without using selection frequency"
     )
@@ -547,13 +571,13 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def resolve_db(args: argparse.Namespace, *, allow_new: bool = False) -> Path:
-    raw = args.db
-    if not raw:
-        data_dir = os.environ.get("ANYANG_DATA_DIR")
-        if not data_dir:
-            raise OpsError("Provide --db or set ANYANG_DATA_DIR; project state is never created inside the repo implicitly")
-        raw = str(Path(data_dir) / "anyang-ops.db")
-    path = Path(raw).expanduser().resolve()
+    resolution = resolve_ledger(args.db)
+    if resolution.database is None:
+        raise OpsError(
+            "Provide --db, set ANYANG_DATA_DIR, or explicitly run choice configure; "
+            "project state is never created inside the repo implicitly"
+        )
+    path = resolution.database
     if not allow_new and not path.exists():
         raise OpsError(f"Database does not exist: {path}")
     return path
@@ -862,6 +886,27 @@ def cmd_council_backfill(args: argparse.Namespace) -> int:
             connection, args.tenant, args.cohort, args.tracker
         )
     return print_result(result.as_dict())
+
+
+def cmd_choice_configure(args: argparse.Namespace) -> int:
+    if args.db:
+        raise OpsError("choice configure uses --data-dir or --clear, not --db")
+    if args.clear:
+        return print_result(
+            clear_choice_continuity(REPO_ROOT, dry_run=args.dry_run)
+        )
+    return print_result(
+        configure_choice_continuity(
+            args.data_dir,
+            REPO_ROOT,
+            dry_run=args.dry_run,
+        )
+    )
+
+
+def cmd_choice_status(args: argparse.Namespace) -> int:
+    data = choice_status(resolve_ledger(args.db))
+    return _emit_read_output(args, data, render_choice_status_markdown)
 
 
 def cmd_choice_context(args: argparse.Namespace) -> int:

@@ -1,17 +1,17 @@
 from __future__ import annotations
 
 import json
-import os
 import sqlite3
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from .ops_db import connect, migrate
+from .ops_db import connect, connect_readonly, migrate
 from .ops_service import now_utc
 from .privacy_scan import scan_text
 from .repo_snapshot import RepoSnapshot
+from .external_ledger import resolve_ledger
 
 
 @dataclass(frozen=True)
@@ -49,19 +49,20 @@ class CadenceHandoff:
 
 
 def resolve_cadence_db(explicit: str | None, *, for_record: bool) -> Path | None:
-    if explicit:
-        path = Path(explicit).expanduser().resolve()
-        if not for_record and not path.exists():
-            raise ValueError(f"Cadence database does not exist: {path}")
-        return path
-    data_dir = os.environ.get("ANYANG_DATA_DIR")
-    if not data_dir:
+    resolution = resolve_ledger(explicit)
+    if resolution.database is None:
         if for_record:
-            raise ValueError("Dream --record requires --db or ANYANG_DATA_DIR")
+            raise ValueError(
+                "Dream --record requires --db, ANYANG_DATA_DIR, or explicit choice configuration"
+            )
         return None
-    path = (Path(data_dir).expanduser().resolve() / "anyang-ops.db")
-    if not for_record and not path.exists():
-        return None
+    path = resolution.database
+    if not path.exists():
+        if resolution.source == "environment" and not for_record:
+            return None
+        if resolution.source == "explicit" and for_record:
+            return path
+        raise ValueError(f"Configured cadence database does not exist: {path}")
     return path
 
 
@@ -131,7 +132,10 @@ def record_handoff(
 
 
 def latest_handoff(path: str | Path, repo_id: str) -> CadenceHandoff | None:
-    connection = connect(path)
+    try:
+        connection = connect_readonly(path)
+    except sqlite3.DatabaseError as exc:
+        raise ValueError(f"Configured cadence database is unreadable: {Path(path).resolve()}") from exc
     try:
         try:
             row = connection.execute(
@@ -139,8 +143,12 @@ def latest_handoff(path: str | Path, repo_id: str) -> CadenceHandoff | None:
                 WHERE repo_id = ? ORDER BY recorded_at DESC, id DESC LIMIT 1""",
                 (repo_id,),
             ).fetchone()
-        except sqlite3.OperationalError:
-            return None
+        except sqlite3.OperationalError as exc:
+            if "no such table" in str(exc).lower():
+                return None
+            raise ValueError(f"Configured cadence database is unreadable: {Path(path).resolve()}") from exc
+        except sqlite3.DatabaseError as exc:
+            raise ValueError(f"Configured cadence database is unreadable: {Path(path).resolve()}") from exc
     finally:
         connection.close()
     if not row:

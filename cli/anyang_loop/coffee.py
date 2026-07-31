@@ -6,6 +6,8 @@ from pathlib import Path
 from typing import Any
 
 from .cadence_store import CadenceHandoff, latest_handoff, resolve_cadence_db
+from .choice_continuity import choice_status
+from .external_ledger import resolve_ledger
 from .portfolio_state import PortfolioState, parse_portfolio_dashboard
 from .repo_snapshot import RepoSnapshot, collect_repo_snapshot
 
@@ -16,6 +18,7 @@ class CoffeeContext:
     portfolio: PortfolioState
     handoff: CadenceHandoff | None
     handoff_source: str
+    choice_continuity: dict[str, object]
 
 
 def build_coffee_context(repo_root: str | Path = ".", db_path: str | None = None) -> CoffeeContext:
@@ -23,10 +26,18 @@ def build_coffee_context(repo_root: str | Path = ".", db_path: str | None = None
     snapshot = collect_repo_snapshot(root, recent_limit=5)
     dashboard = _read(root / "projects" / "operating-portfolio-dashboard.md")
     portfolio = parse_portfolio_dashboard(dashboard)
+    resolution = resolve_ledger(db_path)
     database = resolve_cadence_db(db_path, for_record=False)
     handoff = latest_handoff(database, snapshot.repo_id) if database else None
-    source = str(database) if database else "git-only fallback"
-    return CoffeeContext(snapshot=snapshot, portfolio=portfolio, handoff=handoff, handoff_source=source)
+    source = resolution.source if database else "git-only fallback"
+    continuity = choice_status(resolution, include_learning=True)
+    return CoffeeContext(
+        snapshot=snapshot,
+        portfolio=portfolio,
+        handoff=handoff,
+        handoff_source=source,
+        choice_continuity=continuity,
+    )
 
 
 def build_coffee_data(repo_root: str | Path = ".", db_path: str | None = None) -> dict[str, Any]:
@@ -35,10 +46,15 @@ def build_coffee_data(repo_root: str | Path = ".", db_path: str | None = None) -
     obligations = _ordered_obligations(portfolio)[:5]
     waiting = list(portfolio.unresolved[:5]) or ["No external blocker is explicitly recorded in the portfolio dashboard."]
     failures = _handoff_failures(handoff)
+    choice_guardrails = context.choice_continuity["guardrails"]
     if failures:
         learning = "The last recorded closeout found verification failures; the next cycle should resolve evidence before expanding scope."
         improvement = handoff.tomorrow_inherits if handoff else "Resolve the recorded verification failure."
         reason = "validation-failure"
+    elif choice_guardrails:
+        learning = "Recorded choice outcomes contain an authority or membrane guardrail that must remain visible."
+        improvement = "Review the recorded choice boundary incident before expanding the affected workflow."
+        reason = "choice-boundary-guardrail"
     elif handoff:
         learning = f"The last recorded closeout bounded the next cycle: {handoff.tomorrow_inherits}"
         improvement = handoff.tomorrow_inherits
@@ -63,6 +79,7 @@ def build_coffee_data(repo_root: str | Path = ".", db_path: str | None = None) -
     menu = _menu(context, reason, improvement)
     latest = snapshot.recent_commits[0] if snapshot.recent_commits else "no recent commit visible"
     return {
+        "schema_version": 2,
         "current_picture": (
             f"Anyang Intelligence is operating from `{snapshot.root.name}` on `{snapshot.branch}` with a "
             f"{snapshot.worktree_state} worktree and remote state `{snapshot.sync_status}`. "
@@ -73,6 +90,7 @@ def build_coffee_data(repo_root: str | Path = ".", db_path: str | None = None) -
         "entropy_flags": entropy,
         "one_learning": learning,
         "improvement_candidate": improvement,
+        "choice_continuity": context.choice_continuity,
         "menu": menu,
         "decision_reason": reason,
         "snapshot": snapshot.as_dict(),
@@ -104,6 +122,11 @@ def render_coffee_text(data: dict[str, Any]) -> str:
             "",
             "Improvement candidate:",
             f"- {data['improvement_candidate']}",
+            "",
+            "Choice continuity:",
+            f"- Status: `{data['choice_continuity']['status']}`; "
+            f"retention available: {data['choice_continuity']['retention_available']}; "
+            f"due outcomes: {data['choice_continuity']['due_count']}.",
             "",
             "Coffee menu - reply A-D:",
             *data["menu"],
@@ -149,6 +172,13 @@ def _entropy(context: CoffeeContext, failures: list[dict[str, Any]]) -> list[str
         )
     if context.handoff and context.handoff.snapshot_fingerprint == snapshot.fingerprint:
         flags.append("Repository state matches the latest recorded dream snapshot.")
+    continuity = context.choice_continuity
+    if continuity["status"] not in {"ready", "unconfigured"}:
+        flags.append(f"Choice continuity is `{continuity['status']}` and cannot retain this session's selections.")
+    if continuity["guardrails"]:
+        flags.append(
+            f"Choice outcomes contain {len(continuity['guardrails'])} authority or membrane guardrail(s)."
+        )
     if not context.portfolio.priorities:
         flags.append("The portfolio dashboard has no parseable current priority order.")
     return flags or ["No material entropy flag is supported by the current repository and portfolio state."]
@@ -157,17 +187,28 @@ def _entropy(context: CoffeeContext, failures: list[dict[str, Any]]) -> list[str
 def _menu(context: CoffeeContext, reason: str, improvement: str) -> list[str]:
     blocker = (context.portfolio.first_external_blocker or "the highest-priority external input").rstrip(".")
     paid = (context.portfolio.first_paid_obligation or "the highest-priority paid obligation").rstrip(".")
-    recommended = {"validation-failure": "A", "dirty-worktree": "A", "external-blocker": "B", "paid-obligation": "B"}.get(reason, "A")
-    ship = (
-        "Ship the validated cadence or project slice after human review."
-        if not context.snapshot.dirty and not _handoff_failures(context.handoff)
-        else "Hold shipping until the selected slice is cleanly validated."
+    recommended = {
+        "validation-failure": "A",
+        "choice-boundary-guardrail": "A",
+        "dirty-worktree": "A",
+        "external-blocker": "B",
+        "paid-obligation": "B",
+    }.get(reason, "A")
+    review_candidate = context.choice_continuity["review_candidate"]
+    pause_action = (
+        f"Review the outcome of {review_candidate['selected_option_label']} without granting new authority."
+        if review_candidate
+        else (
+            "Preserve the current state until the selected slice is cleanly validated."
+            if context.snapshot.dirty or _handoff_failures(context.handoff)
+            else "Pause with the current validated state preserved."
+        )
     )
     options = {
         "A": ("Confirm", f"Validate the evidence behind: {improvement}"),
         "B": ("Scope", f"Clarify {blocker} before expanding {paid}."),
         "C": ("Deepen", "Inspect the relevant loop, membrane, and authority boundary without transferring private context."),
-        "D": ("Ship", ship),
+        "D": ("Review" if review_candidate else "Pause", pause_action),
     }
     return [
         f"{key}. {label}{' (recommended)' if key == recommended else ''} - {action}"

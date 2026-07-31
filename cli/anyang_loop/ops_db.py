@@ -600,6 +600,14 @@ def connect(path: str | Path, *, create_parent: bool = False) -> sqlite3.Connect
     return connection
 
 
+def connect_readonly(path: str | Path) -> sqlite3.Connection:
+    target = Path(path).expanduser().resolve()
+    connection = sqlite3.connect(f"{target.as_uri()}?mode=ro", uri=True)
+    connection.row_factory = sqlite3.Row
+    connection.execute("PRAGMA foreign_keys = ON")
+    return connection
+
+
 def migrate(connection: sqlite3.Connection, applied_at: str) -> None:
     connection.executescript(SCHEMA)
     _ensure_business_context_authority_scope(connection)

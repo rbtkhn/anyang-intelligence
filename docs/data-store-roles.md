@@ -37,7 +37,8 @@ Use SQLite when the system needs:
 
 SQLite rules:
 
-- Store operational databases outside the repository through `ANYANG_DATA_DIR` or an explicit external `--db` path.
+- Store operational databases outside the repository through an explicit
+  `--db` path, `ANYANG_DATA_DIR`, or the reviewed user-local choice pointer.
 - Treat generated Markdown, JSON, CSV, or XLSX reports as views unless a separate contract explicitly grants them authority.
 - Do not edit database files manually or resolve disagreement by copying one `.db` file over another.
 - Keep `.db`, `.db-wal`, and `.db-shm` files out of Git; repository history is not a database backup.

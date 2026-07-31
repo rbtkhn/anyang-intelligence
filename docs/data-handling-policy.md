@@ -27,7 +27,9 @@ The strictest applicable class wins.
 ## Access And Storage
 
 - Use [The File Extension Does Not Decide Which Record Governs](data-store-roles.md) to assign distinct authority to SQLite operational state, XLSX review/reconciliation surfaces, and CSV source or interchange files.
-- Set `ANYANG_DATA_DIR` to an operator-controlled location outside the repository, or pass an explicit external `--db` path.
+- Pass an explicit external `--db` path, set `ANYANG_DATA_DIR`, or use the
+  explicitly reviewed user-local choice configuration. Resolution follows that
+  order and must always remain outside the repository.
 - Limit tenant-store access to named operators with a current operating need.
 - Back up tenant state only through an operator-approved encrypted mechanism. Repository commits are not backups for customer data.
 - Do not place tenant databases, exports, screenshots, raw messages, or private attachments in repository subdirectories.

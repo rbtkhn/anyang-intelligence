@@ -63,16 +63,27 @@ choice-memory selections.
 ## Private Choice Memory
 
 Do not store an unselected footer. After the operator selects a branch, and
-only when a private ledger is configured, record the exact sanitized option set
-and selection atomically:
+first inspect continuity without writing:
 
 ```text
-.\tools\run.ps1 ops --db <private-db> choice select --tenant <tenant> --packet selection.yaml --dry-run
+.\tools\run.ps1 ops choice status --format json
+```
+
+Only when the result is `ready`, record the exact sanitized option set and
+selection atomically. Run the existing dry run before the write:
+
+```text
+.\tools\run.ps1 ops choice select --tenant anyang-internal --packet selection.yaml --dry-run
 ```
 
 Review the dry run before mutation. The selection receipt grants no execution
 authority. Link evidence by reference; never place private evidence bodies in
-the ledger.
+the ledger. A retention failure does not block the selected branch: disclose it
+once and exclude the selection from the calibration cohort.
+
+Configure continuity only through the explicit, separately authorized command
+`choice configure --data-dir <absolute-external-directory>`. Never create or
+activate private operating state merely because a footer was selected.
 
 Outcome events are optional during ordinary work:
 

@@ -114,6 +114,22 @@ letter records the exact sanitized possibility set only when a private ledger is
 configured; the receipt means “navigate into this branch” and grants no
 execution authority.
 
+Configure the external ledger pointer explicitly when continuity should survive
+new shells and agent sessions. The command initializes only the sanitized
+`anyang-internal / anyang-intelligence / repository` choice scope and writes a
+versioned user-local pointer outside Git. Always inspect the dry run first:
+
+```powershell
+.\tools\run.ps1 ops choice configure --data-dir C:\private\anyang-intelligence --dry-run
+.\tools\run.ps1 ops choice configure --data-dir C:\private\anyang-intelligence
+.\tools\run.ps1 ops choice status --format json
+```
+
+Resolution precedence is explicit `--db`, `ANYANG_DATA_DIR`, then user-local
+configuration. `choice status` and Coffee inspect SQLite read-only and never
+migrate it. Clear only the pointerâ€”never the ledgerâ€”with `choice configure
+--clear --dry-run` followed by the reviewed command without `--dry-run`.
+
 ```powershell
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db choice context --tenant anyang-internal --workspace anyang-intelligence --lane repository --kind next-action --format json
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db choice select --tenant anyang-internal --packet selection.yaml --dry-run

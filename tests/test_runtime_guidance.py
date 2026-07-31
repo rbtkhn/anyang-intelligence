@@ -46,6 +46,10 @@ def test_active_skills_route_repo_commands_through_launchers() -> None:
     assert ".\\tools\\run.ps1 project harness" in harness
     assert ".\\tools\\validate.ps1" in coffee
     assert ".\\tools\\validate.ps1" in dream
+    route = (ROOT / "skills" / "coffee" / "agents" / "openai.yaml").read_text(
+        encoding="utf-8"
+    )
+    assert "allow_implicit_invocation: true" in route
 
 
 def test_agent_runtime_contract_routes_validation_through_canonical_launcher() -> None:

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Coffee"
+  short_description: "Restore context and choose the next move"
+  default_prompt: "Use $coffee to restore operating context and choose the next bounded move."
+policy:
+  allow_implicit_invocation: true

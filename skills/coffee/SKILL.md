@@ -1,10 +1,6 @@
 ---
 name: coffee
-preferred_activation: coffee
 description: Native Anyang Intelligence re-entry ritual for operating-substrate. Use for coffee, where are we, what next, pause and reflect, reentry, or current state to restore operating context, name live obligations, extract one learning, and choose the next A-D move using Anyang Intelligence docs, customers, skills, and CLIs.
-category: operator-coherence
-status: active
-scope_class: repo-governed
 ---
 
 # Coffee
@@ -30,6 +26,12 @@ When tools are available, prefer the native command:
 On macOS or Linux, use `python3 tools/run_repo.py coffee --repo .`.
 
 When an external cadence database is configured, native coffee reads the latest explicitly recorded dream handoff for this repository. Without one, it falls back honestly to Git and repository docs.
+
+Inspect `choice status` during re-entry. When continuity is ready, read the
+choice context and due-outcome review without migrating or writing SQLite.
+Surface at most one outcome-review branch in the pause/deepen slot. Treat an
+unconfigured ledger as an honest Git-only fallback; fail visibly when a
+user-local configuration names an unreadable database.
 
 If the command is unavailable, perform the same read-only procedure manually from the inputs below.
 

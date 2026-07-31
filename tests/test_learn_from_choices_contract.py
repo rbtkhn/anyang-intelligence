@@ -47,6 +47,9 @@ def test_universal_contract_separates_navigation_from_execution():
     assert "Repeated selection alone never changes ordering" in skill
     assert "Never promote a repository learning automatically" in skill
     assert "If the private ledger is unavailable, continue navigation" in skill
+    assert "choice status --format json" in skill
+    assert "retention failure does not block" in skill.lower()
+    assert "choice configure --data-dir" in skill
 
 
 def test_composition_and_coffee_only_followup_contract():
