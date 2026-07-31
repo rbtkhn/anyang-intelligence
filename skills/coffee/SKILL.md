@@ -11,7 +11,8 @@ description: Native Anyang Intelligence re-entry ritual for operating-substrate.
 
 Read and follow the complete
 [`learn-from-choices`](../learn-from-choices/SKILL.md) contract. Coffee owns
-follow-up for unresolved choice outcomes and keeps exactly four options.
+exactly four options and does not solicit unresolved choice outcomes under Lite
+defaults.
 
 The operator may type only `coffee`. Do not require them to say `anyang-coffee`, `native coffee`, or a repo qualifier.
 
@@ -27,11 +28,10 @@ On macOS or Linux, use `python3 tools/run_repo.py coffee --repo .`.
 
 When an external cadence database is configured, native coffee reads the latest explicitly recorded dream handoff for this repository. Without one, it falls back honestly to Git and repository docs.
 
-Inspect `choice status` during re-entry. When continuity is ready, read the
-choice context and due-outcome review without migrating or writing SQLite.
-Surface at most one outcome-review branch in the pause/deepen slot. Treat an
-unconfigured ledger as an honest Git-only fallback; fail visibly when a
-user-local configuration names an unreadable database.
+When configured choice data is already available to native Coffee, use it only
+to keep recorded authority or membrane guardrails visible. Do not inspect
+choice context, solicit unresolved outcomes, or reserve the pause/deepen slot
+for a choice review under Lite defaults.
 
 If the command is unavailable, perform the same read-only procedure manually from the inputs below.
 
@@ -96,9 +96,8 @@ Do not require unavailable strategy-codex-only files such as `scripts/operator_c
 7. Detect entropy: identify what is becoming stale, contradictory, overbuilt, under-scoped, unsupported by evidence, or too dependent on chat memory.
 8. Extract one supported learning from the last recorded dream or durable repo change. If no supported learning exists, say so rather than inventing one.
 9. Choose one possible system improvement that would make the next cycle smarter: a skill, template, CLI check, customer doc update, quality gate, loop example, or priority decision.
-10. If a private ledger is explicitly configured, inspect `choice review` and
-    include at most one lightweight outcome-review branch. Offer it only through
-    Coffee; after five resolved selections it may become a system-level pulse.
+10. If native Coffee reports a recorded authority or membrane guardrail, keep
+    it visible without turning unresolved choices into follow-up work.
 11. Produce a concise re-entry brief with the sections below.
 12. Do not edit, stage, commit, or push by default. `coffee` is read-only unless the operator explicitly authorizes the named action.
 

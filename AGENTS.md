@@ -31,6 +31,11 @@ express preference only and execute nothing. Neutral factual elicitation follows
 the canonical `skills/elicitation/SKILL.md` exception rather than recommendation
 roles.
 
+Under Learn From Choices Lite, ordinary selections perform no choice-ledger
+lookup or write. Durable learning is exceptional: it requires supported outcome
+evidence and a separately action-labeled, operator-selected retention step.
+Selection frequency never supplies learning evidence.
+
 When a consequential request assertion may conflict with repository state,
 follow Elicitation's structured contradiction preflight before asking or
 acting. The preflight compares only explicitly supplied controlling facts,

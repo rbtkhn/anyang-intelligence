@@ -10,6 +10,7 @@ ADAPTER = ROOT / ".agents/skills/learn-from-choices/SKILL.md"
 ADAPTER_ROUTE = ROOT / ".agents/skills/learn-from-choices/agents/openai.yaml"
 CALIBRATION = ROOT / "docs/learn-from-choices-calibration-pilot-2026-07-30.md"
 CONTINUITY = ROOT / "docs/learn-from-choices-continuity-contract-v0.2.md"
+LITE = ROOT / "docs/learn-from-choices-lite-v1.md"
 
 
 def read(path: Path) -> str:
@@ -34,6 +35,7 @@ def test_skill_is_implicit_cataloged_and_discoverable():
 def test_universal_contract_separates_navigation_from_execution():
     agents = read(ROOT / "AGENTS.md")
     skill = read(CANONICAL)
+    normalized = " ".join(skill.split())
     for phrase in (
         "every final user-facing response",
         "three or four",
@@ -45,11 +47,11 @@ def test_universal_contract_separates_navigation_from_execution():
         assert phrase.lower() in (agents + skill).lower()
     assert "Do not store an unselected footer" in skill
     assert "Repeated selection alone never changes ordering" in skill
-    assert "Never promote a repository learning automatically" in skill
-    assert "If the private ledger is unavailable, continue navigation" in skill
-    assert "choice status --format json" in skill
-    assert "retention failure does not block" in skill.lower()
-    assert "choice configure --data-dir" in skill
+    assert "Never promote a repository learning automatically" in normalized
+    assert "Do not inspect `choice status`" in skill
+    assert "ordinary selected" in skill.lower()
+    assert "Persist nothing automatically" in skill
+    assert "Execute retain this learning" in normalized
 
 
 def test_composition_and_coffee_only_followup_contract():
@@ -62,7 +64,7 @@ def test_composition_and_coffee_only_followup_contract():
     assert "learn-from-choices" in elicitation
     assert "outcome_recorded" in bravo
     assert "outcome_recorded" in friction
-    assert "at most one lightweight outcome-review branch" in coffee
+    assert "does not solicit unresolved choice outcomes" in coffee
     assert "unresolved choice" not in dream.lower()
     assert "select the displayed option" in coffee
     assert "binds its selected letter to that named bounded action" in " ".join(
@@ -73,9 +75,10 @@ def test_composition_and_coffee_only_followup_contract():
 def test_active_calibration_freezes_outcome_informed_reordering():
     skill = read(CANONICAL)
     calibration = read(CALIBRATION)
+    normalized_calibration = " ".join(calibration.split()).lower()
     assert "../../docs/learn-from-choices-calibration-pilot-2026-07-30.md" in skill
-    assert "recommendation ordering remains frozen" in skill
-    assert "2026-07-30 through 2026-08-05" in skill
+    assert "recommendation ordering remains frozen" in skill.lower()
+    assert "held for continuity-provenance review" in skill
     for phrase in (
         "Status: `Conditional lifecycle — see Activation state`",
         "Hold — repository persistence",
@@ -86,14 +89,36 @@ def test_active_calibration_freezes_outcome_informed_reordering():
         "Activation confirmed: `yes` only after repository persistence",
         "Authority effect of every selection: `none`",
         "Do not reorder, favor, or demote options using pilot outcomes",
-        "LFC-CAL-2026-07-30-01` to `learning_refs",
-        "Exclude an untagged selection from the pilot cohort",
-        "At most 1 per 5 resolved choices",
         "Do not silently extend it",
+        "Lite transition hold",
+        "presently configured ledger found zero choice prompts",
+        "interim operational hold",
     ):
-        assert phrase.lower() in calibration.lower()
-    assert "LFC-CAL-2026-07-30-01` in `learning_refs" in skill
-    assert "`diagnostic-only` guidance" in skill
+        assert phrase.lower() in normalized_calibration
+    assert "Do not tag or retain ordinary Lite" in skill
+    assert "Recommendation ordering remains frozen" in skill
+
+
+def test_lite_default_has_zero_automatic_choice_persistence():
+    agents = read(ROOT / "AGENTS.md")
+    skill = read(CANONICAL)
+    lite = read(LITE)
+    cli = read(ROOT / "cli/README.md")
+    coffee = read(ROOT / "skills/coffee/SKILL.md")
+    normalized_lite = " ".join(lite.split()).lower()
+    for phrase in (
+        "ordinary selection causes zero choice-ledger calls",
+        "creates no selection packet or ledger receipt",
+        "causes no retention warning",
+        "No outcome or repository learning is persisted automatically",
+        "SQLite remains schema v8",
+        "advanced manual audit surface",
+    ):
+        assert phrase.lower() in normalized_lite
+    assert "ordinary selections perform no choice-ledger" in agents
+    assert "Follow the versioned [Lite v1 contract]" in skill
+    assert "No selection or outcome is persisted automatically" in cli
+    assert "does not solicit unresolved choice outcomes" in coffee
 
 
 def test_continuity_v02_contract_is_explicit_and_canonical():

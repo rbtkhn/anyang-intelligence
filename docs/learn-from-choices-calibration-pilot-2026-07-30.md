@@ -6,6 +6,21 @@ Pilot reference: `LFC-CAL-2026-07-30-01`
 
 Specification version: `LFC-CAL-v1.0`
 
+## Lite transition hold — 2026-07-31
+
+Automatic selected-branch capture is held pending continuity-provenance review.
+A read-only operator audit of the presently configured ledger found zero choice
+prompts, so that surface does not reproduce the historical baseline below. The
+baseline is preserved as recorded; this observation does not claim that the
+prior private receipts never existed or authorize rewriting either source.
+
+Learn From Choices Lite is now the default interaction contract. Ordinary
+letter selections are not tagged or retained, Coffee does not solicit
+unresolved outcomes, and the schema-v8 ledger remains available only through
+explicit manual invocation. Recommendation ordering remains frozen. This is an
+interim operational hold, not an automatic end-of-phase disposition or an
+authority expansion.
+
 Period: `2026-07-30` through `2026-08-05`, America/Denver
 
 ## Activation state

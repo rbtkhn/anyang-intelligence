@@ -106,13 +106,17 @@ bodies are prohibited in `anyang-internal`; store approved references instead.
 An approval event documents authority but never grants tool access, permission,
 or execution capability.
 
-### Learn-from-choices private memory
+### Learn-from-choices manual audit compatibility
+
+Learn From Choices Lite does not call these interfaces for ordinary letter
+navigation. The schema-v8 ledger remains available as an explicitly invoked,
+advanced audit surface for existing receipts and deliberate manual workflows.
+No selection or outcome is persisted automatically.
 
 Schema v8 adds immutable selected-choice prompts and append-only, hash-chained
-choice events. An unselected response footer creates no record. Selecting a
-letter records the exact sanitized possibility set only when a private ledger is
-configured; the receipt means “navigate into this branch” and grants no
-execution authority.
+choice events. An unselected response footer creates no record. An ordinary
+selected letter also creates no record under Lite defaults. A manually created
+receipt records navigation and grants no execution authority.
 
 Configure the external ledger pointer explicitly when continuity should survive
 new shells and agent sessions. The command initializes only the sanitized
@@ -185,11 +189,12 @@ Recommendation guidance uses observed usefulness, burden, momentum, discovery,
 and outcomes. Selection frequency is explicitly excluded. One or two outcomes
 remain thin evidence; at least three comparable outcomes with two consistent
 results and no material contradiction may influence the recommended branch.
-Authority or membrane incidents surface immediately. If the ledger is
-unavailable, navigation continues without retention and only operator-approved
-`RL-*` learning may enter Git.
+Authority or membrane incidents surface immediately when the manual audit
+surface is invoked. Ordinary navigation is independent of ledger availability,
+and only operator-approved `RL-*` learning may enter Git.
 
-After five resolved, non-superseded selections, `choice review` also renders a
+When explicitly invoked after five resolved, non-superseded selections,
+`choice review` renders a
 stable initial-cohort scorecard. It reports lower cognitive load, advanced
 momentum, new-useful-path discovery, result distribution, optional rework, and
 authority or membrane incidents. Missing dimensions stay out of denominators.

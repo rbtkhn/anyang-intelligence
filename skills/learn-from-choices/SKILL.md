@@ -1,6 +1,6 @@
 ---
 name: learn-from-choices
-description: Outcome-aware possibility navigation for every final response. Use implicitly to offer 3-4 meaningful adjacent paths, bind a letter to the displayed option and its explicit action boundary, and learn from observed usefulness without creating a preference bubble.
+description: Lightweight, outcome-aware possibility navigation for every final response. Use implicitly to offer 3-4 meaningful adjacent paths, bind a letter to the displayed option and its explicit action boundary, and retain only explicit operator-approved learning without creating a preference bubble.
 ---
 
 # Learn From Choices
@@ -62,43 +62,22 @@ choice-memory selections.
 
 ## Private Choice Memory
 
-Do not store an unselected footer. After the operator selects a branch, and
-first inspect continuity without writing:
+Follow the versioned [Lite v1 contract](../../docs/learn-from-choices-lite-v1.md)
+as the default. Do not store an unselected footer or an ordinary selected
+branch. Do not inspect `choice status`, construct a selection packet, write
+SQLite, or warn about missing retention merely because the operator selected a
+letter.
 
-```text
-.\tools\run.ps1 ops choice status --format json
-```
+Use `bravo` and `friction` only as candidate outcome signals when their
+relationship to a branch is supported. Leave unknown cognitive load, momentum,
+and discovery dimensions as `Missing`. Persist nothing automatically. Durable
+learning requires a separately displayed and selected action such as `Execute
+retain this learning`, plus the existing authority and privacy boundary.
 
-Only when the result is `ready`, record the exact sanitized option set and
-selection atomically. Run the existing dry run before the write:
-
-```text
-.\tools\run.ps1 ops choice select --tenant anyang-internal --packet selection.yaml --dry-run
-```
-
-Review the dry run before mutation. The selection receipt grants no execution
-authority. Link evidence by reference; never place private evidence bodies in
-the ledger. A retention failure does not block the selected branch: disclose it
-once and exclude the selection from the calibration cohort.
-
-Configure continuity only through the explicit, separately authorized command
-`choice configure --data-dir <absolute-external-directory>`. Never create or
-activate private operating state merely because a footer was selected.
-
-Outcome events are optional during ordinary work:
-
-```text
-.\tools\run.ps1 ops --db <private-db> choice outcome <CHOICE_ID> --packet outcome.yaml --dry-run
-```
-
-Use `bravo` and `friction` as outcome signals when the relationship to a
-selected branch is supported. Leave unknown cognitive load, momentum, and
-discovery dimensions as `Missing`. Unresolved choices return only through
-`coffee`; do not interrupt ordinary work or `dream` to solicit them.
-
-If the private ledger is unavailable, continue navigation, say that the
-selection was not retained when retention would otherwise be expected, and use
-only operator-approved repository `RL-*` learning. Never promote a repository learning automatically.
+Only sanitized, operator-approved repository `RL-*` learning may cross
+sessions under Lite defaults. Never promote a repository learning
+automatically. The schema-v8 choice ledger and CLI remain an advanced manual
+audit surface available only through explicit invocation.
 
 ## Recursive Learning
 
@@ -127,32 +106,23 @@ frequency.
 - Keep tenant outcomes in their lane. Cross membranes only with sanitized,
   operator-approved learning.
 
-After five resolved selections, `coffee` may offer one lightweight review
-branch to assess cognitive load, momentum, and discovery value.
+After at least five explicit, comparable, outcome-supported learnings, a
+read-only review may recommend a contract change. The operator must separately
+authorize that change.
 
-## Active Calibration Pilot
+## Held Calibration Pilot
 
-For `anyang-internal / anyang-intelligence / repository`, follow the versioned
+For `anyang-internal / anyang-intelligence / repository`, the versioned
 [Learn From Choices Calibration Pilot](../../docs/learn-from-choices-calibration-pilot-2026-07-30.md)
-from 2026-07-30 through 2026-08-05, America/Denver.
-
-During this calibration window, recommendation ordering remains frozen against
-pilot outcomes even if a three-outcome pattern appears. Treat outcome patterns
-as diagnostic, continue to surface immediate authority or membrane guardrails,
-and never infer missing subjective measurements. At expiry, do not silently
-extend the pilot; outcome-informed reordering remains frozen until an explicit
-review disposition authorizes a later state.
-
-For every selection presented during the observation window in this exact
-scope, include `LFC-CAL-2026-07-30-01` in `learning_refs`. If the tag cannot be
-retained, disclose the gap and exclude that selection from the pilot cohort.
-The `choice context` policy is controlling for machine-readable
-`diagnostic-only` guidance; its favored and demoted patterns are evidence
-diagnostics, not permission to reorder options.
+is held for continuity-provenance review. Do not tag or retain ordinary Lite
+selections. Recommendation ordering remains frozen against pilot outcomes and
+selection frequency until an explicit later disposition authorizes a change.
+Continue to surface immediate authority or membrane guardrails.
 
 ## Composition
 
-- `coffee` owns unresolved-outcome follow-up and retains its four-option ritual.
+- `coffee` retains its four-option ritual but does not solicit unresolved choice
+  outcomes under Lite defaults.
 - `elicitation` uses this contract for low-load decision menus.
 - `bravo` may supply positive or mixed outcome evidence.
 - `friction` may supply mixed or unsuccessful outcome evidence.

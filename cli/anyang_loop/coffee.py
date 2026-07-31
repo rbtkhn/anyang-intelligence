@@ -194,21 +194,16 @@ def _menu(context: CoffeeContext, reason: str, improvement: str) -> list[str]:
         "external-blocker": "B",
         "paid-obligation": "B",
     }.get(reason, "A")
-    review_candidate = context.choice_continuity["review_candidate"]
     pause_action = (
-        f"Review the outcome of {review_candidate['selected_option_label']} without granting new authority."
-        if review_candidate
-        else (
-            "Preserve the current state until the selected slice is cleanly validated."
-            if context.snapshot.dirty or _handoff_failures(context.handoff)
-            else "Pause with the current validated state preserved."
-        )
+        "Preserve the current state until the selected slice is cleanly validated."
+        if context.snapshot.dirty or _handoff_failures(context.handoff)
+        else "Pause with the current validated state preserved."
     )
     options = {
         "A": ("Confirm", f"Validate the evidence behind: {improvement}"),
         "B": ("Scope", f"Clarify {blocker} before expanding {paid}."),
         "C": ("Deepen", "Inspect the relevant loop, membrane, and authority boundary without transferring private context."),
-        "D": ("Review" if review_candidate else "Pause", pause_action),
+        "D": ("Pause", pause_action),
     }
     return [
         f"{key}. {label}{' (recommended)' if key == recommended else ''} - {action}"

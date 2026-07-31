@@ -170,7 +170,8 @@ def test_ready_coffee_reads_due_choice_without_writing_database(tmp_path: Path, 
     assert result["choice_continuity"]["status"] == "ready"
     assert result["choice_continuity"]["due_count"] == 1
     assert result["choice_continuity"]["ordering_frozen"] is True
-    assert result["menu"][3].startswith("D. Review")
+    assert result["menu"][3].startswith("D. Pause")
+    assert "outcome" not in result["menu"][3].lower()
     assert len(result["menu"]) == 4
     assert "Choice continuity:" in render_coffee_text(result)
     assert database.read_bytes() == before
