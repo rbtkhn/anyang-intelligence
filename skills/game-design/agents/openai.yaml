@@ -1,0 +1,6 @@
+interface:
+  display_name: "Game Design"
+  short_description: "Learn, design, prototype, and critique games"
+  default_prompt: "Use $game-design to teach one useful design concept and help me test it through the smallest meaningful exercise."
+policy:
+  allow_implicit_invocation: true

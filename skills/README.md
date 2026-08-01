@@ -6,6 +6,7 @@ Skills are reusable operating procedures for maintaining the Anyang Intelligence
 
 | Skill | Use |
 | --- | --- |
+| [game-design](game-design/SKILL.md) | Use for Robert's game-design apprenticeship: learn concepts, explore meaningful possibilities, form mechanic hypotheses, scope prototypes, critique play evidence, and improve the agent only through explicit accepted learning. |
 | [learn-from-choices](learn-from-choices/SKILL.md) | Use implicitly for every final response to reveal 3-4 meaningful next possibilities, preserve execution authority, and learn from observed outcomes rather than selection frequency. |
 | [coffee](coffee/SKILL.md) | Use for native Anyang Intelligence re-entry and recursive self-improvement: current picture, live obligations, entropy flags, one learning, and next A-D actions grounded in operating-substrate. |
 | [bravo](bravo/SKILL.md) | Use for native Anyang Intelligence positive-signal capture: identify what worked, extract the reusable pattern, and decide whether it is a note, candidate, or repo-visible improvement. |
