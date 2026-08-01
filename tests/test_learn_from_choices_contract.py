@@ -91,7 +91,8 @@ def test_active_calibration_freezes_outcome_informed_reordering():
         "Do not reorder, favor, or demote options using pilot outcomes",
         "Do not silently extend it",
         "Lite transition hold",
-        "presently configured ledger found zero choice prompts",
+        "initial readiness status exposed zeroed learning counters",
+        "configured ledger was populated",
         "interim operational hold",
     ):
         assert phrase.lower() in normalized_calibration
@@ -113,6 +114,7 @@ def test_lite_default_has_zero_automatic_choice_persistence():
         "No outcome or repository learning is persisted automatically",
         "SQLite remains schema v8",
         "advanced manual audit surface",
+        "does not compute or display unresolved, due, or resolved choice counts",
     ):
         assert phrase.lower() in normalized_lite
     assert "ordinary selections perform no choice-ledger" in agents

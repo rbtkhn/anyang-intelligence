@@ -4,7 +4,7 @@ from pathlib import Path
 import sqlite3
 from typing import Mapping
 
-from .choice_learning import choice_context, choice_review
+from .choice_learning import choice_context, choice_guardrails, choice_review
 from .external_ledger import (
     CHOICE_SCOPE,
     DATABASE_NAME,
@@ -24,6 +24,7 @@ def choice_status(
     resolution: LedgerResolution,
     *,
     include_learning: bool = False,
+    include_guardrails: bool = False,
     as_of: str | None = None,
 ) -> dict[str, object]:
     base: dict[str, object] = {
@@ -103,6 +104,14 @@ def choice_status(
                         "guardrails": context["guardrails"],
                     }
                 )
+            elif include_guardrails:
+                base["guardrails"] = choice_guardrails(
+                    connection,
+                    CHOICE_SCOPE["tenant"],
+                    CHOICE_SCOPE["workspace"],
+                    CHOICE_SCOPE["lane"],
+                    "next-action",
+                )
     except sqlite3.DatabaseError as exc:
         raise LedgerConfigError(f"Configured Anyang ledger is unreadable: {resolution.database}") from exc
     return base
@@ -113,11 +122,13 @@ def resolved_choice_status(
     environ: Mapping[str, str] | None = None,
     *,
     include_learning: bool = False,
+    include_guardrails: bool = False,
     as_of: str | None = None,
 ) -> dict[str, object]:
     return choice_status(
         resolve_ledger(explicit_db, environ),
         include_learning=include_learning,
+        include_guardrails=include_guardrails,
         as_of=as_of,
     )
 

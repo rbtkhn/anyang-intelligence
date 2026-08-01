@@ -703,6 +703,37 @@ def choice_projection(connection: sqlite3.Connection, choice_id: str) -> dict[st
     }
 
 
+def choice_guardrails(
+    connection: sqlite3.Connection,
+    tenant: str,
+    workspace_id: str,
+    lane: str,
+    choice_kind: str,
+) -> list[dict[str, str]]:
+    """Read current authority or membrane incidents without review-state inspection."""
+    tid = tenant_id(connection, tenant)
+    rows = connection.execute(
+        """SELECT DISTINCT p.id
+        FROM choice_prompt p
+        JOIN choice_event e ON e.choice_id = p.id
+        WHERE p.tenant_id = ? AND p.workspace_id = ? AND p.lane = ?
+          AND p.choice_kind = ?
+          AND e.event_type IN ('outcome_recorded', 'corrected')
+        ORDER BY p.created_at, p.id""",
+        (tid, workspace_id, lane, choice_kind),
+    ).fetchall()
+    guardrails: list[dict[str, str]] = []
+    for row in rows:
+        projection = choice_projection(connection, row["id"])
+        outcome = projection["outcome"]
+        if not outcome or outcome["payload"].get("result") not in TERMINAL_RESULTS:
+            continue
+        guardrail = _projection_guardrail(projection)
+        if guardrail:
+            guardrails.append(guardrail)
+    return guardrails
+
+
 def choice_context(
     connection: sqlite3.Connection,
     tenant: str,
@@ -788,16 +819,9 @@ def choice_context(
             cohort["resolved"] += 1
             cohort[result] += 1
             cohort["choice_ids"].append(projection["choice"]["id"])
-        payload = projection["outcome"]["payload"]
-        if payload.get("authority_issue") or payload.get("membrane_issue"):
-            guardrails.append(
-                {
-                    "choice_id": projection["choice"]["id"],
-                    "option_key": selected_key,
-                    "reason": "Prior outcome recorded an authority or membrane incident.",
-                    "evidence_ref": projection["outcome"]["evidence_ref"],
-                }
-            )
+        guardrail = _projection_guardrail(projection)
+        if guardrail:
+            guardrails.append(guardrail)
     pattern_rows = []
     for key in sorted(patterns):
         bucket = patterns[key]
@@ -2263,6 +2287,21 @@ def _selected_label(projection: dict[str, Any]) -> str:
     return next(
         option["label"] for option in projection["options"] if option["key"] == selected_key
     )
+
+
+def _projection_guardrail(projection: dict[str, Any]) -> dict[str, str] | None:
+    outcome = projection["outcome"]
+    if not outcome:
+        return None
+    payload = outcome["payload"]
+    if not (payload.get("authority_issue") or payload.get("membrane_issue")):
+        return None
+    return {
+        "choice_id": projection["choice"]["id"],
+        "option_key": projection["selection"]["payload"]["selected_option_key"],
+        "reason": "Prior outcome recorded an authority or membrane incident.",
+        "evidence_ref": outcome["evidence_ref"],
+    }
 
 
 def _guidance_rationale(

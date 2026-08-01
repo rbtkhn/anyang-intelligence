@@ -143,7 +143,7 @@ def test_coffee_is_canonically_packaged_and_discoverable():
     assert "../../../operating-substrate/skills/coffee/SKILL.md" in read(workspace_adapter)
 
 
-def test_ready_coffee_reads_due_choice_without_writing_database(tmp_path: Path, monkeypatch):
+def test_ready_coffee_reads_only_guardrails_without_writing_database(tmp_path: Path, monkeypatch):
     repo = tmp_path / "repo"
     repo.mkdir()
     make_git_repo(repo, DASHBOARD)
@@ -165,15 +165,23 @@ def test_ready_coffee_reads_due_choice_without_writing_database(tmp_path: Path, 
 
     before = database.read_bytes()
     modified = database.stat().st_mtime_ns
+
+    def reject_learning_review(*args, **kwargs):
+        raise AssertionError("Coffee must not inspect choice context or unresolved reviews")
+
+    monkeypatch.setattr("anyang_loop.choice_continuity.choice_context", reject_learning_review)
+    monkeypatch.setattr("anyang_loop.choice_continuity.choice_review", reject_learning_review)
     result = build_coffee_data(repo)
     assert result["schema_version"] == 2
     assert result["choice_continuity"]["status"] == "ready"
-    assert result["choice_continuity"]["due_count"] == 1
+    assert result["choice_continuity"]["due_count"] == 0
     assert result["choice_continuity"]["ordering_frozen"] is True
     assert result["menu"][3].startswith("D. Pause")
     assert "outcome" not in result["menu"][3].lower()
     assert len(result["menu"]) == 4
-    assert "Choice continuity:" in render_coffee_text(result)
+    rendered = render_coffee_text(result)
+    assert "Choice continuity:" in rendered
+    assert "due outcome" not in rendered.lower()
     assert database.read_bytes() == before
     assert database.stat().st_mtime_ns == modified
 

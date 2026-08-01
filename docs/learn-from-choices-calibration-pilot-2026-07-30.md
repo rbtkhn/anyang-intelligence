@@ -9,10 +9,11 @@ Specification version: `LFC-CAL-v1.0`
 ## Lite transition hold — 2026-07-31
 
 Automatic selected-branch capture is held pending continuity-provenance review.
-A read-only operator audit of the presently configured ledger found zero choice
-prompts, so that surface does not reproduce the historical baseline below. The
-baseline is preserved as recorded; this observation does not claim that the
-prior private receipts never existed or authorize rewriting either source.
+The initial readiness status exposed zeroed learning counters because that
+surface did not load learning data; it was not a count of stored prompts. A
+subsequent explicit read-only audit confirmed that the configured ledger was
+populated. The baseline remains preserved as recorded, and neither observation
+authorizes rewriting prior private receipts.
 
 Learn From Choices Lite is now the default interaction contract. Ordinary
 letter selections are not tagged or retained, Coffee does not solicit

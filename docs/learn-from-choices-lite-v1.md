@@ -46,9 +46,10 @@ projections, external-ledger configuration, and `anyang-ops choice` commands
 remain readable and usable through explicit invocation. The CLI is an advanced
 manual audit surface, not a dependency of ordinary response navigation.
 
-Coffee may read configured choice data to keep recorded authority or membrane
-guardrails visible. It does not solicit unresolved outcomes or reserve a menu
-slot for choice review under Lite defaults.
+Coffee may read verified authority or membrane guardrails from configured
+choice data. It does not compute or display unresolved, due, or resolved choice
+counts, solicit outcomes, or reserve a menu slot for choice review under Lite
+defaults.
 
 Recommendation ordering remains independent of selection frequency and frozen
 against the prior calibration pilot until an explicit later disposition says

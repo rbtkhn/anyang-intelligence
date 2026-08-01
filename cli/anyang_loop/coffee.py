@@ -30,7 +30,7 @@ def build_coffee_context(repo_root: str | Path = ".", db_path: str | None = None
     database = resolve_cadence_db(db_path, for_record=False)
     handoff = latest_handoff(database, snapshot.repo_id) if database else None
     source = resolution.source if database else "git-only fallback"
-    continuity = choice_status(resolution, include_learning=True)
+    continuity = choice_status(resolution, include_guardrails=True)
     return CoffeeContext(
         snapshot=snapshot,
         portfolio=portfolio,
@@ -126,7 +126,7 @@ def render_coffee_text(data: dict[str, Any]) -> str:
             "Choice continuity:",
             f"- Status: `{data['choice_continuity']['status']}`; "
             f"retention available: {data['choice_continuity']['retention_available']}; "
-            f"due outcomes: {data['choice_continuity']['due_count']}.",
+            f"guardrails: {len(data['choice_continuity']['guardrails'])}.",
             "",
             "Coffee menu - reply A-D:",
             *data["menu"],
