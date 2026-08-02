@@ -1,10 +1,6 @@
 ---
 name: dream
-preferred_activation: dream
 description: Native Anyang Intelligence closeout ritual for operating-substrate. Use for dream, day close, closeout, settle the system, or night review to consolidate the session, verify repo integrity, name what was preserved, and identify what tomorrow inherits without creating autonomous merge authority.
-category: operator-coherence
-status: active
-scope_class: repo-governed
 ---
 
 # Dream

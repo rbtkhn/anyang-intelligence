@@ -1,0 +1,6 @@
+interface:
+  display_name: "Dream"
+  short_description: "Settle the work cycle and preserve tomorrow"
+  default_prompt: "Use $dream to verify what landed, preserve boundaries, and name what tomorrow inherits."
+policy:
+  allow_implicit_invocation: true
