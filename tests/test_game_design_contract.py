@@ -122,6 +122,7 @@ def test_game_design_routes_systems_reasoning_without_a_new_mode_or_skill():
     skill_normalized = normalized(CANONICAL)
     systems = read(REFERENCES / "systems-design.md")
     exercises = read(REFERENCES / "exercise-patterns.md")
+    exercises_normalized = normalized(REFERENCES / "exercise-patterns.md")
 
     assert "references/systems-design.md" in skill
     for trigger in (
@@ -145,6 +146,14 @@ def test_game_design_routes_systems_reasoning_without_a_new_mode_or_skill():
         "unknown",
     ):
         assert outcome in exercises
+    for player_decision_guardrail in (
+        "player-facing manual run",
+        "what the player knows",
+        "materially different alternatives",
+        "the selected action",
+        "why no alternative universally dominates",
+    ):
+        assert player_decision_guardrail in exercises_normalized
 
 
 def test_game_design_privacy_and_integrity_fail_closed():

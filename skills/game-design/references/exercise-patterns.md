@@ -49,10 +49,13 @@ Use when two or more mechanics interact over persistent state.
 1. Name one intended player experience and one bounded system question.
 2. Identify actors, state, resources, information, rules, and time horizon.
 3. Draw signed causal links and mark delayed effects.
-4. Run three to five manual turns or scenarios.
-5. Identify one reinforcing loop, one balancing force, one failure risk, and
+4. During a player-facing manual run, record what the player knows, their
+   materially different alternatives, the selected action, and why no
+   alternative universally dominates.
+5. Run three to five manual turns or scenarios.
+6. Identify one reinforcing loop, one balancing force, one failure risk, and
    one unknown.
-6. Finish through the exercise closeout. Treat any lesson as a candidate and
+7. Finish through the exercise closeout. Treat any lesson as a candidate and
    retain nothing automatically.
 
 ## Rule subtraction
