@@ -7,6 +7,13 @@ Use the canonical launcher instead:
 - Windows: `.\tools\validate.ps1`
 - macOS/Linux: `python3 tools/validate_repo.py`
 
+The default is the complete repository gate. For bounded editing feedback, use
+`.\tools\validate.ps1 -Mode Fast` or `python3 tools/validate_repo.py --mode fast`.
+Fast derives its checks from the current Git changes and escalates to Full for
+runtime, tooling, validation-contract, unknown, renamed, or deleted paths. A
+successful Full result is cached against the exact tree and runtime fingerprint;
+use `-Force` or `--force` only when a deliberate unchanged-tree rerun is needed.
+
 For a focused test run, use the repository's selected validation environment or the bundled workspace Python when available. On Windows, repository launchers prefer the bundled dependency-aware runtime before PATH Python. Do not hard-code a user-specific Python path or commit environment files.
 
 The canonical launcher derives dependencies from `pyproject.toml`, caches them outside Git, and runs the full test and validator inventory. If a direct interpreter lacks Pytest, repair the local environment or invoke the canonical launcher; do not change repository instructions to assume an arbitrary global installation.

@@ -58,6 +58,8 @@ def test_agent_runtime_contract_routes_validation_through_canonical_launcher() -
     assert ".\\tools\\validate.ps1" in contract
     assert "python3 tools/validate_repo.py" in contract
     assert "do not invoke pytest directly" in contract
+    assert ".\\tools\\validate.ps1 -mode fast" in contract
+    assert "escalates to full" in contract
 
 
 def test_persistent_bootstraps_install_declared_dev_dependencies() -> None:

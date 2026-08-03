@@ -3,7 +3,10 @@ param(
     [string]$Python,
     [switch]$BootstrapOnly,
     [switch]$Refresh,
-    [string]$CacheDir
+    [string]$CacheDir,
+    [ValidateSet('Full', 'Fast')]
+    [string]$Mode = 'Full',
+    [switch]$Force
 )
 
 $ErrorActionPreference = 'Stop'
@@ -20,6 +23,10 @@ if ($Refresh) {
 }
 if ($CacheDir) {
     $validatorArgs += @('--cache-dir', $CacheDir)
+}
+$validatorArgs += @('--mode', $Mode.ToLowerInvariant())
+if ($Force) {
+    $validatorArgs += '--force'
 }
 
 & $selected $validator @validatorArgs

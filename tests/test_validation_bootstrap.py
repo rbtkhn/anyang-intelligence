@@ -1,4 +1,5 @@
 import importlib.util
+import json
 import os
 from pathlib import Path
 import time
@@ -91,6 +92,75 @@ def test_validation_command_set_matches_ci_controls():
     assert pytest_command[-1] == f"--basetemp={ROOT / '.pytest_cache' / f'validate-repo-{os.getpid()}'}"
 
 
+def test_fast_plan_routes_project_content_and_its_explicit_test():
+    module = load_bootstrap()
+    plan = module.plan_fast_validation(
+        [
+            {"status": " M", "path": "projects/media-production/artistic-production-gate.md"},
+            {"status": " M", "path": "tests/test_artistic_director_governance.py"},
+        ]
+    )
+
+    assert plan["effective_mode"] == "fast"
+    assert plan["validators"] == ["loop fixtures", "project installs"]
+    assert plan["tests"] == [
+        "tests/test_artistic_director_ai_factory_schema.py",
+        "tests/test_artistic_director_governance.py",
+    ]
+    assert plan["reasons"] == []
+
+
+@pytest.mark.parametrize(
+    ("status", "path", "reason"),
+    [
+        (" M", "tools/validate_repo.py", "validation-critical"),
+        (" M", "unclassified.bin", "unclassified"),
+        (" D", "docs/removed.md", "requires repository-wide"),
+        ("R ", "docs/renamed.md", "requires repository-wide"),
+    ],
+)
+def test_fast_plan_escalates_risky_or_unknown_changes(status, path, reason):
+    module = load_bootstrap()
+    plan = module.plan_fast_validation([{"status": status, "path": path}])
+
+    assert plan["effective_mode"] == "full"
+    assert reason in plan["reasons"][0]
+
+
+def test_fast_commands_are_focused_and_retain_privacy_and_integrity():
+    module = load_bootstrap()
+    commands = module.fast_validation_commands(
+        Path("python"),
+        ROOT,
+        ["tests/test_artistic_director_governance.py"],
+        ["loop fixtures", "project installs"],
+    )
+    labels = [label for label, _ in commands]
+
+    assert labels == [
+        "diff integrity",
+        "focused pytest",
+        "project installs",
+        "loop fixtures",
+        "privacy scan",
+    ]
+    focused = commands[1][1]
+    assert "tests/test_artistic_director_governance.py" in focused
+    assert "tests/test_cross_repo_audit.py" not in focused
+
+
+def test_full_result_cache_is_bound_to_exact_fingerprint(tmp_path: Path):
+    module = load_bootstrap()
+    module.record_full_result(tmp_path, "tree-a", {"pytest": 1.25})
+
+    cached = module.cached_full_result(tmp_path, "tree-a")
+    assert cached is not None
+    assert cached["timings_seconds"] == {"pytest": 1.25}
+    assert module.cached_full_result(tmp_path, "tree-b") is None
+    payload = json.loads((tmp_path / ".pytest_cache" / "validation-results.json").read_text())
+    assert payload["version"] == module.VALIDATION_POLICY_VERSION
+
+
 def test_python_launcher_prefers_bundled_dependency_aware_runtime():
     launcher = PYTHON_LAUNCHER.read_text(encoding="utf-8")
 
@@ -130,6 +200,9 @@ def test_windows_launcher_has_stable_overrides_and_codex_fallback():
     assert "python_launcher.ps1" in launcher
     assert "[switch]$BootstrapOnly" in launcher
     assert "[switch]$Refresh" in launcher
+    assert "[ValidateSet('Full', 'Fast')]" in launcher
+    assert "[switch]$Force" in launcher
+    assert "@('--mode', $Mode.ToLowerInvariant())" in launcher
     assert "$env:USERPROFILE" in resolver
     assert "$pathPython.Source -and" in resolver
 

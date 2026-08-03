@@ -130,14 +130,22 @@ Run the complete CI-equivalent validation from PowerShell without preinstalling 
 For a persistent repository-local environment across agent sessions, bootstrap once with `.	oolsootstrap.ps1` on Windows or `./tools/bootstrap.sh` on Linux/macOS. Subsequent runner commands prefer `.venv`; use `-Refresh` or `--refresh` to rebuild it.
 
 ```powershell
-.\tools\validate.ps1
+.\tools\validate.ps1             # Full gate (default)
+.\tools\validate.ps1 -Mode Fast  # Change-routed editing feedback
 ```
 
 On macOS or Linux, run:
 
 ```bash
-python3 tools/validate_repo.py
+python3 tools/validate_repo.py             # Full gate (default)
+python3 tools/validate_repo.py --mode fast # Change-routed editing feedback
 ```
+
+Fast reports the changed paths, selected focused tests and validators, phase
+durations, and the tree fingerprint. It escalates to Full when a path is
+validation-critical, unclassified, renamed, or deleted. Full results are
+reused only for the identical tree/runtime fingerprint; pass `-Force` or
+`--force` to rerun intentionally.
 
 The bootstrap accepts an explicit `-Python <path>` or `ANYANG_PYTHON`, falls back to Codex's bundled Windows Python when needed, derives dependencies from `pyproject.toml`, and caches them under the operating-system user cache outside the repository. The cache is keyed by repository, Python version, platform, and dependency declarations, so repeated validation reuses it while source code always loads directly from `cli/`. Use `--refresh` only to rebuild the current keyed environment.
 

@@ -4,10 +4,15 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import os
 from pathlib import Path
+import platform
 import subprocess
 import sys
+import time
+from typing import Any
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +30,50 @@ from anyang_loop.runtime_bootstrap import (  # noqa: E402
     validation_environment_path,
     validation_requirements,
 )
+
+
+VALIDATION_POLICY_VERSION = 1
+FULL_ONLY_PREFIXES = ("cli/", "tools/", ".github/")
+FULL_ONLY_PATHS = {
+    "AGENTS.md",
+    "pyproject.toml",
+    "tests/conftest.py",
+    "tests/test_cross_repo_audit.py",
+    "tests/test_pytest_temp_config.py",
+    "tests/test_runtime_guidance.py",
+    "tests/test_validation_bootstrap.py",
+}
+PROJECT_TEST_ROUTES = {
+    "book-club": ("tests/test_business_loop_contract.py",),
+    "game-design": ("tests/test_game_design_contract.py", "tests/test_game_design_project_contract.py"),
+    "grace-gems": ("tests/test_business_intake_contract.py", "tests/test_executive_interface_protocol.py"),
+    "learning-core": ("tests/test_business_loop_contract.py",),
+    "media-production": (
+        "tests/test_artistic_director_ai_factory_schema.py",
+        "tests/test_artistic_director_governance.py",
+    ),
+    "mountain-villa": ("tests/test_business_intake_contract.py",),
+    "singularity-science": (
+        "tests/test_singularity_intake_validate.py",
+        "tests/test_singularity_science_skill.py",
+    ),
+}
+PREFIX_TEST_ROUTES = (
+    ("skills/coffee/", ("tests/test_coffee_continuity_contract.py",)),
+    ("skills/dream/", ("tests/test_dream_discovery_contract.py",)),
+    ("skills/elicitation/", ("tests/test_elicitation_contract.py",)),
+    ("skills/game-design/", ("tests/test_game_design_contract.py",)),
+    ("skills/learn-from-choices/", ("tests/test_learn_from_choices_contract.py",)),
+    ("skills/singularity", ("tests/test_singularity_science_skill.py",)),
+)
+GOVERNED_FILE_ROUTES = {
+    "analytical-interfaces.yaml": ("analytical interfaces", "tests/test_analytical_interfaces.py"),
+    "artifact-state.yaml": ("artifact state", "tests/test_artifact_state.py"),
+    "authority-envelope.yaml": ("bounded agency", "tests/test_authority.py"),
+    "bounded-agency.yaml": ("bounded agency", "tests/test_bounded_agency.py"),
+    "epistemic-state.yaml": ("epistemic state", "tests/test_epistemic_state.py"),
+}
+FAST_CONTENT_PREFIXES = ("archive/", "docs/", "playbooks/", "skills/", "templates/")
 
 
 def validation_commands(python: Path, repo_root: Path) -> list[tuple[str, list[str]]]:
@@ -54,6 +103,164 @@ def validation_commands(python: Path, repo_root: Path) -> list[tuple[str, list[s
     ]
 
 
+def _git(repo_root: Path, *args: str, text: bool = False) -> subprocess.CompletedProcess[Any]:
+    return subprocess.run(
+        ["git", *args],
+        cwd=repo_root,
+        check=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=text,
+    )
+
+
+def repository_changes(repo_root: Path) -> list[dict[str, str]]:
+    """Return tracked and untracked changes without losing spaces in paths."""
+    output = _git(
+        repo_root,
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all",
+    ).stdout
+    assert isinstance(output, bytes)
+    records = output.decode("utf-8", errors="surrogateescape").split("\0")
+    changes: list[dict[str, str]] = []
+    index = 0
+    while index < len(records) and records[index]:
+        record = records[index]
+        if len(record) < 4:
+            raise RuntimeError(f"Unexpected git status record: {record!r}")
+        status = record[:2]
+        path = record[3:].replace("\\", "/")
+        change = {"status": status, "path": path}
+        if "R" in status or "C" in status:
+            index += 1
+            if index >= len(records) or not records[index]:
+                raise RuntimeError("Git rename/copy status omitted its source path")
+            change["source_path"] = records[index].replace("\\", "/")
+        changes.append(change)
+        index += 1
+    return changes
+
+
+def repository_fingerprint(repo_root: Path, python: Path) -> str:
+    digest = hashlib.sha256()
+    digest.update(f"validation-policy:{VALIDATION_POLICY_VERSION}\n".encode())
+    digest.update(f"python:{platform.python_implementation()}:{platform.python_version()}\n".encode())
+    digest.update(f"platform:{platform.system()}:{platform.machine()}\n".encode())
+    for args in (("rev-parse", "HEAD"), ("diff", "--binary", "--no-ext-diff", "HEAD", "--", ".")):
+        output = _git(repo_root, *args).stdout
+        assert isinstance(output, bytes)
+        digest.update(output)
+    untracked = _git(repo_root, "ls-files", "--others", "--exclude-standard", "-z").stdout
+    assert isinstance(untracked, bytes)
+    for encoded_path in sorted(item for item in untracked.split(b"\0") if item):
+        relative = encoded_path.decode("utf-8", errors="surrogateescape")
+        path = repo_root / relative
+        digest.update(b"untracked\0" + encoded_path + b"\0")
+        if path.is_file():
+            digest.update(path.read_bytes())
+    digest.update(str(python.resolve()).encode("utf-8", errors="surrogateescape"))
+    return digest.hexdigest()
+
+
+def plan_fast_validation(changes: list[dict[str, str]]) -> dict[str, Any]:
+    tests: set[str] = set()
+    validators: set[str] = set()
+    reasons: list[str] = []
+
+    if not changes:
+        return {"effective_mode": "fast", "tests": [], "validators": [], "reasons": ["working tree is clean"]}
+
+    for change in changes:
+        status = change["status"]
+        path = change["path"]
+        if any(marker in status for marker in ("D", "R", "C", "U")):
+            reasons.append(f"{path}: status {status!r} requires repository-wide validation")
+            continue
+        if path in FULL_ONLY_PATHS or path.startswith(FULL_ONLY_PREFIXES):
+            reasons.append(f"{path}: validation-critical path")
+            continue
+        if path.startswith("tests/") and path.endswith(".py"):
+            tests.add(path)
+            continue
+        if path.startswith("projects/"):
+            parts = path.split("/")
+            project = parts[1] if len(parts) > 1 else ""
+            routed = PROJECT_TEST_ROUTES.get(project)
+            if not routed:
+                reasons.append(f"{path}: project has no explicit test route")
+                continue
+            tests.update(routed)
+            validators.update(("project installs", "loop fixtures"))
+            continue
+        if path in GOVERNED_FILE_ROUTES:
+            validator, test = GOVERNED_FILE_ROUTES[path]
+            validators.add(validator)
+            tests.add(test)
+            continue
+        if path == "README.md":
+            tests.update(("tests/test_runtime_guidance.py", "tests/test_validation_bootstrap.py"))
+            continue
+        if path.startswith(FAST_CONTENT_PREFIXES):
+            for prefix, routed in PREFIX_TEST_ROUTES:
+                if path.startswith(prefix):
+                    tests.update(routed)
+            continue
+        reasons.append(f"{path}: unclassified path")
+
+    effective_mode = "full" if reasons and reasons != ["working tree is clean"] else "fast"
+    return {
+        "effective_mode": effective_mode,
+        "tests": sorted(tests),
+        "validators": sorted(validators),
+        "reasons": reasons,
+    }
+
+
+def fast_validation_commands(
+    python: Path,
+    repo_root: Path,
+    tests: list[str],
+    validators: list[str],
+) -> list[tuple[str, list[str]]]:
+    full = dict(validation_commands(python, repo_root))
+    commands: list[tuple[str, list[str]]] = [
+        ("diff integrity", ["git", "diff", "--check", "HEAD", "--"]),
+    ]
+    if tests:
+        pytest_base = repo_root / ".pytest_cache" / f"validate-fast-{os.getpid()}"
+        commands.append(
+            (
+                "focused pytest",
+                [
+                    str(python),
+                    "-m",
+                    "pytest",
+                    "-q",
+                    "-p",
+                    "no:cacheprovider",
+                    f"--basetemp={pytest_base}",
+                    *tests,
+                ],
+            )
+        )
+    for label in (
+        "project installs",
+        "loop fixtures",
+        "analytical interfaces",
+        "artifact state",
+        "bounded agency",
+        "epistemic state",
+        "epistemic report",
+    ):
+        if label in validators:
+            commands.append((label, full[label]))
+    commands.append(("privacy scan", full["privacy scan"]))
+    return commands
+
+
 def runtime_environment(repo_root: Path) -> dict[str, str]:
     env = os.environ.copy()
     cli_path = str(repo_root / "cli")
@@ -61,14 +268,60 @@ def runtime_environment(repo_root: Path) -> dict[str, str]:
     return env
 
 
-def run_validation(python: Path, repo_root: Path) -> None:
+def run_validation(
+    python: Path,
+    repo_root: Path,
+    commands: list[tuple[str, list[str]]] | None = None,
+) -> dict[str, float]:
     # Pytest accepts a missing --basetemp directory, but its parent must exist.
     # Fresh CI checkouts do not contain ignored .pytest_cache state.
     (repo_root / ".pytest_cache").mkdir(parents=True, exist_ok=True)
     env = runtime_environment(repo_root)
-    for label, command in validation_commands(python, repo_root):
+    timings: dict[str, float] = {}
+    started = time.perf_counter()
+    for label, command in commands or validation_commands(python, repo_root):
         print(f"\n== {label} ==", flush=True)
-        subprocess.run(command, cwd=repo_root, env=env, check=True)
+        phase_started = time.perf_counter()
+        try:
+            subprocess.run(command, cwd=repo_root, env=env, check=True)
+        finally:
+            duration = time.perf_counter() - phase_started
+            timings[label] = duration
+            print(f"Duration: {duration:.3f}s", flush=True)
+    print(f"\nValidation duration: {time.perf_counter() - started:.3f}s", flush=True)
+    return timings
+
+
+def _cache_path(repo_root: Path) -> Path:
+    return repo_root / ".pytest_cache" / "validation-results.json"
+
+
+def cached_full_result(repo_root: Path, fingerprint: str) -> dict[str, Any] | None:
+    path = _cache_path(repo_root)
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError, TypeError):
+        return None
+    result = payload.get("full") if isinstance(payload, dict) else None
+    if isinstance(result, dict) and result.get("fingerprint") == fingerprint:
+        return result
+    return None
+
+
+def record_full_result(repo_root: Path, fingerprint: str, timings: dict[str, float]) -> None:
+    path = _cache_path(repo_root)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "version": VALIDATION_POLICY_VERSION,
+        "full": {
+            "fingerprint": fingerprint,
+            "completed_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "timings_seconds": {label: round(value, 6) for label, value in timings.items()},
+        },
+    }
+    temporary = path.with_name(f"{path.name}.tmp-{os.getpid()}")
+    temporary.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    temporary.replace(path)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -78,6 +331,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--bootstrap-only", action="store_true", help="Prepare and report the environment only")
     parser.add_argument("--refresh", action="store_true", help="Rebuild the current dependency-keyed environment")
     parser.add_argument("--cache-dir", type=Path, help="Override the external validation cache directory")
+    parser.add_argument(
+        "--mode",
+        choices=("full", "fast"),
+        default="full",
+        help="Run the full inventory (default) or a change-routed fast gate",
+    )
+    parser.add_argument("--force", action="store_true", help="Rerun Full even when this tree fingerprint passed")
     args = parser.parse_args(argv)
 
     try:
@@ -100,9 +360,53 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Dependency source: {REPO_ROOT / 'pyproject.toml'}")
     if not args.bootstrap_only:
         try:
-            run_validation(python, REPO_ROOT)
+            changes = repository_changes(REPO_ROOT)
+            fingerprint = repository_fingerprint(REPO_ROOT, python)
+            effective_mode = args.mode
+            commands = None
+            if args.mode == "fast":
+                plan = plan_fast_validation(changes)
+                effective_mode = plan["effective_mode"]
+                print("Changed paths:")
+                for change in changes:
+                    print(f"  {change['status']} {change['path']}")
+                if effective_mode == "full":
+                    print("Fast gate escalated to Full:")
+                    for reason in plan["reasons"]:
+                        print(f"  - {reason}")
+                else:
+                    print("Fast gate selected tests:")
+                    for test in plan["tests"]:
+                        print(f"  - {test}")
+                    print("Fast gate selected validators:")
+                    for validator in plan["validators"]:
+                        print(f"  - {validator}")
+                    commands = fast_validation_commands(
+                        python,
+                        REPO_ROOT,
+                        plan["tests"],
+                        plan["validators"],
+                    )
+
+            print(f"Validation mode: {effective_mode.title()}")
+            print(f"Tree fingerprint: {fingerprint}")
+            if effective_mode == "full" and not args.force:
+                cached = cached_full_result(REPO_ROOT, fingerprint)
+                if cached:
+                    print(
+                        "Full validation already passed for this exact tree "
+                        f"at {cached.get('completed_at', 'an unknown time')}. Use --force to rerun."
+                    )
+                    return 0
+
+            timings = run_validation(python, REPO_ROOT, commands)
+            if effective_mode == "full":
+                record_full_result(REPO_ROOT, fingerprint, timings)
         except subprocess.CalledProcessError as exc:
             return exc.returncode or 1
+        except (OSError, RuntimeError) as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            return 1
     return 0
 
 
