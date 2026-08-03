@@ -1,0 +1,26 @@
+name: game-design-learning-loop
+description: Explicit learning loop that separates Robert's learning, design evidence, and agent improvement.
+loop_type: learning
+project_lane: game-design
+authority: Robert acceptance
+tags:
+  - game-design
+  - reflection
+  - recursive-learning
+signal: A bounded exercise, prototype, critique, or play observation produced evidence that may support a lesson.
+memory_objects:
+  - agent behavior
+  - Robert articulation
+  - prototype observation
+  - outcome or effect
+  - cognitive burden
+  - discovery value
+  - candidate human lesson
+  - candidate agent lesson
+  - possible new failure
+decision: Decide whether the evidence supports an exercise-specific lesson, a reusable candidate lesson, no lesson, or a hold for more observation.
+action: After Robert reviews the candidate, preserve it as accepted, revise it, reject it, or leave it unretained; change the skill only through a separate explicitly authorized action.
+evidence: Exercise artifact, observation record, Robert review, critique comparison, accepted-lesson receipt, or explicit no-action record.
+cadence: At the end of an evidence-bearing cycle and during periodic review after multiple comparable outcomes.
+learning_update: Preserve accepted lessons with their evidence and possible failure; never learn from selection frequency or automatically promote a project observation into the game-design skill.
+governance_boundary: Robert is the authority owner who decides whether human or agent lessons are accurate and durable. The agent may propose but may not retain, promote, or change instructions without explicit human approval.

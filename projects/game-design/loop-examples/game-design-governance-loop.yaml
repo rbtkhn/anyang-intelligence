@@ -1,0 +1,24 @@
+name: game-design-governance-loop
+description: Hold-or-escalate loop for authority, safety, privacy, rights, and production boundaries.
+loop_type: governance
+project_lane: game-design
+authority: applicable human approval
+tags:
+  - game-design
+  - governance
+  - membrane
+signal: A design proposal touches implementation, assets, spending, publication, external participation, data, rights, child safety, manipulative monetization, or cross-lane context.
+memory_objects:
+  - proposed action
+  - governing lane
+  - authority owner
+  - evidence requirement
+  - risk register
+  - membrane classification
+  - approval or hold receipt
+decision: Decide whether the proposal stays within Game Design, needs translation, requires human or professional approval, or must remain held.
+action: After the applicable human authority decides, record approve, revise, reject, or hold and route any separately authorized work to the correct lane without transferring private context.
+evidence: Authority receipt, membrane review, rights or safety note, risk-register update, professional-review record, or explicit hold decision.
+cadence: Event-driven before every boundary-crossing action and reviewed during each active operating review.
+learning_update: Update the risk memory and generic guardrail only when evidence shows that a boundary prevented drift or requires correction; retain no private facts in the shared lesson.
+governance_boundary: This loop reports authority and prepares decisions but never grants capability. Publication, spending, rights, child safety, external playtests, customer action, and cross-lane transfers remain with the named human or professional authority.

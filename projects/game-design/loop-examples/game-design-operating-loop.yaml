@@ -1,0 +1,25 @@
+name: game-design-operating-loop
+description: Bounded apprenticeship loop from one design question to one evidence-backed next decision.
+loop_type: operating
+project_lane: game-design
+authority: Robert creative authority
+tags:
+  - game-design
+  - apprenticeship
+  - prototype
+signal: An exact learning or design question has passed the First Activation Gate and Robert is ready to exercise creative judgment.
+memory_objects:
+  - learning or design question
+  - intended player experience
+  - meaningful alternatives
+  - mechanic hypothesis
+  - predicted player consequence
+  - smallest prototype
+  - observation record
+  - design decision
+decision: Prepare materially different alternatives and the smallest experiment capable of informing Robert's next design decision.
+action: After Robert selects the direction and separately authorizes any artifact creation, specify or run the bounded low-fidelity experiment and record observations without inflating them into universal claims.
+evidence: Activation record, Robert selection, prototype artifact or rules, observation record, contradiction note, and continue-revise-hold decision receipt.
+cadence: Session-scale when an activated question exists, with an optional weekly review while the lane is active.
+learning_update: Preserve the question, evidence, decision, and candidate human and agent lessons; update durable memory only after explicit human acceptance.
+governance_boundary: Robert retains creative authority. Coding, assets, spending, publication, external playtesting, data collection, rights-sensitive use, and lesson retention require separate human approval.
