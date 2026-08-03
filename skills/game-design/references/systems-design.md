@@ -13,6 +13,7 @@ will occur in play.
 
 - Establish the boundary
 - Build a causal model
+- Map spatial topology when needed
 - Predict dynamics and failure
 - Test at the lowest useful fidelity
 - Historical living-world examples
@@ -51,6 +52,20 @@ Draw signed links where useful: `A --(+)-> B` means A tends to increase B;
 `A --(-)-> B` means A tends to decrease B. Mark delayed effects. A closed chain
 that amplifies change is reinforcing; one that resists change is balancing.
 Treat the diagram as a hypothesis, not proof.
+
+## Map Spatial Topology When Needed
+
+When location or routing materially affects outcomes, map the relevant nodes
+and directed connections before relying on causal loops alone. For each
+connection, record capacity, travel time, control, alternatives, failure
+points, and the information available to moving actors. For each node, record
+the consequential conditions, such as safety, reception capacity, legal
+status, material opportunity, cultural familiarity, and existing
+relationships.
+
+When actors are autonomous people, include their reasons, social ties, and
+ability to refuse or reroute. Do not load spatial topology when location and
+routing do not materially affect the question.
 
 ## Predict Dynamics And Failure
 

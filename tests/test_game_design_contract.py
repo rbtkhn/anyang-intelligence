@@ -156,6 +156,33 @@ def test_game_design_routes_systems_reasoning_without_a_new_mode_or_skill():
         assert player_decision_guardrail in exercises_normalized
 
 
+def test_game_design_maps_spatial_topology_only_when_material():
+    systems = normalized(REFERENCES / "systems-design.md").lower()
+
+    for topology_contract in (
+        "when location or routing materially affects outcomes",
+        "nodes and directed connections",
+        "capacity",
+        "travel time",
+        "control",
+        "alternatives",
+        "failure points",
+        "information available to moving actors",
+        "for each node, record the consequential conditions",
+        "safety",
+        "reception capacity",
+        "legal status",
+        "material opportunity",
+        "cultural familiarity",
+        "existing relationships",
+        "autonomous people",
+        "reasons, social ties",
+        "refuse or reroute",
+        "do not load spatial topology when location and routing do not materially affect the question",
+    ):
+        assert topology_contract in systems
+
+
 def test_game_design_privacy_and_integrity_fail_closed():
     skill = normalized(CANONICAL)
     rubric = normalized(REFERENCES / "evaluation-rubric.md")
