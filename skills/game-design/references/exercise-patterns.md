@@ -42,6 +42,19 @@ Use cards, tokens, dice, a map, or written state to represent the core loop.
 Run several turns manually. Record where decisions become obvious, confusing,
 or irrelevant.
 
+## Causal system sketch
+
+Use when two or more mechanics interact over persistent state.
+
+1. Name one intended player experience and one bounded system question.
+2. Identify actors, state, resources, information, rules, and time horizon.
+3. Draw signed causal links and mark delayed effects.
+4. Run three to five manual turns or scenarios.
+5. Identify one reinforcing loop, one balancing force, one failure risk, and
+   one unknown.
+6. Finish through the exercise closeout. Treat any lesson as a candidate and
+   retain nothing automatically.
+
 ## Rule subtraction
 
 Use when a concept is becoming overbuilt. Remove one rule, resource, phase, or

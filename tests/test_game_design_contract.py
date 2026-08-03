@@ -86,6 +86,7 @@ def test_game_design_references_are_complete_and_selective():
         "design-foundations.md",
         "exercise-patterns.md",
         "critique-method.md",
+        "systems-design.md",
         "evaluation-rubric.md",
     )
     for name in names:
@@ -96,13 +97,54 @@ def test_game_design_references_are_complete_and_selective():
     foundations = read(REFERENCES / "design-foundations.md")
     exercises = read(REFERENCES / "exercise-patterns.md")
     critique = read(REFERENCES / "critique-method.md")
+    systems = read(REFERENCES / "systems-design.md")
+    systems_normalized = normalized(REFERENCES / "systems-design.md")
     rubric = read(REFERENCES / "evaluation-rubric.md")
     assert "meaningful choice" in foundations.lower()
     assert "Three mechanic alternatives" in exercises
+    assert "Causal system sketch" in exercises
     assert "Trace the causal chain" in critique
+    assert "two or more mechanics interact" in systems
+    assert "intended player experience in Robert's words" in systems
+    assert "manual turns" in systems
+    assert "hypothesis" in systems
+    assert "prototype observation" in systems
+    assert "playtest pattern" in systems
+    assert "does not select the intended player experience" in systems_normalized
+    assert "authorize implementation" in systems_normalized
     assert "Evaluate the agent, not Robert" in rubric
     assert "Do not collapse the dimensions" in rubric
     assert "selection frequency is not evidence" in rubric.lower()
+
+
+def test_game_design_routes_systems_reasoning_without_a_new_mode_or_skill():
+    skill = read(CANONICAL)
+    skill_normalized = normalized(CANONICAL)
+    systems = read(REFERENCES / "systems-design.md")
+    exercises = read(REFERENCES / "exercise-patterns.md")
+
+    assert "references/systems-design.md" in skill
+    for trigger in (
+        "persistent state",
+        "emergence",
+        "economies",
+        "social networks",
+        "institutions",
+        "populations",
+        "simulation granularity",
+    ):
+        assert trigger in skill_normalized
+    assert "- `systems`:" not in skill
+    assert "name: systems-design" not in systems
+    assert "Game Design decides whether" in systems
+    assert "System Engineering action" in systems
+    for outcome in (
+        "reinforcing loop",
+        "balancing force",
+        "failure risk",
+        "unknown",
+    ):
+        assert outcome in exercises
 
 
 def test_game_design_privacy_and_integrity_fail_closed():

@@ -139,6 +139,10 @@ from selection frequency or promote a skill change automatically.
   bounded apprenticeship exercise or prototype.
 - Read [critique-method.md](references/critique-method.md) when reviewing a
   concept, mechanic, prototype, or playtest result.
+- Read [systems-design.md](references/systems-design.md) when two or more
+  mechanics interact over persistent state or when emergence, balance,
+  economies, social networks, institutions, populations, or simulation
+  granularity are central.
 - Read [evaluation-rubric.md](references/evaluation-rubric.md) when evaluating
   agent performance or proposing a reusable instruction change.
 
