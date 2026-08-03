@@ -26,12 +26,19 @@ Choose one:
 An idea does not enter production automatically. When authority, source,
 rights, or budget is missing, choose `Hold`.
 
+`Proceed` authorizes only the disposition and internal action named in the
+approved brief. A recommendation, shortlist, or selected direction does not
+by itself authorize production.
+
 ## Required inputs
 
 - Task ID and approved objective.
 - Lane and source boundary.
 - Audience and problem.
+- Human decision owner and that person's stated intent.
+- Facts, mechanics, or constraints that must remain fixed.
 - Three to five materially different directions when ideation is requested.
+- A meaningful preserved alternative when a recommendation is requested.
 - Selected direction and rationale when production is requested.
 - Exact permitted output and disposition:
   `explore / shortlist / brief / hold / reject`.
@@ -39,6 +46,7 @@ rights, or budget is missing, choose `Hold`.
 - Claims, rights, privacy, and representation risks.
 - Material-capacity and budget limit.
 - Required evidence and reviewer.
+- Smallest useful next proof and next decision owner.
 - Expiry, stop conditions, and recovery path.
 - Applicable client authority when client adoption or use is proposed.
 
@@ -90,10 +98,13 @@ The Artistic Director returns:
 - concept set or produced asset;
 - sources used;
 - selected direction and rationale;
+- meaningful preserved alternative, when a recommendation was requested;
+- confirmation of the facts, mechanics, or constraints left unchanged;
 - claims, rights, privacy, or representation uncertainties;
 - production time and material capacity used;
 - deviations from the brief;
 - required next decision;
+- smallest useful next proof;
 - reuse or repurposing opportunities; and
 - transaction-record action ID.
 
@@ -106,10 +117,14 @@ Artistic production gate:
 Task ID:
 Lane:
 Objective:
+Human decision owner:
+Owner-stated intent:
 Source boundary:
+Facts, mechanics, or constraints held fixed:
 Approved authority:
 Client authority:
 Requested disposition:
+Authorized transition:
 Capacity and budget:
 Rights, claims, privacy, and representation risks:
 Decision: Proceed / Revise brief / Hold / Reject

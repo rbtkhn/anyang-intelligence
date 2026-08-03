@@ -23,7 +23,10 @@ the work passes the [Artistic Production Gate](artistic-production-gate.md).
 - Approved source location:
 - Audience:
 - Problem to solve:
+- Human decision owner:
+- Owner-stated intent:
 - Facts the work may rely on:
+- Facts, mechanics, or constraints held fixed:
 - What must remain `Missing` or unassumed:
 - Protected context excluded:
 
@@ -39,11 +42,26 @@ For each direction include:
 
 1. concept;
 2. mechanism;
-3. strategic fit;
-4. source and evidence fit;
-5. risks or uncertainties;
-6. production effort; and
-7. reuse potential.
+3. relationship to the owner-stated intent;
+4. predicted consequence;
+5. facts, mechanics, or constraints left unchanged;
+6. source and evidence fit;
+7. principal risk, contradiction, or uncertainty;
+8. production effort; and
+9. reuse potential.
+
+## Comparison return
+
+- Recommended direction, when requested:
+- Recommendation rationale:
+- Meaningful preserved alternative:
+- Why the alternative remains live:
+- Smallest useful next proof:
+- Next decision owner:
+- Response state: `explore / shortlist / brief / hold / reject`
+
+A recommendation, shortlist, or human selection creates a candidate for the
+next review. It does not by itself authorize production.
 
 ## Selected production direction
 

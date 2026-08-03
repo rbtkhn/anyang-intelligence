@@ -47,13 +47,23 @@ def test_artistic_production_gate_requires_activation_authority_and_evidence():
         "interim holder appointed",
         "Task ID and approved objective",
         "Lane and source boundary",
+        "Human decision owner and that person's stated intent",
+        "Facts, mechanics, or constraints that must remain fixed",
         "Three to five materially different directions",
+        "A meaningful preserved alternative",
+        "Smallest useful next proof and next decision owner",
         "Applicable client authority",
         "`$1,000/month` Artistic Director operating envelope as a ceiling",
         "transaction-record action ID",
         "Artistically review-ready",
+        "Human decision owner:",
+        "Owner-stated intent:",
+        "Facts, mechanics, or constraints held fixed:",
+        "Authorized transition:",
     ):
         assert required in gate
+
+    assert "does not by itself authorize production" in gate_normalized
 
     for prohibited in (
         "publication",
@@ -74,12 +84,19 @@ def test_artistic_brief_preserves_ideation_and_client_boundaries():
         "Approved by:",
         "Artistic Director activation receipt:",
         "Client authority:",
+        "Human decision owner:",
+        "Owner-stated intent:",
+        "Facts, mechanics, or constraints held fixed:",
         "Required number of materially different directions: `3–5`",
+        "Meaningful preserved alternative:",
+        "Smallest useful next proof:",
+        "Next decision owner:",
         "Production time and material capacity:",
         "Transaction-record action ID:",
     ):
         assert field in brief
     assert "does not authorize external delivery" in brief
+    assert "does not by itself authorize production" in brief
     assert "client adoption" in brief
 
 
