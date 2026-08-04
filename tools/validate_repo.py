@@ -4,11 +4,9 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import os
 from pathlib import Path
-import platform
 import subprocess
 import sys
 import time
@@ -30,9 +28,12 @@ from anyang_loop.runtime_bootstrap import (  # noqa: E402
     validation_environment_path,
     validation_requirements,
 )
+from anyang_loop.validation_evidence import (  # noqa: E402
+    VALIDATION_POLICY_VERSION,
+    repository_fingerprint,
+)
 
 
-VALIDATION_POLICY_VERSION = 1
 FULL_ONLY_PREFIXES = ("cli/", "tools/", ".github/")
 FULL_ONLY_PATHS = {
     "AGENTS.md",
@@ -146,27 +147,6 @@ def repository_changes(repo_root: Path) -> list[dict[str, str]]:
         changes.append(change)
         index += 1
     return changes
-
-
-def repository_fingerprint(repo_root: Path, python: Path) -> str:
-    digest = hashlib.sha256()
-    digest.update(f"validation-policy:{VALIDATION_POLICY_VERSION}\n".encode())
-    digest.update(f"python:{platform.python_implementation()}:{platform.python_version()}\n".encode())
-    digest.update(f"platform:{platform.system()}:{platform.machine()}\n".encode())
-    for args in (("rev-parse", "HEAD"), ("diff", "--binary", "--no-ext-diff", "HEAD", "--", ".")):
-        output = _git(repo_root, *args).stdout
-        assert isinstance(output, bytes)
-        digest.update(output)
-    untracked = _git(repo_root, "ls-files", "--others", "--exclude-standard", "-z").stdout
-    assert isinstance(untracked, bytes)
-    for encoded_path in sorted(item for item in untracked.split(b"\0") if item):
-        relative = encoded_path.decode("utf-8", errors="surrogateescape")
-        path = repo_root / relative
-        digest.update(b"untracked\0" + encoded_path + b"\0")
-        if path.is_file():
-            digest.update(path.read_bytes())
-    digest.update(str(python.resolve()).encode("utf-8", errors="surrogateescape"))
-    return digest.hexdigest()
 
 
 def plan_fast_validation(changes: list[dict[str, str]]) -> dict[str, Any]:

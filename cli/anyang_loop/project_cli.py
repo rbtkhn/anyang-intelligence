@@ -56,6 +56,17 @@ from .contradiction_preflight import (
     render_contradiction_json,
     render_contradiction_markdown,
 )
+from .graph_evidence import collect_graph_evidence
+from .work_graph import (
+    WorkGraphError,
+    evaluate_work_graph,
+    load_graph_status,
+    load_work_graph,
+    render_graph_json,
+    render_graph_markdown,
+    validate_work_graph,
+    verify_graph_status,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -88,6 +99,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERROR: {exc}")
         return 1
     except ContradictionPacketError as exc:
+        print(f"ERROR: {exc}")
+        return 1
+    except WorkGraphError as exc:
         print(f"ERROR: {exc}")
         return 1
 
@@ -188,6 +202,19 @@ def build_parser() -> argparse.ArgumentParser:
         "--format", choices=("markdown", "json"), default="markdown"
     )
     contradiction.set_defaults(func=cmd_contradiction_check)
+
+    graph = subparsers.add_parser("graph", help="Inspect an explicit work graph without executing it")
+    graph_sub = graph.add_subparsers(required=True)
+    graph_status = graph_sub.add_parser("status", help="Project current evidence onto a declared work graph")
+    graph_status.add_argument("--repo", default=".")
+    graph_status.add_argument("--packet", required=True)
+    graph_status.add_argument("--as-of", required=True)
+    graph_status.add_argument("--format", choices=("markdown", "json"), default="markdown")
+    graph_status.add_argument("--db", help="Explicit read-only Council database for Council evidence")
+    graph_status.set_defaults(func=cmd_graph_status)
+    graph_verify = graph_sub.add_parser("verify", help="Verify a graph-status JSON packet offline")
+    graph_verify.add_argument("--packet", required=True)
+    graph_verify.set_defaults(func=cmd_graph_verify)
 
     inventory = subparsers.add_parser("authority-inventory", help="Inventory role and authority drift without mutation")
     inventory.add_argument("--repo", default=".")
@@ -457,6 +484,30 @@ def cmd_contradiction_check(args: argparse.Namespace) -> int:
     )
     print(rendered, end="")
     return 0 if result["disposition"] in {"continue", "continue-provisional"} else 1
+
+
+def cmd_graph_status(args: argparse.Namespace) -> int:
+    packet = load_work_graph(args.packet)
+    validate_work_graph(packet, args.repo)
+    try:
+        evidence = collect_graph_evidence(
+            packet,
+            args.repo,
+            as_of=args.as_of,
+            db_path=args.db,
+        )
+    except RuntimeError as exc:
+        raise WorkGraphError(str(exc)) from exc
+    projection = evaluate_work_graph(packet, evidence, as_of=args.as_of)
+    rendered = render_graph_json(projection) if args.format == "json" else render_graph_markdown(projection)
+    print(rendered, end="")
+    return 0
+
+
+def cmd_graph_verify(args: argparse.Namespace) -> int:
+    result = verify_graph_status(load_graph_status(args.packet))
+    print(json.dumps(result, indent=2, sort_keys=True) + "\n", end="")
+    return 0 if result["ok"] else 1
 
 
 def cmd_validate_epistemics(args: argparse.Namespace) -> int:

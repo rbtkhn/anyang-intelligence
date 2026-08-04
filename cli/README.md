@@ -644,6 +644,32 @@ define its own host policy and privacy scanner, and keep authority declarations
 outside the kernel. The kernel compares supplied facts; it does not discover
 or rank controlling sources.
 
+## Read-Only Work Graph Status
+
+Project an explicit dependency graph against current Git, cached validation,
+file, and optional tenant-isolated Council evidence:
+
+```powershell
+.\tools\run.ps1 project graph status --repo . --packet work-graph.yaml --as-of 2026-08-04T18:00:00Z --format markdown
+.\tools\run.ps1 project graph status --repo . --packet work-graph.yaml --as-of 2026-08-04T18:00:00Z --format json
+.\tools\run.ps1 project graph verify --packet graph-status.json
+```
+
+The declaration uses `anyang-work-graph/v1`; the derived projection uses
+`anyang-graph-status/v1`. Dependencies are declared once through `depends_on`.
+Node completion is derived from registered evidence adapters and cannot be
+self-asserted. The command performs no fetch, validation run, runtime bootstrap,
+database migration, graph persistence, or node execution. Local remote-tracking
+evidence may be stale because the command deliberately performs no network
+operation.
+
+Successful inspection exits `0` even when the projected disposition is
+`blocked` or `hold`. Exit `1` is reserved for an invalid declaration,
+unsupported contract, privacy or scope failure, or integrity failure. Every
+projection has `authority_effect: none`; mutation boundaries remain subject to
+the existing explicit action and authority contracts. See
+[Work Graph Status v1](../docs/work-graph-status-v1.md).
+
 ## Transcript Intake
 
 Singularity Science transcript intake is archive-only infrastructure. It normalizes internal transcript files into:
