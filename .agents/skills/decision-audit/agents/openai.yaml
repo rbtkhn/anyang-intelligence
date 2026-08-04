@@ -1,0 +1,6 @@
+interface:
+  display_name: "Decision Audit"
+  short_description: "Surface consequential uncertain agent decisions"
+  default_prompt: "Use $decision-audit to surface consequential decisions the agent made that still need evidence or human review."
+policy:
+  allow_implicit_invocation: true

@@ -93,6 +93,25 @@ Do not require unavailable strategy-codex-only files such as `scripts/auto_dream
 8. Name one open loop or tomorrow inheritance. Prefer the most direct continuation of the preserved work.
 9. Do not edit, stage, commit, or push by default. `dream` is maintenance and closeout, not autonomous shipping, unless the operator explicitly asks.
 
+## Conditional Decision Audit
+
+After integrity and governance review, read and follow
+[`decision-audit`](../decision-audit/SKILL.md) only when current-session evidence
+shows that the agent selected among plausible alternatives, the choice is
+material, and it remains weakly evidenced or contestable. This is a semantic
+skill-layer check; do not add it to Dream's deterministic CLI, JSON projection,
+or external cadence handoff.
+
+When one or more decisions qualify, show only the highest-priority finding in
+an optional `Decision uncertainty` section between `Integrity and governance`
+and `Tomorrow inherits`. Omit the section entirely otherwise. Do not print a
+no-findings placeholder, ask a question, invoke Elicitation, update a decision
+log, or record a Council event during Dream.
+
+Privacy, safety, authority, membrane, validation, dirty-worktree,
+synchronization, and paid-obligation priorities remain controlling. An ordinary
+reversible uncertainty must not displace a higher-priority closeout issue.
+
 ## Native Verification Hooks
 
 Use these when available and relevant:
@@ -130,6 +149,9 @@ Run status:
 
 Integrity and governance:
 - <one or more relevant boundary checks, or "No new boundary issue found.">
+
+Decision uncertainty: <optional; omit unless one material finding qualifies>
+- <one concise Review or Hold finding with evidence level and decision owner>
 
 Tomorrow inherits:
 - <one concrete continuation, blocker, or next seam>

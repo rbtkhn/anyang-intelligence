@@ -124,6 +124,20 @@ def test_fast_plan_routes_recursive_learning_ledger_to_its_contract_test():
     }
 
 
+def test_fast_plan_routes_decision_audit_to_its_contract_test():
+    module = load_bootstrap()
+    plan = module.plan_fast_validation(
+        [{"status": " M", "path": "skills/decision-audit/SKILL.md"}]
+    )
+
+    assert plan == {
+        "effective_mode": "fast",
+        "tests": ["tests/test_decision_audit_contract.py"],
+        "validators": [],
+        "reasons": [],
+    }
+
+
 @pytest.mark.parametrize(
     ("status", "path", "reason"),
     [

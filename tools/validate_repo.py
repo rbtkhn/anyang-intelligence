@@ -60,6 +60,7 @@ PROJECT_TEST_ROUTES = {
 }
 PREFIX_TEST_ROUTES = (
     ("skills/coffee/", ("tests/test_coffee_continuity_contract.py",)),
+    ("skills/decision-audit/", ("tests/test_decision_audit_contract.py",)),
     ("skills/dream/", ("tests/test_dream_discovery_contract.py",)),
     ("skills/elicitation/", ("tests/test_elicitation_contract.py",)),
     ("skills/game-design/", ("tests/test_game_design_contract.py",)),

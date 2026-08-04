@@ -66,3 +66,18 @@ def test_dream_discovery_preserves_read_only_closeout_boundaries():
         assert "discovery-only" in text
         assert "adds no behavior" in text
         assert "execution authority" in text
+
+
+def test_dream_uses_only_a_conditional_skill_layer_decision_audit():
+    skill = normalized(CANONICAL).lower()
+    runtime = normalized(ROOT / "cli/anyang_loop/dream.py").lower()
+    for phrase in (
+        "current-session evidence",
+        "only the highest-priority finding",
+        "omit the section entirely otherwise",
+        "do not add it to dream's deterministic cli",
+        "external cadence handoff",
+        "must not displace a higher-priority closeout issue",
+    ):
+        assert phrase in skill
+    assert "decision_audit" not in runtime
