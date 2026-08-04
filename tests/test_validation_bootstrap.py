@@ -110,12 +110,28 @@ def test_fast_plan_routes_project_content_and_its_explicit_test():
     assert plan["reasons"] == []
 
 
+def test_fast_plan_routes_recursive_learning_ledger_to_its_contract_test():
+    module = load_bootstrap()
+    plan = module.plan_fast_validation(
+        [{"status": " M", "path": "os/recursive-learning-ledger.md"}]
+    )
+
+    assert plan == {
+        "effective_mode": "fast",
+        "tests": ["tests/test_recursive_learning_ledger.py"],
+        "validators": [],
+        "reasons": [],
+    }
+
+
 @pytest.mark.parametrize(
     ("status", "path", "reason"),
     [
         (" M", "tools/validate_repo.py", "validation-critical"),
         (" M", "unclassified.bin", "unclassified"),
+        (" M", "os/learning-loop.md", "unclassified"),
         (" D", "docs/removed.md", "requires repository-wide"),
+        (" D", "os/recursive-learning-ledger.md", "requires repository-wide"),
         ("R ", "docs/renamed.md", "requires repository-wide"),
     ],
 )

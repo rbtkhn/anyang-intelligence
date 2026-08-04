@@ -147,6 +147,11 @@ validation-critical, unclassified, renamed, or deleted. Full results are
 reused only for the identical tree/runtime fingerprint; pass `-Force` or
 `--force` to rerun intentionally.
 
+An in-place change to `os/recursive-learning-ledger.md` has one exact Fast
+route through `tests/test_recursive_learning_ledger.py`. Other `os/` paths and
+ledger renames or deletions remain fail-closed to Full. Fast is editing
+feedback only; Full remains the authoritative repository gate.
+
 The bootstrap accepts an explicit `-Python <path>` or `ANYANG_PYTHON`, falls back to Codex's bundled Windows Python when needed, derives dependencies from `pyproject.toml`, and caches them under the operating-system user cache outside the repository. The cache is keyed by repository, Python version, platform, and dependency declarations, so repeated validation reuses it while source code always loads directly from `cli/`. Use `--refresh` only to rebuild the current keyed environment.
 
 Run individual repository commands through the same environment:

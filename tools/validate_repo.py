@@ -66,6 +66,9 @@ PREFIX_TEST_ROUTES = (
     ("skills/learn-from-choices/", ("tests/test_learn_from_choices_contract.py",)),
     ("skills/singularity", ("tests/test_singularity_science_skill.py",)),
 )
+EXACT_TEST_ROUTES = {
+    "os/recursive-learning-ledger.md": ("tests/test_recursive_learning_ledger.py",),
+}
 GOVERNED_FILE_ROUTES = {
     "analytical-interfaces.yaml": ("analytical interfaces", "tests/test_analytical_interfaces.py"),
     "artifact-state.yaml": ("artifact state", "tests/test_artifact_state.py"),
@@ -184,6 +187,9 @@ def plan_fast_validation(changes: list[dict[str, str]]) -> dict[str, Any]:
             continue
         if path.startswith("tests/") and path.endswith(".py"):
             tests.add(path)
+            continue
+        if path in EXACT_TEST_ROUTES:
+            tests.update(EXACT_TEST_ROUTES[path])
             continue
         if path.startswith("projects/"):
             parts = path.split("/")
