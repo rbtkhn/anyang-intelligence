@@ -15,6 +15,7 @@ from anyang_loop.runtime_bootstrap import (
     environment_python,
     validation_environment_path,
 )
+from anyang_loop.validation_evidence import existing_validation_python, repository_validation_python
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,6 +52,14 @@ def test_validation_environment_is_keyed_by_repo_python_and_dependencies(tmp_pat
     assert first.parent == second.parent
     assert first != second
     assert first.name.startswith(f"py{module.sys.version_info.major}{module.sys.version_info.minor}-")
+
+
+def test_read_only_runtime_locator_mirrors_repository_local_precedence(tmp_path: Path):
+    local_python = repository_validation_python(tmp_path)
+    local_python.parent.mkdir(parents=True)
+    local_python.write_text("synthetic runtime\n", encoding="utf-8")
+
+    assert existing_validation_python(tmp_path, environ={"ANYANG_VALIDATION_CACHE": str(tmp_path.parent / "external-cache")}) == local_python
 
 
 def test_environment_fingerprint_captures_interpreter_compatibility():

@@ -20,6 +20,12 @@ from .runtime_bootstrap import (
 VALIDATION_POLICY_VERSION = 1
 
 
+def repository_validation_python(repo_root: Path) -> Path:
+    """Return the repository-local runtime path used by the canonical launcher."""
+
+    return repo_root.resolve() / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+
+
 def repository_fingerprint(repo_root: Path, python: Path) -> str:
     """Return the exact tree/runtime fingerprint used by Full validation."""
 
@@ -50,6 +56,9 @@ def existing_validation_python(
     """Locate an already-provisioned validation runtime without creating it."""
 
     root = repo_root.resolve()
+    local_python = repository_validation_python(root)
+    if local_python.is_file():
+        return local_python
     requirements = validation_requirements(root / "pyproject.toml")
     cache_root = validation_cache_root(root, environ)
     environment = validation_environment_path(root, cache_root, requirements)
@@ -99,7 +108,11 @@ def read_full_validation_evidence(
         return evidence
     current = repository_fingerprint(root, python)
     evidence["current_fingerprint"] = current
-    evidence["runtime_ref"] = "external-validation-runtime"
+    evidence["runtime_ref"] = (
+        "repository-validation-runtime"
+        if python.resolve() == repository_validation_python(root).resolve()
+        else "external-validation-runtime"
+    )
     evidence["status"] = "passed" if result.get("fingerprint") == current else "stale"
     return evidence
 

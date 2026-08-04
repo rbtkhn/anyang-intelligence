@@ -31,6 +31,7 @@ from anyang_loop.runtime_bootstrap import (  # noqa: E402
 from anyang_loop.validation_evidence import (  # noqa: E402
     VALIDATION_POLICY_VERSION,
     repository_fingerprint,
+    repository_validation_python,
 )
 
 
@@ -329,7 +330,7 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         ensure_supported_python()
-        local_python = REPO_ROOT / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+        local_python = repository_validation_python(REPO_ROOT)
         if local_python.is_file() and not args.refresh and not args.cache_dir:
             python = local_python
         else:
