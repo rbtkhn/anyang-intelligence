@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 from typing import Callable
 
-from .ops_db import connect, migrate, schema_version
+from .ops_db import connect, connect_readonly, migrate, schema_version
 from .epistemic_review import (
     claim_explanation_data,
     epistemic_review_data,
@@ -67,17 +67,24 @@ from .cadence_metrics import (
 from .council_workroom import (
     EVENT_TYPES as COUNCIL_EVENT_TYPES,
     backfill_friction_pilot,
+    compare_council_envelope,
+    council_decision_envelope,
+    council_envelope_pilot_review,
     council_inbox,
     council_pilot_review,
     council_projection,
     create_council_transaction,
     friction_backfill_plan,
+    load_envelope_packet,
     load_packet,
     record_council_event,
     render_council_inbox_markdown,
+    render_council_envelope_markdown,
+    render_council_envelope_pilot_review_markdown,
     render_council_markdown,
     render_council_pilot_review_markdown,
     verify_council_transaction,
+    verify_council_envelope,
 )
 from .choice_learning import (
     assert_choice_scope,
@@ -495,6 +502,37 @@ def build_parser() -> argparse.ArgumentParser:
     _dry(council_backfill)
     council_backfill.set_defaults(func=cmd_council_backfill)
 
+    council_envelope = council_sub.add_parser(
+        "envelope", help="Render a deterministic machine envelope or human receipt"
+    )
+    council_envelope.add_argument("transaction_id")
+    council_envelope.add_argument("--as-of", required=True)
+    _read_format(council_envelope)
+    council_envelope.set_defaults(func=cmd_council_envelope)
+
+    council_envelope_verify = council_sub.add_parser(
+        "envelope-verify", help="Verify a decision envelope without opening SQLite"
+    )
+    council_envelope_verify.add_argument("--packet", required=True)
+    council_envelope_verify.add_argument("--receipt")
+    council_envelope_verify.set_defaults(func=cmd_council_envelope_verify)
+
+    council_envelope_compare = council_sub.add_parser(
+        "envelope-compare", help="Compare a decision envelope with the current ledger"
+    )
+    council_envelope_compare.add_argument("--packet", required=True)
+    council_envelope_compare.set_defaults(func=cmd_council_envelope_compare)
+
+    council_envelope_review = council_sub.add_parser(
+        "envelope-pilot-review", help="Measure the 30-day staged envelope pilot"
+    )
+    _tenant(council_envelope_review)
+    council_envelope_review.add_argument("--from", dest="from_time", required=True)
+    council_envelope_review.add_argument("--as-of", required=True)
+    council_envelope_review.add_argument("--attention-value-per-hour", type=float)
+    _read_format(council_envelope_review)
+    council_envelope_review.set_defaults(func=cmd_council_envelope_pilot_review)
+
     choice = sub.add_parser("choice", help="Operate outcome-aware possibility navigation")
     choice_sub = choice.add_subparsers(required=True)
 
@@ -886,6 +924,46 @@ def cmd_council_backfill(args: argparse.Namespace) -> int:
             connection, args.tenant, args.cohort, args.tracker
         )
     return print_result(result.as_dict())
+
+
+def cmd_council_envelope(args: argparse.Namespace) -> int:
+    with connect_readonly(resolve_db(args)) as connection:
+        data = council_decision_envelope(
+            connection, args.transaction_id, as_of=args.as_of
+        )
+    return _emit_read_output(args, data, render_council_envelope_markdown)
+
+
+def cmd_council_envelope_verify(args: argparse.Namespace) -> int:
+    packet = load_envelope_packet(args.packet)
+    receipt = (
+        Path(args.receipt).read_text(encoding="utf-8") if args.receipt else None
+    )
+    result = verify_council_envelope(packet, receipt=receipt)
+    print(render_json(result), end="")
+    return 0 if result["ok"] else 1
+
+
+def cmd_council_envelope_compare(args: argparse.Namespace) -> int:
+    packet = load_envelope_packet(args.packet)
+    with connect_readonly(resolve_db(args)) as connection:
+        result = compare_council_envelope(connection, packet)
+    print(render_json(result), end="")
+    return 0 if result["ok"] else 1
+
+
+def cmd_council_envelope_pilot_review(args: argparse.Namespace) -> int:
+    with connect_readonly(resolve_db(args)) as connection:
+        data = council_envelope_pilot_review(
+            connection,
+            args.tenant,
+            from_time=args.from_time,
+            as_of=args.as_of,
+            attention_value_per_hour=args.attention_value_per_hour,
+        )
+    return _emit_read_output(
+        args, data, render_council_envelope_pilot_review_markdown
+    )
 
 
 def cmd_choice_configure(args: argparse.Namespace) -> int:
