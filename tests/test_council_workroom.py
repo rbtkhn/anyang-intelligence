@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import sqlite3
 from pathlib import Path
 
 import pytest
 import yaml
 
+from anyang_loop import council_workroom as cw
 from anyang_loop.council_workroom import (
     ENVELOPE_GATED_CATEGORY,
     ENVELOPE_SHADOW_CATEGORY,
@@ -19,16 +21,20 @@ from anyang_loop.council_workroom import (
     council_projection,
     council_subject_hash,
     create_council_transaction,
+    load_envelope_packet,
+    open_envelope_review_session,
     record_council_event,
     render_council_markdown,
     render_council_envelope_markdown,
     render_council_envelope_pilot_review_markdown,
+    start_envelope_pilot,
+    submit_envelope_review_session,
     verify_council_envelope,
     verify_council_transaction,
 )
 from anyang_loop.ops_cli import main
 from anyang_loop.ops_db import SCHEMA_VERSION, connect, migrate, schema_version
-from anyang_loop.ops_service import OpsError, add_actor, init_tenant, tenant_id
+from anyang_loop.ops_service import OpsError, add_actor, init_tenant, now_utc, tenant_id
 
 
 NOW = "2026-07-28T12:00:00Z"
@@ -76,6 +82,7 @@ def _create(connection, identifier="TX-1", decision_class="Class 1"):
             "decision_class": decision_class,
             "pilot_category": "test",
             "source_ref": "fictional://council/source",
+            "created_at": NOW,
         },
     )
 
@@ -121,6 +128,7 @@ def _recommend(connection, actor_id, identifier="TX-1", key="recommendation"):
                 "evidence": "fictional://evidence",
                 "recommendation": "Proceed only inside the synthetic scope",
                 "success_condition": "A synthetic receipt returns",
+                "uncertainty": "Synthetic evidence may be incomplete",
             },
         },
     )
@@ -153,6 +161,55 @@ def _approve(
                 "client_authority_ref": client_ref,
                 "subject_hash": council_subject_hash(connection, identifier),
                 "expires_at": expires_at,
+            },
+        },
+    )
+
+
+def _complete(connection, actors, identifier="TX-1"):
+    record_council_event(
+        connection,
+        identifier,
+        "execution_recorded",
+        {
+            "event_key": "execution",
+            "actor_id": actors["interface"],
+            "council_role": "interface",
+            "action_summary": "Execute bounded synthetic work",
+            "payload": {
+                "executor_invoked": True,
+                "named_executor": "Executive Assistant",
+                "execution_state": "executing",
+                "action_taken": "Created the synthetic artifact",
+            },
+        },
+    )
+    record_council_event(
+        connection,
+        identifier,
+        "evidence_returned",
+        {
+            "event_key": "evidence",
+            "actor_id": actors["interface"],
+            "council_role": "interface",
+            "action_summary": "Return synthetic evidence",
+            "evidence_ref": "fictional://receipt",
+            "payload": {"evidence": "fictional://receipt"},
+        },
+    )
+    record_council_event(
+        connection,
+        identifier,
+        "reconciliation_recorded",
+        {
+            "event_key": "reconciliation",
+            "actor_id": actors["executive"],
+            "council_role": "executive",
+            "action_summary": "Reconcile the synthetic outcome",
+            "payload": {
+                "reconciliation_state": "supported",
+                "final_supported_state": "Synthetic receipt verified",
+                "terminal_state": "complete",
             },
         },
     )
@@ -318,11 +375,11 @@ def test_class3_dual_authority_expiry_privacy_and_live_attribution(ledger):
         client_ref="fictional://authority/client",
         expires_at="2026-07-27T00:00:00Z",
     )
-    projection = council_projection(connection, "TX-3", as_of=NOW)
+    projection = council_projection(connection, "TX-3", as_of=now_utc())
     assert "authority-expired" in {
         flag["code"] for flag in projection["attention_flags"]
     }
-    expired_envelope = council_decision_envelope(connection, "TX-3", as_of=NOW)
+    expired_envelope = council_decision_envelope(connection, "TX-3", as_of=now_utc())
     assert expired_envelope["freshness"]["status"] == "expired"
     assert verify_council_envelope(expired_envelope)["disposition"] == "Hold"
     with pytest.raises(OpsError, match="historical-missing"):
@@ -493,7 +550,7 @@ def test_full_friction_backfill_is_deterministic_idempotent_and_preserves_missin
         review = council_pilot_review(
             connection, "anyang-internal", "2026-08-21T23:59:59Z"
         )
-        assert review["receipt_coverage"]["percent"] == 100.0
+        assert review["receipt_coverage"]["percent"] == 0.0
         assert review["unauthorized_progression"]["count"] == 0
         assert review["operator_burden_measurements"]
 
@@ -542,7 +599,7 @@ def test_conflicting_rerun_fails_and_inbox_prioritizes_authority_conflict(tmp_pa
                 NOW,
             ),
         )
-        inbox = council_inbox(connection, "anyang-internal", NOW)
+        inbox = council_inbox(connection, "anyang-internal", now_utc())
         assert inbox["entries"][0]["transaction_id"] == "EC-FRICTION-04"
         assert inbox["entries"][0]["priority"] == "P0"
 
@@ -642,11 +699,13 @@ def test_decision_envelope_is_deterministic_verifiable_and_ledger_bound(ledger):
     _create(connection)
     _recommend(connection, actors["executive"])
     _approve(connection, actors["engineer"])
+    _complete(connection, actors)
 
-    first = council_decision_envelope(connection, "TX-1", as_of=NOW)
-    second = council_decision_envelope(connection, "TX-1", as_of=NOW)
+    as_of = now_utc()
+    first = council_decision_envelope(connection, "TX-1", as_of=as_of)
+    second = council_decision_envelope(connection, "TX-1", as_of=as_of)
     assert first == second
-    assert first["contract_version"] == "council-decision-envelope/v1"
+    assert first["contract_version"] == "council-decision-envelope/v1.1"
     assert first["authority_effect"] == "none"
     assert first["critical_field_coverage"]["complete"] is True
     assert verify_council_envelope(first)["ok"] is True
@@ -678,7 +737,7 @@ def test_decision_envelope_holds_stale_authority_and_rejects_unknown_contract(le
     _approve(connection, actors["engineer"])
     _recommend(connection, actors["executive"], key="changed-recommendation")
 
-    stale = council_decision_envelope(connection, "TX-1", as_of=NOW)
+    stale = council_decision_envelope(connection, "TX-1", as_of=now_utc())
     assert stale["freshness"]["status"] == "stale"
     assert verify_council_envelope(stale)["disposition"] == "Hold"
 
@@ -730,232 +789,222 @@ def test_envelope_pilot_categories_are_internal_and_class_bounded(tmp_path):
     assert path.exists()
 
 
-def test_gated_execution_requires_exact_current_envelope_binding(tmp_path):
+def test_gated_operation_is_fail_closed_and_reserved_metrics_are_protected(tmp_path):
     _, connection, actors = _internal_ledger(tmp_path)
     try:
-        with pytest.raises(OpsError, match="preceding shadow cohort"):
+        with pytest.raises(OpsError, match="Gated envelope operation is held"):
             create_council_transaction(
                 connection,
                 "anyang-internal",
                 {
-                    "id": "GATED-EARLY",
-                    "title": "Premature gated transaction",
+                    "id": "GATED-HELD",
+                    "title": "Held gated transaction",
                     "council_scope": "Internal envelope pilot",
                     "decision_class": "Class 1",
                     "pilot_category": ENVELOPE_GATED_CATEGORY,
-                    "created_at": NOW,
-                },
-            )
-        _prepare_shadow_gate(connection, actors)
-        with pytest.raises(OpsError, match="day-10-eligibility"):
-            create_council_transaction(
-                connection,
-                "anyang-internal",
-                {
-                    "id": "GATED-BEFORE-DAY-11",
-                    "title": "Too-early gated transaction",
-                    "council_scope": "Internal envelope pilot",
-                    "decision_class": "Class 1",
-                    "pilot_category": ENVELOPE_GATED_CATEGORY,
-                    "created_at": "2026-07-10T00:00:00Z",
                 },
             )
         create_council_transaction(
             connection,
             "anyang-internal",
             {
-                "id": "GATED-1",
-                "title": "Gated transaction",
+                "id": "CONTROL",
+                "title": "Authorize shadow calibration",
                 "council_scope": "Internal envelope pilot",
                 "decision_class": "Class 1",
-                "pilot_category": ENVELOPE_GATED_CATEGORY,
                 "created_at": NOW,
             },
         )
-        _recommend(connection, actors["executive"], "GATED-1")
-        _approve(connection, actors["engineer"], "GATED-1")
-        envelope = council_decision_envelope(connection, "GATED-1", as_of=NOW)
-        base_packet = {
-            "event_key": "execution",
-            "actor_id": actors["interface"],
-            "action_summary": "Execute bounded gated work",
-            "payload": {
-                "executor_invoked": True,
-                "named_executor": "Executive Assistant",
-                "execution_state": "executing",
-                "action_taken": "Created the internal artifact",
-            },
-        }
-        with pytest.raises(OpsError, match="envelope binding"):
-            record_council_event(connection, "GATED-1", "execution_recorded", base_packet)
-        packet = json.loads(json.dumps(base_packet))
-        packet["payload"].update(
-            {
-                "envelope_projection_hash": envelope["projection_hash"],
-                "human_receipt_digest": envelope["human_receipt_digest"],
-                "envelope_as_of": NOW,
-            }
-        )
-        record_council_event(connection, "GATED-1", "execution_recorded", packet)
-        assert council_projection(connection, "GATED-1")["current_state"] == "executing"
-
-        create_council_transaction(
-            connection,
-            "anyang-internal",
-            {
-                "id": "GATED-2",
-                "title": "Stale gated transaction",
-                "council_scope": "Internal envelope pilot",
-                "decision_class": "Class 2",
-                "pilot_category": ENVELOPE_GATED_CATEGORY,
-                "created_at": NOW,
-            },
-        )
-        _recommend(connection, actors["executive"], "GATED-2")
-        _approve(connection, actors["engineer"], "GATED-2")
-        stale = council_decision_envelope(connection, "GATED-2", as_of=NOW)
-        _record_envelope_metric(
-            connection, actors["steward"], "GATED-2", "envelope_generation_seconds", 1
-        )
-        stale_packet = json.loads(json.dumps(base_packet))
-        stale_packet["event_key"] = "stale-execution"
-        stale_packet["payload"].update(
-            {
-                "envelope_projection_hash": stale["projection_hash"],
-                "human_receipt_digest": stale["human_receipt_digest"],
-                "envelope_as_of": NOW,
-            }
-        )
-        with pytest.raises(OpsError, match="projection hash is stale or mismatched"):
-            record_council_event(
-                connection, "GATED-2", "execution_recorded", stale_packet
-            )
-    finally:
-        connection.close()
-
-
-def _record_envelope_metric(connection, actor_id, transaction_id, name, value):
-    record_council_event(
-        connection,
-        transaction_id,
-        "metric_recorded",
-        {
-            "event_key": f"metric-{name}",
-            "actor_id": actor_id,
-            "council_role": "steward",
-            "action_summary": f"Record {name}",
-            "payload": {
-                "name": name,
-                "observed_value": value,
-                "observation_status": "observed",
-            },
-        },
-    )
-
-
-def _prepare_shadow_gate(connection, actors):
-    for index in range(5):
-        transaction_id = f"GATE-SHADOW-{index}"
-        create_council_transaction(
-            connection,
-            "anyang-internal",
-            {
-                "id": transaction_id,
-                "title": f"Shadow gate case {index}",
-                "council_scope": "Internal envelope pilot",
-                "decision_class": "Class 1",
-                "pilot_category": ENVELOPE_SHADOW_CATEGORY,
-                "created_at": f"2026-07-{index + 1:02d}T00:00:00Z",
-            },
-        )
-        for name, value in (
-            ("incremental_review_minutes", 1),
-            ("critical_field_parity", True),
-            ("receipt_ledger_mismatch", 0),
-            ("authority_or_membrane_incident", 0),
-        ):
-            _record_envelope_metric(
-                connection, actors["steward"], transaction_id, name, value
-            )
-
-
-def test_envelope_pilot_review_adopts_only_observed_adequate_sample(tmp_path):
-    _, connection, actors = _internal_ledger(tmp_path)
-    start = "2026-07-01T00:00:00Z"
-    end = "2026-07-30T00:00:00Z"
-    try:
-        empty = council_envelope_pilot_review(
-            connection, "anyang-internal", from_time=start, as_of=end
-        )
-        assert empty["disposition"] == "Extend shadow measurement"
-        assert empty["shadow_gate"]["ready"] is False
-        assert empty["guardrails"]["pass"] is False
-        for index in range(10):
-            transaction_id = f"PILOT-{index:02d}"
-            category = ENVELOPE_SHADOW_CATEGORY
-            create_council_transaction(
-                connection,
-                "anyang-internal",
-                {
-                    "id": transaction_id,
-                    "title": f"Pilot transaction {index}",
-                    "council_scope": "Internal envelope pilot",
-                    "decision_class": "Class 1",
-                    "pilot_category": category,
-                    "created_at": f"2026-07-{index + 2:02d}T00:00:00Z",
-                },
-            )
-            _recommend(connection, actors["executive"], transaction_id)
-            _approve(connection, actors["engineer"], transaction_id)
+        _recommend(connection, actors["executive"], "CONTROL")
+        _approve(connection, actors["engineer"], "CONTROL")
+        with pytest.raises(OpsError, match="dedicated Council interface"):
             record_council_event(
                 connection,
-                transaction_id,
-                "execution_recorded",
+                "CONTROL",
+                "metric_recorded",
                 {
-                    "event_key": "execution",
-                    "actor_id": actors["interface"],
-                    "action_summary": "Execute internal pilot work",
+                    "actor_id": actors["steward"],
+                    "council_role": "steward",
+                    "action_summary": "Attempt a self-reported metric",
                     "payload": {
-                        "executor_invoked": True,
-                        "named_executor": "Executive Assistant",
-                        "execution_state": "executing",
-                        "action_taken": "Created an internal result",
+                        "name": "baseline_reconstruction_minutes",
+                        "observed_value": 10,
+                        "observation_status": "observed",
                     },
                 },
             )
-            for name, value in (
-                ("baseline_reconstruction_minutes", 10),
-                ("envelope_reconstruction_minutes", 6),
-                ("baseline_reconstruction_correctness", 5),
-                ("envelope_reconstruction_correctness", 5),
-                ("envelope_generation_seconds", 0.5),
-                ("incremental_review_minutes", 1),
-                ("critical_field_parity", True),
-                ("receipt_ledger_mismatch", 0),
-                ("correction_or_rework_minutes", 0),
-                ("authority_or_membrane_incident", 0),
-            ):
-                _record_envelope_metric(
-                    connection, actors["steward"], transaction_id, name, value
-                )
+    finally:
+        connection.close()
+
+
+def test_protected_pilot_sessions_derive_measurement_and_never_open_gate(tmp_path):
+    _, connection, actors = _internal_ledger(tmp_path)
+    try:
+        create_council_transaction(
+            connection,
+            "anyang-internal",
+            {
+                "id": "CONTROL",
+                "title": "Authorize shadow calibration",
+                "council_scope": "Internal envelope pilot",
+                "decision_class": "Class 1",
+                "created_at": NOW,
+            },
+        )
+        _recommend(connection, actors["executive"], "CONTROL")
+        _approve(connection, actors["engineer"], "CONTROL")
+        activation = start_envelope_pilot(
+            connection, "anyang-internal", "CONTROL", actors["engineer"]
+        )
+        pilot_id = activation.details["pilot_id"]
+        create_council_transaction(
+            connection,
+            "anyang-internal",
+            {
+                "id": "SHADOW-1",
+                "title": "Measured shadow transaction",
+                "council_scope": "Internal envelope pilot",
+                "decision_class": "Class 1",
+                "pilot_category": ENVELOPE_SHADOW_CATEGORY,
+                "source_ref": pilot_id,
+            },
+        )
+        _recommend(connection, actors["executive"], "SHADOW-1")
+        _approve(connection, actors["engineer"], "SHADOW-1")
+        _complete(connection, actors, "SHADOW-1")
+
+        projection = council_projection(connection, "SHADOW-1")
+        material = [event for event in projection["events"] if event["event_type"] != "metric_recorded"]
+        recommendation = projection["sections"]["A"][-1]
+        authority = projection["sections"]["B"][-1]
+        answers = {
+            "what_changed_event_id": material[-1]["id"],
+            "judgment_event_id": recommendation["id"],
+            "authority_status_and_exclusion": "current|" + authority["payload"]["limits_exclusions"],
+            "missing_evidence_codes": [],
+            "next_action_code": "none",
+        }
+        even = int(hashlib.sha256(b"SHADOW-1").hexdigest()[:8], 16) % 2 == 0
+        baseline_role = "steward" if even else "interface"
+        reviewers = {
+            "baseline": actors[baseline_role],
+            "receipt": actors["interface" if baseline_role == "steward" else "steward"],
+        }
+        for surface in ("baseline", "receipt"):
+            opened = open_envelope_review_session(
+                connection, "SHADOW-1", pilot_id, surface, reviewers[surface]
+            )
+            submit_envelope_review_session(
+                connection,
+                opened.details["session_id"],
+                {"actor_id": reviewers[surface], "answers": answers},
+            )
         review = council_envelope_pilot_review(
             connection,
             "anyang-internal",
-            from_time=start,
-            as_of=end,
-            attention_value_per_hour=100,
+            from_time=None,
+            as_of=now_utc(),
+            pilot_id=pilot_id,
         )
-        assert review["primary_kpi"]["observed"] == 40.0
-        assert review["shadow_gate"]["ready"] is True
-        assert review["guardrails"]["pass"] is True
-        assert review["disposition"] == "Adopt bounded operation"
-        assert review["supporting_outcomes"]["observed_hours_saved"] == 0.67
-        assert review["supporting_outcomes"]["observed_attention_value"] == 67.0
-        rendered = render_council_envelope_pilot_review_markdown(review)
-        assert "Adopt bounded operation" in rendered
-        assert "Historical replays excluded from ROI: True" in rendered
+        assert review["live_transaction_count"] == 1
+        assert review["samples"][0]["protected_pair"] is not None, json.dumps(
+            council_projection(connection, "SHADOW-1")["metrics"], indent=2
+        )
+        assert review["correct_paired_sample_count"] == 1, review
+        assert review["shadow_gate"]["ready"] is False
+        assert review["shadow_gate"]["calibration_hold"] is True
+        assert review["disposition"] == "Extend shadow measurement"
     finally:
         connection.close()
+
+
+def test_live_time_role_and_as_of_boundaries_are_fail_closed(ledger):
+    connection, actors = ledger
+    _create(connection)
+    with pytest.raises(OpsError, match="stored role"):
+        record_council_event(
+            connection,
+            "TX-1",
+            "recommendation_recorded",
+            {
+                "actor_id": actors["executive"],
+                "council_role": "engineer",
+                "action_summary": "Spoof a role",
+                "payload": {
+                    "decision": "Choose",
+                    "evidence": "fictional://evidence",
+                    "recommendation": "Proceed",
+                    "success_condition": "Receipt",
+                },
+            },
+        )
+    with pytest.raises(OpsError, match="server-owned"):
+        record_council_event(
+            connection,
+            "TX-1",
+            "recommendation_recorded",
+            {
+                "actor_id": actors["executive"],
+                "council_role": "executive",
+                "action_summary": "Supply a recording time",
+                "recorded_at": NOW,
+                "payload": {
+                    "decision": "Choose",
+                    "evidence": "fictional://evidence",
+                    "recommendation": "Proceed",
+                    "success_condition": "Receipt",
+                },
+            },
+        )
+    _recommend(connection, actors["executive"])
+    assert council_projection(connection, "TX-1", as_of=NOW)["events"] == []
+
+
+def test_envelope_parser_limits_sanitization_and_legacy_v1_compatibility(tmp_path, ledger):
+    connection, actors = ledger
+    _create(connection)
+    _recommend(connection, actors["executive"])
+    _approve(connection, actors["engineer"])
+    _complete(connection, actors)
+    as_of = now_utc()
+    envelope = council_decision_envelope(connection, "TX-1", as_of=as_of)
+    assert "source_markdown" not in json.dumps(envelope["payload"])
+    duplicate = tmp_path / "duplicate.json"
+    duplicate.write_text('{"a":1,"a":2}', encoding="utf-8")
+    with pytest.raises(OpsError, match="Duplicate JSON key"):
+        load_envelope_packet(duplicate)
+    nonfinite = tmp_path / "nonfinite.json"
+    nonfinite.write_text('{"value":NaN}', encoding="utf-8")
+    with pytest.raises(OpsError, match="Non-finite"):
+        load_envelope_packet(nonfinite)
+
+    projection = council_projection(connection, "TX-1", as_of=as_of)
+    legacy = dict(envelope)
+    legacy["contract_version"] = "council-decision-envelope/v1"
+    legacy["payload"] = projection
+    legacy["projection_hash"] = cw._hash(projection)
+    legacy["payload_digest"] = cw._sha256_bytes(cw._canonical_json_bytes(projection))
+    legacy["receipt_data"] = cw._human_receipt_data(projection)
+    legacy["critical_field_coverage"] = cw._critical_field_coverage(legacy["receipt_data"])
+    legacy["human_receipt"] = cw._render_human_receipt_body(legacy, legacy["receipt_data"])
+    legacy["human_receipt_digest"] = cw._sha256_bytes(legacy["human_receipt"].encode("utf-8"))
+    assert verify_council_envelope(legacy)["ok"] is True
+    assert compare_council_envelope(connection, legacy)["ok"] is True
+    record_council_event(
+        connection,
+        "TX-1",
+        "corrected",
+        {
+            "actor_id": actors["engineer"],
+            "council_role": "engineer",
+            "action_summary": "# Injected\n| table |",
+            "payload": {"reason": "Exercise Markdown escaping"},
+        },
+    )
+    escaped = render_council_envelope_markdown(
+        council_decision_envelope(connection, "TX-1", as_of=now_utc())
+    )
+    assert "\\# Injected \\| table \\|" in escaped
 
 
 def test_envelope_cli_verify_is_offline_and_read_only(tmp_path, capsys):
@@ -973,7 +1022,9 @@ def test_envelope_cli_verify_is_offline_and_read_only(tmp_path, capsys):
     )
     _recommend(connection, actors["executive"], "CLI-ENVELOPE")
     _approve(connection, actors["engineer"], "CLI-ENVELOPE")
-    envelope = council_decision_envelope(connection, "CLI-ENVELOPE", as_of=NOW)
+    _complete(connection, actors, "CLI-ENVELOPE")
+    as_of = now_utc()
+    envelope = council_decision_envelope(connection, "CLI-ENVELOPE", as_of=as_of)
     connection.close()
     packet = tmp_path / "envelope.json"
     packet.write_text(json.dumps(envelope, ensure_ascii=False), encoding="utf-8")
@@ -987,7 +1038,7 @@ def test_envelope_cli_verify_is_offline_and_read_only(tmp_path, capsys):
                 "envelope",
                 "CLI-ENVELOPE",
                 "--as-of",
-                NOW,
+                    as_of,
                 "--format",
                 "json",
             ]
@@ -995,6 +1046,27 @@ def test_envelope_cli_verify_is_offline_and_read_only(tmp_path, capsys):
         == 0
     )
     assert json.loads(capsys.readouterr().out)["projection_hash"] == envelope["projection_hash"]
+    blocked_output = tmp_path / "blocked-in-repository.json"
+    assert (
+        main(
+            [
+                "--db",
+                str(db),
+                "council",
+                "envelope",
+                "CLI-ENVELOPE",
+                "--as-of",
+                as_of,
+                "--format",
+                "json",
+                "--output",
+                str(blocked_output),
+            ]
+        )
+        == 1
+    )
+    assert not blocked_output.exists()
+    capsys.readouterr()
     assert main(["council", "envelope-verify", "--packet", str(packet)]) == 0
     result = json.loads(capsys.readouterr().out)
     assert result["ok"] is True

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import re
 import sqlite3
 import statistics
@@ -16,7 +17,8 @@ from .ops_service import MutationResult, OpsError, add_actor, init_tenant, now_u
 
 
 WORKROOM_SCHEMA_VERSION = 1
-ENVELOPE_CONTRACT_VERSION = "council-decision-envelope/v1"
+LEGACY_ENVELOPE_CONTRACT_VERSION = "council-decision-envelope/v1"
+ENVELOPE_CONTRACT_VERSION = "council-decision-envelope/v1.1"
 HUMAN_RECEIPT_CONTRACT_VERSION = "council-human-receipt/v1"
 ENVELOPE_PAYLOAD_ENCODING = "application/json; charset=utf-8"
 ENVELOPE_SHADOW_CATEGORY = "decision-envelope-v1-shadow"
@@ -52,6 +54,18 @@ ENVELOPE_PILOT_METRICS = (
     "correction_or_rework_minutes",
     "authority_or_membrane_incident",
 )
+RECONSTRUCTION_QUESTIONS = (
+    "what_changed_event_id",
+    "judgment_event_id",
+    "authority_status_and_exclusion",
+    "missing_evidence_codes",
+    "next_action_code",
+)
+PROTECTED_ENVELOPE_METRICS = set(ENVELOPE_PILOT_METRICS) | {
+    "envelope_pilot_activated",
+    "envelope_reconstruction_session",
+    "envelope_reconstruction_result",
+}
 COUNCIL_ROLES = ("engineer", "executive", "artistic", "interface", "steward", "client")
 EVENT_TYPES = (
     "recommendation_recorded",
@@ -99,9 +113,22 @@ def load_packet(path: str | Path) -> dict[str, Any]:
 
 def load_envelope_packet(path: str | Path) -> dict[str, Any]:
     source = Path(path)
-    data = json.loads(source.read_text(encoding="utf-8"))
+    raw = source.read_bytes()
+    if len(raw) > 2 * 1024 * 1024:
+        raise OpsError("Council envelope exceeds the 2 MiB packet limit")
+    try:
+        data = json.loads(
+            raw.decode("utf-8"),
+            object_pairs_hook=_reject_duplicate_json_keys,
+            parse_constant=lambda value: (_ for _ in ()).throw(
+                OpsError(f"Non-finite JSON value is not allowed: {value}")
+            ),
+        )
+    except UnicodeDecodeError as exc:
+        raise OpsError("Council envelope must be UTF-8 JSON") from exc
     if not isinstance(data, dict):
         raise OpsError(f"Council envelope must be a JSON object: {source}")
+    _validate_json_value(data)
     return data
 
 
@@ -132,9 +159,9 @@ def create_council_transaction(
         "created_at": _text(packet.get("created_at")) or now_utc(),
     }
     if values["pilot_category"] in ENVELOPE_PILOT_CATEGORIES:
-        values["created_at"] = _require_rfc3339(
-            values["created_at"], "Envelope pilot transaction created_at"
-        )
+        if packet.get("created_at") is not None:
+            raise OpsError("Live envelope-pilot transaction created_at is server-owned")
+        values["created_at"] = now_utc()
         tenant = connection.execute(
             "SELECT slug FROM tenant WHERE id = ?", (tid,)
         ).fetchone()
@@ -142,12 +169,11 @@ def create_council_transaction(
             raise OpsError("Decision-envelope pilot categories are internal-only")
         if _decision_class_number(values["decision_class"]) not in {1, 2}:
             raise OpsError("Decision-envelope pilot categories accept only Class 1 or Class 2")
+        if values["pilot_category"] == ENVELOPE_SHADOW_CATEGORY:
+            _require_pilot_activation(connection, tid, values["source_ref"])
         if values["pilot_category"] == ENVELOPE_GATED_CATEGORY:
-            _assert_envelope_shadow_gate_ready(
-                connection,
-                tenant["slug"],
-                tid,
-                values["created_at"],
+            raise OpsError(
+                "Gated envelope operation is held in v1.1 pending reviewed shadow evidence"
             )
     existing = connection.execute(
         "SELECT * FROM council_transaction WHERE id = ?", (values["id"],)
@@ -183,6 +209,7 @@ def record_council_event(
     packet: dict[str, Any],
     *,
     historical: bool = False,
+    protected_metric: bool = False,
 ) -> MutationResult:
     if event_type not in EVENT_TYPES:
         raise OpsError(f"Unsupported Council event type: {event_type}")
@@ -204,8 +231,15 @@ def record_council_event(
     evidence_ref = _text(packet.get("evidence_ref"))
     if event_type == "evidence_returned" and not historical and not evidence_ref:
         raise OpsError("Live evidence returns require an evidence_ref")
+    if protected_metric and not evidence_ref:
+        raise OpsError("Protected envelope-pilot events require an evidence_ref")
     _validate_event_payload(
-        connection, transaction, event_type, payload, historical=historical
+        connection,
+        transaction,
+        event_type,
+        payload,
+        historical=historical,
+        protected_metric=protected_metric,
     )
     payload_json = json.dumps(payload, sort_keys=True, separators=(",", ":"))
     event_key = _text(packet.get("event_key")) or _text(packet.get("id")) or str(uuid.uuid4())
@@ -242,6 +276,8 @@ def record_council_event(
         if historical
         else str(uuid.uuid4())
     )
+    if packet.get("recorded_at") is not None and not historical:
+        raise OpsError("Live Council event recorded_at is server-owned")
     recorded_at = _text(packet.get("recorded_at")) or now_utc()
     hash_payload = {
         "id": event_id,
@@ -289,14 +325,17 @@ def record_council_event(
     )
 
 
-def council_subject_hash(connection: sqlite3.Connection, transaction_id: str) -> str:
+def council_subject_hash(
+    connection: sqlite3.Connection,
+    transaction_id: str,
+    *,
+    as_of: str | None = None,
+) -> str:
     transaction = _transaction(connection, transaction_id)
-    recommendations = connection.execute(
-        """SELECT event_hash FROM council_event
-        WHERE transaction_id = ? AND event_type = 'recommendation_recorded'
-        ORDER BY sequence""",
-        (transaction_id,),
-    ).fetchall()
+    rows = _event_rows_as_of(connection, transaction_id, as_of)
+    recommendations = [
+        row for row in rows if row["event_type"] == "recommendation_recorded"
+    ]
     payload = {
         "transaction": {
             key: transaction[key]
@@ -317,13 +356,13 @@ def council_subject_hash(connection: sqlite3.Connection, transaction_id: str) ->
 
 
 def verify_council_transaction(
-    connection: sqlite3.Connection, transaction_id: str
+    connection: sqlite3.Connection,
+    transaction_id: str,
+    *,
+    as_of: str | None = None,
 ) -> dict[str, Any]:
     transaction = _transaction(connection, transaction_id)
-    events = connection.execute(
-        "SELECT * FROM council_event WHERE transaction_id = ? ORDER BY sequence",
-        (transaction_id,),
-    ).fetchall()
+    events = _event_rows_as_of(connection, transaction_id, as_of)
     issues: list[dict[str, str]] = []
     prior_hash = ""
     for expected_sequence, row in enumerate(events, start=1):
@@ -383,17 +422,19 @@ def council_projection(
     as_of: str | None = None,
 ) -> dict[str, Any]:
     transaction = _transaction(connection, transaction_id)
-    rows = connection.execute(
-        "SELECT * FROM council_event WHERE transaction_id = ? ORDER BY sequence",
-        (transaction_id,),
-    ).fetchall()
+    normalized_as_of = _require_rfc3339(as_of, "Projection as_of") if as_of else None
+    if normalized_as_of and _parse_timestamp(transaction["created_at"]) > _parse_timestamp(normalized_as_of):
+        raise OpsError("Projection as_of precedes transaction creation")
+    rows = _event_rows_as_of(connection, transaction_id, normalized_as_of)
     events = [_event_dict(row) for row in rows]
     sections: dict[str, list[dict[str, Any]]] = {"A": [], "B": [], "C": [], "D": []}
     metrics: list[dict[str, Any]] = []
     evidence: list[dict[str, Any]] = []
     authority_bindings: list[dict[str, Any]] = []
     current_state = "proposed"
-    current_subject_hash = council_subject_hash(connection, transaction_id)
+    current_subject_hash = council_subject_hash(
+        connection, transaction_id, as_of=normalized_as_of
+    )
     for event in events:
         payload = event["payload"]
         event_type = event["event_type"]
@@ -430,7 +471,9 @@ def council_projection(
             metrics.append(event)
         elif event_type in {"held", "blocked", "corrected", "superseded"}:
             current_state = event_type
-    verification = verify_council_transaction(connection, transaction_id)
+    verification = verify_council_transaction(
+        connection, transaction_id, as_of=normalized_as_of
+    )
     flags = _attention_flags(
         connection,
         transaction,
@@ -438,7 +481,7 @@ def council_projection(
         current_state,
         current_subject_hash,
         verification,
-        as_of or now_utc(),
+        normalized_as_of or now_utc(),
     )
     return {
         "schema_version": WORKROOM_SCHEMA_VERSION,
@@ -469,6 +512,7 @@ def council_projection(
             "event_count": verification["event_count"],
             "head_hash": verification["head_hash"],
             "chain_verified": verification["ok"],
+            "as_of": normalized_as_of or "current",
         },
     }
 
@@ -482,6 +526,7 @@ def council_decision_envelope(
     """Build a deterministic, read-only dual-surface envelope."""
     normalized_as_of = _require_rfc3339(as_of, "Envelope as_of")
     projection = council_projection(connection, transaction_id, as_of=normalized_as_of)
+    export_projection = _sanitized_envelope_projection(projection)
     transaction = projection["transaction"]
     tenant = connection.execute(
         "SELECT slug FROM tenant WHERE id = ?", (transaction["tenant_id"],)
@@ -499,10 +544,12 @@ def council_decision_envelope(
         "decision_class": transaction["decision_class"],
         "pilot_mode": _pilot_mode(transaction["pilot_category"]),
         "as_of": normalized_as_of,
-        "projection_hash": _hash(projection),
+        "projection_hash": _hash(export_projection),
+        "canonical_projection_hash": _hash(projection),
+        "decision_projection_hash": _decision_projection_hash(projection),
         "event_chain_head_hash": projection["lineage"]["head_hash"],
         "payload_encoding": ENVELOPE_PAYLOAD_ENCODING,
-        "payload_digest": _sha256_bytes(_canonical_json_bytes(projection)),
+        "payload_digest": _sha256_bytes(_canonical_json_bytes(export_projection)),
         "authority_effect": "none",
         "action_boundary": "read-only",
         "freshness": _authority_freshness(projection, normalized_as_of),
@@ -521,7 +568,7 @@ def council_decision_envelope(
         "human_receipt_digest": _sha256_bytes(receipt.encode("utf-8")),
         "human_receipt": receipt,
         "receipt_data": receipt_data,
-        "payload": projection,
+        "payload": export_projection,
     }
 
 
@@ -578,8 +625,16 @@ def verify_council_envelope(
         issues.append(_envelope_issue("missing-envelope-fields", ", ".join(missing)))
     if issues:
         return _envelope_verification(envelope, issues)
-    if envelope["contract_version"] != ENVELOPE_CONTRACT_VERSION:
+    contract_version = envelope["contract_version"]
+    if contract_version not in {
+        ENVELOPE_CONTRACT_VERSION,
+        LEGACY_ENVELOPE_CONTRACT_VERSION,
+    }:
         issues.append(_envelope_issue("unknown-contract-version", str(envelope["contract_version"])))
+    if contract_version == ENVELOPE_CONTRACT_VERSION and "canonical_projection_hash" not in envelope:
+        issues.append(_envelope_issue("missing-envelope-fields", "canonical_projection_hash"))
+    if contract_version == ENVELOPE_CONTRACT_VERSION and "decision_projection_hash" not in envelope:
+        issues.append(_envelope_issue("missing-envelope-fields", "decision_projection_hash"))
     if envelope["human_receipt_contract_version"] != HUMAN_RECEIPT_CONTRACT_VERSION:
         issues.append(
             _envelope_issue(
@@ -607,7 +662,13 @@ def verify_council_envelope(
             issues.append(_envelope_issue("projection-hash-mismatch", "payload differs from projection hash"))
         if not _valid_sha256(envelope["payload_digest"]) or envelope["payload_digest"] != expected_payload_digest:
             issues.append(_envelope_issue("payload-digest-mismatch", "payload bytes differ from digest"))
-        issues.extend(_verify_embedded_event_chain(payload, str(envelope["event_chain_head_hash"])))
+        issues.extend(
+            _verify_embedded_event_chain(
+                payload,
+                str(envelope["event_chain_head_hash"]),
+                recompute=contract_version == LEGACY_ENVELOPE_CONTRACT_VERSION,
+            )
+        )
         transaction = payload.get("transaction", {})
         if not isinstance(transaction, dict):
             issues.append(_envelope_issue("invalid-projection", "transaction must be an object"))
@@ -636,11 +697,11 @@ def verify_council_envelope(
         expected_coverage = _critical_field_coverage(receipt_data)
         if envelope["critical_field_coverage"] != expected_coverage:
             issues.append(_envelope_issue("critical-field-coverage-mismatch", "coverage summary differs"))
-        if not expected_coverage["complete"]:
+        if not expected_coverage["complete"] or not expected_coverage["known_complete"]:
             issues.append(
                 _envelope_issue(
                     "missing-critical-human-fields",
-                    ", ".join(expected_coverage["missing"]),
+                    ", ".join(expected_coverage["missing"] + expected_coverage["unknown"]),
                 )
             )
         if isinstance(payload, dict):
@@ -694,19 +755,237 @@ def compare_council_envelope(
         ).fetchone()
         if not tenant or tenant["slug"] != envelope["tenant"]:
             issues.append(_envelope_issue("tenant-mismatch", "packet crosses the ledger tenant boundary"))
+        elif envelope["contract_version"] == LEGACY_ENVELOPE_CONTRACT_VERSION:
+            projection = council_projection(
+                connection, transaction_id, as_of=str(envelope["as_of"])
+            )
+            expected = {
+                "projection_hash": _hash(projection),
+                "payload_digest": _sha256_bytes(_canonical_json_bytes(projection)),
+                "event_chain_head_hash": projection["lineage"]["head_hash"],
+            }
+            for key, value in expected.items():
+                if envelope[key] != value:
+                    issues.append(_envelope_issue("ledger-divergence", f"{key} differs from the ledger"))
         else:
             current = council_decision_envelope(
                 connection, transaction_id, as_of=str(envelope["as_of"])
             )
-            for key in (
+            compare_keys = [
                 "projection_hash",
                 "payload_digest",
                 "event_chain_head_hash",
                 "human_receipt_digest",
-            ):
+            ]
+            compare_keys.extend(("canonical_projection_hash", "decision_projection_hash"))
+            for key in compare_keys:
                 if envelope[key] != current[key]:
                     issues.append(_envelope_issue("ledger-divergence", f"{key} differs from the ledger"))
     return _envelope_verification(envelope, issues, compared_to_ledger=True)
+
+
+def start_envelope_pilot(
+    connection: sqlite3.Connection,
+    tenant: str,
+    control_transaction_id: str,
+    actor_id: str,
+) -> MutationResult:
+    tid = tenant_id(connection, tenant)
+    transaction = _transaction(connection, control_transaction_id)
+    if transaction["tenant_id"] != tid or tenant != "anyang-internal":
+        raise OpsError("Envelope pilot activation is limited to anyang-internal")
+    if _decision_class_number(transaction["decision_class"]) not in {1, 2}:
+        raise OpsError("Envelope pilot control must be Class 1 or Class 2")
+    actor = connection.execute(
+        "SELECT role FROM actor WHERE id = ? AND tenant_id = ? AND active = 1",
+        (actor_id, tid),
+    ).fetchone()
+    if not actor or actor["role"] != "engineer":
+        raise OpsError("Only the active System Engineer actor may start the pilot")
+    projection = council_projection(connection, control_transaction_id)
+    if _authority_freshness(projection, now_utc())["status"] != "current":
+        raise OpsError("Pilot activation requires current System Engineer authority")
+    result = record_council_event(
+        connection,
+        control_transaction_id,
+        "metric_recorded",
+        {
+            "event_key": "envelope-pilot-activation-v1.1",
+            "actor_id": actor_id,
+            "council_role": "engineer",
+            "action_summary": "Activate the bounded shadow decision-envelope pilot",
+            "evidence_ref": f"council://transaction/{control_transaction_id}",
+            "payload": {
+                "name": "envelope_pilot_activated",
+                "observed_value": "active",
+                "observation_status": "observed",
+                "measurement_version": "decision-envelope-pilot/v1.1",
+                "control_transaction_id": control_transaction_id,
+                "authority_effect": "none",
+            },
+        },
+        protected_metric=True,
+    )
+    return MutationResult(
+        result.action,
+        result.id,
+        {**result.details, "pilot_id": result.id, "started_at": _event_recorded_at(connection, result.id)},
+    )
+
+
+def open_envelope_review_session(
+    connection: sqlite3.Connection,
+    transaction_id: str,
+    pilot_id: str,
+    surface: str,
+    reviewer_actor_id: str,
+) -> MutationResult:
+    if surface not in {"baseline", "receipt"}:
+        raise OpsError("Review surface must be baseline or receipt")
+    transaction = _transaction(connection, transaction_id)
+    activation = _require_pilot_activation(
+        connection, transaction["tenant_id"], pilot_id
+    )
+    if transaction["pilot_category"] != ENVELOPE_SHADOW_CATEGORY:
+        raise OpsError("Reconstruction sessions require a shadow transaction")
+    if transaction["source_ref"] != pilot_id:
+        raise OpsError("Shadow transaction is not linked to this pilot activation")
+    reviewer = connection.execute(
+        "SELECT role FROM actor WHERE id = ? AND tenant_id = ? AND active = 1",
+        (reviewer_actor_id, transaction["tenant_id"]),
+    ).fetchone()
+    if not reviewer or reviewer["role"] not in {"steward", "interface"}:
+        raise OpsError("Reviewers must be active Council Steward or Executive Assistant actors")
+    expected_role = _assigned_reviewer_role(transaction_id, surface)
+    if reviewer["role"] != expected_role:
+        raise OpsError(f"The deterministic {surface} reviewer role is {expected_role}")
+    projection = council_projection(connection, transaction_id)
+    if not _has_complete_receipt(projection):
+        raise OpsError("Reconstruction sessions require a complete consequential receipt")
+    as_of = now_utc()
+    started_at = _now_utc_precise()
+    envelope = council_decision_envelope(connection, transaction_id, as_of=as_of)
+    decision_hash = envelope["decision_projection_hash"]
+    session_id = str(
+        uuid.uuid5(
+            uuid.NAMESPACE_URL,
+            f"anyang:envelope-review:{pilot_id}:{transaction_id}:{decision_hash}:{surface}",
+        )
+    )
+    result = record_council_event(
+        connection,
+        transaction_id,
+        "metric_recorded",
+        {
+            "id": session_id,
+            "event_key": f"envelope-review-open-{session_id}",
+            "actor_id": reviewer_actor_id,
+            "council_role": reviewer["role"],
+            "action_summary": f"Open the {surface} reconstruction session",
+            "evidence_ref": f"council-envelope://{decision_hash}",
+            "payload": {
+                "name": "envelope_reconstruction_session",
+                "observed_value": "opened",
+                "observation_status": "observed",
+                "measurement_version": "decision-envelope-review/v1.1",
+                "pilot_id": activation["id"],
+                "session_id": session_id,
+                "surface": surface,
+                "reviewer_actor_id": reviewer_actor_id,
+                "projection_hash": decision_hash,
+                "receipt_digest": _hash(envelope["receipt_data"]),
+                "as_of": as_of,
+                "started_at": started_at,
+                "questions": list(RECONSTRUCTION_QUESTIONS),
+            },
+        },
+        protected_metric=True,
+    )
+    return MutationResult(
+        result.action,
+        result.id,
+        {
+            **result.details,
+            "session_id": session_id,
+            "surface": surface,
+            "questions": list(RECONSTRUCTION_QUESTIONS),
+            "assigned_view": (
+                projection if surface == "baseline" else envelope["human_receipt"]
+            ),
+        },
+    )
+
+
+def submit_envelope_review_session(
+    connection: sqlite3.Connection,
+    session_id: str,
+    packet: dict[str, Any],
+) -> MutationResult:
+    _require_fields(packet, ("actor_id", "answers"), "Envelope review submission")
+    answers = packet["answers"]
+    if not isinstance(answers, dict) or set(answers) != set(RECONSTRUCTION_QUESTIONS):
+        raise OpsError("Review answers must contain exactly the five reconstruction questions")
+    opened = connection.execute(
+        "SELECT * FROM council_event WHERE id = ? AND event_type = 'metric_recorded'",
+        (session_id,),
+    ).fetchone()
+    if not opened:
+        raise OpsError("Unknown envelope reconstruction session")
+    opened_payload = json.loads(opened["payload_json"])
+    if opened_payload.get("name") != "envelope_reconstruction_session":
+        raise OpsError("Event is not an envelope reconstruction session")
+    actor_id = _text(packet["actor_id"])
+    if actor_id != opened_payload.get("reviewer_actor_id"):
+        raise OpsError("Review submission actor does not match the opened session")
+    existing = connection.execute(
+        "SELECT id FROM council_event WHERE transaction_id = ? AND event_key = ?",
+        (opened["transaction_id"], f"envelope-review-result-{session_id}"),
+    ).fetchone()
+    if existing:
+        raise OpsError("Envelope reconstruction session already has a result")
+    current_projection = council_projection(connection, opened["transaction_id"])
+    if _decision_projection_hash(current_projection) != opened_payload["projection_hash"]:
+        raise OpsError("Council projection changed after the reconstruction session opened")
+    expected = _reconstruction_answer_key(current_projection)
+    normalized_answers = _normalize_review_answers(answers)
+    correctness = sum(normalized_answers[key] == expected[key] for key in RECONSTRUCTION_QUESTIONS)
+    completed_at_text = _now_utc_precise()
+    completed_at = _parse_timestamp(completed_at_text)
+    started_at = _parse_timestamp(str(opened_payload["started_at"]))
+    elapsed_seconds = max(0.0, (completed_at - started_at).total_seconds())
+    reviewer_role = connection.execute(
+        "SELECT role FROM actor WHERE id = ?", (actor_id,)
+    ).fetchone()["role"]
+    return record_council_event(
+        connection,
+        opened["transaction_id"],
+        "metric_recorded",
+        {
+            "event_key": f"envelope-review-result-{session_id}",
+            "actor_id": actor_id,
+            "council_role": reviewer_role,
+            "action_summary": f"Submit the {opened_payload['surface']} reconstruction result",
+            "evidence_ref": f"council-event://{session_id}",
+            "payload": {
+                "name": "envelope_reconstruction_result",
+                "observed_value": round(elapsed_seconds / 60.0, 4),
+                "observation_status": "observed",
+                "measurement_version": "decision-envelope-review/v1.1",
+                "pilot_id": opened_payload["pilot_id"],
+                "session_id": session_id,
+                "surface": opened_payload["surface"],
+                "reviewer_actor_id": actor_id,
+                "projection_hash": opened_payload["projection_hash"],
+                "receipt_digest": opened_payload["receipt_digest"],
+                "answers": normalized_answers,
+                "answer_key": expected,
+                "correctness": correctness,
+                "elapsed_seconds": round(elapsed_seconds, 3),
+                "completed_at": completed_at_text,
+            },
+        },
+        protected_metric=True,
+    )
 
 
 def council_inbox(
@@ -916,34 +1195,57 @@ def council_envelope_pilot_review(
     connection: sqlite3.Connection,
     tenant: str,
     *,
-    from_time: str,
+    from_time: str | None,
     as_of: str,
     attention_value_per_hour: float | None = None,
+    pilot_id: str | None = None,
 ) -> dict[str, Any]:
-    start = _require_rfc3339(from_time, "Pilot from")
+    activation = None
+    if pilot_id:
+        tid_for_activation = tenant_id(connection, tenant)
+        activation = _require_pilot_activation(connection, tid_for_activation, pilot_id)
+        start = _require_rfc3339(str(activation["recorded_at"]), "Pilot activation time")
+    else:
+        if not from_time:
+            raise OpsError("Pilot review requires --pilot-id or --from")
+        start = _require_rfc3339(from_time, "Pilot from")
     end = _require_rfc3339(as_of, "Pilot as_of")
     if _parse_timestamp(end) < _parse_timestamp(start):
         raise OpsError("Pilot as_of must not precede from")
-    if attention_value_per_hour is not None and attention_value_per_hour < 0:
-        raise OpsError("Attention value per hour must be non-negative")
+    if attention_value_per_hour is not None and (
+        not math.isfinite(attention_value_per_hour) or attention_value_per_hour < 0
+    ):
+        raise OpsError("Attention value per hour must be finite and non-negative")
     tid = tenant_id(connection, tenant)
-    rows = connection.execute(
-        """SELECT id FROM council_transaction
+    query = """SELECT id FROM council_transaction
         WHERE tenant_id = ? AND pilot_category IN (?, ?)
           AND created_at >= ? AND created_at <= ?
-        ORDER BY created_at, id""",
-        (tid, *ENVELOPE_PILOT_CATEGORIES, start, end),
-    ).fetchall()
+    """
+    parameters: list[Any] = [tid, *ENVELOPE_PILOT_CATEGORIES, start, end]
+    if pilot_id:
+        query += " AND source_ref = ?"
+        parameters.append(pilot_id)
+    query += " ORDER BY created_at, id"
+    rows = connection.execute(query, parameters).fetchall()
     projections = [
         council_projection(connection, row["id"], as_of=end) for row in rows
     ]
     samples: list[dict[str, Any]] = []
     for projection in projections:
         metric_map = _latest_pilot_metric_values(projection)
-        baseline_minutes = _metric_number(metric_map, "baseline_reconstruction_minutes")
-        envelope_minutes = _metric_number(metric_map, "envelope_reconstruction_minutes")
-        baseline_correctness = _metric_number(metric_map, "baseline_reconstruction_correctness")
-        envelope_correctness = _metric_number(metric_map, "envelope_reconstruction_correctness")
+        protected_pair = _protected_reconstruction_pair(projection, pilot_id) if pilot_id else None
+        baseline_minutes = (
+            protected_pair["baseline_minutes"] if protected_pair else None
+        )
+        envelope_minutes = (
+            protected_pair["envelope_minutes"] if protected_pair else None
+        )
+        baseline_correctness = (
+            protected_pair["baseline_correctness"] if protected_pair else None
+        )
+        envelope_correctness = (
+            protected_pair["envelope_correctness"] if protected_pair else None
+        )
         reduction = None
         correct_pair = baseline_correctness == 5 and envelope_correctness == 5
         if correct_pair and baseline_minutes is not None and baseline_minutes > 0 and envelope_minutes is not None:
@@ -961,6 +1263,10 @@ def council_envelope_pilot_review(
                     round(reduction, 2) if reduction is not None else None
                 ),
                 "metrics": metric_map,
+                "protected_pair": protected_pair,
+                "authority_or_membrane_incident": int(
+                    any(flag["priority"] == "P0" for flag in projection["attention_flags"])
+                ),
             }
         )
     reductions = [
@@ -980,6 +1286,17 @@ def council_envelope_pilot_review(
     sample_count = len(samples)
     mismatch_values = _metric_numbers(samples, "receipt_ledger_mismatch")
     incident_values = _metric_numbers(samples, "authority_or_membrane_incident")
+    if pilot_id:
+        paired_samples = [sample for sample in samples if sample["protected_pair"]]
+        incremental_values = [
+            max(0.0, sample["envelope_minutes"] - sample["baseline_minutes"])
+            for sample in paired_samples
+        ]
+        parity_values = [True for _ in paired_samples]
+        mismatch_values = [0.0 for _ in paired_samples]
+        incident_values = [
+            float(sample["authority_or_membrane_incident"]) for sample in samples
+        ]
     mismatch_complete = len(mismatch_values) == sample_count
     incident_complete = len(incident_values) == sample_count
     mismatch_total = sum(mismatch_values)
@@ -990,7 +1307,7 @@ def council_envelope_pilot_review(
         if any(flag["code"] == "unsupported-execution" for flag in projection["attention_flags"])
     ]
     complete_receipts = sum(_has_complete_receipt(projection) for projection in projections)
-    correct_sample_count = len(reductions)
+    correct_sample_count = sum(1 for sample in samples if sample["correct_pair"])
     median_reduction = _median(reductions)
     median_envelope_minutes = _median(envelope_minutes_values)
     median_incremental = _median(incremental_values)
@@ -1009,10 +1326,22 @@ def council_envelope_pilot_review(
     }
     gate_samples = [sample for sample in samples if sample["pilot_mode"] == "shadow"][:5]
     gate_ids = {sample["transaction_id"] for sample in gate_samples}
-    gate_parity = _metric_booleans(gate_samples, "critical_field_parity")
-    gate_mismatches = _metric_numbers(gate_samples, "receipt_ledger_mismatch")
-    gate_incidents = _metric_numbers(gate_samples, "authority_or_membrane_incident")
-    gate_incremental = _median(_metric_numbers(gate_samples, "incremental_review_minutes"))
+    if pilot_id:
+        gate_parity = [bool(sample["protected_pair"]) for sample in gate_samples]
+        gate_mismatches = [0.0 for sample in gate_samples if sample["protected_pair"]]
+        gate_incidents = [float(sample["authority_or_membrane_incident"]) for sample in gate_samples]
+        gate_incremental = _median(
+            [
+                max(0.0, sample["envelope_minutes"] - sample["baseline_minutes"])
+                for sample in gate_samples
+                if sample["protected_pair"]
+            ]
+        )
+    else:
+        gate_parity = _metric_booleans(gate_samples, "critical_field_parity")
+        gate_mismatches = _metric_numbers(gate_samples, "receipt_ledger_mismatch")
+        gate_incidents = _metric_numbers(gate_samples, "authority_or_membrane_incident")
+        gate_incremental = _median(_metric_numbers(gate_samples, "incremental_review_minutes"))
     gate_unauthorized = [identifier for identifier in unauthorized if identifier in gate_ids]
     gate_complete = len(gate_samples) == 5
     gate_checks.update(
@@ -1037,7 +1366,8 @@ def council_envelope_pilot_review(
         }
     )
     gate_eligible_on = (_parse_timestamp(start) + timedelta(days=10)).isoformat().replace("+00:00", "Z")
-    gate_ready = all(gate_checks.values()) and _parse_timestamp(end) >= _parse_timestamp(gate_eligible_on)
+    measured_gate_ready = all(gate_checks.values()) and _parse_timestamp(end) >= _parse_timestamp(gate_eligible_on)
+    gate_ready = False
     safety_failure = bool(unauthorized) or incident_total > 0 or mismatch_total >= 2
     guardrails_pass = (
         not safety_failure
@@ -1055,7 +1385,7 @@ def council_envelope_pilot_review(
     elif sample_count < 10 or correct_sample_count < 10 or median_reduction is None:
         disposition = "Extend shadow measurement"
     elif median_reduction >= 30 and guardrails_pass:
-        disposition = "Adopt bounded operation"
+        disposition = "Eligible for gated review"
     elif median_reduction >= 10:
         disposition = "Revise"
     else:
@@ -1081,8 +1411,9 @@ def council_envelope_pilot_review(
         else None
     )
     return {
-        "contract_version": "council-decision-envelope-pilot-review/v1",
+        "contract_version": "council-decision-envelope-pilot-review/v1.1",
         "tenant": tenant,
+        "pilot_id": pilot_id or "legacy-unbound",
         "from": start,
         "as_of": end,
         "historical_replays_excluded": True,
@@ -1111,6 +1442,8 @@ def council_envelope_pilot_review(
             "sample_transaction_ids": [sample["transaction_id"] for sample in gate_samples],
             "checks": gate_checks,
             "ready": gate_ready,
+            "measured_ready": measured_gate_ready,
+            "calibration_hold": True,
         },
         "guardrails": {
             "unauthorized_progression_count": len(unauthorized),
@@ -1515,6 +1848,8 @@ def _resolve_actor(
     council_role = council_role or str(actor["role"])
     if council_role not in COUNCIL_ROLES:
         raise OpsError(f"Unsupported Council role: {council_role}")
+    if council_role != str(actor["role"]):
+        raise OpsError("Council role must match the actor's stored role")
     return actor_id, str(actor["name"]), council_role
 
 
@@ -1525,6 +1860,7 @@ def _validate_event_payload(
     payload: dict[str, Any],
     *,
     historical: bool,
+    protected_metric: bool = False,
 ) -> None:
     required: dict[str, tuple[str, ...]] = {
         "recommendation_recorded": ("decision", "evidence", "recommendation", "success_condition"),
@@ -1555,6 +1891,24 @@ def _validate_event_payload(
     }
     _require_fields(payload, required[event_type], f"{event_type} payload", allow_false=True)
     _validate_privacy_boundary(connection, transaction, payload)
+    if (
+        event_type == "metric_recorded"
+        and _text(payload.get("name")) in PROTECTED_ENVELOPE_METRICS
+        and not historical
+        and not protected_metric
+    ):
+        raise OpsError(
+            "Protected envelope-pilot metrics must use the dedicated Council interface"
+        )
+    if protected_metric:
+        if historical or event_type != "metric_recorded":
+            raise OpsError("Protected envelope-pilot writes must be live metric events")
+        tenant = connection.execute(
+            "SELECT slug FROM tenant WHERE id = ?", (transaction["tenant_id"],)
+        ).fetchone()
+        if not tenant or tenant["slug"] != "anyang-internal":
+            raise OpsError("Protected envelope-pilot metrics are internal-only")
+        _validate_protected_envelope_metric(payload)
     if event_type == "authority_disposition_recorded" and not historical:
         recommendation_count = connection.execute(
             """SELECT COUNT(*) FROM council_event
@@ -1598,7 +1952,9 @@ def _validate_event_payload(
             ):
                 raise OpsError("Execution requires a current authority disposition")
         if transaction["pilot_category"] == ENVELOPE_GATED_CATEGORY and not historical:
-            _validate_gated_envelope_binding(connection, transaction, payload)
+            raise OpsError(
+                "Gated envelope execution is held in v1.1 pending reviewed shadow evidence"
+            )
     if event_type == "evidence_returned" and not historical:
         execution = connection.execute(
             """SELECT payload_json FROM council_event
@@ -1818,7 +2174,10 @@ def _assert_envelope_shadow_gate_ready(
 
 def _human_receipt_data(projection: dict[str, Any]) -> dict[str, Any]:
     sections = projection["sections"]
-    latest = projection["events"][-1] if projection["events"] else None
+    material_events = [
+        event for event in projection["events"] if event["event_type"] != "metric_recorded"
+    ]
+    latest = material_events[-1] if material_events else None
     recommendation = sections["A"][-1]["payload"] if sections["A"] else {}
     authority = sections["B"][-1]["payload"] if sections["B"] else {}
     execution_events = [
@@ -1834,19 +2193,21 @@ def _human_receipt_data(projection: dict[str, Any]) -> dict[str, Any]:
             value
             for value in (
                 _text(recommendation.get("evidence")),
-                *(_text(event.get("evidence_ref")) for event in projection["events"]),
+                *(_text(event.get("evidence_ref")) for event in material_events),
             )
             if value
         }
     )
-    needed = sorted(
-        {
+    needed = list(
+        dict.fromkeys(
             _text(flag.get("needed"))
             for flag in projection["attention_flags"]
             if _text(flag.get("needed"))
-        }
+        )
     )
     authority_decision = _text(authority.get("decision")) or "Missing"
+    approved = authority_decision.lower() in {"approved", "approved_with_changes"}
+    class_number = _decision_class_number(projection["transaction"]["decision_class"])
     next_action = (
         needed[0]
         if needed
@@ -1866,12 +2227,20 @@ def _human_receipt_data(projection: dict[str, Any]) -> dict[str, Any]:
             "decision": authority_decision,
             "approved_scope": _text(authority.get("approved_scope")) or "Missing",
             "subject_hash": _text(authority.get("subject_hash")) or "Missing",
-            "expires_at": _text(authority.get("expires_at")) or "Missing",
+            "expires_at": _text(authority.get("expires_at")) or (
+                "No expiration recorded" if approved else "Not applicable"
+            ),
             "limits_exclusions": _text(authority.get("limits_exclusions")) or "Missing",
-            "anyang_authority_ref": _text(authority.get("anyang_authority_ref")) or "Missing",
-            "client_authority_ref": _text(authority.get("client_authority_ref")) or "Missing",
+            "anyang_authority_ref": _text(authority.get("anyang_authority_ref")) or (
+                "Not applicable" if not approved or class_number == 0 else "Missing"
+            ),
+            "client_authority_ref": _text(authority.get("client_authority_ref")) or (
+                "Missing" if approved and class_number == 3 else "Not applicable"
+            ),
         },
-        "executor": _text(executor.get("named_executor")) or "Missing",
+        "executor": _text(executor.get("named_executor")) or (
+            "No executor—no action" if authority_decision.lower() in {"held", "rejected"} else "Missing"
+        ),
         "execution_and_evidence_state": {
             "state": _text(executor.get("execution_state")) or "not invoked",
             "action_taken": _text(executor.get("action_taken")) or "No action taken",
@@ -1885,6 +2254,88 @@ def _human_receipt_data(projection: dict[str, Any]) -> dict[str, Any]:
         "next_permissible_action": next_action,
         "stop_condition": stop_condition,
     }
+
+
+def _sanitized_envelope_projection(projection: dict[str, Any]) -> dict[str, Any]:
+    payload_fields = {
+        "recommendation_recorded": {
+            "decision", "evidence", "recommendation", "success_condition", "uncertainty"
+        },
+        "authority_disposition_recorded": {
+            "decision", "approved_scope", "limits_exclusions", "required_evidence",
+            "subject_hash", "anyang_authority_ref", "client_authority_ref", "expires_at",
+            "no_action_taken",
+        },
+        "execution_recorded": {
+            "executor_invoked", "named_executor", "execution_state", "action_taken",
+            "no_action_taken",
+        },
+        "evidence_returned": {"evidence"},
+        "reconciliation_recorded": {
+            "reconciliation_state", "final_supported_state", "terminal_state"
+        },
+        "metric_recorded": {
+            "name", "observed_value", "observation_status", "measurement_version",
+            "pilot_id", "session_id", "surface", "projection_hash", "receipt_digest",
+            "correctness", "elapsed_seconds", "started_at", "completed_at",
+        },
+        "held": {"no_action_taken"},
+        "blocked": set(),
+        "corrected": set(),
+        "superseded": set(),
+    }
+
+    def sanitized_event(event: dict[str, Any]) -> dict[str, Any]:
+        allowed = payload_fields.get(event["event_type"], set())
+        return {
+            key: event[key]
+            for key in (
+                "id", "event_key", "sequence", "event_type", "actor_id", "actor_label",
+                "council_role", "action_summary", "occurred_at", "recorded_at",
+                "evidence_ref", "attribution_status", "prior_hash", "event_hash",
+            )
+        } | {
+            "payload": {
+                key: value for key, value in event["payload"].items() if key in allowed
+            }
+        }
+
+    events = [sanitized_event(event) for event in projection["events"]]
+    by_id = {event["id"]: event for event in events}
+    return {
+        "schema_version": projection["schema_version"],
+        "transaction": dict(projection["transaction"]),
+        "current_state": projection["current_state"],
+        "subject_hash": projection["subject_hash"],
+        "sections": {
+            section: [by_id[event["id"]] for event in projection["sections"][section]]
+            for section in ("A", "B", "C", "D")
+        },
+        "events": events,
+        "authority_bindings": list(projection["authority_bindings"]),
+        "evidence": [by_id[event["id"]] for event in projection["evidence"]],
+        "metrics": [by_id[event["id"]] for event in projection["metrics"]],
+        "attention_flags": list(projection["attention_flags"]),
+        "lineage": dict(projection["lineage"]),
+    }
+
+
+def _decision_projection_hash(projection: dict[str, Any]) -> str:
+    """Hash only decision-bearing state so measurement events cannot create false drift."""
+    material_events = [
+        event for event in projection["events"] if event["event_type"] != "metric_recorded"
+    ]
+    return _hash(
+        {
+            "transaction": projection["transaction"],
+            "current_state": projection["current_state"],
+            "subject_hash": projection["subject_hash"],
+            "events": material_events,
+            "authority_bindings": projection["authority_bindings"],
+            "evidence": projection["evidence"],
+            "attention_flags": projection["attention_flags"],
+        }
+    )
 
 
 def _render_human_receipt_body(
@@ -1902,47 +2353,47 @@ def _render_human_receipt_body(
         f"- Decision class: `{header['decision_class']}`",
         f"- Pilot mode: `{header['pilot_mode']}`",
         f"- As of: {header['as_of']}",
-        f"- What changed: {receipt['what_changed']}",
+        f"- What changed: {_markdown_scalar(receipt['what_changed'])}",
         "",
         "## Recommendation",
         "",
-        f"- Judgment required: {receipt['judgment_required']}",
-        f"- Recommendation: {receipt['recommendation']}",
-        f"- Expected outcome: {receipt['expected_outcome']}",
-        f"- Uncertainty: {receipt['uncertainty']}",
-        "- Evidence references: " + "; ".join(receipt["evidence_references"]),
+        f"- Judgment required: {_markdown_scalar(receipt['judgment_required'])}",
+        f"- Recommendation: {_markdown_scalar(receipt['recommendation'])}",
+        f"- Expected outcome: {_markdown_scalar(receipt['expected_outcome'])}",
+        f"- Uncertainty: {_markdown_scalar(receipt['uncertainty'])}",
+        "- Evidence references: " + "; ".join(_markdown_scalar(item) for item in receipt["evidence_references"]),
         "",
         "## Authority",
         "",
-        f"- Decision: {authority['decision']}",
-        f"- Approved scope: {authority['approved_scope']}",
+        f"- Decision: {_markdown_scalar(authority['decision'])}",
+        f"- Freshness: `{header['freshness']['status']}`",
+        f"- Approved scope: {_markdown_scalar(authority['approved_scope'])}",
         f"- Subject hash: `{authority['subject_hash']}`",
-        f"- Expires at: {authority['expires_at']}",
-        f"- Limits and exclusions: {authority['limits_exclusions']}",
-        f"- Anyang authority reference: {authority['anyang_authority_ref']}",
-        f"- Client authority reference: {authority['client_authority_ref']}",
+        f"- Expires at: {_markdown_scalar(authority['expires_at'])}",
+        f"- Limits and exclusions: {_markdown_scalar(authority['limits_exclusions'])}",
+        f"- Anyang authority reference: {_markdown_scalar(authority['anyang_authority_ref'])}",
+        f"- Client authority reference: {_markdown_scalar(authority['client_authority_ref'])}",
         "",
         "## Execution, Evidence, And Outcome",
         "",
-        f"- Named executor: {receipt['executor']}",
-        f"- Execution state: {execution['state']}",
-        f"- Action taken: {execution['action_taken']}",
+        f"- Named executor: {_markdown_scalar(receipt['executor'])}",
+        f"- Execution state: {_markdown_scalar(execution['state'])}",
+        f"- Action taken: {_markdown_scalar(execution['action_taken'])}",
         f"- Evidence returned: {execution['evidence_returned']}",
-        f"- Reconciliation state: {reconciliation['state']}",
-        f"- Supported outcome: {reconciliation['outcome']}",
+        f"- Reconciliation state: {_markdown_scalar(reconciliation['state'])}",
+        f"- Supported outcome: {_markdown_scalar(reconciliation['outcome'])}",
         "",
         "## Required Attention",
         "",
-        "- Required evidence or approval: " + "; ".join(receipt["required_evidence_or_approval"]),
-        f"- Next permissible action: {receipt['next_permissible_action']}",
-        f"- Stop condition: {receipt['stop_condition']}",
+        "- Required evidence or approval: " + "; ".join(_markdown_scalar(item) for item in receipt["required_evidence_or_approval"]),
+        f"- Next permissible action: {_markdown_scalar(receipt['next_permissible_action'])}",
+        f"- Stop condition: {_markdown_scalar(receipt['stop_condition'])}",
         "",
         "## Integrity And Boundary",
         "",
         f"- Projection hash: `{header['projection_hash']}`",
         f"- Event-chain head hash: `{header['event_chain_head_hash']}`",
         f"- Critical human-field coverage: {coverage['covered']}/{coverage['total']}",
-        f"- Freshness: `{header['freshness']['status']}`",
         f"- Membrane: `{header['membrane']['classification']}`",
         "- Authority effect: `none`",
         "- Decoding or verifying this receipt never authorizes or executes work.",
@@ -1953,12 +2404,20 @@ def _render_human_receipt_body(
 
 def _critical_field_coverage(receipt: dict[str, Any]) -> dict[str, Any]:
     missing = sorted(field for field in ENVELOPE_CRITICAL_FIELDS if field not in receipt)
+    unknown = sorted(
+        field
+        for field in ENVELOPE_CRITICAL_FIELDS
+        if field in receipt and _contains_missing(receipt[field])
+    )
     return {
         "required": list(ENVELOPE_CRITICAL_FIELDS),
         "covered": len(ENVELOPE_CRITICAL_FIELDS) - len(missing),
         "total": len(ENVELOPE_CRITICAL_FIELDS),
         "missing": missing,
         "complete": not missing,
+        "known": len(ENVELOPE_CRITICAL_FIELDS) - len(unknown),
+        "unknown": unknown,
+        "known_complete": not unknown,
     }
 
 
@@ -1986,7 +2445,7 @@ def _authority_freshness(projection: dict[str, Any], as_of: str) -> dict[str, st
 
 
 def _verify_embedded_event_chain(
-    projection: dict[str, Any], expected_head: str
+    projection: dict[str, Any], expected_head: str, *, recompute: bool
 ) -> list[dict[str, str]]:
     issues: list[dict[str, str]] = []
     transaction = projection.get("transaction")
@@ -2026,7 +2485,7 @@ def _verify_embedded_event_chain(
                 "prior_hash": event.get("prior_hash"),
             }
         )
-        if event.get("event_hash") != expected_hash:
+        if recompute and event.get("event_hash") != expected_hash:
             issues.append(_envelope_issue("event-hash-mismatch", f"event {event.get('id', expected_sequence)}"))
         prior_hash = str(event.get("event_hash", ""))
     if expected_head != prior_hash:
@@ -2045,7 +2504,7 @@ def _envelope_verification(
     compared_to_ledger: bool = False,
 ) -> dict[str, Any]:
     return {
-        "contract_version": ENVELOPE_CONTRACT_VERSION,
+        "contract_version": envelope.get("contract_version", ENVELOPE_CONTRACT_VERSION),
         "transaction_id": envelope.get("transaction_id", "Missing"),
         "ok": not issues,
         "disposition": "continue" if not issues else "Hold",
@@ -2080,6 +2539,110 @@ def _latest_pilot_metric_values(projection: dict[str, Any]) -> dict[str, Any]:
     return values
 
 
+def _protected_reconstruction_pair(
+    projection: dict[str, Any], pilot_id: str | None
+) -> dict[str, Any] | None:
+    results: dict[str, dict[str, Any]] = {}
+    for event in projection["metrics"]:
+        payload = event["payload"]
+        if (
+            payload.get("name") != "envelope_reconstruction_result"
+            or payload.get("measurement_version") != "decision-envelope-review/v1.1"
+            or payload.get("pilot_id") != pilot_id
+        ):
+            continue
+        surface = payload.get("surface")
+        if surface in results:
+            return None
+        results[surface] = {"event": event, "payload": payload}
+    if set(results) != {"baseline", "receipt"}:
+        return None
+    baseline = results["baseline"]
+    receipt = results["receipt"]
+    baseline_actor = baseline["payload"].get("reviewer_actor_id")
+    receipt_actor = receipt["payload"].get("reviewer_actor_id")
+    if not baseline_actor or baseline_actor == receipt_actor:
+        return None
+    transaction_id = projection["transaction"]["id"]
+    if baseline["event"]["council_role"] != _assigned_reviewer_role(transaction_id, "baseline"):
+        return None
+    if receipt["event"]["council_role"] != _assigned_reviewer_role(transaction_id, "receipt"):
+        return None
+    if baseline["payload"].get("projection_hash") != receipt["payload"].get("projection_hash"):
+        return None
+    if baseline["payload"].get("receipt_digest") != receipt["payload"].get("receipt_digest"):
+        return None
+    try:
+        baseline_seconds = float(baseline["payload"]["elapsed_seconds"])
+        receipt_seconds = float(receipt["payload"]["elapsed_seconds"])
+        baseline_correctness = int(baseline["payload"]["correctness"])
+        receipt_correctness = int(receipt["payload"]["correctness"])
+    except (KeyError, TypeError, ValueError):
+        return None
+    if (
+        not math.isfinite(baseline_seconds)
+        or not math.isfinite(receipt_seconds)
+        or baseline_seconds < 0
+        or receipt_seconds < 0
+        or baseline_correctness not in range(6)
+        or receipt_correctness not in range(6)
+    ):
+        return None
+    return {
+        "projection_hash": baseline["payload"]["projection_hash"],
+        "receipt_digest": baseline["payload"]["receipt_digest"],
+        "baseline_reviewer_actor_id": baseline_actor,
+        "receipt_reviewer_actor_id": receipt_actor,
+        "baseline_minutes": baseline_seconds / 60.0,
+        "envelope_minutes": receipt_seconds / 60.0,
+        "baseline_correctness": baseline_correctness,
+        "envelope_correctness": receipt_correctness,
+    }
+
+
+def _validate_protected_envelope_metric(payload: dict[str, Any]) -> None:
+    name = _text(payload.get("name"))
+    if name not in PROTECTED_ENVELOPE_METRICS:
+        raise OpsError("Dedicated envelope interface may only write protected metrics")
+    if payload.get("observation_status") != "observed":
+        raise OpsError("Protected envelope metrics must be directly observed")
+    version = _text(payload.get("measurement_version"))
+    if name == "envelope_pilot_activated":
+        required = {"control_transaction_id", "authority_effect"}
+        if version != "decision-envelope-pilot/v1.1" or payload.get("authority_effect") != "none":
+            raise OpsError("Invalid protected pilot activation payload")
+    elif name in {"envelope_reconstruction_session", "envelope_reconstruction_result"}:
+        required = {
+            "pilot_id", "session_id", "surface", "reviewer_actor_id",
+            "projection_hash", "receipt_digest",
+        }
+        if version != "decision-envelope-review/v1.1" or payload.get("surface") not in {"baseline", "receipt"}:
+            raise OpsError("Invalid protected reconstruction payload")
+        if not _valid_sha256(payload.get("projection_hash")) or not _valid_sha256(payload.get("receipt_digest")):
+            raise OpsError("Protected reconstruction payload requires valid hashes")
+        if name == "envelope_reconstruction_result":
+            required |= {
+                "answers", "answer_key", "correctness", "elapsed_seconds", "completed_at"
+            }
+            seconds = payload.get("elapsed_seconds")
+            if isinstance(seconds, bool) or not isinstance(seconds, (int, float)) or not math.isfinite(float(seconds)) or seconds < 0:
+                raise OpsError("Protected reconstruction elapsed_seconds must be finite and non-negative")
+            if payload.get("correctness") not in range(6):
+                raise OpsError("Protected reconstruction correctness must be between 0 and 5")
+            _require_rfc3339(_text(payload.get("completed_at")), "Review completion time")
+        else:
+            required.add("started_at")
+            _require_rfc3339(_text(payload.get("started_at")), "Review start time")
+    else:
+        # Legacy measurement names remain reserved and cannot be minted by callers.
+        raise OpsError("Legacy envelope metrics are read-only in v1.1")
+    missing = sorted(
+        key for key in required if payload.get(key) is None or payload.get(key) == ""
+    )
+    if missing:
+        raise OpsError("Protected envelope metric is missing: " + ", ".join(missing))
+
+
 def _metric_number(metrics: dict[str, Any], name: str) -> float | None:
     value = metrics.get(name)
     if value is None or isinstance(value, bool):
@@ -2088,7 +2651,7 @@ def _metric_number(metrics: dict[str, Any], name: str) -> float | None:
         result = float(value)
     except (TypeError, ValueError):
         return None
-    return result if result >= 0 else None
+    return result if math.isfinite(result) and result >= 0 else None
 
 
 def _metric_numbers(samples: list[dict[str, Any]], name: str) -> list[float]:
@@ -2119,10 +2682,74 @@ def _display_metric(value: Any, suffix: str) -> str:
     return "Missing" if value is None else f"{value:.2f}{suffix}"
 
 
+def _now_utc_precise() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="microseconds").replace("+00:00", "Z")
+
+
 def _canonical_json_bytes(value: Any) -> bytes:
     return json.dumps(
         value, sort_keys=True, separators=(",", ":"), ensure_ascii=False
     ).encode("utf-8")
+
+
+def _reject_duplicate_json_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise OpsError(f"Duplicate JSON key is not allowed: {key}")
+        result[key] = value
+    return result
+
+
+def _validate_json_value(value: Any, *, depth: int = 0) -> None:
+    if depth > 16:
+        raise OpsError("Council envelope exceeds maximum JSON nesting depth 16")
+    if isinstance(value, str):
+        if len(value) > 65536:
+            raise OpsError("Council envelope string exceeds 65536 characters")
+        return
+    if value is None or isinstance(value, bool) or isinstance(value, int):
+        return
+    if isinstance(value, float):
+        if not math.isfinite(value):
+            raise OpsError("Council envelope contains a non-finite number")
+        return
+    if isinstance(value, list):
+        if len(value) > 10000:
+            raise OpsError("Council envelope collection exceeds 10000 items")
+        for item in value:
+            _validate_json_value(item, depth=depth + 1)
+        return
+    if isinstance(value, dict):
+        if len(value) > 10000:
+            raise OpsError("Council envelope object exceeds 10000 fields")
+        for key, item in value.items():
+            if not isinstance(key, str):
+                raise OpsError("Council envelope object keys must be strings")
+            _validate_json_value(item, depth=depth + 1)
+        return
+    raise OpsError(f"Unsupported Council envelope JSON value: {type(value).__name__}")
+
+
+def _markdown_scalar(value: Any) -> str:
+    text = _text(value)
+    text = re.sub(r"[\x00-\x1f\x7f]+", " ", text)
+    text = " ".join(text.split())
+    if len(text) > 4096:
+        text = text[:4093] + "..."
+    for character in ("\\", "`", "*", "_", "{", "}", "[", "]", "<", ">", "#", "|", "~"):
+        text = text.replace(character, "\\" + character)
+    return text or "Missing"
+
+
+def _contains_missing(value: Any) -> bool:
+    if isinstance(value, str):
+        return value.strip().lower() == "missing"
+    if isinstance(value, list):
+        return any(_contains_missing(item) for item in value)
+    if isinstance(value, dict):
+        return any(_contains_missing(item) for item in value.values())
+    return False
 
 
 def _sha256_bytes(value: bytes) -> str:
@@ -2158,6 +2785,123 @@ def _transaction(connection: sqlite3.Connection, transaction_id: str) -> sqlite3
     if not row:
         raise OpsError(f"Unknown Council transaction: {transaction_id}")
     return row
+
+
+def _event_rows_as_of(
+    connection: sqlite3.Connection,
+    transaction_id: str,
+    as_of: str | None,
+) -> list[sqlite3.Row]:
+    rows = connection.execute(
+        "SELECT * FROM council_event WHERE transaction_id = ? ORDER BY sequence",
+        (transaction_id,),
+    ).fetchall()
+    if as_of is None:
+        return list(rows)
+    cutoff = _parse_timestamp(_require_rfc3339(as_of, "Event history as_of"))
+    included: list[sqlite3.Row] = []
+    boundary_seen = False
+    for row in rows:
+        recorded = _parse_timestamp(str(row["recorded_at"]))
+        if recorded <= cutoff:
+            if boundary_seen:
+                raise OpsError(
+                    "Council event recorded_at values do not form an as_of chain prefix"
+                )
+            included.append(row)
+        else:
+            boundary_seen = True
+    return included
+
+
+def _require_pilot_activation(
+    connection: sqlite3.Connection,
+    tenant_identifier: str,
+    pilot_id: str,
+) -> sqlite3.Row:
+    if not _text(pilot_id):
+        raise OpsError("Shadow envelope transactions require an exact pilot activation ID")
+    row = connection.execute(
+        """SELECT ce.* FROM council_event ce
+        WHERE ce.id = ? AND ce.tenant_id = ? AND ce.event_type = 'metric_recorded'""",
+        (pilot_id, tenant_identifier),
+    ).fetchone()
+    if not row:
+        raise OpsError("Unknown envelope pilot activation for this tenant")
+    payload = json.loads(row["payload_json"])
+    if payload.get("name") != "envelope_pilot_activated":
+        raise OpsError("Referenced event is not an envelope pilot activation")
+    if row["council_role"] != "engineer":
+        raise OpsError("Envelope pilot activation lacks System Engineer attribution")
+    return row
+
+
+def _event_recorded_at(connection: sqlite3.Connection, event_id: str) -> str:
+    row = connection.execute(
+        "SELECT recorded_at FROM council_event WHERE id = ?", (event_id,)
+    ).fetchone()
+    return str(row["recorded_at"]) if row else "Missing"
+
+
+def _assigned_reviewer_role(transaction_id: str, surface: str) -> str:
+    even = int(hashlib.sha256(transaction_id.encode("utf-8")).hexdigest()[:8], 16) % 2 == 0
+    baseline_role = "steward" if even else "interface"
+    if surface == "baseline":
+        return baseline_role
+    return "interface" if baseline_role == "steward" else "steward"
+
+
+def _reconstruction_answer_key(projection: dict[str, Any]) -> dict[str, Any]:
+    material = [
+        event for event in projection["events"] if event["event_type"] != "metric_recorded"
+    ]
+    recommendation = projection["sections"]["A"][-1] if projection["sections"]["A"] else None
+    authority = projection["sections"]["B"][-1] if projection["sections"]["B"] else None
+    freshness = _authority_freshness(
+        projection,
+        projection.get("lineage", {}).get("as_of")
+        if projection.get("lineage", {}).get("as_of") not in {None, "current"}
+        else now_utc(),
+    )["status"]
+    exclusion = (
+        _text(authority["payload"].get("limits_exclusions")) if authority else "Missing"
+    ) or "Missing"
+    flags = projection["attention_flags"]
+    missing_codes = sorted(
+        flag["code"]
+        for flag in flags
+        if flag["code"]
+        in {
+            "awaiting-approval",
+            "authority-expired",
+            "authority-stale",
+            "missing-execution-evidence",
+            "missing-attribution",
+            "missing-pilot-metrics",
+        }
+    )
+    return {
+        "what_changed_event_id": material[-1]["id"] if material else "Missing",
+        "judgment_event_id": recommendation["id"] if recommendation else "Missing",
+        "authority_status_and_exclusion": f"{freshness}|{exclusion}",
+        "missing_evidence_codes": missing_codes,
+        "next_action_code": flags[0]["code"] if flags else "none",
+    }
+
+
+def _normalize_review_answers(answers: dict[str, Any]) -> dict[str, Any]:
+    normalized: dict[str, Any] = {}
+    for key in RECONSTRUCTION_QUESTIONS:
+        value = answers[key]
+        if key == "missing_evidence_codes":
+            if not isinstance(value, list) or not all(isinstance(item, str) for item in value):
+                raise OpsError("missing_evidence_codes must be a list of strings")
+            normalized[key] = sorted(set(_text(item) for item in value))
+        else:
+            if not isinstance(value, str) or not value.strip():
+                raise OpsError(f"{key} must be a non-empty string")
+            normalized[key] = value.strip()
+    return normalized
 
 
 def _ensure_internal_council(
@@ -2354,21 +3098,34 @@ def _is_expired(expires_at: Any, as_of: str) -> bool:
 
 
 def _has_complete_receipt(projection: dict[str, Any]) -> bool:
+    if not _critical_field_coverage(_human_receipt_data(projection))["known_complete"]:
+        return False
     sections = projection["sections"]
     if not sections["A"] or not sections["B"] or not sections["C"]:
         return False
     authority = sections["B"][-1]["payload"]
     decision = _text(authority.get("decision")).lower()
     if decision in {"held", "rejected"}:
-        return any(
+        no_action = any(
             event["event_type"] == "execution_recorded"
             and event["payload"].get("no_action_taken") is True
             for event in sections["C"]
         )
-    return any(
+        terminal = projection["current_state"] in {"held", "rejected"}
+        return no_action and terminal
+    invoked = any(
         event["event_type"] == "execution_recorded"
+        and event["payload"].get("executor_invoked") is True
+        and bool(_text(event["payload"].get("named_executor")))
         for event in sections["C"]
     )
+    evidence = any(event["event_type"] == "evidence_returned" for event in sections["C"])
+    reconciled = any(
+        event["event_type"] == "reconciliation_recorded"
+        and event["payload"].get("terminal_state") == "complete"
+        for event in sections["D"]
+    )
+    return invoked and evidence and reconciled
 
 
 def _validate_privacy_boundary(

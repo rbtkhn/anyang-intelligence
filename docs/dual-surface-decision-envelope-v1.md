@@ -1,6 +1,11 @@
 # Dual-Surface Decision Envelope v1
 
-Status: `30-day staged internal pilot`
+Status: `legacy verification compatibility; generation superseded by v1.1`
+
+New envelopes use `council-decision-envelope/v1.1`. Version 1 packets remain
+accepted by offline verification and ledger comparison, but the original v1
+pilot activation and gated-progression design is not operational. See
+[`dual-surface-decision-envelope-v1.1.md`](dual-surface-decision-envelope-v1.1.md).
 
 Authority owner: System Engineer  
 Measurement owner: Council Steward
@@ -66,7 +71,10 @@ contracts, invalid hashes, receipt/projection divergence, stale or expired
 authority, missing critical human fields, and cross-tenant comparisons return
 `Hold` and exit `1`.
 
-## Gated execution
+## Historical gated-execution design
+
+The remainder of this document records the original v1 design. It is not an
+operating instruction: v1.1 fails closed on gated enrollment and execution.
 
 New pilot transactions use one immutable category:
 

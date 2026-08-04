@@ -77,12 +77,15 @@ from .council_workroom import (
     friction_backfill_plan,
     load_envelope_packet,
     load_packet,
+    open_envelope_review_session,
     record_council_event,
     render_council_inbox_markdown,
     render_council_envelope_markdown,
     render_council_envelope_pilot_review_markdown,
     render_council_markdown,
     render_council_pilot_review_markdown,
+    start_envelope_pilot,
+    submit_envelope_review_session,
     verify_council_transaction,
     verify_council_envelope,
 )
@@ -527,11 +530,39 @@ def build_parser() -> argparse.ArgumentParser:
         "envelope-pilot-review", help="Measure the 30-day staged envelope pilot"
     )
     _tenant(council_envelope_review)
-    council_envelope_review.add_argument("--from", dest="from_time", required=True)
+    council_envelope_review.add_argument("--from", dest="from_time")
     council_envelope_review.add_argument("--as-of", required=True)
     council_envelope_review.add_argument("--attention-value-per-hour", type=float)
+    council_envelope_review.add_argument("--pilot-id")
     _read_format(council_envelope_review)
     council_envelope_review.set_defaults(func=cmd_council_envelope_pilot_review)
+
+    council_pilot_start = council_sub.add_parser(
+        "envelope-pilot-start", help="Record the authorized shadow-pilot activation"
+    )
+    _tenant(council_pilot_start)
+    council_pilot_start.add_argument("--control-transaction-id", required=True)
+    council_pilot_start.add_argument("--actor-id", required=True)
+    _dry(council_pilot_start)
+    council_pilot_start.set_defaults(func=cmd_council_envelope_pilot_start)
+
+    council_review_open = council_sub.add_parser(
+        "envelope-review-open", help="Open one protected reconstruction session"
+    )
+    council_review_open.add_argument("--transaction-id", required=True)
+    council_review_open.add_argument("--pilot-id", required=True)
+    council_review_open.add_argument("--surface", choices=("baseline", "receipt"), required=True)
+    council_review_open.add_argument("--reviewer-actor-id", required=True)
+    _dry(council_review_open)
+    council_review_open.set_defaults(func=cmd_council_envelope_review_open)
+
+    council_review_submit = council_sub.add_parser(
+        "envelope-review-submit", help="Submit one protected reconstruction result"
+    )
+    council_review_submit.add_argument("session_id")
+    council_review_submit.add_argument("--packet", required=True)
+    _dry(council_review_submit)
+    council_review_submit.set_defaults(func=cmd_council_envelope_review_submit)
 
     choice = sub.add_parser("choice", help="Operate outcome-aware possibility navigation")
     choice_sub = choice.add_subparsers(required=True)
@@ -931,6 +962,7 @@ def cmd_council_envelope(args: argparse.Namespace) -> int:
         data = council_decision_envelope(
             connection, args.transaction_id, as_of=args.as_of
         )
+    _reject_internal_envelope_output(args, data["tenant"])
     return _emit_read_output(args, data, render_council_envelope_markdown)
 
 
@@ -960,10 +992,38 @@ def cmd_council_envelope_pilot_review(args: argparse.Namespace) -> int:
             from_time=args.from_time,
             as_of=args.as_of,
             attention_value_per_hour=args.attention_value_per_hour,
+            pilot_id=args.pilot_id,
         )
+    _reject_internal_envelope_output(args, data["tenant"])
     return _emit_read_output(
         args, data, render_council_envelope_pilot_review_markdown
     )
+
+
+def cmd_council_envelope_pilot_start(args: argparse.Namespace) -> int:
+    return mutate(
+        args,
+        start_envelope_pilot,
+        args.tenant,
+        args.control_transaction_id,
+        args.actor_id,
+    )
+
+
+def cmd_council_envelope_review_open(args: argparse.Namespace) -> int:
+    return mutate(
+        args,
+        open_envelope_review_session,
+        args.transaction_id,
+        args.pilot_id,
+        args.surface,
+        args.reviewer_actor_id,
+    )
+
+
+def cmd_council_envelope_review_submit(args: argparse.Namespace) -> int:
+    packet = load_packet(args.packet)
+    return mutate(args, submit_envelope_review_session, args.session_id, packet)
 
 
 def cmd_choice_configure(args: argparse.Namespace) -> int:
@@ -1112,6 +1172,20 @@ def _emit_read_output(args: argparse.Namespace, data: dict, markdown_renderer: C
     else:
         print(output, end="")
     return 0
+
+
+def _reject_internal_envelope_output(args: argparse.Namespace, tenant: str) -> None:
+    if tenant != "anyang-internal" or not getattr(args, "output", None):
+        return
+    output = Path(args.output)
+    if not output.is_absolute():
+        raise OpsError("Internal envelope output requires an absolute external path")
+    resolved = output.resolve()
+    try:
+        resolved.relative_to(REPO_ROOT.resolve())
+    except ValueError:
+        return
+    raise OpsError("Internal envelope output may not be written inside the repository")
 
 
 def _pick(values: dict, *keys: str) -> dict:

@@ -108,8 +108,9 @@ or execution capability.
 
 #### Dual-surface decision envelope pilot
 
-The schema-v8 ledger can derive a deterministic
-`council-decision-envelope/v1` machine packet and a matching human receipt.
+The schema-v8 ledger can derive a deterministic, sanitized
+`council-decision-envelope/v1.1` machine packet and a matching escaped human
+receipt. Offline verification remains compatible with v1 packets.
 Generation, offline verification, ledger comparison, and pilot review are
 read-only and do not migrate SQLite. The rendering commands write an artifact
 only when given an explicit `--output` path; private outputs stay outside Git:
@@ -119,9 +120,15 @@ only when given an explicit `--output` path; private outputs stay outside Git:
 .\tools\run.ps1 ops council envelope-verify --packet C:\private\envelope.json
 .\tools\run.ps1 ops council envelope-verify --packet C:\private\envelope.json --receipt C:\private\receipt.md
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db council envelope-compare --packet C:\private\envelope.json
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db council envelope-pilot-start `
+  --tenant anyang-internal --control-transaction-id CONTROL_ID --actor-id ENGINEER_ACTOR_ID
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db council envelope-review-open `
+  --transaction-id TX_ID --pilot-id PILOT_ID --surface baseline --reviewer-actor-id REVIEWER_ID
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db council envelope-review-submit `
+  SESSION_ID --packet C:\private\answers.yaml
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db council envelope-pilot-review `
   --tenant anyang-internal `
-  --from 2026-08-05T00:00:00Z `
+  --pilot-id PILOT_ID `
   --as-of 2026-09-04T00:00:00Z `
   --format markdown
 ```
@@ -132,20 +139,17 @@ of the digest. Hashes establish packet consistency, not factual truth or
 authorship. Use `envelope-compare` to establish parity with the current
 canonical ledger.
 
-New internal Class 1-2 transactions may use
-`decision-envelope-v1-shadow` or `decision-envelope-v1-gated` as their
-immutable `pilot_category`. Invoked execution in gated mode additionally
-requires `envelope_projection_hash`, `human_receipt_digest`, and
-`envelope_as_of` in the execution payload. The service recomputes the current
-envelope before appending execution, so any intervening recommendation,
-authority, or event change invalidates the binding. Class 0 remains optional;
-Class 3, customer, and external work are excluded.
-The service also rejects creation of a gated transaction before day 11 or
-until the measured five-case shadow gate passes.
+The System Engineer starts the shadow pilot through an authorized Class 1-2
+control transaction. The returned protected activation ID becomes each shadow
+transaction's immutable `source_ref`. Live pilot timestamps are server-owned,
+review timing and correctness are derived through the protected session
+workflow, and caller-authored reserved metrics do not affect the gate or ROI.
+The strongest automated disposition is `Eligible for gated review`:
+`decision-envelope-v1-gated` enrollment and execution remain disabled in v1.1.
 
 The full measurement protocol, stable metric names, phase gate, disposition
 rules, and authority boundary are defined in
-[`docs/dual-surface-decision-envelope-v1.md`](../docs/dual-surface-decision-envelope-v1.md).
+[`docs/dual-surface-decision-envelope-v1.1.md`](../docs/dual-surface-decision-envelope-v1.1.md).
 
 ### Learn-from-choices manual audit compatibility
 
