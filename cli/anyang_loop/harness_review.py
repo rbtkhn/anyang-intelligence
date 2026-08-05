@@ -16,6 +16,7 @@ from .repo_snapshot import repository_identity
 
 SCHEMA_VERSION = 1
 SEMANTIC_LIMIT = 50
+ADOPTION_RECEIPT_SEMANTIC_LIMIT = 3
 MAX_SEMANTIC_FILE_BYTES = 256 * 1024
 ACTIONS = {"KEEP", "ONE_HOME", "LOAD_LATER", "MAKE_A_CHECK", "PROBATION", "RETIRE"}
 EVIDENCE_LABELS = {"VERIFIED", "USER_REPORTED", "INFERRED", "INACCESSIBLE", "NOT_APPLICABLE"}
@@ -103,12 +104,15 @@ def scan_harness(repo: str | Path, output: str | Path | None = None) -> Path:
     if not included:
         raise HarnessReviewError("No tracked AI harness controls matched the repository allowlist.")
 
-    selected_ids = {
-        item["control_id"]
-        for item in [entry for entry in sorted(included, key=_semantic_priority) if entry["semantic_eligible"]][
-            :SEMANTIC_LIMIT
-        ]
-    }
+    eligible = [entry for entry in sorted(included, key=_semantic_priority) if entry["semantic_eligible"]]
+    adoption_receipts = [entry for entry in eligible if entry["kind"] == "skill-adoption-receipt"]
+    reserved_receipts = adoption_receipts[:ADOPTION_RECEIPT_SEMANTIC_LIMIT]
+    ordinary_controls = [entry for entry in eligible if entry["kind"] != "skill-adoption-receipt"]
+    ordinary_budget = max(0, SEMANTIC_LIMIT - len(reserved_receipts))
+    selected_ordinary = ordinary_controls[:ordinary_budget]
+    selected_ids = {item["control_id"] for item in [*reserved_receipts, *selected_ordinary]}
+    ordinary_baseline = ordinary_controls[:SEMANTIC_LIMIT]
+    displaced_controls = ordinary_baseline[ordinary_budget:]
     for item in included:
         item["semantic_selected"] = item["control_id"] in selected_ids
 
@@ -136,6 +140,18 @@ def scan_harness(repo: str | Path, output: str | Path | None = None) -> Path:
     unselected = sum(1 for item in included if not item["semantic_selected"])
     if unselected:
         gaps.append(f"Inventory includes {unselected} control(s) outside the {SEMANTIC_LIMIT}-file semantic review ceiling.")
+    if reserved_receipts:
+        displaced_paths = ", ".join(item["path"] for item in displaced_controls) or "none"
+        gaps.append(
+            f"Reserved {len(reserved_receipts)} of {SEMANTIC_LIMIT} semantic slot(s) for provisional skill-adoption receipts; "
+            f"otherwise-selected controls displaced: {displaced_paths}."
+        )
+    unreserved_receipts = adoption_receipts[ADOPTION_RECEIPT_SEMANTIC_LIMIT:]
+    if unreserved_receipts:
+        gaps.append(
+            f"Excluded {len(unreserved_receipts)} adoption receipt(s) outside the "
+            f"{ADOPTION_RECEIPT_SEMANTIC_LIMIT}-receipt pilot reservation."
+        )
 
     scope = {
         "schema_version": SCHEMA_VERSION,
@@ -149,6 +165,9 @@ def scan_harness(repo: str | Path, output: str | Path | None = None) -> Path:
         "scanned_at": timestamp,
         "tracked_only": True,
         "semantic_limit": SEMANTIC_LIMIT,
+        "adoption_receipt_semantic_limit": ADOPTION_RECEIPT_SEMANTIC_LIMIT,
+        "adoption_receipt_selected_count": len(reserved_receipts),
+        "adoption_receipt_displaced_controls": [item["path"] for item in displaced_controls],
         "included_control_count": len(included),
         "semantic_selected_count": len(selected_ids),
         "coverage_gaps": gaps,
@@ -528,7 +547,11 @@ def _included(path: str) -> bool:
     if len(parts) >= 2 and parts[0] == ".github" and parts[1] == "workflows":
         return path.endswith((".yml", ".yaml"))
     if parts and parts[0] == "skills":
-        return path == "skills/README.md" or parts[-1] == "SKILL.md" or tuple(parts[-2:]) == ("agents", "openai.yaml")
+        return (
+            path == "skills/README.md"
+            or parts[-1] in {"SKILL.md", "ADOPTION.md"}
+            or tuple(parts[-2:]) == ("agents", "openai.yaml")
+        )
     if len(parts) == 2 and parts[0] == "tests" and parts[1].startswith("test_") and parts[1].endswith(".py"):
         return True
     if parts and parts[0] == "projects":
@@ -541,6 +564,8 @@ def _included(path: str) -> bool:
 def _classify(path: str) -> tuple[str, str]:
     parts = PurePosixPath(path).parts
     if parts[0] == "skills":
+        if parts[-1] == "ADOPTION.md":
+            return "skill-adoption-receipt", "capabilities-authority"
         return ("skill-catalog" if path == "skills/README.md" else "skill-route", "routing")
     if parts[0] == "projects":
         return "project-setup", "selected-context"
@@ -562,6 +587,19 @@ def _metadata(path: str, raw: bytes) -> dict[str, Any]:
             metadata["declared_name"] = name.strip()
         if isinstance(description, str) and description.strip():
             metadata["description"] = description.strip()[:500]
+    elif path.endswith("ADOPTION.md"):
+        text = raw.decode("utf-8", errors="replace").replace("\r\n", "\n")
+        metadata["label"] = f"{PurePosixPath(path).parent.name} adoption"
+        for line in text.splitlines():
+            for prefix, key in (
+                ("- Receipt ID:", "receipt_id"),
+                ("- Skill:", "declared_skill"),
+                ("- Status:", "adoption_status"),
+            ):
+                if line.startswith(prefix):
+                    value = line.removeprefix(prefix).strip().strip("`")
+                    if value:
+                        metadata[key] = value[:200]
     elif path.endswith("agents/openai.yaml"):
         data = _safe_yaml(raw)
         policy = data.get("policy") if isinstance(data, dict) else None

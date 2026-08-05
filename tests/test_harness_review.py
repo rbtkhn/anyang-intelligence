@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from anyang_loop.harness_review import (
+    ADOPTION_RECEIPT_SEMANTIC_LIMIT,
     HarnessReviewError,
     SEMANTIC_LIMIT,
     _included,
@@ -95,6 +96,7 @@ def review_for(packet: Path, *, action: str = "ONE_HOME", proposal: str = "Conso
 def test_scan_uses_tracked_allowlist_and_portable_metadata(tmp_path: Path):
     build_repo(tmp_path)
     write(tmp_path / "skills" / "untracked" / "SKILL.md", "untracked secret\n")
+    write(tmp_path / "skills" / "untracked" / "ADOPTION.md", "untracked adoption secret\n")
 
     packet = scan_harness(tmp_path, "generated-reviews/ai-harness/run-one")
     scope, inventory = load_packet(packet)
@@ -105,6 +107,7 @@ def test_scan_uses_tracked_allowlist_and_portable_metadata(tmp_path: Path):
     assert "projects/customer/README.md" in paths
     assert "projects/customer/archive/transcript.md" not in paths
     assert "skills/untracked/SKILL.md" not in paths
+    assert "skills/untracked/ADOPTION.md" not in paths
     assert all(not Path(path).is_absolute() for path in paths)
     assert all("content" not in item for item in inventory["controls"])
     assert scope["tracked_only"] is True
@@ -123,6 +126,49 @@ def test_scan_semantic_selection_is_bounded_and_deterministic(tmp_path: Path):
 
     assert scope["semantic_selected_count"] == SEMANTIC_LIMIT
     assert sum(item["semantic_selected"] for item in inventory["controls"]) == SEMANTIC_LIMIT
+
+
+def test_scan_reserves_three_semantic_slots_for_tracked_adoption_receipts(tmp_path: Path):
+    build_repo(tmp_path)
+    for index in range(SEMANTIC_LIMIT + 8):
+        write(tmp_path / "tests" / f"test_many_{index:02d}.py", f"def test_{index}():\n    assert True\n")
+    for index in range(ADOPTION_RECEIPT_SEMANTIC_LIMIT + 1):
+        write(
+            tmp_path / "skills" / f"receipt-{index}" / "ADOPTION.md",
+            "\n".join(
+                (
+                    "# Skill Adoption Receipt",
+                    "",
+                    f"- Receipt ID: `SAR-{index}`",
+                    f"- Skill: `receipt-{index}`",
+                    "- Status: `Probation`",
+                    "",
+                )
+            ),
+        )
+    run(tmp_path, "git", "add", ".")
+    run(tmp_path, "git", "commit", "-m", "add adoption receipt fixtures")
+
+    packet = scan_harness(tmp_path, "generated-reviews/ai-harness/adoption-reservation")
+    scope, inventory = load_packet(packet)
+    receipts = [item for item in inventory["controls"] if item["kind"] == "skill-adoption-receipt"]
+    selected_receipts = [item for item in receipts if item["semantic_selected"]]
+
+    assert len(receipts) == ADOPTION_RECEIPT_SEMANTIC_LIMIT + 1
+    assert len(selected_receipts) == ADOPTION_RECEIPT_SEMANTIC_LIMIT
+    assert scope["adoption_receipt_semantic_limit"] == ADOPTION_RECEIPT_SEMANTIC_LIMIT
+    assert scope["adoption_receipt_selected_count"] == ADOPTION_RECEIPT_SEMANTIC_LIMIT
+    assert len(scope["adoption_receipt_displaced_controls"]) == ADOPTION_RECEIPT_SEMANTIC_LIMIT
+    assert scope["semantic_selected_count"] == SEMANTIC_LIMIT
+    assert sum(item["semantic_selected"] for item in inventory["controls"]) == SEMANTIC_LIMIT
+    assert selected_receipts[0]["label"] == "receipt-0 adoption"
+    assert selected_receipts[0]["metadata"] == {
+        "receipt_id": "SAR-0",
+        "declared_skill": "receipt-0",
+        "adoption_status": "Probation",
+    }
+    assert any("otherwise-selected controls displaced" in gap for gap in scope["coverage_gaps"])
+    assert any("outside the 3-receipt pilot reservation" in gap for gap in scope["coverage_gaps"])
 
 
 def test_render_escapes_hostile_text_and_keeps_paths_portable(tmp_path: Path):
@@ -208,6 +254,7 @@ def test_output_and_path_boundaries_fail_closed(tmp_path: Path):
         _portable_path("../escape")
     assert _included("projects/customer/README.md") is True
     assert _included("projects/customer/archive/README.md") is False
+    assert _included("skills/fixture/ADOPTION.md") is True
 
 
 def test_skill_metadata_accepts_windows_line_endings():
