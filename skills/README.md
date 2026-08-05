@@ -13,7 +13,6 @@ Skills are reusable operating procedures for maintaining the Anyang Intelligence
 | [friction](friction/SKILL.md) | Use for native Anyang Intelligence dissatisfaction-signal capture: identify what missed, classify the failure mode, choose the smallest repair, and decide whether the lesson should become a repo-visible improvement. |
 | [dream](dream/SKILL.md) | Use for native Anyang Intelligence closeout: settle the work cycle, verify repo integrity, name what was preserved, and identify what tomorrow inherits without autonomous merge authority. |
 | [decision-audit](decision-audit/SKILL.md) | Use to surface consequential agent-selected decisions that remain materially contestable, weakly evidenced, or dependent on an unconfirmed assumption without changing authority or durable state. |
-| [project-state-update](project-state-update/SKILL.md) | Use when customer facts, money, obligations, scope, or language boundaries change. |
 | [elicitation](elicitation/SKILL.md) | Use implicitly only when genuinely missing, materially consequential human input blocks safe execution; supports low-load decision menus, neutral evidence intake, compound selections, and ranked preferences. |
 | [intent-recovery](intent-recovery/SKILL.md) | Use `$intent-recovery` explicitly to recover and clearly restate meaning already latent in compressed or poorly articulated operator language without inventing facts or authority. |
 | [business-intake](business-intake/SKILL.md) | Use `$business-intake create`, `$business-intake resume`, or `$business-intake change` explicitly to govern owner-approved business context intake without storing private records or authorizing external action. |
@@ -22,12 +21,24 @@ Skills are reusable operating procedures for maintaining the Anyang Intelligence
 | [automation-opportunity-review](automation-opportunity-review/SKILL.md) | Use after effective business intake to rank recurring, measurable, bounded automation opportunities without building or running them. |
 | [automation-value-proof](automation-value-proof/SKILL.md) | Use for exactly one approved automation opportunity to define baseline, target, evidence, ROI, review burden, and pilot stop conditions. |
 | [bounded-workflow-pilot](bounded-workflow-pilot/SKILL.md) | Use after an approved persisted manual-loop handoff or automation value proof to run one low-risk workflow experiment with explicit limits, receipts, and human review. |
+| [singularity-science](singularity-science/SKILL.md) | Use as the operator-facing umbrella for governed Singularity Science source intake, interpretation, recurrence, retention, and bounded downstream translation. |
 | [singularity-recurrence-review](singularity-recurrence-review/SKILL.md) | Use after Singularity intake to detect independent recurring seams without promoting doctrine or creating primitives. |
 | [singularity-learning-update](singularity-learning-update/SKILL.md) | Use after recurrence review to record one evidence-linked, human-bounded learning transition. |
 | [tax-financial-governance](tax-financial-governance/SKILL.md) | Use when money, tax-sensitive classification, accounting evidence, or financial governance risk appears. |
 | [project-state-update](project-state-update/SKILL.md) | Use when a project fact, paid obligation, scope, status, relationship, or audience boundary changes and portfolio state must be reconciled. |
 | [review-ai-harness](review-ai-harness/SKILL.md) | Use only when explicitly invoked to map the tracked Codex setup, render a read-only AI harness report, or record numbered proposals without applying source changes. |
 | [pattern-memory](pattern-memory/SKILL.md) | Use to query or inspect governed, evidence-linked reusable patterns without promoting retrieval into durable memory or execution authority. |
+
+## Internal, Probationary, And Compatibility Skills
+
+These skills remain canonical but do not all represent standalone, generally
+available invocation surfaces.
+
+| Skill | Disposition |
+| --- | --- |
+| [learning-core-lane](student-operating-system/learning-core-lane/SKILL.md) | Internal composed procedure for Learning Core lane governance. |
+| [singularity-intake](singularity-intake/SKILL.md) | Compatibility alias; use `singularity` and the canonical `singularity-science` skill for new work. |
+| [world-monitor](world-monitor/SKILL.md) | External-derived capability in `Probation`; use only inside its approved Singularity Science evaluation scope. |
 
 ## Student Operating System Skills
 

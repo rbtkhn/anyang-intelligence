@@ -1,3 +1,8 @@
+---
+name: tax-financial-governance
+description: Governance guardrail for money, tax-sensitive classification, accounting evidence, and financial risk. Use when work involves revenue, spending, retainers, donations, payroll, taxes, accounting treatment, or professional financial review.
+---
+
 # Tax And Financial Governance Guardrail Skill
 
 Use this skill when a task involves money, tax-sensitive classification, accounting evidence, or financial governance risk.
