@@ -89,6 +89,63 @@ artifacts:
     git:
       tracked: false
 
+  recursive-learning-ledger:
+    path: os/recursive-learning-ledger.md
+    operation: Index sanitized, operator-approved repository learnings and their evidence, implementation, validation, and outcome state.
+    domain: repository-learning
+    authority: canonical
+    data_class: public
+    provenance:
+      sources: [operator-governance]
+      origin: Human-approved recursive-learning decisions linked to their governing evidence.
+    mutability:
+      method: Reviewed operator-authorized update under the recursive-learning contract.
+      writers: [repository-operator]
+      direct_edit: reviewed-only
+    recovery:
+      method: Restore the last reviewed Git version and reconcile linked evidence and disposition state.
+      verification: [learning-schema-check, stable-id-check, evidence-link-check]
+    git:
+      tracked: true
+
+  sanitized-project-memory-surfaces:
+    path: projects/*/{README.md,executive-os-install.md,operating-review.md,membrane-notes.md}
+    operation: Supply sanitized project context for provisional, review-only reusable-pattern discovery.
+    domain: project-pattern-source
+    authority: evidentiary
+    data_class: public
+    provenance:
+      origin: Reviewed repository project surfaces; archives, transcripts, analyses, source notes, private paths, and untracked files are excluded.
+    mutability:
+      method: Maintain through each governing project workflow; never through pattern-memory reporting.
+      writers: [repository-operator, project-owner]
+      direct_edit: reviewed-only
+    recovery:
+      method: Restore the reviewed Git versions through their governing project histories.
+      verification: [tracked-source-check, allowlist-check, privacy-check]
+    git:
+      tracked: true
+
+  governed-pattern-memory-report:
+    path: generated-patterns/*.{md,json}
+    operation: Expose deterministic, budgeted, review-only pattern retrieval over governed learning and provisional project sources.
+    domain: repository-pattern-review
+    authority: derived
+    data_class: internal-sanitized
+    provenance:
+      sources: [recursive-learning-ledger, sanitized-project-memory-surfaces]
+      origin: anyang-project pattern-memory query
+      as_of_required: true
+    mutability:
+      method: Regenerate from current eligible sources; do not edit or promote as a peer record.
+      writers: [anyang-project-pattern-memory]
+      direct_edit: prohibited
+    recovery:
+      method: Re-run the exact query against the recorded corpus and as-of inputs.
+      verification: [report-schema-check, corpus-digest-check, source-reference-check, privacy-check]
+    git:
+      tracked: false
+
   finance-source-snapshot:
     path: finance/anyang-intelligence-ledger.csv
     operation: Preserve the imported financial source snapshot for traceability and reconciliation.

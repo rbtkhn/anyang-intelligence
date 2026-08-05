@@ -18,6 +18,7 @@ dist/
 *.zip
 .anyang-private/
 generated-reviews/
+generated-patterns/
 finance/**/*.csv
 finance/**/*.xlsx
 finance/**/*.ndjson

@@ -8,6 +8,11 @@ from .project_model import ProjectInputError, load_project_input
 from .project_render import build_project_files, render_html_dashboard, render_obsidian, write_files
 from .project_validate import validate_project_path
 from .membrane import extract_patterns, render_pattern_report
+from .pattern_memory import (
+    PatternMemoryError,
+    query_pattern_memory,
+    write_pattern_memory_report,
+)
 from .catalog_import import (
     CatalogImportError,
     import_catalog,
@@ -104,6 +109,9 @@ def main(argv: list[str] | None = None) -> int:
     except WorkGraphError as exc:
         print(f"ERROR: {exc}")
         return 1
+    except PatternMemoryError as exc:
+        print(f"ERROR: {exc}")
+        return 1
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -127,6 +135,22 @@ def build_parser() -> argparse.ArgumentParser:
     extract.add_argument("projects_path")
     extract.add_argument("--output", required=True)
     extract.set_defaults(func=cmd_extract_patterns)
+
+    pattern_memory = subparsers.add_parser(
+        "pattern-memory", help="Query governed learning and provisional project patterns"
+    )
+    pattern_memory_sub = pattern_memory.add_subparsers(required=True)
+    pattern_query = pattern_memory_sub.add_parser(
+        "query", help="Generate a derived, review-only pattern-memory report"
+    )
+    pattern_query.add_argument("--query", required=True)
+    pattern_query.add_argument("--target-lane", required=True)
+    pattern_query.add_argument("--as-of", required=True)
+    pattern_query.add_argument("--format", choices=("markdown", "json"), required=True)
+    pattern_query.add_argument("--output", required=True)
+    pattern_query.add_argument("--repo", default=".")
+    pattern_query.add_argument("--force", action="store_true")
+    pattern_query.set_defaults(func=cmd_pattern_memory_query)
 
     import_cmd = subparsers.add_parser(
         "import-transcripts", help="Import Singularity Science transcripts from a manifest into the archive"
@@ -317,6 +341,24 @@ def cmd_extract_patterns(args: argparse.Namespace) -> int:
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(report, encoding="utf-8")
     print(f"Wrote pattern candidate report: {args.output}")
+    return 0
+
+
+def cmd_pattern_memory_query(args: argparse.Namespace) -> int:
+    report = query_pattern_memory(
+        args.query,
+        args.target_lane,
+        args.as_of,
+        repo=args.repo,
+    )
+    output = write_pattern_memory_report(
+        report,
+        args.output,
+        format=args.format,
+        force=args.force,
+        repo=args.repo,
+    )
+    print(f"Wrote governed pattern-memory report: {output}")
     return 0
 
 

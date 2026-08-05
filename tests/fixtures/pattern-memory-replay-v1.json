@@ -1,0 +1,58 @@
+{
+  "schema": "anyang-pattern-memory-replay/v1",
+  "as_of": "2026-08-04T18:00:00Z",
+  "target_lane": "shared-primitives",
+  "minimum_top_five_successes": 8,
+  "queries": [
+    {
+      "id": "audit-assurance",
+      "query": "audit assurance diagnostic candidates independent review",
+      "expected_source": "os/recursive-learning-ledger.md#RL-2026-002"
+    },
+    {
+      "id": "authority",
+      "query": "authority exact decision subject append-only transaction",
+      "expected_source": "os/recursive-learning-ledger.md#RL-2026-005"
+    },
+    {
+      "id": "evidence",
+      "query": "evidence conflict contradiction silent precedence",
+      "expected_source": "os/recursive-learning-ledger.md#RL-2026-007"
+    },
+    {
+      "id": "validation",
+      "query": "validation fast feedback full gate assurance",
+      "expected_source": "os/recursive-learning-ledger.md#RL-2026-010"
+    },
+    {
+      "id": "cadence",
+      "query": "cadence skill discovery metadata adapters",
+      "expected_source": "os/recursive-learning-ledger.md#RL-2026-008"
+    },
+    {
+      "id": "learning",
+      "query": "learning choice navigation outcome selection frequency",
+      "expected_source": "os/recursive-learning-ledger.md#RL-2026-006"
+    },
+    {
+      "id": "privacy",
+      "query": "privacy membrane transfer reusable primitive",
+      "expected_source": "projects/singularity-science/membrane-notes.md#transfer-boundary"
+    },
+    {
+      "id": "project-installation",
+      "query": "project installation executive memory objects",
+      "expected_source": "projects/learning-core/executive-os-install.md#executive-memory-objects"
+    },
+    {
+      "id": "re-entry",
+      "query": "re-entry fresh task discover coffee dream",
+      "expected_source": "os/recursive-learning-ledger.md#RL-2026-008"
+    },
+    {
+      "id": "skill-improvement",
+      "query": "game design apprenticeship player action intended experience hypothesis",
+      "expected_source": "os/recursive-learning-ledger.md#RL-2026-009"
+    }
+  ]
+}

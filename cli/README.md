@@ -580,6 +580,23 @@ Extract membrane-aware pattern candidates:
 
 Pattern extraction is review-only. It never updates templates or project folders automatically.
 
+Generate a governed, evidence-linked pattern-memory report from eligible
+`RL-*` learning and allowlisted sanitized project surfaces:
+
+```powershell
+.\tools\run.ps1 project pattern-memory query `
+  --query "evidence-aware cross-project audit reuse" `
+  --target-lane shared-primitives `
+  --as-of 2026-08-04T18:00:00Z `
+  --format markdown `
+  --output generated-patterns/audit-reuse.md
+```
+
+The report uses deterministic lexical retrieval, fixed context budgets, and
+source hashes. It is a derived review surface with `authority_effect: none`;
+it does not inject context, update durable memory, or promote a Skill. See
+[`docs/governed-pattern-memory-v1.md`](../docs/governed-pattern-memory-v1.md).
+
 ## Elicitation Contradiction Preflight
 
 Compare normalized request assertions with explicitly supplied controlling
