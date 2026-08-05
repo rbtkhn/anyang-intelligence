@@ -3,7 +3,7 @@
 Use this gate before the Artistic Director persists an ideation output, begins
 production, or consumes material capacity.
 
-**Position state:** `interim holder appointed; acceptance and runtime
+**Position state:** `JK human holder effective 2026-08-01; AI runtime and task
 activation pending — no production may begin until a separate activation and
 task approval are current`
 

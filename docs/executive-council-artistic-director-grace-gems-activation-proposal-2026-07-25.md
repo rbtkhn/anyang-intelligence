@@ -2,7 +2,7 @@
 
 **Proposal ID:** `EC-ARTISTIC-ACTIVATION-PROP-2026-07-25-01`
 
-**State:** `interim holder appointed — acceptance and activation pending`
+**State:** `JK holder effective 2026-08-01 — runtime and task activation pending`
 
 **Prepared by:** Chief Executive
 
@@ -117,16 +117,15 @@ trail, and applicable professional instruction.
 
 - AI runtime: `Proposed — dedicated Codex Artistic Director task; exact task
   and model identity missing; inactive`.
-- Human holder: `Executive Assistant — appointed by the System Engineer as
-  interim holder; acceptance not evidenced`.
+- Human holder: `JK — accepted and effective 2026-08-01`.
 - Design tools: `Missing — no paid tool approved`.
 - Storage and persistence location: `Missing`.
 - External delivery channel: `not applicable to Artistic Director`.
 
-The appointment is controlled by the [interim-holder appointment
-receipt](executive-council-artistic-director-interim-holder-appointment-2026-07-25.md).
-Dual-role actions must declare either `Artistic Director` or `Executive
-Assistant` mode and use separately attributed execution and delivery evidence.
+The current holder state is controlled by the [JK holder acceptance
+receipt](executive-council-artistic-director-jk-holder-acceptance-2026-08-01.md).
+Artistic Director execution and Executive Assistant delivery remain separately
+attributed actions with separate authority and evidence.
 
 ## Proposed term and cadence
 
@@ -204,9 +203,9 @@ transaction to `held` or `escalated`.
 - [x] Grace Gems purpose and lane are bounded.
 - [x] `$1,000/month` operating ceiling is recorded without spend authority.
 - [x] First proposed mandate is identified.
-- [x] Interim human holder is appointed.
-- [ ] Executive Assistant has accepted the role boundary and dual-role
-      controls.
+- [x] JK is the accepted human holder effective 2026-08-01.
+- [ ] JK has acknowledged the first-cohort role boundary, permitted source
+      surface, stop conditions, and evidence requirements.
 - [ ] AI runtime and model identity are named.
 - [ ] Exact tools, storage, and persistence locations are approved.
 - [ ] Exact permitted sources and any client evidence receipts are current.
@@ -231,7 +230,7 @@ Choose only after the missing fields are complete:
 - `Reject`; or
 - `Return for completion`.
 
-> This proposal records the interim appointment and prepares an activation
-> decision. It does not prove holder acceptance, activate the Artistic
-> Director, authorize production, allocate compensation, approve spend, or
-> create Grace Gems client authority.
+> This proposal incorporates the JK holder-acceptance receipt and prepares an
+> activation decision. Holder acceptance does not activate the Artistic
+> Director AI runtime, authorize production, allocate compensation, approve
+> spend, or create Grace Gems client authority.

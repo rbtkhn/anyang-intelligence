@@ -23,14 +23,14 @@ def normalized(path: Path) -> str:
     return " ".join(read(path).split())
 
 
-def test_media_production_remains_service_line_under_inactive_artistic_director():
+def test_media_production_remains_service_line_under_unactivated_artistic_director():
     readme = read(PROJECT / "README.md")
     dashboard = read(ROOT / "projects/operating-portfolio-dashboard.md")
 
     assert "internal department and service line of Anyang Intelligence" in readme
     assert "Governing creative role: Artistic Director" in readme
-    assert "Executive Assistant appointed as interim human holder" in readme
-    assert "acceptance and runtime activation pending" in readme
+    assert "JK is the human holder effective 2026-08-01" in readme
+    assert "first-task activation remain pending" in readme
     assert "Artistic Director monthly operating envelope: $1,000" in readme
     assert "included in the Media Production package" in readme
     assert "not a separately billed or client-owned position" in readme
@@ -44,7 +44,7 @@ def test_artistic_production_gate_requires_activation_authority_and_evidence():
     gate_normalized = " ".join(gate.split())
 
     for required in (
-        "interim holder appointed",
+        "JK human holder effective 2026-08-01",
         "Task ID and approved objective",
         "Lane and source boundary",
         "Human decision owner and that person's stated intent",
@@ -187,11 +187,11 @@ def test_grace_gems_activation_proposal_remains_inactive_and_unfunded():
     brief = read(PROJECT / "grace-gems-owned-channel-visual-design-brief-2026-07-25.md")
 
     assert (
-        "**State:** `interim holder appointed — acceptance and activation pending`"
+        "**State:** `JK holder effective 2026-08-01 — runtime and task activation pending`"
         in proposal
     )
-    assert "Executive Assistant — appointed by the System Engineer" in proposal
-    assert "acceptance not evidenced" in proposal
+    assert "Human holder: `JK — accepted and effective 2026-08-01`" in proposal
+    assert "JK holder acceptance" in proposal
     assert "dedicated Codex Artistic Director task" in proposal
     assert "Spend authorized by this proposal: `$0`" in proposal
     assert "Separate Artistic Director charge to Grace Gems: none" in proposal
@@ -199,7 +199,7 @@ def test_grace_gems_activation_proposal_remains_inactive_and_unfunded():
     assert "not allocated specifically" in proposal
     assert "does not task the Artistic Director directly" in proposal
     assert "Any unchecked item keeps the Artistic Director inactive" in proposal
-    assert "does not prove holder acceptance" in proposal
+    assert "Holder acceptance does not activate" in proposal
     assert "activate the Artistic" in proposal
 
     assert "held pending Artistic Director activation" in brief
@@ -224,6 +224,23 @@ def test_interim_holder_appointment_preserves_dual_role_separation():
     assert "`$0`" in appointment
     assert "does not:" in appointment
     assert "activate an AI runtime" in appointment
+
+
+def test_jk_holder_receipt_fills_seat_without_activating_production():
+    receipt = normalized(
+        ROOT
+        / "docs/"
+        "executive-council-artistic-director-jk-holder-acceptance-2026-08-01.md"
+    )
+
+    assert "**Human holder:** JK" in receipt
+    assert "**Effective date:** 2026-08-01" in receipt
+    assert "supersedes the Executive Assistant interim-holder appointment" in receipt
+    assert "AI runtime inactive" in receipt
+    assert "production capacity remains zero" in receipt
+    assert "Holder acceptance does not:" in receipt
+    assert "activate an AI runtime" in receipt
+    assert "authorize persistent ideation, production, publication, or delivery" in receipt
 
 
 def test_anyang_operating_cost_baseline_preserves_planning_and_spend_boundaries():

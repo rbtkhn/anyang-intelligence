@@ -20,9 +20,9 @@ The goal is not to declare final products. The goal is to identify which install
 1. **Media Production** has the cleanest near-term B2B shape: clear buyer,
    active `$1,000/month` Grace Gems retainer, defined Artistic Director
    position, lower safety burden than education, and measurable outputs. The
-   Executive Assistant is appointed as interim human holder, but acceptance
-   and runtime activation remain pending, so current production capacity is
-   zero.
+   JK is the Artistic Director human holder effective 2026-08-01, but runtime
+   and first-task activation remain pending, so current governed production
+   capacity is zero.
 2. **AI Repository Assurance Review** has a strong fixed-fee B2B shape and
    three technical benchmarks. Predictive History showed that 91 passing tests
    can coexist with eight accepted material finding groups, but the offer

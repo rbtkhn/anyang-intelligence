@@ -2,7 +2,14 @@
 
 **Receipt ID:** `EC-ARTISTIC-INTERIM-HOLDER-2026-07-25-01`
 
-**State:** `appointed — holder acceptance and runtime activation pending`
+**State:** `superseded historical appointment — JK holder effective 2026-08-01`
+
+> **Current holder state:** This interim appointment lapsed when acceptance was
+> not evidenced by its 2026-08-01 review gate. JK is the current human holder
+> under the [JK holder acceptance
+> receipt](executive-council-artistic-director-jk-holder-acceptance-2026-08-01.md).
+> This receipt remains historical lineage and creates no current holder,
+> runtime, task, production, spending, or client authority.
 
 **Decision authority:** System Engineer
 

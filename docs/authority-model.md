@@ -31,9 +31,9 @@ Anyang Intelligence
 - **Chief Executive:** directs Anyang priorities and bounded operations under
   the authority envelope.
 - **Artistic Director:** a durable human-AI hybrid position that develops
-  artistic direction and performs approved internal production. The Executive
-  Assistant is appointed as interim human holder, but acceptance is not
-  evidenced and the runtime remains inactive.
+  artistic direction and performs approved internal production. JK is the
+  human holder effective 2026-08-01; the AI runtime and production-task state
+  remain inactive.
 - **Executive Assistant:** supplies human-world context and performs only
   approved consulting or chief-of-staff work.
 - **Council Steward:** independently tests portfolio state, receipts, and artifact

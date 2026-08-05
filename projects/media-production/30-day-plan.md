@@ -13,8 +13,8 @@ This plan creates the first recurring review surfaces for Media Production as an
 
 ## Week 2: Brief Discipline
 
-- Prepare only synthetic or source-approved briefs while the appointed interim
-  holder has not accepted and the Artistic Director runtime remains inactive.
+- Prepare only synthetic or source-approved briefs while JK's Artistic
+  Director runtime and first production task remain inactive.
 - Run all proposed persistent ideation or production through the artistic
   production gate.
 - Normalize review packet expectations for every production handoff.

@@ -13,7 +13,7 @@ state; it does not redefine Council authority or runtime status.
 
 | Project | Current status | Revenue / asset status | Active obligation | Next decision | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| [Media Production](media-production/README.md) | Active service line; Executive Assistant appointed as interim Artistic Director human holder; acceptance and runtime activation pending | $1,000/month Grace Gems service-package retainer; `$1,000/month` Artistic Director operating ceiling; no separate client charge; allocation unapproved; current spend authority `$0` | Preserve zero production capacity while obtaining holder acceptance and completing the bounded Grace Gems activation fields | Record acceptance or refusal, then complete runtime, source, tool, persistence, capacity, term, and client-input fields | High |
+| [Media Production](media-production/README.md) | Active service line; JK is Artistic Director human holder effective 2026-08-01; AI runtime and first-task activation pending | $1,000/month Grace Gems service-package retainer; `$1,000/month` Artistic Director operating ceiling; no separate client charge; allocation unapproved; current spend authority `$0` | Preserve zero governed production capacity while completing the bounded Grace Gems runtime and task-activation fields | Complete runtime, source, tool, persistence, capacity, term, boundary-acknowledgment, and client-input fields before first-task approval | High |
 | [Grace Gems](grace-gems/README.md) | Phase 2 intake active; three bounded review scopes approved; evidence access, review execution, and implementation held | Pays Media Production $1,000/month for creative support; business economics and effective context remain unconfirmed | Complete the exact evidence-access, privacy, reviewer, persistence, and measurement gates for the approved scopes | Obtain exact evidence-access authority, private-location reference, reviewer access, and review date before executing any approved scope | Medium-high |
 | [Learning Core](learning-core/README.md) | Active high-trust education service | `$0` current MRR; separate `$1,000` one-time retainer record remains pending approved accounting evidence; monthly continuity subscription is an unvalidated offer hypothesis; scoped deliverable is a 30-day collaborative build of the family's `Learning Core`, including onboarding; Khan Academy Kids selected as free starter iPad app; reading basket adopted as first physical literacy tool; student portfolio adopted for physical work, digital work, proud work, milestones, and reports; monthly portfolio review adopted as first reporting layer; parent intake, lighter onboarding survey, adaptive Phase 2 follow-up, continuity pressure test, and Khan transition-readiness doctrine are now defined | Collaborate with real parents to build a usable `Learning Core`, classify readiness as Ready / Provisional / Hold, and draft only from parent-approved inputs while preserving parent authority, child safety, and evidence boundaries | Validate the entry service and recurring continuity offer before counting subscription revenue | Medium |
 | [Mountain Villa](mountain-villa/README.md) | Property governance prototype | 5 acres in Jefferson County, Colorado; owner-reported private well drawing from a clean aquifer and enclosure by national/state park lands; $200,000 operator-provided asset valuation pending verification; owner-set sale objective: $500,000; no revenue attached | Build risk-first property operating memory and seasonal readiness loop | Identify top property risks, systems, and first seasonal review gate | Medium-low |
@@ -25,7 +25,7 @@ This view distinguishes the work type, relationship, intended result, and immedi
 
 | Project | Project type | Relationship status | Primary outcome | Current constraint | Next decision |
 | --- | --- | --- | --- | --- | --- |
-| [Media Production](media-production/README.md) | Client service / internal operating company | Paid recurring service | Reliably deliver Grace Gems creative support while building a reusable production system | Interim holder acceptance and Artistic Director runtime activation are pending | Obtain Executive Assistant acceptance or refusal before runtime activation |
+| [Media Production](media-production/README.md) | Client service / internal operating company | Paid recurring service | Reliably deliver Grace Gems creative support while building a reusable production system | JK holds the Artistic Director position; runtime, capacity, and first-task activation remain pending | Complete the bounded runtime and first-task activation gates |
 | [Grace Gems](grace-gems/README.md) | Client service / commercial proof | Paid client of Media Production | Improve governed marketplace execution and create credible proof | Three review scopes are approved, but evidence access, execution, product economics, effective context, and implementation authority remain incomplete | Complete the evidence-access gates before executing any approved scope |
 | [Learning Core](learning-core/README.md) | Recurring high-trust education service | Paid recurring service | Deliver a parent-approved Learning Core and ongoing continuity support | Parent inputs, timing, safety boundaries, and approvals remain required before drafting | Maintain monthly continuity service and run intake before each plan draft |
 | [Mountain Villa](mountain-villa/README.md) | Asset stewardship project | Internal / no revenue | Establish risk-first property memory and seasonal readiness | Property risk inventory is incomplete | Capture the top risks and first seasonal review gate |
@@ -99,8 +99,8 @@ Unknown or pending:
 - Operate the Grace Gems $1,000/month service package.
 - Keep the `$1,000/month` Artistic Director operating ceiling unallocated until
   exact compensation or operating costs receive separate approval.
-- Treat Artistic Director production capacity as zero until a holder and
-  runtime are separately activated.
+- Treat Artistic Director production capacity as zero until JK's runtime and
+  first task are separately activated.
 - Complete the [Grace Gems activation
   proposal](../docs/executive-council-artistic-director-grace-gems-activation-proposal-2026-07-25.md)
   and first owned-channel visual-design mandate before production.
@@ -146,10 +146,9 @@ Unknown or pending:
 ## Immediate Decision Queue
 
 1. **Media Production:** What are the first Grace Gems deliverables for week one?
-2. **Artistic Director:** Will the Executive Assistant accept the interim
-   holder appointment and dual-role controls, and which AI runtime, tools,
-   persistence path, material capacity, and allocation will be approved inside
-   the `$1,000/month` operating ceiling?
+2. **Artistic Director:** Which AI runtime, tools, persistence path, source
+   boundary, material capacity, first task, and allocation will be approved for
+   JK inside the `$1,000/month` operating ceiling?
 3. **Learning Core:** What parent intake or onboarding-survey responses are needed to build a usable first-month `Learning Core` and classify the case as Ready, Provisional, or Hold?
 4. **Grace Gems:** Which bounded Phase 2 review question, evidence membrane,
    success metric, and approval boundary should the CEO confirm next?
@@ -184,9 +183,9 @@ Use [China Humanoid Market Watch](singularity-science/china-humanoid-market-watc
 
 Media Production is the most concrete operating service line because it has
 money, a defined Artistic Director position, a paid client, a service package,
-an artistic production workflow, and a quality gate. The Executive Assistant
-is appointed as interim human holder, but acceptance and runtime activation
-remain pending; current production capacity is zero.
+an artistic production workflow, and a quality gate. JK is the Artistic
+Director human holder effective 2026-08-01, but runtime and first-task
+activation remain pending; current governed production capacity is zero.
 
 Grace Gems is both a customer of the Executive OS and the first paying client of Media Production. That makes it the strongest internal proof loop.
 

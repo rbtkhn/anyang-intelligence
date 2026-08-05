@@ -76,10 +76,12 @@ The Chief Executive is the advisory intelligence role performed by the active Ex
 
 The Artistic Director is the durable human-AI hybrid role responsible for
 artistic ideation, creative direction, and approved internal production.
-`artistic` is the machine-readable role key. The Executive Assistant is the
-System Engineer-appointed interim human holder, but acceptance is not yet
-evidenced and no Artistic Director runtime is active. Appointment, holder
-acceptance, and runtime activation remain separate authority events.
+`artistic` is the machine-readable role key. JK is the human holder effective
+2026-08-01 under the [holder acceptance
+receipt](executive-council-artistic-director-jk-holder-acceptance-2026-08-01.md).
+No Artistic Director AI runtime or production task is active. Holder
+acceptance, runtime activation, and task approval remain separate authority
+events.
 
 - Generates concepts, visual languages, narratives, campaigns, formats, and
   experiences within an approved objective.
@@ -200,11 +202,12 @@ approved work requires external communication or delivery, the Chief Executive
 prepares the dispatch and the Executive Assistant remains the sole normal
 real-world interface.
 
-While the Executive Assistant is the interim human holder, each action must
-declare either `Artistic Director` or `Executive Assistant` mode. Internal
-creative execution and external communication or delivery require separately
-attributed actions and evidence. Appointment does not authorize self-tasking,
-self-approval, or collapsed creative-and-delivery execution.
+JK holds the Artistic Director position, while the Executive Assistant remains
+the sole normal real-world interface. Each action must name its Council role.
+Internal creative execution and external communication or delivery require
+separately attributed actions and evidence. Holder acceptance does not
+authorize self-tasking, self-approval, or collapsed creative-and-delivery
+execution.
 
 #### Joint intent recovery and state transitions
 

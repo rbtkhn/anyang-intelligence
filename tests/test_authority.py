@@ -207,9 +207,9 @@ def test_council_contract_distinguishes_role_runtime_and_client_authority():
     assert "System Engineer approval does not create client-company authority" in normalized
     assert "The Chief Executive is the normal tasker of the Executive Assistant" in normalized
     assert "The Artistic Director cannot task the Executive Assistant directly" in normalized
-    assert "appointed interim human holder" in normalized
-    assert "acceptance is not yet evidenced" in normalized
-    assert "no Artistic Director runtime is active" in normalized
+    assert "JK is the human holder effective 2026-08-01" in normalized
+    assert "No Artistic Director AI runtime or production task is active" in normalized
+    assert "Holder acceptance, runtime activation, and task approval remain separate" in normalized
 
 
 def test_invalid_domains_require_all_authority_fields(tmp_path: Path):

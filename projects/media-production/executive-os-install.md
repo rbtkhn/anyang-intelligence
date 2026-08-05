@@ -36,7 +36,7 @@ Anyang Intelligence should govern Media Production as its parent organization:
 | Core work | Produce and distribute digital media and supplementary artistic assets |
 | Artistic Director monthly operating envelope | $1,000; no spend authority |
 | Governing creative role | Artistic Director, durable Executive Council position |
-| Position state | Interim human holder appointed; acceptance and runtime activation pending |
+| Position state | JK human holder effective 2026-08-01; AI runtime and first-task activation pending |
 | Compensation and operating-cost allocation | Missing; no category is pre-approved |
 | Primary cadence | Editorial planning, production, publishing, review |
 | Primary constraint | No activated Artistic Director capacity, Grace Gems client commitments, unallocated $1,000 monthly ceiling, quality control, publishing consistency, audience relevance |
@@ -189,10 +189,9 @@ The first-installation plan is preserved in [30-day-plan.md](30-day-plan.md) and
 - Confirm the Grace Gems $1,000/month service package.
 - Create the first Grace Gems product and customer-support creative backlog.
 - Capture Predictive History channel context, audience, topics, and visual needs.
-- Preserve the Artistic Director position as inactive after the Executive
-  Assistant's interim appointment until holder acceptance and a separate
-  activation receipt name the AI runtime, tools, permissions, term, and
-  revocation path.
+- Preserve Artistic Director production as inactive after JK's holder
+  acceptance until separate activation and task receipts name the AI runtime,
+  tools, permissions, term, first brief, and revocation path.
 - Create the first monthly budget view under a `$1,000` Artistic Director
   operating ceiling, leaving compensation and operating-cost categories
   unallocated until separately approved.
