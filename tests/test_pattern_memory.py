@@ -124,6 +124,52 @@ def test_only_eligible_learning_and_allowlisted_tracked_projects_enter(tmp_path:
     assert corpus.exclusion_counts["prohibited-source"] == 1
 
 
+def test_live_governed_learning_evidence_references_are_navigable() -> None:
+    corpus = compile_corpus(ROOT)
+    governed = [
+        item
+        for item in corpus.candidates
+        if item.source_tier == "governed-learning"
+    ]
+
+    assert governed
+    assert all(item.evidence_references for item in governed)
+
+    tracked = {
+        line.strip()
+        for line in subprocess.run(
+            ["git", "ls-files"],
+            cwd=ROOT,
+            check=True,
+            text=True,
+            stdout=subprocess.PIPE,
+        ).stdout.splitlines()
+        if line.strip()
+    }
+
+    for candidate in governed:
+        source_path = candidate.source_reference.split("#", 1)[0]
+        source_parent = (ROOT / source_path).parent
+        for reference in candidate.evidence_references:
+            evidence_path = (source_parent / reference.split("#", 1)[0]).resolve()
+            relative = evidence_path.relative_to(ROOT).as_posix()
+            assert relative in tracked
+
+    rl_001 = next(item for item in governed if item.section == "RL-2026-001")
+    assert rl_001.evidence_references == (
+        "../docs/recursive-self-enhancement.md",
+        "recursive-learning-ledger.md",
+    )
+    assert verify_source_reference(
+        ROOT,
+        {
+            "candidate_id": rl_001.candidate_id,
+            "source_reference": rl_001.source_reference,
+            "content_hash": rl_001.content_hash,
+        },
+    )
+
+
 def test_stable_json_ranking_hashes_and_provenance_reconstruct(tmp_path: Path) -> None:
     repo = _fixture_repo(tmp_path)
     first = query_pattern_memory("evidence review assurance", "shared-primitives", "2026-08-04T18:00:00Z", repo=repo)
