@@ -2,40 +2,44 @@
 
 **Receipt ID:** `EC-SS-INTERFACE-ADOPTION-2026-08-05-01`
 
-**State:** `proposed adoption receipt — ineffective pending exact System
-Engineer approval`
+**State:** `adopted and effective — durable interface only; no standing mandate
+or operational authority created`
 
 **Decision authority:** System Engineer
 
-**Decision source:** `Missing — requires explicit System Engineer adoption`
+**Decision source:** explicit System Engineer approval issued in the current
+Codex task on 2026-08-05
 
 **Target contract:** [Executive Council–Singularity Science Interface
 Contract](executive-council-singularity-science-interface-contract.md)
 
 **Target version:** `0.3`
 
-**Target SHA-256:**
+**Approved baseline SHA-256:**
 `2CE68EF641196AD04A3EA1DF9F081B30A6FC00AD9B0F6326F59F6F0A4852A9D7`
 
-**Target commit:** `540e9e5708512549a13d05d1391d8e89f19c8f74`
+**Approved baseline commit:** `540e9e5708512549a13d05d1391d8e89f19c8f74`
 
-**Effective date:** `Missing — set only by explicit approval`
+**Proposed-receipt baseline commit:**
+`bb633037a228690d9ad2e0b21183e5437ca22d9b`
 
-**Proposed effective date:** `2026-08-05`
+**Effective contract SHA-256:**
+`74C752F84EDA7724A5F80905744EC12B6C5FC37EF98626AED8E8EDA4759486BA`
 
-**Review date:** `2026-11-05 if effective on 2026-08-05; otherwise three
-months after the actual effective date`
+**Effective date:** `2026-08-05`
+
+**Review date:** `2026-11-05`
 
 **Supersedes:** `none — first dedicated Executive Council–Singularity Science
 interface contract`
 
-## Proposed decision
+## Decision
 
 Adopt target version `0.3` as the durable internal interface governing how
 Executive Council may request, receive, interpret, and route Singularity
 Science research.
 
-This adoption would establish an interface boundary only. It would not:
+This adoption establishes an interface boundary only. It does not:
 
 - create or activate a Council role or runtime;
 - establish a Singularity Science standing mandate;
@@ -46,21 +50,24 @@ This adoption would establish an interface boundary only. It would not:
   or
 - adopt any research finding, primitive candidate, or capability.
 
-## Prerequisite evidence
+## Adoption evidence
 
 - Tasking-clause ambiguity corrected in target version `0.3`.
 - Nate Herk state-lineage pressure test recorded in the target contract.
 - Mountain Villa cross-project membrane pressure test recorded in the target
   contract.
 - Canonical Singularity Science state namespaces retained.
-- Local-link and whitespace validation required before approval.
-- Final target SHA-256 and commit identifier required before approval.
-- Explicit System Engineer approval of the exact target version remains
-  required.
+- Local-link, whitespace, state-vocabulary, and dedicated-test validation:
+  `pass — 14 local links checked with zero missing, zero trailing-whitespace
+  lines, and four dedicated tests passed`.
+- Effective contract SHA-256:
+  `74C752F84EDA7724A5F80905744EC12B6C5FC37EF98626AED8E8EDA4759486BA`.
+- Explicit System Engineer approval of the exact target version issued on
+  2026-08-05.
 
 ## Standing-mandate decision
 
-No standing mandate is established by this proposed adoption.
+No standing mandate is established by this adoption.
 
 Class 0 research remains bounded by approved objectives, already-available
 permitted sources, read-only internal operation, and advisory return.
@@ -71,33 +78,35 @@ limits, evidence, expiry, revocation path, and recovery method.
 
 ## Authority and execution
 
-**Prepared under:** explicit operator selection authorizing contract repair,
-pressure-test recording, and creation of this proposed receipt only
+**Prepared under:** explicit operator selections authorizing contract repair,
+pressure-test recording, and proposed-receipt preparation
 
 **Reviewed by:** Council Steward-style review; no activated Steward runtime
 claimed
 
-**Approved by:** `Missing — System Engineer approval required`
+**Approved by:** System Engineer, 2026-08-05
 
-**Adoption executor:** `Missing — named repository executor required`
+**Adoption executor:** Codex primary agent in the approving task
 
-**Authority scope:** proposed receipt preparation only; no adoption, runtime
-activation, standing mandate, research execution, implementation, publication,
-spending, or external action
+**Authority scope:** exact state reconciliation of the contract, this receipt,
+and the dedicated contract test; validation; and one bounded commit with no
+push
 
-**Evidence required:** version-matched contract, exact approved diff, recorded
-pressure tests, local-link and state-vocabulary validation, final file hash,
-commit identifier, and explicit System Engineer disposition
+**Exclusions:** runtime activation, standing mandate, research execution,
+source-access expansion, testing, implementation, publication, spending,
+external action, research adoption, and receiving-lane action
+
+**Returned validation evidence:** `pass — effective hash matched, 14 local
+links resolved, no trailing whitespace found, and four dedicated tests passed`
 
 ## Term and review
 
-If adopted, the interface remains effective until held, corrected, revoked, or
+The interface remains effective until held, corrected, revoked, or
 superseded by the System Engineer.
 
 ### Scheduled review
 
-Review quarterly. If adopted on 2026-08-05, the first scheduled review is
-2026-11-05.
+Review quarterly. The first scheduled review is 2026-11-05.
 
 The quarterly review examines only:
 
@@ -169,16 +178,15 @@ Revocation:
 Recovery requires naming affected tasks, preserving returned evidence, marking
 stale references, and adopting a corrected or superseding contract.
 
-## Final state gate
+## Final state
 
-This receipt may become `adopted and effective` only when all prerequisite
-evidence is present and the System Engineer explicitly approves the exact
-target version.
-
-Until then:
+The System Engineer approved the exact baseline and bounded state transition
+on 2026-08-05. Validation and the effective contract hash are returned by the
+named executor before the adoption commit.
 
 ```text
-proposed -> awaiting prerequisites
+proposed -> adopted and effective
 ```
 
-This proposed receipt does not itself satisfy its approval gate.
+This receipt adopts the interface boundary only. It creates no standing
+mandate or operational authority.

@@ -9,15 +9,15 @@ def normalized(path: Path) -> str:
     return " ".join(path.read_text(encoding="utf-8").split())
 
 
-def test_singularity_interface_contract_is_proposed_and_no_authority():
+def test_singularity_interface_contract_is_adopted_without_operational_authority():
     text = normalized(CONTRACT)
     for phrase in (
         "Status:",
-        "`proposed",
-        "no authority or standing mandate created",
-        "creates no Council role, runtime, authority, persistence, publication",
+        "`adopted",
+        "durable interface only; no standing mandate or operational authority created",
+        "creates no Council role, runtime, operational authority, persistence, publication",
         "customer action, commercial offer, or standing mandate",
-        "This proposed interface contract is not itself a standing mandate",
+        "This adopted interface contract is not itself a standing mandate",
         "No general standing mandate should be inferred",
     ):
         assert phrase in text
@@ -53,14 +53,15 @@ def test_singularity_interface_keeps_state_namespaces_distinct():
         assert phrase in text
 
 
-def test_singularity_interface_requires_membrane_and_adoption_review():
+def test_singularity_interface_requires_membrane_and_ongoing_review():
     text = normalized(CONTRACT)
     for phrase in (
         "transcript bulk and long quotations",
         "remain inside Singularity Science unless separately reviewed",
         "Cross-project transfer requires a reusable abstraction",
-        "Adoption gate",
-        "Council Steward review of state and membrane language",
-        "exact effective date, review date, and supersession rule",
+        "Adoption evidence and ongoing review gate",
+        "EC-SS-INTERFACE-ADOPTION-2026-08-05-01",
+        "explicit decision not to create a standing mandate",
+        "cannot expand authority, renew a standing mandate, or adopt research automatically",
     ):
         assert phrase in text

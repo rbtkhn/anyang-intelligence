@@ -2,7 +2,10 @@
 
 **Version:** `0.3`
 
-**Status:** `proposed — no authority or standing mandate created`
+**Status:** `adopted — durable interface only; no standing mandate or
+operational authority created`
+
+**Adoption receipt:** [EC-SS-INTERFACE-ADOPTION-2026-08-05-01](executive-council-singularity-science-interface-adoption-2026-08-05.md)
 
 **Scope:** Anyang Intelligence internal operations
 
@@ -23,7 +26,7 @@ Neither surface replaces the other:
 - Applicable client owners, property owners, parents, and guardians retain
   their own authority.
 
-This proposed contract creates no Council role, runtime, authority,
+This adopted contract creates no Council role, runtime, operational authority,
 persistence, publication, customer action, commercial offer, or standing
 mandate.
 
@@ -98,7 +101,7 @@ packets, or retained research state requires either:
   validation, term and expiry, review date, stop conditions, revocation path,
   and recovery method.
 
-This proposed interface contract is not itself a standing mandate. No general
+This adopted interface contract is not itself a standing mandate. No general
 standing mandate should be inferred from prior research activity, repository
 access, repeated tasking, or the existence of the Singularity Science skill.
 
@@ -389,15 +392,24 @@ insurance context, vendor claims, and emergency instructions remain local.
 Property-owner approval and separate Anyang Intelligence authority remain
 required before any receiving-lane use or test.
 
-## Adoption gate
+## Adoption evidence and ongoing review gate
 
-Before this contract may move from `proposed` to `adopted`, the System Engineer
-should review:
+Version `0.3` was adopted effective 2026-08-05 by the System Engineer through
+[EC-SS-INTERFACE-ADOPTION-2026-08-05-01](executive-council-singularity-science-interface-adoption-2026-08-05.md).
+The adoption evidence includes:
 
-- consistency with the Executive Council role contract and current authority
-  envelope;
-- whether a separate standing mandate is needed;
-- at least one real handoff pressure test with durable evidence;
-- Council Steward review of state and membrane language;
-- validation of local links and controlling references; and
-- the exact effective date, review date, and supersession rule.
+- consistency review against the Executive Council role contract and current
+  authority envelope;
+- an explicit decision not to create a standing mandate;
+- the two durable pressure tests above;
+- Council Steward-style review of state and membrane language, without any
+  claim that a Steward runtime was activated;
+- validation of local links, state vocabulary, and the dedicated contract
+  test; and
+- an effective date of 2026-08-05, first review date of 2026-11-05, and
+  supersession state of `none`.
+
+Ongoing reviews follow the adoption receipt's quarterly and event-driven
+cadence. A review may continue, correct, hold, supersede, or revoke this
+interface, but cannot expand authority, renew a standing mandate, or adopt
+research automatically.
