@@ -27,6 +27,7 @@ Skills are reusable operating procedures for maintaining the Anyang Intelligence
 | [tax-financial-governance](tax-financial-governance/SKILL.md) | Use when money, tax-sensitive classification, accounting evidence, or financial governance risk appears. |
 | [project-state-update](project-state-update/SKILL.md) | Use when a project fact, paid obligation, scope, status, relationship, or audience boundary changes and portfolio state must be reconciled. |
 | [review-ai-harness](review-ai-harness/SKILL.md) | Use only when explicitly invoked to map the tracked Codex setup, render a read-only AI harness report, or record numbered proposals without applying source changes. |
+| [pattern-memory](pattern-memory/SKILL.md) | Use to query or inspect governed, evidence-linked reusable patterns without promoting retrieval into durable memory or execution authority. |
 
 ## Student Operating System Skills
 

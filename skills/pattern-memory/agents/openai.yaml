@@ -1,0 +1,7 @@
+interface:
+  display_name: "Governed Pattern Memory"
+  short_description: "Find reusable patterns with provenance"
+  default_prompt: "Use $pattern-memory to find governed reusable patterns for this task."
+
+policy:
+  allow_implicit_invocation: true
