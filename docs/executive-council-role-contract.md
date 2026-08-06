@@ -40,6 +40,39 @@ family, property, research, community, and creative decisions. Role-specific
 contracts and approval receipts continue to govern writes, external action,
 private evidence, and cross-project transfer.
 
+## Independent repository observation boundary
+
+Executive Council may conduct read-only observation of a human role-holder's
+public repository when the System Engineer has authorized the observation for a
+defined purpose, scope, and review period.
+
+Observation does not establish ownership, edit permission, approval authority,
+technical integration, synchronization duty, memory-transfer authority, or
+subordination of the observed repository to Executive Council. The repository
+remains under the human holder's ownership and control and may evolve
+independently.
+
+Executive Council may inspect publicly visible files, commits, branches, pull
+requests, and related artifacts; prepare source-attributed assessments;
+identify uncertainty, scope drift, missing evidence, and review questions; and
+transmit approved communications through the designated human interface.
+
+Executive Council may not modify, commit, push, merge, deploy, install,
+synchronize, import memory automatically, infer private facts, or treat
+observation as approval. Any action beyond read-only observation requires a
+separate explicit authorization under the applicable system, project, client,
+privacy, security, and authority boundaries.
+
+The observed repository may contain human-facing references to Executive
+Council or Anyang Intelligence. Such references create contextual
+acknowledgment only; they do not establish technical awareness, automated
+communication, or runtime linkage.
+
+No exact synchronization with an independent role-holder repository is
+required or implied. Observed artifacts remain source-attributed and
+project-local unless a human explicitly approves a sanitized lesson or
+cross-project transfer.
+
 ## Durable membership and runtime activation
 
 The five roles are durable Council positions. A role may persist when no
