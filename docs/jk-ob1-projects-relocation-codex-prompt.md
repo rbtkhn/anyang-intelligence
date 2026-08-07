@@ -1,9 +1,9 @@
-# JK OB1 Projects Relocation — Codex Prompt
+# JK Second_Brain Projects Relocation — Codex Prompt
 
-Paste the following prompt into Codex from JK's OB1 repository.
+Paste the following prompt into Codex from JK's `Second_Brain` repository.
 
 ```text
-Reorganize the JK3303/OB1 branch `contrib/JK3303/video-game`.
+Reorganize the JK3303/Second_Brain branch `contrib/JK3303/video-game`.
 
 Read the repository-root `AGENTS.md` first. Preserve unrelated work. If the
 working tree has unrelated changes, stop and report them.
@@ -21,8 +21,8 @@ Use `git mv` so history remains traceable.
 
 Create `projects/README.md`.
 
-Define `projects/` as active, owned work developed using OB1 and AI systems—not
-as reusable OB1 recipes or upstream-endorsed contributions.
+Define `projects/` as active, owned work developed using Second_Brain and AI
+systems—not as reusable recipes or upstream-endorsed contributions.
 
 List:
 

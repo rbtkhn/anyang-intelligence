@@ -17,13 +17,12 @@ because its `$1,000/month` Media Production service package is Anyang
 Intelligence's only confirmed MRR.
 
 JK's public repository is now named
-[`Second_Brain`](https://github.com/JK3303/Second_Brain). Its working branch is
-six commits ahead of `main` and contains substantive evidence of human-led,
-AI-supported creative practice, including JK's recorded selection of “Your
-Stone, Your Story” over the AI-recommended alternative. It also contains
-unresolved scope and state claims. No pull request exists, and the intended
-`projects/artistic-director/` and `projects/game-design/` relocation has not
-occurred.
+[`Second_Brain`](https://github.com/JK3303/Second_Brain). Its `main` branch now
+contains the projects reorganization and second-brain substrate at commit
+`77a2a8c`. It also contains substantive evidence of human-led, AI-supported
+creative practice, including JK's recorded selection of “Your Stone, Your
+Story” over the AI-recommended alternative. Unresolved scope and state claims
+remain, and Shopify implementation is still held pending human approval.
 
 The immediate Council job is calibration: preserve the creative value, request
 the smallest evidence-backed validation phase, and keep all external or
@@ -129,14 +128,14 @@ Formation and infrastructure execution also remain pending:
 creative hypothesis and authorize only a separately defined validation package
 after its evidence gate and decision owner are approved.
 
-### 2. JK `Second_Brain` branch integration
+### 2. JK `Second_Brain` repository integration
 
 **Owners:** JK for repository ownership and implementation; System Engineer for
 any Anyang instruction or transmission; Executive Assistant for an approved
 relay.
 
-The branch `contrib/JK3303/video-game` is currently six commits ahead and zero
-behind `main`. It includes:
+The current `main` tip is commit `77a2a8c`, pushed on August 7, 2026. It
+includes:
 
 - the chess game-design prototype;
 - the Artistic Director studio formation;
@@ -145,22 +144,21 @@ behind `main`. It includes:
 - Artistic Director references renamed from OB1 to `Second_Brain`; and
 - repository identity files rebranded to `Second_Brain`.
 
-Current integration gaps:
+Current integration status:
 
-- no pull request exists;
-- `artistic-director/` remains at repository root;
-- the game-design work remains under `recipes/ob1-games/`;
-- the intended `projects/artistic-director/` and `projects/game-design/`
-  structure is not yet present;
-- the Grace Gems receipt reports `Deviations: None` despite exceeding its
-  first-package boundary; and
-- readiness, timeline, testimonial-rights, and anonymous-maker claims remain
-  internally inconsistent.
+- no pull request is required for the already-pushed main-branch commit;
+- the Artistic Director project moved to `projects/artistic-director/`;
+- the game-design project moved to `projects/game-design/`;
+- the five second-brain substrate procedures were added under
+  `docs/second-brain/`;
+- a project manifest and decision-receipt template were added; and
+- the Artistic Director project remains internal with Shopify implementation
+  held pending human approval.
 
 The Anyang [relocation prompt](jk-ob1-projects-relocation-codex-prompt.md) is
-committed and available, but it still names `JK3303/OB1`. GitHub redirects that
-repository path, yet the prompt should be renamed or minimally updated before
-being treated as the current relay for `JK3303/Second_Brain`.
+historical. The relocation it requested is now visible in
+`JK3303/Second_Brain` at commit `77a2a8c`; it should not be treated as a current
+relay.
 
 **Hold:** Executive Council must not modify, commit, push, merge, synchronize,
 or import memory from JK's independent repository. Any relay requires exact

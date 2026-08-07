@@ -1,9 +1,9 @@
-# Technical Proposal: Extending OB1 with a Reusable Second-Brain Substrate
+# Technical Proposal: Extending Second_Brain with a Reusable Substrate
 
 **Audience:** JK and the Claude Code agent operating in the personal second-brain repository  
-**Repository context:** The repository currently named `OB1`  
+**Repository context:** JK's personal repository, now named `Second_Brain`  
 **Scope:** Analyze first; implement only after explicit human approval  
-**Relationship:** `artistic-director/` remains a project within the broader personal second-brain system
+**Relationship:** `projects/artistic-director/` remains a project within the broader personal second-brain system
 
 ## Pasteable agent instruction
 
@@ -16,7 +16,7 @@ plan.
 ---
 
 You are analyzing a proposal to make this repository a more reliable personal
-AI second-brain system. The existing `artistic-director/` folder is the first
+AI second-brain system. The existing `projects/artistic-director/` project is the first
 substantive project using the proposed patterns. Your job is to inspect the
 repository, compare the proposal with what already exists, identify conflicts
 or duplication, and produce an implementation plan for human approval.
@@ -50,10 +50,10 @@ docs/
 schemas/
 resources/
 skills/
-artistic-director/
+projects/artistic-director/
 ```
 
-Within `artistic-director/`, inspect at minimum:
+Within `projects/artistic-director/`, inspect at minimum:
 
 ```text
 README.md
@@ -80,7 +80,7 @@ references/rights-and-attribution.md
 Also inspect the Grace Gems project area, if present:
 
 ```text
-artistic-director/practice/grace-gems-phase2/
+projects/artistic-director/practice/grace-gems-phase2/
 ```
 
 Report existing conventions, duplicated concepts, machine-readable formats,
@@ -122,8 +122,8 @@ Candidate locations:
 ```text
 .claude/intent-recovery.md
 skills/intent-recovery/
-artistic-director/ai/collaboration-loop.md
-artistic-director/ai/prompt-patterns.md
+projects/artistic-director/ai/collaboration-loop.md
+projects/artistic-director/ai/prompt-patterns.md
 ```
 
 Prefer one canonical procedure with project-specific adaptations rather than
@@ -160,12 +160,12 @@ Candidate locations:
 ```text
 docs/second-brain/project-membranes.md
 projects/_template/manifest.md
-artistic-director/charter/boundaries.md
+projects/artistic-director/charter/boundaries.md
 references/rights-and-attribution.md
 ```
 
 If a top-level `projects/` system does not exist, propose whether to create it
-or use an existing OB1 convention. Do not assume a new top-level directory is
+or use an existing `Second_Brain` convention. Do not assume a new top-level directory is
 correct without inspecting the repository.
 
 Every project manifest should be able to state:
@@ -185,7 +185,7 @@ Review owner:
 
 The Artistic Director project should remain a distinct membrane. Grace Gems
 facts, customer information, rights questions, campaign decisions, and client
-materials must not become general OB1 memory merely because the AI encountered
+materials must not become general `Second_Brain` memory merely because the AI encountered
 them.
 
 ### 3.4 Decision and state receipts
@@ -196,7 +196,7 @@ Candidate locations:
 docs/second-brain/decision-states.md
 schemas/decision-receipt.schema.json
 resources/templates/decision-receipt.md
-artistic-director/decisions/
+projects/artistic-director/decisions/
 ```
 
 Use a consistent state vocabulary, adapting existing terms rather than
@@ -254,7 +254,7 @@ Candidate locations:
 ```text
 docs/second-brain/lesson-promotion.md
 resources/templates/lesson.md
-artistic-director/memory/
+projects/artistic-director/memory/
 ```
 
 Maintain the distinction between:
@@ -296,9 +296,9 @@ Candidate locations:
 ```text
 docs/second-brain/calibration-loop.md
 resources/templates/calibration-exercise.md
-artistic-director/ai/calibration-set.md
-artistic-director/ai/collaboration-loop.md
-artistic-director/evaluations/
+projects/artistic-director/ai/calibration-set.md
+projects/artistic-director/ai/collaboration-loop.md
+projects/artistic-director/evaluations/
 ```
 
 Canonical loop:
@@ -371,7 +371,7 @@ receipt. Do not rewrite all historical work automatically.
 
 Evaluate whether the additions reduce confusion, improve source attribution,
 protect project boundaries, and make human-AI collaboration easier. Only then
-consider broader OB1 adoption.
+consider broader `Second_Brain` adoption.
 
 ## 6. Non-goals
 

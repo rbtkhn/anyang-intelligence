@@ -1,12 +1,15 @@
-# Learning Core OB1 Integration
+# Learning Core Second_Brain Integration
 
-This document defines how the family's `Learning Core` could interface with [`OB1 / Open Brain`](https://github.com/JK3303/OB1).
+This document defines how the family's `Learning Core` could optionally
+interface with [JK's `Second_Brain` / Open Brain](https://github.com/JK3303/Second_Brain).
 
-OB1 integration is optional. `Learning Core` does not require OB1 to function, and no automatic integration is assumed.
+Second_Brain integration is optional. `Learning Core` does not require it to
+function, and no automatic integration is assumed.
 
-The goal is not to replace Learning Core with OB1.
+The goal is not to replace Learning Core with Second_Brain.
 
-The goal is to let OB1 serve as the **memory substrate** while Learning Core remains the **governed education layer**.
+The goal is to let Second_Brain serve as the **memory substrate** while
+Learning Core remains the **governed education layer**.
 
 ## Core Position
 

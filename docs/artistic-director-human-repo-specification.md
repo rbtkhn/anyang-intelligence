@@ -1,26 +1,28 @@
-# Artistic Director Folder Specification for OB1
+# Artistic Director Project Specification for Second_Brain
 
 **Status:** Phase 1 design specification  
-**Purpose:** Define the minimum viable `artistic-director/` folder that a human Artistic Director may create inside the existing OB1 repository as an independent creative studio and AI-training environment.
+**Purpose:** Define the minimum viable Artistic Director project that a human
+Artistic Director may maintain inside the personal `Second_Brain` repository
+as an independent creative studio and AI-training environment.
 
 ## Design decision
 
-The human Artistic Director's `artistic-director/` folder is a seed-grown
-studio inside the existing OB1 repository. OB1 remains the single GitHub
-repository. The folder develops according to the holder's judgment, taste,
+The human Artistic Director's project is a seed-grown studio inside the
+`Second_Brain` repository at `projects/artistic-director/`. `Second_Brain`
+remains the single GitHub repository. The project develops according to the holder's judgment, taste,
 experiments, and working method.
 
 The folder is not required to remain in exact sync with any other Artistic
 Director specification or organizational memory surface. It may diverge
-creatively within OB1. Only selected, approved material crosses from the folder
+creatively within `Second_Brain`. Only selected, approved material crosses from the project
 into a governed project or organizational memory surface.
 
-## OB1 repository ownership and access
+## Second_Brain repository ownership and access
 
-The intended arrangement is the existing OB1 repository with the
-`artistic-director/` folder added inside it. No second repository is required.
-The folder is the holder's independent creative studio and AI-training
-environment within the shared repository.
+The intended arrangement is JK's `Second_Brain` repository with the
+`projects/artistic-director/` project inside it. No second Artistic Director
+repository is required. The project is the holder's independent creative studio
+and AI-training environment within the personal second-brain system.
 
 The applicable engagement agreement must separately define confidentiality,
 approved-output rights, backup or export, departure handling, and successor
@@ -30,8 +32,8 @@ must be stated separately from ownership of the holder's creative contributions.
 
 Minimum access model:
 
-- Artistic Director: write, organize, and evolve `artistic-director/`.
-- Chief Executive: read-only observation and bounded review of the folder,
+- Artistic Director: write, organize, and evolve `projects/artistic-director/`.
+- Chief Executive: read-only observation and bounded review of the project,
   subject to the repository's access model.
 - System Engineer: governs consequential activation and access decisions; does
   not automatically receive control of the holder's creative work.
@@ -53,7 +55,10 @@ creative responsibility, authority boundaries, review states, and memory rules.
 Everything else should be discovered or chosen by the human during studio
 formation.
 
-## Minimum repository structure
+## Minimum project structure
+
+The following structure is relative to `projects/artistic-director/` in
+`Second_Brain`:
 
 ```text
 artistic-director/
@@ -104,7 +109,7 @@ artistic-director/
 The human may rename or extend this structure after the initial setup. The
 minimum requirement is that creative work, AI instructions, decisions,
 references, evaluations, and handoff material remain distinguishable within
-the OB1 repository.
+the `Second_Brain` project.
 
 ## Required Phase 1 files
 
@@ -114,7 +119,8 @@ Must explain:
 
 - who the Artistic Director is;
 - what this folder is for;
-- that the folder is an independent studio and training surface within OB1;
+- that the project is an independent studio and training surface within
+  `Second_Brain`;
 - how the Chief Executive observes it;
 - where creative work begins and where approved work ends; and
 - where to find the boundaries, AI instructions, and handoff guide.
@@ -178,7 +184,8 @@ owner approves broader reuse.
 
 ## Chief Executive observation protocol
 
-The Chief Executive may observe the `artistic-director/` folder to understand:
+The Chief Executive may observe the `projects/artistic-director/` project to
+understand:
 
 - how the human is developing the Artistic Director practice;
 - what the AI is learning and where it remains weak;
@@ -212,7 +219,8 @@ required.
 
 Phase 1 is complete when:
 
-- the `artistic-director/` folder exists inside OB1 and access is verified;
+- the `projects/artistic-director/` project exists inside `Second_Brain` and
+  access is verified;
 - the minimum structure exists;
 - the human has written or accepted the role charter and boundaries;
 - the AI instructions and critique rubric exist;
@@ -223,7 +231,7 @@ Phase 1 is complete when:
 
 Completion of Phase 1 does not activate client production or require the human
 to adopt any other repository's internal file structure. It establishes the
-independent studio folder from which Phase 2 may begin.
+independent project from which Phase 2 may begin.
 
 ## Succession rule
 

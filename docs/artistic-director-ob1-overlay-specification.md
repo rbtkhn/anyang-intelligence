@@ -1,16 +1,16 @@
-# Artistic Director Overlay for JK3303/OB1
+# Artistic Director Project Overlay for JK3303/Second_Brain
 
-**Target repository:** `JK3303/OB1`  
+**Target repository:** `JK3303/Second_Brain`  
 **Base system:** Open Brain  
 **Phase:** Phase 1 studio formation  
 **Status:** Design only; no remote repository changes made
 
 ## Purpose
 
-Add an Artistic Director operating layer to the existing OB1 Open Brain
+Add an Artistic Director operating layer to JK's personal `Second_Brain`
 repository without replacing or restructuring its core infrastructure.
 
-OB1 remains the single technical and GitHub repository. The overlay teaches the human
+`Second_Brain` remains the single personal and GitHub repository. The project teaches the human
 Artistic Director how to use AI creatively, gives the AI a reviewable working
 method, and creates a place for the studio to evolve independently.
 
@@ -20,7 +20,8 @@ direction.
 
 ## Design principles
 
-- Preserve OB1's existing setup, extensions, recipes, schemas, and skills.
+- Preserve `Second_Brain`'s existing setup, extensions, recipes, schemas, and
+  skills.
 - Add a clearly named Artistic Director layer rather than scattering role files
   throughout the Open Brain infrastructure.
 - Keep human preferences, AI behavior, role rules, and project facts distinct.
@@ -33,8 +34,9 @@ direction.
 
 ## Exact overlay structure
 
-Add this directory at the root of the existing OB1 repository. This is a folder
-inside OB1, not a second repository:
+The implemented project lives under `projects/artistic-director/` in
+`Second_Brain`. This is a project inside the personal second-brain repository,
+not a second repository:
 
 ```text
 artistic-director/
@@ -82,12 +84,12 @@ artistic-director/
 
 ## File purposes
 
-### `artistic-director/README.md`
+### `projects/artistic-director/README.md`
 
 The front door for the human and any AI working in the overlay. It should
 explain:
 
-- this is an independent Artistic Director studio built on OB1;
+- this is an independent Artistic Director studio built inside `Second_Brain`;
 - the overlay is not required to stay in exact sync with Anyang Intelligence;
 - the human owns the creative evolution of the studio;
 - Chief Executive observation is read-only and does not create task authority;
@@ -223,9 +225,9 @@ Make the studio understandable to a successor without pretending that one
 human's taste is universal. Attribute holder-specific preferences and preserve
 the distinction between role memory and personal style.
 
-## OB1-specific security requirements
+## Second_Brain-specific security requirements
 
-Before using OB1's setup guide:
+Before using `Second_Brain`'s setup guide:
 
 - do not commit the credential tracker spreadsheet;
 - do not commit `.env` files, API keys, Supabase secrets, access keys, or
@@ -237,14 +239,15 @@ Before using OB1's setup guide:
   default; expose only an approved observation surface; and
 - keep Grace Gems data in its governing private or approved project location.
 
-The public GitHub repo and the external OB1 database are separate surfaces.
+The public GitHub repo and the external Open Brain database are separate
+surfaces.
 Protect both independently.
 
 ## Phase 1 file creation order
 
 The human should create files in this order:
 
-1. `artistic-director/README.md`;
+1. `projects/artistic-director/README.md`;
 2. `charter/role.md`;
 3. `charter/boundaries.md`;
 4. `charter/working-agreement.md`;

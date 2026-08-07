@@ -29,7 +29,8 @@ human Artistic Director owns creative execution within the approved boundary.
 Chief Executive prepares bounded instruction
   -> required authority and scope fields are checked
   -> Executive Assistant transmits the instruction verbatim
-  -> human Artistic Director works in the OB1 artistic-director/ folder
+  -> human Artistic Director works in the independent Second_Brain
+     projects/artistic-director/ project
   -> human Artistic Director returns output and evidence
   -> Executive Assistant returns the response without silent alteration
   -> Chief Executive evaluates fit, risks, and next decision
