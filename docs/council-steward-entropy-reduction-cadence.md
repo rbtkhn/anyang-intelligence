@@ -104,6 +104,7 @@ explicitly recorded Council event:
 | Aging obligations surfaced | Count of stale reviews, expired approvals, unresolved follow-ups, or pending decisions without current owner/date | Open-loop decay |
 | Supersession reductions | Count of overlapping artifacts consolidated or clearly marked historical/superseded after approval | Duplicate truth surfaces |
 | Reconstruction time | Minutes required to identify controlling artifact, authority receipt, execution evidence, and current supported state | Review burden |
+| Operator turns per closed repo cycle | Count of operator replies required after a bounded repo action is authorized until validation, commit or push, and closeout status are reported | Interaction burden |
 | Membrane holds | Count of cross-lane or private-context transfers correctly held pending review | Boundary leakage |
 | False-positive burden | Count of Steward findings later rejected because evidence was sufficient or the issue was immaterial | Control cost |
 
@@ -117,6 +118,25 @@ success may support reconstruction. They do not by themselves prove operational
 entropy was reduced. Entropy reduction requires an observed correction,
 prevented rework, shorter reconstruction, resolved contradiction, clearer
 authority chain, or preserved hold at a material boundary.
+
+## Interaction-entropy scorecard
+
+Use this compact scorecard when the review covers agent-assisted repository
+work, closeout, or recursive measurement. It measures whether the cadence lowers
+human operating burden without hiding authority decisions.
+
+| Signal | Count or measure | Better direction | Guardrail |
+| --- | --- | --- | --- |
+| Operator turns per closed repo cycle | Operator replies after a bounded action is authorized until the cycle is validated and reported | Lower | Do not skip real commit, push, delete, spend, publish, or external-send authorization |
+| Genuine decision forks | Count of menus or questions where materially different authorized paths were available | Fit to need | Do not ask for preference when the next step is mechanically implied by the selected bounded action |
+| Avoidable micro-confirmations | Count of operator replies consumed by predictable status, validation, or cleanup steps inside an already-authorized path | Lower | Stop and ask when evidence changes the risk, scope, or authority boundary |
+| Validation bundle completeness | Whether status, tests or checks, ignored-output review, and branch sync are reported together when applicable | Higher | Do not merge unrelated validation surfaces into one vague pass claim |
+| Open-loop carryover named | Count of remaining untracked, held, stale, or authority-risk items named at closeout | Complete, then lower over time | Do not treat a named carryover as resolved |
+
+This scorecard is diagnostic. A low turn count is not success if the agent
+blurred authority, skipped material evidence, hid a conflict, or failed to name
+carryover. The goal is fewer human steering turns for the same or better
+evidence, authority clarity, and reconstruction quality.
 
 ## First monthly pilot sample
 
