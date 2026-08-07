@@ -1,6 +1,6 @@
 # Anyang Authority Model
 
-> **Freshness:** Effective 2026-07-24 · Owner: System Engineer · Review cadence: quarterly and on any authority-envelope change.
+> **Freshness:** Effective 2026-08-07 · Owner: System Engineer · Review cadence: quarterly and on any authority-envelope change.
 
 ## Operating character
 
@@ -14,7 +14,8 @@ Canonical structure:
 ```text
 Anyang Intelligence
   -> System Engineer
-       -> governs Executive Council authority and operating substrate
+       -> human owner and authority layer
+       -> governs Executive Council and the operating substrate
   -> Executive Council
        -> Chief Executive: judgment and recommendation
        -> Artistic Director: approved artistic ideation and internal production
@@ -25,20 +26,48 @@ Anyang Intelligence
        -> client CEOs retain client-company authority
 ```
 
-- **System Engineer:** creates and maintains Anyang, governs the system, and
-  retains final authority and veto power. `engineer` remains the machine key and
-  `Engineer` remains a historical compatibility title.
-- **Chief Executive:** directs Anyang priorities and bounded operations under
-  the authority envelope.
-- **Artistic Director:** a durable human-AI hybrid position that develops
-  artistic direction and performs approved internal production. JK is the
-  human holder effective 2026-08-01; the AI runtime and production-task state
-  remain inactive.
-- **Executive Assistant:** supplies human-world context and performs only
-  approved consulting or chief-of-staff work.
-- **Council Steward:** independently tests portfolio state, receipts, and artifact
-  lineage and proposes reconciliation.
+- **System Engineer:** Human owner and authority principal above Executive
+  Council. Creates and maintains Anyang Intelligence, governs architecture,
+  permissions, memory, membranes, runtime activation, spending, appointments,
+  revocation, and consequential action, and retains final authority and veto
+  power. The System Engineer is not an Executive Council operating role.
+- **Chief Executive:** Active Executive Council advisory intelligence.
+  Maintains the integrated operating picture, frames priorities and tradeoffs,
+  prepares recommendations and approval requests, sequences Class 0 read-only
+  work within approved objectives, and reconciles returned evidence. It cannot
+  originate System Engineer approval.
+- **Artistic Director:** Durable human-AI hybrid Council position for artistic
+  direction and approved internal production. JK is the human holder effective
+  2026-08-01; runtime and task activation remain separate.
+- **Executive Assistant:** Durable Council position and sole normal human-world
+  interface when staffed and activated. The human-holder position is currently
+  vacant.
+- **Council Steward:** Independently activated Council assurance role that
+  tests portfolio state, receipts, and artifact lineage and returns findings
+  for System Engineer adjudication.
 - **Client:** retains authority over client-company decisions and commitments.
+
+## Recommendation and disposition attribution
+
+Chief Executive recommendation and System Engineer disposition may occur in
+the same conversational interface, but they remain different authority events.
+
+The active agent may draft this structure:
+
+```text
+Chief Executive recommendation:
+
+System Engineer disposition:
+Decision:
+Scope:
+Executor:
+Evidence required:
+Expiry or review date:
+```
+
+Only an explicit human operator decision may populate or validate the System
+Engineer disposition. The agent may format or quote that decision with
+provenance; it may not supply the approval itself.
 
 System Engineer authority and client CEO authority are parallel within their
 respective domains. A consequential client action may require both: System Engineer
@@ -60,7 +89,8 @@ Private systems and cross-project transfer remain separately governed.
 
 ## Durable roles and activated runtimes
 
-A role contract establishes durable Council membership. A runtime is a named,
+A Council role contract establishes durable Council membership. The System
+Engineer is the human authority principal above Council. A runtime is a named,
 scoped, time-bounded embodiment of a role. Runtime activation, source access,
 persistence, expiration, pause, and revocation are controlled separately from
 role membership.

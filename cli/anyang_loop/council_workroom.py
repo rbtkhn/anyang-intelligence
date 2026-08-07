@@ -66,7 +66,7 @@ PROTECTED_ENVELOPE_METRICS = set(ENVELOPE_PILOT_METRICS) | {
     "envelope_reconstruction_session",
     "envelope_reconstruction_result",
 }
-COUNCIL_ROLES = ("engineer", "executive", "artistic", "interface", "steward", "client")
+AUTHORIZED_ACTOR_ROLES = ("engineer", "executive", "artistic", "interface", "steward", "client")
 EVENT_TYPES = (
     "recommendation_recorded",
     "authority_disposition_recorded",
@@ -1615,7 +1615,7 @@ def backfill_friction_pilot(
 ) -> MutationResult:
     plan = friction_backfill_plan(cohort_path, tracker_path)
     cases = _parse_friction_cases(Path(cohort_path).read_text(encoding="utf-8"))
-    actors = _ensure_internal_council(connection, tenant)
+    actors = _ensure_internal_actors(connection, tenant)
     source_ref_base = Path(cohort_path).as_posix()
     tracker_ref = Path(tracker_path).as_posix()
     event_total = 0
@@ -1844,12 +1844,12 @@ def _resolve_actor(
         (actor_id, transaction["tenant_id"]),
     ).fetchone()
     if not actor:
-        raise OpsError(f"Unknown or inactive Council actor: {actor_id}")
+        raise OpsError(f"Unknown or inactive authorized actor: {actor_id}")
     council_role = council_role or str(actor["role"])
-    if council_role not in COUNCIL_ROLES:
-        raise OpsError(f"Unsupported Council role: {council_role}")
+    if council_role not in AUTHORIZED_ACTOR_ROLES:
+        raise OpsError(f"Unsupported authorized actor role: {council_role}")
     if council_role != str(actor["role"]):
-        raise OpsError("Council role must match the actor's stored role")
+        raise OpsError("Authorized actor role must match the actor's stored role")
     return actor_id, str(actor["name"]), council_role
 
 
@@ -2904,7 +2904,7 @@ def _normalize_review_answers(answers: dict[str, Any]) -> dict[str, Any]:
     return normalized
 
 
-def _ensure_internal_council(
+def _ensure_internal_actors(
     connection: sqlite3.Connection, tenant: str
 ) -> dict[str, str]:
     try:
@@ -2936,7 +2936,7 @@ def _ensure_internal_council(
         ).fetchone()
         if row:
             if row["role"] != role:
-                raise OpsError(f"Council actor role conflict for {name}")
+                raise OpsError(f"Authorized actor role conflict for {name}")
             actors[role] = row["id"]
         else:
             actors[role] = add_actor(connection, tenant, name, role).id

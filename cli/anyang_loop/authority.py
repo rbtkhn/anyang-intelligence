@@ -12,6 +12,16 @@ from .artifact_state import repository_root
 
 DEFAULT_ENVELOPE = "authority-envelope.yaml"
 REQUIRED_DOMAINS = ("creative-direction-and-production",)
+REQUIRED_ACTOR_ROLES = ("engineer", "executive", "artistic", "interface", "steward", "client")
+COUNCIL_ROLE_KEYS = ("executive", "artistic", "interface", "steward")
+ROLE_CLASSIFICATIONS = {
+    "engineer": "authority-principal",
+    "executive": "council-role",
+    "artistic": "council-role",
+    "interface": "council-role",
+    "steward": "council-role",
+    "client": "external-authority-principal",
+}
 REQUIRED_DOMAIN_FIELDS = (
     "scope", "allowed_actions", "prohibited_actions", "required_evidence",
     "approval_threshold", "approver", "review_expiry", "audit_record",
@@ -73,10 +83,33 @@ def validate_authority_envelope(path: str | Path | None = None) -> list[Authorit
     for field in ("organization", "ai_role", "owner", "default_posture", "conflict_precedence"):
         if not isinstance(governance, dict) or not governance.get(field):
             diagnostics.append(AuthorityDiagnostic("authority-governance-incomplete", target, f"Governance requires '{field}'."))
+    if (
+        not isinstance(governance, dict)
+        or governance.get("authority_principal") != "engineer"
+        or governance.get("council_roles") != list(COUNCIL_ROLE_KEYS)
+        or governance.get("external_authority_principals") != ["client"]
+    ):
+        diagnostics.append(
+            AuthorityDiagnostic(
+                "authority-council-composition-invalid",
+                target,
+                "Governance must classify engineer as the authority principal, executive/artistic/interface/steward as the four Council roles, and client as the external authority principal.",
+            )
+        )
     roles = data.get("roles")
-    for role in ("engineer", "executive", "artistic", "interface", "steward", "client"):
+    for role in REQUIRED_ACTOR_ROLES:
         if not isinstance(roles, dict) or not isinstance(roles.get(role), dict) or not roles[role].get("authority"):
             diagnostics.append(AuthorityDiagnostic("authority-role-incomplete", target, f"Role '{role}' requires an authority declaration."))
+            continue
+        expected_classification = ROLE_CLASSIFICATIONS[role]
+        if roles[role].get("classification") != expected_classification:
+            diagnostics.append(
+                AuthorityDiagnostic(
+                    "authority-role-classification-invalid",
+                    target,
+                    f"Role '{role}' must be classified as '{expected_classification}'.",
+                )
+            )
     domains = data.get("domains")
     if not isinstance(domains, dict) or not domains:
         return diagnostics + [AuthorityDiagnostic("authority-domains-empty", target, "Declare at least one authority domain.")]

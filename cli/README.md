@@ -92,10 +92,12 @@ operation:
 ```
 
 Remove `--dry-run` only after reviewing the plan. The backfill creates the
-sanitized internal tenant and five Council actors when absent, preserves every
-source section and measure in event lineage, and retains unavailable actor,
-time, and metric values as `Missing`. Repeating an identical backfill is a
-no-op; a changed transaction or event under the same stable identity fails.
+sanitized internal tenant and five internal actors when absent: the System
+Engineer authority principal and four Executive Council roles. It preserves
+every source section and measure in event lineage and retains unavailable
+actor, time, and metric values as `Missing`. Repeating an identical backfill
+is a no-op; a changed transaction or event under the same stable identity
+fails.
 
 For live records, event packets require a known tenant actor. Approved Class 1
 or Class 2 work requires an exact Anyang authority reference; Class 3 also

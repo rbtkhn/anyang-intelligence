@@ -362,6 +362,24 @@ def test_live_sequence_binds_authority_requires_executor_and_evidence(ledger):
     assert "# Synthetic TX-1" in render_council_markdown(projection)
 
 
+def test_engineer_authority_event_remains_compatible_without_council_membership(ledger):
+    connection, actors = ledger
+    _create(connection)
+    _recommend(connection, actors["executive"])
+    _approve(connection, actors["engineer"])
+
+    row = connection.execute(
+        "SELECT council_role FROM council_event WHERE transaction_id = ? AND event_type = ?",
+        ("TX-1", "authority_disposition_recorded"),
+    ).fetchone()
+    envelope = yaml.safe_load((ROOT / "authority-envelope.yaml").read_text(encoding="utf-8"))
+
+    assert row["council_role"] == "engineer"
+    assert "engineer" in cw.AUTHORIZED_ACTOR_ROLES
+    assert "engineer" not in envelope["governance"]["council_roles"]
+    assert envelope["roles"]["engineer"]["classification"] == "authority-principal"
+
+
 def test_class3_dual_authority_expiry_privacy_and_live_attribution(ledger):
     connection, actors = ledger
     _create(connection, "TX-3", "Class 3")

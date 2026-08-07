@@ -20,11 +20,17 @@ the Council.
 > System Engineer governs the system. The Grace Gems CEO decides for Grace
 > Gems.
 
+## Authority layer
+
+The System Engineer is the Anyang Intelligence human owner and authority
+principal above Executive Council. The System Engineer governs architecture,
+permissions, persistence, membranes, and consequential Anyang participation,
+but cannot create Grace Gems business authority without the client.
+
 ## Roles
 
 | Role | Member | May | May not |
 | --- | --- | --- | --- |
-| System Engineer | Anyang operator-owner | Govern architecture, permissions, persistence, membranes, and consequential Council authority | Create Grace Gems business authority without the client |
 | Chief Executive | Active AI Executive Council agent | Research public sources; maintain the operating picture; prepare decisions, briefs, recommendations, and exact handoffs; analyze approved minimized evidence returned through the Executive Assistant | Contact stakeholders, gather private evidence directly, approve client decisions, spend, publish, commit, or execute externally |
 | Artistic Director | Durable Council position; JK human holder effective 2026-08-01; AI runtime and first-task activation pending; current governed capacity zero | When separately activated, perform approved internal Grace Gems ideation and production under a bounded brief; return review-ready work and evidence | Contact Grace Gems, choose client direction, approve claims, publish, deliver externally, spend, access private systems, or task the Executive Assistant |
 | Executive Assistant | Designated human–AI hybrid interface | Communicate with stakeholders; verify human-world context; gather authorized private evidence; coordinate and execute approved work; report exceptions; return evidence | Expand scope, infer approval, or create commitments beyond the exact authorization |

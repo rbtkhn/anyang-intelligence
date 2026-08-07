@@ -102,9 +102,9 @@ Build locally and review before any hosting or DNS action.
    photography, designs, and claims.
 3. **About:** approved business identity and contact route. Do not describe
    Grace Mar as an LLC until official formation evidence supports it.
-4. **Contact:** `mailto:hello@grace-mar.com` after email cutover. Avoid a web
-   form in the first release so the site does not begin collecting customer
-   personal data.
+4. **Contact:** after email cutover, route contact to the `hello` local part on
+   `grace-mar.com`. Avoid a web form in the first release so the site does not
+   begin collecting customer personal data.
 5. **Privacy and terms:** counsel/owner-approved notices matched to the actual
    site. Do not paste generic policies or promise data practices that have not
    been implemented.
@@ -163,11 +163,11 @@ Pricing source: [Google Workspace pricing](https://workspace.google.com/pricing.
 | --- | --- | --- | --- |
 | `[primary-person]@grace-mar.com` | Named user; initial primary super admin | Yes | One named accountable human. |
 | `[recovery-person]@grace-mar.com` | Named user; second super admin/recovery owner | Yes | A different named accountable human. |
-| `hello@grace-mar.com` | Google Group | No extra seat proposed | Both users initially; public general inquiries. |
-| `support@grace-mar.com` | Google Group / collaborative inbox | No extra seat proposed | Approved support owner plus backup. |
-| `social@grace-mar.com` | Restricted Google Group | No extra seat proposed | Social account owner and recovery owner; notices only, never passwords/codes. |
-| `legal@grace-mar.com` | Restricted Google Group | No extra seat proposed | Primary owner and approved legal recipient. |
-| `finance@grace-mar.com` | Restricted Google Group | No extra seat proposed | Finance owner and one backup. |
+| `hello` local part on `grace-mar.com` | Google Group | No extra seat proposed | Both users initially; public general inquiries. |
+| `support` local part on `grace-mar.com` | Google Group / collaborative inbox | No extra seat proposed | Approved support owner plus backup. |
+| `social` local part on `grace-mar.com` | Restricted Google Group | No extra seat proposed | Social account owner and recovery owner; notices only, never passwords/codes. |
+| `legal` local part on `grace-mar.com` | Restricted Google Group | No extra seat proposed | Primary owner and approved legal recipient. |
+| `finance` local part on `grace-mar.com` | Restricted Google Group | No extra seat proposed | Finance owner and one backup. |
 
 No shared `admin@` login is proposed. Each administrator should have an
 individually attributable account. The five role addresses should be groups,

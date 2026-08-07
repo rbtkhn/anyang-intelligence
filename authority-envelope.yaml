@@ -4,6 +4,9 @@ governance:
   organization: Anyang Intelligence
   ai_role: executive
   owner: engineer
+  authority_principal: engineer
+  council_roles: [executive, artistic, interface, steward]
+  external_authority_principals: [client]
   default_posture: prepare-then-require-approval
   operating_character: engineer-governed-advisory-execution-and-assurance-system
   membership_rule: Council membership conveys responsibility, not sovereign authority.
@@ -18,20 +21,26 @@ roles:
   engineer:
     display_title: System Engineer
     authority: final-system-and-company-authority
+    classification: authority-principal
   executive:
     display_title: Chief Executive
     authority: bounded-anyang-operating-coordination
+    classification: council-role
   artistic:
     display_title: Artistic Director
     authority: bounded-creative-direction-and-production
+    classification: council-role
   interface:
     display_title: Executive Assistant
     authority: human-world-interface-and-delegated-chief-of-staff
+    classification: council-role
   steward:
     display_title: Council Steward
     authority: bounded-council-state-reconciliation
+    classification: council-role
   client:
     authority: client-company-business-authority
+    classification: external-authority-principal
 
 migration_aliases:
   engineer-operator-owner: engineer

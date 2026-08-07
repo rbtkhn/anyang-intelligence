@@ -48,12 +48,15 @@ def test_council_steward_has_bounded_portfolio_reconciliation_lane():
     assert "prohibited-action" in blocked.blockers
 
 
-def test_council_contract_places_five_role_council_over_project_portfolio():
+def test_council_contract_places_four_role_council_below_system_engineer():
     contract = (ROOT / "docs/executive-council-role-contract.md").read_text(
         encoding="utf-8"
     )
-    assert "3. Artistic Director;" in contract
-    assert "5. Council Steward." in contract
+    assert "1. Chief Executive;" in contract
+    assert "2. Artistic Director;" in contract
+    assert "3. Executive Assistant; and" in contract
+    assert "4. Council Steward." in contract
+    assert "System Engineer is the human owner and authority layer above Council" in contract
     assert "It is not a component of Grace Gems" in contract
     assert "shared read surface across repository-visible artifacts under" in contract
 
@@ -70,6 +73,18 @@ def test_council_is_engineer_governed_advisory_execution_and_assurance_system():
     assert data["roles"]["artistic"]["display_title"] == "Artistic Director"
     assert data["roles"]["interface"]["display_title"] == "Executive Assistant"
     assert data["roles"]["steward"]["display_title"] == "Council Steward"
+    assert data["governance"]["authority_principal"] == "engineer"
+    assert data["governance"]["council_roles"] == [
+        "executive",
+        "artistic",
+        "interface",
+        "steward",
+    ]
+    assert data["governance"]["external_authority_principals"] == ["client"]
+    assert data["roles"]["engineer"]["classification"] == "authority-principal"
+    for role in ("executive", "artistic", "interface", "steward"):
+        assert data["roles"][role]["classification"] == "council-role"
+    assert data["roles"]["client"]["classification"] == "external-authority-principal"
     assert data["migration_aliases"]["system-engineer"] == "engineer"
     assert data["migration_aliases"]["artistic-director"] == "artistic"
 
@@ -163,6 +178,40 @@ def test_authority_validator_requires_artistic_director_role(tmp_path: Path):
     )
 
 
+def test_authority_validator_rejects_engineer_as_council_role(tmp_path: Path):
+    source = ROOT / "authority-envelope.yaml"
+    data = yaml.safe_load(source.read_text(encoding="utf-8"))
+    data["governance"]["council_roles"].insert(0, "engineer")
+    path = tmp_path / "authority-envelope.yaml"
+    path.write_text(yaml.safe_dump(data, sort_keys=False), encoding="utf-8")
+    codes = {item.code for item in validate_authority_envelope(path)}
+    assert "authority-council-composition-invalid" in codes
+
+
+def test_authority_validator_requires_all_four_council_roles(tmp_path: Path):
+    source = ROOT / "authority-envelope.yaml"
+    data = yaml.safe_load(source.read_text(encoding="utf-8"))
+    data["governance"]["council_roles"].remove("steward")
+    path = tmp_path / "authority-envelope.yaml"
+    path.write_text(yaml.safe_dump(data, sort_keys=False), encoding="utf-8")
+    codes = {item.code for item in validate_authority_envelope(path)}
+    assert "authority-council-composition-invalid" in codes
+
+
+def test_authority_validator_requires_actor_classification(tmp_path: Path):
+    source = ROOT / "authority-envelope.yaml"
+    data = yaml.safe_load(source.read_text(encoding="utf-8"))
+    data["roles"]["engineer"]["classification"] = "council-role"
+    path = tmp_path / "authority-envelope.yaml"
+    path.write_text(yaml.safe_dump(data, sort_keys=False), encoding="utf-8")
+    diagnostics = validate_authority_envelope(path)
+    assert any(
+        item.code == "authority-role-classification-invalid"
+        and "engineer" in item.message
+        for item in diagnostics
+    )
+
+
 def test_authority_validator_requires_artistic_director_alias(tmp_path: Path):
     source = ROOT / "authority-envelope.yaml"
     data = yaml.safe_load(source.read_text(encoding="utf-8"))
@@ -203,7 +252,7 @@ def test_council_contract_distinguishes_role_runtime_and_client_authority():
     )
     normalized = " ".join(contract.split())
     assert "Council membership conveys responsibility, not sovereign authority" in normalized
-    assert "Durable membership and runtime activation" in normalized
+    assert "Durable roles, human authority, and runtime activation" in normalized
     assert "System Engineer approval does not create client-company authority" in normalized
     assert "The Chief Executive is the normal tasker of the Executive Assistant" in normalized
     assert "The Artistic Director cannot task the Executive Assistant directly" in normalized

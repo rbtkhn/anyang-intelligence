@@ -13,7 +13,7 @@ Please prepare one decision packet covering:
 
 2. Assets: current and intended ownership of grace-mar.com, Grace Mar and Grace Gems names and creative assets, storefronts, social accounts, website, photography, designs, and customer permissions.
 
-3. Email: proposed Google Workspace plan and cost, primary and recovery admins, and the smallest useful address set—named users plus hello@, support@, social@, legal@, and finance@grace-mar.com. Identify users versus groups or aliases.
+3. Email: proposed Google Workspace plan and cost, primary and recovery admins, and the smallest useful address set—named users plus the hello, support, social, legal, and finance local parts on grace-mar.com. Identify users versus groups or aliases.
 
 4. Social: recommended platforms, preferred handles and alternatives, registration email, accountable owner, recovery owner, and two-factor method.
 

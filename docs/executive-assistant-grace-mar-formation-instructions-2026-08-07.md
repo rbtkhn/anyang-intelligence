@@ -133,14 +133,15 @@ Confirm without exposing credentials:
 - proposed email-security records; and
 - evidence and recovery location outside Git.
 
-Propose the smallest useful initial address set:
+Propose the smallest useful initial address set on the approved
+`grace-mar.com` domain:
 
 - one named individual account for each approved user;
-- `hello@grace-mar.com`;
-- `support@grace-mar.com`;
-- `social@grace-mar.com`;
-- `legal@grace-mar.com`; and
-- `finance@grace-mar.com`.
+- `hello` local part;
+- `support` local part;
+- `social` local part;
+- `legal` local part; and
+- `finance` local part.
 
 Identify which addresses should be licensed users, groups, or aliases before
 purchase. Do not create unnecessary paid seats.
