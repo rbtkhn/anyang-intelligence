@@ -116,6 +116,29 @@ No Artistic Director AI runtime or production task is active. Holder
 acceptance, runtime activation, and task approval remain separate authority
 events.
 
+#### Appointment and operational start
+
+The Artistic Director role, human holder, and runtime or studio activation are
+separate authority events.
+
+For the current holder:
+
+- Role migration and interim appointment: 2026-07-24–2026-07-25;
+- Human holder acceptance and official human-holder start: 2026-08-01;
+- First public studio evidence in the holder's repository: 2026-08-03; and
+- Grace Gems Phase 2 creative-exploration milestone: 2026-08-05.
+
+The official human-holder start date of the current Artistic Director is
+2026-08-01 because that is the date holder acceptance was evidenced.
+Repository activity and creative-exploration completion are later operational
+milestones, not substitutes for appointment or acceptance.
+
+The [Artistic Director Journal](executive-council-artistic-director-journal/README.md)
+is the role-level continuity and observation surface beginning 2026-08-01. It
+does not replace authority receipts or the [Recursive Learning
+Ledger](../os/recursive-learning-ledger.md), and it never creates durable
+learning automatically.
+
 - Generates concepts, visual languages, narratives, campaigns, formats, and
   experiences within an approved objective.
 - Prepares moodboards, concept sets, storyboards, production briefs,
