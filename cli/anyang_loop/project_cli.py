@@ -31,6 +31,7 @@ from .transcript_import import (
 from .analytical_interfaces import validate_manifest
 from .artifact_state import validate_artifact_manifest
 from .epistemic_state import epistemic_report, validate_epistemic_manifest
+from .memory_contract import render_memory_contract_json, validate_memory_constitution
 from .epistemic_benchmark import (
     EpistemicBenchmarkError,
     render_epistemic_benchmark_markdown,
@@ -251,6 +252,14 @@ def build_parser() -> argparse.ArgumentParser:
     epistemics.add_argument("--manifest")
     epistemics.add_argument("--format", choices=("text", "json"), default="text")
     epistemics.set_defaults(func=cmd_validate_epistemics)
+
+    memory_contract = subparsers.add_parser(
+        "validate-memory-contract",
+        help="Validate the advisory, disabled Agent Memory Phase 1 contract",
+    )
+    memory_contract.add_argument("--manifest")
+    memory_contract.add_argument("--format", choices=("text", "json"), default="text")
+    memory_contract.set_defaults(func=cmd_validate_memory_contract)
 
     entropy = subparsers.add_parser(
         "epistemic-report", help="Report repository operational epistemic entropy"
@@ -619,6 +628,19 @@ def cmd_harness_decide(args: argparse.Namespace) -> int:
     print(f"Recorded proposal decisions: {review}")
     print("No source changes were applied; v1 has no apply command.")
     return 0
+
+
+def cmd_validate_memory_contract(args: argparse.Namespace) -> int:
+    diagnostics = validate_memory_constitution(args.manifest)
+    if args.format == "json":
+        print(render_memory_contract_json(args.manifest), end="")
+    else:
+        for diagnostic in diagnostics:
+            severity = "CRITICAL" if diagnostic.critical else "ERROR"
+            print(f"{severity} {diagnostic.code} {diagnostic.path.as_posix()}: {diagnostic.message}")
+        if not diagnostics:
+            print("OK advisory Agent Memory Phase 1 contract; runtime remains disabled")
+    return 1 if diagnostics else 0
 
 
 def cmd_cross_repo_audit(args: argparse.Namespace) -> int:

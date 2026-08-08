@@ -1,0 +1,74 @@
+schema: anyang-agent-memory-constitution/v1
+version: "0.2"
+status: advisory
+authority_effect: none
+
+scope:
+  tenant: anyang-internal
+  project: anyang-intelligence
+  lane: repository
+
+documents:
+  constitution:
+    path: docs/agent-memory-constitution-v0.2.md
+    version: "0.2"
+  conformance:
+    path: docs/agent-memory-conformance-v0.1.md
+    version: "0.1"
+  kernel:
+    path: docs/agent-memory-kernel-v1.md
+    version: "1"
+  acceptance:
+    path: docs/agent-memory-phase-1-acceptance.md
+    version: "1"
+
+runtime:
+  enabled: false
+  collection_enabled: false
+  ingestion_enabled: false
+  promotion_enabled: false
+  retrieval_enabled: false
+  automatic_injection_enabled: false
+
+storage:
+  canonical_store: not-configured
+  private_write_root: not-authorized
+  repository_database_allowed: false
+
+governance:
+  constitutional_authority: human-operator
+  collection_authority: none
+  promotion_authority: none
+  amendment_authority: human-operator
+
+rules:
+  - {id: AMC-ID-001, article: II, severity: critical, failure_disposition: hold, planned_test: test_identity_classes_remain_distinct}
+  - {id: AMC-COL-001, article: III, severity: critical, failure_disposition: hold, planned_test: test_collection_requires_complete_declaration}
+  - {id: AMC-COL-002, article: III, severity: critical, failure_disposition: hold, planned_test: test_collection_purpose_cannot_expand_implicitly}
+  - {id: AMC-COL-003, article: III, severity: critical, failure_disposition: hold, planned_test: test_collection_and_promotion_authority_are_separate}
+  - {id: AMC-CLS-001, article: IV, severity: critical, failure_disposition: reject, planned_test: test_memory_has_exactly_one_primary_class}
+  - {id: AMC-PRO-001, article: V, severity: critical, failure_disposition: hold, planned_test: test_lifecycle_rejects_invalid_transitions}
+  - {id: AMC-PRO-002, article: V, severity: critical, failure_disposition: hold, planned_test: test_generalization_requires_independent_comparable_events}
+  - {id: AMC-EVI-001, article: VI, severity: critical, failure_disposition: hold, planned_test: test_self_generated_evidence_is_not_independent}
+  - {id: AMC-AUT-001, article: VII, severity: critical, failure_disposition: hold, planned_test: test_memory_authority_effect_is_none}
+  - {id: AMC-AUT-002, article: VII, severity: critical, failure_disposition: hold, planned_test: test_prior_approval_cannot_be_replayed}
+  - {id: AMC-RET-001, article: VIII, severity: critical, failure_disposition: quarantine, planned_test: test_historical_prompt_injection_is_neutralized}
+  - {id: AMC-RET-002, article: VIII, severity: critical, failure_disposition: quarantine, planned_test: test_retrieval_is_scope_and_membrane_bounded}
+  - {id: AMC-RET-003, article: VIII, severity: high, failure_disposition: hold, planned_test: test_retrieval_surfaces_contradictions}
+  - {id: AMC-REL-001, article: IX, severity: critical, failure_disposition: hold, planned_test: test_contextual_preference_is_not_globalized}
+  - {id: AMC-RGT-001, article: X, severity: critical, failure_disposition: hold, planned_test: test_operator_correction_propagates}
+  - {id: AMC-DEL-001, article: XI, severity: critical, failure_disposition: quarantine, planned_test: test_deletion_reaches_every_projection}
+  - {id: AMC-EVL-001, article: XII, severity: high, failure_disposition: hold, planned_test: test_improvement_evaluation_keeps_failures_in_denominator}
+  - {id: AMC-EVL-002, article: XII, severity: high, failure_disposition: hold, planned_test: test_generating_chain_cannot_be_sole_evaluator}
+  - {id: AMC-EMG-001, article: XIV, severity: critical, failure_disposition: quarantine, planned_test: test_critical_incident_quarantines_memory}
+  - {id: AMC-AMD-001, article: XV, severity: critical, failure_disposition: hold, planned_test: test_system_cannot_ratify_constitutional_change}
+
+prohibited_phase_1_actions:
+  - read-session-bodies
+  - create-private-database
+  - ingest-source-events
+  - generate-memory-candidates
+  - promote-memory
+  - retrieve-memory
+  - inject-self-model-packet
+  - infer-operator-preferences

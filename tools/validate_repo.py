@@ -70,6 +70,7 @@ PREFIX_TEST_ROUTES = (
     ("skills/singularity", ("tests/test_singularity_science_skill.py",)),
 )
 EXACT_TEST_ROUTES = {
+    "memory-constitution.yaml": ("tests/test_memory_contract.py",),
     "os/recursive-learning-ledger.md": ("tests/test_recursive_learning_ledger.py",),
 }
 GOVERNED_FILE_ROUTES = {
