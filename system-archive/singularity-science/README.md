@@ -3,9 +3,9 @@
 This archive stores internal analysis source material and source notes for the Singularity Science research project.
 
 It is indexed by the repo-level
-[system archive](../../../system-archive/README.md). The index names the future
-consolidation target, but this directory remains the active archive path until
-a separate migration updates tooling, validators, and internal links.
+[system archive](../../../system-archive/README.md). This directory is the
+canonical active archive path for Singularity Science; old project-local archive
+paths are tombstones only.
 
 The archive is not a public publishing surface. It exists so source material can inform product judgment, customer implications, governance warnings, and recursive self-enhancement without being confused with customer deliverables or public claims.
 
@@ -40,6 +40,7 @@ system-archive/singularity-science/
   nate-b-jones/
   nate-herk/
   external-interviews/
+  recurrence-reviews/
 ```
 
 Raw transcripts and source material stay in this archive. Synthesis and product implications may move into `docs/`, `projects/`, or `skills/` only after membrane review and source discipline.

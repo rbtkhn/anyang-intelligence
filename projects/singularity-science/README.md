@@ -20,20 +20,21 @@ See [research-operating-model.md](research-operating-model.md) for the research-
 
 ## Archive
 
-Internal source material lives under [archive/](archive/).
+Internal source material lives under
+[system-archive/singularity-science/](../../system-archive/singularity-science/).
 
 The repo-level [system archive index](../../system-archive/README.md) records
-this archive as an active domain. The index does not move or duplicate source
-files yet; this project archive remains the current active path until a
-separate migration updates tooling and validators.
+this archive as an active domain. The project-local [archive/](archive/) path is
+a tombstone only and must not receive new active archive files.
 
 Current source lanes:
 
-- [Innermost Loop](archive/innermost-loop/README.md)
-- [Moonshots](archive/moonshots/README.md)
-- [Nate B. Jones](archive/nate-b-jones/README.md)
-- [Nate Herk](archive/nate-herk/README.md)
-- [External Interviews](archive/external-interviews/README.md)
+- [Innermost Loop](../../system-archive/singularity-science/innermost-loop/README.md)
+- [Moonshots](../../system-archive/singularity-science/moonshots/README.md)
+- [Nate B. Jones](../../system-archive/singularity-science/nate-b-jones/README.md)
+- [Nate Herk](../../system-archive/singularity-science/nate-herk/README.md)
+- [External Interviews](../../system-archive/singularity-science/external-interviews/README.md)
+- [Recurrence Reviews](../../system-archive/singularity-science/recurrence-reviews/README.md)
 
 The archive is for internal analysis. Do not treat transcripts as public content, customer-facing copy, or reusable doctrine without source discipline, rights review, and membrane translation.
 

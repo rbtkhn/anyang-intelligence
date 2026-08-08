@@ -3,10 +3,10 @@
 The system archive is the repository-level map for archive and source-history
 surfaces in Anyang Intelligence.
 
-This index does not move existing archive files yet. It names the archive
-domains, preserves their current canonical paths, and records which shelves are
-active, historical, or parked. A later migration may move archive contents under
-this directory after tooling, validators, and links are updated.
+This index names the archive domains, preserves their current canonical paths,
+and records which shelves are active, historical, or parked. Singularity
+Science has been moved under this directory; parked or historical shelves remain
+explicitly labeled in the manifest.
 
 ## Purpose
 
@@ -39,8 +39,9 @@ tested operating primitive. Private customer, learner, financial, or sensitive
 real-world records stay in operator-controlled tenant-private storage rather
 than this archive index.
 
-## Migration Rule
+## Authority Rule
 
-Until a migration is explicitly approved and validated, active tooling continues
-to use the current paths listed in the manifest. Do not create a second live
-copy of an archive domain under `system-archive/`; that would split authority.
+Active tooling uses the current paths listed in the manifest. Do not create a
+second live copy of an archive domain; that would split authority. Old archive
+locations should remain tombstones or historical pointers unless a separate
+governed migration changes the manifest.

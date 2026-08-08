@@ -5,7 +5,7 @@ Source: Moonshots podcast / YouTube
 URL: https://www.youtube.com/watch?v=qPMhduk1qUs
 Date published: unknown
 Date captured: 2026-07-24
-Transcript location: `archive/moonshots/transcripts/2026-07-24-moonshots-273-hugging-face-breach-kimi-k3-white-house-ai-bets.md` (operator-supplied body retained at attachment path)
+Transcript location: `system-archive/singularity-science/moonshots/transcripts/2026-07-24-moonshots-273-hugging-face-breach-kimi-k3-white-house-ai-bets.md` (operator-supplied body retained at attachment path)
 Rights status: operator-supplied transcript; reuse and redistribution rights not established
 Capture method: operator-supplied pasted transcript
 
