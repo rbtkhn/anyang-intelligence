@@ -1,0 +1,60 @@
+version: 1
+
+governance:
+  owner: repository-operator
+  review_cadence: quarterly
+  purpose: >
+    Index archive domains without moving existing archive contents. This
+    manifest records current archive authority, data boundaries, and migration
+    posture.
+
+domains:
+  singularity-science:
+    title: Singularity Science Archive
+    current_path: projects/singularity-science/archive/
+    desired_canonical_path: system-archive/singularity-science/
+    status: active
+    migration_state: indexed-not-moved
+    data_class: internal-source
+    owner: Engineer
+    contains:
+      - transcripts
+      - source-notes
+      - analyses
+      - recurrence-reviews
+      - transcript-intake-manifests
+      - import-and-diagnostic-ledgers
+    allowed_uses:
+      - internal-analysis
+      - source-note-creation
+      - synthesis
+      - research-signal-tracking
+      - product-implication-review
+      - governance-warning-review
+      - customer-relevance-routing
+    prohibited_uses:
+      - public-republication-without-rights-review
+      - long-quote-reuse-in-customer-facing-artifacts
+      - treating-source-claims-as-anyang-claims
+      - bypassing-attribution-or-source-review
+      - moving-private-or-sensitive-context-across-membranes
+
+  ai-frontier:
+    title: AI Frontier Archive
+    current_path: archive/ai-frontier/
+    desired_canonical_path: system-archive/ai-frontier/
+    status: historical-parked
+    migration_state: indexed-not-moved
+    data_class: internal-source
+    owner: repository-operator
+    contains:
+      - innermost-loop
+      - moonshots
+    allowed_uses:
+      - lineage-review
+      - migration-assessment
+      - duplicate-detection
+    prohibited_uses:
+      - treating-parked-material-as-current-authority
+      - customer-facing-reuse-without-review
+      - doctrine-promotion-without-current-source-discipline

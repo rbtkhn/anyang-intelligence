@@ -2,6 +2,11 @@
 
 This archive stores internal analysis source material and source notes for the Singularity Science research project.
 
+It is indexed by the repo-level
+[system archive](../../../system-archive/README.md). The index names the future
+consolidation target, but this directory remains the active archive path until
+a separate migration updates tooling, validators, and internal links.
+
 The archive is not a public publishing surface. It exists so source material can inform product judgment, customer implications, governance warnings, and recursive self-enhancement without being confused with customer deliverables or public claims.
 
 ## Boundary

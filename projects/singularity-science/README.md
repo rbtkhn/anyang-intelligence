@@ -22,6 +22,11 @@ See [research-operating-model.md](research-operating-model.md) for the research-
 
 Internal source material lives under [archive/](archive/).
 
+The repo-level [system archive index](../../system-archive/README.md) records
+this archive as an active domain. The index does not move or duplicate source
+files yet; this project archive remains the current active path until a
+separate migration updates tooling and validators.
+
 Current source lanes:
 
 - [Innermost Loop](archive/innermost-loop/README.md)
