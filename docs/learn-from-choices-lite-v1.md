@@ -51,9 +51,12 @@ choice data. It does not compute or display unresolved, due, or resolved choice
 counts, solicit outcomes, or reserve a menu slot for choice review under Lite
 defaults.
 
-Recommendation ordering remains independent of selection frequency and frozen
-against the prior calibration pilot until an explicit later disposition says
-otherwise. No prior receipt is deleted, rewritten, or backfilled.
+Recommendation ordering remains independent of selection frequency. The prior
+calibration freeze was disposed `Too thin / Revise` on 2026-08-07; the bounded
+successor in [Learn From Choices Active v1](learn-from-choices-active-v1.md)
+may use only explicitly retained, same-task, outcome-supported episodes in its
+single repository policy. No prior receipt is deleted, rewritten, or
+backfilled.
 
 ## Acceptance
 

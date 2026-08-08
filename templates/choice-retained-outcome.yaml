@@ -1,0 +1,75 @@
+schema: anyang-choice-retained-outcome/v1
+id: CHOICE-YYYYMMDD-STABLE-ID
+workspace_id: anyang-intelligence
+lane: repository
+choice_kind: next-action
+consequence_level: consequential
+decision_summary: Decide whether bounded preflight is warranted before mutation.
+options:
+  - key: governed-preflight
+    role: recommended
+    label: Run bounded preflight
+    tradeoff: Adds limited review time before mutation.
+    expected_outcome: Material facts or readiness become visible.
+    risk: Preflight may add burden without changing the decision.
+    learning_refs: [LFC-ACTIVE-v1.0]
+    classification_version: LFC-CONTINUITY-v0.3
+    pattern_key: gather-evidence
+    action_boundary: read-only
+    comparability_key: repository-governance-preflight-v1
+  - key: execute-current-scope
+    role: alternative
+    label: Proceed with current evidence
+    tradeoff: Faster when controlling facts are already known.
+    expected_outcome: Complete the bounded mutation without extra review.
+    risk: A material dependency may remain unseen.
+    learning_refs: []
+  - key: inspect-counterexample
+    role: overlooked
+    label: Inspect one counterexample
+    tradeoff: Tests the framing without a broad audit.
+    expected_outcome: Confirm or reject the need for preflight.
+    risk: May not resolve the full decision seam.
+    learning_refs: []
+recommendation_key: governed-preflight
+selected_option_key: governed-preflight
+learning_refs: [LFC-ACTIVE-v1.0]
+learning_context:
+  basis: Current same-task evidence
+comparison_context:
+  decision_seam: pre-mutation-evidence-depth
+  work_class: governed-operating-surface
+  risk_class: consequential
+success_signal: Preflight changes the decision, prevents rework, finds a material fact, or verifies readiness.
+risk_signal: Preflight adds delay, false holds, irrelevant scope, or rework without material value.
+selected_by: Anyang operator
+actor_id: ACTOR-ID
+source_ref: task://CURRENT-TASK
+presented_at: 2026-08-07T00:00:00Z
+selected_at: 2026-08-07T00:00:00Z
+review_after: 2026-09-06T00:00:00Z
+recorded_at: 2026-08-07T00:00:00Z
+retention:
+  provenance_mode: same-task-reviewed-reconstruction
+  original_menu_visible: true
+  retention_authority_ref: task://CURRENT-TASK/EXECUTE-RETAIN
+  reviewed_by: Anyang operator
+outcome:
+  event_key: retained-outcome
+  action_summary: Retain the reviewed preflight learning episode
+  evidence_ref: repo:PATH-OR-RECEIPT
+  occurred_at: 2026-08-07T00:00:00Z
+  recorded_at: 2026-08-07T00:00:00Z
+  result: successful
+  observation: State only what the evidence establishes.
+  cognitive_load: Missing
+  momentum: Missing
+  discovery_value: Missing
+  rework_minutes:
+  authority_issue: false
+  membrane_issue: false
+  policy_measurements:
+    preflight_minutes: 0
+    useful_effect: material-finding
+    harm_effect: none
+    downstream_validation: passed

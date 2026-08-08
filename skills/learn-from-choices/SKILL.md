@@ -82,14 +82,13 @@ audit surface available only through explicit invocation.
 ## Recursive Learning
 
 Follow the versioned
-[Continuity Contract v0.2](../../docs/learn-from-choices-continuity-contract-v0.2.md)
+[Continuity Contract v0.3](../../docs/learn-from-choices-continuity-contract-v0.3.md)
 for option strategy classification, visible action boundaries, explicit
 comparability cohorts, and append-only classification correction. Patterns are diagnostic;
 action boundaries identify authority seams but retain
 `authority_effect: none`. Only valid explicit comparability policy keys create
-cohorts. Legacy options remain unclassified without backfill, and the initial
-repository push policy is diagnostic-only, so it cannot reorder
-recommendations.
+cohorts. V0.2 receipts remain compatible, legacy options remain unclassified
+without backfill, and the repository push policy remains diagnostic-only.
 
 Learn from observed outcomes, burden, momentum, and discovery—not selection
 frequency.
@@ -110,14 +109,25 @@ After at least five explicit, comparable, outcome-supported learnings, a
 read-only review may recommend a contract change. The operator must separately
 authorize that change.
 
-## Held Calibration Pilot
+## Active Outcome Learning
 
-For `anyang-internal / anyang-intelligence / repository`, the versioned
-[Learn From Choices Calibration Pilot](../../docs/learn-from-choices-calibration-pilot-2026-07-30.md)
-is held for continuity-provenance review. Do not tag or retain ordinary Lite
-selections. Recommendation ordering remains frozen against pilot outcomes and
-selection frequency until an explicit later disposition authorizes a change.
-Continue to surface immediate authority or membrane guardrails.
+For `anyang-internal / anyang-intelligence / repository`, follow
+[Learn From Choices Active v1](../../docs/learn-from-choices-active-v1.md) and
+[Continuity Contract v0.3](../../docs/learn-from-choices-continuity-contract-v0.3.md).
+The prior calibration is disposed `Too thin / Revise` and its receipts remain
+historical.
+
+Ordinary Lite selections remain ephemeral. Only when the current decision seam
+exactly matches `repository-governance-preflight-v1` may a read-only active
+context lookup inform recommendation ordering. Treat its favored or demoted
+direction as a rebuttable prior, explain any material effect briefly, yield to
+current controlling evidence, and preserve a credible overlooked path.
+
+Bravo, Friction, a completion receipt, or explicit operator feedback may
+identify a candidate episode. Persist nothing until the exact same-task packet
+is shown in dry run and the operator selects `Execute retain this reviewed
+episode`. Missing or cross-task provenance routes to an `RL-*` candidate and is
+ineligible for the active cohort. Active guidance never changes authority.
 
 ## Composition
 

@@ -96,11 +96,13 @@ from .choice_learning import (
     choice_review,
     load_choice_packet,
     record_choice_event,
+    record_retained_choice_outcome,
     record_choice_selection,
     render_choice_context_markdown,
     render_choice_markdown,
     render_choice_review_markdown,
     validate_choice_event_packet,
+    validate_retained_outcome_packet,
     validate_choice_selection_packet,
     verify_choice,
 )
@@ -601,6 +603,16 @@ def build_parser() -> argparse.ArgumentParser:
     _dry(choice_select)
     choice_select.set_defaults(func=cmd_choice_select)
 
+    choice_retain = choice_sub.add_parser(
+        "retain-outcome",
+        help="Atomically retain one explicitly reviewed choice and outcome",
+    )
+    _tenant(choice_retain)
+    choice_retain.add_argument("--packet", required=True)
+    choice_retain.add_argument("--approved-packet-hash")
+    _dry(choice_retain)
+    choice_retain.set_defaults(func=cmd_choice_retain_outcome)
+
     choice_outcome = choice_sub.add_parser(
         "outcome", help="Append an outcome, deferral, correction, or supersession"
     )
@@ -1078,6 +1090,33 @@ def cmd_choice_select(args: argparse.Namespace) -> int:
     with connect(resolve_db(args)) as connection:
         migrate(connection, now_utc())
         result = record_choice_selection(connection, args.tenant, packet)
+    return print_result(result.as_dict())
+
+
+def cmd_choice_retain_outcome(args: argparse.Namespace) -> int:
+    packet = load_choice_packet(args.packet)
+    normalized = validate_retained_outcome_packet(packet, args.tenant)
+    if args.dry_run:
+        if args.approved_packet_hash:
+            raise OpsError("--approved-packet-hash is prohibited during dry run")
+        return print_result(
+            {
+                "dry_run": True,
+                "action": "record_retained_choice_outcome",
+                **normalized,
+                "deferred_checks": ["actor-exists-in-tenant", "idempotency-conflict"],
+            }
+        )
+    if not args.approved_packet_hash:
+        raise OpsError("--approved-packet-hash is required for retained outcome mutation")
+    with connect(resolve_db(args)) as connection:
+        migrate(connection, now_utc())
+        result = record_retained_choice_outcome(
+            connection,
+            args.tenant,
+            packet,
+            args.approved_packet_hash,
+        )
     return print_result(result.as_dict())
 
 

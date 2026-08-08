@@ -81,6 +81,11 @@ Skip recovery when the operator already states the miss, gives an exact choice o
    `outcome_recorded` event with `mixed` or `unsuccessful`. Record only observed
    dimensions and leave cognitive load, momentum, or discovery value as
    `Missing` when unsupported. Review a dry run before mutation.
+9. Under Learn From Choices Active v1, an outcome is cohort-eligible only when
+   the original same-task menu remains visible, the exact retained-outcome
+   packet and digest are shown in dry run, and the operator separately selects
+   `Execute retain this reviewed episode`. Otherwise route a reusable lesson to
+   an `RL-*` candidate and do not reconstruct choice provenance.
 
 ## Failure Mode Taxonomy
 

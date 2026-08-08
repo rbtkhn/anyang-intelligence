@@ -9,7 +9,8 @@ ROUTE = ROOT / "skills/learn-from-choices/agents/openai.yaml"
 ADAPTER = ROOT / ".agents/skills/learn-from-choices/SKILL.md"
 ADAPTER_ROUTE = ROOT / ".agents/skills/learn-from-choices/agents/openai.yaml"
 CALIBRATION = ROOT / "docs/learn-from-choices-calibration-pilot-2026-07-30.md"
-CONTINUITY = ROOT / "docs/learn-from-choices-continuity-contract-v0.2.md"
+CONTINUITY = ROOT / "docs/learn-from-choices-continuity-contract-v0.3.md"
+ACTIVE = ROOT / "docs/learn-from-choices-active-v1.md"
 LITE = ROOT / "docs/learn-from-choices-lite-v1.md"
 
 
@@ -72,13 +73,11 @@ def test_composition_and_coffee_only_followup_contract():
     )
 
 
-def test_active_calibration_freezes_outcome_informed_reordering():
+def test_calibration_is_append_only_disposed_into_active_v1():
     skill = read(CANONICAL)
     calibration = read(CALIBRATION)
+    active = read(ACTIVE)
     normalized_calibration = " ".join(calibration.split()).lower()
-    assert "../../docs/learn-from-choices-calibration-pilot-2026-07-30.md" in skill
-    assert "recommendation ordering remains frozen" in skill.lower()
-    assert "held for continuity-provenance review" in skill
     for phrase in (
         "Status: `Conditional lifecycle — see Activation state`",
         "Hold — repository persistence",
@@ -94,10 +93,16 @@ def test_active_calibration_freezes_outcome_informed_reordering():
         "initial readiness status exposed zeroed learning counters",
         "configured ledger was populated",
         "interim operational hold",
+        "Pilot status: `Too thin`",
+        "Reviewer decision: `Revise`",
+        "Learn From Choices Active v1",
     ):
         assert phrase.lower() in normalized_calibration
-    assert "Do not tag or retain ordinary Lite" in skill
-    assert "Recommendation ordering remains frozen" in skill
+    assert "../../docs/learn-from-choices-active-v1.md" in skill
+    assert "repository-governance-preflight-v1" in skill
+    assert "same-task packet" in active
+    assert "Ordinary navigation remains ephemeral" in active
+    assert "Authority effect: `none`" in active
 
 
 def test_lite_default_has_zero_automatic_choice_persistence():
@@ -123,30 +128,38 @@ def test_lite_default_has_zero_automatic_choice_persistence():
     assert "does not solicit unresolved choice outcomes" in coffee
 
 
-def test_continuity_v02_contract_is_explicit_and_canonical():
+def test_continuity_v03_contract_is_explicit_and_canonical():
     skill = read(CANONICAL)
     contract = read(CONTINUITY)
     cli = read(ROOT / "cli/README.md")
-    assert "../../docs/learn-from-choices-continuity-contract-v0.2.md" in skill
+    assert "../../docs/learn-from-choices-continuity-contract-v0.3.md" in skill
     for phrase in (
-        "SQLite remains schema v8",
-        "projection and context documents use schema v2",
-        "classification_version",
-        "pattern_key",
-        "action_boundary",
-        "comparability_key",
+        "schema-v8",
+        "retained episode",
+        "comparison context",
         "repository-authorized-push-v1",
         "diagnostic-only",
         "authority_effect: none",
-        "Repeated option keys",
         "selection frequency",
-        "append-only",
-        "prior_value",
-        "No active production comparability policy",
-        "No classification is promoted",
+        "append-only compatibility",
+        "repository-governance-preflight-v1",
+        "90-day",
     ):
         assert phrase.lower() in contract.lower()
     assert "patterns are diagnostic" in skill.lower()
     assert "only valid explicit comparability policy keys create" in skill.lower()
     assert "SQLite remains schema v8" in cli
     assert "Selection dry runs validate structure" in cli
+
+
+def test_active_v1_template_and_skill_retention_boundary():
+    skill = read(CANONICAL)
+    bravo = read(ROOT / "skills/bravo/SKILL.md")
+    friction = read(ROOT / "skills/friction/SKILL.md")
+    template = yaml.safe_load(read(ROOT / "templates/choice-retained-outcome.yaml"))
+    assert "Execute retain this reviewed episode" in " ".join(skill.split())
+    assert "Execute retain this reviewed episode" in " ".join(bravo.split())
+    assert "Execute retain this reviewed episode" in " ".join(friction.split())
+    assert template["schema"] == "anyang-choice-retained-outcome/v1"
+    assert template["comparison_context"]["decision_seam"] == "pre-mutation-evidence-depth"
+    assert template["retention"]["provenance_mode"] == "same-task-reviewed-reconstruction"

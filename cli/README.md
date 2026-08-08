@@ -184,6 +184,7 @@ migrate it. Clear only the pointerâ€”never the ledgerâ€”with `choice c
 ```powershell
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db choice context --tenant anyang-internal --workspace anyang-intelligence --lane repository --kind next-action --format json
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db choice select --tenant anyang-internal --packet selection.yaml --dry-run
+.\tools\run.ps1 ops --db C:\private\anyang-ops.db choice retain-outcome --tenant anyang-internal --packet retained-outcome.yaml --dry-run
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db choice outcome CHOICE_ID --packet outcome.yaml --dry-run
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db choice review --tenant anyang-internal --workspace anyang-intelligence --as-of 2026-07-29T12:00:00Z
 .\tools\run.ps1 ops --db C:\private\anyang-ops.db choice show CHOICE_ID --tenant anyang-internal --workspace anyang-intelligence --lane repository --format json
@@ -206,7 +207,7 @@ options:
     role: recommended
     label: Push the authorized repository change
     description: Publish the already-authorized commit.
-    classification_version: LFC-CONTINUITY-v0.2
+    classification_version: LFC-CONTINUITY-v0.3
     pattern_key: execute-bounded
     action_boundary: external-action
     comparability_key: repository-authorized-push-v1
@@ -229,8 +230,21 @@ Selection dry runs validate structure, classification, privacy, and policy
 scope while deferring actor and database idempotency checks. Outcome dry runs
 validate correction shape while deferring choice-specific actor, prior-value,
 and idempotency checks. See
-`docs/learn-from-choices-continuity-contract-v0.2.md` for the versioned
-contract.
+`docs/learn-from-choices-continuity-contract-v0.3.md` for the current versioned
+contract. V0.2 classifications remain readable and verifiable.
+
+Active v1 retains only an exact same-task episode that the operator reviewed.
+Run `choice retain-outcome --dry-run`, review the normalized packet and
+`packet_hash`, then repeat without `--dry-run` and pass that exact digest via
+`--approved-packet-hash`. The mutation writes the prompt, selection, and
+outcome in one transaction and rolls the complete operation back on failure.
+The template is `templates/choice-retained-outcome.yaml`.
+
+Only `repository-governance-preflight-v1` is active. It is limited to a
+consequential repository-governance pre-mutation evidence decision, requires
+policy-specific outcome measurements and same-task provenance, uses a 90-day
+evidence window, and retains `authority_effect: none`. Push remains
+diagnostic-only.
 
 Recommendation guidance uses observed usefulness, burden, momentum, discovery,
 and outcomes. Selection frequency is explicitly excluded. One or two outcomes

@@ -289,6 +289,24 @@ The end-of-phase review must report:
 
 ## End-of-phase disposition
 
+### Disposition recorded 2026-08-07
+
+- Pilot status: `Too thin`.
+- Reviewer decision: `Revise`.
+- Reason: outcome provenance was insufficient for recommendation changes; Lite
+  correctly ended automatic selection persistence but also removed the natural
+  path for explicit outcome learning.
+- Successor: [Learn From Choices Active v1](learn-from-choices-active-v1.md).
+- Historical receipts remain unchanged and are not automatically eligible for
+  the successor policy.
+
+This disposition ends the indefinite ordering freeze for the declared
+repository scope. It does not authorize automatic selection retention,
+customer-lane learning, external action, or authority expansion.
+
+The original disposition vocabulary remains below as the controlling record of
+what the pilot permitted at closeout.
+
 Return exactly one pilot status:
 
 - `Complete`;

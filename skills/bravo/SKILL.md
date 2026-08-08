@@ -77,6 +77,11 @@ Skip recovery when the operator already names the valued property, gives an exac
    supported by the operator's signal or evidence; use `Missing` for cognitive
    load, momentum, or discovery value that was not observed. Review a dry run
    before mutation.
+8. Under Learn From Choices Active v1, an outcome is cohort-eligible only when
+   the original same-task menu remains visible, the exact retained-outcome
+   packet and digest are shown in dry run, and the operator separately selects
+   `Execute retain this reviewed episode`. Otherwise route a reusable lesson to
+   an `RL-*` candidate and do not reconstruct choice provenance.
 
 ## Output Shape
 

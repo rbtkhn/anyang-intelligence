@@ -13,11 +13,13 @@ from anyang_loop.choice_learning import (
     choice_review,
     load_choice_packet,
     record_choice_event,
+    record_retained_choice_outcome,
     record_choice_selection,
     render_choice_context_markdown,
     render_choice_markdown,
     render_choice_review_markdown,
     validate_choice_event_packet,
+    validate_retained_outcome_packet,
     validate_choice_selection_packet,
     verify_choice,
 )
@@ -162,6 +164,50 @@ def outcome(
     }
 
 
+def retained_preflight_packet(identifier: str, actor: str, *, result: str = "successful") -> dict:
+    packet = selection(identifier, actor, selected="small-proof")
+    packet["schema"] = "anyang-choice-retained-outcome/v1"
+    packet["consequence_level"] = "consequential"
+    packet["comparison_context"] = {
+        "decision_seam": "pre-mutation-evidence-depth",
+        "work_class": "governed-operating-surface",
+        "risk_class": "consequential",
+    }
+    packet["retention"] = {
+        "provenance_mode": "same-task-reviewed-reconstruction",
+        "original_menu_visible": True,
+        "retention_authority_ref": f"fictional://authority/{identifier}",
+        "reviewed_by": "Council Steward",
+    }
+    selected = packet["options"][0]
+    selected["classification_version"] = "LFC-CONTINUITY-v0.3"
+    selected["pattern_key"] = "gather-evidence"
+    selected["action_boundary"] = "read-only"
+    selected["comparability_key"] = "repository-governance-preflight-v1"
+    packet["outcome"] = {
+        "event_key": "retained-outcome",
+        "action_summary": "Retain the reviewed preflight outcome",
+        "evidence_ref": f"fictional://preflight/{identifier}",
+        "occurred_at": "2026-08-07T12:00:00Z",
+        "recorded_at": "2026-08-07T12:00:00Z",
+        "result": result,
+        "cognitive_load": "lower",
+        "momentum": "advanced",
+        "discovery_value": "new-useful-path",
+        "observation": "The preflight exposed a material mismatch",
+        "rework_minutes": 0,
+        "authority_issue": False,
+        "membrane_issue": False,
+        "policy_measurements": {
+            "preflight_minutes": 5,
+            "useful_effect": "material-finding",
+            "harm_effect": "none",
+            "downstream_validation": "passed",
+        },
+    }
+    return packet
+
+
 def rehash_choice_events(connection: sqlite3.Connection, choice_id: str) -> None:
     prior_hash = ""
     rows = connection.execute(
@@ -178,6 +224,140 @@ def rehash_choice_events(connection: sqlite3.Connection, choice_id: str) -> None
             (prior_hash, event_hash, row["id"]),
         )
         prior_hash = event_hash
+
+
+def test_retained_outcome_is_reviewed_atomic_and_idempotent(ledger):
+    connection, actor = ledger
+    packet = retained_preflight_packet("RETAINED-ATOMIC", actor)
+    dry_run = validate_retained_outcome_packet(packet, "anyang-internal")
+    assert len(dry_run["packet_hash"]) == 64
+    assert connection.execute(
+        "SELECT COUNT(*) AS count FROM choice_prompt"
+    ).fetchone()["count"] == 0
+
+    result = record_retained_choice_outcome(
+        connection, "anyang-internal", packet, dry_run["packet_hash"]
+    )
+    assert result.details["chain_verified"] is True
+    projection = choice_projection(connection, "RETAINED-ATOMIC")
+    assert projection["learning_eligibility"]["eligible"] is True
+    assert projection["learning_eligibility"]["outcome_direction"] == "favorable"
+    assert projection["retention"]["reviewed_packet_hash"] == dry_run["packet_hash"]
+    assert verify_choice(connection, "RETAINED-ATOMIC")["ok"] is True
+
+    repeated = record_retained_choice_outcome(
+        connection, "anyang-internal", packet, dry_run["packet_hash"]
+    )
+    assert repeated.details["selection_result"] == "choice_selection_exists"
+    assert repeated.details["outcome_result"] == "choice_event_exists"
+    assert connection.execute(
+        "SELECT COUNT(*) AS count FROM choice_event WHERE choice_id = 'RETAINED-ATOMIC'"
+    ).fetchone()["count"] == 2
+
+
+def test_retained_outcome_hash_and_validation_fail_without_partial_write(ledger):
+    connection, actor = ledger
+    packet = retained_preflight_packet("RETAINED-FAIL", actor)
+    dry_run = validate_retained_outcome_packet(packet, "anyang-internal")
+    with pytest.raises(OpsError, match="does not match"):
+        record_retained_choice_outcome(
+            connection, "anyang-internal", packet, "0" * 64
+        )
+    assert connection.execute(
+        "SELECT COUNT(*) AS count FROM choice_prompt WHERE id = 'RETAINED-FAIL'"
+    ).fetchone()["count"] == 0
+
+    packet["outcome"]["policy_measurements"]["preflight_minutes"] = -1
+    with pytest.raises(OpsError, match="non-negative"):
+        validate_retained_outcome_packet(packet, "anyang-internal")
+    assert dry_run["packet_hash"]
+    assert connection.execute(
+        "SELECT COUNT(*) AS count FROM choice_prompt WHERE id = 'RETAINED-FAIL'"
+    ).fetchone()["count"] == 0
+
+
+def test_active_preflight_policy_threshold_contradiction_and_staleness(ledger):
+    connection, actor = ledger
+    for index, result in enumerate(("successful", "successful", "mixed"), start=1):
+        packet = retained_preflight_packet(f"ACTIVE-PREFLIGHT-{index}", actor, result=result)
+        if result == "mixed":
+            packet["outcome"]["policy_measurements"]["useful_effect"] = "no-material-effect"
+        dry_run = validate_retained_outcome_packet(packet, "anyang-internal")
+        record_retained_choice_outcome(
+            connection, "anyang-internal", packet, dry_run["packet_hash"]
+        )
+    context = choice_context(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "repository",
+        "next-action",
+        "2026-08-08T12:00:00Z",
+    )
+    assert context["recommendation_guidance"]["favored_comparability_keys"] == [
+        "repository-governance-preflight-v1"
+    ]
+    cohort = next(
+        item
+        for item in context["comparability_cohorts"]
+        if item["comparability_key"] == "repository-governance-preflight-v1"
+    )
+    assert cohort["favorable"] == 2
+    assert cohort["neutral"] == 1
+
+    contradiction = retained_preflight_packet(
+        "ACTIVE-PREFLIGHT-CONTRADICTION", actor, result="unsuccessful"
+    )
+    contradiction["outcome"]["policy_measurements"].update(
+        {
+            "preflight_minutes": 20,
+            "useful_effect": "no-material-effect",
+            "harm_effect": "false-hold",
+            "downstream_validation": "failed",
+        }
+    )
+    dry_run = validate_retained_outcome_packet(contradiction, "anyang-internal")
+    record_retained_choice_outcome(
+        connection, "anyang-internal", contradiction, dry_run["packet_hash"]
+    )
+    contradicted = choice_context(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "repository",
+        "next-action",
+        "2026-08-08T12:00:00Z",
+    )
+    assert contradicted["recommendation_guidance"]["favored_comparability_keys"] == []
+    assert contradicted["recommendation_guidance"]["demoted_comparability_keys"] == []
+
+    stale = choice_context(
+        connection,
+        "anyang-internal",
+        "anyang-intelligence",
+        "repository",
+        "next-action",
+        "2027-01-08T12:00:00Z",
+    )
+    stale_cohort = next(
+        item
+        for item in stale["comparability_cohorts"]
+        if item["comparability_key"] == "repository-governance-preflight-v1"
+    )
+    assert stale_cohort["resolved"] == 0
+    assert stale_cohort["excluded_stale"] == 4
+
+
+def test_active_preflight_policy_rejects_scope_and_provenance_drift(ledger):
+    _connection, actor = ledger
+    packet = retained_preflight_packet("RETAINED-SCOPE", actor)
+    packet["lane"] = "learning-core"
+    with pytest.raises(OpsError, match="scope mismatch"):
+        validate_retained_outcome_packet(packet, "anyang-internal")
+    packet = retained_preflight_packet("RETAINED-PROVENANCE", actor)
+    packet["retention"]["provenance_mode"] = "cross-task-reconstruction"
+    with pytest.raises(OpsError, match="same-task"):
+        validate_retained_outcome_packet(packet, "anyang-internal")
 
 
 def test_schema_v7_to_v8_migration_is_idempotent_and_preserves_data(tmp_path):
@@ -611,8 +791,9 @@ def test_outcome_learning_thresholds_guardrails_and_review_order(ledger):
         "next-action",
         "2026-08-07T12:00:00Z",
     )
-    assert after_window["guidance_policy"]["phase"] == "awaiting-disposition"
-    assert after_window["recommendation_guidance"]["ordering_frozen"] is True
+    assert after_window["guidance_policy"]["id"] == "LFC-ACTIVE-v1.0"
+    assert after_window["guidance_policy"]["phase"] == "calibration"
+    assert after_window["recommendation_guidance"]["ordering_frozen"] is False
     assert after_window["recommendation_guidance"]["favored_option_keys"] == []
 
     pending = selection("PENDING-ORDINARY", actor)
@@ -1448,3 +1629,45 @@ def test_choice_cli_dry_run_show_context_review_and_verify(tmp_path, capsys):
     assert "## Diversity Diagnostics" in render_choice_context_markdown(context)
     assert main(base + ["review", "--tenant", "anyang-internal", "--workspace", "anyang-intelligence", "--as-of", "2026-08-01T00:00:00Z", "--format", "json"]) == 0
     assert json.loads(capsys.readouterr().out)["due_count"] == 1
+
+
+def test_choice_cli_retained_outcome_requires_reviewed_hash(tmp_path, capsys):
+    db = tmp_path / "retained-cli.db"
+    with connect(db, create_parent=True) as connection:
+        migrate(connection, NOW)
+        init_tenant(
+            connection,
+            slug="anyang-internal",
+            name="Internal",
+            policy_profile="test",
+            retainer_cents=0,
+            contractor_budget_cents=0,
+            tool_budget_cents=0,
+            timestamp=NOW,
+        )
+        actor = add_actor(connection, "anyang-internal", "Council Steward", "steward").id
+    packet_path = tmp_path / "retained.yaml"
+    packet_path.write_text(
+        yaml.safe_dump(retained_preflight_packet("CLI-RETAINED", actor), sort_keys=False),
+        encoding="utf-8",
+    )
+    base = [
+        "--db",
+        str(db),
+        "choice",
+        "retain-outcome",
+        "--tenant",
+        "anyang-internal",
+        "--packet",
+        str(packet_path),
+    ]
+    assert main(base + ["--dry-run"]) == 0
+    dry_run = json.loads(capsys.readouterr().out)
+    assert dry_run["dry_run"] is True
+    assert len(dry_run["packet_hash"]) == 64
+    assert main(base) == 1
+    assert "--approved-packet-hash is required" in capsys.readouterr().err
+    assert main(base + ["--approved-packet-hash", dry_run["packet_hash"]]) == 0
+    result = json.loads(capsys.readouterr().out)
+    assert result["action"] == "choice_retained_outcome_recorded"
+    assert result["chain_verified"] is True

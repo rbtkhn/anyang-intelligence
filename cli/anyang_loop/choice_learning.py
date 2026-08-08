@@ -20,7 +20,11 @@ CHOICE_ROLES = ("recommended", "alternative", "overlooked", "pause-or-deepen")
 ELICITATION_INTERACTION_TYPES = ("decision-navigation", "neutral-evidence")
 ELICITATION_ACTION_VERBS = ("Execute", "Commit", "Push", "Send")
 CONSEQUENCE_LEVELS = ("ordinary", "consequential", "authority-sensitive")
-CHOICE_CLASSIFICATION_VERSION = "LFC-CONTINUITY-v0.2"
+CHOICE_CLASSIFICATION_VERSION = "LFC-CONTINUITY-v0.3"
+CHOICE_CLASSIFICATION_VERSIONS = (
+    "LFC-CONTINUITY-v0.2",
+    CHOICE_CLASSIFICATION_VERSION,
+)
 CHOICE_PATTERN_KEYS = (
     "gather-evidence",
     "design-next-move",
@@ -80,6 +84,20 @@ CHOICE_GUIDANCE_POLICIES = (
         "source_ref": (
             "repo:docs/learn-from-choices-calibration-pilot-2026-07-30.md"
         ),
+        "disposed_at": "2026-08-07T00:00:00Z",
+        "disposition": "too-thin-revise",
+    },
+    {
+        "id": "LFC-ACTIVE-v1.0",
+        "tenant": "anyang-internal",
+        "workspace_id": "anyang-intelligence",
+        "lane": "repository",
+        "guidance_mode": "active-outcome-only",
+        "effective_at": "2026-08-07T00:00:00Z",
+        "observation_ends_at": "2026-11-05T00:00:00Z",
+        "freeze_until_explicit_disposition": False,
+        "source_ref": "repo:docs/learn-from-choices-active-v1.md",
+        "supersedes": "LFC-CAL-2026-07-30-01",
     },
 )
 CHOICE_COMPARABILITY_POLICIES = (
@@ -99,6 +117,52 @@ CHOICE_COMPARABILITY_POLICIES = (
             "repo:docs/learn-from-choices-continuity-contract-v0.2.md"
         ),
     },
+    {
+        "id": "repository-governance-preflight-v1",
+        "status": "active",
+        "tenant": "anyang-internal",
+        "workspace_id": "anyang-intelligence",
+        "lane": "repository",
+        "choice_kind": "next-action",
+        "consequence_levels": ("consequential", "authority-sensitive"),
+        "pattern_key": "gather-evidence",
+        "action_boundary": "read-only",
+        "comparison_context": {
+            "decision_seam": "pre-mutation-evidence-depth",
+            "work_class": "governed-operating-surface",
+            "risk_class": "consequential",
+        },
+        "minimum_resolved": 3,
+        "minimum_consistent": 2,
+        "evidence_window_days": 90,
+        "maximum_preflight_minutes": 15.0,
+        "requires_explicit_retention": True,
+        "outcome_model": "governed-preflight-v1",
+        "source_ref": "repo:docs/learn-from-choices-active-v1.md",
+    },
+)
+
+COMPARISON_CONTEXT_FIELDS = ("decision_seam", "work_class", "risk_class")
+PREFLIGHT_USEFUL_EFFECTS = (
+    "material-finding",
+    "decision-changed",
+    "rework-prevented",
+    "readiness-confirmed",
+    "no-material-effect",
+)
+PREFLIGHT_HARM_EFFECTS = (
+    "none",
+    "false-hold",
+    "material-delay",
+    "irrelevant-scope",
+    "added-rework",
+)
+DOWNSTREAM_VALIDATION_RESULTS = (
+    "passed",
+    "failed",
+    "skipped",
+    "not-applicable",
+    "not-observable",
 )
 
 
@@ -320,10 +384,157 @@ def validate_choice_event_packet(packet: dict[str, Any]) -> dict[str, Any]:
     return normalized
 
 
+def validate_retained_outcome_packet(
+    packet: dict[str, Any], tenant: str
+) -> dict[str, Any]:
+    if packet.get("schema") != "anyang-choice-retained-outcome/v1":
+        raise OpsError(
+            "Retained outcome packet requires schema anyang-choice-retained-outcome/v1"
+        )
+    for field in ("presented_at", "selected_at", "review_after", "recorded_at"):
+        if not packet.get(field):
+            raise OpsError(f"Retained outcome packet requires {field}")
+    selection_packet = dict(packet)
+    outcome = selection_packet.pop("outcome", None)
+    selection_packet.pop("schema", None)
+    normalized_selection = _validate_selection_packet(selection_packet)
+    _validate_selection_classification_scope(normalized_selection, tenant)
+    retention = normalized_selection.get("retention")
+    if not retention:
+        raise OpsError("Retained outcome packet requires retention provenance")
+    if retention["provenance_mode"] != "same-task-reviewed-reconstruction":
+        raise OpsError("Active v1 requires same-task-reviewed-reconstruction")
+    if not retention["original_menu_visible"]:
+        raise OpsError("Active v1 requires the original menu to remain visible")
+    selected = normalized_selection["option_by_key"][
+        normalized_selection["selected_option_key"]
+    ]
+    if selected.get("comparability_key") != "repository-governance-preflight-v1":
+        raise OpsError(
+            "Active v1 retained outcomes require repository-governance-preflight-v1"
+        )
+    if not isinstance(outcome, dict):
+        raise OpsError("Retained outcome packet requires an outcome mapping")
+    evidence_ref = _bounded(
+        outcome.get("evidence_ref"), "outcome evidence_ref", required=True
+    )
+    event_packet = {
+        "event_key": _bounded(
+            outcome.get("event_key", "retained-outcome"),
+            "outcome event_key",
+            required=True,
+            maximum=200,
+        ),
+        "event_type": "outcome_recorded",
+        "recorded_by": retention["reviewed_by"],
+        "actor_id": normalized_selection.get("actor_id"),
+        "action_summary": _bounded(
+            outcome.get("action_summary", "Retain the reviewed learning episode"),
+            "outcome action_summary",
+            required=True,
+        ),
+        "evidence_ref": evidence_ref,
+        "occurred_at": _bounded(
+            outcome.get("occurred_at"),
+            "outcome occurred_at",
+            required=True,
+            maximum=100,
+        ),
+        "recorded_at": _bounded(
+            outcome.get("recorded_at"),
+            "outcome recorded_at",
+            required=True,
+            maximum=100,
+        ),
+        "payload": {
+            key: value
+            for key, value in outcome.items()
+            if key
+            not in {
+                "event_key",
+                "action_summary",
+                "evidence_ref",
+                "occurred_at",
+                "recorded_at",
+            }
+        },
+    }
+    normalized_event = validate_choice_event_packet(event_packet)
+    canonical_selection = {
+        key: value
+        for key, value in normalized_selection.items()
+        if key != "option_by_key"
+    }
+    canonical_selection["retention"] = dict(canonical_selection["retention"])
+    canonical_selection["retention"]["reviewed_packet_hash"] = ""
+    packet_hash = _hash(
+        {
+            "schema": "anyang-choice-retained-outcome/v1",
+            "tenant": tenant,
+            "selection": canonical_selection,
+            "outcome_event": normalized_event,
+        }
+    )
+    return {
+        "schema": "anyang-choice-retained-outcome/v1",
+        "tenant": tenant,
+        "selection": canonical_selection,
+        "outcome_event": normalized_event,
+        "packet_hash": packet_hash,
+        "authority_effect": "retain-this-learning-only",
+    }
+
+
+def record_retained_choice_outcome(
+    connection: sqlite3.Connection,
+    tenant: str,
+    packet: dict[str, Any],
+    approved_packet_hash: str,
+) -> MutationResult:
+    normalized = validate_retained_outcome_packet(packet, tenant)
+    if not re.fullmatch(r"[0-9a-f]{64}", approved_packet_hash or ""):
+        raise OpsError("approved_packet_hash must be a lowercase SHA-256 digest")
+    if approved_packet_hash != normalized["packet_hash"]:
+        raise OpsError("Approved retained-outcome packet hash does not match")
+    selection = dict(normalized["selection"])
+    selection["retention"] = dict(selection["retention"])
+    selection["retention"]["reviewed_packet_hash"] = approved_packet_hash
+    try:
+        selection_result = record_choice_selection(
+            connection, tenant, selection, commit=False
+        )
+        outcome_result = record_choice_event(
+            connection,
+            selection["id"],
+            normalized["outcome_event"],
+            commit=False,
+        )
+        verification = verify_choice(connection, selection["id"])
+        if not verification["ok"]:
+            raise OpsError("Retained choice failed post-write verification")
+        connection.commit()
+    except Exception:
+        connection.rollback()
+        raise
+    return MutationResult(
+        "choice_retained_outcome_recorded",
+        selection["id"],
+        {
+            "packet_hash": approved_packet_hash,
+            "selection_result": selection_result.action,
+            "outcome_result": outcome_result.action,
+            "chain_verified": True,
+            "authority_effect": "retain-this-learning-only",
+        },
+    )
+
+
 def record_choice_selection(
     connection: sqlite3.Connection,
     tenant: str,
     packet: dict[str, Any],
+    *,
+    commit: bool = True,
 ) -> MutationResult:
     normalized = _validate_selection_packet(packet)
     _validate_selection_classification_scope(normalized, tenant)
@@ -356,6 +567,10 @@ def record_choice_selection(
         "review_after": normalized["review_after"],
         "authority_effect": "none",
     }
+    if normalized.get("comparison_context") is not None:
+        selection_payload["comparison_context"] = normalized["comparison_context"]
+    if normalized.get("retention") is not None:
+        selection_payload["retention"] = normalized["retention"]
     event_id = str(
         uuid.uuid5(uuid.NAMESPACE_URL, f"anyang:choice:{normalized['id']}:selection")
     )
@@ -414,7 +629,8 @@ def record_choice_selection(
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             tuple(event_values.values()),
         )
-        connection.commit()
+        if commit:
+            connection.commit()
     except sqlite3.IntegrityError as exc:
         connection.rollback()
         raise OpsError(f"Choice selection is invalid: {exc}") from exc
@@ -433,6 +649,8 @@ def record_choice_event(
     connection: sqlite3.Connection,
     choice_id: str,
     packet: dict[str, Any],
+    *,
+    commit: bool = True,
 ) -> MutationResult:
     prompt = _prompt(connection, choice_id)
     event_type = _text(packet.get("event_type"))
@@ -503,7 +721,8 @@ def record_choice_event(
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             tuple(values.values()),
         )
-        connection.commit()
+        if commit:
+            connection.commit()
     except sqlite3.IntegrityError as exc:
         connection.rollback()
         raise OpsError(f"Choice event is invalid: {exc}") from exc
@@ -635,6 +854,10 @@ def choice_projection(connection: sqlite3.Connection, choice_id: str) -> dict[st
         else None
     )
     exclusions: list[str] = []
+    comparison_context = (
+        selected["payload"].get("comparison_context") if selected else None
+    )
+    retention = selected["payload"].get("retention") if selected else None
     if effective_classification["pattern_key"] == "unclassified":
         exclusions.append("unclassified-option")
     if comparability_key == "Missing":
@@ -647,11 +870,35 @@ def choice_projection(connection: sqlite3.Connection, choice_id: str) -> dict[st
         exclusions.append("outcome-unresolved")
     elif not outcome.get("evidence_ref"):
         exclusions.append("outcome-evidence-missing")
+    if comparability_policy and comparability_policy.get("requires_explicit_retention"):
+        if comparison_context != comparability_policy.get("comparison_context"):
+            exclusions.append("comparison-context-mismatch")
+        if not isinstance(retention, dict):
+            exclusions.append("retention-provenance-missing")
+        else:
+            if retention.get("provenance_mode") != "same-task-reviewed-reconstruction":
+                exclusions.append("retention-provenance-invalid")
+            if not retention.get("original_menu_visible"):
+                exclusions.append("original-menu-not-reviewed")
+            if not re.fullmatch(
+                r"[0-9a-f]{64}", str(retention.get("reviewed_packet_hash", ""))
+            ):
+                exclusions.append("reviewed-packet-hash-missing")
+        if outcome and not isinstance(outcome["payload"].get("policy_measurements"), dict):
+            exclusions.append("policy-measurements-missing")
     if state == "superseded":
         exclusions.append("choice-superseded")
     learning_eligibility = {
         "eligible": not exclusions,
         "exclusion_reasons": exclusions,
+        "outcome_direction": (
+            _active_outcome_direction(outcome["payload"], comparability_policy)
+            if comparability_policy
+            and comparability_policy.get("outcome_model") == "governed-preflight-v1"
+            and outcome
+            and not exclusions
+            else "neutral"
+        ),
         "recommendation_effect": (
             comparability_policy["status"]
             if comparability_policy and not exclusions
@@ -681,6 +928,8 @@ def choice_projection(connection: sqlite3.Connection, choice_id: str) -> dict[st
         "options": options,
         "learning_refs": json.loads(prompt["learning_refs_json"]),
         "selection": selected,
+        "comparison_context": comparison_context,
+        "retention": retention,
         "outcome": outcome,
         "current_state": state,
         "review_after": review_after,
@@ -811,14 +1060,26 @@ def choice_context(
                     "unsuccessful": 0,
                     "no_action": 0,
                     "not_observable": 0,
+                    "favorable": 0,
+                    "unfavorable": 0,
+                    "neutral": 0,
+                    "excluded_stale": 0,
                     "choice_ids": [],
                     "evidence_tier": "thin",
                     "recommendation_effect": "none",
                 },
             )
+            if policy.get("evidence_window_days") and not _outcome_within_policy_window(
+                projection, policy, as_of or now_utc()
+            ):
+                cohort["excluded_stale"] += 1
+                continue
             cohort["resolved"] += 1
             cohort[result] += 1
             cohort["choice_ids"].append(projection["choice"]["id"])
+            if policy.get("outcome_model") == "governed-preflight-v1":
+                direction = eligibility.get("outcome_direction", "neutral")
+                cohort[direction] += 1
         guardrail = _projection_guardrail(projection)
         if guardrail:
             guardrails.append(guardrail)
@@ -838,15 +1099,12 @@ def choice_context(
         minimum_consistent = int(policy["minimum_consistent"])
         direction = ""
         if cohort["resolved"] >= minimum_resolved:
-            if (
-                cohort["successful"] >= minimum_consistent
-                and cohort["unsuccessful"] == 0
-            ):
+            governed_outcomes = policy.get("outcome_model") == "governed-preflight-v1"
+            favorable = cohort["favorable"] if governed_outcomes else cohort["successful"]
+            unfavorable = cohort["unfavorable"] if governed_outcomes else cohort["unsuccessful"]
+            if favorable >= minimum_consistent and unfavorable == 0:
                 direction = "favored"
-            elif (
-                cohort["unsuccessful"] >= minimum_consistent
-                and cohort["successful"] == 0
-            ):
+            elif unfavorable >= minimum_consistent and favorable == 0:
                 direction = "demoted"
         if direction:
             cohort["evidence_tier"] = "pattern"
@@ -873,6 +1131,16 @@ def choice_context(
         active_demoted = []
         for cohort in comparability_cohorts:
             cohort["recommendation_effect"] = "none"
+    guidance_conflict = bool(
+        set(active_favored) & set(active_demoted)
+        or len(active_favored) + len(active_demoted) > 1
+    )
+    if guidance_conflict:
+        active_favored = []
+        active_demoted = []
+        for cohort in comparability_cohorts:
+            if cohort["policy_status"] == "active":
+                cohort["recommendation_effect"] = "none"
     due_review = choice_review(connection, tenant, workspace_id, as_of)
     rationale = _guidance_rationale(
         len(resolved), guardrails, diagnostic_favored, diagnostic_demoted
@@ -911,6 +1179,7 @@ def choice_context(
             "diagnostic_favored_comparability_keys": diagnostic_favored,
             "diagnostic_demoted_comparability_keys": diagnostic_demoted,
             "ordering_frozen": bool(policy and policy["ordering_frozen"]),
+            "guidance_conflict": guidance_conflict,
             "selection_frequency_used": False,
             "option_key_learning_used": False,
             "preserve_overlooked_possibility": True,
@@ -1367,7 +1636,7 @@ def _validate_selection_packet(packet: dict[str, Any]) -> dict[str, Any]:
                 required=True,
                 maximum=80,
             )
-            if classification_version != CHOICE_CLASSIFICATION_VERSION:
+            if classification_version not in CHOICE_CLASSIFICATION_VERSIONS:
                 raise OpsError(
                     f"Invalid option {index} classification_version: "
                     f"{classification_version}"
@@ -1431,6 +1700,48 @@ def _validate_selection_packet(packet: dict[str, Any]) -> dict[str, Any]:
     if selected_key not in option_by_key:
         raise OpsError("selected_option_key must name a presented option")
     learning_refs = _string_list(packet.get("learning_refs", []), "learning_refs")
+    comparison_context = packet.get("comparison_context")
+    if comparison_context is not None:
+        if not isinstance(comparison_context, dict):
+            raise OpsError("comparison_context must be a mapping")
+        comparison_context = {
+            field: _bounded(
+                comparison_context.get(field),
+                f"comparison_context {field}",
+                required=True,
+                maximum=120,
+            )
+            for field in COMPARISON_CONTEXT_FIELDS
+        }
+    retention = packet.get("retention")
+    if retention is not None:
+        if not isinstance(retention, dict):
+            raise OpsError("retention must be a mapping")
+        retention = {
+            "provenance_mode": _bounded(
+                retention.get("provenance_mode"),
+                "retention provenance_mode",
+                required=True,
+                maximum=80,
+            ),
+            "original_menu_visible": bool(retention.get("original_menu_visible")),
+            "retention_authority_ref": _bounded(
+                retention.get("retention_authority_ref"),
+                "retention authority reference",
+                required=True,
+                maximum=200,
+            ),
+            "reviewed_by": _bounded(
+                retention.get("reviewed_by"),
+                "retention reviewed_by",
+                required=True,
+            ),
+            "reviewed_packet_hash": _nullable_bounded(
+                retention.get("reviewed_packet_hash"),
+                "retention reviewed_packet_hash",
+                maximum=64,
+            ) or "",
+        }
     normalized = {
         "id": _bounded(packet["id"], "id", required=True, maximum=200),
         "workspace_id": _bounded(packet["workspace_id"], "workspace_id", required=True),
@@ -1443,6 +1754,8 @@ def _validate_selection_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "selected_option_key": selected_key,
         "learning_refs": learning_refs,
         "learning_context": packet.get("learning_context", {"learning_refs": learning_refs}),
+        "comparison_context": comparison_context,
+        "retention": retention,
         "success_signal": _bounded(packet["success_signal"], "success_signal", required=True),
         "risk_signal": _bounded(packet["risk_signal"], "risk_signal", required=True),
         "source_ref": _nullable_bounded(packet.get("source_ref"), "source_ref") or "",
@@ -1491,6 +1804,7 @@ def _validate_selection_classification_scope(
             consequence_level=normalized["consequence_level"],
             pattern_key=option.get("pattern_key", "unclassified"),
             action_boundary=option.get("action_boundary", "unclassified"),
+            comparison_context=normalized.get("comparison_context"),
         )
 
 
@@ -1511,6 +1825,7 @@ def _validate_comparability_policy(
     consequence_level: str,
     pattern_key: str,
     action_boundary: str,
+    comparison_context: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     policy = _comparability_policy(key)
     if not policy:
@@ -1530,6 +1845,9 @@ def _validate_comparability_policy(
     ]
     if consequence_level not in policy["consequence_levels"]:
         mismatched.append("consequence_level")
+    required_context = policy.get("comparison_context")
+    if required_context and comparison_context != required_context:
+        mismatched.append("comparison_context")
     if mismatched:
         raise OpsError(
             f"Choice comparability policy scope mismatch for {key}: "
@@ -1563,6 +1881,31 @@ def _validate_event_payload(event_type: str, payload: dict[str, Any]) -> dict[st
         value["rework_minutes"] = rework
         value["authority_issue"] = bool(value.get("authority_issue", False))
         value["membrane_issue"] = bool(value.get("membrane_issue", False))
+        measurements = value.get("policy_measurements")
+        if measurements is not None:
+            if not isinstance(measurements, dict):
+                raise OpsError("policy_measurements must be a mapping")
+            try:
+                minutes = float(measurements.get("preflight_minutes"))
+            except (TypeError, ValueError) as exc:
+                raise OpsError("preflight_minutes must be numeric") from exc
+            if minutes < 0:
+                raise OpsError("preflight_minutes must be non-negative")
+            useful_effect = _text(measurements.get("useful_effect"))
+            if useful_effect not in PREFLIGHT_USEFUL_EFFECTS:
+                raise OpsError(f"Invalid useful_effect: {useful_effect}")
+            harm_effect = _text(measurements.get("harm_effect"))
+            if harm_effect not in PREFLIGHT_HARM_EFFECTS:
+                raise OpsError(f"Invalid harm_effect: {harm_effect}")
+            downstream = _text(measurements.get("downstream_validation"))
+            if downstream not in DOWNSTREAM_VALIDATION_RESULTS:
+                raise OpsError(f"Invalid downstream_validation: {downstream}")
+            value["policy_measurements"] = {
+                "preflight_minutes": minutes,
+                "useful_effect": useful_effect,
+                "harm_effect": harm_effect,
+                "downstream_validation": downstream,
+            }
     elif event_type == "review_deferred":
         value = {
             "review_after": _bounded(
@@ -1725,6 +2068,7 @@ def _classification_policy_issue(
     prompt: sqlite3.Row,
     tenant: str,
     classification: dict[str, str],
+    comparison_context: dict[str, str] | None = None,
 ) -> str | None:
     key = classification["comparability_key"]
     if key == "Missing":
@@ -1739,6 +2083,7 @@ def _classification_policy_issue(
             consequence_level=str(prompt["consequence_level"]),
             pattern_key=classification["pattern_key"],
             action_boundary=classification["action_boundary"],
+            comparison_context=comparison_context,
         )
     except OpsError as exc:
         return str(exc)
@@ -1760,6 +2105,7 @@ def _derive_classifications(
     corrections: list[dict[str, Any]] = []
     issues: list[dict[str, str]] = []
     tenant = _tenant_slug(connection, str(prompt["tenant_id"]))
+    comparison_context = _selection_comparison_context(events)
     for event in events:
         event_type = event["event_type"]
         if event_type != "corrected":
@@ -1792,7 +2138,9 @@ def _derive_classifications(
             if correction_policy_issue:
                 issue = correction_policy_issue
             else:
-                policy_issue = _classification_policy_issue(prompt, tenant, candidate)
+                policy_issue = _classification_policy_issue(
+                    prompt, tenant, candidate, comparison_context
+                )
                 if policy_issue:
                     issue = policy_issue
                 else:
@@ -1813,7 +2161,9 @@ def _derive_classifications(
             )
         corrections.append(recorded)
     for option_key, classification in effective.items():
-        issue = _classification_policy_issue(prompt, tenant, classification)
+        issue = _classification_policy_issue(
+            prompt, tenant, classification, comparison_context
+        )
         if issue:
             issues.append(
                 {
@@ -1827,6 +2177,22 @@ def _derive_classifications(
         "corrections": corrections,
         "issues": issues,
     }
+
+
+def _selection_comparison_context(
+    events: list[sqlite3.Row] | list[dict[str, Any]],
+) -> dict[str, str] | None:
+    for event in events:
+        if event["event_type"] != "branch_selected":
+            continue
+        payload = (
+            event.get("payload")
+            if isinstance(event, dict) and "payload" in event
+            else json.loads(event["payload_json"])
+        )
+        context = payload.get("comparison_context") if isinstance(payload, dict) else None
+        return dict(context) if isinstance(context, dict) else None
+    return None
 
 
 def _validate_new_classification_correction(
@@ -1941,7 +2307,7 @@ def _semantic_choice_issues(
                     )
                 elif (
                     option.get("classification_version")
-                    != CHOICE_CLASSIFICATION_VERSION
+                    not in CHOICE_CLASSIFICATION_VERSIONS
                     or option.get("pattern_key") not in CHOICE_PATTERN_KEYS
                     or option.get("action_boundary")
                     not in CHOICE_ACTION_BOUNDARIES
@@ -2304,6 +2670,54 @@ def _projection_guardrail(projection: dict[str, Any]) -> dict[str, str] | None:
     }
 
 
+def _active_outcome_direction(
+    payload: dict[str, Any], policy: dict[str, Any]
+) -> str:
+    measurements = payload.get("policy_measurements")
+    if not isinstance(measurements, dict):
+        return "neutral"
+    result = payload.get("result")
+    useful = measurements.get("useful_effect")
+    harm = measurements.get("harm_effect")
+    minutes = float(measurements.get("preflight_minutes", 0))
+    downstream = measurements.get("downstream_validation")
+    maximum = float(policy.get("maximum_preflight_minutes", 15.0))
+    favorable_downstream = downstream in {"passed", "not-applicable"}
+    if useful == "readiness-confirmed":
+        favorable_downstream = downstream == "passed"
+    if (
+        result == "successful"
+        and useful != "no-material-effect"
+        and harm == "none"
+        and minutes <= maximum
+        and favorable_downstream
+        and not payload.get("authority_issue")
+        and not payload.get("membrane_issue")
+    ):
+        return "favorable"
+    if result == "unsuccessful" and (
+        harm != "none" or (useful == "no-material-effect" and minutes > maximum)
+    ):
+        return "unfavorable"
+    return "neutral"
+
+
+def _outcome_within_policy_window(
+    projection: dict[str, Any], policy: dict[str, Any], as_of: str
+) -> bool:
+    days = policy.get("evidence_window_days")
+    if not days:
+        return True
+    outcome = projection.get("outcome")
+    if not outcome:
+        return False
+    observed_at = outcome.get("occurred_at") or outcome.get("recorded_at")
+    if not observed_at:
+        return False
+    age_seconds = (_timestamp(as_of) - _timestamp(observed_at)).total_seconds()
+    return 0 <= age_seconds <= int(days) * 86400
+
+
 def _guidance_rationale(
     resolved_count: int,
     guardrails: list[dict[str, str]],
@@ -2326,17 +2740,21 @@ def _choice_guidance_policy(
     as_of: str,
 ) -> dict[str, Any] | None:
     reference = _timestamp(as_of)
-    for configured in CHOICE_GUIDANCE_POLICIES:
-        if (
-            configured["tenant"] != tenant
-            or configured["workspace_id"] != workspace_id
-            or configured["lane"] != lane
-        ):
-            continue
-        effective = _timestamp(configured["effective_at"])
+    matches = [
+        configured
+        for configured in CHOICE_GUIDANCE_POLICIES
+        if configured["tenant"] == tenant
+        and configured["workspace_id"] == workspace_id
+        and configured["lane"] == lane
+        and reference >= _timestamp(configured["effective_at"])
+    ]
+    for configured in sorted(
+        matches, key=lambda item: _timestamp(item["effective_at"]), reverse=True
+    ):
         observation_end = _timestamp(configured["observation_ends_at"])
-        if reference < effective:
-            phase = "scheduled"
+        disposed_at = configured.get("disposed_at")
+        if disposed_at and reference >= _timestamp(disposed_at):
+            phase = "disposed"
             frozen = False
         elif reference < observation_end:
             phase = "calibration"
