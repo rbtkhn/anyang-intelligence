@@ -707,24 +707,24 @@ the existing explicit action and authority contracts. See
 
 Singularity Science transcript intake is archive-only infrastructure. It normalizes internal transcript files into:
 
-- `projects/singularity-science/archive/innermost-loop/transcripts/`
-- `projects/singularity-science/archive/moonshots/transcripts/`
-- `projects/singularity-science/archive/nate-b-jones/transcripts/`
-- `projects/singularity-science/archive/external-interviews/transcripts/`
+- `system-archive/singularity-science/innermost-loop/transcripts/`
+- `system-archive/singularity-science/moonshots/transcripts/`
+- `system-archive/singularity-science/nate-b-jones/transcripts/`
+- `system-archive/singularity-science/external-interviews/transcripts/`
 
-The manifest must live under `projects/singularity-science/archive/`.
+The manifest must live under `system-archive/singularity-science/`.
 
 Dry run an import:
 
 ```powershell
-.\tools\run.ps1 project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json --dry-run
+.\tools\run.ps1 project import-transcripts --manifest system-archive/singularity-science/transcript-intake-manifest.json --dry-run
 ```
 
 Inspect the live phase state without writing:
 
 ```powershell
-.\tools\run.ps1 project preflight --phase singularity-transcript-intake --manifest projects/singularity-science/archive/transcript-intake-manifest.json
-.\tools\run.ps1 project preflight --phase singularity-transcript-intake --manifest projects/singularity-science/archive/transcript-intake-manifest.json --format json
+.\tools\run.ps1 project preflight --phase singularity-transcript-intake --manifest system-archive/singularity-science/transcript-intake-manifest.json
+.\tools\run.ps1 project preflight --phase singularity-transcript-intake --manifest system-archive/singularity-science/transcript-intake-manifest.json --format json
 ```
 
 Preflight exit `0` means the phase may begin, including when non-blocking warnings or row-level rights holds are visible. Exit `1` means the contract or invocation is blocked. Exit `2` means the request is valid but requires the operator to widen authority. Preflight is read-only and never grants authority; the mutation command reconstructs state again and postflight checks the resulting repository delta.
@@ -732,14 +732,14 @@ Preflight exit `0` means the phase may begin, including when non-blocking warnin
 Run the import:
 
 ```powershell
-.\tools\run.ps1 project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json
-.\tools\run.ps1 project import-transcripts --manifest projects/singularity-science/archive/transcript-intake-manifest.json --format json
+.\tools\run.ps1 project import-transcripts --manifest system-archive/singularity-science/transcript-intake-manifest.json
+.\tools\run.ps1 project import-transcripts --manifest system-archive/singularity-science/transcript-intake-manifest.json --format json
 ```
 
 Report completeness:
 
 ```powershell
-.\tools\run.ps1 project report-transcript-import --manifest projects/singularity-science/archive/transcript-intake-manifest.json
+.\tools\run.ps1 project report-transcript-import --manifest system-archive/singularity-science/transcript-intake-manifest.json
 ```
 
 Manifest rows require:

@@ -141,7 +141,7 @@ def run_preflight(
         if not matches_any(path, phase.operations["modify"]):
             authorization.append({"code": "modify-not-authorized", "message": f"Modification is outside phase operations: {path}"})
 
-    archive = root / "projects" / "singularity-science" / "archive"
+    archive = root / "system-archive" / "singularity-science"
     manifests = [archive / "transcript-intake-manifest.json", archive / "transcript-intake-manifest.generated.json"]
     if all(path.exists() for path in manifests):
         warnings.append({

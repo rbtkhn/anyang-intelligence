@@ -184,7 +184,7 @@ artifacts:
       tracked: false
 
   singularity-transcript-manifest:
-    path: projects/singularity-science/archive/transcript-intake-manifest*.json
+    path: system-archive/singularity-science/transcript-intake-manifest*.json
     operation: Declare an operator-selected batch of transcript sources and intake metadata.
     domain: singularity-transcript-intake
     authority: evidentiary
@@ -220,7 +220,7 @@ artifacts:
       tracked: false
 
   singularity-transcript-archive:
-    path: projects/singularity-science/archive/*/transcripts/*.md
+    path: system-archive/singularity-science/*/transcripts/*.md
     operation: Preserve normalized internal transcript source material with attribution and rights metadata.
     domain: singularity-transcript-archive
     authority: evidentiary
@@ -239,7 +239,7 @@ artifacts:
       tracked: true
 
   singularity-transcript-import-ledger:
-    path: projects/singularity-science/archive/transcript-import-ledger.md
+    path: system-archive/singularity-science/transcript-import-ledger.md
     operation: Expose the terminal intake status of rows in the invoked manifest.
     domain: singularity-transcript-import-review
     authority: derived

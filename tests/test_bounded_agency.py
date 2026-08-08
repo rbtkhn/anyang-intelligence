@@ -16,7 +16,7 @@ from cadence_helpers import make_git_repo, run, write
 def write_ready_manifest(root: Path) -> Path:
     source = root / "operator-input" / "episode.txt"
     write(source, "A bounded transcript source.")
-    manifest = root / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest = root / "system-archive" / "singularity-science" / "transcript-intake-manifest.json"
     write(
         manifest,
         json.dumps(
@@ -103,9 +103,9 @@ def test_preflight_reconstructs_clean_live_state_and_json(tmp_path: Path):
     assert payload["status"] == "ready"
     assert payload["repository"]["worktree_state"] == "clean"
     assert payload["plan"]["create"] == [
-        "projects/singularity-science/archive/moonshots/transcripts/2026-07-13-captured-bounded-episode.md"
+        "system-archive/singularity-science/moonshots/transcripts/2026-07-13-captured-bounded-episode.md"
     ]
-    assert payload["plan"]["modify"] == ["projects/singularity-science/archive/transcript-import-ledger.md"]
+    assert payload["plan"]["modify"] == ["system-archive/singularity-science/transcript-import-ledger.md"]
     assert payload["enforcement"]["authority"] == "preflight-never-grants-authority"
 
 
@@ -167,7 +167,7 @@ def test_valid_request_outside_write_envelope_requires_operator_authorization(tm
     source = Path(__file__).resolve().parents[1] / "bounded-agency.yaml"
     data = yaml.safe_load(source.read_text(encoding="utf-8"))
     phase = data["phases"][TRANSCRIPT_PHASE]
-    phase["may_write"] = ["projects/singularity-science/archive/transcript-import-ledger.md"]
+    phase["may_write"] = ["system-archive/singularity-science/transcript-import-ledger.md"]
     contract = tmp_path / "authority.yaml"
     contract.write_text(yaml.safe_dump(data, sort_keys=False), encoding="utf-8")
 
@@ -189,7 +189,7 @@ def test_invalid_slug_path_escape_blocks_without_writes(tmp_path: Path):
 
     assert preflight.exit_code == 1
     assert any(item["code"] == "invalid-manifest" for item in preflight.blockers)
-    assert not (root / "projects" / "singularity-science" / "archive" / "escape.md").exists()
+    assert not (root / "system-archive" / "singularity-science" / "escape.md").exists()
 
 
 def test_transition_reports_unexpected_delta(tmp_path: Path):

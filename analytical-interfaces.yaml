@@ -40,13 +40,13 @@ documents:
   - path: projects/singularity-science/primitives/embodied-agency-adoption-gate.md
     document_type: adoption-gate
     template: false
-  - path: projects/singularity-science/archive/*/analysis-template.md
+  - path: system-archive/singularity-science/*/analysis-template.md
     document_type: analysis-template
 
 exemptions:
-  - projects/singularity-science/archive/**/transcripts/**
-  - projects/singularity-science/archive/**/source-notes/**
-  - projects/singularity-science/archive/**/*manifest*.json
+  - system-archive/singularity-science/**/transcripts/**
+  - system-archive/singularity-science/**/source-notes/**
+  - system-archive/singularity-science/**/*manifest*.json
   - migration-backups/**
   - strategy_codex_probe/**
   - tenant-private/**

@@ -8,7 +8,7 @@ from cadence_helpers import make_git_repo, run
 
 
 def write_manifest(path: Path, transcript_a: Path, transcript_b: Path) -> Path:
-    manifest = path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest = path / "system-archive" / "singularity-science" / "transcript-intake-manifest.json"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         "{\n"
@@ -128,7 +128,7 @@ def test_transcript_import_redacts_email_addresses():
     transcript = tmp_path / "email-transcript.txt"
     address = "person" + chr(64) + "example.com"
     transcript.write_text(f"Contact {address} for details.", encoding="utf-8")
-    manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest = tmp_path / "system-archive" / "singularity-science" / "transcript-intake-manifest.json"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         "{\n"
@@ -156,7 +156,7 @@ def test_transcript_import_redacts_email_addresses():
     assert "[redacted-email]" in imported_text
     ledger = manifest.parent / "transcript-import-ledger.md"
     assert ledger.exists()
-    assert "Manifest: `projects/singularity-science/archive/transcript-intake-manifest.json`" in ledger.read_text(encoding="utf-8")
+    assert "Manifest: `system-archive/singularity-science/transcript-intake-manifest.json`" in ledger.read_text(encoding="utf-8")
 
 
 def test_transcript_import_duplicate_detection_and_no_overwrite():
@@ -164,7 +164,7 @@ def test_transcript_import_duplicate_detection_and_no_overwrite():
     make_git_repo(tmp_path)
     transcript = tmp_path / "first-innermost.txt"
     transcript.write_text("First transcript body.", encoding="utf-8")
-    manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest = tmp_path / "system-archive" / "singularity-science" / "transcript-intake-manifest.json"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         "{\n"
@@ -198,7 +198,7 @@ def test_transcript_import_validation_failures(capsys):
     make_git_repo(tmp_path)
     transcript = tmp_path / "blank.txt"
     transcript.write_text("   \n", encoding="utf-8")
-    manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest = tmp_path / "system-archive" / "singularity-science" / "transcript-intake-manifest.json"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         "{\n"
@@ -263,7 +263,7 @@ def test_rights_hold_does_not_block_independently_approved_row_and_json_transiti
     held = tmp_path / "held.txt"
     approved.write_text("Approved source.", encoding="utf-8")
     held.write_text("Held source.", encoding="utf-8")
-    manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest = tmp_path / "system-archive" / "singularity-science" / "transcript-intake-manifest.json"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         '{"transcripts": ['
@@ -293,7 +293,7 @@ def test_mutation_rechecks_state_and_recovery_removes_bounded_temp_file():
     make_git_repo(tmp_path)
     source = tmp_path / "source.txt"
     source.write_text("Stable source.", encoding="utf-8")
-    manifest = tmp_path / "projects" / "singularity-science" / "archive" / "transcript-intake-manifest.json"
+    manifest = tmp_path / "system-archive" / "singularity-science" / "transcript-intake-manifest.json"
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(
         '{"transcripts":[{"lane":"innermost-loop","title":"Stable","slug":"stable","date_captured":"2026-07-13",'

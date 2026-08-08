@@ -5,7 +5,7 @@ Source: Moonshots
 URL: https://www.youtube.com/watch?v=P2HJEz3oqLs
 Date published: unknown at intake
 Date captured: 2026-06-09
-Transcript location: [2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md)
+Transcript location: [2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md](/C:/dev/anyang-intelligence/operating-substrate/system-archive/singularity-science/moonshots/transcripts/2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md)
 Rights status: internal-commit-approved
 Capture method: youtube-transcript-operator-paste
 Why it matters: This unscheduled episode concentrates several high-pressure Moonshots seams in an early, unusually explicit form: recursive-self-improvement being framed as an immediate governance event, frontier-lab slowdown talk colliding with state-coordination scenarios, Argentina being framed as a jurisdictional experiment for non-human corporations, and enterprise agent adoption revealing permissions and redesign bottlenecks.

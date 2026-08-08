@@ -5,7 +5,7 @@ Source: Moonshots
 URL: https://www.youtube.com/watch?v=XjOLz--C_nQ
 Date published: unknown at intake
 Date captured: 2026-07-08
-Transcript location: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md)
+Transcript location: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md](/C:/dev/anyang-intelligence/operating-substrate/system-archive/singularity-science/moonshots/transcripts/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md)
 Rights status: internal-commit-approved
 Capture method: user-provided transcript paste
 Why it matters: This episode concentrates several active Singularity Science seams in one place: frontier model gating after the Fable 5 pull, robotics cost compression through China's low-cost humanoids, orbital compute economics and launch bottlenecks, fusion/regulatory progress, and vertical integration in space infrastructure.

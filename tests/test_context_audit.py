@@ -12,7 +12,7 @@ def test_audit_detects_broken_links_and_is_deterministic(tmp_path):
 
 
 def test_archive_transcripts_and_gitkeep_are_not_membrane_or_orphan_findings(tmp_path):
-    transcript = tmp_path / "operating-substrate/projects/singularity-science/archive/x/transcripts"
+    transcript = tmp_path / "operating-substrate/system-archive/singularity-science/x/transcripts"
     transcript.mkdir(parents=True)
     (transcript / ".gitkeep").write_text("", encoding="utf-8")
     (transcript / "source-transcript.md").write_text("source", encoding="utf-8")
@@ -22,7 +22,7 @@ def test_archive_transcripts_and_gitkeep_are_not_membrane_or_orphan_findings(tmp
 
 
 def test_archive_linkage_is_reported(tmp_path):
-    transcripts = tmp_path / "operating-substrate/projects/singularity-science/archive/x/transcripts"
+    transcripts = tmp_path / "operating-substrate/system-archive/singularity-science/x/transcripts"
     transcripts.mkdir(parents=True)
     (transcripts / "2026-01-01-example.md").write_text("source", encoding="utf-8")
     report = audit_repository(tmp_path)

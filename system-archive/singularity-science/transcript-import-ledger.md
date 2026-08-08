@@ -1,4 +1,4 @@
-﻿# Transcript Import Ledger
+# Transcript Import Ledger
 
 This ledger tracks transcript-level import state across Singularity Science source lanes.
 
@@ -12,7 +12,7 @@ Statuses:
 - `skipped-do-not-commit`: rights status explicitly prevents commit
 - `invalid-manifest`: manifest metadata is incomplete or malformed
 
-Manifest: `C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/transcript-intake-manifest.generated.json`
+Manifest: `C:/dev/anyang-intelligence/operating-substrate/system-archive/singularity-science/transcript-intake-manifest.generated.json`
 
 | Lane | Title | Destination | Rights status | Import status | Follow-up | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -179,8 +179,8 @@ Manifest: `C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/ar
 | innermost-loop | The Innermost Loop - 2026-06-17 (202499341) | `innermost-loop/transcripts/2026-06-17-innermost-loop-2026-06-17.md` | `internal-commit-approved` | `imported` | `needs-source-note` | Imported transcript and marked source note follow-up. |
 | innermost-loop | The Innermost Loop - 2026-06-18 (202576486) | `innermost-loop/transcripts/2026-06-18-innermost-loop-2026-06-18.md` | `internal-commit-approved` | `imported` | `needs-source-note` | Imported transcript and marked source note follow-up. |
 | innermost-loop | The Innermost Loop - 2026-06-19 (202744103) | `innermost-loop/transcripts/2026-06-19-innermost-loop-2026-06-19.md` | `internal-commit-approved` | `imported` | `needs-source-note` | Imported transcript and marked source note follow-up. |
-| moonshots | Moonshots Ã¢â‚¬â€ SpaceX IPO, Anthropic Export Control, OpenAI IPO Delay \| 265 (265) | `moonshots/transcripts/2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-2026-06-19.md` | `internal-commit-approved` | `imported` | `needs-source-note` | Imported transcript and marked source note follow-up. |
-| moonshots | Moonshots Ã¢â‚¬â€ Emerging Situation: Anthropic Global Pause, Recursive Self-Improvement, and AI Personhood | `moonshots/transcripts/2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md` | `internal-commit-approved` | `imported` | `needs-source-note` | Imported transcript and marked source note follow-up. |
+| moonshots | Moonshots â€” SpaceX IPO, Anthropic Export Control, OpenAI IPO Delay \| 265 (265) | `moonshots/transcripts/2026-06-19-moonshots-265-spacex-ipo-anthropic-export-control-2026-06-19.md` | `internal-commit-approved` | `imported` | `needs-source-note` | Imported transcript and marked source note follow-up. |
+| moonshots | Moonshots â€” Emerging Situation: Anthropic Global Pause, Recursive Self-Improvement, and AI Personhood | `moonshots/transcripts/2026-06-09-moonshots-emerging-anthropic-pause-ai-personhood-2026-06-09.md` | `internal-commit-approved` | `imported` | `needs-source-note` | Imported transcript and marked source note follow-up. |
 | innermost-loop | Welcome to June 26, 2026 | `innermost-loop/transcripts/2026-06-26-welcome-to-june-26-2026.md` | `internal-commit-approved` | `imported` | `needs-source-note` | Imported from live Substack page via browser-visible capture on 2026-07-08 at operator request. |
 | innermost-loop | Welcome to June 27, 2026 | `innermost-loop/transcripts/2026-06-27-welcome-to-june-27-2026.md` | `internal-commit-approved` | `imported` | `needs-source-note` | Imported from live Substack page via browser-visible capture on 2026-07-08 at operator request. |
 | innermost-loop | Welcome to June 28, 2026 | `innermost-loop/transcripts/2026-06-28-welcome-to-june-28-2026.md` | `internal-commit-approved` | `imported` | `needs-source-note` | Imported from live Substack page via browser-visible capture on 2026-07-08 at operator request. |

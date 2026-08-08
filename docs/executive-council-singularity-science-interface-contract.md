@@ -367,9 +367,9 @@ runtime activation, implementation authority, or external action.
 **Question:** Could the Nate Herk tool-agnostic context seam inform
 infrastructure planning for a Codex-and-Cursor workflow?
 
-**Evidence reviewed:** [source analysis](../projects/singularity-science/archive/nate-herk/analyses/2026-08-04-everything-ive-learned-after-5000-hours-of-building-with-ai.analysis.md),
-[recurrence review](../projects/singularity-science/archive/recurrence-reviews/2026-08-04-nate-herk-evidence-before-authority.md),
-and [ROI ledger](../projects/singularity-science/archive/nate-herk/roi-ledger.md).
+**Evidence reviewed:** [source analysis](../system-archive/singularity-science/nate-herk/analyses/2026-08-04-everything-ive-learned-after-5000-hours-of-building-with-ai.analysis.md),
+[recurrence review](../system-archive/singularity-science/recurrence-reviews/2026-08-04-nate-herk-evidence-before-authority.md),
+and [ROI ledger](../system-archive/singularity-science/nate-herk/roi-ledger.md).
 
 **Result:** `pass after state-model correction`. The interface preserves the
 analysis-level `lane-test-ready` ROI disposition and the later recurrence-level

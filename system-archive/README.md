@@ -28,8 +28,8 @@ See [archive-manifest.yaml](archive-manifest.yaml) for the controlled index.
 
 | Domain | Current path | Status | Role |
 | --- | --- | --- | --- |
-| `singularity-science` | `projects/singularity-science/archive/` | active | Singularity Science source archive and intake lane material. |
-| `ai-frontier` | `archive/ai-frontier/` | historical/parked | Earlier AI frontier archive shelf retained for lineage until reviewed. |
+| `singularity-science` | `system-archive/singularity-science/` | active | Singularity Science source archive and intake lane material. |
+| `ai-frontier` | `system-archive/ai-frontier/` | historical/parked | Earlier AI frontier archive shelf retained for lineage until reviewed. |
 
 ## Boundary
 

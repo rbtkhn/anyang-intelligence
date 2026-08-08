@@ -34,7 +34,7 @@ Archive material may not be used to:
 Use this structure:
 
 ```text
-projects/singularity-science/archive/
+system-archive/singularity-science/
   innermost-loop/
   moonshots/
   nate-b-jones/

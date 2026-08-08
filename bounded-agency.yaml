@@ -28,16 +28,16 @@ phases:
       - invoked-manifest
       - manifest-referenced-source-bodies
     may_write:
-      - projects/singularity-science/archive/innermost-loop/transcripts/**
-      - projects/singularity-science/archive/moonshots/transcripts/**
-      - projects/singularity-science/archive/nate-b-jones/transcripts/**
-      - projects/singularity-science/archive/external-interviews/transcripts/**
-      - projects/singularity-science/archive/transcript-import-ledger.md
+      - system-archive/singularity-science/innermost-loop/transcripts/**
+      - system-archive/singularity-science/moonshots/transcripts/**
+      - system-archive/singularity-science/nate-b-jones/transcripts/**
+      - system-archive/singularity-science/external-interviews/transcripts/**
+      - system-archive/singularity-science/transcript-import-ledger.md
     operations:
       create:
-        - projects/singularity-science/archive/*/transcripts/*.md
+        - system-archive/singularity-science/*/transcripts/*.md
       modify:
-        - projects/singularity-science/archive/transcript-import-ledger.md
+        - system-archive/singularity-science/transcript-import-ledger.md
       delete: []
     must_not_write_without_explicit_authorization:
       - .git/**
@@ -53,8 +53,8 @@ phases:
       - projects/singularity-science/loop-examples/**
       - projects/singularity-science/primitives/**
       - projects/singularity-science/templates/**
-      - projects/singularity-science/archive/*/analyses/**
-      - projects/singularity-science/archive/*/source-notes/**
+      - system-archive/singularity-science/*/analyses/**
+      - system-archive/singularity-science/*/source-notes/**
       - external-systems:*
     invariants:
       - invoked-manifest-authoritative-for-phase

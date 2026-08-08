@@ -3,8 +3,8 @@
 ## Source
 
 - Title: Sonnet 5 Drops, Fable 5 Will Return & Fusion's First Plant Gets Licensed W/ Philip Johnston | #268
-- Source note: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.source-note.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/source-notes/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.source-note.md)
-- Transcript: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md)
+- Source note: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.source-note.md](/C:/dev/anyang-intelligence/operating-substrate/system-archive/singularity-science/moonshots/source-notes/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.source-note.md)
+- Transcript: [2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md](/C:/dev/anyang-intelligence/operating-substrate/system-archive/singularity-science/moonshots/transcripts/2026-07-08-moonshots-268-sonnet-5-fable-5-fusion-philip-johnston.md)
 - Date analyzed: 2026-07-08
 
 ## Episode Rollup

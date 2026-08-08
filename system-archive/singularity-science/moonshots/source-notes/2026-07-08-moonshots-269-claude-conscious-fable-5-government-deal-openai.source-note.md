@@ -5,7 +5,7 @@ Source: Moonshots
 URL: https://www.youtube.com/watch?v=XCunMF6frio
 Date published: unknown at intake
 Date captured: 2026-07-08
-Transcript location: [2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md](/C:/dev/anyang-intelligence/repo_probe/projects/singularity-science/archive/moonshots/transcripts/2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md)
+Transcript location: [2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md](/C:/dev/anyang-intelligence/operating-substrate/system-archive/singularity-science/moonshots/transcripts/2026-07-08-moonshots-269-claude-conscious-fable-5-government-deal-openai.md)
 Rights status: internal-commit-approved
 Capture method: user-provided transcript paste
 Why it matters: This episode compresses several high-pressure Singularity Science themes into one source: frontier-model governance moving toward standing state obligations, interpretability being framed as access to model inner life, AI-native chip and RF design accelerating the recursive loop, and legal structures straining under superintelligent invention and state-scale IP enforcement. It is useful because it mixes real governance and infrastructure pressure with stronger speculative rhetoric, which makes it valuable for product-intelligence synthesis and verification discipline.

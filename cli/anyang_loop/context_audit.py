@@ -123,7 +123,7 @@ def audit_repository(repo: str | Path = ".") -> dict:
         if source_material and "archive" not in rel.replace("\\", "/"):
             add("error", "membrane-boundary", path.relative_to(root), None, rel, "transcript-like material is outside the archive path", "Move or redact the source material after rights and membrane review", True)
 
-    for lane in root.glob("operating-substrate/projects/singularity-science/archive/*"):
+    for lane in root.glob("operating-substrate/system-archive/singularity-science/*"):
         if not lane.is_dir():
             continue
         transcripts = {p.stem for p in (lane / "transcripts").glob("*.md")}

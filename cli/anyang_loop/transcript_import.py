@@ -10,7 +10,7 @@ from typing import Any
 import yaml
 
 
-ALLOWED_LANES = {"external-interviews", "innermost-loop", "moonshots", "nate-b-jones"}
+ALLOWED_LANES = {"external-interviews", "innermost-loop", "moonshots", "nate-b-jones", "nate-herk"}
 ALLOWED_RIGHTS = {"internal-commit-approved", "uncertain-review-needed", "do-not-commit"}
 BLOCKING_STATUSES = {"invalid-manifest", "missing-source", "conflicting-destination", "path-escape"}
 TERMINAL_STATUSES = {"imported", "already-present", "blocked-rights", "skipped-do-not-commit"}
@@ -125,10 +125,10 @@ def load_manifest(path: str | Path) -> list[TranscriptManifestRow]:
 def find_archive_root(manifest_path: str | Path) -> Path:
     path = Path(manifest_path).resolve()
     for candidate in [path.parent, *path.parents]:
-        if tuple(part.casefold() for part in candidate.parts[-3:]) == ("projects", "singularity-science", "archive"):
+        if tuple(part.casefold() for part in candidate.parts[-2:]) == ("system-archive", "singularity-science"):
             return candidate.resolve()
     raise TranscriptImportError(
-        "Manifest must live under projects/singularity-science/archive so imported transcripts stay inside the archive membrane."
+        "Manifest must live under system-archive/singularity-science so imported transcripts stay inside the archive membrane."
     )
 
 
