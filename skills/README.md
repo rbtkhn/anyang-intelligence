@@ -21,6 +21,7 @@ Skills are reusable operating procedures for maintaining the Anyang Intelligence
 | [automation-opportunity-review](automation-opportunity-review/SKILL.md) | Use after effective business intake to rank recurring, measurable, bounded automation opportunities without building or running them. |
 | [automation-value-proof](automation-value-proof/SKILL.md) | Use for exactly one approved automation opportunity to define baseline, target, evidence, ROI, review burden, and pilot stop conditions. |
 | [bounded-workflow-pilot](bounded-workflow-pilot/SKILL.md) | Use after an approved persisted manual-loop handoff or automation value proof to run one low-risk workflow experiment with explicit limits, receipts, and human review. |
+| [archive-steward](archive-steward/SKILL.md) | Use for governed archive/library shelves, manifests, migrations, tombstones, lineage, duplicate detection, and archive audits without taking domain interpretation authority. |
 | [singularity-science](singularity-science/SKILL.md) | Use as the operator-facing umbrella for governed Singularity Science source intake, interpretation, recurrence, retention, and bounded downstream translation. |
 | [singularity-recurrence-review](singularity-recurrence-review/SKILL.md) | Use after Singularity intake to detect independent recurring seams without promoting doctrine or creating primitives. |
 | [singularity-learning-update](singularity-learning-update/SKILL.md) | Use after recurrence review to record one evidence-linked, human-bounded learning transition. |

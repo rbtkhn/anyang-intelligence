@@ -1,0 +1,4 @@
+interface:
+  display_name: "Archive Steward"
+  short_description: "Govern archive shelves, manifests, migrations, and lineage"
+  default_prompt: "Use $archive-steward to inspect or govern this archive surface."
