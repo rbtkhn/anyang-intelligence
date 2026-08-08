@@ -11,10 +11,10 @@ governance:
 domains:
   singularity-science:
     title: Singularity Science Archive
-    current_path: projects/singularity-science/archive/
+    current_path: system-archive/singularity-science/
     desired_canonical_path: system-archive/singularity-science/
     status: active
-    migration_state: indexed-not-moved
+    migration_state: canonical-moved
     data_class: internal-source
     owner: Engineer
     contains:
@@ -41,10 +41,10 @@ domains:
 
   ai-frontier:
     title: AI Frontier Archive
-    current_path: archive/ai-frontier/
+    current_path: system-archive/ai-frontier/
     desired_canonical_path: system-archive/ai-frontier/
     status: historical-parked
-    migration_state: indexed-not-moved
+    migration_state: parked-empty
     data_class: internal-source
     owner: repository-operator
     contains:
